@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Offset anchored scroll so sticky navbar doesn't cover headings */
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-charcoal text-cream font-sans antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    @apply bg-gold/40 text-cream;
+  }
+
+  /* Custom scrollbar — subtle, warm */
+  ::-webkit-scrollbar {
+    width: 11px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-charcoal-800;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-graphite rounded-full border-2 border-charcoal-800;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gold-dark;
+  }
+}
+
+@layer components {
+  .container-px {
+    @apply px-5 sm:px-8 lg:px-16 xl:px-24;
+  }
+
+  .section-pad {
+    @apply py-20 md:py-28 lg:py-32;
+  }
+
+  /* Thin uppercase eyebrow label above headings */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-gold;
+  }
+
+  .heading-display {
+    @apply font-display font-semibold leading-[1.05] tracking-tight;
+  }
+
+  /* Primary gold CTA */
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gold px-7 py-3.5
+      text-sm font-semibold uppercase tracking-wider text-charcoal transition-all duration-300
+      hover:bg-gold-light hover:shadow-glow active:scale-[0.97];
+  }
+
+  /* Outlined / ghost button */
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-sand/40
+      px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-cream transition-all
+      duration-300 hover:border-gold hover:text-gold active:scale-[0.97];
+  }
+
+  .link-underline {
+    @apply relative after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0
+      after:bg-gold after:transition-all after:duration-300 hover:after:w-full;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .glass {
+    @apply bg-charcoal-700/60 backdrop-blur-md border border-white/5;
+  }
+  /* Faint material-texture overlay helpers */
+  .grain-overlay {
+    position: relative;
+  }
+  .grain-overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
