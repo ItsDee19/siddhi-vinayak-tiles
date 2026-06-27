@@ -83,7 +83,7 @@ function paintMarble(ctx, size, color, accent, rand) {
 
 function paintGranite(ctx, size, color, accent, rand) {
   paintBase(ctx, size, color)
-  const dots = size * size * 0.06
+  const dots = size * size * 0.035
   for (let i = 0; i < dots; i++) {
     const x = rand() * size
     const y = rand() * size
@@ -111,7 +111,7 @@ function paintQuartz(ctx, size, color, accent, rand) {
     ctx.fillRect(0, 0, size, size)
   }
   // fine sparkle
-  const dots = size * size * 0.03
+  const dots = size * size * 0.018
   for (let i = 0; i < dots; i++) {
     ctx.fillStyle = rand() < 0.7 ? shade(color, -20) : accent
     ctx.globalAlpha = 0.3 + rand() * 0.5
@@ -213,7 +213,22 @@ export function makeMaterialCanvas({
   return canvas
 }
 
-/** Return a data-URL preview (used by 2D gallery thumbnails). */
-export function makeMaterialDataURL(opts) {
-  return makeMaterialCanvas(opts).toDataURL('image/png')
+// Cache generated data-URLs so the same swatch (which appears in the picker,
+// the gallery AND the fallback) is only painted + encoded once.
+const dataUrlCache = new Map()
+
+/**
+ * Return a data-URL preview (used by 2D gallery + swatch thumbnails).
+ * Defaults to JPEG, which is far faster to encode than PNG and produces a
+ * much smaller string for these photographic material textures.
+ */
+export function makeMaterialDataURL(opts = {}) {
+  const { type = 'marble', color = '#e7dcc9', size = 320, format = 'jpeg', quality = 0.82 } = opts
+  const key = `${type}|${color}|${opts.accent}|${size}|${opts.seed}|${format}`
+  if (dataUrlCache.has(key)) return dataUrlCache.get(key)
+
+  const mime = format === 'png' ? 'image/png' : 'image/jpeg'
+  const url = makeMaterialCanvas({ ...opts, size }).toDataURL(mime, quality)
+  dataUrlCache.set(key, url)
+  return url
 }

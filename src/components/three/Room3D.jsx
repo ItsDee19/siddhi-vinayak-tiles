@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import { Canvas } from '@react-three/fiber'
-import { OrbitControls, ContactShadows, Environment } from '@react-three/drei'
+import { OrbitControls, ContactShadows } from '@react-three/drei'
 import { getMaterialTexture } from '../../utils/threeTextures'
 
 // A small interior scene whose FLOOR re-textures live when the user picks a
@@ -69,19 +69,22 @@ function Room() {
   )
 }
 
-export default function Room3D({ swatch }) {
+export default function Room3D({ swatch, frameloop = 'always' }) {
   return (
     <Canvas
       shadows
+      frameloop={frameloop}
       dpr={[1, 1.8]}
       camera={{ position: [6.5, 5, 7], fov: 40 }}
       gl={{ antialias: true, powerPreference: 'high-performance' }}
     >
       <color attach="background" args={['#23211f']} />
-      <ambientLight intensity={0.7} />
+      {/* Self-contained lighting — no remote HDR environment map needed. */}
+      <hemisphereLight args={['#f3e6cf', '#2a2622', 0.9]} />
+      <ambientLight intensity={0.45} />
       <directionalLight
         position={[5, 8, 4]}
-        intensity={1.6}
+        intensity={1.7}
         castShadow
         color="#f3e6cf"
         shadow-mapSize={[1024, 1024]}
@@ -90,7 +93,6 @@ export default function Room3D({ swatch }) {
       <Room />
       <Floor swatch={swatch} />
       <ContactShadows position={[0, 0.01, 0]} opacity={0.4} scale={12} blur={2.4} far={6} />
-      <Environment preset="apartment" />
       <OrbitControls
         enablePan={false}
         minDistance={5}

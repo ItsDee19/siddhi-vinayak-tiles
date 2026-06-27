@@ -6,6 +6,7 @@ import SwatchThumb from '../ui/SwatchThumb'
 import CanvasFallback from '../ui/CanvasFallback'
 import { swatches, categories } from '../../data/products'
 import { useWebGL } from '../../hooks/useWebGL'
+import { useInView } from '../../hooks/useInView'
 
 const Room3D = lazy(() => import('../three/Room3D'))
 
@@ -16,6 +17,7 @@ const visualizerCats = categories.filter((c) =>
 
 export default function Visualizer() {
   const webgl = useWebGL()
+  const [stageRef, stageEntered, stageVisible] = useInView({ rootMargin: '300px' })
   const [activeCat, setActiveCat] = useState('tiles')
   const [selected, setSelected] = useState(
     swatches.find((s) => s.category === 'tiles') || swatches[0],
@@ -37,17 +39,29 @@ export default function Visualizer() {
 
         <div className="mt-14 grid gap-8 lg:grid-cols-[1.6fr_1fr]">
           {/* 3D room */}
-          <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-white/5 bg-charcoal-800 shadow-card lg:aspect-auto lg:min-h-[520px]">
+          <div
+            ref={stageRef}
+            className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-white/5 bg-charcoal-800 shadow-card lg:aspect-auto lg:min-h-[520px]"
+          >
             {webgl ? (
-              <Suspense
-                fallback={
-                  <div className="flex h-full w-full items-center justify-center text-sand/60">
-                    <span className="animate-pulse">Loading room…</span>
-                  </div>
-                }
-              >
-                <Room3D swatch={selected} />
-              </Suspense>
+              stageEntered ? (
+                <Suspense
+                  fallback={
+                    <div className="flex h-full w-full items-center justify-center text-sand/60">
+                      <span className="animate-pulse">Loading room…</span>
+                    </div>
+                  }
+                >
+                  <Room3D
+                    swatch={selected}
+                    frameloop={stageVisible ? 'always' : 'never'}
+                  />
+                </Suspense>
+              ) : (
+                <div className="flex h-full w-full items-center justify-center text-sand/50">
+                  <span className="animate-pulse">Preparing 3D room…</span>
+                </div>
+              )
             ) : (
               <div className="relative h-full w-full p-4">
                 <CanvasFallback swatchList={visible.slice(0, 6)} />

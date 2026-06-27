@@ -37,7 +37,8 @@ const WALL_SWATCHES = [
 
 function Tile({ position, swatch, index }) {
   const ref = useRef()
-  const texture = useMemo(() => getMaterialTexture(swatch, 1), [swatch])
+  // Hero tiles are small on screen — a 256px texture is plenty and ~4x cheaper.
+  const texture = useMemo(() => getMaterialTexture(swatch, 1, 256), [swatch])
   const phase = useMemo(() => Math.random() * Math.PI * 2, [])
 
   useFrame((state) => {
@@ -50,7 +51,7 @@ function Tile({ position, swatch, index }) {
   })
 
   return (
-    <mesh ref={ref} position={position} castShadow receiveShadow>
+    <mesh ref={ref} position={position}>
       <boxGeometry args={[1, 1, 0.08]} />
       <meshStandardMaterial map={texture} roughness={0.55} metalness={0.12} />
     </mesh>
@@ -122,19 +123,19 @@ function Wall({ scrollRef }) {
   )
 }
 
-export default function TileWall3D({ scrollRef }) {
+export default function TileWall3D({ scrollRef, frameloop = 'always' }) {
   // scrollRef is a ref holding 0..1 hero scroll progress, updated by the parent.
   return (
     <Canvas
+      frameloop={frameloop}
       dpr={[1, 1.8]}
-      shadows
       camera={{ position: [0, 0, 9], fov: 42 }}
       gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
     >
       <color attach="background" args={['#1c1a18']} />
       <fog attach="fog" args={['#1c1a18', 9, 20]} />
       <ambientLight intensity={0.6} />
-      <directionalLight position={[5, 6, 8]} intensity={1.5} castShadow color="#f3e6cf" />
+      <directionalLight position={[5, 6, 8]} intensity={1.5} color="#f3e6cf" />
       <directionalLight position={[-6, -2, 4]} intensity={0.5} color="#b08d4f" />
       <Wall scrollRef={scrollRef} />
     </Canvas>

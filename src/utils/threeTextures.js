@@ -8,16 +8,17 @@ const cache = new Map()
  * Build (and cache) a THREE.CanvasTexture for a procedural material swatch.
  * @param {object} swatch { id, type, color, accent }
  * @param {number} repeat tiling repeats across the surface
+ * @param {number} size canvas resolution — keep small for tiny meshes
  */
-export function getMaterialTexture(swatch, repeat = 1) {
-  const key = `${swatch.id || swatch.type + swatch.color}@${repeat}`
+export function getMaterialTexture(swatch, repeat = 1, size = 512) {
+  const key = `${swatch.id || swatch.type + swatch.color}@${repeat}@${size}`
   if (cache.has(key)) return cache.get(key)
 
   const canvas = makeMaterialCanvas({
     type: swatch.type,
     color: swatch.color,
     accent: swatch.accent,
-    size: 512,
+    size,
     seed: swatch.id || swatch.type + swatch.color,
   })
   const tex = new THREE.CanvasTexture(canvas)

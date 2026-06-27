@@ -91,7 +91,7 @@ export default function Gallery() {
               >
                 <SwatchThumb
                   swatch={item}
-                  size={item.featured ? 512 : 320}
+                  size={item.featured ? 384 : 256}
                   className="h-full w-full transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-charcoal/85 via-transparent to-transparent opacity-80" />
@@ -140,7 +140,8 @@ export default function Gallery() {
             >
               <SwatchThumb
                 swatch={lightbox}
-                size={768}
+                size={640}
+                eager
                 className="aspect-video w-full"
               />
               <div className="flex items-center justify-between p-6">

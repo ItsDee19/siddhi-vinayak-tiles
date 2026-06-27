@@ -67,3 +67,38 @@ Business embed once available.
 The form has no backend — on submit it composes a pre-filled WhatsApp message to
 the shop. Swap `handleSubmit` in `src/components/sections/Contact.jsx` for an
 email service or form endpoint if you'd prefer.
+
+## Performance
+
+The site is tuned to paint fast and stay smooth:
+
+- **Code-split 3D** — Three.js loads in its own async chunk; the rest of the
+  page is light. WebGL-less devices never download it.
+- **Deferred material generation** — the procedural textures are generated
+  lazily (near-viewport, during idle time) and cached, so they never block the
+  first paint. Thumbnails are encoded as JPEG at modest sizes.
+- **Scroll-gated 3D** — each WebGL scene only mounts when you approach it and
+  **pauses its render loop when scrolled off-screen** (saves GPU/CPU/battery).
+- **No third-party HDR** — scene lighting is fully self-contained (hemisphere +
+  directional lights), so nothing is fetched from a remote CDN at runtime.
+- **Trimmed web fonts** to only the weights actually used.
+
+Measured on the production build: `DOMContentLoaded ≈ 0.2s`, ~12 MB JS heap, and
+the only runtime third-party request is Google Fonts (plus the Google Maps embed
+once you scroll to Contact).
+
+## Security
+
+- All external links use `rel="noopener noreferrer"`; the map `iframe` uses
+  `referrerPolicy="no-referrer"` and lazy loading.
+- User input from the enquiry form is only ever URL-encoded into a `wa.me` link
+  (no injection surface) and rendered through React (auto-escaped — no XSS).
+- No secrets or API keys in the repo; the Maps embed is keyless.
+- **HTTP security headers** ship for both hosts: see [`vercel.json`](vercel.json)
+  (Vercel) and [`public/_headers`](public/_headers) (Netlify / Cloudflare Pages).
+  They set a Content-Security-Policy, `X-Frame-Options`, `X-Content-Type-Options`,
+  `Referrer-Policy`, `Permissions-Policy` and HSTS. If you later add real product
+  photos from an external CDN, add that origin to the CSP `img-src`.
+- `npm audit`: **0 vulnerabilities in production dependencies**. The remaining
+  advisories are Vite **dev-server-only** (they affect `npm run dev` locally,
+  never the deployed static site) and don't warrant the breaking Vite 8 upgrade.

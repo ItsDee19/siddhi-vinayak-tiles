@@ -6,6 +6,7 @@ import CanvasFallback from '../ui/CanvasFallback'
 import { business } from '../../data/siteConfig'
 import { swatches } from '../../data/products'
 import { useWebGL } from '../../hooks/useWebGL'
+import { useInView } from '../../hooks/useInView'
 
 const TileWall3D = lazy(() => import('../three/TileWall3D'))
 
@@ -14,6 +15,9 @@ const fallbackSwatches = swatches.slice(0, 9)
 export default function Hero() {
   const webgl = useWebGL()
   const scrollRef = useRef(0)
+  // Above the fold, so start visible; pause the render loop once the hero
+  // scrolls out of view.
+  const [stageRef, , heroVisible] = useInView({ rootMargin: '0px', initial: true })
 
   useEffect(() => {
     const onScroll = () => {
@@ -28,10 +32,13 @@ export default function Hero() {
   return (
     <section id="home" className="relative min-h-[100svh] w-full overflow-hidden">
       {/* 3D / fallback layer */}
-      <div className="absolute inset-0">
+      <div ref={stageRef} className="absolute inset-0">
         {webgl ? (
           <Suspense fallback={<div className="h-full w-full bg-charcoal" />}>
-            <TileWall3D scrollRef={scrollRef} />
+            <TileWall3D
+              scrollRef={scrollRef}
+              frameloop={heroVisible ? 'always' : 'never'}
+            />
           </Suspense>
         ) : (
           <div className="relative h-full w-full bg-charcoal">

@@ -112,7 +112,7 @@ export default function Contact() {
                   className="h-full min-h-[260px] w-full"
                   style={{ border: 0, filter: 'grayscale(0.3) contrast(1.05)' }}
                   loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
+                  referrerPolicy="no-referrer"
                   allowFullScreen
                 />
                 <a

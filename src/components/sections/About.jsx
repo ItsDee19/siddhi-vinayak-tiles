@@ -5,6 +5,7 @@ import SwatchThumb from '../ui/SwatchThumb'
 import { business } from '../../data/siteConfig'
 import { swatches } from '../../data/products'
 import { useWebGL } from '../../hooks/useWebGL'
+import { useInView } from '../../hooks/useInView'
 
 const Slab3D = lazy(() => import('../three/Slab3D'))
 
@@ -16,6 +17,7 @@ const aboutPoints = [
 
 export default function About() {
   const webgl = useWebGL()
+  const [slabRef, slabEntered, slabVisible] = useInView({ rootMargin: '300px' })
   const slabSwatch = swatches.find((s) => s.id === 'marble-statuario')
 
   return (
@@ -26,11 +28,18 @@ export default function About() {
       <div className="container-px grid items-center gap-14 lg:grid-cols-2">
         {/* slab visual */}
         <Reveal>
-          <div className="relative mx-auto aspect-square w-full max-w-md overflow-hidden rounded-3xl border border-white/5 bg-charcoal shadow-card">
+          <div
+            ref={slabRef}
+            className="relative mx-auto aspect-square w-full max-w-md overflow-hidden rounded-3xl border border-white/5 bg-charcoal shadow-card"
+          >
             {webgl ? (
-              <Suspense fallback={<div className="h-full w-full bg-charcoal" />}>
-                <Slab3D />
-              </Suspense>
+              slabEntered ? (
+                <Suspense fallback={<div className="h-full w-full bg-charcoal" />}>
+                  <Slab3D frameloop={slabVisible ? 'always' : 'never'} />
+                </Suspense>
+              ) : (
+                <div className="h-full w-full bg-charcoal" />
+              )
             ) : (
               <SwatchThumb
                 swatch={slabSwatch}

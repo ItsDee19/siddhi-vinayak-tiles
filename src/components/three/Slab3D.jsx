@@ -1,6 +1,5 @@
 import { useMemo, useRef, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { Environment } from '@react-three/drei'
 import { getMaterialTexture } from '../../utils/threeTextures'
 import { swatches } from '../../data/products'
 
@@ -36,18 +35,20 @@ function Slab() {
   )
 }
 
-export default function Slab3D() {
+export default function Slab3D({ frameloop = 'always' }) {
   return (
     <Canvas
+      frameloop={frameloop}
       dpr={[1, 1.8]}
       camera={{ position: [0, 0, 6.5], fov: 40 }}
       gl={{ antialias: true, alpha: true }}
     >
-      <ambientLight intensity={0.6} />
-      <directionalLight position={[4, 5, 6]} intensity={1.8} color="#f3e6cf" />
-      <directionalLight position={[-5, -2, 2]} intensity={0.5} color="#b08d4f" />
+      {/* Self-contained lighting — no remote HDR environment map needed. */}
+      <hemisphereLight args={['#f6f1e7', '#2a2622', 0.8]} />
+      <ambientLight intensity={0.4} />
+      <directionalLight position={[4, 5, 6]} intensity={2} color="#f3e6cf" />
+      <directionalLight position={[-5, -2, 2]} intensity={0.6} color="#b08d4f" />
       <Slab />
-      <Environment preset="studio" />
     </Canvas>
   )
 }
