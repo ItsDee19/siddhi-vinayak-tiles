@@ -101,6 +101,12 @@ const paths = {
     </>
   ),
   send: <path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z" />,
+  search: (
+    <>
+      <circle cx="11" cy="11" r="7" />
+      <path d="m21 21-4.3-4.3M11 8v6M8 11h6" />
+    </>
+  ),
 }
 
 export default function Icon({ name, className = 'w-6 h-6', filled = false }) {
