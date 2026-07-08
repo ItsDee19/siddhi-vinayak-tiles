@@ -49,5 +49,24 @@ export const models = [
     load: () => import('./ModelB'),
     fixtures: { shower: true, wc: true },
   },
-  // Models C, D, E added below
+  {
+    id: 'staircase',
+    name: 'Staircase',
+    blurb: '22 steps, 2 flights + landing',
+    zones: [
+      { id: 'tread',   label: 'Tread Tile',  surface: 'Floor' },
+      { id: 'riser',   label: 'Riser Tile',  surface: 'Wall' },
+      { id: 'landing', label: 'Landing',     surface: 'Floor' },
+    ],
+    presets: {
+      default:     { position: [10, 5, 14], target: [4, 4, 0] },
+      side:        { position: [0,  6, 18],  target: [4, 4, 0] },
+      perspective: { position: [12, 8, 10], target: [4, 4, 0] },
+      landing:     { position: [12, 9, 1],   target: [11, 6.4, 0] },
+    },
+    load: () => import('./ModelC'),
+    interactiveAutoRotate: true,
+    fixtures: { nosing: true },
+  },
+  // Models D, E added below
 ]
