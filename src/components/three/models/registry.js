@@ -25,7 +25,9 @@ export const models = [
       { id: 'upper',   label: 'Upper Wall',   surface: 'Wall' },
     ],
     presets: {
-      default: { position: [7, 5, 8], target: [0, 3, 0] },
+      // 45° elevation hero shot — corner of room at human eye-height
+      default: { position: [8.5, 4.2, 9.5], target: [0, 3.2, -0.5] },
+      front:   { position: [0, 4, 11],     target: [0, 3.5, 0] },
     },
     load: () => import('./ModelA'),
     controls: ['showShower'],

@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
+import { MeshReflectorMaterial } from '@react-three/drei'
 import { loadZoneTexture, resolveZoneSource } from '../../../utils/threeTextures'
 import * as THREE from 'three'
 
@@ -102,18 +103,37 @@ export default function TiledSurface({
       rotation={groupRotation}
       onClick={onClick}
     >
-      {/* Grout background — one big plane behind the tiles */}
+      {/* Grout / base layer — for floor, use the reflective material so the
+          whole floor has a polished wet-look sheen. For walls, plain matte. */}
       <mesh position={[0, 0, -0.001]} receiveShadow>
         <planeGeometry args={[size[0] + 0.1, size[1] + 0.1]} />
-        <meshStandardMaterial
-          color={groutColor}
-          roughness={0.95}
-          metalness={0.0}
-        />
+        {orientation === 'floor' ? (
+          <MeshReflectorMaterial
+            color={groutColor}
+            blur={[300, 100]}
+            resolution={512}
+            mixBlur={1}
+            mixStrength={40}
+            roughness={0.85}
+            depthScale={0.6}
+            minDepthThreshold={0.4}
+            maxDepthThreshold={1.4}
+            metalness={0.1}
+            mirror={0}
+          />
+        ) : (
+          <meshStandardMaterial
+            color={groutColor}
+            roughness={0.95}
+            metalness={0.0}
+          />
+        )}
       </mesh>
       {/* Individual tiles */}
       {tiles.map(({ x, y, w, h, tint, key }) => {
         const isFloor = orientation === 'floor'
+        // For floor: also use reflective material on each tile so the tile
+        // pattern reflects along with the grout. For wall: textured meshPhysical.
         return (
           <mesh
             key={key}
@@ -122,20 +142,35 @@ export default function TiledSurface({
             receiveShadow
           >
             <planeGeometry args={[w, h]} />
-            <meshPhysicalMaterial
-              map={tex || null}
-              color={tex ? '#ffffff' : '#5C3A22'}
-              // Per-tile brightness variation (Tier 2.1)
-              {...(tex ? {} : { color: new THREE.Color('#5C3A22').multiplyScalar(tint).getStyle() })}
-              roughness={finishRoughness}
-              metalness={finishMetalness}
-              clearcoat={finish === 'Polished' || finish === 'Glossy' ? 0.4 : 0}
-              clearcoatRoughness={finish === 'Polished' ? 0.1 : 0.3}
-              emissive={isActive ? '#C49A3C' : '#000000'}
-              emissiveIntensity={isActive ? 0.12 : 0}
-              // Slight per-tile brightness boost when textured
-              {...(tex ? { color: new THREE.Color('#ffffff').multiplyScalar(tint).getStyle() } : {})}
-            />
+            {isFloor ? (
+              <MeshReflectorMaterial
+                map={tex || null}
+                color={tex ? new THREE.Color('#ffffff').multiplyScalar(tint).getStyle() : new THREE.Color('#5C3A22').multiplyScalar(tint).getStyle()}
+                blur={[300, 100]}
+                resolution={512}
+                mixBlur={1}
+                mixStrength={40}
+                roughness={finishRoughness}
+                depthScale={0.6}
+                minDepthThreshold={0.4}
+                maxDepthThreshold={1.4}
+                metalness={finishMetalness}
+                mirror={0}
+                emissive={isActive ? '#C49A3C' : '#000000'}
+                emissiveIntensity={isActive ? 0.12 : 0}
+              />
+            ) : (
+              <meshPhysicalMaterial
+                map={tex || null}
+                color={tex ? new THREE.Color('#ffffff').multiplyScalar(tint).getStyle() : '#5C3A22'}
+                roughness={finishRoughness}
+                metalness={finishMetalness}
+                clearcoat={finish === 'Polished' || finish === 'Glossy' ? 0.4 : 0}
+                clearcoatRoughness={finish === 'Polished' ? 0.1 : 0.3}
+                emissive={isActive ? '#C49A3C' : '#000000'}
+                emissiveIntensity={isActive ? 0.12 : 0}
+              />
+            )}
           </mesh>
         )
       })}

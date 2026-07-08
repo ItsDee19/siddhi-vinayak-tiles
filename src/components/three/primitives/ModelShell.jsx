@@ -3,6 +3,7 @@ import { Canvas } from '@react-three/fiber'
 import { ContactShadows, Environment } from '@react-three/drei'
 import { useReducedMotion } from '../../../hooks/useReducedMotion'
 import CameraRig, { OrbitControls } from './CameraRig'
+import BackdropGradient from './BackdropGradient'
 
 // Wraps every model. Children render the actual geometry.
 // cameraPresets is a { [name]: { position, target } } map; first preset is the default.
@@ -44,6 +45,15 @@ export default function ModelShell({
       >
         <color attach="background" args={['#3D2512']} />
         <fog attach="fog" args={['#3D2512', 22, 50]} />
+
+        {/* Atmospheric backdrop — warm light at the top fading to deep
+            brown at the floor. Visible at the edges of the camera frame. */}
+        <BackdropGradient
+          topColor="#7A4A28"
+          bottomColor="#1A0E05"
+          exponent={0.7}
+          radius={50}
+        />
 
         {/* IBL — Environment drives the primary lighting. 'apartment' gives
             a warm, lived-in showroom glow. Background={false} means we
