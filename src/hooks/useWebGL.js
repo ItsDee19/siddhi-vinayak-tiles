@@ -1,21 +1,19 @@
 import { useEffect, useState } from 'react'
+import { useReducedMotion } from './useReducedMotion'
 
 // Detects whether the device can comfortably run the 3D canvases. Returns
 // `true` only when WebGL is available AND the device isn't an obviously
 // low-power / reduced-motion environment — so we can fall back to static art.
 export function useWebGL() {
   const [supported, setSupported] = useState(null) // null = still checking
+  const reduce = useReducedMotion()
 
   useEffect(() => {
+    if (reduce) {
+      setSupported(false)
+      return
+    }
     try {
-      const prefersReduced = window.matchMedia(
-        '(prefers-reduced-motion: reduce)',
-      ).matches
-      if (prefersReduced) {
-        setSupported(false)
-        return
-      }
-
       const canvas = document.createElement('canvas')
       const gl =
         canvas.getContext('webgl2') ||
@@ -38,7 +36,7 @@ export function useWebGL() {
     } catch {
       setSupported(false)
     }
-  }, [])
+  }, [reduce])
 
   return supported
 }

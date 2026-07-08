@@ -3,13 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Icon from '../Icons'
 import SectionHeading from '../ui/SectionHeading'
 import SwatchThumb from '../ui/SwatchThumb'
+import { useReducedMotion } from '../../hooks/useReducedMotion'
 import { galleryItems, categories } from '../../data/products'
 
 const filters = [{ id: 'all', name: 'All' }, ...categories]
-
-const prefersReducedMotion = () =>
-  typeof window !== 'undefined' &&
-  window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
 
 export default function Gallery() {
   const [active, setActive] = useState('all')
@@ -22,7 +19,7 @@ export default function Gallery() {
   const carouselRef = useRef(null)
   const stageRef = useRef(null)
   const swipe = useRef({ x: 0, down: false, moved: false })
-  const reduce = useRef(prefersReducedMotion())
+  const reduce = useReducedMotion()
 
   const items = useMemo(
     () =>
@@ -83,7 +80,7 @@ export default function Gallery() {
   // hover, drag, lightbox, when scrolled out of view, or under a reduced-motion
   // preference, so it never fights the user or burns CPU off-screen.
   useEffect(() => {
-    if (!inView || paused || lightbox || count <= 1 || reduce.current) return
+    if (!inView || paused || lightbox || count <= 1 || reduce) return
     const t = setInterval(() => setIndex((i) => (i + 1) % count), 3800)
     return () => clearInterval(t)
   }, [inView, paused, lightbox, count])
@@ -207,7 +204,7 @@ export default function Gallery() {
                     y: '-50%',
                     translateX: '-50%',
                     scale: isActive ? 1 : 0.82 - (abs - 1) * 0.08,
-                    rotateY: reduce.current ? 0 : offset * -22,
+                    rotateY: reduce ? 0 : offset * -22,
                     opacity: isActive ? 1 : 0.55 - (abs - 1) * 0.22,
                     zIndex: 30 - abs,
                   }}

@@ -1,13 +1,17 @@
 import { useRef, useState } from 'react'
+import { useReducedMotion } from '../../hooks/useReducedMotion'
 
 // 3D tilt-on-hover: tracks the cursor and applies a perspective transform with
-// a soft glow that follows the pointer. Respects touch (no tilt on tap).
+// a soft glow that follows the pointer. Respects touch (no tilt on tap) and
+// prefers-reduced-motion (no tilt or glow at all — NF5).
 export default function TiltCard({ children, className = '', max = 12, onClick }) {
+  const reduce = useReducedMotion()
   const ref = useRef(null)
   const [style, setStyle] = useState({})
   const [glow, setGlow] = useState({ x: 50, y: 50, on: false })
 
   const handleMove = (e) => {
+    if (reduce) return
     const el = ref.current
     if (!el) return
     const rect = el.getBoundingClientRect()
@@ -22,6 +26,7 @@ export default function TiltCard({ children, className = '', max = 12, onClick }
   }
 
   const reset = () => {
+    if (reduce) return
     setStyle({ transform: 'perspective(900px) rotateX(0deg) rotateY(0deg)' })
     setGlow((g) => ({ ...g, on: false }))
   }
@@ -40,7 +45,7 @@ export default function TiltCard({ children, className = '', max = 12, onClick }
         className="pointer-events-none absolute inset-0 z-10 rounded-[inherit] transition-opacity duration-300"
         style={{
           opacity: glow.on ? 1 : 0,
-          background: `radial-gradient(380px circle at ${glow.x}% ${glow.y}%, rgba(176,141,79,0.18), transparent 45%)`,
+          background: `radial-gradient(380px circle at ${glow.x}% ${glow.y}%, rgba(196,154,60,0.18), transparent 45%)`,
         }}
       />
       {children}

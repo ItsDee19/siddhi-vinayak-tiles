@@ -2,6 +2,7 @@ import { useMemo, useRef } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 import { getMaterialTexture } from '../../utils/threeTextures'
+import { useReducedMotion } from '../../hooks/useReducedMotion'
 import { swatches } from '../../data/products'
 
 // A floating grid/wall of tile planes that drifts gently, tilts with the
@@ -40,10 +41,11 @@ function Tile({ position, swatch, index }) {
   // Hero tiles are small on screen — a 256px texture is plenty and ~4x cheaper.
   const texture = useMemo(() => getMaterialTexture(swatch, 1, 256), [swatch])
   const phase = useMemo(() => Math.random() * Math.PI * 2, [])
+  const reduce = useReducedMotion()
 
   useFrame((state) => {
+    if (reduce || !ref.current) return
     const t = state.clock.elapsedTime
-    if (!ref.current) return
     // gentle bobbing drift
     ref.current.position.z = position[2] + Math.sin(t * 0.6 + phase) * 0.18
     ref.current.rotation.x = Math.sin(t * 0.4 + phase) * 0.04
@@ -60,6 +62,7 @@ function Tile({ position, swatch, index }) {
 
 function Wall({ scrollRef }) {
   const group = useRef()
+  const reduce = useReducedMotion()
 
   const tiles = useMemo(() => {
     const arr = []
@@ -85,7 +88,7 @@ function Wall({ scrollRef }) {
   }, [])
 
   useFrame((state) => {
-    if (!group.current) return
+    if (reduce || !group.current) return
     const p = state.pointer // normalized -1..1
     // parallax tilt toward pointer
     group.current.rotation.y = THREE.MathUtils.lerp(
@@ -132,8 +135,8 @@ export default function TileWall3D({ scrollRef, frameloop = 'always' }) {
       camera={{ position: [0, 0, 9], fov: 42 }}
       gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
     >
-      <color attach="background" args={['#1c1a18']} />
-      <fog attach="fog" args={['#1c1a18', 9, 20]} />
+      <color attach="background" args={['#2C1A0E']} />
+      <fog attach="fog" args={['#2C1A0E', 9, 20]} />
       <ambientLight intensity={0.6} />
       <directionalLight position={[5, 6, 8]} intensity={1.5} color="#f3e6cf" />
       <directionalLight position={[-6, -2, 4]} intensity={0.5} color="#b08d4f" />

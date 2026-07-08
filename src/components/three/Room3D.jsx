@@ -2,6 +2,7 @@ import { useMemo } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls, ContactShadows } from '@react-three/drei'
 import { getMaterialTexture } from '../../utils/threeTextures'
+import { useReducedMotion } from '../../hooks/useReducedMotion'
 
 // A small interior scene whose FLOOR re-textures live when the user picks a
 // swatch. Drag to orbit, scroll to zoom (clamped). This is the visualizer's
@@ -70,6 +71,7 @@ function Room() {
 }
 
 export default function Room3D({ swatch, frameloop = 'always' }) {
+  const reduce = useReducedMotion()
   return (
     <Canvas
       shadows
@@ -78,7 +80,7 @@ export default function Room3D({ swatch, frameloop = 'always' }) {
       camera={{ position: [6.5, 5, 7], fov: 40 }}
       gl={{ antialias: true, powerPreference: 'high-performance' }}
     >
-      <color attach="background" args={['#23211f']} />
+      <color attach="background" args={['#3D2512']} />
       {/* Self-contained lighting — no remote HDR environment map needed. */}
       <hemisphereLight args={['#f3e6cf', '#2a2622', 0.9]} />
       <ambientLight intensity={0.45} />
@@ -89,7 +91,7 @@ export default function Room3D({ swatch, frameloop = 'always' }) {
         color="#f3e6cf"
         shadow-mapSize={[1024, 1024]}
       />
-      <directionalLight position={[-4, 3, -2]} intensity={0.4} color="#b08d4f" />
+      <directionalLight position={[-4, 3, -2]} intensity={0.4} color="#C49A3C" />
       <Room />
       <Floor swatch={swatch} />
       <ContactShadows position={[0, 0.01, 0]} opacity={0.4} scale={12} blur={2.4} far={6} />
@@ -99,7 +101,7 @@ export default function Room3D({ swatch, frameloop = 'always' }) {
         maxDistance={13}
         minPolarAngle={0.2}
         maxPolarAngle={Math.PI / 2.15}
-        autoRotate
+        autoRotate={!reduce}
         autoRotateSpeed={0.4}
         target={[0, 0.6, 0]}
       />
