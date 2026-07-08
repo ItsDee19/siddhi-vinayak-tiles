@@ -1,0 +1,34 @@
+// Registry of all 3D models. Each model:
+//   id                    unique key
+//   name                  display name
+//   blurb                 one-line description for the tab
+//   zones                 [{ id, label, surface }]  (surface = Floor | Wall | Countertop | Both)
+//   presets               { [name]: { position, target } }
+//   load                  () => import('./ModelX')    (lazy)
+//   interactiveAutoRotate (optional) Model C: pause on pointer, resume after 5s
+//   controls              (optional) list of extra UI controls — Model D / E
+//   fixtures              (optional) { key: defaultVisible } — toggled via ModelShell pass-through
+//
+// "Floor" / "Wall" / "Countertop" surface tags are how the ZonePicker
+// filters swatches (a floor zone should only show products with
+// surface=Floor or Both). The catalogue products are the source.
+
+export const models = [
+  {
+    id: 'bathroom-s',
+    name: 'Small Bathroom',
+    blurb: '8×5 ft, 3-2-3 tile bands',
+    zones: [
+      { id: 'floor',   label: 'Floor',        surface: 'Floor' },
+      { id: 'lower',   label: 'Lower Wall',   surface: 'Wall' },
+      { id: 'feature', label: 'Feature Band', surface: 'Wall' },
+      { id: 'upper',   label: 'Upper Wall',   surface: 'Wall' },
+    ],
+    presets: {
+      default: { position: [7, 5, 8], target: [0, 3, 0] },
+    },
+    load: () => import('./ModelA'),
+    fixtures: { shower: true },
+  },
+  // Models B-E added in Plan 3
+]
