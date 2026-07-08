@@ -1,10 +1,7 @@
 // ---------------------------------------------------------------------------
-// Product catalogue config. Everything visual is driven from here so the shop
-// can edit categories, swatches and gallery items without touching components.
-//
-// Each swatch describes a PROCEDURAL material ({ type, color, accent }). To use
-// a real photo instead, add `image: 'https://…'` (or a path under /public) to
-// any swatch or gallery item and the UI will prefer it over the generated one.
+// Product config. Categories (for nav/picker) and swatches (used by the Hero
+// tile wall and the legacy single-floor visualizer) live here. The full
+// product catalogue with PRD schema lives in ./catalogue.js.
 // ---------------------------------------------------------------------------
 
 export const categories = [
@@ -40,7 +37,8 @@ export const categories = [
   },
 ]
 
-// Swatches feed the interactive Visualizer floor + the hero tile wall.
+// Swatches feed the Hero floating tile wall. The multi-zone Visualizer
+// uses the full catalogue (./catalogue.js) instead.
 export const swatches = [
   // Tiles
   { id: 'ceramic-ivory', category: 'tiles', name: 'Ivory Ceramic', type: 'ceramic', color: '#e9e1d3', accent: '#cbbfa6' },
@@ -62,24 +60,4 @@ export const swatches = [
   { id: 'quartz-mist', category: 'quartz', name: 'Grey Mist', type: 'quartz', color: '#cdc9c2', accent: '#8c8a86' },
   { id: 'quartz-onyx', category: 'quartz', name: 'Onyx Black', type: 'quartz', color: '#2c2a28', accent: '#9c8a66' },
   { id: 'quartz-champagne', category: 'quartz', name: 'Champagne', type: 'quartz', color: '#e4d8c2', accent: '#b08d4f' },
-]
-
-// Gallery thumbnails grouped by category. Add `image` to use a real photo.
-// `featured` items render slightly larger in the masonry grid.
-export const galleryItems = [
-  { id: 'g1', category: 'tiles', title: 'Wood-Look Living Floor', type: 'wood', color: '#7c5a3c', accent: '#4a3422', featured: true },
-  { id: 'g2', category: 'tiles', title: 'Ivory Matte Wall', type: 'ceramic', color: '#e9e1d3', accent: '#cbbfa6' },
-  { id: 'g3', category: 'tiles', title: 'Sand Terrazzo', type: 'terrazzo', color: '#e6ddca', accent: '#9a7d4d' },
-  { id: 'g4', category: 'marble', title: 'Statuario White Slab', type: 'marble', color: '#f1ece2', accent: '#9a9488', featured: true },
-  { id: 'g5', category: 'marble', title: 'Crema Beige', type: 'marble', color: '#e3d4bb', accent: '#a8895f' },
-  { id: 'g6', category: 'marble', title: 'Noir Marquina', type: 'marble', color: '#211f1d', accent: '#d8c7ad' },
-  { id: 'g7', category: 'granite', title: 'Galaxy Black Counter', type: 'granite', color: '#2a2826', accent: '#b08d4f', featured: true },
-  { id: 'g8', category: 'granite', title: 'Pearl White', type: 'granite', color: '#d8d2c6', accent: '#7a6f5c' },
-  { id: 'g9', category: 'granite', title: 'Steel Grey Steps', type: 'granite', color: '#5a5854', accent: '#26241f' },
-  { id: 'g10', category: 'quartz', title: 'Snow Quartz Top', type: 'quartz', color: '#f4f1ea', accent: '#cfc6b4' },
-  { id: 'g11', category: 'quartz', title: 'Onyx Black', type: 'quartz', color: '#2c2a28', accent: '#9c8a66', featured: true },
-  { id: 'g12', category: 'quartz', title: 'Champagne Quartz', type: 'quartz', color: '#e4d8c2', accent: '#b08d4f' },
-  { id: 'g13', category: 'sanitaryware', title: 'Modern Basin Suite', type: 'ceramic', color: '#f4f1ec', accent: '#d2cabb', featured: true },
-  { id: 'g14', category: 'sanitaryware', title: 'Matte Black Faucet', type: 'ceramic', color: '#2c2b29', accent: '#5a5854' },
-  { id: 'g15', category: 'sanitaryware', title: 'Wall-Hung Closet', type: 'ceramic', color: '#eceae4', accent: '#cfc9bd' },
 ]
