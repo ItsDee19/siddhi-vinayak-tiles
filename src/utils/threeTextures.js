@@ -26,8 +26,11 @@ export function getMaterialTexture(swatch, repeat = 1, size = 512) {
   const tex = new THREE.CanvasTexture(canvas)
   tex.wrapS = tex.wrapT = THREE.RepeatWrapping
   tex.repeat.set(repeat, repeat)
-  tex.anisotropy = 8
+  tex.anisotropy = 16
   tex.colorSpace = THREE.SRGBColorSpace
+  tex.minFilter = THREE.LinearMipmapLinearFilter
+  tex.magFilter = THREE.LinearFilter
+  tex.generateMipmaps = true
   tex.needsUpdate = true
   cache.set(key, tex)
   return tex
@@ -57,8 +60,11 @@ function isUrlSource(src) {
 function applyTexProps(tex, repeat) {
   tex.wrapS = tex.wrapT = THREE.RepeatWrapping
   tex.repeat.set(repeat, repeat)
-  tex.anisotropy = 8
+  tex.anisotropy = 16
   tex.colorSpace = THREE.SRGBColorSpace
+  tex.minFilter = THREE.LinearMipmapLinearFilter
+  tex.magFilter = THREE.LinearFilter
+  tex.generateMipmaps = true
   tex.needsUpdate = true
 }
 

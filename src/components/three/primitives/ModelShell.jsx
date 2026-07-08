@@ -29,31 +29,55 @@ export default function ModelShell({
   return (
     <>
       <Canvas
-        shadows
+        shadows="soft"
         frameloop={frameloop}
-        dpr={[1, 1.8]}
+        dpr={[1, 2]}
         camera={{ position: initialPos, fov: 40 }}
         gl={{
           antialias: true,
           powerPreference: 'high-performance',
           preserveDrawingBuffer: true, // enables canvas.toDataURL() for screenshots
+          toneMapping: 4, // THREE.ACESFilmicToneMapping
+          toneMappingExposure: 1.05,
         }}
       >
         <color attach="background" args={['#3D2512']} />
-        <hemisphereLight args={['#f3e6cf', '#2a2622', 0.9]} />
-        <ambientLight intensity={0.45} />
+        <fog attach="fog" args={['#3D2512', 18, 40]} />
+
+        {/* Lighting — 3-point: hemisphere ambient, key directional w/ shadows, fill */}
+        <hemisphereLight args={['#f3e6cf', '#2a2622', 0.7]} />
+        <ambientLight intensity={0.35} />
         <directionalLight
-          position={[5, 8, 4]}
-          intensity={1.7}
+          position={[6, 10, 5]}
+          intensity={2.0}
           castShadow
-          color="#f3e6cf"
-          shadow-mapSize={[1024, 1024]}
+          color="#fff5e0"
+          shadow-mapSize={[2048, 2048]}
+          shadow-camera-left={-12}
+          shadow-camera-right={12}
+          shadow-camera-top={12}
+          shadow-camera-bottom={-2}
+          shadow-camera-near={1}
+          shadow-camera-far={30}
+          shadow-bias={-0.0005}
+          shadow-normalBias={0.02}
         />
-        <directionalLight position={[-4, 3, -2]} intensity={0.4} color="#C49A3C" />
+        <directionalLight position={[-5, 4, -3]} intensity={0.5} color="#C49A3C" />
+        <directionalLight position={[0, 3, 8]} intensity={0.3} color="#f3e6cf" />
 
         {children}
 
-        <ContactShadows position={[0, 0.01, 0]} opacity={0.4} scale={20} blur={2.4} far={6} />
+        {/* Soft contact shadows under the model — better AO approximation */}
+        <ContactShadows
+          position={[0, 0.005, 0]}
+          opacity={0.55}
+          scale={20}
+          blur={2.8}
+          far={6}
+          resolution={1024}
+          color="#1A0E05"
+        />
+
         {showControls && (
           <OrbitControls
             ref={controlsRef}
@@ -67,6 +91,7 @@ export default function ModelShell({
             target={initialTarget}
           />
         )}
+
         <CameraRig
           presets={cameraPresets}
           active={presetName || presetNames[0]}

@@ -15,7 +15,7 @@ export default function TexturedFloor({
     let cancelled = false
     if (source) {
       const src = resolveZoneSource(source)
-      loadZoneTexture(src, repeat, 512).then((t) => { if (!cancelled) setTex(t) })
+      loadZoneTexture(src, repeat, 1024).then((t) => { if (!cancelled) setTex(t) })
     } else {
       setTex(null)
     }
@@ -33,8 +33,8 @@ export default function TexturedFloor({
       <meshStandardMaterial
         map={tex || null}
         color={tex ? '#ffffff' : '#5C3A22'}
-        roughness={0.4}
-        metalness={0.1}
+        roughness={0.55}
+        metalness={0.05}
         emissive={isActive ? '#C49A3C' : '#000000'}
         emissiveIntensity={isActive ? 0.18 : 0}
       />

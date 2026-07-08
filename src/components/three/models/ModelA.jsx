@@ -34,7 +34,7 @@ export default function ModelA({
         size={[8, 5]}
         position={[0, 0, 0]}
         source={zoneTextures.floor}
-        repeat={3}
+        repeat={2}
         isActive={activeZone === 'floor'}
         onClick={() => onZoneClick?.('floor')}
       />
@@ -60,8 +60,8 @@ export default function ModelA({
         onZoneClick={onZoneClick}
       />
 
-      {/* Optional shower fixture (toggle) */}
-      {showShower && <ShowerFixture position={[3, 0, 2]} />}
+      {/* Optional shower fixture (toggle) — placed in the back-right corner */}
+      {showShower && <ShowerFixture position={[1, 0, -1.2]} />}
     </group>
   )
 }

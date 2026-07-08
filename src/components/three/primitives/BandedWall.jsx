@@ -20,7 +20,7 @@ export default function BandedWall({
         const raw = zoneTextures[b.zoneId]
         if (!raw) return [b.zoneId, null]
         const src = resolveZoneSource(raw)
-        const tex = await loadZoneTexture(src, 4, 512)
+        const tex = await loadZoneTexture(src, 4, 1024)
         return [b.zoneId, tex]
       }),
     ).then((entries) => {
