@@ -5,6 +5,7 @@ import { useWebGL } from '../../hooks/useWebGL'
 import { useInView } from '../../hooks/useInView'
 import { products } from '../../data/catalogue'
 import { models } from '../three/models'
+import ModelShell from '../three/primitives/ModelShell'
 import ModelTabs from '../visualizer/ModelTabs'
 import ZonePicker from '../visualizer/ZonePicker'
 import ControlBar from '../visualizer/ControlBar'
@@ -65,7 +66,7 @@ export default function Visualizer() {
     () => models.find((m) => m.id === activeModelId),
     [activeModelId],
   )
-  const ModelComp = getModel(activeModelId)
+  const ModelComp = useMemo(() => getModel(activeModelId), [activeModelId])
 
   // Initialize / reset zone textures and preset when the model changes
   const [zoneTextures, setZoneTextures] = useState(() =>
@@ -147,24 +148,27 @@ export default function Visualizer() {
                     key={`${activeModelId}-${resetKey}`}
                     className="h-full w-full"
                   >
-                    <ModelComp
-                      zoneTextures={zoneTextures}
-                      activeZone={activeZoneId}
-                      onZoneClick={setActiveZoneId}
-                      frameloop={stageVisible ? 'always' : 'never'}
-                      presetName={presetName}
+                    <ModelShell
                       cameraPresets={activeModel.presets}
-                      interactiveAutoRotate={activeModel.interactiveAutoRotate}
-                      showShower={activeModel.fixtures?.shower !== false}
-                      showWC={activeModel.fixtures?.wc !== false}
-                      showNosing={modelExtras.showNosing}
-                      layout={modelExtras.layout}
-                      repeatScale={modelExtras.repeatScale}
-                      groutColor={modelExtras.groutColor}
-                      basinStyle={modelExtras.basinStyle}
-                      showFaucet={modelExtras.showFaucet}
-                      showVanityLight={modelExtras.showVanityLight}
-                    />
+                      presetName={presetName}
+                      frameloop={stageVisible ? 'always' : 'never'}
+                      interactiveAutoRotate={!!activeModel.interactiveAutoRotate}
+                    >
+                      <ModelComp
+                        zoneTextures={zoneTextures}
+                        activeZone={activeZoneId}
+                        onZoneClick={setActiveZoneId}
+                        showShower={modelExtras.showShower}
+                        showWC={modelExtras.showWC}
+                        showNosing={modelExtras.showNosing}
+                        layout={modelExtras.layout}
+                        repeatScale={modelExtras.repeatScale}
+                        groutColor={modelExtras.groutColor}
+                        basinStyle={modelExtras.basinStyle}
+                        showFaucet={modelExtras.showFaucet}
+                        showVanityLight={modelExtras.showVanityLight}
+                      />
+                    </ModelShell>
                   </div>
                 </Suspense>
               ) : (
