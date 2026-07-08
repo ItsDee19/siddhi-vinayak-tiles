@@ -86,5 +86,23 @@ export const models = [
     load: () => import('./ModelD'),
     controls: ['layout', 'repeatScale', 'groutColor'],
   },
-  // Model E added below
+  {
+    id: 'vanity',
+    name: 'Vanity Counter',
+    blurb: '10×5 wall + countertop',
+    zones: [
+      { id: 'backWall',    label: 'Back Wall',    surface: 'Wall' },
+      { id: 'counterTop',  label: 'Counter Top',  surface: 'Countertop' },
+      { id: 'frontPanel',  label: 'Front Panel',  surface: 'Wall' },
+      { id: 'sideReturns', label: 'Side Returns', surface: 'Wall' },
+    ],
+    presets: {
+      default:      { position: [0, 3, 10], target: [0, 2.5, 0] },
+      threeQuarter: { position: [8, 4, 8],  target: [0, 2.5, 0] },
+      counterClose: { position: [0, 3, 4],  target: [0, 2.5, 0] },
+    },
+    load: () => import('./ModelE'),
+    controls: ['basinStyle', 'showFaucet', 'showVanityLight'],
+  },
+]
 ]
