@@ -1,4 +1,5 @@
 import Icon from '../Icons'
+import Logo from '../Logo'
 import { business, navLinks } from '../../data/siteConfig'
 
 export default function Footer() {
@@ -9,12 +10,7 @@ export default function Footer() {
           {/* brand */}
           <div>
             <div className="flex items-center gap-3">
-              <span className="grid h-11 w-11 place-items-center rounded-lg bg-gold/15 ring-1 ring-gold/30">
-                <Icon name="tiles" className="h-6 w-6 text-gold" />
-              </span>
-              <span className="font-display text-2xl font-semibold text-cream">
-                {business.name}
-              </span>
+              <Logo variant="dark" />
             </div>
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-sand/75">
               {business.intro}
