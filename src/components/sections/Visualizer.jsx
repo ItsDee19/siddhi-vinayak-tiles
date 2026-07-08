@@ -1,6 +1,7 @@
 import { Suspense, lazy, useEffect, useMemo, useRef, useState } from 'react'
 import SectionHeading from '../ui/SectionHeading'
 import CanvasFallback from '../ui/CanvasFallback'
+import ErrorBoundary from '../ui/ErrorBoundary'
 import { useWebGL } from '../../hooks/useWebGL'
 import { useInView } from '../../hooks/useInView'
 import { products } from '../../data/catalogue'
@@ -129,110 +130,115 @@ export default function Visualizer() {
         </div>
 
         <div className="mt-8 grid gap-6 lg:grid-cols-[1.6fr_1fr]">
-          {/* 3D stage */}
-          <div
-            ref={stageRef}
-            className="relative aspect-[4/3] overflow-hidden rounded-card border border-white/5 bg-charcoal-800 shadow-card lg:aspect-auto lg:min-h-[540px]"
-          >
-            {webgl ? (
-              stageEntered ? (
-                <Suspense
-                  fallback={
-                    <div className="flex h-full w-full items-center justify-center text-sand/60">
-                      <span className="animate-pulse">Loading 3D scene…</span>
-                    </div>
-                  }
-                >
-                  <div
-                    ref={canvasWrapRef}
-                    key={`${activeModelId}-${resetKey}`}
-                    className="h-full w-full"
-                  >
-                    <ModelShell
-                      cameraPresets={activeModel.presets}
-                      presetName={presetName}
-                      frameloop={stageVisible ? 'always' : 'never'}
-                      interactiveAutoRotate={!!activeModel.interactiveAutoRotate}
-                    >
-                      <ModelComp
-                        zoneTextures={zoneTextures}
-                        activeZone={activeZoneId}
-                        onZoneClick={setActiveZoneId}
-                        showShower={modelExtras.showShower}
-                        showWC={modelExtras.showWC}
-                        showNosing={modelExtras.showNosing}
-                        layout={modelExtras.layout}
-                        repeatScale={modelExtras.repeatScale}
-                        groutColor={modelExtras.groutColor}
-                        basinStyle={modelExtras.basinStyle}
-                        showFaucet={modelExtras.showFaucet}
-                        showVanityLight={modelExtras.showVanityLight}
-                      />
-                    </ModelShell>
-                  </div>
-                </Suspense>
-              ) : (
-                <div className="flex h-full w-full items-center justify-center text-sand/50">
-                  <span className="animate-pulse">Preparing 3D…</span>
-                </div>
-              )
-            ) : (
-              <div className="relative h-full w-full p-4">
-                <CanvasFallback
-                  swatchList={Object.values(zoneTextures).filter(Boolean).slice(0, 6)}
-                />
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-charcoal to-transparent p-4 text-center text-xs text-sand/70">
-                  3D preview unavailable on this device — showing material samples
-                </div>
-              </div>
-            )}
-
-            {/* controls hint */}
-            {webgl && (
-              <div className="pointer-events-none absolute left-4 top-4 flex items-center gap-2 rounded-full bg-charcoal/70 px-3 py-1.5 text-[11px] text-sand backdrop-blur">
-                <Icon name="compass" className="h-3.5 w-3.5 text-gold" />
-                Drag to orbit · Scroll to zoom
-              </div>
-            )}
-
-            {/* Mobile: open drawer button */}
-            <button
-              onClick={() => setDrawerOpen(true)}
-              className="absolute bottom-4 right-4 inline-flex items-center gap-2 rounded-btn bg-gold px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-ink shadow-glow lg:hidden"
+          {/* 3D stage — wrapped in ErrorBoundary so a runtime error
+              here doesn't take down the whole app. */}
+          <ErrorBoundary>
+            <div
+              ref={stageRef}
+              className="relative aspect-[4/3] overflow-hidden rounded-card border border-white/5 bg-charcoal-800 shadow-card lg:aspect-auto lg:min-h-[540px]"
             >
-              <Icon name="grid" className="h-4 w-4" /> Customize
-            </button>
-          </div>
+              {webgl ? (
+                stageEntered ? (
+                  <Suspense
+                    fallback={
+                      <div className="flex h-full w-full items-center justify-center text-sand/60">
+                        <span className="animate-pulse">Loading 3D scene…</span>
+                      </div>
+                    }
+                  >
+                    <div
+                      ref={canvasWrapRef}
+                      key={`${activeModelId}-${resetKey}`}
+                      className="h-full w-full"
+                    >
+                      <ModelShell
+                        cameraPresets={activeModel.presets}
+                        presetName={presetName}
+                        frameloop={stageVisible ? 'always' : 'never'}
+                        interactiveAutoRotate={!!activeModel.interactiveAutoRotate}
+                      >
+                        <ModelComp
+                          zoneTextures={zoneTextures}
+                          activeZone={activeZoneId}
+                          onZoneClick={setActiveZoneId}
+                          showShower={modelExtras.showShower}
+                          showWC={modelExtras.showWC}
+                          showNosing={modelExtras.showNosing}
+                          layout={modelExtras.layout}
+                          repeatScale={modelExtras.repeatScale}
+                          groutColor={modelExtras.groutColor}
+                          basinStyle={modelExtras.basinStyle}
+                          showFaucet={modelExtras.showFaucet}
+                          showVanityLight={modelExtras.showVanityLight}
+                        />
+                      </ModelShell>
+                    </div>
+                  </Suspense>
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center text-sand/50">
+                    <span className="animate-pulse">Preparing 3D…</span>
+                  </div>
+                )
+              ) : (
+                <div className="relative h-full w-full p-4">
+                  <CanvasFallback
+                    swatchList={Object.values(zoneTextures).filter(Boolean).slice(0, 6)}
+                  />
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-charcoal to-transparent p-4 text-center text-xs text-sand/70">
+                    3D preview unavailable on this device — showing material samples
+                  </div>
+                </div>
+              )}
 
-          {/* Desktop: side panel */}
-          <div className="hidden flex-col gap-4 lg:flex">
-            <ModelTabs active={activeModelId} onChange={setActiveModelId} />
-            <div className="flex-1 space-y-3 overflow-y-auto pr-1">
-              {activeModel.zones.map((z) => (
-                <ZonePicker
-                  key={z.id}
-                  zone={z}
-                  activeZoneId={activeZoneId}
-                  zoneTextures={zoneTextures}
-                  onSwatchPick={onSwatchPick}
-                  onActivateZone={setActiveZoneId}
-                  onCustomUpload={onCustomUpload}
-                />
-              ))}
+              {/* controls hint */}
+              {webgl && (
+                <div className="pointer-events-none absolute left-4 top-4 flex items-center gap-2 rounded-full bg-charcoal/70 px-3 py-1.5 text-[11px] text-sand backdrop-blur">
+                  <Icon name="compass" className="h-3.5 w-3.5 text-gold" />
+                  Drag to orbit · Scroll to zoom
+                </div>
+              )}
+
+              {/* Mobile: open drawer button */}
+              <button
+                onClick={() => setDrawerOpen(true)}
+                className="absolute bottom-4 right-4 inline-flex items-center gap-2 rounded-btn bg-gold px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-ink shadow-glow lg:hidden"
+              >
+                <Icon name="grid" className="h-4 w-4" /> Customize
+              </button>
             </div>
-            <ControlBar
-              onReset={onReset}
-              onScreenshot={onScreenshot}
-              zoneTextures={zoneTextures}
-              modelName={activeModel.name}
-              cameraPresets={activeModel.presets}
-              activePreset={presetName}
-              onPresetChange={setPresetName}
-              modelControls={activeModel.controls}
-              modelExtras={modelExtras}
-              onModelExtrasChange={setModelExtras}
-            />
-          </div>
+          </ErrorBoundary>
+
+          {/* Desktop: side panel — also wrapped to be safe. */}
+          <ErrorBoundary>
+            <div className="hidden flex-col gap-4 lg:flex">
+              <ModelTabs active={activeModelId} onChange={setActiveModelId} />
+              <div className="flex-1 space-y-3 overflow-y-auto pr-1">
+                {activeModel.zones.map((z) => (
+                  <ZonePicker
+                    key={z.id}
+                    zone={z}
+                    activeZoneId={activeZoneId}
+                    zoneTextures={zoneTextures}
+                    onSwatchPick={onSwatchPick}
+                    onActivateZone={setActiveZoneId}
+                    onCustomUpload={onCustomUpload}
+                  />
+                ))}
+              </div>
+              <ControlBar
+                onReset={onReset}
+                onScreenshot={onScreenshot}
+                zoneTextures={zoneTextures}
+                modelName={activeModel.name}
+                cameraPresets={activeModel.presets}
+                activePreset={presetName}
+                onPresetChange={setPresetName}
+                modelControls={activeModel.controls}
+                modelExtras={modelExtras}
+                onModelExtrasChange={setModelExtras}
+              />
+            </div>
+          </ErrorBoundary>
         </div>
       </div>
 

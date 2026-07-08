@@ -46,7 +46,8 @@ export function useInView({
     // No IntersectionObserver support: just activate.
     setEntered(true)
     setVisible(true)
-  }, [rootMargin, fallbackMs])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return [ref, entered, visible]
 }
