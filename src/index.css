@@ -5,6 +5,23 @@
 @layer base {
   :root {
     color-scheme: dark;
+
+    /* PRD §2.2 — Color System */
+    --bg-primary: #2C1A0E;
+    --bg-secondary: #3D2512;
+    --bg-surface: #4A2E1A;
+    --text-primary: #F5E6C8;
+    --text-secondary: #C9A97A;
+    --accent-gold: #C49A3C;
+    --accent-terracotta: #B85C38;
+    --text-on-accent: #1A0E05;
+    --border: rgba(197, 154, 60, 0.2);
+
+    /* PRD §2.5 — Motion */
+    --duration-micro: 150ms;
+    --duration-reveal: 500ms;
+    --ease-ui: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-reveal: ease-out;
   }
 
   html {
@@ -33,7 +50,17 @@
     @apply bg-graphite rounded-full border-2 border-charcoal-800;
   }
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-gold-dark;
+    @apply bg-gold;
+  }
+
+  /* PRD §2.5 / NF5 — Respect prefers-reduced-motion globally. */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
@@ -55,18 +82,18 @@
     @apply font-display font-semibold leading-[1.05] tracking-tight;
   }
 
-  /* Primary gold CTA */
+  /* Primary gold CTA — PRD §2.4: button radius 2px (sharp luxury). */
   .btn-gold {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gold px-7 py-3.5
-      text-sm font-semibold uppercase tracking-wider text-charcoal transition-all duration-300
+    @apply inline-flex items-center justify-center gap-2 rounded-btn bg-gold px-7 py-3.5
+      text-sm font-semibold uppercase tracking-wider text-ink transition-all duration-150 ease-pr
       hover:bg-gold-light hover:shadow-glow active:scale-[0.97];
   }
 
   /* Outlined / ghost button */
   .btn-outline {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-sand/40
+    @apply inline-flex items-center justify-center gap-2 rounded-btn border border-sand/40
       px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-cream transition-all
-      duration-300 hover:border-gold hover:text-gold active:scale-[0.97];
+      duration-150 ease-pr hover:border-gold hover:text-gold active:scale-[0.97];
   }
 
   .link-underline {
