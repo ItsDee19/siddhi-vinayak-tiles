@@ -105,4 +105,3 @@ export const models = [
     controls: ['basinStyle', 'showFaucet', 'showVanityLight'],
   },
 ]
-]
