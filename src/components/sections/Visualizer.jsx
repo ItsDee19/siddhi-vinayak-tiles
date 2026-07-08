@@ -37,6 +37,19 @@ const defaultZoneTextures = (zones) => {
 const firstPresetName = (m) =>
   m?.presets ? Object.keys(m.presets)[0] : 'default'
 
+// Default values for model-specific extras (layout / repeatScale / groutColor / etc.)
+const defaultModelExtras = (m) => ({
+  layout: 'full',
+  repeatScale: 1,
+  groutColor: '#cfc6b4',
+  basinStyle: 'rect',
+  showFaucet: true,
+  showVanityLight: true,
+  showNosing: true,
+  showShower: m?.fixtures?.shower !== false,
+  showWC: m?.fixtures?.wc !== false,
+})
+
 export default function Visualizer() {
   const webgl = useWebGL()
   const [stageRef, stageEntered, stageVisible] = useInView({ rootMargin: '300px' })
@@ -45,6 +58,7 @@ export default function Visualizer() {
   const [presetName, setPresetName] = useState(firstPresetName(models[0]))
   const [resetKey, setResetKey] = useState(0)
   const [drawerOpen, setDrawerOpen] = useState(false)
+  const [modelExtras, setModelExtras] = useState(() => defaultModelExtras(models[0]))
   const canvasWrapRef = useRef(null)
 
   const activeModel = useMemo(
@@ -61,6 +75,7 @@ export default function Visualizer() {
     setZoneTextures(defaultZoneTextures(activeModel.zones))
     setActiveZoneId(activeModel.zones[0].id)
     setPresetName(firstPresetName(activeModel))
+    setModelExtras(defaultModelExtras(activeModel))
   }, [activeModelId]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const onSwatchPick = (zoneId, swatch) => {
@@ -79,6 +94,7 @@ export default function Visualizer() {
     setZoneTextures(defaultZoneTextures(activeModel.zones))
     setActiveZoneId(activeModel.zones[0].id)
     setPresetName(firstPresetName(activeModel))
+    setModelExtras(defaultModelExtras(activeModel))
     setResetKey((k) => k + 1)
   }
   const onScreenshot = async () => {
@@ -140,6 +156,14 @@ export default function Visualizer() {
                       cameraPresets={activeModel.presets}
                       interactiveAutoRotate={activeModel.interactiveAutoRotate}
                       showShower={activeModel.fixtures?.shower !== false}
+                      showWC={activeModel.fixtures?.wc !== false}
+                      showNosing={modelExtras.showNosing}
+                      layout={modelExtras.layout}
+                      repeatScale={modelExtras.repeatScale}
+                      groutColor={modelExtras.groutColor}
+                      basinStyle={modelExtras.basinStyle}
+                      showFaucet={modelExtras.showFaucet}
+                      showVanityLight={modelExtras.showVanityLight}
                     />
                   </div>
                 </Suspense>
@@ -200,6 +224,9 @@ export default function Visualizer() {
               cameraPresets={activeModel.presets}
               activePreset={presetName}
               onPresetChange={setPresetName}
+              modelControls={activeModel.controls}
+              modelExtras={modelExtras}
+              onModelExtrasChange={setModelExtras}
             />
           </div>
         </div>
@@ -222,6 +249,9 @@ export default function Visualizer() {
         cameraPresets={activeModel.presets}
         activePreset={presetName}
         onPresetChange={setPresetName}
+        modelControls={activeModel.controls}
+        modelExtras={modelExtras}
+        onModelExtrasChange={setModelExtras}
       />
     </section>
   )

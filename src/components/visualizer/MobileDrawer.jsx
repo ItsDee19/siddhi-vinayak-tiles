@@ -24,6 +24,9 @@ export default function MobileDrawer({
   cameraPresets,
   activePreset,
   onPresetChange,
+  modelControls,
+  modelExtras,
+  onModelExtrasChange,
 }) {
   const activeModel = models.find((m) => m.id === activeModelId)
   return (
@@ -79,6 +82,9 @@ export default function MobileDrawer({
                 cameraPresets={cameraPresets}
                 activePreset={activePreset}
                 onPresetChange={onPresetChange}
+                modelControls={modelControls}
+                modelExtras={modelExtras}
+                onModelExtrasChange={onModelExtrasChange}
               />
             </div>
           </motion.div>

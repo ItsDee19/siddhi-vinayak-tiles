@@ -28,6 +28,7 @@ export const models = [
       default: { position: [7, 5, 8], target: [0, 3, 0] },
     },
     load: () => import('./ModelA'),
+    controls: ['showShower'],
     fixtures: { shower: true },
   },
   {
@@ -47,6 +48,7 @@ export const models = [
       topdown: { position: [0,  18, 0.01], target: [0, 0, 0] },
     },
     load: () => import('./ModelB'),
+    controls: ['showShower', 'showWC'],
     fixtures: { shower: true, wc: true },
   },
   {
@@ -68,5 +70,21 @@ export const models = [
     interactiveAutoRotate: true,
     fixtures: { nosing: true },
   },
-  // Models D, E added below
+  {
+    id: 'feature-wall',
+    name: 'Feature Wall',
+    blurb: '30×10 ft facade',
+    zones: [
+      { id: 'full',      label: 'Wall',         surface: 'Wall' },
+      { id: 'lowerBand', label: 'Lower Band',   surface: 'Wall' },
+      { id: 'upperBand', label: 'Upper Band',   surface: 'Wall' },
+    ],
+    presets: {
+      default: { position: [0, 5, 22], target: [0, 5, 0] },
+      detail:  { position: [0, 5, 12], target: [0, 5, 0] },
+    },
+    load: () => import('./ModelD'),
+    controls: ['layout', 'repeatScale', 'groutColor'],
+  },
+  // Model E added below
 ]
