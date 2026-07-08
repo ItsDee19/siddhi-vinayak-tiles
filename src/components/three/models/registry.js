@@ -30,5 +30,24 @@ export const models = [
     load: () => import('./ModelA'),
     fixtures: { shower: true },
   },
-  // Models B-E added in Plan 3
+  {
+    id: 'bathroom-l',
+    name: 'Large Bathroom',
+    blurb: '10×10 ft, 2-4-2 tile bands',
+    zones: [
+      { id: 'floor',   label: 'Floor',        surface: 'Floor' },
+      { id: 'lower',   label: 'Lower Band',   surface: 'Wall' },
+      { id: 'feature', label: 'Feature Band', surface: 'Wall' },
+      { id: 'upper',   label: 'Upper Band',   surface: 'Wall' },
+    ],
+    presets: {
+      default: { position: [10, 6, 11], target: [0, 3, 0] },
+      front:   { position: [0,  4, 14],  target: [0, 4, -5] },
+      corner:  { position: [12, 5, 12],  target: [0, 3, 0] },
+      topdown: { position: [0,  18, 0.01], target: [0, 0, 0] },
+    },
+    load: () => import('./ModelB'),
+    fixtures: { shower: true, wc: true },
+  },
+  // Models C, D, E added below
 ]
