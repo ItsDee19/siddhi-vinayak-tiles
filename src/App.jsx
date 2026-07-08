@@ -2,7 +2,7 @@ import Navbar from './components/sections/Navbar'
 import Hero from './components/sections/Hero'
 import ProductCategories from './components/sections/ProductCategories'
 import Visualizer from './components/sections/Visualizer'
-import Gallery from './components/sections/Gallery'
+import Catalogue from './components/sections/Catalogue'
 import WhyChooseUs from './components/sections/WhyChooseUs'
 import About from './components/sections/About'
 import Testimonials from './components/sections/Testimonials'
@@ -18,7 +18,7 @@ export default function App() {
         <Hero />
         <ProductCategories />
         <Visualizer />
-        <Gallery />
+        <Catalogue />
         <WhyChooseUs />
         <About />
         <Testimonials />
