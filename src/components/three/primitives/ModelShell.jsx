@@ -67,8 +67,12 @@ export default function ModelShell({
             target={initialTarget}
           />
         )}
+        <CameraRig
+          presets={cameraPresets}
+          active={presetName || presetNames[0]}
+          controlsRef={controlsRef}
+        />
       </Canvas>
-      <CameraRig presets={cameraPresets} active={presetName || presetNames[0]} controlsRef={controlsRef} />
     </>
   )
 }
