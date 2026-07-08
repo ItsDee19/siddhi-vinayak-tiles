@@ -4,29 +4,57 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Charcoal / graphite — the grounding dark tones
+        // PRD §2.2 — Color System. Existing names remapped to PRD hex values
+        // so every existing class auto-reskins. New code should use the
+        // semantic aliases below (primary, accent-gold, etc.).
         charcoal: {
-          DEFAULT: '#1c1a18',
-          800: '#232120',
-          700: '#2e2b29',
-          600: '#3a3633',
+          DEFAULT: '#2C1A0E',   // --bg-primary  (was #1c1a18)
+          800: '#3D2512',       // --bg-secondary (was #232120)
+          700: '#4A2E1A',       // --bg-surface   (was #2e2b29)
+          600: '#5C3A22',       // hover/elevated (was #3a3633)
         },
-        graphite: '#4a4541',
-        // Warm beige / sand — the showroom warmth
+        graphite: '#6B4A2E',
         sand: {
-          DEFAULT: '#d8c7ad',
-          light: '#e7dcc9',
-          dark: '#c4ac88',
+          DEFAULT: '#C9A97A',   // --text-secondary
+          light: '#E0C99B',
+          dark: '#A8884F',
         },
-        // Off-white surfaces
-        cream: '#f6f1e7',
-        // Accents (used sparingly)
+        cream: '#F5E6C8',       // --text-primary
         gold: {
-          DEFAULT: '#b08d4f',
-          light: '#c9a86a',
-          dark: '#8a6d39',
+          DEFAULT: '#C49A3C',   // --accent-gold
+          light: '#D9B156',
+          dark: '#9A7530',
         },
-        terracotta: '#b5613f',
+        terracotta: '#B85C38',  // --accent-terracotta
+        ink: '#1A0E05',         // --text-on-accent (NEW)
+
+        // Semantic aliases — PRD token names for new code.
+        primary: '#2C1A0E',
+        secondary: '#3D2512',
+        surface: '#4A2E1A',
+        'text-primary': '#F5E6C8',
+        'text-secondary': '#C9A97A',
+        'accent-gold': '#C49A3C',
+        'accent-terracotta': '#B85C38',
+        'text-on-accent': '#1A0E05',
+      },
+      spacing: {
+        // PRD §2.4 — 8px grid additions (Tailwind's default 4px scale remains).
+        '7': '1.75rem',   '9': '2.25rem',  '15': '3.75rem',
+        '17': '4.25rem',  '18': '4.5rem',
+      },
+      borderRadius: {
+        // PRD §2.4 — cards 4px (architectural), buttons 2px (sharp luxury).
+        card: '4px',
+        btn: '2px',
+      },
+      transitionDuration: {
+        // PRD §2.5 — micro 150ms, reveals 400-600ms.
+        '150': '150ms', '400': '400ms', '500': '500ms', '600': '600ms',
+      },
+      transitionTimingFunction: {
+        // PRD §2.5 — cubic-bezier(0.4, 0, 0.2, 1) for UI.
+        pr: 'cubic-bezier(0.4, 0, 0.2, 1)',
       },
       fontFamily: {
         // Refined high-contrast serif for showroom-luxury headings
@@ -35,9 +63,9 @@ export default {
         sans: ['Manrope', 'Inter', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
-        soft: '0 10px 40px -12px rgba(20, 18, 16, 0.35)',
-        glow: '0 0 50px -8px rgba(176, 141, 79, 0.45)',
-        card: '0 22px 60px -20px rgba(20, 18, 16, 0.55)',
+        soft: '0 10px 40px -12px rgba(44, 26, 14, 0.35)',
+        glow: '0 0 50px -8px rgba(196, 154, 60, 0.45)',
+        card: '0 22px 60px -20px rgba(44, 26, 14, 0.55)',
       },
       backgroundImage: {
         'grout-lines':
@@ -60,7 +88,7 @@ export default {
       },
       animation: {
         'pulse-ring': 'pulse-ring 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite',
-        'fade-up': 'fade-up 0.7s ease forwards',
+        'fade-up': 'fade-up 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards',
         shimmer: 'shimmer 3s linear infinite',
       },
     },
