@@ -1,32 +1,102 @@
-import { Suspense, lazy, useMemo, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import Icon from '../Icons'
+import { Suspense, lazy, useEffect, useMemo, useRef, useState } from 'react'
 import SectionHeading from '../ui/SectionHeading'
-import SwatchThumb from '../ui/SwatchThumb'
 import CanvasFallback from '../ui/CanvasFallback'
-import { swatches, categories } from '../../data/products'
 import { useWebGL } from '../../hooks/useWebGL'
 import { useInView } from '../../hooks/useInView'
+import { products } from '../../data/catalogue'
+import { models } from '../three/models'
+import ModelTabs from '../visualizer/ModelTabs'
+import ZonePicker from '../visualizer/ZonePicker'
+import ControlBar from '../visualizer/ControlBar'
+import MobileDrawer from '../visualizer/MobileDrawer'
+import Icon from '../Icons'
+import { captureAndDownload } from '../visualizer/ScreenshotHelper'
 
-const Room3D = lazy(() => import('../three/Room3D'))
+// Lazy model components keyed by id
+const modelCache = {}
+function getModel(id) {
+  if (!modelCache[id]) {
+    const m = models.find((x) => x.id === id)
+    if (m) modelCache[id] = lazy(m.load)
+  }
+  return modelCache[id]
+}
 
-// Categories that make sense as a floor surface in the visualizer.
-const visualizerCats = categories.filter((c) =>
-  ['tiles', 'marble', 'granite', 'quartz'].includes(c.id),
-)
+// Pick a starter product per zone's surface (Floor / Wall / Countertop / Both).
+const defaultZoneTextures = (zones) => {
+  const out = {}
+  zones.forEach((z) => {
+    const candidate = products.find(
+      (p) => p.surface === z.surface || p.surface === 'Both',
+    )
+    if (candidate) out[z.id] = candidate
+  })
+  return out
+}
+
+const firstPresetName = (m) =>
+  m?.presets ? Object.keys(m.presets)[0] : 'default'
 
 export default function Visualizer() {
   const webgl = useWebGL()
   const [stageRef, stageEntered, stageVisible] = useInView({ rootMargin: '300px' })
-  const [activeCat, setActiveCat] = useState('tiles')
-  const [selected, setSelected] = useState(
-    swatches.find((s) => s.category === 'tiles') || swatches[0],
-  )
+  const [activeModelId, setActiveModelId] = useState(models[0].id)
+  const [activeZoneId, setActiveZoneId] = useState(models[0].zones[0].id)
+  const [presetName, setPresetName] = useState(firstPresetName(models[0]))
+  const [resetKey, setResetKey] = useState(0)
+  const [drawerOpen, setDrawerOpen] = useState(false)
+  const canvasWrapRef = useRef(null)
 
-  const visible = useMemo(
-    () => swatches.filter((s) => s.category === activeCat),
-    [activeCat],
+  const activeModel = useMemo(
+    () => models.find((m) => m.id === activeModelId),
+    [activeModelId],
   )
+  const ModelComp = getModel(activeModelId)
+
+  // Initialize / reset zone textures and preset when the model changes
+  const [zoneTextures, setZoneTextures] = useState(() =>
+    defaultZoneTextures(models[0].zones),
+  )
+  useEffect(() => {
+    setZoneTextures(defaultZoneTextures(activeModel.zones))
+    setActiveZoneId(activeModel.zones[0].id)
+    setPresetName(firstPresetName(activeModel))
+  }, [activeModelId]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  const onSwatchPick = (zoneId, swatch) => {
+    setZoneTextures((z) => ({ ...z, [zoneId]: swatch }))
+  }
+  const onCustomUpload = (zoneId, file) => {
+    const url = URL.createObjectURL(file)
+    onSwatchPick(zoneId, {
+      id: 'custom-' + Date.now(),
+      name: file.name,
+      url,
+      isCustom: true,
+    })
+  }
+  const onReset = () => {
+    setZoneTextures(defaultZoneTextures(activeModel.zones))
+    setActiveZoneId(activeModel.zones[0].id)
+    setPresetName(firstPresetName(activeModel))
+    setResetKey((k) => k + 1)
+  }
+  const onScreenshot = async () => {
+    const canvas = canvasWrapRef.current?.querySelector('canvas')
+    if (canvas) await captureAndDownload(canvas)
+  }
+
+  // Listen for "view-in-3d" events from the Catalogue
+  useEffect(() => {
+    const handler = (e) => {
+      const product = e.detail
+      if (!product) return
+      setActiveModelId(models[0].id)
+      setZoneTextures((z) => ({ ...z, [models[0].zones[0].id]: product }))
+    }
+    window.addEventListener('view-in-3d', handler)
+    return () => window.removeEventListener('view-in-3d', handler)
+  }, [])
 
   return (
     <section id="visualizer" className="section-pad relative bg-charcoal">
@@ -34,37 +104,55 @@ export default function Visualizer() {
         <SectionHeading
           eyebrow="See It Before You Buy"
           title="Interactive Tile Visualizer"
-          subtitle="Pick a material and watch the room floor change in real time. Drag to look around, scroll to zoom — preview the look before you visit."
+          subtitle="Pick a model, then assign tiles to each surface zone. Drag to orbit, scroll to zoom — preview the look before you visit."
         />
 
-        <div className="mt-14 grid gap-8 lg:grid-cols-[1.6fr_1fr]">
-          {/* 3D room */}
+        <div className="mt-10 lg:hidden">
+          <ModelTabs active={activeModelId} onChange={setActiveModelId} />
+        </div>
+
+        <div className="mt-8 grid gap-6 lg:grid-cols-[1.6fr_1fr]">
+          {/* 3D stage */}
           <div
             ref={stageRef}
-            className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-white/5 bg-charcoal-800 shadow-card lg:aspect-auto lg:min-h-[520px]"
+            className="relative aspect-[4/3] overflow-hidden rounded-card border border-white/5 bg-charcoal-800 shadow-card lg:aspect-auto lg:min-h-[540px]"
           >
             {webgl ? (
               stageEntered ? (
                 <Suspense
                   fallback={
                     <div className="flex h-full w-full items-center justify-center text-sand/60">
-                      <span className="animate-pulse">Loading room…</span>
+                      <span className="animate-pulse">Loading 3D scene…</span>
                     </div>
                   }
                 >
-                  <Room3D
-                    swatch={selected}
-                    frameloop={stageVisible ? 'always' : 'never'}
-                  />
+                  <div
+                    ref={canvasWrapRef}
+                    key={`${activeModelId}-${resetKey}`}
+                    className="h-full w-full"
+                  >
+                    <ModelComp
+                      zoneTextures={zoneTextures}
+                      activeZone={activeZoneId}
+                      onZoneClick={setActiveZoneId}
+                      frameloop={stageVisible ? 'always' : 'never'}
+                      presetName={presetName}
+                      cameraPresets={activeModel.presets}
+                      interactiveAutoRotate={activeModel.interactiveAutoRotate}
+                      showShower={activeModel.fixtures?.shower !== false}
+                    />
+                  </div>
                 </Suspense>
               ) : (
                 <div className="flex h-full w-full items-center justify-center text-sand/50">
-                  <span className="animate-pulse">Preparing 3D room…</span>
+                  <span className="animate-pulse">Preparing 3D…</span>
                 </div>
               )
             ) : (
               <div className="relative h-full w-full p-4">
-                <CanvasFallback swatchList={visible.slice(0, 6)} />
+                <CanvasFallback
+                  swatchList={Object.values(zoneTextures).filter(Boolean).slice(0, 6)}
+                />
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-charcoal to-transparent p-4 text-center text-xs text-sand/70">
                   3D preview unavailable on this device — showing material samples
                 </div>
@@ -79,72 +167,62 @@ export default function Visualizer() {
               </div>
             )}
 
-            {/* current selection badge */}
-            <div className="absolute bottom-4 left-4 rounded-xl bg-charcoal/80 px-4 py-2 backdrop-blur">
-              <span className="text-[10px] uppercase tracking-wider text-gold">
-                Now showing
-              </span>
-              <p className="font-display text-lg text-cream">{selected.name}</p>
-            </div>
+            {/* Mobile: open drawer button */}
+            <button
+              onClick={() => setDrawerOpen(true)}
+              className="absolute bottom-4 right-4 inline-flex items-center gap-2 rounded-btn bg-gold px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-ink shadow-glow lg:hidden"
+            >
+              <Icon name="grid" className="h-4 w-4" /> Customize
+            </button>
           </div>
 
-          {/* swatch picker */}
-          <div className="rounded-3xl border border-white/5 bg-charcoal-800 p-6 shadow-card">
-            <h3 className="font-display text-xl text-cream">Choose a Material</h3>
-
-            {/* category tabs */}
-            <div className="mt-5 flex flex-wrap gap-2">
-              {visualizerCats.map((c) => (
-                <button
-                  key={c.id}
-                  onClick={() => setActiveCat(c.id)}
-                  className={`rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-all ${
-                    activeCat === c.id
-                      ? 'bg-gold text-charcoal'
-                      : 'bg-white/5 text-sand hover:bg-white/10'
-                  }`}
-                >
-                  {c.name}
-                </button>
+          {/* Desktop: side panel */}
+          <div className="hidden flex-col gap-4 lg:flex">
+            <ModelTabs active={activeModelId} onChange={setActiveModelId} />
+            <div className="flex-1 space-y-3 overflow-y-auto pr-1">
+              {activeModel.zones.map((z) => (
+                <ZonePicker
+                  key={z.id}
+                  zone={z}
+                  activeZoneId={activeZoneId}
+                  zoneTextures={zoneTextures}
+                  onSwatchPick={onSwatchPick}
+                  onActivateZone={setActiveZoneId}
+                  onCustomUpload={onCustomUpload}
+                />
               ))}
             </div>
-
-            {/* swatches */}
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeCat}
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -12 }}
-                transition={{ duration: 0.3 }}
-                className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3"
-              >
-                {visible.map((s) => (
-                  <button
-                    key={s.id}
-                    onClick={() => setSelected(s)}
-                    className={`group overflow-hidden rounded-xl border-2 text-left transition-all ${
-                      selected.id === s.id
-                        ? 'border-gold shadow-glow'
-                        : 'border-transparent hover:border-sand/30'
-                    }`}
-                  >
-                    <SwatchThumb swatch={s} className="aspect-[4/3] w-full" />
-                    <span className="block bg-charcoal-700 px-2.5 py-2 text-xs font-medium text-sand">
-                      {s.name}
-                    </span>
-                  </button>
-                ))}
-              </motion.div>
-            </AnimatePresence>
-
-            <p className="mt-6 rounded-xl bg-white/[0.03] p-4 text-xs leading-relaxed text-sand/70">
-              Swatches are sample renders. Visit the showroom to see the real
-              finish, thickness and size options in person.
-            </p>
+            <ControlBar
+              onReset={onReset}
+              onScreenshot={onScreenshot}
+              zoneTextures={zoneTextures}
+              modelName={activeModel.name}
+              cameraPresets={activeModel.presets}
+              activePreset={presetName}
+              onPresetChange={setPresetName}
+            />
           </div>
         </div>
       </div>
+
+      <MobileDrawer
+        open={drawerOpen}
+        onClose={() => setDrawerOpen(false)}
+        models={models}
+        activeModelId={activeModelId}
+        onModelChange={setActiveModelId}
+        activeZoneId={activeZoneId}
+        onActivateZone={setActiveZoneId}
+        zoneTextures={zoneTextures}
+        onSwatchPick={onSwatchPick}
+        onCustomUpload={onCustomUpload}
+        onReset={onReset}
+        onScreenshot={onScreenshot}
+        modelName={activeModel.name}
+        cameraPresets={activeModel.presets}
+        activePreset={presetName}
+        onPresetChange={setPresetName}
+      />
     </section>
   )
 }
