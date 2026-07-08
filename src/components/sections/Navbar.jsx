@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Icon from '../Icons'
+import Logo from '../Logo'
 import { business, navLinks } from '../../data/siteConfig'
 
 export default function Navbar() {
@@ -26,18 +27,20 @@ export default function Navbar() {
       }`}
     >
       <nav className="container-px flex items-center justify-between">
-        {/* Brand */}
-        <a href="#home" className="group flex items-center gap-3">
-          <span className="grid h-10 w-10 place-items-center rounded-lg bg-gold/15 ring-1 ring-gold/30 transition-colors group-hover:bg-gold/25">
-            <Icon name="tiles" className="h-5 w-5 text-gold" />
+        {/* Brand — PRD §1 L4: full on desktop, icon-only on mobile, shrinks on scroll */}
+        <a href="#home" className="group flex items-center">
+          <span className="lg:hidden">
+            <Logo
+              compact
+              variant="dark"
+              className={`transition-transform duration-300 ${scrolled ? 'scale-90' : 'scale-100'}`}
+            />
           </span>
-          <span className="leading-tight">
-            <span className="block font-display text-lg font-semibold text-cream">
-              {business.shortName}
-            </span>
-            <span className="block text-[10px] uppercase tracking-[0.3em] text-gold">
-              Tiles & Stone
-            </span>
+          <span className="hidden lg:block">
+            <Logo
+              variant="dark"
+              className={`transition-transform duration-300 ${scrolled ? 'scale-90' : 'scale-100'}`}
+            />
           </span>
         </a>
 
