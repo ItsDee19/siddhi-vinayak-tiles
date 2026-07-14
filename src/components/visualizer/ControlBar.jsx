@@ -14,6 +14,7 @@ import { business } from '../../data/siteConfig'
 //   - 'showNosing'  : checkbox (Model C)
 
 const GROUT_PRESETS = [
+  { name: 'None',      value: 'none' },
   { name: 'White',     value: '#ffffff' },
   { name: 'Off-white', value: '#e8e2d5' },
   { name: 'Light grey', value: '#9a9488' },
@@ -124,19 +125,25 @@ export default function ControlBar({
             Grout
           </span>
           <div className="flex gap-1.5">
-            {GROUT_PRESETS.map((g) => (
-              <button
-                key={g.value}
-                onClick={() => setExtra('groutColor', g.value)}
-                title={g.name}
-                className={`h-7 w-7 rounded-full border-2 transition-all ${
-                  (modelExtras?.groutColor || '#cfc6b4') === g.value
-                    ? 'border-gold scale-110'
-                    : 'border-white/15 hover:border-sand/50'
-                }`}
-                style={{ background: g.value }}
-              />
-            ))}
+            {GROUT_PRESETS.map((g) => {
+              const active = (modelExtras?.groutColor || '#cfc6b4') === g.value
+              const isNone = g.value === 'none'
+              return (
+                <button
+                  key={g.value}
+                  onClick={() => setExtra('groutColor', g.value)}
+                  title={g.name}
+                  className={`flex h-7 w-7 items-center justify-center rounded-full border-2 text-[9px] font-semibold uppercase transition-all ${
+                    active
+                      ? 'border-gold scale-110 text-gold'
+                      : 'border-white/15 text-sand/60 hover:border-sand/50'
+                  } ${isNone ? 'bg-transparent' : ''}`}
+                  style={isNone ? undefined : { background: g.value }}
+                >
+                  {isNone ? '∅' : ''}
+                </button>
+              )
+            })}
           </div>
         </div>
       )}

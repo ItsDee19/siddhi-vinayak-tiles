@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 import * as THREE from 'three'
-import { loadZoneTexture, resolveZoneSource } from '../../utils/threeTextures'
+import { loadZoneTexture, loadRawTexture, composeGroutTexture, resolveZoneSource } from '../../utils/threeTextures'
 
 // Set up Draco decoder path for compressed GLB files (Google CDN)
 useGLTF.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.7/')
@@ -27,6 +27,7 @@ export default function GLBModel({
   activeZone,
   onZoneClick,
   layout,        // 'full' | 'bands' | 'grid' — Model D only
+  groutEnabled = false, // Model D only: apply grout compositing (PRD §4.5)
   modelExtras = {}, // fixture toggles + controls (PRD §4): showShower, showWC,
                     // showNosing, showFaucet, showVanityLight, repeatScale, etc.
 }) {
@@ -81,7 +82,13 @@ export default function GLBModel({
 
         let tex = null
         if (src) {
-          tex = await loadZoneTexture(src, tileRepeat, 512)
+          // Model D grout picker: composite grout lines between the tiles
+          // (our textures are seamless single tiles with no baked grout).
+          if (groutEnabled && modelExtras.groutColor && modelExtras.groutColor !== 'none') {
+            const base = await loadRawTexture(src)
+            if (base) tex = composeGroutTexture(base, modelExtras.groutColor, tileRepeat)
+          }
+          if (!tex) tex = await loadZoneTexture(src, tileRepeat, 512)
         }
 
         if (cancelled) return
@@ -109,7 +116,7 @@ export default function GLBModel({
 
     applyTextures()
     return () => { cancelled = true }
-  }, [zones, zoneMeshes, zoneTextures, activeZone, tileRepeat])
+  }, [zones, zoneMeshes, zoneTextures, activeZone, tileRepeat, groutEnabled, modelExtras.groutColor])
 
   // Fixture visibility toggles (PRD §4.2–§4.6). The GLB ships fixture meshes
   // (shower_fixture, wc_fixture, *_nosing, faucet_*, vanity_light) that the
@@ -126,6 +133,24 @@ export default function GLBModel({
       else if (name.includes('vanity_light')) obj.visible = showVanityLight !== false
     })
   }, [cloned, modelExtras, modelExtras.showShower, modelExtras.showWC, modelExtras.showNosing, modelExtras.showFaucet, modelExtras.showVanityLight])
+
+  // Basin style (PRD §4.6): the vanity GLB ships three basin variants per
+  // position — basin_round_*, basin_rect_*, basin_vessel_*. Show only the
+  // set matching the selected style.
+  useEffect(() => {
+    const style = modelExtras.basinStyle
+    if (!style) return
+    cloned.traverse((obj) => {
+      if (obj.type !== 'Mesh') return
+      const name = (obj.name || '').toLowerCase()
+      if (!name.startsWith('basin_')) return
+      let show = false
+      if (name.startsWith('basin_round')) show = style === 'round'
+      else if (name.startsWith('basin_rect')) show = style === 'rect'
+      else if (name.startsWith('basin_vessel')) show = style === 'vessel'
+      obj.visible = show
+    })
+  }, [cloned, modelExtras, modelExtras.basinStyle])
 
   // Wire up click handlers for zone selection
   useEffect(() => {

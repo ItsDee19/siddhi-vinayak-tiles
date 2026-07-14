@@ -193,6 +193,7 @@ export default function Visualizer() {
                             activeZone={activeZoneId}
                             onZoneClick={setActiveZoneId}
                             layout={modelExtras.layout}
+                            groutEnabled={!!(activeModel.controls || []).includes('groutColor')}
                             modelExtras={modelExtras}
                           />
                         ) : (

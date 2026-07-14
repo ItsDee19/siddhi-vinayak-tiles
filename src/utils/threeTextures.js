@@ -125,3 +125,72 @@ export function resolveZoneSource(product) {
     accent: product.color || '#cfc6b4',
   }
 }
+
+// Fetch the raw (cached) base texture for a source without applying repeat.
+// Used by the grout compositor, which needs the underlying image.
+export function loadRawTexture(source) {
+  return new Promise((resolve) => {
+    if (isUrlSource(source)) {
+      const url = source.url
+      if (urlCache.has(url)) { resolve(urlCache.get(url)); return }
+      loader.load(
+        url,
+        (tex) => { urlCache.set(url, tex); resolve(tex) },
+        undefined,
+        () => resolve(null),
+      )
+    } else if (source) {
+      resolve(getMaterialTexture(source, 1, 512))
+    } else {
+      resolve(null)
+    }
+  })
+}
+
+// Compose a tile texture with grout lines drawn between repeated tiles.
+// `repeat` = tiles across the surface; `groutColor` colors the seams
+// (pass 'none' to skip grout entirely). Our tile textures are seamless
+// single tiles with no baked grout, so this adds the grout that belongs
+// between tiles. (PRD §4.5 grout picker.)
+export function composeGroutTexture(baseTex, groutColor, repeat, size = 512) {
+  const canvas = document.createElement('canvas')
+  canvas.width = canvas.height = size
+  const ctx = canvas.getContext('2d')
+  const img = baseTex && baseTex.image
+  const cells = Math.max(1, Math.round(repeat))
+  const cw = size / cells
+
+  if (img) {
+    for (let x = 0; x < cells; x++) {
+      for (let y = 0; y < cells; y++) {
+        try { ctx.drawImage(img, x * cw, y * cw, cw, cw) } catch (e) { /* noop */ }
+      }
+    }
+  } else {
+    ctx.fillStyle = '#cccccc'
+    ctx.fillRect(0, 0, size, size)
+  }
+
+  if (groutColor && groutColor !== 'none') {
+    const gw = Math.max(1, Math.round(cw * 0.08))
+    ctx.strokeStyle = groutColor
+    ctx.lineWidth = gw
+    ctx.lineCap = 'square'
+    for (let i = 1; i < cells; i++) {
+      const p = Math.round(i * cw)
+      ctx.beginPath(); ctx.moveTo(p, 0); ctx.lineTo(p, size); ctx.stroke()
+      ctx.beginPath(); ctx.moveTo(0, p); ctx.lineTo(size, p); ctx.stroke()
+    }
+  }
+
+  const tex = new THREE.CanvasTexture(canvas)
+  tex.wrapS = tex.wrapT = THREE.RepeatWrapping
+  tex.repeat.set(1, 1) // tiles already baked into the canvas
+  tex.anisotropy = 16
+  tex.colorSpace = THREE.SRGBColorSpace
+  tex.minFilter = THREE.LinearMipmapLinearFilter
+  tex.magFilter = THREE.LinearFilter
+  tex.generateMipmaps = true
+  tex.needsUpdate = true
+  return tex
+}
