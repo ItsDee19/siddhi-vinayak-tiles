@@ -3,8 +3,8 @@ import { useGLTF } from '@react-three/drei'
 import * as THREE from 'three'
 import { loadZoneTexture, resolveZoneSource } from '../../utils/threeTextures'
 
-// Set up Draco decoder for compressed GLB files (Google CDN)
-useGLTF.setDRACOLoader('https://www.gstatic.com/draco/versioned/decoders/1.5.7/')
+// Set up Draco decoder path for compressed GLB files (Google CDN)
+useGLTF.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.7/')
 
 // =========================================================================
 // GLBModel — loads a Blender-exported GLB file and dynamically swaps
