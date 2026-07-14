@@ -27,6 +27,8 @@ export default function GLBModel({
   activeZone,
   onZoneClick,
   layout,        // 'full' | 'bands' | 'grid' — Model D only
+  modelExtras = {}, // fixture toggles + controls (PRD §4): showShower, showWC,
+                    // showNosing, showFaucet, showVanityLight, repeatScale, etc.
 }) {
   const groupRef = useRef(null)
   const { scene } = useGLTF(glbUrl)
@@ -61,7 +63,11 @@ export default function GLBModel({
     })
   }, [cloned])
 
-  // Apply textures to zone meshes whenever zoneTextures changes
+  // Apply textures to zone meshes whenever zoneTextures changes.
+  // repeatScale (PRD §4.5) simulates tile size: higher = smaller tiles = more repeats.
+  const baseRepeat = 4
+  const tileRepeat = baseRepeat * (modelExtras.repeatScale ?? 1)
+
   useEffect(() => {
     let cancelled = false
 
@@ -75,7 +81,7 @@ export default function GLBModel({
 
         let tex = null
         if (src) {
-          tex = await loadZoneTexture(src, 4, 512)
+          tex = await loadZoneTexture(src, tileRepeat, 512)
         }
 
         if (cancelled) return
@@ -103,7 +109,23 @@ export default function GLBModel({
 
     applyTextures()
     return () => { cancelled = true }
-  }, [zones, zoneMeshes, zoneTextures, activeZone])
+  }, [zones, zoneMeshes, zoneTextures, activeZone, tileRepeat])
+
+  // Fixture visibility toggles (PRD §4.2–§4.6). The GLB ships fixture meshes
+  // (shower_fixture, wc_fixture, *_nosing, faucet_*, vanity_light) that the
+  // UI toggles via modelExtras. Hide/show them by name pattern.
+  useEffect(() => {
+    const { showShower, showWC, showNosing, showFaucet, showVanityLight } = modelExtras
+    cloned.traverse((obj) => {
+      if (obj.type !== 'Mesh') return
+      const name = (obj.name || '').toLowerCase()
+      if (name.includes('shower')) obj.visible = showShower !== false
+      else if (name.includes('wc')) obj.visible = showWC !== false
+      else if (name.includes('nosing')) obj.visible = showNosing !== false
+      else if (name.includes('faucet')) obj.visible = showFaucet !== false
+      else if (name.includes('vanity_light')) obj.visible = showVanityLight !== false
+    })
+  }, [cloned, modelExtras, modelExtras.showShower, modelExtras.showWC, modelExtras.showNosing, modelExtras.showFaucet, modelExtras.showVanityLight])
 
   // Wire up click handlers for zone selection
   useEffect(() => {
