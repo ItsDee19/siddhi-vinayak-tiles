@@ -4,10 +4,10 @@ import TiltCard from '../ui/TiltCard'
 import SectionHeading from '../ui/SectionHeading'
 import { categories } from '../../data/products'
 
-// Clicking a category scrolls to the gallery and pre-selects that filter.
-function goToGallery(id) {
-  window.dispatchEvent(new CustomEvent('filter-gallery', { detail: id }))
-  const el = document.getElementById('gallery')
+// Clicking a category scrolls to the catalogue and pre-selects that filter.
+function goToCatalogue(id) {
+  window.dispatchEvent(new CustomEvent('filter-catalogue', { detail: id }))
+  const el = document.getElementById('catalogue')
   if (el) el.scrollIntoView({ behavior: 'smooth' })
 }
 
@@ -18,14 +18,14 @@ export default function ProductCategories() {
         <SectionHeading
           eyebrow="What We Offer"
           title="Five Surfaces, One Roof"
-          subtitle="From everyday ceramic tiles to statement marble slabs — explore our complete range, then tap a category to browse the gallery."
+          subtitle="From everyday ceramic tiles to statement marble slabs — explore our complete range, then tap a category to browse the catalogue."
         />
 
         <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {categories.map((cat, i) => (
             <Reveal key={cat.id} delay={i * 0.07}>
-              <TiltCard
-                onClick={() => goToGallery(cat.id)}
+                <TiltCard
+                  onClick={() => goToCatalogue(cat.id)}
                 className="group h-full cursor-pointer rounded-2xl"
               >
                 <div className="relative h-full overflow-hidden rounded-2xl border border-white/5 bg-gradient-to-b from-charcoal-700 to-charcoal-800 p-7 shadow-card transition-colors duration-300 group-hover:border-gold/30">
@@ -41,7 +41,7 @@ export default function ProductCategories() {
                   </p>
 
                   <span className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-gold transition-all duration-300 group-hover:gap-3">
-                    View in Gallery
+                    View in Catalogue
                     <Icon name="arrowRight" className="h-4 w-4" />
                   </span>
 

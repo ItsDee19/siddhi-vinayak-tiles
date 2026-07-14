@@ -57,6 +57,15 @@ export default function ZonePicker({
                   }`}
                   style={{ background: p.color }}
                 >
+                  {p.imageUrl && (
+                    <img
+                      src={p.imageUrl}
+                      alt={p.name}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover"
+                    />
+                  )}
                   {sel && (
                     <Icon name="star" className="absolute right-0.5 top-0.5 h-3 w-3 text-gold" filled />
                   )}

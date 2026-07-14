@@ -104,13 +104,37 @@ export default function Visualizer() {
     if (canvas) await captureAndDownload(canvas)
   }
 
-  // Listen for "view-in-3d" events from the Catalogue
+  // Listen for "view-in-3d" events from the Catalogue — route the product to
+  // the best model + zone for its surface type (e.g. Countertop → Vanity).
   useEffect(() => {
     const handler = (e) => {
       const product = e.detail
       if (!product) return
-      setActiveModelId(models[0].id)
-      setZoneTextures((z) => ({ ...z, [models[0].zones[0].id]: product }))
+
+      const surface = product.surface
+      let bestModel = models[0]
+      let bestZone = bestModel.zones[0]
+
+      // Countertop products → Vanity Counter model
+      if (surface === 'Countertop') {
+        const vanity = models.find((m) => m.id === 'vanity')
+        if (vanity) {
+          const cz = vanity.zones.find((z) => z.surface === 'Countertop')
+          if (cz) { bestModel = vanity; bestZone = cz }
+        }
+      } else {
+        // Find the first model with a zone matching the product's surface
+        for (const model of models) {
+          const match = model.zones.find(
+            (z) => z.surface === surface || z.surface === 'Both' || surface === 'Both',
+          )
+          if (match) { bestModel = model; bestZone = match; break }
+        }
+      }
+
+      setActiveModelId(bestModel.id)
+      setActiveZoneId(bestZone.id)
+      setZoneTextures((z) => ({ ...z, [bestZone.id]: product }))
     }
     window.addEventListener('view-in-3d', handler)
     return () => window.removeEventListener('view-in-3d', handler)

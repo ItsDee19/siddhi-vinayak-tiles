@@ -8,13 +8,15 @@ function asSwatch(p) {
     name: p.name,
     type: p.category.toLowerCase(),
     color: p.color,
-    accent: p.color,
+    accent: p.accent || p.color,
     image: p.imageUrl,
   }
 }
 
 export default function ProductCard({ product, onOpen, onViewIn3D }) {
-  const has3D = Boolean(product.textureUrl)
+  // The visualizer uses procedural textures derived from color/type when no
+  // textureUrl is present, so every product can be previewed in 3D.
+  const has3D = ['Floor', 'Wall', 'Both', 'Countertop'].includes(product.surface)
   return (
     <button
       onClick={() => onOpen(product)}

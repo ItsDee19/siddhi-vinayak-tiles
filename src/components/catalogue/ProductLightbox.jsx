@@ -9,7 +9,7 @@ function asSwatch(p) {
     name: p.name,
     type: p.category.toLowerCase(),
     color: p.color,
-    accent: p.color,
+    accent: p.accent || p.color,
     image: p.imageUrl,
   }
 }
@@ -80,11 +80,9 @@ export default function ProductLightbox({ product, onClose, onViewIn3D }) {
             <a href={waHref} target="_blank" rel="noreferrer" className="btn-gold">
               <Icon name="whatsapp" className="h-4 w-4" filled /> Ask for this product
             </a>
-            {product.textureUrl && (
-              <button onClick={() => onViewIn3D(product)} className="btn-outline">
-                <Icon name="compass" className="h-4 w-4" /> View in 3D
-              </button>
-            )}
+            <button onClick={() => onViewIn3D(product)} className="btn-outline">
+              <Icon name="compass" className="h-4 w-4" /> View in 3D
+            </button>
           </div>
         </div>
       </motion.div>

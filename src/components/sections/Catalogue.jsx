@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import SectionHeading from '../ui/SectionHeading'
 import CategoryTabs from '../catalogue/CategoryTabs'
@@ -14,6 +14,19 @@ export default function Catalogue() {
   const [sub, setSub] = useState(null)
   const [finish, setFinish] = useState(null)
   const [open, setOpen] = useState(null)
+
+  // Listen for "filter-catalogue" events from the ProductCategories section —
+  // clicking a category card scrolls here and pre-selects that filter.
+  useEffect(() => {
+    const handler = (e) => {
+      if (!e.detail) return
+      setCat(e.detail)
+      setSub(null)
+      setFinish(null)
+    }
+    window.addEventListener('filter-catalogue', handler)
+    return () => window.removeEventListener('filter-catalogue', handler)
+  }, [])
 
   const filtered = useMemo(() => {
     return products.filter((p) => {

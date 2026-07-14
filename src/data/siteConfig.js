@@ -53,7 +53,7 @@ export const navLinks = [
   { label: 'Home', href: '#home' },
   { label: 'Products', href: '#products' },
   { label: 'Visualizer', href: '#visualizer' },
-  { label: 'Gallery', href: '#gallery' },
+  { label: 'Catalogue', href: '#catalogue' },
   { label: 'About', href: '#about' },
   { label: 'Contact', href: '#contact' },
 ]
