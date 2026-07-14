@@ -7,12 +7,16 @@ import { useInView } from '../../hooks/useInView'
 import { products } from '../../data/catalogue'
 import { models } from '../three/models'
 import ModelShell from '../three/primitives/ModelShell'
+import GLBModel from '../three/GLBModel'
 import ModelTabs from '../visualizer/ModelTabs'
 import ZonePicker from '../visualizer/ZonePicker'
 import ControlBar from '../visualizer/ControlBar'
 import MobileDrawer from '../visualizer/MobileDrawer'
 import Icon from '../Icons'
 import { captureAndDownload } from '../visualizer/ScreenshotHelper'
+
+// Preload GLB models
+models.forEach((m) => { if (m.glbUrl) import('@react-three/drei').then(({ useGLTF }) => useGLTF.preload(m.glbUrl)) })
 
 // Lazy model components keyed by id
 const modelCache = {}
@@ -181,20 +185,31 @@ export default function Visualizer() {
                         frameloop={stageVisible ? 'always' : 'never'}
                         interactiveAutoRotate={!!activeModel.interactiveAutoRotate}
                       >
-                        <ModelComp
-                          zoneTextures={zoneTextures}
-                          activeZone={activeZoneId}
-                          onZoneClick={setActiveZoneId}
-                          showShower={modelExtras.showShower}
-                          showWC={modelExtras.showWC}
-                          showNosing={modelExtras.showNosing}
-                          layout={modelExtras.layout}
-                          repeatScale={modelExtras.repeatScale}
-                          groutColor={modelExtras.groutColor}
-                          basinStyle={modelExtras.basinStyle}
-                          showFaucet={modelExtras.showFaucet}
-                          showVanityLight={modelExtras.showVanityLight}
-                        />
+                        {activeModel.glbUrl ? (
+                          <GLBModel
+                            glbUrl={activeModel.glbUrl}
+                            zones={activeModel.zones}
+                            zoneTextures={zoneTextures}
+                            activeZone={activeZoneId}
+                            onZoneClick={setActiveZoneId}
+                            layout={modelExtras.layout}
+                          />
+                        ) : (
+                          <ModelComp
+                            zoneTextures={zoneTextures}
+                            activeZone={activeZoneId}
+                            onZoneClick={setActiveZoneId}
+                            showShower={modelExtras.showShower}
+                            showWC={modelExtras.showWC}
+                            showNosing={modelExtras.showNosing}
+                            layout={modelExtras.layout}
+                            repeatScale={modelExtras.repeatScale}
+                            groutColor={modelExtras.groutColor}
+                            basinStyle={modelExtras.basinStyle}
+                            showFaucet={modelExtras.showFaucet}
+                            showVanityLight={modelExtras.showVanityLight}
+                          />
+                        )}
                       </ModelShell>
                     </div>
                   </Suspense>

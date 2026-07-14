@@ -18,6 +18,7 @@ export const models = [
     id: 'bathroom-s',
     name: 'Small Bathroom',
     blurb: '8×5 ft, 3-2-3 tile bands',
+    glbUrl: '/models/model-a-bathroom.glb',
     zones: [
       { id: 'floor',   label: 'Floor',        surface: 'Floor' },
       { id: 'lower',   label: 'Lower Wall',   surface: 'Wall' },
@@ -25,7 +26,6 @@ export const models = [
       { id: 'upper',   label: 'Upper Wall',   surface: 'Wall' },
     ],
     presets: {
-      // 45° elevation hero shot — corner of room at human eye-height
       default: { position: [8.5, 4.2, 9.5], target: [0, 3.2, -0.5] },
       front:   { position: [0, 4, 11],     target: [0, 3.5, 0] },
     },
@@ -37,6 +37,7 @@ export const models = [
     id: 'bathroom-l',
     name: 'Large Bathroom',
     blurb: '10×10 ft, 2-4-2 tile bands',
+    glbUrl: '/models/model-b-bathroom-lg.glb',
     zones: [
       { id: 'floor',   label: 'Floor',        surface: 'Floor' },
       { id: 'lower',   label: 'Lower Band',   surface: 'Wall' },
@@ -57,6 +58,7 @@ export const models = [
     id: 'staircase',
     name: 'Staircase',
     blurb: '22 steps, 2 flights + landing',
+    glbUrl: '/models/model-c-staircase.glb',
     zones: [
       { id: 'tread',   label: 'Tread Tile',  surface: 'Floor' },
       { id: 'riser',   label: 'Riser Tile',  surface: 'Wall' },
@@ -76,6 +78,7 @@ export const models = [
     id: 'feature-wall',
     name: 'Feature Wall',
     blurb: '30×10 ft facade',
+    glbUrl: '/models/model-d-feature-wall.glb',
     zones: [
       { id: 'full',      label: 'Wall',         surface: 'Wall' },
       { id: 'lowerBand', label: 'Lower Band',   surface: 'Wall' },
@@ -92,6 +95,7 @@ export const models = [
     id: 'vanity',
     name: 'Vanity Counter',
     blurb: '10×5 wall + countertop',
+    glbUrl: '/models/model-e-vanity.glb',
     zones: [
       { id: 'backWall',    label: 'Back Wall',    surface: 'Wall' },
       { id: 'counterTop',  label: 'Counter Top',  surface: 'Countertop' },
