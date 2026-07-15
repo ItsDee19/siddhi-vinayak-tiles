@@ -34,6 +34,14 @@ export default function GLBModel({
   const groupRef = useRef(null)
   const { scene } = useGLTF(glbUrl)
 
+  // Derive the per-model key (e.g. "a-bathroom") from the glb url so we can
+  // resolve the Blender-baked ambient-occlusion textures in /models/ao/<key>/.
+  const modelKey = useMemo(() => {
+    const m = (glbUrl || '').match(/model-([^/?#]+)\.glb/)
+    return m ? m[1] : ''
+  }, [glbUrl])
+  const aoLoader = useMemo(() => new THREE.TextureLoader(), [])
+
   // Clone the scene so we don't mutate the cached GLTF
   const cloned = useMemo(() => scene.clone(true), [scene])
 
@@ -63,6 +71,40 @@ export default function GLBModel({
       }
     })
   }, [cloned])
+
+  // Apply Blender-baked ambient occlusion as aoMap (uses uv1 = TEXCOORD_1).
+  // Each mesh's AO was baked into /models/ao/<modelKey>/<meshName>__ao.png.
+  useEffect(() => {
+    if (!modelKey) return
+    let cancelled = false
+    const meshes = []
+    cloned.traverse((o) => { if (o.type === 'Mesh') meshes.push(o) })
+    ;(async () => {
+      for (const o of meshes) {
+        if (cancelled) return
+        const base = glbUrl.replace(/model-[^/?#]+\.glb.*$/, 'ao/' + modelKey)
+        const url = `${base}/${o.name}__ao.png`
+        await new Promise((resolve) => {
+          aoLoader.load(
+            url,
+            (tex) => {
+              if (cancelled) { resolve(); return }
+              tex.colorSpace = THREE.NoColorSpace
+              tex.wrapS = tex.wrapT = THREE.ClampToEdgeWrapping
+              tex.channel = 1
+              o.material.aoMap = tex
+              o.material.aoMapIntensity = 0.9
+              o.material.needsUpdate = true
+              resolve()
+            },
+            undefined,
+            () => resolve(), // no AO texture for this mesh — leave as-is
+          )
+        })
+      }
+    })()
+    return () => { cancelled = true }
+  }, [cloned, modelKey, aoLoader, glbUrl])
 
   // Apply textures to zone meshes whenever zoneTextures changes.
   // repeatScale (PRD §4.5) simulates tile size: higher = smaller tiles = more repeats.
