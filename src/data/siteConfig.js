@@ -4,8 +4,8 @@
 // ---------------------------------------------------------------------------
 
 export const business = {
-  name: 'Siddhi Vinayak Tiles',
-  shortName: 'Siddhi Vinayak',
+  name: 'Sidhhi Binayak Tiles',
+  shortName: 'Sidhhi Binayak',
   tagline: 'Enter as Friend, Leave as Family',
   intro:
     'A family-run showroom in Nuapada for Tiles, Marble, Granite, Quartz & Sanitaryware — chosen with care, priced fairly, and finished beautifully.',
@@ -25,7 +25,7 @@ export const business = {
   phoneTel: '+916371255411',
   whatsapp: 'https://wa.me/916371255411',
   whatsappMessage:
-    "Hello Siddhi Vinayak Tiles! I'd like to know more about your collection.",
+    "Hello Sidhhi Binayak Tiles! I'd like to know more about your collection.",
 
   hours: {
     label: 'Open Today',
@@ -101,7 +101,7 @@ export const testimonials = [
   {
     name: 'Your Review Here',
     place: 'Odisha',
-    text: 'Be one of the first to share your experience with Siddhi Vinayak Tiles. Your words help other families choose with confidence.',
+    text: 'Be one of the first to share your experience with Sidhhi Binayak Tiles. Your words help other families choose with confidence.',
     rating: 5,
     placeholder: true,
   },

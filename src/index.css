@@ -26,13 +26,14 @@
 
   html {
     scroll-behavior: smooth;
-    /* Offset anchored scroll so sticky navbar doesn't cover headings */
     scroll-padding-top: 5rem;
+    overflow-x: hidden;
   }
 
   body {
     @apply bg-charcoal text-cream font-sans antialiased;
     overflow-x: hidden;
+    position: relative;
   }
 
   ::selection {

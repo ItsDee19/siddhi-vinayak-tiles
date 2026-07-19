@@ -107,7 +107,7 @@ export default function Contact() {
               {/* map */}
               <div className="relative flex-1 overflow-hidden rounded-2xl border border-white/5 shadow-card">
                 <iframe
-                  title="Siddhi Vinayak Tiles location"
+                  title="Sidhhi Binayak Tiles location"
                   src={business.mapEmbedSrc}
                   className="h-full min-h-[260px] w-full"
                   style={{ border: 0, filter: 'grayscale(0.3) contrast(1.05)' }}
