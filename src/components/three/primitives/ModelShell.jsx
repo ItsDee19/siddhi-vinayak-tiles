@@ -40,11 +40,11 @@ export default function ModelShell({
           powerPreference: 'high-performance',
           preserveDrawingBuffer: true, // enables canvas.toDataURL() for screenshots
           toneMapping: 4, // THREE.ACESFilmicToneMapping
-          toneMappingExposure: 1.0,
+          toneMappingExposure: 1.3,
         }}
       >
-        <color attach="background" args={['#3D2512']} />
-        <fog attach="fog" args={['#3D2512', 22, 50]} />
+        <color attach="background" args={['#4A3522']} />
+        <fog attach="fog" args={['#4A3522', 24, 55]} />
 
         {/* Atmospheric backdrop — warm light at the top fading to deep
             brown at the floor. Visible at the edges of the camera frame. */}
@@ -62,14 +62,14 @@ export default function ModelShell({
 
         {/* Reduced ambient (Environment provides most of the ambient now).
             Keep just enough so dark zones aren't pitch black. */}
-        <ambientLight intensity={0.18} />
+        <ambientLight intensity={0.34} />
 
         {/* Key directional — provides the sharp cast shadows. With IBL
             providing soft fill, the directional doesn't need to be as
             intense as before. */}
         <directionalLight
           position={[6, 10, 5]}
-          intensity={1.4}
+          intensity={1.7}
           castShadow
           color="#fff5e0"
           shadow-mapSize={[2048, 2048]}

@@ -19,6 +19,8 @@
 //   featured      boolean
 // ---------------------------------------------------------------------------
 
+import { importedProducts } from './importedCatalogue'
+
 export const subCategories = {
   tiles:        ['Floor Tiles', 'Wall Tiles', 'Exterior', 'Décor'],
   marble:       ['Italian', 'Indian', 'Statuario', 'Plain'],
@@ -52,4 +54,7 @@ export const products = [
   { id: 'sani-001', name: 'Modern Basin Suite', category: 'Sanitaryware', subCategory: 'Basins', size: '24×18 in', finish: 'Glossy', color: '#f4f1ec', accent: '#d0ccc4', surface: 'Countertop', priceRange: 'Mid', imageUrl: null, textureUrl: null, tags: ['white', 'bathroom'], featured: true },
   { id: 'sani-002', name: 'Matte Black Faucet', category: 'Sanitaryware', subCategory: 'Faucets', size: 'Standard', finish: 'Matte', color: '#2c2b29', accent: '#1a1918', surface: 'Countertop', priceRange: 'Premium', imageUrl: null, textureUrl: null, tags: ['black', 'modern'] },
   { id: 'sani-003', name: 'Wall-Hung Closet', category: 'Sanitaryware', subCategory: 'Closets', size: 'Standard', finish: 'Glossy', color: '#eceae4', accent: '#d0ccc4', surface: 'Floor', priceRange: 'Mid', imageUrl: null, textureUrl: null, tags: ['white', 'bathroom'] },
+
+  // --- Auto-imported real GLOBAL TILES catalogue (OCR). Curate/rename as needed. ---
+  ...importedProducts,
 ]

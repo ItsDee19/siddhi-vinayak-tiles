@@ -161,10 +161,10 @@ export default function Visualizer() {
           {/* 3D stage — wrapped in ErrorBoundary so a runtime error
               here doesn't take down the whole app. */}
           <ErrorBoundary>
-            <div
-              ref={stageRef}
-              className="relative aspect-[4/3] overflow-hidden rounded-card border border-white/5 bg-charcoal-800 shadow-card lg:aspect-auto lg:min-h-[540px]"
-            >
+              <div
+                ref={stageRef}
+                className="relative aspect-[4/3] min-w-0 overflow-hidden rounded-card border border-white/5 bg-charcoal-800 shadow-card lg:aspect-auto lg:min-h-[540px]"
+              >
               {webgl ? (
                 stageEntered ? (
                   <Suspense
@@ -251,7 +251,7 @@ export default function Visualizer() {
 
           {/* Desktop: side panel — also wrapped to be safe. */}
           <ErrorBoundary>
-            <div className="hidden flex-col gap-4 lg:flex">
+            <div className="hidden min-w-0 flex-col gap-4 lg:flex">
               <ModelTabs active={activeModelId} onChange={setActiveModelId} />
               <div className="flex-1 space-y-3 overflow-y-auto pr-1">
                 {activeModel.zones.map((z) => (
