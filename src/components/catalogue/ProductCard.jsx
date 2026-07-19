@@ -18,9 +18,21 @@ export default function ProductCard({ product, onOpen, onViewIn3D }) {
   // textureUrl is present, so every product can be previewed in 3D.
   const has3D = ['Floor', 'Wall', 'Both', 'Countertop'].includes(product.surface)
   return (
-    <button
+    // Not a <button> — it contains a nested "View in 3D" button below, and
+    // a <button> can't validly contain another <button> (invalid HTML,
+    // unreliable on mobile touch/screen readers). role="button" + keyboard
+    // handling keeps it fully accessible without the nesting problem.
+    <div
+      role="button"
+      tabIndex={0}
       onClick={() => onOpen(product)}
-      className="group relative overflow-hidden rounded-card border border-white/5 bg-charcoal-700 text-left shadow-soft transition-all hover:border-gold/30 hover:shadow-card"
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault()
+          onOpen(product)
+        }
+      }}
+      className="group relative cursor-pointer overflow-hidden rounded-card border border-white/5 bg-charcoal-700 text-left shadow-soft transition-all hover:border-gold/30 hover:shadow-card"
     >
       {product.featured && (
         <span className="absolute right-2 top-2 z-10 rounded-btn bg-gold px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-ink">
@@ -51,6 +63,6 @@ export default function ProductCard({ product, onOpen, onViewIn3D }) {
           </button>
         )}
       </div>
-    </button>
+    </div>
   )
 }

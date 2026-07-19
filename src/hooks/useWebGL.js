@@ -25,14 +25,15 @@ export function useWebGL() {
         return
       }
 
-      // Very weak devices: bail to keep things smooth.
+      // Very weak devices: bail to keep things smooth. Either weak signal is
+      // enough on its own — requiring both let most budget phones through.
       const lowCores =
         typeof navigator.hardwareConcurrency === 'number' &&
         navigator.hardwareConcurrency <= 2
       const lowMem =
         typeof navigator.deviceMemory === 'number' && navigator.deviceMemory <= 2
 
-      setSupported(!(lowCores && lowMem))
+      setSupported(!(lowCores || lowMem))
     } catch {
       setSupported(false)
     }

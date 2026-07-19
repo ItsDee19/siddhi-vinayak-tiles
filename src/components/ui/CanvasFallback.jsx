@@ -31,7 +31,7 @@ export default function CanvasFallback({ swatchList = [], className = '', label 
       className={`grid h-full w-full grid-cols-3 gap-1 overflow-hidden rounded-2xl ${className}`}
     >
       {swatchList.map((s, i) => (
-        <div key={s.id} className="relative aspect-square overflow-hidden">
+        <div key={`${s.id}-${i}`} className="relative aspect-square overflow-hidden">
           <canvas
             data-idx={i}
             className="h-full w-full object-cover"

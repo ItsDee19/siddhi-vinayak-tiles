@@ -1,9 +1,11 @@
 import { Suspense, lazy, useEffect, useMemo, useRef, useState } from 'react'
+import { useGLTF } from '@react-three/drei'
 import SectionHeading from '../ui/SectionHeading'
 import CanvasFallback from '../ui/CanvasFallback'
 import ErrorBoundary from '../ui/ErrorBoundary'
 import { useWebGL } from '../../hooks/useWebGL'
 import { useInView } from '../../hooks/useInView'
+import { useDeviceTier } from '../../hooks/useDeviceTier'
 import { products } from '../../data/catalogue'
 import { models } from '../three/models'
 import ModelShell from '../three/primitives/ModelShell'
@@ -14,9 +16,6 @@ import ControlBar from '../visualizer/ControlBar'
 import MobileDrawer from '../visualizer/MobileDrawer'
 import Icon from '../Icons'
 import { captureAndDownload } from '../visualizer/ScreenshotHelper'
-
-// Preload GLB models
-models.forEach((m) => { if (m.glbUrl) import('@react-three/drei').then(({ useGLTF }) => useGLTF.preload(m.glbUrl)) })
 
 // Lazy model components keyed by id
 const modelCache = {}
@@ -58,6 +57,7 @@ const defaultModelExtras = (m) => ({
 
 export default function Visualizer() {
   const webgl = useWebGL()
+  const quality = useDeviceTier()
   const [stageRef, stageEntered, stageVisible] = useInView({ rootMargin: '300px' })
   const [activeModelId, setActiveModelId] = useState(models[0].id)
   const [activeZoneId, setActiveZoneId] = useState(models[0].zones[0].id)
@@ -66,6 +66,14 @@ export default function Visualizer() {
   const [drawerOpen, setDrawerOpen] = useState(false)
   const [modelExtras, setModelExtras] = useState(() => defaultModelExtras(models[0]))
   const canvasWrapRef = useRef(null)
+
+  // Preload GLB models only once we know the device can actually render them
+  // (and only once this component itself has been lazy-loaded near-viewport —
+  // see VisualizerLazy). Avoids fetching all 5 GLBs on every page view.
+  useEffect(() => {
+    if (!webgl) return
+    models.forEach((m) => { if (m.glbUrl) useGLTF.preload(m.glbUrl) })
+  }, [webgl])
 
   const activeModel = useMemo(
     () => models.find((m) => m.id === activeModelId),
@@ -184,6 +192,7 @@ export default function Visualizer() {
                         presetName={presetName}
                         frameloop={stageVisible ? 'always' : 'never'}
                         interactiveAutoRotate={!!activeModel.interactiveAutoRotate}
+                        quality={quality}
                       >
                         {activeModel.glbUrl ? (
                           <GLBModel
