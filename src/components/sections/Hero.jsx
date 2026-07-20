@@ -128,6 +128,10 @@ export default function Hero() {
               <Icon name="phone" className="h-4 w-4" />
               {business.phoneDisplay}
             </a>
+            <a href="#visualizer" className="btn-outline">
+              <Icon name="tiles" className="h-4 w-4" />
+              3D Visualizer
+            </a>
           </div>
         </Reveal>
 

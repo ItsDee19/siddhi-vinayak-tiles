@@ -45,21 +45,24 @@ export default function ZonePicker({
       {isActive && (
         <>
           <div className="mt-3 flex gap-2 overflow-x-auto pb-2">
-            {compatible.map((p) => {
+            {compatible
+              .filter((p) => p.imageUrl || p.textureUrl)
+              .map((p) => {
               const sel = current?.id === p.id
+              const thumb = p.textureUrl || p.imageUrl
               return (
                 <button
                   key={p.id}
                   onClick={() => onSwatchPick(zone.id, p)}
-                  title={p.name}
+                  title={`${p.name}${p.size ? ` · ${p.size}` : ''}`}
                   className={`relative h-12 w-16 shrink-0 overflow-hidden rounded border-2 transition-all ${
                     sel ? 'border-gold shadow-glow' : 'border-transparent hover:border-sand/30'
                   }`}
                   style={{ background: p.color }}
                 >
-                  {p.imageUrl && (
+                  {thumb && (
                     <img
-                      src={p.imageUrl}
+                      src={thumb}
                       alt={p.name}
                       loading="lazy"
                       decoding="async"

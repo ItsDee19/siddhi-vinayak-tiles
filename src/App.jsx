@@ -1,7 +1,7 @@
 import Navbar from './components/sections/Navbar'
 import Hero from './components/sections/Hero'
 import ProductCategories from './components/sections/ProductCategories'
-import Visualizer from './components/sections/Visualizer'
+import VisualizerLazy from './components/sections/VisualizerLazy'
 import Catalogue from './components/sections/Catalogue'
 import WhyChooseUs from './components/sections/WhyChooseUs'
 import About from './components/sections/About'
@@ -17,7 +17,7 @@ export default function App() {
       <main>
         <Hero />
         <ProductCategories />
-        <Visualizer />
+        <VisualizerLazy />
         <Catalogue />
         <WhyChooseUs />
         <About />

@@ -9,11 +9,14 @@ import ProductLightbox from '../catalogue/ProductLightbox'
 import EmptyState from '../catalogue/EmptyState'
 import { products } from '../../data/catalogue'
 
+const PAGE_SIZE = 24
+
 export default function Catalogue() {
   const [cat, setCat] = useState('all')
   const [sub, setSub] = useState(null)
   const [finish, setFinish] = useState(null)
   const [open, setOpen] = useState(null)
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE)
 
   // Listen for "filter-catalogue" events from the ProductCategories section —
   // clicking a category card scrolls here and pre-selects that filter.
@@ -36,6 +39,16 @@ export default function Catalogue() {
       return true
     })
   }, [cat, sub, finish])
+
+  // Rendering all 400+ products at once is a real DOM/layout cost on
+  // low-end mobile CPUs, so only mount PAGE_SIZE at a time and grow with
+  // "Load more". Reset back to the first page whenever the filter changes.
+  useEffect(() => {
+    setVisibleCount(PAGE_SIZE)
+  }, [cat, sub, finish])
+
+  const visible = filtered.slice(0, visibleCount)
+  const hasMore = visibleCount < filtered.length
 
   const onViewIn3D = (p) => {
     // Tell the Visualizer to load this texture
@@ -62,16 +75,31 @@ export default function Catalogue() {
             <EmptyState onClear={() => { setCat('all'); setSub(null); setFinish(null) }} />
           </div>
         ) : (
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {filtered.map((p) => (
-              <ProductCard
-                key={p.id}
-                product={p}
-                onOpen={setOpen}
-                onViewIn3D={onViewIn3D}
-              />
-            ))}
-          </div>
+          <>
+            <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {visible.map((p) => (
+                <ProductCard
+                  key={p.id}
+                  product={p}
+                  onOpen={setOpen}
+                  onViewIn3D={onViewIn3D}
+                />
+              ))}
+            </div>
+            <div className="mt-8 flex flex-col items-center gap-2">
+              <p className="text-xs text-sand/60">
+                Showing {visible.length} of {filtered.length} products
+              </p>
+              {hasMore && (
+                <button
+                  onClick={() => setVisibleCount((c) => c + PAGE_SIZE)}
+                  className="btn-outline px-6 py-2.5 text-xs"
+                >
+                  Load more
+                </button>
+              )}
+            </div>
+          </>
         )}
       </div>
 
