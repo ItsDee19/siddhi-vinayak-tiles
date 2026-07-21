@@ -47,7 +47,7 @@ const defaultModelExtras = (m) => ({
   layout: 'full',
   repeatScale: 1,
   groutColor: '#cfc6b4',
-  basinStyle: 'rect',
+  basinStyle: 'vessel',
   showFaucet: true,
   showVanityLight: true,
   showNosing: true,
