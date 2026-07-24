@@ -139,6 +139,9 @@ export default function GLBModel({
 
         for (const mesh of meshes) {
           const isActive = activeZone === zone.id
+          if (mesh.material.map) {
+            mesh.material.map.dispose()
+          }
           if (tex) {
             const texClone = tex.clone()
             texClone.wrapS = texClone.wrapT = THREE.RepeatWrapping

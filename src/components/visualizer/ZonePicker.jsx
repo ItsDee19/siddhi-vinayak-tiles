@@ -1,9 +1,8 @@
-import { useRef } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import Icon from '../Icons'
 import { products } from '../../data/catalogue'
 
-// Scrollable horizontal swatch strip filtered by the zone's surface.
-// Active swatch has a gold border. Includes a "Custom Upload" option.
+const INITIAL_BATCH = 28
 
 export default function ZonePicker({
   zone,                       // { id, label, surface }
@@ -14,12 +13,36 @@ export default function ZonePicker({
   onCustomUpload,             // (zoneId, file) => void
 }) {
   const fileRef = useRef(null)
+  const [subFilter, setSubFilter] = useState('all') // 'all' | '12x18' | '2x4' | 'floor'
+  const [limit, setLimit] = useState(INITIAL_BATCH)
+
   const surface = zone?.surface
-  const compatible = surface
-    ? products.filter((p) => p.surface === surface || p.surface === 'Both')
-    : products
+  const compatible = useMemo(() => {
+    let list = surface
+      ? products.filter((p) => p.surface === surface || p.surface === 'Both')
+      : products
+
+    list = list.filter((p) => p.imageUrl || p.textureUrl)
+
+    if (subFilter === '12x18') {
+      list = list.filter((p) => (p.size && p.size.includes('300x450')) || p.id.startsWith('sky12x18'))
+    } else if (subFilter === '2x4') {
+      list = list.filter((p) => (p.size && p.size.includes('600x1200')) || p.id.startsWith('skype') || p.id.startsWith('sunflora'))
+    } else if (subFilter === 'floor') {
+      list = list.filter((p) => p.id.startsWith('gt-floor') || p.surface === 'Floor')
+    }
+
+    return list
+  }, [surface, subFilter])
+
   const isActive = zone?.id === activeZoneId
   const current = zoneTextures[zone?.id]
+
+  const visibleSwatches = useMemo(
+    () => compatible.slice(0, limit),
+    [compatible, limit],
+  )
+  const hasMore = limit < compatible.length
 
   return (
     <div
@@ -34,9 +57,11 @@ export default function ZonePicker({
         </button>
         <div className="flex items-center gap-2">
           {current?.name && (
-            <span className="hidden text-[10px] text-sand/60 sm:inline">{current.name}</span>
+            <span className="text-[11px] font-medium text-gold max-w-[140px] truncate sm:max-w-none">
+              {current.name}
+            </span>
           )}
-          <span className="rounded-full bg-gold/15 px-2 py-0.5 text-[10px] font-medium text-gold">
+          <span className="rounded-full bg-gold/15 px-2 py-0.5 text-[10px] font-medium text-gold shrink-0">
             {surface}
           </span>
         </div>
@@ -44,10 +69,53 @@ export default function ZonePicker({
 
       {isActive && (
         <>
-          <div className="mt-3 flex gap-2 overflow-x-auto pb-2">
-            {compatible
-              .filter((p) => p.imageUrl || p.textureUrl)
-              .map((p) => {
+          {/* Quick Collection Filters */}
+          <div className="mt-3 flex items-center gap-1.5 overflow-x-auto pb-1 text-[11px]">
+            <button
+              onClick={() => { setSubFilter('all'); setLimit(INITIAL_BATCH) }}
+              className={`rounded-full px-2.5 py-0.5 transition-colors whitespace-nowrap ${
+                subFilter === 'all'
+                  ? 'bg-gold text-ink font-semibold'
+                  : 'bg-white/5 text-sand/70 hover:bg-white/10'
+              }`}
+            >
+              All ({compatible.length})
+            </button>
+            <button
+              onClick={() => { setSubFilter('12x18'); setLimit(INITIAL_BATCH) }}
+              className={`rounded-full px-2.5 py-0.5 transition-colors whitespace-nowrap ${
+                subFilter === '12x18'
+                  ? 'bg-gold text-ink font-semibold'
+                  : 'bg-white/5 text-sand/70 hover:bg-white/10'
+              }`}
+            >
+              12x18 Wall
+            </button>
+            <button
+              onClick={() => { setSubFilter('2x4'); setLimit(INITIAL_BATCH) }}
+              className={`rounded-full px-2.5 py-0.5 transition-colors whitespace-nowrap ${
+                subFilter === '2x4'
+                  ? 'bg-gold text-ink font-semibold'
+                  : 'bg-white/5 text-sand/70 hover:bg-white/10'
+              }`}
+            >
+              2x4 Slabs
+            </button>
+            <button
+              onClick={() => { setSubFilter('floor'); setLimit(INITIAL_BATCH) }}
+              className={`rounded-full px-2.5 py-0.5 transition-colors whitespace-nowrap ${
+                subFilter === 'floor'
+                  ? 'bg-gold text-ink font-semibold'
+                  : 'bg-white/5 text-sand/70 hover:bg-white/10'
+              }`}
+            >
+              Floor Collection
+            </button>
+          </div>
+
+          {/* Touch-Optimized Swatch Strip */}
+          <div className="mt-2.5 flex gap-2 overflow-x-auto pb-2 scroll-smooth [scroll-snap-type:x_mandatory]">
+            {visibleSwatches.map((p) => {
               const sel = current?.id === p.id
               const thumb = p.textureUrl || p.imageUrl
               return (
@@ -55,10 +123,12 @@ export default function ZonePicker({
                   key={p.id}
                   onClick={() => onSwatchPick(zone.id, p)}
                   title={`${p.name}${p.size ? ` · ${p.size}` : ''}`}
-                  className={`relative h-12 w-16 shrink-0 overflow-hidden rounded border-2 transition-all ${
-                    sel ? 'border-gold shadow-glow' : 'border-transparent hover:border-sand/30'
+                  className={`relative h-14 w-20 shrink-0 overflow-hidden rounded border-2 transition-all [scroll-snap-align:start] ${
+                    sel
+                      ? 'border-gold shadow-glow ring-2 ring-gold/40'
+                      : 'border-transparent hover:border-sand/40'
                   }`}
-                  style={{ background: p.color }}
+                  style={{ background: p.color || '#333' }}
                 >
                   {thumb && (
                     <img
@@ -70,17 +140,30 @@ export default function ZonePicker({
                     />
                   )}
                   {sel && (
-                    <Icon name="star" className="absolute right-0.5 top-0.5 h-3 w-3 text-gold" filled />
+                    <Icon name="star" className="absolute right-1 top-1 h-3.5 w-3.5 text-gold" filled />
                   )}
+                  <span className="absolute inset-x-0 bottom-0 bg-black/70 px-1 py-0.5 text-[9px] font-medium text-cream truncate text-center">
+                    {p.name.replace(/^Sky\s+/, '')}
+                  </span>
                 </button>
               )
             })}
+
+            {hasMore && (
+              <button
+                onClick={() => setLimit((l) => l + 28)}
+                className="h-14 px-3 shrink-0 flex items-center justify-center gap-1 rounded border border-gold/30 bg-gold/10 text-xs font-medium text-gold hover:bg-gold/20"
+              >
+                + More
+              </button>
+            )}
           </div>
+
           <button
             onClick={() => fileRef.current?.click()}
-            className="mt-1 flex w-full items-center justify-center gap-2 rounded-btn border border-dashed border-white/10 px-3 py-2 text-xs text-sand/70 hover:border-gold hover:text-gold"
+            className="mt-2 flex w-full items-center justify-center gap-2 rounded-btn border border-dashed border-white/10 px-3 py-2 text-xs text-sand/70 hover:border-gold hover:text-gold"
           >
-            <Icon name="send" className="h-3.5 w-3.5" /> Upload a photo
+            <Icon name="send" className="h-3.5 w-3.5" /> Upload custom tile photo
           </button>
           <input
             ref={fileRef}
