@@ -68,6 +68,12 @@ function applyTexProps(tex, repeat) {
   tex.needsUpdate = true
 }
 
+export function disposeTexture(tex) {
+  if (tex && typeof tex.dispose === 'function') {
+    tex.dispose()
+  }
+}
+
 export function loadZoneTexture(source, repeat = 1, size = 512) {
   return new Promise((resolve) => {
     if (isUrlSource(source)) {
