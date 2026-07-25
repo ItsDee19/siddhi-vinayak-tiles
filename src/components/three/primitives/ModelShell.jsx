@@ -64,10 +64,10 @@ export default function ModelShell({
             keep our own dark brown backdrop; only the lighting is used.
             Skipped on 'lite' — it's a remote HDRI fetch (extra mobile data)
             and the ambient/directional lights below carry the scene fine. */}
-        {!lite && <Environment preset={envPreset} background={false} />}
-
-        {/* Ambient — a bit stronger on 'lite' since there's no IBL fill. */}
-        <ambientLight intensity={lite ? 0.55 : 0.34} />
+        {/* Local Studio Lighting — zero network overhead, instant rendering */}
+        <hemisphereLight skyColor="#fff5e0" groundColor="#2c1a0e" intensity={0.65} />
+        <ambientLight intensity={lite ? 0.6 : 0.45} />
+        <directionalLight position={[-6, 6, -5]} intensity={0.6} color="#c49a3c" />
 
         {/* Key directional — provides the sharp cast shadows. Shadow map is
             much smaller on 'lite' (or shadows are off entirely via Canvas

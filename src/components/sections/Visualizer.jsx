@@ -1,4 +1,4 @@
-import { Suspense, lazy, useEffect, useMemo, useRef, useState } from 'react'
+import React, { Component, Suspense, lazy, useEffect, useMemo, useRef, useState } from 'react'
 import { useGLTF } from '@react-three/drei'
 import SectionHeading from '../ui/SectionHeading'
 import CanvasFallback from '../ui/CanvasFallback'
@@ -25,6 +25,48 @@ function getModel(id) {
     if (m) modelCache[id] = lazy(m.load)
   }
   return modelCache[id]
+}
+
+// Internal ErrorBoundary inside R3F Canvas to catch GLB loading or network errors
+class GLBErrorBoundary extends Component {
+  state = { hasError: false }
+  static getDerivedStateFromError() { return { hasError: true } }
+  componentDidCatch(err) {
+    console.warn('[GLBErrorBoundary] GLB load failed, activating procedural fallback:', err)
+    if (this.props.onFallback) this.props.onFallback()
+  }
+  render() {
+    if (this.state.hasError) return this.props.fallback
+    return this.props.children
+  }
+}
+
+// Resilient GLB Loader: Tries GLB model loading, and if it takes > 2.5s or fails
+// (e.g. Draco CDN blocked on mobile networks/Safari), it falls back seamlessly to
+// procedural Three.js model (ModelComp) which loads 100% locally in 0ms!
+function GLBWithFallback({ ModelComp, glbProps, modelCompProps }) {
+  const [useFallback, setUseFallback] = useState(false)
+
+  useEffect(() => {
+    setUseFallback(false)
+    const timer = setTimeout(() => {
+      setUseFallback(true)
+    }, 2500)
+    return () => clearTimeout(timer)
+  }, [glbProps.glbUrl])
+
+  if (useFallback || !glbProps.glbUrl) {
+    return <ModelComp {...modelCompProps} />
+  }
+
+  return (
+    <GLBErrorBoundary
+      onFallback={() => setUseFallback(true)}
+      fallback={<ModelComp {...modelCompProps} />}
+    >
+      <GLBModel {...glbProps} />
+    </GLBErrorBoundary>
+  )
 }
 
 // Pick a starter product per zone's surface (Floor / Wall / Countertop / Both).
@@ -67,12 +109,14 @@ export default function Visualizer() {
   const [modelExtras, setModelExtras] = useState(() => defaultModelExtras(models[0]))
   const canvasWrapRef = useRef(null)
 
-  // Preload GLB models only once we know the device can actually render them
-  // (and only once this component itself has been lazy-loaded near-viewport —
-  // see VisualizerLazy). Avoids fetching all 5 GLBs on every page view.
+  // Preload GLB models safely
   useEffect(() => {
     if (!webgl) return
-    models.forEach((m) => { if (m.glbUrl) useGLTF.preload(m.glbUrl) })
+    models.forEach((m) => {
+      if (m.glbUrl) {
+        try { useGLTF.preload(m.glbUrl) } catch {}
+      }
+    })
   }, [webgl])
 
   const activeModel = useMemo(
@@ -116,8 +160,7 @@ export default function Visualizer() {
     if (canvas) await captureAndDownload(canvas)
   }
 
-  // Listen for "view-in-3d" events from the Catalogue — route the product to
-  // the best model + zone for its surface type (e.g. Countertop → Vanity).
+  // Listen for "view-in-3d" events from the Catalogue
   useEffect(() => {
     const handler = (e) => {
       const product = e.detail
@@ -127,7 +170,6 @@ export default function Visualizer() {
       let bestModel = models[0]
       let bestZone = bestModel.zones[0]
 
-      // Countertop products → Vanity Counter model
       if (surface === 'Countertop') {
         const vanity = models.find((m) => m.id === 'vanity')
         if (vanity) {
@@ -135,7 +177,6 @@ export default function Visualizer() {
           if (cz) { bestModel = vanity; bestZone = cz }
         }
       } else {
-        // Find the first model with a zone matching the product's surface
         for (const model of models) {
           const match = model.zones.find(
             (z) => z.surface === surface || z.surface === 'Both' || surface === 'Both',
@@ -152,6 +193,32 @@ export default function Visualizer() {
     return () => window.removeEventListener('view-in-3d', handler)
   }, [])
 
+  const glbProps = useMemo(() => ({
+    glbUrl: activeModel.glbUrl,
+    zones: activeModel.zones,
+    zoneTextures,
+    activeZone: activeZoneId,
+    onZoneClick: setActiveZoneId,
+    layout: modelExtras.layout,
+    groutEnabled: !!(activeModel.controls || []).includes('groutColor'),
+    modelExtras,
+  }), [activeModel, zoneTextures, activeZoneId, modelExtras])
+
+  const modelCompProps = useMemo(() => ({
+    zoneTextures,
+    activeZone: activeZoneId,
+    onZoneClick: setActiveZoneId,
+    showShower: modelExtras.showShower,
+    showWC: modelExtras.showWC,
+    showNosing: modelExtras.showNosing,
+    layout: modelExtras.layout,
+    repeatScale: modelExtras.repeatScale,
+    groutColor: modelExtras.groutColor,
+    basinStyle: modelExtras.basinStyle,
+    showFaucet: modelExtras.showFaucet,
+    showVanityLight: modelExtras.showVanityLight,
+  }), [zoneTextures, activeZoneId, modelExtras])
+
   return (
     <section id="visualizer" className="section-pad relative bg-charcoal">
       <div className="container-px">
@@ -166,64 +233,34 @@ export default function Visualizer() {
         </div>
 
         <div className="mt-8 grid gap-6 lg:grid-cols-[1.6fr_1fr]">
-          {/* 3D stage — wrapped in ErrorBoundary so a runtime error
-              here doesn't take down the whole app. */}
           <ErrorBoundary>
-              <div
-                ref={stageRef}
-                className="relative aspect-[4/3] min-w-0 overflow-hidden rounded-card border border-white/5 bg-charcoal-800 shadow-card lg:aspect-auto lg:min-h-[540px]"
-              >
-              {webgl ? (
+            <div
+              ref={stageRef}
+              className="relative aspect-[4/3] min-w-0 overflow-hidden rounded-card border border-white/5 bg-charcoal-800 shadow-card lg:aspect-auto lg:min-h-[540px]"
+            >
+              {webgl !== false ? (
                 stageEntered ? (
-                  <Suspense
-                    fallback={
-                      <div className="flex h-full w-full items-center justify-center text-sand/60">
-                        <span className="animate-pulse">Loading 3D scene…</span>
-                      </div>
-                    }
+                  <div
+                    ref={canvasWrapRef}
+                    key={`${activeModelId}-${resetKey}`}
+                    className="h-full w-full"
                   >
-                    <div
-                      ref={canvasWrapRef}
-                      key={`${activeModelId}-${resetKey}`}
-                      className="h-full w-full"
+                    <ModelShell
+                      cameraPresets={activeModel.presets}
+                      presetName={presetName}
+                      frameloop={stageVisible ? 'always' : 'never'}
+                      interactiveAutoRotate={!!activeModel.interactiveAutoRotate}
+                      quality={quality}
                     >
-                      <ModelShell
-                        cameraPresets={activeModel.presets}
-                        presetName={presetName}
-                        frameloop={stageVisible ? 'always' : 'never'}
-                        interactiveAutoRotate={!!activeModel.interactiveAutoRotate}
-                        quality={quality}
-                      >
-                        {activeModel.glbUrl ? (
-                          <GLBModel
-                            glbUrl={activeModel.glbUrl}
-                            zones={activeModel.zones}
-                            zoneTextures={zoneTextures}
-                            activeZone={activeZoneId}
-                            onZoneClick={setActiveZoneId}
-                            layout={modelExtras.layout}
-                            groutEnabled={!!(activeModel.controls || []).includes('groutColor')}
-                            modelExtras={modelExtras}
-                          />
-                        ) : (
-                          <ModelComp
-                            zoneTextures={zoneTextures}
-                            activeZone={activeZoneId}
-                            onZoneClick={setActiveZoneId}
-                            showShower={modelExtras.showShower}
-                            showWC={modelExtras.showWC}
-                            showNosing={modelExtras.showNosing}
-                            layout={modelExtras.layout}
-                            repeatScale={modelExtras.repeatScale}
-                            groutColor={modelExtras.groutColor}
-                            basinStyle={modelExtras.basinStyle}
-                            showFaucet={modelExtras.showFaucet}
-                            showVanityLight={modelExtras.showVanityLight}
-                          />
-                        )}
-                      </ModelShell>
-                    </div>
-                  </Suspense>
+                      <Suspense fallback={null}>
+                        <GLBWithFallback
+                          ModelComp={ModelComp}
+                          glbProps={glbProps}
+                          modelCompProps={modelCompProps}
+                        />
+                      </Suspense>
+                    </ModelShell>
+                  </div>
                 ) : (
                   <div className="flex h-full w-full items-center justify-center text-sand/50">
                     <span className="animate-pulse">Preparing 3D…</span>
@@ -240,15 +277,13 @@ export default function Visualizer() {
                 </div>
               )}
 
-              {/* controls hint */}
-              {webgl && (
+              {webgl !== false && (
                 <div className="pointer-events-none absolute left-4 top-4 flex items-center gap-2 rounded-full bg-charcoal/70 px-3 py-1.5 text-[11px] text-sand backdrop-blur">
                   <Icon name="compass" className="h-3.5 w-3.5 text-gold" />
                   Drag to orbit · Scroll to zoom
                 </div>
               )}
 
-              {/* Mobile: open drawer button */}
               <button
                 onClick={() => setDrawerOpen(true)}
                 className="absolute bottom-4 right-4 inline-flex items-center gap-2 rounded-btn bg-gold px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-ink shadow-glow lg:hidden"
@@ -258,7 +293,6 @@ export default function Visualizer() {
             </div>
           </ErrorBoundary>
 
-          {/* Desktop: side panel — also wrapped to be safe. */}
           <ErrorBoundary>
             <div className="hidden min-w-0 flex-col gap-4 lg:flex">
               <ModelTabs active={activeModelId} onChange={setActiveModelId} />
