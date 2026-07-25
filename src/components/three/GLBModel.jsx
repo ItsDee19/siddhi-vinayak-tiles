@@ -3,8 +3,10 @@ import { useGLTF } from '@react-three/drei'
 import * as THREE from 'three'
 import { loadZoneTexture, loadRawTexture, composeGroutTexture, resolveZoneSource } from '../../utils/threeTextures'
 
-// Set up Draco decoder path for compressed GLB files (Google CDN)
-useGLTF.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.7/')
+// Set up Draco decoder path — self-hosted so mobile browsers (iOS Safari with
+// content blockers, etc.) can always load the WASM decoder without relying on
+// gstatic.com CDN which can be blocked or stall on cellular networks.
+useGLTF.setDecoderPath('/draco/')
 
 // =========================================================================
 // GLBModel — loads a Blender-exported GLB file and dynamically swaps

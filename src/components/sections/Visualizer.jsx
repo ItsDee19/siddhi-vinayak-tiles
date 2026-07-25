@@ -175,14 +175,7 @@ export default function Visualizer() {
               >
               {webgl ? (
                 stageEntered ? (
-                  <Suspense
-                    fallback={
-                      <div className="flex h-full w-full items-center justify-center text-sand/60">
-                        <span className="animate-pulse">Loading 3D scene…</span>
-                      </div>
-                    }
-                  >
-                    <div
+                  <div
                       ref={canvasWrapRef}
                       key={`${activeModelId}-${resetKey}`}
                       className="h-full w-full"
@@ -194,36 +187,37 @@ export default function Visualizer() {
                         interactiveAutoRotate={!!activeModel.interactiveAutoRotate}
                         quality={quality}
                       >
-                        {activeModel.glbUrl ? (
-                          <GLBModel
-                            glbUrl={activeModel.glbUrl}
-                            zones={activeModel.zones}
-                            zoneTextures={zoneTextures}
-                            activeZone={activeZoneId}
-                            onZoneClick={setActiveZoneId}
-                            layout={modelExtras.layout}
-                            groutEnabled={!!(activeModel.controls || []).includes('groutColor')}
-                            modelExtras={modelExtras}
-                          />
-                        ) : (
-                          <ModelComp
-                            zoneTextures={zoneTextures}
-                            activeZone={activeZoneId}
-                            onZoneClick={setActiveZoneId}
-                            showShower={modelExtras.showShower}
-                            showWC={modelExtras.showWC}
-                            showNosing={modelExtras.showNosing}
-                            layout={modelExtras.layout}
-                            repeatScale={modelExtras.repeatScale}
-                            groutColor={modelExtras.groutColor}
-                            basinStyle={modelExtras.basinStyle}
-                            showFaucet={modelExtras.showFaucet}
-                            showVanityLight={modelExtras.showVanityLight}
-                          />
-                        )}
+                        <Suspense fallback={null}>
+                          {activeModel.glbUrl ? (
+                            <GLBModel
+                              glbUrl={activeModel.glbUrl}
+                              zones={activeModel.zones}
+                              zoneTextures={zoneTextures}
+                              activeZone={activeZoneId}
+                              onZoneClick={setActiveZoneId}
+                              layout={modelExtras.layout}
+                              groutEnabled={!!(activeModel.controls || []).includes('groutColor')}
+                              modelExtras={modelExtras}
+                            />
+                          ) : (
+                            <ModelComp
+                              zoneTextures={zoneTextures}
+                              activeZone={activeZoneId}
+                              onZoneClick={setActiveZoneId}
+                              showShower={modelExtras.showShower}
+                              showWC={modelExtras.showWC}
+                              showNosing={modelExtras.showNosing}
+                              layout={modelExtras.layout}
+                              repeatScale={modelExtras.repeatScale}
+                              groutColor={modelExtras.groutColor}
+                              basinStyle={modelExtras.basinStyle}
+                              showFaucet={modelExtras.showFaucet}
+                              showVanityLight={modelExtras.showVanityLight}
+                            />
+                          )}
+                        </Suspense>
                       </ModelShell>
                     </div>
-                  </Suspense>
                 ) : (
                   <div className="flex h-full w-full items-center justify-center text-sand/50">
                     <span className="animate-pulse">Preparing 3D…</span>
