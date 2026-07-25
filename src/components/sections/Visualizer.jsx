@@ -1,4 +1,4 @@
-import { Suspense, lazy, useEffect, useMemo, useRef, useState } from 'react'
+import React, { Component, Suspense, lazy, useEffect, useMemo, useRef, useState } from 'react'
 import { useGLTF } from '@react-three/drei'
 import SectionHeading from '../ui/SectionHeading'
 import CanvasFallback from '../ui/CanvasFallback'
@@ -16,6 +16,19 @@ import ControlBar from '../visualizer/ControlBar'
 import MobileDrawer from '../visualizer/MobileDrawer'
 import Icon from '../Icons'
 import { captureAndDownload } from '../visualizer/ScreenshotHelper'
+
+// Internal ErrorBoundary inside Three.js Canvas to catch GLB loading or decoder errors
+class GLBErrorBoundary extends Component {
+  state = { hasError: false }
+  static getDerivedStateFromError() { return { hasError: true } }
+  componentDidCatch(err) {
+    console.warn('[GLBErrorBoundary] GLB load failed, rendering procedural model fallback:', err)
+  }
+  render() {
+    if (this.state.hasError) return this.props.fallback
+    return this.props.children
+  }
+}
 
 // Lazy model components keyed by id
 const modelCache = {}
@@ -189,16 +202,35 @@ export default function Visualizer() {
                       >
                         <Suspense fallback={null}>
                           {activeModel.glbUrl ? (
-                            <GLBModel
-                              glbUrl={activeModel.glbUrl}
-                              zones={activeModel.zones}
-                              zoneTextures={zoneTextures}
-                              activeZone={activeZoneId}
-                              onZoneClick={setActiveZoneId}
-                              layout={modelExtras.layout}
-                              groutEnabled={!!(activeModel.controls || []).includes('groutColor')}
-                              modelExtras={modelExtras}
-                            />
+                            <GLBErrorBoundary
+                              fallback={
+                                <ModelComp
+                                  zoneTextures={zoneTextures}
+                                  activeZone={activeZoneId}
+                                  onZoneClick={setActiveZoneId}
+                                  showShower={modelExtras.showShower}
+                                  showWC={modelExtras.showWC}
+                                  showNosing={modelExtras.showNosing}
+                                  layout={modelExtras.layout}
+                                  repeatScale={modelExtras.repeatScale}
+                                  groutColor={modelExtras.groutColor}
+                                  basinStyle={modelExtras.basinStyle}
+                                  showFaucet={modelExtras.showFaucet}
+                                  showVanityLight={modelExtras.showVanityLight}
+                                />
+                              }
+                            >
+                              <GLBModel
+                                glbUrl={activeModel.glbUrl}
+                                zones={activeModel.zones}
+                                zoneTextures={zoneTextures}
+                                activeZone={activeZoneId}
+                                onZoneClick={setActiveZoneId}
+                                layout={modelExtras.layout}
+                                groutEnabled={!!(activeModel.controls || []).includes('groutColor')}
+                                modelExtras={modelExtras}
+                              />
+                            </GLBErrorBoundary>
                           ) : (
                             <ModelComp
                               zoneTextures={zoneTextures}
