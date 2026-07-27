@@ -103,9 +103,9 @@ export const models = [
       { id: 'sideReturns', label: 'Side Returns', surface: 'Wall' },
     ],
     presets: {
-      default:      { position: [0, 3, 10], target: [0, 2.5, 0] },
-      threeQuarter: { position: [8, 4, 8],  target: [0, 2.5, 0] },
-      counterClose: { position: [0, 3, 4],  target: [0, 2.5, 0] },
+      default:      { position: [0, -2.8, 1.3], target: [0, -0.2, 0.7] },
+      threeQuarter: { position: [2.2, -2.5, 1.4], target: [0, -0.2, 0.7] },
+      counterClose: { position: [0, -1.5, 1.1], target: [0, -0.2, 0.7] },
     },
     load: () => import('./ModelE'),
     controls: ['basinStyle', 'showFaucet', 'showVanityLight'],
