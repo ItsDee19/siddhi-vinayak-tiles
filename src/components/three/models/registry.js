@@ -57,7 +57,7 @@ export const models = [
   {
     id: 'staircase',
     name: 'Staircase',
-    blurb: '22 steps, 2 flights + landing',
+    blurb: '20 steps, L-shaped + landing',
     glbUrl: '/models/model-c-staircase.glb',
     zones: [
       { id: 'tread',   label: 'Tread Tile',  surface: 'Floor' },
@@ -65,10 +65,10 @@ export const models = [
       { id: 'landing', label: 'Landing',     surface: 'Floor' },
     ],
     presets: {
-      default:     { position: [10, 5, 14], target: [4, 4, 0] },
-      side:        { position: [0,  6, 18],  target: [4, 4, 0] },
-      perspective: { position: [12, 8, 10], target: [4, 4, 0] },
-      landing:     { position: [12, 9, 1],   target: [11, 6.4, 0] },
+      default:     { position: [6, 4, 4],   target: [2, 1.8, -1] },
+      side:        { position: [-1, 3, 3],   target: [2, 1.8, -1] },
+      perspective: { position: [7, 5, -3],   target: [2, 1.8, -1] },
+      landing:     { position: [5, 3.5, 0],  target: [3.5, 1.8, 0] },
     },
     load: () => import('./ModelC'),
     interactiveAutoRotate: true,

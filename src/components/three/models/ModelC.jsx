@@ -1,18 +1,18 @@
 // Model C — Staircase (PRD §4.4)
-// 22 steps total in 2 flights of 11 each, separated by a 4×4 landing.
-// Step size: tread 1ft deep, riser ~7in (0.58ft), width 4ft.
-// 3 texture zones: tread, riser, landing. Optional gold nosing edge.
+// L-shaped staircase: 10 steps in Flight 1 (+X), landing, 10 steps in Flight 2 (-Z).
+// Real-world meter scale: 28cm treads, 18cm risers, 1.2m wide steps.
+// 3 texture zones: tread, riser, landing. Optional brass nosing edge.
 // Auto-rotate-with-5s-pause is handled by ModelShell when interactiveAutoRotate=true.
 
 import StepFlight from '../primitives/StepFlight'
 import TexturedFloor from '../primitives/TexturedFloor'
 
-const TREAD_DEPTH = 1
-const RISER_HEIGHT = 0.58
-const STEP_WIDTH = 4
-const FLIGHT_STEPS = 11
-const LANDING_SIZE = 4
-const LANDING_Y = FLIGHT_STEPS * RISER_HEIGHT  // 6.38 ft
+const TREAD_DEPTH = 0.28
+const RISER_HEIGHT = 0.18
+const STEP_WIDTH = 1.2
+const FLIGHT_STEPS = 10
+const LANDING_SIZE = 1.4
+const LANDING_Y = FLIGHT_STEPS * RISER_HEIGHT  // 1.8m
 
 export default function ModelC({
   zoneTextures = {},
@@ -22,7 +22,7 @@ export default function ModelC({
 }) {
   return (
     <group>
-      {/* Flight 1 — 11 steps ascending +X */}
+      {/* Flight 1 — 10 steps ascending +X */}
       <StepFlight
         origin={[0, 0, 0]}
         count={FLIGHT_STEPS}
@@ -36,55 +36,116 @@ export default function ModelC({
         onZoneClick={onZoneClick}
       />
 
-      {/* Landing platform — 4ft × 4ft at top of flight 1 */}
+      {/* Landing platform — L-shaped turn between flights */}
       <TexturedFloor
-        size={[LANDING_SIZE, LANDING_SIZE]}
-        position={[FLIGHT_STEPS * TREAD_DEPTH + LANDING_SIZE / 2, LANDING_Y, 0]}
+        size={[LANDING_SIZE, LANDING_SIZE + STEP_WIDTH]}
+        position={[
+          FLIGHT_STEPS * TREAD_DEPTH + LANDING_SIZE / 2,
+          LANDING_Y,
+          -LANDING_SIZE / 2 + STEP_WIDTH / 2,
+        ]}
         source={zoneTextures.landing}
         repeat={2}
         isActive={activeZone === 'landing'}
         onClick={() => onZoneClick?.('landing')}
       />
 
-      {/* Flight 2 — 11 steps ascending -X (turns back, classic U-stair) */}
-      <StepFlight
-        origin={[FLIGHT_STEPS * TREAD_DEPTH + LANDING_SIZE - TREAD_DEPTH, LANDING_Y, 0]}
-        count={FLIGHT_STEPS}
-        treadDepth={TREAD_DEPTH}
-        riserHeight={RISER_HEIGHT}
-        width={STEP_WIDTH}
-        direction={-1}
-        textures={{ tread: zoneTextures.tread, riser: zoneTextures.riser }}
-        showNosing={showNosing}
-        isActive={activeZone}
-        onZoneClick={onZoneClick}
-      />
+      {/* Flight 2 — 10 steps ascending along -Z (L-turn) */}
+      <group
+        position={[
+          FLIGHT_STEPS * TREAD_DEPTH + LANDING_SIZE / 2,
+          LANDING_Y,
+          STEP_WIDTH / 2 - LANDING_SIZE,
+        ]}
+        rotation={[0, -Math.PI / 2, 0]}
+      >
+        <StepFlight
+          origin={[0, 0, 0]}
+          count={FLIGHT_STEPS}
+          treadDepth={TREAD_DEPTH}
+          riserHeight={RISER_HEIGHT}
+          width={STEP_WIDTH}
+          direction={1}
+          textures={{ tread: zoneTextures.tread, riser: zoneTextures.riser }}
+          showNosing={showNosing}
+          isActive={activeZone}
+          onZoneClick={onZoneClick}
+        />
+      </group>
 
-      {/* Structural Concrete Under-Soffit Carcass (Inspired by Image 2) */}
+      {/* Concrete stringer under Flight 1 */}
       <mesh
-        position={[(FLIGHT_STEPS * TREAD_DEPTH) / 2, LANDING_Y / 2 - 0.4, 0]}
+        position={[
+          (FLIGHT_STEPS * TREAD_DEPTH) / 2,
+          LANDING_Y / 2 - 0.12,
+          0,
+        ]}
         rotation={[0, 0, Math.atan2(LANDING_Y, FLIGHT_STEPS * TREAD_DEPTH)]}
         receiveShadow
       >
-        <boxGeometry args={[(FLIGHT_STEPS * TREAD_DEPTH) / 2 + 0.5, 0.5, STEP_WIDTH]} />
-        <meshStandardMaterial color="#4a4b50" roughness={0.8} metalness={0.1} />
-      </mesh>
-      <mesh position={[FLIGHT_STEPS * TREAD_DEPTH + LANDING_SIZE / 2, LANDING_Y - 0.4, 0]} receiveShadow>
-        <boxGeometry args={[LANDING_SIZE, 0.5, LANDING_SIZE]} />
-        <meshStandardMaterial color="#4a4b50" roughness={0.8} metalness={0.1} />
+        <boxGeometry args={[
+          Math.sqrt((FLIGHT_STEPS * TREAD_DEPTH) ** 2 + LANDING_Y ** 2),
+          0.16,
+          STEP_WIDTH,
+        ]} />
+        <meshStandardMaterial color="#353330" roughness={0.85} metalness={0} />
       </mesh>
 
-      {/* Spindle Railings & Wood Top Handrail (Inspired by Image 2) */}
-      <group position={[0, 0, STEP_WIDTH / 2 - 0.1]}>
-        {/* Handrail Flight 1 */}
-        <mesh
-          position={[(FLIGHT_STEPS * TREAD_DEPTH) / 2, LANDING_Y / 2 + 2.8, 0]}
-          rotation={[0, 0, Math.atan2(LANDING_Y, FLIGHT_STEPS * TREAD_DEPTH)]}
-        >
-          <cylinderGeometry args={[0.04, 0.04, FLIGHT_STEPS * TREAD_DEPTH * 1.25, 16]} />
-          <meshStandardMaterial color="#5c3a22" roughness={0.4} />
-        </mesh>
-      </group>
+      {/* Landing slab */}
+      <mesh
+        position={[
+          FLIGHT_STEPS * TREAD_DEPTH + LANDING_SIZE / 2,
+          LANDING_Y - 0.12,
+          -LANDING_SIZE / 2 + STEP_WIDTH / 2,
+        ]}
+        receiveShadow
+      >
+        <boxGeometry args={[LANDING_SIZE, 0.2, LANDING_SIZE + STEP_WIDTH]} />
+        <meshStandardMaterial color="#353330" roughness={0.85} metalness={0} />
+      </mesh>
+
+      {/* Handrail — Flight 1 left side */}
+      <mesh
+        position={[
+          (FLIGHT_STEPS * TREAD_DEPTH) / 2,
+          LANDING_Y / 2 + 0.9,
+          STEP_WIDTH / 2 + 0.04,
+        ]}
+        rotation={[0, 0, Math.atan2(LANDING_Y, FLIGHT_STEPS * TREAD_DEPTH)]}
+      >
+        <cylinderGeometry args={[0.025, 0.025, Math.sqrt((FLIGHT_STEPS * TREAD_DEPTH) ** 2 + LANDING_Y ** 2) * 1.05, 16]} />
+        <meshStandardMaterial color="#361d0d" roughness={0.35} />
+      </mesh>
+
+      {/* Handrail — Flight 1 right side */}
+      <mesh
+        position={[
+          (FLIGHT_STEPS * TREAD_DEPTH) / 2,
+          LANDING_Y / 2 + 0.9,
+          -STEP_WIDTH / 2 - 0.04,
+        ]}
+        rotation={[0, 0, Math.atan2(LANDING_Y, FLIGHT_STEPS * TREAD_DEPTH)]}
+      >
+        <cylinderGeometry args={[0.025, 0.025, Math.sqrt((FLIGHT_STEPS * TREAD_DEPTH) ** 2 + LANDING_Y ** 2) * 1.05, 16]} />
+        <meshStandardMaterial color="#361d0d" roughness={0.35} />
+      </mesh>
+
+      {/* Side wall — inner */}
+      <mesh
+        position={[
+          (FLIGHT_STEPS * TREAD_DEPTH) / 2,
+          LANDING_Y,
+          -STEP_WIDTH / 2 - 0.08,
+        ]}
+        receiveShadow
+      >
+        <boxGeometry args={[
+          FLIGHT_STEPS * TREAD_DEPTH + 0.3,
+          LANDING_Y * 2 + 0.5,
+          0.15,
+        ]} />
+        <meshStandardMaterial color="#353330" roughness={0.85} metalness={0} />
+      </mesh>
     </group>
   )
 }
