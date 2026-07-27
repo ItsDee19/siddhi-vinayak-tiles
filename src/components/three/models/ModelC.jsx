@@ -59,6 +59,32 @@ export default function ModelC({
         isActive={activeZone}
         onZoneClick={onZoneClick}
       />
+
+      {/* Structural Concrete Under-Soffit Carcass (Inspired by Image 2) */}
+      <mesh
+        position={[(FLIGHT_STEPS * TREAD_DEPTH) / 2, LANDING_Y / 2 - 0.4, 0]}
+        rotation={[0, 0, Math.atan2(LANDING_Y, FLIGHT_STEPS * TREAD_DEPTH)]}
+        receiveShadow
+      >
+        <boxGeometry args={[(FLIGHT_STEPS * TREAD_DEPTH) / 2 + 0.5, 0.5, STEP_WIDTH]} />
+        <meshStandardMaterial color="#4a4b50" roughness={0.8} metalness={0.1} />
+      </mesh>
+      <mesh position={[FLIGHT_STEPS * TREAD_DEPTH + LANDING_SIZE / 2, LANDING_Y - 0.4, 0]} receiveShadow>
+        <boxGeometry args={[LANDING_SIZE, 0.5, LANDING_SIZE]} />
+        <meshStandardMaterial color="#4a4b50" roughness={0.8} metalness={0.1} />
+      </mesh>
+
+      {/* Spindle Railings & Wood Top Handrail (Inspired by Image 2) */}
+      <group position={[0, 0, STEP_WIDTH / 2 - 0.1]}>
+        {/* Handrail Flight 1 */}
+        <mesh
+          position={[(FLIGHT_STEPS * TREAD_DEPTH) / 2, LANDING_Y / 2 + 2.8, 0]}
+          rotation={[0, 0, Math.atan2(LANDING_Y, FLIGHT_STEPS * TREAD_DEPTH)]}
+        >
+          <cylinderGeometry args={[0.04, 0.04, FLIGHT_STEPS * TREAD_DEPTH * 1.25, 16]} />
+          <meshStandardMaterial color="#5c3a22" roughness={0.4} />
+        </mesh>
+      </group>
     </group>
   )
 }

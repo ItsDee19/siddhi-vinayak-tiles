@@ -71,21 +71,50 @@ export default function ModelE({
         onClick={() => onZoneClick?.('sideReturns')}
       />
 
+      {/* Organic Teardrop / Pebble Backlit Mirror (Inspired by Image 1) */}
+      <group position={[0, COUNTER_Y + 2.6, -COUNTER_DEPTH / 2 + 0.08]}>
+        {/* LED Backlight Halo */}
+        <mesh position={[0, 0, -0.02]}>
+          <ringGeometry args={[1.25, 1.45, 32]} />
+          <meshStandardMaterial color="#fff5e0" emissive="#fff5e0" emissiveIntensity={2.5} side={2} />
+        </mesh>
+        {/* Mirror Body */}
+        <mesh scale={[1.2, 1.45, 1]}>
+          <cylinderGeometry args={[1.1, 1.1, 0.04, 32]} />
+          <meshStandardMaterial color="#e8e8e8" roughness={0.0} metalness={0.95} />
+        </mesh>
+        {/* Rose Gold Metallic Rim */}
+        <mesh scale={[1.22, 1.47, 1]} position={[0, 0, 0.01]}>
+          <torusGeometry args={[1.1, 0.03, 16, 32]} />
+          <meshStandardMaterial color="#d49575" roughness={0.2} metalness={0.85} />
+        </mesh>
+      </group>
+
       {/* Counter thickness slab (gives the counter visual depth) */}
       <mesh position={[0, COUNTER_Y - 0.1, 0]} castShadow receiveShadow>
         <boxGeometry args={[WALL_WIDTH, 0.2, COUNTER_DEPTH]} />
         <meshStandardMaterial color="#3D2512" roughness={0.8} />
       </mesh>
 
-      {/* 2 basins — positioned on top of counter, slightly inset */}
-      <Basin position={[-BASIN_OFFSET_X, COUNTER_Y, 0]} style={basinStyle} />
-      <Basin position={[BASIN_OFFSET_X, COUNTER_Y, 0]} style={basinStyle} />
+      {/* 2 rectangular vessel basins — positioned on top of counter */}
+      <Basin position={[-BASIN_OFFSET_X, COUNTER_Y + 0.2, 0.1]} style={basinStyle} />
+      <Basin position={[BASIN_OFFSET_X, COUNTER_Y + 0.2, 0.1]} style={basinStyle} />
 
       {/* Faucets behind each basin */}
-      {showFaucet && <Faucet position={[-BASIN_OFFSET_X, COUNTER_Y + 0.5, -0.6]} />}
-      {showFaucet && <Faucet position={[BASIN_OFFSET_X, COUNTER_Y + 0.5, -0.6]} />}
+      {showFaucet && <Faucet position={[-BASIN_OFFSET_X, COUNTER_Y + 0.5, -0.5]} />}
+      {showFaucet && <Faucet position={[BASIN_OFFSET_X, COUNTER_Y + 0.5, -0.5]} />}
 
-      {/* Vanity light strip — emissive plane above the back wall, lights the counter */}
+      {/* Accessories: Soap dispenser & towel (Inspired by Image 1) */}
+      <mesh position={[3.8, COUNTER_Y + 0.2, 0.4]} castShadow>
+        <cylinderGeometry args={[0.08, 0.08, 0.3, 16]} />
+        <meshStandardMaterial color="#2a2a2e" roughness={0.4} metalness={0.6} />
+      </mesh>
+      <mesh position={[-3.8, COUNTER_Y + 0.1, 0.4]} castShadow>
+        <boxGeometry args={[0.5, 0.15, 0.7]} />
+        <meshStandardMaterial color="#f0efe8" roughness={0.9} />
+      </mesh>
+
+      {/* Vanity light strip — emissive plane above the back wall */}
       {showVanityLight && (
         <mesh position={[0, COUNTER_Y + WALL_HEIGHT + 0.3, -COUNTER_DEPTH / 2 + 0.05]}>
           <planeGeometry args={[WALL_WIDTH * 0.8, 0.2]} />
