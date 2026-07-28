@@ -149,6 +149,7 @@ export default function GLBModel({
 
         for (const mesh of meshes) {
           const isActive = activeZone === zone.id
+          mesh.material = mesh.material.clone()
           if (mesh.material.map) {
             mesh.material.map.dispose()
           }

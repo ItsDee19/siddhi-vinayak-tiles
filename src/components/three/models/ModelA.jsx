@@ -17,12 +17,12 @@ const BANDS = [
 ]
 
 // Render a single band as a row of tiles
-function BandedTiledWall({ width, y0, y1, source, zoneId, activeZone, onZoneClick }) {
+function BandedTiledWall({ position = [0, 0, 0], width, y0, y1, source, zoneId, activeZone, onZoneClick }) {
   const h = y1 - y0
   const cy = y0 + h / 2
   return (
     <mesh
-      position={[0, cy, 0]}
+      position={[position[0], cy, position[2]]}
       onClick={onZoneClick ? (e) => { e.stopPropagation(); onZoneClick(zoneId) } : undefined}
     >
       <TiledSurface

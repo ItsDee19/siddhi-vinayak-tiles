@@ -16,7 +16,6 @@ import ControlBar from '../visualizer/ControlBar'
 import MobileDrawer from '../visualizer/MobileDrawer'
 import Icon from '../Icons'
 import { captureAndDownload } from '../visualizer/ScreenshotHelper'
-import ZonePins from '../three/ZonePins'
 
 // Internal ErrorBoundary inside Three.js Canvas to catch GLB loading or decoder errors
 class GLBErrorBoundary extends Component {
@@ -250,13 +249,6 @@ export default function Visualizer() {
                               showVanityLight={modelExtras.showVanityLight}
                             />
                           )}
-
-                          <ZonePins
-                            zones={activeModel.zones}
-                            activeZoneId={activeZoneId}
-                            zoneTextures={zoneTextures}
-                            onActivateZone={setActiveZoneId}
-                          />
                         </Suspense>
                       </ModelShell>
                     </div>
