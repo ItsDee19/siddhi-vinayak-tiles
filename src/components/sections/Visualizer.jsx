@@ -16,6 +16,7 @@ import ControlBar from '../visualizer/ControlBar'
 import MobileDrawer from '../visualizer/MobileDrawer'
 import Icon from '../Icons'
 import { captureAndDownload } from '../visualizer/ScreenshotHelper'
+import ZonePins from '../three/ZonePins'
 
 // Internal ErrorBoundary inside Three.js Canvas to catch GLB loading or decoder errors
 class GLBErrorBoundary extends Component {
@@ -77,6 +78,7 @@ export default function Visualizer() {
   const [presetName, setPresetName] = useState(firstPresetName(models[0]))
   const [resetKey, setResetKey] = useState(0)
   const [drawerOpen, setDrawerOpen] = useState(false)
+  const [cinematicMode, setCinematicMode] = useState(false)
   const [modelExtras, setModelExtras] = useState(() => defaultModelExtras(models[0]))
   const canvasWrapRef = useRef(null)
 
@@ -198,6 +200,7 @@ export default function Visualizer() {
                         presetName={presetName}
                         frameloop={stageVisible ? 'always' : 'never'}
                         interactiveAutoRotate={!!activeModel.interactiveAutoRotate}
+                        cinematicMode={cinematicMode}
                         quality={quality}
                       >
                         <Suspense fallback={null}>
@@ -247,6 +250,13 @@ export default function Visualizer() {
                               showVanityLight={modelExtras.showVanityLight}
                             />
                           )}
+
+                          <ZonePins
+                            zones={activeModel.zones}
+                            activeZoneId={activeZoneId}
+                            zoneTextures={zoneTextures}
+                            onActivateZone={setActiveZoneId}
+                          />
                         </Suspense>
                       </ModelShell>
                     </div>
@@ -266,11 +276,23 @@ export default function Visualizer() {
                 </div>
               )}
 
-              {/* controls hint */}
+              {/* controls hint & cinematic tour toggle */}
               {webgl && (
-                <div className="pointer-events-none absolute left-4 top-4 flex items-center gap-2 rounded-full bg-charcoal/70 px-3 py-1.5 text-[11px] text-sand backdrop-blur">
-                  <Icon name="compass" className="h-3.5 w-3.5 text-gold" />
-                  Drag to orbit · Scroll to zoom
+                <div className="absolute left-4 top-4 flex items-center gap-2">
+                  <div className="pointer-events-none flex items-center gap-2 rounded-full bg-charcoal/70 px-3 py-1.5 text-[11px] text-sand backdrop-blur">
+                    <Icon name="compass" className="h-3.5 w-3.5 text-gold" />
+                    Drag to orbit · Scroll to zoom
+                  </div>
+                  <button
+                    onClick={() => setCinematicMode((v) => !v)}
+                    className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wider backdrop-blur transition-all ${
+                      cinematicMode
+                        ? 'bg-gold text-ink ring-2 ring-gold/50 shadow-glow'
+                        : 'bg-charcoal/70 text-sand hover:bg-charcoal hover:text-gold'
+                    }`}
+                  >
+                    🎬 {cinematicMode ? 'Orbiting 360°' : 'Cinematic Tour'}
+                  </button>
                 </div>
               )}
 

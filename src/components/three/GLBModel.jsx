@@ -50,18 +50,26 @@ export default function GLBModel({
   // Build a map of zoneId → mesh objects for quick lookup
   const zoneMeshes = useMemo(() => {
     const map = {}
+    const isBathroom = /bathroom/i.test(glbUrl)
     cloned.traverse((obj) => {
       if (obj.type !== 'Mesh') return
       const name = obj.name || ''
       const match = name.match(/__([^_]+)$/)
       if (match) {
         const zoneId = match[1]
+        // Bathroom floor meshes: force white, non-interactive
+        if (isBathroom && zoneId === 'floor') {
+          obj.material = new THREE.MeshStandardMaterial({
+            color: 0xffffff, roughness: 0.25, metalness: 0,
+          })
+          return // don't add to zone map — not tileable
+        }
         if (!map[zoneId]) map[zoneId] = []
         map[zoneId].push(obj)
       }
     })
     return map
-  }, [cloned])
+  }, [cloned, glbUrl])
 
   // Clone materials on first run so we can safely modify them
   useEffect(() => {

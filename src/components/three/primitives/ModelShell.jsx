@@ -18,6 +18,7 @@ export default function ModelShell({
   frameloop = 'always',
   showControls = true,
   interactiveAutoRotate = false,
+  cinematicMode = false,
   quality = 'full',
 }) {
   const reduce = useReducedMotion()
@@ -116,8 +117,8 @@ export default function ModelShell({
             maxDistance={20}
             minPolarAngle={0.1}
             maxPolarAngle={Math.PI / 2.05}
-            autoRotate={!reduce}
-            autoRotateSpeed={0.4}
+            autoRotate={cinematicMode || !reduce}
+            autoRotateSpeed={cinematicMode ? 2.0 : 0.4}
             target={initialTarget}
           />
         )}

@@ -31,15 +31,14 @@ export default function ModelB({
   }
   return (
     <group>
-      {/* Floor: 10 ft × 10 ft. Centered on origin. */}
-      <TexturedFloor
-        size={[10, 10]}
+      {/* Floor: 10 ft × 10 ft. Plain white — tiles go on walls only. */}
+      <mesh
         position={[0, 0, 0]}
-        source={zoneTextures.floor}
-        repeat={4}
-        isActive={activeZone === 'floor'}
-        onClick={() => onZoneClick?.('floor')}
-      />
+        rotation={[-Math.PI / 2, 0, 0]}
+      >
+        <planeGeometry args={[10, 10]} />
+        <meshStandardMaterial color="#FFFFFF" roughness={0.25} metalness={0} />
+      </mesh>
 
       {/* Back wall — 10ft at z = -5 */}
       <BandedWall

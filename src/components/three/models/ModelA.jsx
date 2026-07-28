@@ -52,22 +52,13 @@ export default function ModelA({
   }
   return (
     <group>
-      {/* Floor: 8 ft long × 5 ft wide. Centered on origin. 2ft tiles (large). */}
+      {/* Floor: 8 ft long × 5 ft wide. Plain white — tiles go on walls only. */}
       <mesh
         position={[0, 0, 0]}
         rotation={[-Math.PI / 2, 0, 0]}
-        onClick={() => onZoneClick?.('floor')}
       >
-        <TiledSurface
-          size={[8, 5]}
-          tileSize={2.0}            // 2ft floor tiles — large format
-          groutWidth={0.04}
-          groutColor="#1A0E05"
-          source={zoneTextures.floor}
-          repeat={1}
-          orientation="floor"
-          isActive={activeZone === 'floor'}
-        />
+        <planeGeometry args={[8, 5]} />
+        <meshStandardMaterial color="#FFFFFF" roughness={0.25} metalness={0} />
       </mesh>
 
       {/* Back wall — the long 8ft wall at z = -2.5 */}
