@@ -1,9 +1,5 @@
 // ---------------------------------------------------------------------------
-// Real Products extracted from ALL 5 CATALOGUES:
-// PDF 1 (Global Floor), PDF 2 (Global 2025), PDF 3 (Skype 2x4),
-// PDF 4 (Sunflora 2x4), PDF 5 (Sky 12x18 Wall Tiles)
-// Total products: 554
-// Every product has a unique 1:1 image pair (room mockup + tile swatch).
+// Real Products extracted from ALL 5 CATALOGUES
 // ---------------------------------------------------------------------------
 
 export const importedProducts = [
@@ -10331,7 +10327,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c001.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c001-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p1-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -10352,7 +10348,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c002.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c002-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p2-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -10373,7 +10369,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c003.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c003-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p3-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -10394,7 +10390,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c004.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c004-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p4-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -10415,7 +10411,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c005.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c005-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p5-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -10436,7 +10432,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c006.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c006-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p6-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -10457,7 +10453,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c007.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c007-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p7-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -10478,7 +10474,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c008.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c008-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p8-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -10499,7 +10495,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c009.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c009-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p9-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -10520,7 +10516,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c010.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c010-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p10-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -10541,7 +10537,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c011.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c011-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p11-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -10562,7 +10558,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c012.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c012-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p12-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -10583,7 +10579,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c013.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c013-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p13-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -10604,7 +10600,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c014.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c014-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p14-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -10625,7 +10621,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c015.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c015-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p15-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -10646,7 +10642,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c016.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c016-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p16-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -10667,7 +10663,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c017.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c017-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p17-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -10688,7 +10684,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c018.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c018-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p18-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -10709,7 +10705,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c019.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c019-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p19-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -10730,7 +10726,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c020.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c020-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p20-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -10751,7 +10747,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c021.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c021-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p21-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -10772,7 +10768,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c022.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c022-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p22-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -10793,7 +10789,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c023.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c023-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p23-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -10814,7 +10810,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c024.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c024-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p24-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -10835,7 +10831,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c025.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c025-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p25-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -10856,7 +10852,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c026.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c026-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p26-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -10877,7 +10873,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c027.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c027-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p27-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -10898,7 +10894,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c028.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c028-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p28-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -10919,7 +10915,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c029.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c029-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p29-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -10940,7 +10936,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c030.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c030-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p30-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -10961,7 +10957,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c031.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c031-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p31-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -10982,7 +10978,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c032.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c032-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p32-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -11003,7 +10999,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c033.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c033-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p33-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -11024,7 +11020,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c034.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c034-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p34-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -11045,7 +11041,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c035.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c035-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p35-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -11066,7 +11062,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c036.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c036-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p36-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -11087,7 +11083,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c037.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c037-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p37-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -11108,7 +11104,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c038.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c038-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p38-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -11129,7 +11125,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c039.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c039-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p39-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -11150,7 +11146,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c040.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c040-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p40-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -11171,7 +11167,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c041.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c041-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p41-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -11192,7 +11188,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c042.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c042-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p42-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -11213,7 +11209,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c043.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c043-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p43-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -11234,7 +11230,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c044.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c044-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p44-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -11255,7 +11251,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c045.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c045-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p45-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -11276,7 +11272,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c046.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c046-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p46-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -11297,7 +11293,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c047.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c047-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p47-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -11318,7 +11314,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c048.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c048-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p48-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -11339,7 +11335,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c049.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c049-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p49-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -11360,7 +11356,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c050.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c050-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p50-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -11381,7 +11377,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c051.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c051-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p51-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -11402,7 +11398,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c052.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c052-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p52-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -11423,7 +11419,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c053.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c053-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p53-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -11444,7 +11440,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c054.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c054-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p54-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -11465,7 +11461,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c055.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c055-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p55-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -11486,7 +11482,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c056.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c056-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p56-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -11507,7 +11503,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c057.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c057-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p57-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -11528,7 +11524,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c058.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c058-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p58-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -11549,7 +11545,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c059.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c059-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p59-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -11570,7 +11566,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c060.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c060-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p60-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -11591,7 +11587,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c061.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c061-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p61-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -11612,7 +11608,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c062.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c062-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p62-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -11633,7 +11629,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c063.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c063-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p63-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -11654,7 +11650,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c064.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c064-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p64-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -11675,7 +11671,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c065.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c065-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p65-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -11696,7 +11692,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c066.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c066-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p66-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -11717,7 +11713,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c067.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c067-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p67-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -11738,7 +11734,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c068.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c068-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p68-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -11759,7 +11755,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c069.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c069-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p69-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -11780,7 +11776,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c070.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c070-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p70-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -11801,7 +11797,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c071.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c071-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p71-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -11822,7 +11818,7 @@ export const importedProducts = [
     "surface": "Wall",
     "priceRange": "Budget-Mid",
     "imageUrl": "/assets/catalogue/sky12x18-c072.webp",
-    "textureUrl": "/assets/catalogue/swatches/sky12x18-c072-swatch.webp",
+    "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p72-t1-clean.webp",
     "tags": [
       "wall",
       "ceramic",
@@ -11831,4 +11827,4 @@ export const importedProducts = [
     ],
     "featured": false
   }
-];
+]
