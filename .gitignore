@@ -20,3 +20,6 @@ yarn-error.log*
 scratch/
 scratch_*
 
+
+blender/*.blend*
+
