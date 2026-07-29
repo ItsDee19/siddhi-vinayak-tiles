@@ -60,11 +60,11 @@ function isUrlSource(src) {
 function applyTexProps(tex, repeat) {
   tex.wrapS = tex.wrapT = THREE.RepeatWrapping
   tex.repeat.set(repeat, repeat)
-  tex.anisotropy = 16
+  tex.anisotropy = 8
   tex.colorSpace = THREE.SRGBColorSpace
-  tex.minFilter = THREE.LinearMipmapLinearFilter
+  tex.minFilter = THREE.LinearFilter
   tex.magFilter = THREE.LinearFilter
-  tex.generateMipmaps = true
+  tex.generateMipmaps = false
   tex.needsUpdate = true
 }
 
@@ -179,8 +179,8 @@ export function composeGroutTexture(baseTex, groutColor, repeat, size = 512) {
   }
 
   if (groutColor && groutColor !== 'none') {
-    const gw = Math.max(1, Math.round(cw * 0.08))
-    ctx.strokeStyle = groutColor
+    const gw = Math.max(1, Math.round(cw * 0.015))
+    ctx.strokeStyle = groutColor === 'black' ? '#333333' : (groutColor || '#e0dad0')
     ctx.lineWidth = gw
     ctx.lineCap = 'square'
     for (let i = 1; i < cells; i++) {
@@ -193,11 +193,11 @@ export function composeGroutTexture(baseTex, groutColor, repeat, size = 512) {
   const tex = new THREE.CanvasTexture(canvas)
   tex.wrapS = tex.wrapT = THREE.RepeatWrapping
   tex.repeat.set(1, 1) // tiles already baked into the canvas
-  tex.anisotropy = 16
+  tex.anisotropy = 8
   tex.colorSpace = THREE.SRGBColorSpace
-  tex.minFilter = THREE.LinearMipmapLinearFilter
+  tex.minFilter = THREE.LinearFilter
   tex.magFilter = THREE.LinearFilter
-  tex.generateMipmaps = true
+  tex.generateMipmaps = false
   tex.needsUpdate = true
   return tex
 }

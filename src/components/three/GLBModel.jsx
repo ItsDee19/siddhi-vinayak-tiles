@@ -156,7 +156,10 @@ export default function GLBModel({
           if (tex) {
             const texClone = tex.clone()
             texClone.wrapS = texClone.wrapT = THREE.RepeatWrapping
-            texClone.anisotropy = 16
+            texClone.minFilter = THREE.LinearFilter
+            texClone.magFilter = THREE.LinearFilter
+            texClone.generateMipmaps = false
+            texClone.anisotropy = 8
             texClone.needsUpdate = true
             mesh.material.map = texClone
             mesh.material.color = new THREE.Color(0xffffff)
