@@ -150,6 +150,9 @@ export default function GLBModel({
         for (const mesh of meshes) {
           const isActive = activeZone === zone.id
           mesh.material = mesh.material.clone()
+          // Microscopic 0.1% geometry overlap to eliminate sub-pixel gaps between adjacent mesh bands
+          mesh.scale.set(1.001, 1.001, 1.001)
+
           if (mesh.material.map) {
             mesh.material.map.dispose()
           }
@@ -159,7 +162,7 @@ export default function GLBModel({
             texClone.minFilter = THREE.LinearFilter
             texClone.magFilter = THREE.LinearFilter
             texClone.generateMipmaps = false
-            texClone.anisotropy = 8
+            texClone.anisotropy = 16
             texClone.needsUpdate = true
             mesh.material.map = texClone
             mesh.material.color = new THREE.Color(0xffffff)

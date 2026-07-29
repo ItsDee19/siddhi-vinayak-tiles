@@ -60,7 +60,7 @@ function isUrlSource(src) {
 function applyTexProps(tex, repeat) {
   tex.wrapS = tex.wrapT = THREE.RepeatWrapping
   tex.repeat.set(repeat, repeat)
-  tex.anisotropy = 8
+  tex.anisotropy = 16
   tex.colorSpace = THREE.SRGBColorSpace
   tex.minFilter = THREE.LinearFilter
   tex.magFilter = THREE.LinearFilter
