@@ -1,6 +1,6 @@
 import { useMemo, useRef, useState } from 'react'
 import Icon from '../Icons'
-import { products } from '../../data/catalogue'
+import { visualizerProducts as products } from '../../data/visualizerCatalogue'
 
 const INITIAL_BATCH = 28
 
@@ -26,6 +26,16 @@ export default function ZonePicker({
 
     if (subFilter === '12x18') {
       list = list.filter((p) => (p.size && p.size.includes('300x450')) || p.id.startsWith('sky12x18'))
+    } else if (subFilter === '3x12') {
+      list = list.filter((p) => p.size && p.size.includes('76x300'))
+    } else if (subFilter === '6x12') {
+      list = list.filter((p) => p.size && p.size.includes('150x300'))
+    } else if (subFilter === '12x12-wall') {
+      list = list.filter((p) => p.size && p.size.includes('300x300') && p.subCategory === 'Wall Tiles')
+    } else if (subFilter === '16x16-parking') {
+      list = list.filter((p) => p.size && p.size.includes('400x400') && p.surface === 'Floor')
+    } else if (subFilter === '12x12-parking') {
+      list = list.filter((p) => p.size && p.size.includes('300x300') && p.surface === 'Floor')
     } else if (subFilter === '2x4') {
       list = list.filter((p) => (p.size && p.size.includes('600x1200')) || p.id.startsWith('skype') || p.id.startsWith('sunflora'))
     } else if (subFilter === 'floor') {
@@ -90,6 +100,46 @@ export default function ZonePicker({
               }`}
             >
               12x18 Wall
+            </button>
+            <button
+              onClick={() => { setSubFilter('3x12'); setLimit(INITIAL_BATCH) }}
+              className={`rounded-full px-2.5 py-0.5 transition-colors whitespace-nowrap ${
+                subFilter === '3x12' ? 'bg-gold text-ink font-semibold' : 'bg-white/5 text-sand/70 hover:bg-white/10'
+              }`}
+            >
+              3x12 Wall
+            </button>
+            <button
+              onClick={() => { setSubFilter('6x12'); setLimit(INITIAL_BATCH) }}
+              className={`rounded-full px-2.5 py-0.5 transition-colors whitespace-nowrap ${
+                subFilter === '6x12' ? 'bg-gold text-ink font-semibold' : 'bg-white/5 text-sand/70 hover:bg-white/10'
+              }`}
+            >
+              6x12 Wall
+            </button>
+            <button
+              onClick={() => { setSubFilter('12x12-wall'); setLimit(INITIAL_BATCH) }}
+              className={`rounded-full px-2.5 py-0.5 transition-colors whitespace-nowrap ${
+                subFilter === '12x12-wall' ? 'bg-gold text-ink font-semibold' : 'bg-white/5 text-sand/70 hover:bg-white/10'
+              }`}
+            >
+              12x12 Wall
+            </button>
+            <button
+              onClick={() => { setSubFilter('16x16-parking'); setLimit(INITIAL_BATCH) }}
+              className={`rounded-full px-2.5 py-0.5 transition-colors whitespace-nowrap ${
+                subFilter === '16x16-parking' ? 'bg-gold text-ink font-semibold' : 'bg-white/5 text-sand/70 hover:bg-white/10'
+              }`}
+            >
+              16x16 Parking
+            </button>
+            <button
+              onClick={() => { setSubFilter('12x12-parking'); setLimit(INITIAL_BATCH) }}
+              className={`rounded-full px-2.5 py-0.5 transition-colors whitespace-nowrap ${
+                subFilter === '12x12-parking' ? 'bg-gold text-ink font-semibold' : 'bg-white/5 text-sand/70 hover:bg-white/10'
+              }`}
+            >
+              12x12 Parking
             </button>
             <button
               onClick={() => { setSubFilter('2x4'); setLimit(INITIAL_BATCH) }}

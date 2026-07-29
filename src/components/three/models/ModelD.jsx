@@ -7,6 +7,7 @@
 // Tile repeat scale slider (simulates different tile sizes).
 // Grout color picker (when no texture is applied, the base color is the grout).
 
+import GLBModel from '../GLBModel'
 import { useEffect, useState } from 'react'
 import { loadZoneTexture, resolveZoneSource } from '../../../utils/threeTextures'
 
@@ -51,9 +52,20 @@ export default function ModelD({
   repeatScale = 1,          // 0.5x – 2x  (slider)
   groutColor = '#cfc6b4',
 }) {
-  // Map repeatScale (0.5..2) → texture.repeat value (1..16)
-  // The PRD slider simulates different tile sizes: 300mm vs 600mm vs 1200mm.
-  const repeat = 1 + (repeatScale - 0.5) * 10  // 0.5→1, 1→6, 2→16
+  const repeat = 1 + (repeatScale - 0.5) * 10
+
+  if (layout === 'full') {
+    return (
+      <GLBModel
+        url="/models/model-d-feature-wall.glb"
+        zones={[{ id: 'full', label: 'Wall', surface: 'Wall' }]}
+        activeZone={activeZone}
+        zoneTextures={zoneTextures}
+        onZoneClick={onZoneClick}
+        modelExtras={{ repeatScale, groutColor }}
+      />
+    )
+  }
 
   if (layout === 'bands') {
     return (

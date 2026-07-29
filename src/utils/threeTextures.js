@@ -24,13 +24,16 @@ export function getMaterialTexture(swatch, repeat = 1, size = 512) {
     seed: swatch.id || swatch.type + swatch.color,
   })
   const tex = new THREE.CanvasTexture(canvas)
-  tex.wrapS = tex.wrapT = THREE.RepeatWrapping
+  // Clamp single-span textures so filtering cannot pull pixels from the
+  // opposite edge. Repeated procedural materials still use RepeatWrapping.
+  const repeats = repeat > 1
+  tex.wrapS = tex.wrapT = repeats ? THREE.RepeatWrapping : THREE.ClampToEdgeWrapping
   tex.repeat.set(repeat, repeat)
   tex.anisotropy = 16
   tex.colorSpace = THREE.SRGBColorSpace
-  tex.minFilter = THREE.LinearMipmapLinearFilter
+  tex.minFilter = THREE.LinearFilter
   tex.magFilter = THREE.LinearFilter
-  tex.generateMipmaps = true
+  tex.generateMipmaps = false
   tex.needsUpdate = true
   cache.set(key, tex)
   return tex
@@ -191,6 +194,7 @@ export function composeGroutTexture(baseTex, groutColor, repeat, size = 512) {
   }
 
   const tex = new THREE.CanvasTexture(canvas)
+  tex.userData.groutComposited = true
   tex.wrapS = tex.wrapT = THREE.RepeatWrapping
   tex.repeat.set(1, 1) // tiles already baked into the canvas
   tex.anisotropy = 8

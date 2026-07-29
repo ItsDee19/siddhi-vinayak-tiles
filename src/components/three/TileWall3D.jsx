@@ -54,7 +54,9 @@ function Tile({ position, swatch, index }) {
 
   return (
     <mesh ref={ref} position={position}>
-      <boxGeometry args={[1, 1, 0.08]} />
+      {/* A microscopic overlap prevents precision gaps between adjacent
+          cards when the wall is viewed at a steep angle. */}
+      <boxGeometry args={[1.001, 1.001, 0.08]} />
       <meshStandardMaterial map={texture} roughness={0.55} metalness={0.12} />
     </mesh>
   )

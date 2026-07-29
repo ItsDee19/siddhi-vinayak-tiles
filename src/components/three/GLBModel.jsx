@@ -158,7 +158,15 @@ export default function GLBModel({
           }
           if (tex) {
             const texClone = tex.clone()
-            texClone.wrapS = texClone.wrapT = THREE.RepeatWrapping
+            // GLB wall bands often have very narrow V ranges. Repeating in T
+            // makes those bands stack the source image vertically, which
+            // appears as horizontal lines/diagonals at oblique camera angles.
+            // Keep the vertical sample to one UV span and only repeat across
+            // U for normal (non-composited) tile textures.
+            const isGroutComposited = tex.userData?.groutComposited === true
+            texClone.wrapS = isGroutComposited ? THREE.ClampToEdgeWrapping : THREE.RepeatWrapping
+            texClone.wrapT = THREE.ClampToEdgeWrapping
+            texClone.repeat.set(isGroutComposited ? 1 : tileRepeat, 1)
             texClone.minFilter = THREE.LinearFilter
             texClone.magFilter = THREE.LinearFilter
             texClone.generateMipmaps = false
