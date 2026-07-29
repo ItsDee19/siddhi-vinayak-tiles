@@ -120,7 +120,7 @@ export default function GLBModel({
 
   // Apply textures to zone meshes whenever zoneTextures changes.
   // repeatScale (PRD §4.5) simulates tile size: higher = smaller tiles = more repeats.
-  const baseRepeat = 4
+  const baseRepeat = 1.0
   const tileRepeat = baseRepeat * (modelExtras.repeatScale ?? 1)
 
   useEffect(() => {

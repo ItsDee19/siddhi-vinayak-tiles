@@ -120,7 +120,8 @@ export function resolveZoneSource(product) {
   if (!product) return null
   if (product.url) return product  // already a custom upload
   if (product.textureUrl) {
-    return { id: product.id, name: product.name, url: product.textureUrl }
+    const cleanUrl = product.textureUrl.replace('/swatches/', '/clean_swatches/')
+    return { id: product.id, name: product.name, url: cleanUrl }
   }
   // No textureUrl → treat as procedural. Build a procedural swatch from
   // the catalogue product's color/category.
