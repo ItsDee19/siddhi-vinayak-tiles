@@ -1,14 +1,16 @@
+import { Suspense, lazy } from 'react'
 import Navbar from './components/sections/Navbar'
 import Hero from './components/sections/Hero'
 import ProductCategories from './components/sections/ProductCategories'
 import VisualizerLazy from './components/sections/VisualizerLazy'
-import Catalogue from './components/sections/Catalogue'
-import WhyChooseUs from './components/sections/WhyChooseUs'
-import About from './components/sections/About'
-import Testimonials from './components/sections/Testimonials'
-import Contact from './components/sections/Contact'
-import Footer from './components/sections/Footer'
-import FloatingButtons from './components/sections/FloatingButtons'
+
+const Catalogue = lazy(() => import('./components/sections/Catalogue'))
+const WhyChooseUs = lazy(() => import('./components/sections/WhyChooseUs'))
+const About = lazy(() => import('./components/sections/About'))
+const Testimonials = lazy(() => import('./components/sections/Testimonials'))
+const Contact = lazy(() => import('./components/sections/Contact'))
+const Footer = lazy(() => import('./components/sections/Footer'))
+const FloatingButtons = lazy(() => import('./components/sections/FloatingButtons'))
 
 export default function App() {
   return (
@@ -18,14 +20,18 @@ export default function App() {
         <Hero />
         <ProductCategories />
         <VisualizerLazy />
-        <Catalogue />
-        <WhyChooseUs />
-        <About />
-        <Testimonials />
-        <Contact />
+        <Suspense fallback={null}>
+          <Catalogue />
+          <WhyChooseUs />
+          <About />
+          <Testimonials />
+          <Contact />
+        </Suspense>
       </main>
-      <Footer />
-      <FloatingButtons />
+      <Suspense fallback={null}>
+        <Footer />
+        <FloatingButtons />
+      </Suspense>
     </>
   )
 }
