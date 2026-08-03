@@ -2,9 +2,12 @@ import { useEffect, useState } from 'react'
 import { useReducedMotion } from './useReducedMotion'
 
 // Chooses a rendering profile for the 3D canvases:
-//   'full' — desktop-class: remote HDRI (IBL), full-res shadows, contact shadows.
-//   'lite' — phones/tablets and reduced-motion: skip the HDRI network fetch,
-//            shrink the shadow map, and drop ContactShadows.
+//   'full' — desktop-class: full-res shadows/contact-shadows/IBL/textures.
+//   'lite' — phones/tablets and reduced-motion: same feature set (shadows,
+//            IBL, mipmapped textures) at a reduced budget — smaller shadow
+//            map, lower IBL resolution, and the mobile-resolution derived
+//            tile variant (see visualizerTileManifest.json) — rather than
+//            switching features off outright.
 //
 // Applies to ALL narrow viewports, not just "weak" devices — mobile data and
 // thermal budgets are tighter across the board (even flagship phones), and

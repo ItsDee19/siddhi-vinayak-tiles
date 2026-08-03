@@ -83,7 +83,10 @@ export const models = [
       { id: 'upperBand', label: 'Upper Band',   surface: 'Wall' },
     ],
     presets: {
-      default: { position: [0, 5, 22], target: [0, 5, 0] },
+      // default was [0,5,22] — distance 22 exceeds ModelShell's global
+      // OrbitControls maxDistance={20}, so the initial view snapped back on
+      // the first interaction. 19 leaves headroom inside the constraint.
+      default: { position: [0, 5, 19], target: [0, 5, 0] },
       detail:  { position: [0, 5, 12], target: [0, 5, 0] },
     },
     load: () => import('./ModelD'),
@@ -103,7 +106,10 @@ export const models = [
     presets: {
       default:      { position: [0, 1.4, 3.2],   target: [0, 1.0, 0] },
       threeQuarter: { position: [2.5, 1.6, 2.8], target: [0, 1.0, 0] },
-      counterClose: { position: [0, 1.2, 1.5],   target: [0, 0.8, 0.1] },
+      // counterClose was [0,1.2,1.5] — camera-to-target distance ~1.46
+      // is below ModelShell's global OrbitControls minDistance={3}, so
+      // the view snapped back out on the first interaction. 3.3 clears it.
+      counterClose: { position: [0, 1.2, 3.3],   target: [0, 0.8, 0.1] },
     },
     load: () => import('./ModelE'),
     controls: ['basinStyle', 'showFaucet', 'showVanityLight'],

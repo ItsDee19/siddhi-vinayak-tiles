@@ -101,7 +101,11 @@ export default function ControlBar({
           <label className="mb-1.5 flex items-center justify-between text-[10px] font-semibold uppercase tracking-wider text-sand/60">
             <span>Tile size</span>
             <span className="text-gold">
-              {Math.round((modelExtras?.repeatScale ?? 1) * 600)}mm
+              {/* repeatScale scales the repeat COUNT (higher = more repeats
+                  = smaller tiles), so the mm readout is inverse, not direct,
+                  proportion — this was previously multiplying, which showed
+                  300mm at the "1200mm" end of the slider and vice versa. */}
+              {Math.round(600 / (modelExtras?.repeatScale || 1))}mm
             </span>
           </label>
           <input

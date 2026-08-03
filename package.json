@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:tiles": "node scripts/build_visualizer_tiles.mjs"
   },
   "dependencies": {
     "@react-three/drei": "^9.114.0",

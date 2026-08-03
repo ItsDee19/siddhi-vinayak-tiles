@@ -1,8 +1,16 @@
 import * as THREE from 'three'
 import { makeMaterialCanvas } from './textures'
+import visualizerTileManifest from '../data/visualizerTileManifest.json'
 
 // Cache so we don't regenerate the same canvas/texture repeatedly.
 const cache = new Map()
+
+// Renderer's real max anisotropy, set once from ModelShell's Canvas
+// onCreated. Defaults to a safe value before the renderer exists.
+let maxAnisotropy = 8
+export function setMaxAnisotropy(value) {
+  if (typeof value === 'number' && value > 0) maxAnisotropy = value
+}
 
 /**
  * Build (and cache) a THREE.CanvasTexture for a procedural material swatch.
@@ -29,11 +37,14 @@ export function getMaterialTexture(swatch, repeat = 1, size = 512) {
   const repeats = repeat > 1
   tex.wrapS = tex.wrapT = repeats ? THREE.RepeatWrapping : THREE.ClampToEdgeWrapping
   tex.repeat.set(repeat, repeat)
-  tex.anisotropy = 16
+  tex.anisotropy = maxAnisotropy
   tex.colorSpace = THREE.SRGBColorSpace
-  tex.minFilter = THREE.LinearFilter
+  // Mipmaps ON: anisotropic filtering only operates through mip levels —
+  // with LinearFilter/no-mipmaps, `anisotropy` above is a silent no-op and
+  // minification aliasing (shimmer/moire on tiled surfaces) is uncorrected.
+  tex.minFilter = THREE.LinearMipmapLinearFilter
   tex.magFilter = THREE.LinearFilter
-  tex.generateMipmaps = false
+  tex.generateMipmaps = true
   tex.needsUpdate = true
   cache.set(key, tex)
   return tex
@@ -60,15 +71,22 @@ function isUrlSource(src) {
   return src && typeof src.url === 'string'
 }
 
-function applyTexProps(tex, repeat) {
+// Applies filtering/wrap/anisotropy but NOT repeat — repeat is set by the
+// caller because it can differ per mesh (e.g. two walls of different real
+// width sharing one zone texture need different repeat.x).
+function applyBaseTexProps(tex) {
   tex.wrapS = tex.wrapT = THREE.RepeatWrapping
-  tex.repeat.set(repeat, repeat)
-  tex.anisotropy = 16
+  tex.anisotropy = maxAnisotropy
   tex.colorSpace = THREE.SRGBColorSpace
-  tex.minFilter = THREE.LinearFilter
+  tex.minFilter = THREE.LinearMipmapLinearFilter
   tex.magFilter = THREE.LinearFilter
-  tex.generateMipmaps = false
+  tex.generateMipmaps = true
   tex.needsUpdate = true
+}
+
+function applyTexProps(tex, repeatX, repeatY) {
+  applyBaseTexProps(tex)
+  tex.repeat.set(repeatX, repeatY)
 }
 
 export function disposeTexture(tex) {
@@ -77,14 +95,16 @@ export function disposeTexture(tex) {
   }
 }
 
-export function loadZoneTexture(source, repeat = 1, size = 512) {
+// repeat may be a single number (isotropic, existing callers) or left
+// undefined and set by the caller afterwards via tex.repeat.set(x, y).
+export function loadZoneTexture(source, repeatX = 1, size = 512, repeatY = repeatX) {
   return new Promise((resolve) => {
     if (isUrlSource(source)) {
       const url = source.url
       if (urlCache.has(url)) {
         const cached = urlCache.get(url)
         const out = cached.clone()
-        applyTexProps(out, repeat)
+        applyTexProps(out, repeatX, repeatY)
         resolve(out)
         return
       }
@@ -93,7 +113,7 @@ export function loadZoneTexture(source, repeat = 1, size = 512) {
         (tex) => {
           urlCache.set(url, tex)
           const out = tex.clone()
-          applyTexProps(out, repeat)
+          applyTexProps(out, repeatX, repeatY)
           resolve(out)
         },
         undefined,
@@ -102,7 +122,7 @@ export function loadZoneTexture(source, repeat = 1, size = 512) {
           resolve(
             getMaterialTexture(
               source.fallback || { type: 'ceramic', color: '#cfc6b4' },
-              repeat,
+              repeatX,
               size,
             ),
           )
@@ -110,21 +130,36 @@ export function loadZoneTexture(source, repeat = 1, size = 512) {
       )
     } else if (source) {
       // Procedural swatch
-      resolve(getMaterialTexture(source, repeat, size))
+      resolve(getMaterialTexture(source, repeatX, size))
     } else {
       resolve(null)
     }
   })
 }
 
+// Look up the derived, border-free, wrap-safe visualizer tile for a given
+// clean_swatches source URL. Falls back to the original clean_swatches URL
+// when the tile was quarantined or is missing from the manifest (a handful
+// of sources need manual attention — see scripts/build_visualizer_tiles.mjs).
+function toVisualizerTileUrl(cleanSwatchesUrl, tier = 'full') {
+  const basename = cleanSwatchesUrl.split('/').pop()
+  const entry = visualizerTileManifest[basename]
+  if (!entry || entry.status !== 'ok') return cleanSwatchesUrl
+  const variantUrl = tier === 'lite' ? entry.mobile : entry.desktop
+  return variantUrl || cleanSwatchesUrl
+}
+
 // If the source has a `textureUrl` (catalogue product), convert to a URL source.
 // Useful when passing a catalogue product directly to loadZoneTexture.
-export function resolveZoneSource(product) {
+// `tier` ('full' | 'lite') selects the desktop or mobile-resolution derived
+// tile — see toVisualizerTileUrl above.
+export function resolveZoneSource(product, tier = 'full') {
   if (!product) return null
   if (product.url) return product  // already a custom upload
   if (product.textureUrl) {
     const cleanUrl = product.textureUrl.replace('/swatches/', '/clean_swatches/')
-    return { id: product.id, name: product.name, url: cleanUrl }
+    const tileUrl = toVisualizerTileUrl(cleanUrl, tier)
+    return { id: product.id, name: product.name, url: tileUrl, finish: product.finish, size: product.size }
   }
   // No textureUrl → treat as procedural. Build a procedural swatch from
   // the catalogue product's color/category.
@@ -133,6 +168,7 @@ export function resolveZoneSource(product) {
     type: (product.category || 'ceramic').toLowerCase(),
     color: product.color || '#cfc6b4',
     accent: product.color || '#cfc6b4',
+    finish: product.finish,
   }
 }
 

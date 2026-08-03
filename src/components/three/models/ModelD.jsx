@@ -57,7 +57,7 @@ export default function ModelD({
   if (layout === 'full') {
     return (
       <GLBModel
-        url="/models/model-d-feature-wall.glb"
+        glbUrl="/models/model-d-feature-wall.glb"
         zones={[{ id: 'full', label: 'Wall', surface: 'Wall' }]}
         activeZone={activeZone}
         zoneTextures={zoneTextures}

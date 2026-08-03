@@ -83,11 +83,21 @@ export default function Visualizer() {
 
   // Preload GLB models only once we know the device can actually render them
   // (and only once this component itself has been lazy-loaded near-viewport —
-  // see VisualizerLazy). Avoids fetching all 5 GLBs on every page view.
+  // see VisualizerLazy). Only the active model is preloaded eagerly; the
+  // rest are prefetched at browser idle time so a phone doesn't fetch all
+  // 5 GLBs (1.57 MB) just to show one 657 KB model.
   useEffect(() => {
     if (!webgl) return
-    models.forEach((m) => { if (m.glbUrl) useGLTF.preload(m.glbUrl) })
-  }, [webgl])
+    const active = models.find((m) => m.id === activeModelId)
+    if (active?.glbUrl) useGLTF.preload(active.glbUrl)
+
+    const idle = window.requestIdleCallback || ((fn) => setTimeout(fn, 300))
+    const cancelIdle = window.cancelIdleCallback || clearTimeout
+    const handle = idle(() => {
+      models.forEach((m) => { if (m.glbUrl) useGLTF.preload(m.glbUrl) })
+    })
+    return () => cancelIdle(handle)
+  }, [webgl, activeModelId])
 
   const activeModel = useMemo(
     () => models.find((m) => m.id === activeModelId),
@@ -106,11 +116,21 @@ export default function Visualizer() {
     setModelExtras(defaultModelExtras(activeModel))
   }, [activeModelId]) // eslint-disable-line react-hooks/exhaustive-deps
 
+  // Track object URLs we created for custom uploads so they can be revoked
+  // (URL.createObjectURL leaks the underlying blob until revoked — it was
+  // never released before).
+  const objectUrlsRef = useRef(new Set())
+  useEffect(() => {
+    const urls = objectUrlsRef.current
+    return () => { urls.forEach((u) => URL.revokeObjectURL(u)) }
+  }, [])
+
   const onSwatchPick = (zoneId, swatch) => {
     setZoneTextures((z) => ({ ...z, [zoneId]: swatch }))
   }
   const onCustomUpload = (zoneId, file) => {
     const url = URL.createObjectURL(file)
+    objectUrlsRef.current.add(url)
     onSwatchPick(zoneId, {
       id: 'custom-' + Date.now(),
       name: file.name,
@@ -231,6 +251,7 @@ export default function Visualizer() {
                                 layout={modelExtras.layout}
                                 groutEnabled={!!(activeModel.controls || []).includes('groutColor')}
                                 modelExtras={modelExtras}
+                                tier={quality}
                               />
                             </GLBErrorBoundary>
                           ) : (
