@@ -221,17 +221,23 @@ export default function Visualizer() {
           subtitle="Pick a model, then assign tiles to each surface zone. Drag to orbit, scroll to zoom — preview the look before you visit."
         />
 
-        <div className="mt-10 lg:hidden">
+        {/* Model switcher sits above the stage at every width now that the
+            settings live below it rather than in a side column. */}
+        <div className="mt-10">
           <ModelTabs active={activeModelId} onChange={setActiveModelId} />
         </div>
 
-        <div className="mt-8 grid gap-6 lg:grid-cols-[1.6fr_1fr]">
-          {/* 3D stage — wrapped in ErrorBoundary so a runtime error
-              here doesn't take down the whole app. */}
+        <div className="mt-8 flex flex-col gap-6">
+          {/* 3D stage — full container width, with the settings stacked
+              underneath. Height is viewport-relative on desktop and capped so
+              a wide monitor doesn't push the controls off-screen; narrow
+              screens keep a fixed aspect ratio instead.
+              Wrapped in ErrorBoundary so a runtime error here doesn't take
+              down the whole app. */}
           <ErrorBoundary>
               <div
                 ref={stageRef}
-                className="relative aspect-[4/3] min-w-0 overflow-hidden rounded-card border border-white/5 bg-charcoal-800 shadow-card lg:aspect-auto lg:min-h-[540px]"
+                className="relative aspect-[4/3] w-full min-w-0 overflow-hidden rounded-card border border-white/5 bg-charcoal-800 shadow-card sm:aspect-[16/10] lg:aspect-auto lg:h-[72vh] lg:min-h-[520px] lg:max-h-[840px]"
               >
               {webgl ? (
                 stageEntered ? (
@@ -344,11 +350,13 @@ export default function Visualizer() {
             </div>
           </ErrorBoundary>
 
-          {/* Desktop: side panel — also wrapped to be safe. */}
+          {/* Desktop: settings panel, now stacked below the stage instead of
+              beside it. Mobile keeps the drawer, so this stays lg-only.
+              No flex-1/overflow-y-auto any more — the panel is no longer
+              boxed to the stage's height, so it just grows with content. */}
           <ErrorBoundary>
             <div className="hidden min-w-0 flex-col gap-4 lg:flex">
-              <ModelTabs active={activeModelId} onChange={setActiveModelId} />
-              <div className="flex-1 space-y-3 overflow-y-auto pr-1">
+              <div className="grid items-start gap-3 lg:grid-cols-2 2xl:grid-cols-3">
                 {activeModel.zones.map((z) => (
                   <ZonePicker
                     key={z.id}
@@ -361,18 +369,23 @@ export default function Visualizer() {
                   />
                 ))}
               </div>
-              <ControlBar
-                onReset={onReset}
-                onScreenshot={onScreenshot}
-                zoneTextures={zoneTextures}
-                modelName={activeModel.name}
-                cameraPresets={activeModel.presets}
-                activePreset={presetName}
-                onPresetChange={setPresetName}
-                modelControls={activeModel.controls}
-                modelExtras={modelExtras}
-                onModelExtrasChange={setModelExtras}
-              />
+              {/* ControlBar was authored for a ~380px sidebar; capped here so
+                  its sliders and button rows don't stretch across a full
+                  desktop width. MobileDrawer renders it untouched. */}
+              <div className="max-w-3xl">
+                <ControlBar
+                  onReset={onReset}
+                  onScreenshot={onScreenshot}
+                  zoneTextures={zoneTextures}
+                  modelName={activeModel.name}
+                  cameraPresets={activeModel.presets}
+                  activePreset={presetName}
+                  onPresetChange={setPresetName}
+                  modelControls={activeModel.controls}
+                  modelExtras={modelExtras}
+                  onModelExtrasChange={setModelExtras}
+                />
+              </div>
             </div>
           </ErrorBoundary>
         </div>
