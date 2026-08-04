@@ -48,6 +48,61 @@ export const models = [
       corner:  { position: [3.2, 1.9, 2.2], target: [0, 1.1, 0] },
       topdown: { position: [0, 4.5, 0.01],  target: [0, 0, 0] },
     },
+    // model-b-bathroom-lg.glb is currently a byte-identical copy of
+    // model-a-bathroom.glb, so without these the Large Bathroom tab renders
+    // exactly the same room as the Small one. See sceneEdits.js.
+    sceneEdits: {
+      // The two glass partitions walling off the commode and bathtub. Each is
+      // a frame plus its glass pane, so four meshes for two partitions.
+      hide: [
+        'Glass frame 1',
+        'Glass in frame 1',
+        'Glass frame 2',
+        'Glass in frame 2',
+      ],
+      grow: {
+        nodes: [
+          'Mirror base',
+          'Mirror',
+          'tap',
+          'Tap handles',
+          'Sink',
+          'Under sink cabinet base',
+          'Top of cabinet under sink',
+        ],
+        // Anchored at the back-left floor corner, because the vanity already
+        // touches the left wall and the back wall (z=-1). Growing from its own
+        // centre would push it through both; from this corner it grows into
+        // the room and upward, which is also how real furniture sits. The
+        // space freed by removing the first partition is what makes the wider
+        // unit fit.
+        // x is the vanity's own measured left edge (-1.2516), not the wall
+        // plane (-1.25): the cabinet already overhangs it by 0.0016 in the
+        // stock export, and pivoting on the edge keeps that overhang exactly
+        // as-is instead of scaling it up too.
+        pivot: [-1.2516, 0, -1],
+        // 1.28 puts the cabinet's right edge at x=-0.06, clearing the toilet
+        // (left edge x=0.06), and the mirror top at y=2.03 under the 2.30
+        // ceiling.
+        scale: 1.28,
+      },
+      // Model A keeps its stock Blender materials; these give B the premium
+      // read. The scene has a real <Environment> cubemap, so the metallic
+      // surfaces reflect it instead of going flat black.
+      materials: [
+        // Frameless mirror glass — near-perfect reflector.
+        { nodes: ['Mirror'], color: '#ffffff', metalness: 1, roughness: 0.02, envMapIntensity: 1.6 },
+        // Brushed brass surround, picking up the site's gold accent.
+        { nodes: ['Mirror base'], color: '#C49A3C', metalness: 0.9, roughness: 0.25, envMapIntensity: 1.2 },
+        // Polished chrome brassware.
+        { nodes: ['tap', 'Tap handles'], color: '#eef2f5', metalness: 1, roughness: 0.08, envMapIntensity: 1.4 },
+        // Glazed white ceramic basin.
+        { nodes: ['Sink'], color: '#ffffff', metalness: 0, roughness: 0.06, envMapIntensity: 1 },
+        // Dark walnut cabinet under a pale stone counter.
+        { nodes: ['Under sink cabinet base'], color: '#3B2A1E', metalness: 0.05, roughness: 0.35 },
+        { nodes: ['Top of cabinet under sink'], color: '#EDE7DA', metalness: 0, roughness: 0.15, envMapIntensity: 1.1 },
+      ],
+    },
     load: () => import('./ModelB'),
     controls: ['showShower', 'showWC'],
     fixtures: { shower: true, wc: true },

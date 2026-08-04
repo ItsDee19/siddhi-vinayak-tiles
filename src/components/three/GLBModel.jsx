@@ -3,6 +3,7 @@ import { useGLTF } from '@react-three/drei'
 import * as THREE from 'three'
 import { loadZoneTexture, loadRawTexture, composeGroutTexture, resolveZoneSource } from '../../utils/threeTextures'
 import { getFinish } from '../../utils/finishMaterial'
+import { applyStructuralEdits, applyMaterialEdits } from './sceneEdits'
 
 // Set up Draco decoder path — self-hosted so mobile browsers (iOS Safari with
 // content blockers, etc.) can always load the WASM decoder without relying on
@@ -91,6 +92,7 @@ export default function GLBModel({
   modelExtras = {}, // fixture toggles + controls (PRD §4): showShower, showWC,
                     // showNosing, showFaucet, showVanityLight, repeatScale, etc.
   tier = 'full', // 'full' | 'lite' — selects desktop/mobile derived tile variant
+  sceneEdits,    // optional per-model scene differentiation — see sceneEdits.js
 }) {
   const groupRef = useRef(null)
   const { scene } = useGLTF(glbUrl)
@@ -103,8 +105,13 @@ export default function GLBModel({
   }, [glbUrl])
   const aoLoader = useMemo(() => new THREE.TextureLoader(), [])
 
-  // Clone the scene so we don't mutate the cached GLTF
-  const cloned = useMemo(() => scene.clone(true), [scene])
+  // Clone the scene so we don't mutate the cached GLTF. Structural scene edits
+  // are applied here rather than in an effect because reparenting is not
+  // idempotent and StrictMode double-invokes effects in development.
+  const cloned = useMemo(
+    () => applyStructuralEdits(scene.clone(true), sceneEdits),
+    [scene, sceneEdits],
+  )
 
   // Tracks the texture THIS component created and assigned per mesh, so we
   // only ever dispose textures we own — never the master cached in
@@ -155,6 +162,13 @@ export default function GLBModel({
       obj.receiveShadow = true
     })
   }, [cloned])
+
+  // Per-model material overrides. Must run after the clone pass above, which
+  // would otherwise replace the materials these edits were written onto.
+  // Idempotent, so re-running on a prop change is safe.
+  useEffect(() => {
+    applyMaterialEdits(cloned, sceneEdits)
+  }, [cloned, sceneEdits])
 
   // Apply Blender-baked ambient occlusion as aoMap (uses uv1 = TEXCOORD_1).
   // Each mesh's AO was baked into /models/ao/<modelKey>/<meshName>__ao.png.

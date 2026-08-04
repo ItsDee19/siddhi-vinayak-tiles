@@ -283,6 +283,7 @@ export default function Visualizer() {
                                 groutEnabled={!!(activeModel.controls || []).includes('groutColor')}
                                 modelExtras={modelExtras}
                                 tier={quality}
+                                sceneEdits={activeModel.sceneEdits}
                               />
                             </GLBErrorBoundary>
                           ) : (
