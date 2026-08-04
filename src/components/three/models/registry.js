@@ -83,8 +83,8 @@ export const models = [
       { id: 'upperBand', label: 'Upper Band',   surface: 'Wall' },
     ],
     presets: {
-      default: { position: [0, 5, 22], target: [0, 5, 0] },
-      detail:  { position: [0, 5, 12], target: [0, 5, 0] },
+      default: { position: [0, 0, 6], target: [0, 0, 0] },
+      detail:  { position: [0, 0, 3.5], target: [0, 0, 0] },
     },
     load: () => import('./ModelD'),
     controls: ['layout', 'repeatScale', 'groutColor'],

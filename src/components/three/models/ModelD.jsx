@@ -57,7 +57,7 @@ export default function ModelD({
   if (layout === 'full') {
     return (
       <GLBModel
-        url="/models/model-d-feature-wall.glb"
+        glbUrl="/models/model-d-feature-wall.glb"
         zones={[{ id: 'full', label: 'Wall', surface: 'Wall' }]}
         activeZone={activeZone}
         zoneTextures={zoneTextures}
@@ -123,17 +123,5 @@ export default function ModelD({
     )
   }
 
-  // 'full' — one big textured wall
-  return (
-    <GroutedPanel
-      width={WALL_W} height={WALL_H}
-      source={zoneTextures.full}
-      repeat={repeat}
-      groutColor={groutColor}
-      position={[0, WALL_H / 2, 0]}
-      rotation={[0, 0, 0]}
-      onClick={() => onZoneClick?.('full')}
-      isActive={activeZone === 'full'}
-    />
-  )
+  return null
 }
