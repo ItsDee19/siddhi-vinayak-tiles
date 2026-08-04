@@ -12,9 +12,24 @@ import * as THREE from 'three'
 // model B never touches model A.
 // ---------------------------------------------------------------------------
 
-// Node names come from Blender and are matched loosely: the export contains
-// e.g. "Top of cabinet under sink " with a trailing space.
-const norm = (s) => (s || '').trim().toLowerCase()
+// Names in the config are the raw Blender ones, but they are NOT what arrives
+// in the three.js scene. GLTFLoader.createUniqueName() runs every node name
+// through PropertyBinding.sanitizeNodeName(), which is:
+//
+//   name.replace(/\s/g, '_').replace(/[\[\]\.:\/]/g, '')
+//
+// so "Glass frame 1" loads as "Glass_frame_1". Matching on the raw name
+// silently hit only the single-word nodes ("Mirror", "Sink", "tap") and missed
+// every multi-word one. Normalise both sides to the same space-separated form
+// so either spelling matches, and drop the reserved characters the loader
+// strips. Also absorbs the stray trailing space in the export's
+// "Top of cabinet under sink ".
+const norm = (s) =>
+  (s || '')
+    .toLowerCase()
+    .replace(/[[\].:/]/g, '')
+    .replace(/[\s_]+/g, ' ')
+    .trim()
 
 function collect(root, names = []) {
   const want = new Set(names.map(norm))
@@ -23,6 +38,14 @@ function collect(root, names = []) {
     if (want.has(norm(o.name))) found.push(o)
   })
   return found
+}
+
+// A glTF mesh with multiple primitives loads as a Group named after the node
+// with Mesh children, so material edits have to reach descendants too.
+function meshesOf(node) {
+  const out = []
+  node.traverse((o) => { if (o.isMesh && o.material) out.push(o) })
+  return out
 }
 
 /**
@@ -69,13 +92,14 @@ export function applyMaterialEdits(root, edits) {
   if (!edits || !edits.materials) return
   for (const spec of edits.materials) {
     for (const node of collect(root, spec.nodes)) {
-      const mat = node.material
-      if (!node.isMesh || !mat) continue
-      if (spec.color !== undefined) mat.color = new THREE.Color(spec.color)
-      if (spec.metalness !== undefined) mat.metalness = spec.metalness
-      if (spec.roughness !== undefined) mat.roughness = spec.roughness
-      if (spec.envMapIntensity !== undefined) mat.envMapIntensity = spec.envMapIntensity
-      mat.needsUpdate = true
+      for (const mesh of meshesOf(node)) {
+        const mat = mesh.material
+        if (spec.color !== undefined) mat.color = new THREE.Color(spec.color)
+        if (spec.metalness !== undefined) mat.metalness = spec.metalness
+        if (spec.roughness !== undefined) mat.roughness = spec.roughness
+        if (spec.envMapIntensity !== undefined) mat.envMapIntensity = spec.envMapIntensity
+        mat.needsUpdate = true
+      }
     }
   }
 }

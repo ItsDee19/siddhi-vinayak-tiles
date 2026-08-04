@@ -87,15 +87,23 @@ export const models = [
         scale: 1.28,
       },
       // Model A keeps its stock Blender materials; these give B the premium
-      // read. The scene has a real <Environment> cubemap, so the metallic
-      // surfaces reflect it instead of going flat black.
+      // read.
+      //
+      // Metalness is deliberately held well below 1 on every reflective
+      // surface. ModelShell's <Environment> is four Lightformer rectangles on
+      // an otherwise black cubemap with background={false}, so a fully
+      // metallic material — which has no diffuse term and can only show what
+      // it reflects — renders essentially black here. That is exactly what
+      // happened to the mirror at metalness 1. Keeping metalness around
+      // 0.5-0.65 retains a real diffuse contribution from the base colour, so
+      // these read as polished metal and glass without ever going black.
       materials: [
-        // Frameless mirror glass — near-perfect reflector.
-        { nodes: ['Mirror'], color: '#ffffff', metalness: 1, roughness: 0.02, envMapIntensity: 1.6 },
+        // Mirror glass: light silver with a strong specular response.
+        { nodes: ['Mirror'], color: '#dfe7ec', metalness: 0.5, roughness: 0.08, envMapIntensity: 1.4 },
         // Brushed brass surround, picking up the site's gold accent.
-        { nodes: ['Mirror base'], color: '#C49A3C', metalness: 0.9, roughness: 0.25, envMapIntensity: 1.2 },
+        { nodes: ['Mirror base'], color: '#C49A3C', metalness: 0.6, roughness: 0.3, envMapIntensity: 1.15 },
         // Polished chrome brassware.
-        { nodes: ['tap', 'Tap handles'], color: '#eef2f5', metalness: 1, roughness: 0.08, envMapIntensity: 1.4 },
+        { nodes: ['tap', 'Tap handles'], color: '#e8eef2', metalness: 0.65, roughness: 0.12, envMapIntensity: 1.3 },
         // Glazed white ceramic basin.
         { nodes: ['Sink'], color: '#ffffff', metalness: 0, roughness: 0.06, envMapIntensity: 1 },
         // Dark walnut cabinet under a pale stone counter.
