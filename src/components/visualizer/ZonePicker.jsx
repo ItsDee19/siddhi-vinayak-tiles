@@ -1,6 +1,7 @@
 import { useMemo, useRef, useState } from 'react'
 import Icon from '../Icons'
 import { visualizerProducts as products } from '../../data/visualizerCatalogue'
+import { ACCEPTED_IMAGE_TYPES, validateImageFile } from '../../utils/imageUpload'
 
 const INITIAL_BATCH = 28
 
@@ -15,6 +16,7 @@ export default function ZonePicker({
   const fileRef = useRef(null)
   const [subFilter, setSubFilter] = useState('all') // 'all' | '12x18' | '2x4' | 'floor'
   const [limit, setLimit] = useState(INITIAL_BATCH)
+  const [uploadError, setUploadError] = useState('')
 
   const surface = zone?.surface
   const compatible = useMemo(() => {
@@ -215,14 +217,22 @@ export default function ZonePicker({
           >
             <Icon name="send" className="h-3.5 w-3.5" /> Upload custom tile photo
           </button>
+          {uploadError && (
+            <p className="mt-1.5 text-center text-[11px] text-terracotta" role="alert">
+              {uploadError}
+            </p>
+          )}
           <input
             ref={fileRef}
             type="file"
-            accept="image/jpeg,image/png,image/webp"
+            accept={ACCEPTED_IMAGE_TYPES.join(',')}
             className="hidden"
             onChange={(e) => {
               const file = e.target.files?.[0]
-              if (file) onCustomUpload(zone.id, file)
+              // `accept` is advisory only — validate what actually came back.
+              const { ok, error } = validateImageFile(file)
+              setUploadError(ok ? '' : error)
+              if (ok) onCustomUpload(zone.id, file)
               e.target.value = ''
             }}
           />

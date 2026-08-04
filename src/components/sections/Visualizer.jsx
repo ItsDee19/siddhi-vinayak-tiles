@@ -16,6 +16,7 @@ import ControlBar from '../visualizer/ControlBar'
 import MobileDrawer from '../visualizer/MobileDrawer'
 import Icon from '../Icons'
 import { captureAndDownload } from '../visualizer/ScreenshotHelper'
+import { validateImageFile } from '../../utils/imageUpload'
 
 // Internal ErrorBoundary inside Three.js Canvas to catch GLB loading or decoder errors
 class GLBErrorBoundary extends Component {
@@ -109,8 +110,17 @@ export default function Visualizer() {
   const onSwatchPick = (zoneId, swatch) => {
     setZoneTextures((z) => ({ ...z, [zoneId]: swatch }))
   }
+  // Every blob: URL we mint for a custom upload, so none of them outlive the
+  // swatch that referenced it (an un-revoked object URL pins the whole file in
+  // memory for the life of the document).
+  const objectUrlsRef = useRef(new Set())
+
   const onCustomUpload = (zoneId, file) => {
+    // ZonePicker already validated and reported the error to the user; this is
+    // the layer that actually mints the URL, so re-check before doing so.
+    if (!validateImageFile(file).ok) return
     const url = URL.createObjectURL(file)
+    objectUrlsRef.current.add(url)
     onSwatchPick(zoneId, {
       id: 'custom-' + Date.now(),
       name: file.name,
@@ -118,6 +128,30 @@ export default function Visualizer() {
       isCustom: true,
     })
   }
+
+  // Release object URLs once no zone points at them any more (swatch replaced,
+  // model switched, reset pressed) and on unmount.
+  useEffect(() => {
+    const inUse = new Set(
+      Object.values(zoneTextures)
+        .map((t) => t?.url)
+        .filter(Boolean),
+    )
+    objectUrlsRef.current.forEach((url) => {
+      if (!inUse.has(url)) {
+        URL.revokeObjectURL(url)
+        objectUrlsRef.current.delete(url)
+      }
+    })
+  }, [zoneTextures])
+
+  useEffect(() => {
+    const urls = objectUrlsRef.current
+    return () => {
+      urls.forEach((url) => URL.revokeObjectURL(url))
+      urls.clear()
+    }
+  }, [])
   const onReset = () => {
     setZoneTextures(defaultZoneTextures(activeModel.zones))
     setActiveZoneId(activeModel.zones[0].id)
@@ -191,7 +225,6 @@ export default function Visualizer() {
                 stageEntered ? (
                   <div
                       ref={canvasWrapRef}
-                      key={`${activeModelId}-${resetKey}`}
                       className="h-full w-full"
                     >
                       <ModelShell
@@ -202,7 +235,7 @@ export default function Visualizer() {
                         cinematicMode={cinematicMode}
                         quality={quality}
                       >
-                        <Suspense fallback={null}>
+                        <Suspense key={`${activeModelId}-${resetKey}`} fallback={null}>
                           {activeModel.glbUrl ? (
                             <GLBErrorBoundary
                               fallback={
