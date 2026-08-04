@@ -81,7 +81,68 @@ export function applyStructuralEdits(root, edits) {
     root.add(group)
   }
 
+  if (edits.jets) addJets(root, edits.jets)
+
   return root
+}
+
+// Turn a plain tub into a jacuzzi by ringing its inner wall with jet nozzles.
+//
+// Placement is derived from the host mesh's own bounding box at runtime rather
+// than hard-coded coordinates, so it follows the geometry if the export ever
+// changes. The nozzles sit on an ellipse inset from that box instead of on the
+// box itself, because the tub is an oval — points on the box corners would
+// hang in mid-air outside the actual shell.
+function addJets(root, spec) {
+  const [host] = collect(root, [spec.host])
+  if (!host) return
+
+  // setFromObject returns a world-space box, but the jets below are added as
+  // children of root and positioned in root-local space. Convert so the two
+  // agree even if root itself carries a transform.
+  root.updateMatrixWorld(true)
+  const box = new THREE.Box3().setFromObject(host)
+  if (box.isEmpty()) return
+  box.applyMatrix4(new THREE.Matrix4().copy(root.matrixWorld).invert())
+  const centre = box.getCenter(new THREE.Vector3())
+  const size = box.getSize(new THREE.Vector3())
+
+  const rx = Math.max(0.01, size.x / 2 - spec.inset)
+  const rz = Math.max(0.01, size.z / 2 - spec.inset)
+  const y = box.max.y - spec.belowRim
+
+  const geom = new THREE.CylinderGeometry(spec.nozzleRadius, spec.nozzleRadius, spec.nozzleDepth, 16)
+  const mat = new THREE.MeshStandardMaterial({
+    color: new THREE.Color(spec.material.color),
+    metalness: spec.material.metalness,
+    roughness: spec.material.roughness,
+  })
+  if (spec.material.envMapIntensity !== undefined) mat.envMapIntensity = spec.material.envMapIntensity
+
+  const group = new THREE.Group()
+  group.name = 'jacuzzi_jets'
+  const up = new THREE.Vector3(0, 1, 0)
+  for (let i = 0; i < spec.count; i++) {
+    const a = (i / spec.count) * Math.PI * 2
+    const x = centre.x + Math.cos(a) * rx
+    const z = centre.z + Math.sin(a) * rz
+    const jet = new THREE.Mesh(geom, mat)
+    // Single underscores only: GLBModel treats a "__zone" suffix as a tileable
+    // zone mesh, and matches fixture toggles on substrings like "shower".
+    jet.name = `jacuzzi_jet_${i}`
+    // Flags this mesh as ours so GLBModel skips it when fetching the
+    // Blender-baked AO atlas — there is no bake for geometry we invented.
+    jet.userData.generated = true
+    jet.position.set(x, y, z)
+    // Lay the cylinder on its side facing the tub's centre, so the flat face
+    // reads as a nozzle set into the wall rather than a disc on the floor.
+    jet.quaternion.setFromUnitVectors(
+      up,
+      new THREE.Vector3(centre.x - x, 0, centre.z - z).normalize(),
+    )
+    group.add(jet)
+  }
+  root.add(group)
 }
 
 /**

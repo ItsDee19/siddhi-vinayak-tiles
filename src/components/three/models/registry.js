@@ -109,7 +109,43 @@ export const models = [
         // Dark walnut cabinet under a pale stone counter.
         { nodes: ['Under sink cabinet base'], color: '#3B2A1E', metalness: 0.05, roughness: 0.35 },
         { nodes: ['Top of cabinet under sink'], color: '#EDE7DA', metalness: 0, roughness: 0.15, envMapIntensity: 1.1 },
+        // Jacuzzi shell — bright moulded acrylic, glossier than plain ceramic.
+        { nodes: ['Bath'], color: '#ffffff', metalness: 0.03, roughness: 0.05, envMapIntensity: 1.25 },
+        // Commode: high-gloss vitreous china across every ceramic part.
+        {
+          nodes: [
+            'Bottom of the toilet',
+            'Toilet base',
+            'Toilet rim',
+            'Toilet lid',
+            'Flush tank',
+          ],
+          color: '#fbfbfa',
+          metalness: 0,
+          roughness: 0.04,
+          envMapIntensity: 1.2,
+        },
+        // ...and satin chrome on its fittings, matching the basin brassware.
+        {
+          nodes: ['Flush button', 'Toilet lid holder', 'Toilet paper holder'],
+          color: '#e8eef2',
+          metalness: 0.65,
+          roughness: 0.14,
+          envMapIntensity: 1.3,
+        },
       ],
+      // Jets ring the tub's inner wall to read as a jacuzzi rather than a
+      // plain tub. Positions are computed from the Bath mesh's own bounding
+      // box at load time — see addJets in sceneEdits.js.
+      jets: {
+        host: 'Bath',
+        count: 8,
+        inset: 0.075,        // pulled inside the tub footprint (oval, not box)
+        belowRim: 0.13,      // sit under the rim, not on it
+        nozzleRadius: 0.035,
+        nozzleDepth: 0.012,
+        material: { color: '#dfe6ea', metalness: 0.7, roughness: 0.12, envMapIntensity: 1.3 },
+      },
     },
     load: () => import('./ModelB'),
     controls: ['showShower', 'showWC'],
