@@ -83,7 +83,13 @@ export const models = [
       { id: 'upperBand', label: 'Upper Band',   surface: 'Wall' },
     ],
     presets: {
-      default: { position: [0, 0, 6], target: [0, 0, 0] },
+      // Framed against the GLB's real geometry: the wall mesh is 4.47 x 2.23
+      // centred on the origin (the 109-unit Plane in the file is just ground),
+      // so the old y=5 aim pointed above the subject entirely. Both distances
+      // also sit inside ModelShell's OrbitControls minDistance={3} /
+      // maxDistance={20}, which the previous distance-22 default violated —
+      // that made the initial view snap back on the first interaction.
+      default: { position: [0, 0, 6],   target: [0, 0, 0] },
       detail:  { position: [0, 0, 3.5], target: [0, 0, 0] },
     },
     load: () => import('./ModelD'),
@@ -103,7 +109,10 @@ export const models = [
     presets: {
       default:      { position: [0, 1.4, 3.2],   target: [0, 1.0, 0] },
       threeQuarter: { position: [2.5, 1.6, 2.8], target: [0, 1.0, 0] },
-      counterClose: { position: [0, 1.2, 1.5],   target: [0, 0.8, 0.1] },
+      // counterClose was [0,1.2,1.5] — camera-to-target distance ~1.46
+      // is below ModelShell's global OrbitControls minDistance={3}, so
+      // the view snapped back out on the first interaction. 3.3 clears it.
+      counterClose: { position: [0, 1.2, 3.3],   target: [0, 0.8, 0.1] },
     },
     load: () => import('./ModelE'),
     controls: ['basinStyle', 'showFaucet', 'showVanityLight'],

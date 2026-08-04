@@ -1,7 +1,9 @@
 import { useEffect, useRef } from 'react'
 import { Canvas } from '@react-three/fiber'
-import { ContactShadows } from '@react-three/drei'
+import { ContactShadows, Environment, Lightformer } from '@react-three/drei'
+import * as THREE from 'three'
 import { useReducedMotion } from '../../../hooks/useReducedMotion'
+import { setMaxAnisotropy } from '../../../utils/threeTextures'
 import CameraRig, { OrbitControls } from './CameraRig'
 import BackdropGradient from './BackdropGradient'
 
@@ -35,16 +37,20 @@ export default function ModelShell({
   return (
     <>
       <Canvas
-        shadows={lite ? false : 'soft'}
+        shadows={lite ? { type: THREE.PCFSoftShadowMap } : 'soft'}
         frameloop={frameloop}
         dpr={lite ? [1, 1.5] : [1, 2]}
-        camera={{ position: initialPos, fov: 40 }}
+        camera={{ position: initialPos, fov: 40, near: 0.1, far: 120 }}
         gl={{
           antialias: !lite,
           powerPreference: lite ? 'low-power' : 'high-performance',
           preserveDrawingBuffer: true, // enables canvas.toDataURL() for screenshots
-          toneMapping: 4, // THREE.ACESFilmicToneMapping
-          toneMappingExposure: 1.3,
+          toneMapping: THREE.ACESFilmicToneMapping,
+          toneMappingExposure: 1.0,
+        }}
+        onCreated={({ gl, scene, camera }) => {
+          setMaxAnisotropy(gl.capabilities.getMaxAnisotropy())
+          if (import.meta.env.DEV) window.__three = { gl, scene, camera }
         }}
       >
         <color attach="background" args={['#4A3522']} />
@@ -59,24 +65,32 @@ export default function ModelShell({
           radius={50}
         />
 
-        {/* ── Studio Lighting (fully local — zero network fetches) ────────
-            Replaces the remote HDRI Environment that fetched lebombo_1k.hdr
-            from a CDN (which fails on Netlify / content-blocked browsers).
-            The multi-light setup below replicates the warm showroom IBL look. */}
+        {/* ── Studio IBL (procedural, zero asset bytes, zero network fetches) ──
+            drei's <Environment> renders these Lightformer planes into a cube
+            render target once (frames={1}) and reuses it every frame after —
+            this is what finally gives metallic surfaces (vanity mirror,
+            faucets, staircase nosing) something real to reflect, replacing
+            the flat/near-black look they had with only analytic lights. */}
+        <Environment resolution={lite ? 128 : 256} frames={1} background={false}>
+          <Lightformer form="rect" intensity={2.6} color="#fff5e0" position={[4, 6, 4]} scale={[8, 8, 1]} target={[0, 1, 0]} />
+          <Lightformer form="rect" intensity={0.9} color="#dfe6f0" position={[-5, 4, -3]} scale={[6, 6, 1]} target={[0, 1, 0]} />
+          <Lightformer form="rect" intensity={1.4} color="#ffecd2" position={[0, 9, 0]} rotation={[Math.PI / 2, 0, 0]} scale={[14, 14, 1]} />
+          <Lightformer form="ring" intensity={0.7} color="#7A4A28" position={[0, -3, 0]} rotation={[-Math.PI / 2, 0, 0]} scale={[16, 16, 1]} />
+        </Environment>
 
-        {/* Hemisphere: sky/ground ambient fill — simulates soft IBL wrap */}
-        <hemisphereLight skyColor="#fff5e0" groundColor="#3d2210" intensity={0.85} />
-
-        {/* Ambient: baseline fill so no surface is fully black */}
-        <ambientLight intensity={0.5} />
+        {/* ── Analytic lighting — kept minimal now that IBL supplies the
+            ambient wrap. The old flat ambient/hemisphere fill (1.35 combined)
+            was a major reason everything looked flat; it's now mostly
+            replaced by the environment above rather than stacked on top. */}
+        <hemisphereLight skyColor="#fff5e0" groundColor="#3d2210" intensity={0.15} />
 
         {/* Key light: warm, upper-right — provides main illumination + cast shadows */}
         <directionalLight
           position={[6, 10, 5]}
-          intensity={1.8}
-          castShadow={!lite}
+          intensity={1.4}
+          castShadow
           color="#fff5e0"
-          shadow-mapSize={lite ? [512, 512] : [2048, 2048]}
+          shadow-mapSize={lite ? [1024, 1024] : [2048, 2048]}
           shadow-camera-left={-12}
           shadow-camera-right={12}
           shadow-camera-top={12}
@@ -88,26 +102,26 @@ export default function ModelShell({
         />
 
         {/* Fill light: cooler, opposite side — softens harsh shadows */}
-        <directionalLight position={[-5, 6, -4]} intensity={0.7} color="#e8dcd0" />
+        <directionalLight position={[-5, 6, -4]} intensity={0.25} color="#e8dcd0" />
 
         {/* Rim light: behind & above — edge highlights for depth */}
-        <directionalLight position={[0, 8, -8]} intensity={0.5} color="#ffecd2" />
+        <directionalLight position={[0, 8, -8]} intensity={0.35} color="#ffecd2" />
 
         {children}
 
         {/* Soft contact shadows under the model — better AO approximation.
-            Skipped on 'lite': it's an extra offscreen render pass per frame. */}
-        {!lite && (
-          <ContactShadows
-            position={[0, 0.005, 0]}
-            opacity={0.5}
-            scale={20}
-            blur={2.8}
-            far={6}
-            resolution={1024}
-            color="#1A0E05"
-          />
-        )}
+            `frames={1}` bakes it once at mount instead of every frame, so
+            it's now affordable on mobile too rather than skipped outright. */}
+        <ContactShadows
+          position={[0, 0.005, 0]}
+          opacity={0.5}
+          scale={20}
+          blur={2.8}
+          far={6}
+          resolution={lite ? 512 : 1024}
+          frames={1}
+          color="#1A0E05"
+        />
 
         {showControls && (
           <OrbitControls

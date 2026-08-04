@@ -3085,7 +3085,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c141",
-    "name": "Global 2025 Tile #141",
+    "name": "Briko-Carrot",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -3106,7 +3106,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c142",
-    "name": "Global 2025 Tile #142",
+    "name": "Briko-Khakhi",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -3127,7 +3127,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c143",
-    "name": "Global 2025 Tile #143",
+    "name": "Stony-11",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -3148,7 +3148,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c144",
-    "name": "Global 2025 Tile #144",
+    "name": "Stony-22",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -3169,7 +3169,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c145",
-    "name": "Global 2025 Tile #145",
+    "name": "Stony-51",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -3190,7 +3190,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c146",
-    "name": "Global 2025 Tile #146",
+    "name": "Stony-57",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -3274,7 +3274,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c150",
-    "name": "Global 2025 Tile #150",
+    "name": "Ss-13",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -3295,7 +3295,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c151",
-    "name": "Global 2025 Tile #151",
+    "name": "Pool-06",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -3316,7 +3316,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c152",
-    "name": "Global 2025 Tile #152",
+    "name": "Pool-13",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -3358,7 +3358,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c154",
-    "name": "Global 2025 Tile #154",
+    "name": "Md-58",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -3400,7 +3400,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c156",
-    "name": "Global 2025 Tile #156",
+    "name": "Vm-11",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -3421,7 +3421,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c157",
-    "name": "Global 2025 Tile #157",
+    "name": "Ctb-17",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -3442,7 +3442,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c158",
-    "name": "Global 2025 Tile #158",
+    "name": "Ctb-08",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -3463,7 +3463,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c159",
-    "name": "Global 2025 Tile #159",
+    "name": "Ctb-29",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -3484,7 +3484,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c160",
-    "name": "Global 2025 Tile #160",
+    "name": "Lur-61",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -3505,7 +3505,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c161",
-    "name": "Global 2025 Tile #161",
+    "name": "Lur-71",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -3610,7 +3610,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c166",
-    "name": "Global 2025 Tile #166",
+    "name": "Lx-10",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -3631,7 +3631,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c167",
-    "name": "Global 2025 Tile #167",
+    "name": "& Lx-65 Or",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -3652,7 +3652,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c168",
-    "name": "Global 2025 Tile #168",
+    "name": "Plc-60",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -3715,7 +3715,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c171",
-    "name": "Global 2025 Tile #171",
+    "name": "Plc-63",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -3799,7 +3799,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c175",
-    "name": "Global 2025 Tile #175",
+    "name": "56177-L",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -3820,7 +3820,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c176",
-    "name": "Global 2025 Tile #176",
+    "name": "56234-L",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -3862,7 +3862,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c178",
-    "name": "Global 2025 Tile #178",
+    "name": "56181-L",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -3883,7 +3883,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c179",
-    "name": "Global 2025 Tile #179",
+    "name": "56210-L",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -3904,7 +3904,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c180",
-    "name": "Global 2025 Tile #180",
+    "name": "9209-L",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -3967,7 +3967,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c183",
-    "name": "Global 2025 Tile #183",
+    "name": "55006-L",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -3988,7 +3988,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c184",
-    "name": "Global 2025 Tile #184",
+    "name": "55127-L",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -4051,7 +4051,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c187",
-    "name": "Global 2025 Tile #187",
+    "name": "Baihroom Series",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -4072,7 +4072,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c188",
-    "name": "Global 2025 Tile #188",
+    "name": "55209-L",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -4135,7 +4135,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c191",
-    "name": "Global 2025 Tile #191",
+    "name": "55262-L",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -4156,7 +4156,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c192",
-    "name": "Global 2025 Tile #192",
+    "name": "55331-L",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -4177,7 +4177,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c193",
-    "name": "Global 2025 Tile #193",
+    "name": "55394-L",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -4198,7 +4198,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c194",
-    "name": "Global 2025 Tile #194",
+    "name": "55444-L",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -4219,7 +4219,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c195",
-    "name": "Global 2025 Tile #195",
+    "name": "Baihroom Series",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -4282,7 +4282,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c198",
-    "name": "Global 2025 Tile #198",
+    "name": "55644-L",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -4303,7 +4303,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c199",
-    "name": "Global 2025 Tile #199",
+    "name": "55656-L",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -4324,7 +4324,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c200",
-    "name": "Global 2025 Tile #200",
+    "name": "55754-L",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -4387,7 +4387,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c203",
-    "name": "Global 2025 Tile #203",
+    "name": "56050-L",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -4408,7 +4408,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c204",
-    "name": "Global 2025 Tile #204",
+    "name": "9056-L",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -4450,7 +4450,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c206",
-    "name": "Global 2025 Tile #206",
+    "name": "Spw-40-L",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -4471,7 +4471,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c207",
-    "name": "Global 2025 Tile #207",
+    "name": "Kitchen Series",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -4492,7 +4492,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c208",
-    "name": "Global 2025 Tile #208",
+    "name": "55790-L",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -4534,7 +4534,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c210",
-    "name": "Global 2025 Tile #210",
+    "name": "56013-L",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -4555,7 +4555,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c211",
-    "name": "Global 2025 Tile #211",
+    "name": "56019-L",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -4618,7 +4618,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c214",
-    "name": "Global 2025 Tile #214",
+    "name": "56197-Hl-2",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -4639,7 +4639,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c215",
-    "name": "Global 2025 Tile #215",
+    "name": "56199-L",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -4723,7 +4723,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c219",
-    "name": "Global 2025 Tile #219",
+    "name": "Filevaiion Series",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -4807,7 +4807,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c223",
-    "name": "Global 2025 Tile #223",
+    "name": "El-Fd-202",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -4849,7 +4849,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c225",
-    "name": "Global 2025 Tile #225",
+    "name": "El-1015",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -4891,7 +4891,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c227",
-    "name": "Global 2025 Tile #227",
+    "name": "El-1953",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -4933,7 +4933,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c229",
-    "name": "Global 2025 Tile #229",
+    "name": "El-A-16",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -4975,7 +4975,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c231",
-    "name": "Global 2025 Tile #231",
+    "name": "El-K-02",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -5017,7 +5017,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c233",
-    "name": "Global 2025 Tile #233",
+    "name": "El-3011",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -5038,7 +5038,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c234",
-    "name": "Global 2025 Tile #234",
+    "name": "El-3011",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -5059,7 +5059,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c235",
-    "name": "Global 2025 Tile #235",
+    "name": "El-3110",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -5143,7 +5143,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c239",
-    "name": "Global 2025 Tile #239",
+    "name": "Vitrified Body",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -5227,7 +5227,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c243",
-    "name": "Global 2025 Tile #243",
+    "name": "Vitrified Body",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -5311,7 +5311,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c247",
-    "name": "Global 2025 Tile #247",
+    "name": "Vitrified Body",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -5395,7 +5395,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c251",
-    "name": "Global 2025 Tile #251",
+    "name": "Vitrified Body",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -5479,7 +5479,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c255",
-    "name": "Global 2025 Tile #255",
+    "name": "Vitrified Body",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -5563,7 +5563,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c259",
-    "name": "Global 2025 Tile #259",
+    "name": "Vitrified Body",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -5584,7 +5584,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c260",
-    "name": "Global 2025 Tile #260",
+    "name": "8015 Plain 8031 Plain",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -5647,7 +5647,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c263",
-    "name": "Global 2025 Tile #263",
+    "name": "Vitrified Body",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -5731,7 +5731,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c267",
-    "name": "Global 2025 Tile #267",
+    "name": "Vitrified Body",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -5815,7 +5815,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c271",
-    "name": "Global 2025 Tile #271",
+    "name": "Vitrified Body",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -5899,7 +5899,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c275",
-    "name": "Global 2025 Tile #275",
+    "name": "Vitrified Body",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -5983,7 +5983,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c279",
-    "name": "Global 2025 Tile #279",
+    "name": "Vitrified Body",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -6067,7 +6067,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c283",
-    "name": "Global 2025 Tile #283",
+    "name": "Vitrified Body",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -6130,7 +6130,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c286",
-    "name": "Global 2025 Tile #286",
+    "name": "3009",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -6151,7 +6151,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c287",
-    "name": "Global 2025 Tile #287",
+    "name": "Vitrified Body",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -6193,7 +6193,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c289",
-    "name": "Global 2025 Tile #289",
+    "name": "IV Button",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -6256,7 +6256,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c292",
-    "name": "Global 2025 Tile #292",
+    "name": "Ivory",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -6319,7 +6319,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c295",
-    "name": "Global 2025 Tile #295",
+    "name": "Lemo Peach",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -6361,7 +6361,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c297",
-    "name": "Global 2025 Tile #297",
+    "name": "Lemo Orchid",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -6403,7 +6403,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c299",
-    "name": "Global 2025 Tile #299",
+    "name": "Ified Tiles",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -6487,7 +6487,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c303",
-    "name": "Global 2025 Tile #303",
+    "name": "Ified Tiles",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -6508,7 +6508,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c304",
-    "name": "Global 2025 Tile #304",
+    "name": "A Il",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -6655,7 +6655,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c311",
-    "name": "Global 2025 Tile #311",
+    "name": "Matt Tiles",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -6739,7 +6739,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c315",
-    "name": "Global 2025 Tile #315",
+    "name": "1106 Matt",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -6823,7 +6823,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c319",
-    "name": "Global 2025 Tile #319",
+    "name": "Matt Tiles",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -6907,7 +6907,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c323",
-    "name": "Global 2025 Tile #323",
+    "name": "Matt Tiles",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -6991,7 +6991,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c327",
-    "name": "Global 2025 Tile #327",
+    "name": "Matt Tiles",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -7075,7 +7075,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c331",
-    "name": "Global 2025 Tile #331",
+    "name": "Matt Tiles",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -7159,7 +7159,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c335",
-    "name": "Global 2025 Tile #335",
+    "name": "Glossy Tiles",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -7243,7 +7243,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c339",
-    "name": "Global 2025 Tile #339",
+    "name": "Carving Tiles",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -7327,7 +7327,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c343",
-    "name": "Global 2025 Tile #343",
+    "name": "Step & Riser",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -7348,7 +7348,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c344",
-    "name": "Global 2025 Tile #344",
+    "name": "1 Nt 0",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -7369,7 +7369,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c345",
-    "name": "Global 2025 Tile #345",
+    "name": "Nexus Black-Step",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -7390,7 +7390,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c346",
-    "name": "Global 2025 Tile #346",
+    "name": "Nexus Black",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -7411,7 +7411,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c347",
-    "name": "Global 2025 Tile #347",
+    "name": "Step & Riser",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -7432,7 +7432,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c348",
-    "name": "Global 2025 Tile #348",
+    "name": "Nexus Grey",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -7453,7 +7453,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c349",
-    "name": "Global 2025 Tile #349",
+    "name": "Lapato Black-Step",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -7474,7 +7474,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c350",
-    "name": "Global 2025 Tile #350",
+    "name": "ACK",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -7495,7 +7495,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c351",
-    "name": "Global 2025 Tile #351",
+    "name": "Step & Riser",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -7516,7 +7516,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c352",
-    "name": "Global 2025 Tile #352",
+    "name": "Lapato Nero",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -7537,7 +7537,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c353",
-    "name": "Global 2025 Tile #353",
+    "name": "Lapato Coffee-Step",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -7558,7 +7558,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c354",
-    "name": "Global 2025 Tile #354",
+    "name": "Lapato Coffee",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -7579,7 +7579,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c355",
-    "name": "Global 2025 Tile #355",
+    "name": "Step & Riser",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -7600,7 +7600,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c356",
-    "name": "Global 2025 Tile #356",
+    "name": "Desert Black",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -7621,7 +7621,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c357",
-    "name": "Global 2025 Tile #357",
+    "name": "Desert Coffee-Step",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -7642,7 +7642,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c358",
-    "name": "Global 2025 Tile #358",
+    "name": "Desert Coffee",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -7663,7 +7663,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c359",
-    "name": "Global 2025 Tile #359",
+    "name": "Step & Riser",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -7684,7 +7684,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c360",
-    "name": "Global 2025 Tile #360",
+    "name": "Desert Grey",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -7705,7 +7705,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c361",
-    "name": "Global 2025 Tile #361",
+    "name": "Desert Nero-Step",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -7726,7 +7726,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c362",
-    "name": "Global 2025 Tile #362",
+    "name": "Desert Nero",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -7747,7 +7747,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c363",
-    "name": "Global 2025 Tile #363",
+    "name": "Step & Riser",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -7831,7 +7831,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c367",
-    "name": "Global 2025 Tile #367",
+    "name": "Step & Riser",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -7852,7 +7852,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c368",
-    "name": "Global 2025 Tile #368",
+    "name": "Melton Marble",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -7873,7 +7873,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c369",
-    "name": "Global 2025 Tile #369",
+    "name": "White Granite-Step",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -7894,7 +7894,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c370",
-    "name": "Global 2025 Tile #370",
+    "name": "White Granite",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -7915,7 +7915,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c371",
-    "name": "Global 2025 Tile #371",
+    "name": "Step & Riser",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -7936,7 +7936,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c372",
-    "name": "Global 2025 Tile #372",
+    "name": "Clara Wood Beige",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -7957,7 +7957,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c373",
-    "name": "Global 2025 Tile #373",
+    "name": "Semoi Brown-Step",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -7978,7 +7978,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c374",
-    "name": "Global 2025 Tile #374",
+    "name": "Semoi Brown",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -7999,7 +7999,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c375",
-    "name": "Global 2025 Tile #375",
+    "name": "Plank Tiles",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -8041,7 +8041,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c377",
-    "name": "Global 2025 Tile #377",
+    "name": "Coffee Wood-R-1",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -8062,7 +8062,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c378",
-    "name": "Global 2025 Tile #378",
+    "name": "Coffee Wood-R-3",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -8083,7 +8083,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c379",
-    "name": "Global 2025 Tile #379",
+    "name": "Plank Tiles",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -8104,7 +8104,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c380",
-    "name": "Global 2025 Tile #380",
+    "name": "Natural Wood-R-3",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -8146,7 +8146,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c382",
-    "name": "Global 2025 Tile #382",
+    "name": "7909",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -8167,7 +8167,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c383",
-    "name": "Global 2025 Tile #383",
+    "name": "Border Tiles",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -8251,7 +8251,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c387",
-    "name": "Global 2025 Tile #387",
+    "name": "Kitchen Sink",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -8314,7 +8314,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c390",
-    "name": "Global 2025 Tile #390",
+    "name": "Kitchen Sink",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -8335,7 +8335,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c391",
-    "name": "Global 2025 Tile #391",
+    "name": "Kitchen Sink",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -8419,7 +8419,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c395",
-    "name": "Global 2025 Tile #395",
+    "name": "Kitchen Sink",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -8566,7 +8566,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c402",
-    "name": "Global 2025 Tile #402",
+    "name": "Be EEE",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -8629,7 +8629,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c405",
-    "name": "Global 2025 Tile #405",
+    "name": "Nitaryware",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -8650,7 +8650,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c406",
-    "name": "Global 2025 Tile #406",
+    "name": "7026 MRP RS",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -8671,7 +8671,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c407",
-    "name": "Global 2025 Tile #407",
+    "name": "ONE Piece",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -8692,7 +8692,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c408",
-    "name": "Global 2025 Tile #408",
+    "name": "7030 MRP R",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -8713,7 +8713,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c409",
-    "name": "Global 2025 Tile #409",
+    "name": "Nitaryware",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -8734,7 +8734,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c410",
-    "name": "Global 2025 Tile #410",
+    "name": "4025 Rimless MRP Rs",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -8755,7 +8755,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c411",
-    "name": "Global 2025 Tile #411",
+    "name": "Wall Hung",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -8776,7 +8776,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c412",
-    "name": "Global 2025 Tile #412",
+    "name": "4024 Rimless MRP R",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -8797,7 +8797,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c413",
-    "name": "Global 2025 Tile #413",
+    "name": "Nitaryware",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -8818,7 +8818,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c414",
-    "name": "Global 2025 Tile #414",
+    "name": "6006 MRP Rs",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -8839,7 +8839,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c415",
-    "name": "Global 2025 Tile #415",
+    "name": "Small",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -8881,7 +8881,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c417",
-    "name": "Global 2025 Tile #417",
+    "name": "Nitaryware",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -8902,7 +8902,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c418",
-    "name": "Global 2025 Tile #418",
+    "name": "Dimension 18 X 1",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -8923,7 +8923,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c419",
-    "name": "Global 2025 Tile #419",
+    "name": "Small",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -9007,7 +9007,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c423",
-    "name": "Global 2025 Tile #423",
+    "name": "Cabinet Vanity",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -9091,7 +9091,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c427",
-    "name": "Global 2025 Tile #427",
+    "name": "Cabinet Vanity",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -9175,7 +9175,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c431",
-    "name": "Global 2025 Tile #431",
+    "name": "Il Tile Grout",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -9196,7 +9196,7 @@ export const importedProducts = [
   },
   {
     "id": "gt2025-c432",
-    "name": "Global 2025 Tile #432",
+    "name": "Application",
     "category": "Tiles",
     "subCategory": "Wall & Floor Tiles",
     "size": "300x600mm",
@@ -9613,7 +9613,7 @@ export const importedProducts = [
   },
   {
     "id": "sunflora-c003",
-    "name": "Sunflora 2X4 Tile #3",
+    "name": "Cv Boto Grey",
     "category": "Tiles",
     "subCategory": "Floor & Wall Tiles",
     "size": "600x1200mm",
@@ -9657,7 +9657,7 @@ export const importedProducts = [
   },
   {
     "id": "sunflora-c005",
-    "name": "Sunflora 2X4 Tile #5",
+    "name": "Cv Travertino Beige",
     "category": "Tiles",
     "subCategory": "Floor & Wall Tiles",
     "size": "600x1200mm",
@@ -9679,7 +9679,7 @@ export const importedProducts = [
   },
   {
     "id": "sunflora-c006",
-    "name": "Sunflora 2X4 Tile #6",
+    "name": "Sp Crystal Black",
     "category": "Tiles",
     "subCategory": "Floor & Wall Tiles",
     "size": "600x1200mm",
@@ -9701,7 +9701,7 @@ export const importedProducts = [
   },
   {
     "id": "sunflora-c007",
-    "name": "Sunflora 2X4 Tile #7",
+    "name": "Sp Crystal Silver",
     "category": "Tiles",
     "subCategory": "Floor & Wall Tiles",
     "size": "600x1200mm",
@@ -9723,7 +9723,7 @@ export const importedProducts = [
   },
   {
     "id": "sunflora-c008",
-    "name": "Sunflora 2X4 Tile #8",
+    "name": "Sp Denim Nero",
     "category": "Tiles",
     "subCategory": "Floor & Wall Tiles",
     "size": "600x1200mm",
@@ -9745,7 +9745,7 @@ export const importedProducts = [
   },
   {
     "id": "sunflora-c009",
-    "name": "Sunflora 2X4 Tile #9",
+    "name": "Sp Denim White",
     "category": "Tiles",
     "subCategory": "Floor & Wall Tiles",
     "size": "600x1200mm",
@@ -9767,7 +9767,7 @@ export const importedProducts = [
   },
   {
     "id": "sunflora-c010",
-    "name": "Sunflora 2X4 Tile #10",
+    "name": "Sp Flicker Brown",
     "category": "Tiles",
     "subCategory": "Floor & Wall Tiles",
     "size": "600x1200mm",
@@ -9811,7 +9811,7 @@ export const importedProducts = [
   },
   {
     "id": "sunflora-c012",
-    "name": "Sunflora 2X4 Tile #12",
+    "name": "Sp Omicron Beige",
     "category": "Tiles",
     "subCategory": "Floor & Wall Tiles",
     "size": "600x1200mm",
@@ -9833,7 +9833,7 @@ export const importedProducts = [
   },
   {
     "id": "sunflora-c013",
-    "name": "Sunflora 2X4 Tile #13",
+    "name": "Sp Subway Black Decor",
     "category": "Tiles",
     "subCategory": "Floor & Wall Tiles",
     "size": "600x1200mm",
@@ -9877,7 +9877,7 @@ export const importedProducts = [
   },
   {
     "id": "sunflora-c015",
-    "name": "Sunflora 2X4 Tile #15",
+    "name": "Sp Terra Black",
     "category": "Tiles",
     "subCategory": "Floor & Wall Tiles",
     "size": "600x1200mm",
@@ -9899,7 +9899,7 @@ export const importedProducts = [
   },
   {
     "id": "sunflora-c016",
-    "name": "Sunflora 2X4 Tile #16",
+    "name": "Sp Terra White",
     "category": "Tiles",
     "subCategory": "Floor & Wall Tiles",
     "size": "600x1200mm",
@@ -9921,7 +9921,7 @@ export const importedProducts = [
   },
   {
     "id": "sunflora-c017",
-    "name": "Sunflora 2X4 Tile #17",
+    "name": "Sp Wing Pink",
     "category": "Tiles",
     "subCategory": "Floor & Wall Tiles",
     "size": "600x1200mm",
@@ -10185,7 +10185,7 @@ export const importedProducts = [
   },
   {
     "id": "sunflora-c029",
-    "name": "Sunflora 2X4 Tile #29",
+    "name": "End Strom Grey",
     "category": "Tiles",
     "subCategory": "Floor & Wall Tiles",
     "size": "600x1200mm",
@@ -10207,7 +10207,7 @@ export const importedProducts = [
   },
   {
     "id": "sunflora-c030",
-    "name": "Sunflora 2X4 Tile #30",
+    "name": "End Flora Aqua",
     "category": "Tiles",
     "subCategory": "Floor & Wall Tiles",
     "size": "600x1200mm",
@@ -10229,7 +10229,7 @@ export const importedProducts = [
   },
   {
     "id": "sunflora-c031",
-    "name": "Sunflora 2X4 Tile #31",
+    "name": "End Spark Statuario",
     "category": "Tiles",
     "subCategory": "Floor & Wall Tiles",
     "size": "600x1200mm",

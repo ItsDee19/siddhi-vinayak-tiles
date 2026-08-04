@@ -84,11 +84,21 @@ export default function Visualizer() {
 
   // Preload GLB models only once we know the device can actually render them
   // (and only once this component itself has been lazy-loaded near-viewport —
-  // see VisualizerLazy). Avoids fetching all 5 GLBs on every page view.
+  // see VisualizerLazy). Only the active model is preloaded eagerly; the
+  // rest are prefetched at browser idle time so a phone doesn't fetch all
+  // 5 GLBs (1.57 MB) just to show one 657 KB model.
   useEffect(() => {
     if (!webgl) return
-    models.forEach((m) => { if (m.glbUrl) useGLTF.preload(m.glbUrl) })
-  }, [webgl])
+    const active = models.find((m) => m.id === activeModelId)
+    if (active?.glbUrl) useGLTF.preload(active.glbUrl)
+
+    const idle = window.requestIdleCallback || ((fn) => setTimeout(fn, 300))
+    const cancelIdle = window.cancelIdleCallback || clearTimeout
+    const handle = idle(() => {
+      models.forEach((m) => { if (m.glbUrl) useGLTF.preload(m.glbUrl) })
+    })
+    return () => cancelIdle(handle)
+  }, [webgl, activeModelId])
 
   const activeModel = useMemo(
     () => models.find((m) => m.id === activeModelId),
@@ -110,6 +120,7 @@ export default function Visualizer() {
   const onSwatchPick = (zoneId, swatch) => {
     setZoneTextures((z) => ({ ...z, [zoneId]: swatch }))
   }
+
   // Every blob: URL we mint for a custom upload, so none of them outlive the
   // swatch that referenced it (an un-revoked object URL pins the whole file in
   // memory for the life of the document).
@@ -152,6 +163,7 @@ export default function Visualizer() {
       urls.clear()
     }
   }, [])
+
   const onReset = () => {
     setZoneTextures(defaultZoneTextures(activeModel.zones))
     setActiveZoneId(activeModel.zones[0].id)
@@ -264,6 +276,7 @@ export default function Visualizer() {
                                 layout={modelExtras.layout}
                                 groutEnabled={!!(activeModel.controls || []).includes('groutColor')}
                                 modelExtras={modelExtras}
+                                tier={quality}
                               />
                             </GLBErrorBoundary>
                           ) : (

@@ -26,6 +26,12 @@ const FRAG = /* glsl */`
   void main() {
     float h = normalize(vWorldPos + vec3(0.0, offset, 0.0)).y;
     gl_FragColor = vec4(mix(bottomColor, topColor, max(pow(max(h, 0.0), exponent), 0.0)), 1.0);
+    // A raw ShaderMaterial doesn't automatically get the renderer's
+    // tonemapping + sRGB output transform the way built-in materials do —
+    // without these includes this backdrop wouldn't colour-match the ACES
+    // tonemapped, IBL-lit geometry in front of it.
+    #include <tonemapping_fragment>
+    #include <colorspace_fragment>
   }
 `
 

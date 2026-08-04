@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 import * as THREE from 'three'
 import { loadZoneTexture, loadRawTexture, composeGroutTexture, resolveZoneSource } from '../../utils/threeTextures'
+import { getFinish } from '../../utils/finishMaterial'
 
 // Set up Draco decoder path — self-hosted so mobile browsers (iOS Safari with
 // content blockers, etc.) can always load the WASM decoder without relying on
@@ -22,6 +23,63 @@ useGLTF.setDecoderPath('/draco/')
 // Blender materials.
 // =========================================================================
 
+// Models A/B/D/E are authored in feet; the staircase (C) is authored in
+// metres. Used to convert scene units to millimetres for real-world tiling.
+function mmPerSceneUnit(glbUrl) {
+  return /staircase/i.test(glbUrl || '') ? 1000 : 304.8
+}
+
+// Parse a catalogue size string like "600×1200mm" or "600x1200mm" into
+// [wMM, hMM]. Returns null if unparseable.
+function parseSizeMM(sizeStr) {
+  if (!sizeStr) return null
+  const m = String(sizeStr).match(/(\d+(?:\.\d+)?)\s*[x×]\s*(\d+(?:\.\d+)?)/i)
+  if (!m) return null
+  return [parseFloat(m[1]), parseFloat(m[2])]
+}
+
+// Compute a mesh's real-world width/height in millimetres from its local
+// (untransformed) geometry bounding box — the two largest axis extents are
+// treated as width/height, the smallest as thickness. Local space is used
+// because it is unaffected by the parent group's world rotation, so it
+// stays consistent whichever way a wall panel is rotated into the scene.
+function meshWorldSizeMM(mesh, mmPerUnit) {
+  if (!mesh.geometry) return null
+  if (!mesh.geometry.boundingBox) mesh.geometry.computeBoundingBox()
+  const box = mesh.geometry.boundingBox
+  if (!box) return null
+  const size = new THREE.Vector3()
+  box.getSize(size)
+  const dims = [size.x, size.y, size.z].sort((a, b) => b - a)
+  const [d0, d1] = dims
+  if (!(d0 > 0) || !(d1 > 0)) return null
+  return [d0 * mmPerUnit, d1 * mmPerUnit]
+}
+
+// Compute anisotropic repeat.x/y for a mesh from the product's real tile
+// size against the mesh's real-world dimensions, replacing the old isotropic
+// `repeat.set(r, r)` (which visibly stretched sources up to ~3.9:1 aspect).
+// `sizeMultiplier` is the existing "Tile size" slider (repeatScale) applied
+// as a scale on top of the physically-correct baseline, so the control still
+// does something meaningful instead of using its own disconnected formula.
+function computeRepeat(mesh, product, glbUrl, sizeMultiplier) {
+  const tileMM = parseSizeMM(product?.size)
+  const meshMM = meshWorldSizeMM(mesh, mmPerSceneUnit(glbUrl))
+  if (!tileMM || !meshMM) return { x: sizeMultiplier, y: sizeMultiplier }
+  const [meshW, meshH] = meshMM
+  // Map the tile's larger physical dimension to the mesh's larger extent so
+  // the tile isn't stretched — orientation-agnostic for the tile photo.
+  const [tileMajor, tileMinor] = tileMM[0] >= tileMM[1] ? tileMM : [tileMM[1], tileMM[0]]
+  const [meshMajor, meshMinor] = meshW >= meshH ? [meshW, meshH] : [meshH, meshW]
+  const repeatMajor = (meshMajor / tileMajor) * sizeMultiplier
+  const repeatMinor = (meshMinor / tileMinor) * sizeMultiplier
+  const clamp = (v) => Math.min(64, Math.max(0.25, v))
+  // Re-project back onto x/y in the mesh's own orientation.
+  return meshW >= meshH
+    ? { x: clamp(repeatMajor), y: clamp(repeatMinor) }
+    : { x: clamp(repeatMinor), y: clamp(repeatMajor) }
+}
+
 export default function GLBModel({
   glbUrl,
   zones = [],
@@ -32,6 +90,7 @@ export default function GLBModel({
   groutEnabled = false, // Model D only: apply grout compositing (PRD §4.5)
   modelExtras = {}, // fixture toggles + controls (PRD §4): showShower, showWC,
                     // showNosing, showFaucet, showVanityLight, repeatScale, etc.
+  tier = 'full', // 'full' | 'lite' — selects desktop/mobile derived tile variant
 }) {
   const groupRef = useRef(null)
   const { scene } = useGLTF(glbUrl)
@@ -46,6 +105,13 @@ export default function GLBModel({
 
   // Clone the scene so we don't mutate the cached GLTF
   const cloned = useMemo(() => scene.clone(true), [scene])
+
+  // Tracks the texture THIS component created and assigned per mesh, so we
+  // only ever dispose textures we own — never the master cached in
+  // useGLTF's scene or threeTextures' urlCache. Disposing the shared master
+  // on the first texture-apply pass was a real bug: remounting the same GLB
+  // (switching model tabs and back) would find it already dead on the GPU.
+  const ownedTextures = useRef(new WeakMap())
 
   // Build a map of zoneId → mesh objects for quick lookup
   const zoneMeshes = useMemo(() => {
@@ -62,6 +128,7 @@ export default function GLBModel({
           obj.material = new THREE.MeshStandardMaterial({
             color: 0xffffff, roughness: 0.25, metalness: 0,
           })
+          obj.receiveShadow = true
           return // don't add to zone map — not tileable
         }
         if (!map[zoneId]) map[zoneId] = []
@@ -71,7 +138,10 @@ export default function GLBModel({
     return map
   }, [cloned, glbUrl])
 
-  // Clone materials on first run so we can safely modify them
+  // Clone materials once on mount and set shadow flags. Previously this ran
+  // on every texture-apply pass (a second, redundant clone on top of the
+  // per-mesh clone below), leaking a Material each time and forcing a
+  // shader-program recompile for no reason.
   useEffect(() => {
     cloned.traverse((obj) => {
       if (obj.type !== 'Mesh') return
@@ -79,6 +149,10 @@ export default function GLBModel({
         obj.material = obj.material.clone()
         obj.material.needsUpdate = true
       }
+      // Walls/fixtures cast; everything receives. Non-zone backdrop planes
+      // (e.g. Model D's bare "Plane") still benefit from receiving shadows.
+      obj.castShadow = true
+      obj.receiveShadow = true
     })
   }, [cloned])
 
@@ -87,6 +161,8 @@ export default function GLBModel({
   // Loaded in parallel (not one-at-a-time) — models with many meshes (e.g.
   // the staircase) would otherwise take one sequential round-trip per mesh,
   // which is especially costly on higher-latency mobile connections.
+  // Meshes with no matching bake (or GLBs with no TEXCOORD_1 at all) simply
+  // fail the load and are left without an aoMap — handled gracefully below.
   useEffect(() => {
     if (!modelKey) return
     let cancelled = false
@@ -118,10 +194,11 @@ export default function GLBModel({
     return () => { cancelled = true }
   }, [cloned, modelKey, aoLoader, glbUrl])
 
-  // Apply textures to zone meshes whenever zoneTextures changes.
-  // repeatScale (PRD §4.5) simulates tile size: higher = smaller tiles = more repeats.
-  const baseRepeat = 1.0
-  const tileRepeat = baseRepeat * (modelExtras.repeatScale ?? 1)
+  // Apply textures + finish-driven material response to zone meshes whenever
+  // zoneTextures changes. repeatScale (PRD §4.5) now scales the physically
+  // computed repeat (see computeRepeat) rather than driving an independent,
+  // disconnected formula.
+  const sizeMultiplier = modelExtras.repeatScale ?? 1
 
   useEffect(() => {
     let cancelled = false
@@ -131,55 +208,69 @@ export default function GLBModel({
         const meshes = zoneMeshes[zone.id]
         if (!meshes) continue
 
-        const source = zoneTextures[zone.id]
-        const src = resolveZoneSource(source)
+        const rawSource = zoneTextures[zone.id]
+        const src = resolveZoneSource(rawSource, tier)
+        const finish = getFinish(src?.finish)
 
-        let tex = null
+        // Load once per zone (not per mesh) — individual meshes still get
+        // their own repeat-configured clone below since two walls sharing
+        // a zone can have different real widths.
+        let baseTex = null
+        let isGroutComposited = false
         if (src) {
-          // Model D grout picker: composite grout lines between the tiles
-          // (our textures are seamless single tiles with no baked grout).
           if (groutEnabled && modelExtras.groutColor && modelExtras.groutColor !== 'none') {
             const base = await loadRawTexture(src)
-            if (base) tex = composeGroutTexture(base, modelExtras.groutColor, tileRepeat)
+            if (base) {
+              // Derive the grout cell count from the same real-world repeat
+              // math as the non-composited path (using the zone's first
+              // mesh as the representative size) instead of an unrelated
+              // constant, so the grout grid matches the physical tile size.
+              const { x: gx, y: gy } = computeRepeat(meshes[0], rawSource, glbUrl, sizeMultiplier)
+              const cells = Math.max(1, Math.round((gx + gy) / 2))
+              baseTex = composeGroutTexture(base, modelExtras.groutColor, cells, 1024)
+              isGroutComposited = true
+            }
           }
-          if (!tex) tex = await loadZoneTexture(src, tileRepeat, 512)
+          if (!baseTex) baseTex = await loadZoneTexture(src, 1, 512)
         }
 
         if (cancelled) return
 
         for (const mesh of meshes) {
           const isActive = activeZone === zone.id
-          mesh.material = mesh.material.clone()
-          // Microscopic 0.1% geometry overlap to eliminate sub-pixel gaps between adjacent mesh bands
+          // Microscopic 0.1% geometry overlap to eliminate sub-pixel gaps
+          // between adjacent mesh bands. `.set()` is absolute, so re-running
+          // this every pass does not compound.
           mesh.scale.set(1.001, 1.001, 1.001)
 
-          if (mesh.material.map) {
-            mesh.material.map.dispose()
+          const previousOwned = ownedTextures.current.get(mesh)
+          if (previousOwned) {
+            previousOwned.dispose()
+            ownedTextures.current.delete(mesh)
           }
-          if (tex) {
-            const texClone = tex.clone()
-            // GLB wall bands often have very narrow V ranges. Repeating in T
-            // makes those bands stack the source image vertically, which
-            // appears as horizontal lines/diagonals at oblique camera angles.
-            // Keep the vertical sample to one UV span and only repeat across
-            // U for normal (non-composited) tile textures.
-            const isGroutComposited = tex.userData?.groutComposited === true
-            texClone.wrapS = isGroutComposited ? THREE.ClampToEdgeWrapping : THREE.RepeatWrapping
-            texClone.wrapT = THREE.ClampToEdgeWrapping
-            texClone.repeat.set(isGroutComposited ? 1 : tileRepeat, 1)
-            texClone.minFilter = THREE.LinearFilter
-            texClone.magFilter = THREE.LinearFilter
-            texClone.generateMipmaps = false
-            texClone.anisotropy = 16
+
+          if (baseTex) {
+            const texClone = baseTex.clone()
+            if (isGroutComposited) {
+              texClone.wrapS = texClone.wrapT = THREE.ClampToEdgeWrapping
+              texClone.repeat.set(1, 1)
+            } else {
+              const { x: repeatX, y: repeatY } = computeRepeat(mesh, rawSource, glbUrl, sizeMultiplier)
+              texClone.wrapS = texClone.wrapT = THREE.RepeatWrapping
+              texClone.repeat.set(repeatX, repeatY)
+            }
             texClone.needsUpdate = true
             mesh.material.map = texClone
             mesh.material.color = new THREE.Color(0xffffff)
+            ownedTextures.current.set(mesh, texClone)
           } else {
             mesh.material.map = null
             mesh.material.color = new THREE.Color('#5C3A22')
           }
-          mesh.material.roughness = 0.6
-          mesh.material.metalness = 0.05
+
+          mesh.material.roughness = finish.roughness
+          mesh.material.metalness = finish.metalness
+          mesh.material.envMapIntensity = finish.envMapIntensity
           mesh.material.emissive = isActive ? new THREE.Color('#C49A3C') : new THREE.Color('#000000')
           mesh.material.emissiveIntensity = isActive ? 0.12 : 0
           mesh.material.needsUpdate = true
@@ -189,7 +280,26 @@ export default function GLBModel({
 
     applyTextures()
     return () => { cancelled = true }
-  }, [zones, zoneMeshes, zoneTextures, activeZone, tileRepeat, groutEnabled, modelExtras.groutColor])
+    // Deliberately excludes `activeZone` — the emissive highlight is applied
+    // by the lightweight effect below instead of re-running the whole async
+    // texture load + grout composite just to change which zone is selected.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [zones, zoneMeshes, zoneTextures, tier, sizeMultiplier, groutEnabled, modelExtras.groutColor, glbUrl])
+
+  // Zone-selection highlight only — synchronous, no texture work.
+  useEffect(() => {
+    for (const zone of zones) {
+      const meshes = zoneMeshes[zone.id]
+      if (!meshes) continue
+      const isActive = activeZone === zone.id
+      for (const mesh of meshes) {
+        if (!mesh.material) continue
+        mesh.material.emissive.set(isActive ? '#C49A3C' : '#000000')
+        mesh.material.emissiveIntensity = isActive ? 0.12 : 0
+        mesh.material.needsUpdate = true
+      }
+    }
+  }, [zones, zoneMeshes, activeZone])
 
   // Fixture visibility toggles (PRD §4.2–§4.6). The GLB ships fixture meshes
   // (shower_fixture, wc_fixture, *_nosing, faucet_*, vanity_light) that the
