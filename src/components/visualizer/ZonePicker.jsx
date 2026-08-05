@@ -1,6 +1,7 @@
 import { useMemo, useRef, useState } from 'react'
 import Icon from '../Icons'
 import { visualizerProducts as products } from '../../data/visualizerCatalogue'
+import { resolveZoneSource } from '../../utils/threeTextures'
 
 const INITIAL_BATCH = 28
 
@@ -167,7 +168,13 @@ export default function ZonePicker({
           <div className="mt-2.5 flex gap-2 overflow-x-auto pb-2 scroll-smooth [scroll-snap-type:x_mandatory]">
             {visibleSwatches.map((p) => {
               const sel = current?.id === p.id
-              const thumb = p.textureUrl || p.imageUrl
+              // Resolve through the same pipeline that supplies the actual
+              // 3D wall texture (border-trimmed, seamless-healed, and
+              // preferring the re-extracted clean_swatches_v2 source when
+              // available) — a raw p.textureUrl here would show the
+              // un-fixed original crop, out of sync with what gets applied.
+              const resolved = resolveZoneSource(p)
+              const thumb = resolved?.url || p.imageUrl
               return (
                 <button
                   key={p.id}
