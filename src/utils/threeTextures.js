@@ -1,6 +1,6 @@
 import * as THREE from 'three'
 import { makeMaterialCanvas } from './textures'
-import visualizerTileManifest from '../data/visualizerTileManifest.json'
+import { tileEntry, tileUrl } from '../data/visualizerTiles'
 
 // Cache so we don't regenerate the same canvas/texture repeatedly.
 const cache = new Map()
@@ -137,29 +137,23 @@ export function loadZoneTexture(source, repeatX = 1, size = 512, repeatY = repea
   })
 }
 
-// Look up the derived, border-free, wrap-safe visualizer tile for a given
-// clean_swatches source URL. Falls back to the original clean_swatches URL
-// when the tile was quarantined or is missing from the manifest (a handful
-// of sources need manual attention — see scripts/build_visualizer_tiles.mjs).
-function toVisualizerTileUrl(cleanSwatchesUrl, tier = 'full') {
-  const basename = cleanSwatchesUrl.split('/').pop()
-  const entry = visualizerTileManifest[basename]
-  if (!entry || entry.status !== 'ok') return cleanSwatchesUrl
-  const variantUrl = tier === 'lite' ? entry.mobile : entry.desktop
-  return variantUrl || cleanSwatchesUrl
-}
-
 // If the source has a `textureUrl` (catalogue product), convert to a URL source.
 // Useful when passing a catalogue product directly to loadZoneTexture.
 // `tier` ('full' | 'lite') selects the desktop or mobile-resolution derived
-// tile — see toVisualizerTileUrl above.
+// tile — see src/data/visualizerTiles.js.
+//
+// A product whose texture did not survive the tile pipeline resolves to null
+// rather than to its raw clean_swatches crop. visualizerCatalogue.js already
+// filters those out of the picker, so this is a backstop: it is better for a
+// surface to keep its previous material than to have a brochure cover page
+// painted across it.
 export function resolveZoneSource(product, tier = 'full') {
   if (!product) return null
   if (product.url) return product  // already a custom upload
   if (product.textureUrl) {
-    const cleanUrl = product.textureUrl.replace('/swatches/', '/clean_swatches/')
-    const tileUrl = toVisualizerTileUrl(cleanUrl, tier)
-    return { id: product.id, name: product.name, url: tileUrl, finish: product.finish, size: product.size }
+    const url = tileUrl(product, tier)
+    if (!url) return null
+    return { id: product.id, name: product.name, url, finish: product.finish, size: product.size, aspect: tileEntry(product)?.aspect }
   }
   // No textureUrl → treat as procedural. Build a procedural swatch from
   // the catalogue product's color/category.
@@ -194,22 +188,29 @@ export function loadRawTexture(source) {
 }
 
 // Compose a tile texture with grout lines drawn between repeated tiles.
-// `repeat` = tiles across the surface; `groutColor` colors the seams
-// (pass 'none' to skip grout entirely). Our tile textures are seamless
-// single tiles with no baked grout, so this adds the grout that belongs
-// between tiles. (PRD §4.5 grout picker.)
-export function composeGroutTexture(baseTex, groutColor, repeat, size = 512) {
+// `repeatX`/`repeatY` = tiles across the surface on each axis; `groutColor`
+// colors the seams (pass 'none' to skip grout entirely). Our tile textures are
+// seamless single tiles with no baked grout, so this adds the grout that
+// belongs between tiles. (PRD §4.5 grout picker.)
+//
+// The two axes are counted separately. They used to be averaged into a single
+// square cell count, which meant a 600x1200 slab was drawn into square cells —
+// squashing the tile face and putting the grout lines somewhere other than the
+// actual tile edges.
+export function composeGroutTexture(baseTex, groutColor, repeatX, repeatY, size = 512) {
   const canvas = document.createElement('canvas')
   canvas.width = canvas.height = size
   const ctx = canvas.getContext('2d')
   const img = baseTex && baseTex.image
-  const cells = Math.max(1, Math.round(repeat))
-  const cw = size / cells
+  const cellsX = Math.max(1, Math.round(repeatX))
+  const cellsY = Math.max(1, Math.round(repeatY))
+  const cw = size / cellsX
+  const ch = size / cellsY
 
   if (img) {
-    for (let x = 0; x < cells; x++) {
-      for (let y = 0; y < cells; y++) {
-        try { ctx.drawImage(img, x * cw, y * cw, cw, cw) } catch (e) { /* noop */ }
+    for (let x = 0; x < cellsX; x++) {
+      for (let y = 0; y < cellsY; y++) {
+        try { ctx.drawImage(img, x * cw, y * ch, cw, ch) } catch (e) { /* noop */ }
       }
     }
   } else {
@@ -218,13 +219,16 @@ export function composeGroutTexture(baseTex, groutColor, repeat, size = 512) {
   }
 
   if (groutColor && groutColor !== 'none') {
-    const gw = Math.max(1, Math.round(cw * 0.015))
     ctx.strokeStyle = groutColor === 'black' ? '#333333' : (groutColor || '#e0dad0')
-    ctx.lineWidth = gw
     ctx.lineCap = 'square'
-    for (let i = 1; i < cells; i++) {
+    ctx.lineWidth = Math.max(1, Math.round(cw * 0.015))
+    for (let i = 1; i < cellsX; i++) {
       const p = Math.round(i * cw)
       ctx.beginPath(); ctx.moveTo(p, 0); ctx.lineTo(p, size); ctx.stroke()
+    }
+    ctx.lineWidth = Math.max(1, Math.round(ch * 0.015))
+    for (let i = 1; i < cellsY; i++) {
+      const p = Math.round(i * ch)
       ctx.beginPath(); ctx.moveTo(0, p); ctx.lineTo(size, p); ctx.stroke()
     }
   }

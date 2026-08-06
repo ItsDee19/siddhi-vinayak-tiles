@@ -19,7 +19,10 @@
 //   featured      boolean
 // ---------------------------------------------------------------------------
 
-import { importedProducts } from './importedCatalogue'
+// Explicit .js extension: scripts/build_visualizer_tiles.mjs imports this
+// module chain directly under plain Node (no Vite resolver), and Node's ESM
+// loader does not guess extensions.
+import { importedProducts } from './importedCatalogue.js'
 
 export const subCategories = {
   tiles:        ['Floor Tiles', 'Wall Tiles', 'Exterior', 'Décor'],

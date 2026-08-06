@@ -78,14 +78,38 @@ function meshWorldSizeMM(mesh, mmPerUnit) {
 // `sizeMultiplier` is the existing "Tile size" slider (repeatScale) applied
 // as a scale on top of the physically-correct baseline, so the control still
 // does something meaningful instead of using its own disconnected formula.
-function computeRepeat(mesh, product, glbUrl, sizeMultiplier) {
+//
+// Two things decide how the tile lands, and they come from different places:
+//
+//   SHAPE comes from the texture's own aspect (`resolved.aspect`, recorded by
+//   the tile pipeline). It cannot come from the declared `size`, because a
+//   large part of the catalogue's declared sizes are simply wrong — every
+//   76x300mm 3x12 elevation tile is labelled "300x600mm", for instance. Using
+//   the declared aspect there squashed a 3.95:1 tile into a 2:1 slot.
+//
+//   SCALE comes from the declared size's larger dimension, which is reliable
+//   enough (600 / 400 / 300 mm) and is what sets how many tiles span a wall.
+//
+// Combining them — major length from the catalogue, minor length derived from
+// the texture's true aspect — gives a tile that is both the right size and
+// never stretched.
+export function computeRepeat(mesh, product, glbUrl, sizeMultiplier, texAspect) {
   const tileMM = parseSizeMM(product?.size)
   const meshMM = meshWorldSizeMM(mesh, mmPerSceneUnit(glbUrl))
   if (!tileMM || !meshMM) return { x: sizeMultiplier, y: sizeMultiplier }
   const [meshW, meshH] = meshMM
-  // Map the tile's larger physical dimension to the mesh's larger extent so
-  // the tile isn't stretched — orientation-agnostic for the tile photo.
-  const [tileMajor, tileMinor] = tileMM[0] >= tileMM[1] ? tileMM : [tileMM[1], tileMM[0]]
+
+  const tileMajor = Math.max(tileMM[0], tileMM[1])
+  const declaredAspect = tileMajor / Math.min(tileMM[0], tileMM[1])
+  // texAspect is width/height of the shipped texture; fold it to >= 1 to get
+  // the tile's long:short ratio, independent of which way it was photographed.
+  const trueAspect = texAspect
+    ? (texAspect >= 1 ? texAspect : 1 / texAspect)
+    : declaredAspect
+  const tileMinor = tileMajor / trueAspect
+
+  // The tile's long axis follows the surface's long axis, so tiles run along
+  // a wall rather than against it.
   const [meshMajor, meshMinor] = meshW >= meshH ? [meshW, meshH] : [meshH, meshW]
   const repeatMajor = (meshMajor / tileMajor) * sizeMultiplier
   const repeatMinor = (meshMinor / tileMinor) * sizeMultiplier
@@ -253,13 +277,14 @@ export default function GLBModel({
           if (groutEnabled && modelExtras.groutColor && modelExtras.groutColor !== 'none') {
             const base = await loadRawTexture(src)
             if (base) {
-              // Derive the grout cell count from the same real-world repeat
+              // Derive the grout cell counts from the same real-world repeat
               // math as the non-composited path (using the zone's first
               // mesh as the representative size) instead of an unrelated
               // constant, so the grout grid matches the physical tile size.
-              const { x: gx, y: gy } = computeRepeat(meshes[0], rawSource, glbUrl, sizeMultiplier)
-              const cells = Math.max(1, Math.round((gx + gy) / 2))
-              baseTex = composeGroutTexture(base, modelExtras.groutColor, cells, 1024)
+              // Passed as separate x/y counts: averaging them into one square
+              // grid distorted every non-square tile.
+              const { x: gx, y: gy } = computeRepeat(meshes[0], rawSource, glbUrl, sizeMultiplier, src.aspect)
+              baseTex = composeGroutTexture(base, modelExtras.groutColor, gx, gy, 1024)
               isGroutComposited = true
             }
           }
@@ -287,7 +312,7 @@ export default function GLBModel({
               texClone.wrapS = texClone.wrapT = THREE.ClampToEdgeWrapping
               texClone.repeat.set(1, 1)
             } else {
-              const { x: repeatX, y: repeatY } = computeRepeat(mesh, rawSource, glbUrl, sizeMultiplier)
+              const { x: repeatX, y: repeatY } = computeRepeat(mesh, rawSource, glbUrl, sizeMultiplier, src.aspect)
               texClone.wrapS = texClone.wrapT = THREE.RepeatWrapping
               texClone.repeat.set(repeatX, repeatY)
             }

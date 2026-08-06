@@ -3,6 +3,7 @@ import Icon from '../Icons'
 import { visualizerProducts as products } from '../../data/visualizerCatalogue'
 import { ACCEPTED_IMAGE_TYPES, validateImageFile } from '../../utils/imageUpload'
 import { resolveZoneSource } from '../../utils/threeTextures'
+import { surfaceMatches } from '../../utils/surfaces'
 
 const INITIAL_BATCH = 28
 
@@ -22,7 +23,7 @@ export default function ZonePicker({
   const surface = zone?.surface
   const compatible = useMemo(() => {
     let list = surface
-      ? products.filter((p) => p.surface === surface || p.surface === 'Both')
+      ? products.filter((p) => surfaceMatches(p.surface, surface))
       : products
 
     list = list.filter((p) => p.imageUrl || p.textureUrl)
@@ -36,13 +37,13 @@ export default function ZonePicker({
     } else if (subFilter === '12x12-wall') {
       list = list.filter((p) => p.size && p.size.includes('300x300') && p.subCategory === 'Wall Tiles')
     } else if (subFilter === '16x16-parking') {
-      list = list.filter((p) => p.size && p.size.includes('400x400') && p.surface === 'Floor')
+      list = list.filter((p) => p.size && p.size.includes('400x400') && surfaceMatches(p.surface, 'Floor'))
     } else if (subFilter === '12x12-parking') {
-      list = list.filter((p) => p.size && p.size.includes('300x300') && p.surface === 'Floor')
+      list = list.filter((p) => p.size && p.size.includes('300x300') && surfaceMatches(p.surface, 'Floor'))
     } else if (subFilter === '2x4') {
       list = list.filter((p) => (p.size && p.size.includes('600x1200')) || p.id.startsWith('skype') || p.id.startsWith('sunflora'))
     } else if (subFilter === 'floor') {
-      list = list.filter((p) => p.id.startsWith('gt-floor') || p.surface === 'Floor')
+      list = list.filter((p) => p.id.startsWith('gt-floor') || surfaceMatches(p.surface, 'Floor'))
     }
 
     return list

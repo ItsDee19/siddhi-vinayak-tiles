@@ -11,27 +11,35 @@
 //
 // This script does NOT touch clean_swatches/ or importedCatalogue.js — the
 // bottom product catalogue grid must stay byte-for-byte untouched. It reads
-// only the images the 3D visualizer actually references, and writes a NEW,
-// separate directory:
+// only the images the 3D visualizer actually references, and writes NEW,
+// separate outputs.
 //
 // Source preference: for each catalogue product, if a re-cropped override
 // exists at clean_swatches_v2/<id>-swatch.webp (the output of this project's
 // PDF re-extraction pass — see scripts/recrop_*.py), that is used as the
 // pipeline's input instead of the original clean_swatches/ file. Output is
-// still keyed by the ORIGINAL referenced basename, so the manifest shape and
-// resolveZoneSource() in threeTextures.js need no changes — this is a
-// drop-in upgrade of what the existing pipeline already serves. Products
-// with no v2 override fall back to the original clean_swatches/ source
-// exactly as before.
+// still keyed by the ORIGINAL referenced basename. Products with no v2
+// override fall back to the original clean_swatches/ source.
 //
-//   public/assets/catalogue/visualizer_tiles/
+//   public/assets/catalogue/visualizer_tiles/   (shipped)
 //     <name>@2048.webp   — desktop variant
 //     <name>@1024.webp   — mobile variant
-//     manifest.json       — name -> { desktop, mobile, width, height, status }
+//
+//   src/data/visualizerTileManifest.json        (shipped, bundled into the JS)
+//     name -> { desktop, mobile, aspect }, usable sources only
+//
+//   build-artifacts/visualizer_tiles/           (review only, gitignored)
+//     _report.json        — every source with its status, reason and measurements
 //     _contactsheet.webp  — grid of every processed tile, for a one-look QA pass
-//     _quarantine/        — inputs whose auto-crop failed validation (original copied through)
+//     _rejected/          — crops the content gate refused
+//     _quarantine/        — inputs whose auto-crop failed validation
 //
 // Pipeline per image:
+//   0. Reject crops that are not tile faces at all (brand pages, room photos,
+//      spec tables, adhesive-bag product shots) — see tileContentGate.mjs.
+//      Rejected sources are left out of the shipped manifest and their trimmed
+//      crop written to _rejected/ for review. The runtime drops the product
+//      rather than falling back to the raw crop.
 //   1. Detect a per-image border frame (not a per-family constant — measured
 //      border widths vary widely even within one family) by walking in from
 //      each edge while that row/column is both low-variance and offset in
@@ -40,12 +48,11 @@
 //      a conservative fixed 2% trim instead (guards against the detector
 //      misfiring on a genuinely busy tile, e.g. dark granite with light veins
 //      near an edge).
-//   2. Resize into the nearest power-of-two bucket, preserving aspect ratio.
-//   3. Make it wrap-seamless via the classic "offset by half + heal the new
-//      center cross-seam with a blurred, masked composite" technique. This
-//      moves the discontinuity from the tile's outer edges (where it always
-//      repeats visibly) to the middle, then blends it away — no seam left
-//      anywhere the eye can pick up a repeat.
+//   2. Resize: power-of-two on the long side, exact aspect on the short side,
+//      so the tile's real proportions survive into the texture.
+//   3. Make it wrap-seamless by cross-fading a narrow band at each edge with
+//      the mirrored opposite edge. The middle ~88% of the tile face — its
+//      pattern, shape and registration — is left exactly as photographed.
 //   4. Validate: measure the residual edge discontinuity on the final image.
 //      Anything above threshold is quarantined (excluded from the manifest,
 //      copied to _quarantine/ for manual attention) rather than shipped.
@@ -57,17 +64,23 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import sharp from 'sharp'
+import { gate } from './tileContentGate.mjs'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.resolve(__dirname, '..')
 const SRC_DIR = path.join(ROOT, 'public/assets/catalogue/clean_swatches')
 const V2_DIR = path.join(ROOT, 'public/assets/catalogue/clean_swatches_v2')
 const OUT_DIR = path.join(ROOT, 'public/assets/catalogue/visualizer_tiles')
-const QUARANTINE_DIR = path.join(OUT_DIR, '_quarantine')
+// Review-only output. Kept OUT of public/ — Vite copies public/ verbatim into
+// dist/, so writing the rejected crops, the quarantine and the contact sheet
+// there shipped ~7MB of QA material to production on every deploy.
+const REVIEW_DIR = path.join(ROOT, 'build-artifacts/visualizer_tiles')
+const QUARANTINE_DIR = path.join(REVIEW_DIR, '_quarantine')
 // The manifest must live under src/ so Vite can bundle it as a static JSON
 // import (threeTextures.js imports it directly — no runtime fetch).
 const MANIFEST_PATH = path.join(ROOT, 'src/data/visualizerTileManifest.json')
-const IMPORTED_CATALOGUE_PATH = path.join(ROOT, 'src/data/importedCatalogue.js')
+const VISUALIZER_CANDIDATES_PATH = path.join(ROOT, 'src/data/visualizerCandidates.js')
+const REJECT_DIR = path.join(REVIEW_DIR, '_rejected')
 
 const DESKTOP_MAX = 2048
 const MOBILE_MAX = 1024
@@ -78,11 +91,22 @@ const WEBP_QUALITY = 82
 //    with the product id (needed to look up a clean_swatches_v2 override).
 //    Imported directly from the data module rather than regex-scanned, so
 //    the id/textureUrl pairing is always exact.
+//
+//    Source of truth is visualizerCandidates.js, NOT importedCatalogue.js.
+//    The visualizer serves both: the imported catalogue products *and* ~750
+//    extra PDF-page-derived products declared only for the visualizer.
+//    Collecting from importedCatalogue meant those 750 never entered this
+//    pipeline at all — no border trim, no seam handling, no content check —
+//    and threeTextures.js quietly fell back to serving the raw page crop.
+//    That is how a catalogue cover page ended up tiled across a 3D wall.
 // ---------------------------------------------------------------------------
 async function collectReferencedFiles() {
-  const { importedProducts } = await import(pathToFileURL(IMPORTED_CATALOGUE_PATH))
+  // `visualizerCandidates`, not `visualizerProducts` — the latter is already
+  // filtered by this script's own previous manifest, so reading it would make
+  // rejections permanent and unrecoverable across runs.
+  const { visualizerCandidates } = await import(pathToFileURL(VISUALIZER_CANDIDATES_PATH))
   const byBasename = new Map() // basename -> { id, filename }
-  for (const p of importedProducts) {
+  for (const p of visualizerCandidates) {
     if (!p.textureUrl) continue
     // Mirrors resolveZoneSource()'s runtime rewrite in threeTextures.js —
     // both paths resolve to the same file on disk, so only the basename
@@ -170,104 +194,113 @@ async function detectBorders(inputPath) {
 }
 
 // ---------------------------------------------------------------------------
-// 3. Nearest power-of-two bucket, preserving aspect ratio.
+// 3. Output dimensions: power-of-two on the long side, exact aspect on the
+//    short side.
+//
+//    Both sides used to be snapped to a power of two independently, which
+//    quietly distorted the tile's shape — a 1323x365 crop (3.62:1) came out
+//    1024x256 (4.00:1), a 10% stretch baked into the texture before it ever
+//    reached a wall. The short side is now derived from the true aspect and
+//    only rounded to a multiple of 4. Non-power-of-two textures with mipmaps
+//    and RepeatWrapping are fully supported on WebGL2, which is what
+//    three r169 renders with.
 // ---------------------------------------------------------------------------
 function nearestPOT(n) {
   return Math.pow(2, Math.round(Math.log2(n)))
 }
 function potDims(w, h, maxSide) {
   const aspect = w / h
+  const round4 = (n) => Math.max(64, Math.round(n / 4) * 4)
   let outW, outH
   if (aspect >= 1) {
-    outW = Math.min(maxSide, nearestPOT(w))
-    outH = nearestPOT(outW / aspect)
+    outW = Math.max(64, Math.min(maxSide, nearestPOT(w)))
+    outH = round4(outW / aspect)
   } else {
-    outH = Math.min(maxSide, nearestPOT(h))
-    outW = nearestPOT(outH * aspect)
+    outH = Math.max(64, Math.min(maxSide, nearestPOT(h)))
+    outW = round4(outH * aspect)
   }
-  outW = Math.max(64, Math.min(maxSide, outW))
-  outH = Math.max(64, Math.min(maxSide, outH))
   return { outW, outH }
 }
 
 // ---------------------------------------------------------------------------
-// 4. Seamless tiling via offset-by-half + heal the new center cross-seam.
-//    Standard texture-authoring trick: swapping quadrants diagonally moves
-//    the original (already-continuous) center of the photo out to the tile's
-//    edges, and moves the ORIGINAL edges (where a repeat would show a seam)
-//    into the middle, where we blur+mask-blend them away. We do NOT swap
-//    back — the phase shift is invisible once the texture repeats.
+// 4. Seamless tiling via a narrow edge cross-fade.
+//
+//    This replaces an offset-by-half + blur-the-centre-cross implementation.
+//    That is a standard trick for organic textures, but it is the wrong tool
+//    for a tile: swapping quadrants tears the tile's pattern apart and moves
+//    it off-register (a marble slab's veining ends up in four disconnected
+//    corners), and the heal step painted a permanent soft blurred cross
+//    through the middle of every single tile — visible on a rendered wall as
+//    exactly the smeared bands this pipeline was supposed to remove.
+//
+//    Instead: leave the tile face alone and cross-fade only a narrow band at
+//    each edge with the mirrored content of the opposite edge. Weight is 0.5
+//    exactly at the boundary — so column 0 and column W-1 converge on the
+//    same value and the wrap is continuous — decaying to 0 by the inner end
+//    of the band. The middle ~88% of the tile is untouched, so the pattern,
+//    its shape, and its position are all preserved.
 // ---------------------------------------------------------------------------
-async function makeSeamless(buffer, W, H) {
-  const W2 = Math.floor(W / 2)
-  const H2 = Math.floor(H / 2)
+const BAND_FRAC = 0.06
 
-  const img = sharp(buffer)
-  const [tl, tr, bl, br] = await Promise.all([
-    sharp(buffer).extract({ left: 0, top: 0, width: W - W2, height: H - H2 }).toBuffer(),
-    sharp(buffer).extract({ left: W - W2, top: 0, width: W2, height: H - H2 }).toBuffer(),
-    sharp(buffer).extract({ left: 0, top: H - H2, width: W - W2, height: H2 }).toBuffer(),
-    sharp(buffer).extract({ left: W - W2, top: H - H2, width: W2, height: H2 }).toBuffer(),
-  ])
+async function makeWrapSeamless(buffer, W, H) {
+  const { data } = await sharp(buffer).removeAlpha().raw().toBuffer({ resolveWithObject: true })
+  const out = Buffer.from(data)
+  const at = (x, y) => (y * W + x) * 3
 
-  const offset = await sharp({
-    create: { width: W, height: H, channels: 3, background: { r: 0, g: 0, b: 0 } },
-  })
-    .composite([
-      { input: br, left: 0, top: 0 },
-      { input: bl, left: W - W2, top: 0 },
-      { input: tr, left: 0, top: H - H2 },
-      { input: tl, left: W - W2, top: H - H2 },
-    ])
-    .png()
-    .toBuffer()
-
-  // Blur a copy for the seam band.
-  const bandPx = Math.max(12, Math.min(64, Math.round(Math.min(W, H) * 0.06)))
-  const blurred = await sharp(offset).blur(bandPx * 0.6).raw().toBuffer({ resolveWithObject: true })
-
-  // Cross-shaped alpha mask: opaque near x=W2 (vertical seam) and y=H2
-  // (horizontal seam), fading out over bandPx, zero elsewhere.
-  const mask = Buffer.alloc(W * H)
-  const bandFn = (d) => Math.max(0, 1 - d / bandPx)
+  // Horizontal wrap: blend the left band with the mirrored right band.
+  const bw = Math.max(2, Math.round(W * BAND_FRAC))
   for (let y = 0; y < H; y++) {
-    const vAlpha = bandFn(Math.abs(y - H2))
-    for (let x = 0; x < W; x++) {
-      const hAlpha = bandFn(Math.abs(x - W2))
-      const a = Math.max(vAlpha, hAlpha)
-      mask[y * W + x] = Math.round(a * 255)
+    for (let i = 0; i < bw; i++) {
+      const t = 0.5 * (1 - i / bw)
+      const lp = at(i, y)
+      const rp = at(W - 1 - i, y)
+      for (let c = 0; c < 3; c++) {
+        const l = data[lp + c]
+        const r = data[rp + c]
+        out[lp + c] = Math.round(l * (1 - t) + r * t)
+        out[rp + c] = Math.round(r * (1 - t) + l * t)
+      }
     }
   }
 
-  const rgba = Buffer.alloc(W * H * 4)
-  const rgb = blurred.data
-  for (let i = 0, p = 0; i < W * H; i++, p += 4) {
-    rgba[p] = rgb[i * 3]
-    rgba[p + 1] = rgb[i * 3 + 1]
-    rgba[p + 2] = rgb[i * 3 + 2]
-    rgba[p + 3] = mask[i]
+  // Vertical wrap, applied to the horizontally-blended result so the corners
+  // stay consistent with both passes.
+  const src = Buffer.from(out)
+  const bh = Math.max(2, Math.round(H * BAND_FRAC))
+  for (let x = 0; x < W; x++) {
+    for (let i = 0; i < bh; i++) {
+      const t = 0.5 * (1 - i / bh)
+      const tp = at(x, i)
+      const bp = at(x, H - 1 - i)
+      for (let c = 0; c < 3; c++) {
+        const a = src[tp + c]
+        const b = src[bp + c]
+        out[tp + c] = Math.round(a * (1 - t) + b * t)
+        out[bp + c] = Math.round(b * (1 - t) + a * t)
+      }
+    }
   }
-  const overlay = await sharp(rgba, { raw: { width: W, height: H, channels: 4 } }).png().toBuffer()
 
-  const healed = await sharp(offset).composite([{ input: overlay, blend: 'over' }]).toBuffer()
-  return healed
+  return sharp(out, { raw: { width: W, height: H, channels: 3 } }).png().toBuffer()
 }
 
 // ---------------------------------------------------------------------------
-// NOTE on a "tile-likelihood" gate: a meaningful share of the referenced
-// clean_swatches sources are not tile face photos at all — they are
-// catalogue brand cover pages, room lifestyle photography, or product shots
-// (faucets, adhesive bags) that the original PDF-page extraction script
-// mis-cropped. That is a real, separate pre-existing bug (see project notes)
-// but it is NOT fixable by a border-crop/seamless-tiling pass — the wrong
-// content is inside the crop, not around it. A local-variance-based "flat
-// region" heuristic was tried here and rejected: legitimate marble/plain
-// tile photography is itself very smooth in large areas (that's what
-// polished stone looks like), so the heuristic quarantined ~1/3 of genuinely
-// good tiles as false positives. Reliably distinguishing "a tile photo" from
-// "a brand page" needs either manual curation or a real classifier — out of
-// scope here. This script only fixes the border/margin defect; the content
-// (right image vs. wrong image) is a separate, flagged, unresolved issue.
+// NOTE on the tile-content gate: a meaningful share of the referenced
+// clean_swatches sources are not tile face photos at all — they are catalogue
+// brand cover pages, room lifestyle photography, or product shots (faucets,
+// adhesive bags) that the original PDF-page extraction script mis-cropped.
+// This was previously left unfixed here on the grounds that a local-variance
+// "flat region" heuristic quarantined ~1/3 of genuinely good tiles, since
+// polished stone is itself very smooth over large areas.
+//
+// That conclusion held for local variance alone. Four other statistics do
+// separate the classes well, and are implemented in tileContentGate.mjs:
+// paper flatness (bright AND dead-uniform, which white marble is not), flat
+// saturated vector art, glyph-edge density, and block-level homogeneity
+// (a tile face is one material edge to edge; a room photo is not). Measured
+// over the full 1226-source corpus this rejects ~49%, and spot-checking the
+// contact sheets on both sides of the decision shows the accepted set is
+// dominated by real tile faces and the rejected set by brochure furniture.
 // ---------------------------------------------------------------------------
 
 // ---------------------------------------------------------------------------
@@ -287,6 +320,26 @@ async function measureWrapDiscontinuity(buffer) {
   for (let y = 0; y < H; y += stepY) { colDiff += Math.abs(lum(0, y) - lum(W - 1, y)); n1++ }
   for (let x = 0; x < W; x += stepX) { rowDiff += Math.abs(lum(x, 0) - lum(x, H - 1)); n2++ }
   return { colDiff: colDiff / n1, rowDiff: rowDiff / n2 }
+}
+
+// Write a webp, retrying briefly on a transient lock.
+//
+// On Windows any process watching public/ — most commonly the Vite dev server,
+// which is usually running while someone reruns this script — can hold a
+// handle on a file just long enough for the overwrite to fail with "unable to
+// open for write". Observed on a different handful of tiles every run, each
+// time silently dropping those tiles from the manifest. A short backoff is
+// enough; the lock is only ever held for a moment.
+async function writeWebp(buffer, outPath, attempts = 5) {
+  for (let i = 0; ; i++) {
+    try {
+      await sharp(buffer).webp({ quality: WEBP_QUALITY }).toFile(outPath)
+      return
+    } catch (err) {
+      if (i >= attempts - 1) throw err
+      await new Promise((r) => setTimeout(r, 100 * (i + 1)))
+    }
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -310,11 +363,26 @@ async function processOne({ id, filename }) {
     .extract({ left: L, top: T, width: cropW, height: cropH })
     .toBuffer()
 
+  // Content gate — is this crop a tile face at all? See tileContentGate.mjs.
+  // Runs on the trimmed image, since border trimming is what decides the
+  // usable resolution and aspect the gate reasons about.
+  const verdict = await gate(trimmed, cropW, cropH)
+  if (!verdict.ok) {
+    fs.mkdirSync(REJECT_DIR, { recursive: true })
+    await sharp(trimmed).webp({ quality: 70 }).toFile(path.join(REJECT_DIR, filename))
+    return {
+      filename,
+      status: 'rejected',
+      reason: verdict.reason,
+      source: usedV2 ? 'v2' : 'original',
+    }
+  }
+
   const results = {}
   for (const [variant, maxSide] of [['desktop', DESKTOP_MAX], ['mobile', MOBILE_MAX]]) {
     const { outW, outH } = potDims(cropW, cropH, maxSide)
     const resized = await sharp(trimmed).resize(outW, outH, { fit: 'fill' }).toBuffer()
-    const healed = await makeSeamless(resized, outW, outH)
+    const healed = await makeWrapSeamless(resized, outW, outH)
     results[variant] = { buffer: healed, width: outW, height: outH }
   }
 
@@ -331,8 +399,8 @@ async function processOne({ id, filename }) {
 
   const desktopName = `${base}@2048.webp`
   const mobileName = `${base}@1024.webp`
-  await sharp(results.desktop.buffer).webp({ quality: WEBP_QUALITY }).toFile(path.join(OUT_DIR, desktopName))
-  await sharp(results.mobile.buffer).webp({ quality: WEBP_QUALITY }).toFile(path.join(OUT_DIR, mobileName))
+  await writeWebp(results.desktop.buffer, path.join(OUT_DIR, desktopName))
+  await writeWebp(results.mobile.buffer, path.join(OUT_DIR, mobileName))
 
   return {
     filename,
@@ -341,6 +409,10 @@ async function processOne({ id, filename }) {
     mobile: `/assets/catalogue/visualizer_tiles/${mobileName}`,
     width: results.desktop.width,
     height: results.desktop.height,
+    // The shipped texture's aspect. GLBModel.computeRepeat trusts this over
+    // the product's declared `size` when deciding how the tile lies on a
+    // surface, because a good part of the catalogue's declared sizes are
+    // wrong (76x300mm 3x12 tiles are all labelled "300x600mm").
     aspect: +(results.desktop.width / results.desktop.height).toFixed(3),
     border: { T, B, L, R },
     colDiff: +colDiff.toFixed(1),
@@ -368,7 +440,7 @@ async function buildContactSheet(entries) {
   await sharp({ create: { width: sheetW, height: sheetH, channels: 3, background: { r: 30, g: 30, b: 30 } } })
     .composite(composites)
     .webp({ quality: 80 })
-    .toFile(path.join(OUT_DIR, '_contactsheet.webp'))
+    .toFile(path.join(REVIEW_DIR, '_contactsheet.webp'))
 }
 
 async function main() {
@@ -378,6 +450,7 @@ async function main() {
 
   const results = []
   let ok = 0, quarantined = 0, missing = 0, trimFailed = 0, fromV2 = 0
+  const rejected = {}
   for (const f of files) {
     process.stdout.write(`  processing ${f.filename} ... `)
     try {
@@ -385,7 +458,8 @@ async function main() {
       results.push(r)
       if (r.source === 'v2') fromV2++
       if (r.status === 'ok') { ok++; console.log(`ok${r.source === 'v2' ? ' [v2]' : ''}`) }
-      else if (r.status === 'quarantined') { quarantined++; console.log(`QUARANTINED [${r.reason}] (col ${r.colDiff.toFixed(0)}, row ${r.rowDiff.toFixed(0)}, flat ${r.flatFraction})`) }
+      else if (r.status === 'rejected') { rejected[r.reason] = (rejected[r.reason] || 0) + 1; console.log(`REJECTED [${r.reason}]`) }
+      else if (r.status === 'quarantined') { quarantined++; console.log(`QUARANTINED [${r.reason}] (col ${r.colDiff.toFixed(0)}, row ${r.rowDiff.toFixed(0)})`) }
       else if (r.status === 'missing') { missing++; console.log('MISSING SOURCE') }
       else { trimFailed++; console.log('TRIM FAILED') }
     } catch (err) {
@@ -394,20 +468,40 @@ async function main() {
     }
   }
 
+  // The shipped manifest is bundled into the JS and parsed on every page load,
+  // so it carries only what the runtime actually reads: the two variant URLs
+  // and the texture's aspect. Presence of a key means "usable" — rejected,
+  // quarantined and failed sources are simply absent. Keeping every entry with
+  // its full diagnostics here cost ~200KB of dead payload.
   const manifest = {}
-  for (const r of results) manifest[r.filename] = r
+  for (const r of results) {
+    if (r.status !== 'ok') continue
+    manifest[r.filename] = { desktop: r.desktop, mobile: r.mobile, aspect: r.aspect }
+  }
   fs.mkdirSync(path.dirname(MANIFEST_PATH), { recursive: true })
   fs.writeFileSync(MANIFEST_PATH, JSON.stringify(manifest, null, 2))
 
+  // Full per-source record — statuses, rejection reasons, detected borders,
+  // measured discontinuity — for review. Never shipped.
+  fs.mkdirSync(REVIEW_DIR, { recursive: true })
+  const report = {}
+  for (const r of results) report[r.filename] = r
+  fs.writeFileSync(path.join(REVIEW_DIR, '_report.json'), JSON.stringify(report, null, 2))
+
   await buildContactSheet(results)
 
+  const rejectedTotal = Object.values(rejected).reduce((a, v) => a + v, 0)
   console.log('')
-  console.log(`Done. ok=${ok} quarantined=${quarantined} missing=${missing} trimFailed=${trimFailed} total=${files.length}`)
+  console.log(`Done. ok=${ok} rejected=${rejectedTotal} quarantined=${quarantined} missing=${missing} trimFailed=${trimFailed} total=${files.length}`)
+  if (rejectedTotal > 0) {
+    console.log(`Rejected by content gate: ${Object.entries(rejected).map(([k, v]) => `${k}=${v}`).join(' ')}`)
+    console.log(`  crops written to ${REJECT_DIR} for review.`)
+  }
   console.log(`Sources: ${fromV2} from clean_swatches_v2 (re-extracted), ${files.length - fromV2} from original clean_swatches.`)
   console.log(`Manifest: ${MANIFEST_PATH}`)
-  console.log(`Contact sheet: ${path.join(OUT_DIR, '_contactsheet.webp')}`)
+  console.log(`Contact sheet: ${path.join(REVIEW_DIR, '_contactsheet.webp')}`)
   if (quarantined > 0) {
-    console.log(`\n${quarantined} file(s) quarantined to ${QUARANTINE_DIR} — these fall back to the original clean_swatches/ source at runtime and need a manual look.`)
+    console.log(`\n${quarantined} file(s) quarantined to ${QUARANTINE_DIR}. Anything not marked 'ok' is dropped from the visualizer entirely — there is no raw-crop fallback any more.`)
   }
 }
 

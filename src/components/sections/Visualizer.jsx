@@ -17,6 +17,7 @@ import MobileDrawer from '../visualizer/MobileDrawer'
 import Icon from '../Icons'
 import { captureAndDownload } from '../visualizer/ScreenshotHelper'
 import { validateImageFile } from '../../utils/imageUpload'
+import { surfaceMatches } from '../../utils/surfaces'
 
 // Internal ErrorBoundary inside Three.js Canvas to catch GLB loading or decoder errors
 class GLBErrorBoundary extends Component {
@@ -42,13 +43,20 @@ function getModel(id) {
 }
 
 // Pick a starter product per zone's surface (Floor / Wall / Countertop / Both).
+// Zones that share a surface get *different* starters — every zone on these
+// models is tagged 'Wall', so taking the first match for each handed all three
+// bands the identical tile and made the band structure invisible until the
+// user changed something.
 const defaultZoneTextures = (zones) => {
   const out = {}
+  const used = new Set()
   zones.forEach((z) => {
-    const candidate = products.find(
-      (p) => p.surface === z.surface || p.surface === 'Both',
-    )
-    if (candidate) out[z.id] = candidate
+    const matching = products.filter((p) => surfaceMatches(p.surface, z.surface))
+    const candidate = matching.find((p) => !used.has(p.id)) || matching[0]
+    if (candidate) {
+      out[z.id] = candidate
+      used.add(candidate.id)
+    }
   })
   return out
 }
@@ -197,9 +205,7 @@ export default function Visualizer() {
       } else {
         // Find the first model with a zone matching the product's surface
         for (const model of models) {
-          const match = model.zones.find(
-            (z) => z.surface === surface || z.surface === 'Both' || surface === 'Both',
-          )
+          const match = model.zones.find((z) => surfaceMatches(surface, z.surface))
           if (match) { bestModel = model; bestZone = match; break }
         }
       }
