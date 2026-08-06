@@ -19,6 +19,7 @@ yarn-error.log*
 # Scratch & temporary extraction files
 scratch/
 scratch_*
+__pycache__/
 
 
 blender/*.blend*

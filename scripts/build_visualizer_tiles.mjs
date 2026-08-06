@@ -14,6 +14,16 @@
 // only the images the 3D visualizer actually references, and writes a NEW,
 // separate directory:
 //
+// Source preference: for each catalogue product, if a re-cropped override
+// exists at clean_swatches_v2/<id>-swatch.webp (the output of this project's
+// PDF re-extraction pass — see scripts/recrop_*.py), that is used as the
+// pipeline's input instead of the original clean_swatches/ file. Output is
+// still keyed by the ORIGINAL referenced basename, so the manifest shape and
+// resolveZoneSource() in threeTextures.js need no changes — this is a
+// drop-in upgrade of what the existing pipeline already serves. Products
+// with no v2 override fall back to the original clean_swatches/ source
+// exactly as before.
+//
 //   public/assets/catalogue/visualizer_tiles/
 //     <name>@2048.webp   — desktop variant
 //     <name>@1024.webp   — mobile variant
@@ -45,48 +55,43 @@
 
 import fs from 'node:fs'
 import path from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { fileURLToPath, pathToFileURL } from 'node:url'
 import sharp from 'sharp'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.resolve(__dirname, '..')
 const SRC_DIR = path.join(ROOT, 'public/assets/catalogue/clean_swatches')
+const V2_DIR = path.join(ROOT, 'public/assets/catalogue/clean_swatches_v2')
 const OUT_DIR = path.join(ROOT, 'public/assets/catalogue/visualizer_tiles')
 const QUARANTINE_DIR = path.join(OUT_DIR, '_quarantine')
 // The manifest must live under src/ so Vite can bundle it as a static JSON
 // import (threeTextures.js imports it directly — no runtime fetch).
 const MANIFEST_PATH = path.join(ROOT, 'src/data/visualizerTileManifest.json')
-const DATA_FILES = [
-  path.join(ROOT, 'src/data/importedCatalogue.js'),
-  path.join(ROOT, 'src/data/visualizerCatalogue.js'),
-]
+const IMPORTED_CATALOGUE_PATH = path.join(ROOT, 'src/data/importedCatalogue.js')
 
 const DESKTOP_MAX = 2048
 const MOBILE_MAX = 1024
 const WEBP_QUALITY = 82
 
 // ---------------------------------------------------------------------------
-// 1. Discover every textureUrl the visualizer actually references.
-//    (Only these need processing — not all 1375 files in clean_swatches/,
-//    most of which are catalogue-grid-only images.)
+// 1. Discover every textureUrl the visualizer actually references, paired
+//    with the product id (needed to look up a clean_swatches_v2 override).
+//    Imported directly from the data module rather than regex-scanned, so
+//    the id/textureUrl pairing is always exact.
 // ---------------------------------------------------------------------------
-function collectReferencedFiles() {
-  const names = new Set()
-  // Matches both the current /clean_swatches/ path and the legacy
-  // /swatches/ path (resolveZoneSource() rewrites the latter to the former
-  // at runtime — see threeTextures.js). Either way the file lives in
-  // clean_swatches/ on disk, so only the basename matters here.
-  const re = /"textureUrl":\s*"([^"]*\/(?:clean_)?swatches\/[^"]+)"|textureUrl:\s*'([^']*\/(?:clean_)?swatches\/[^']+)'/g
-  for (const file of DATA_FILES) {
-    if (!fs.existsSync(file)) continue
-    const text = fs.readFileSync(file, 'utf8')
-    let m
-    while ((m = re.exec(text))) {
-      const url = m[1] || m[2]
-      names.add(path.basename(url))
-    }
+async function collectReferencedFiles() {
+  const { importedProducts } = await import(pathToFileURL(IMPORTED_CATALOGUE_PATH))
+  const byBasename = new Map() // basename -> { id, filename }
+  for (const p of importedProducts) {
+    if (!p.textureUrl) continue
+    // Mirrors resolveZoneSource()'s runtime rewrite in threeTextures.js —
+    // both paths resolve to the same file on disk, so only the basename
+    // (used as the manifest key) matters here.
+    const cleanUrl = p.textureUrl.replace('/swatches/', '/clean_swatches/')
+    const filename = path.basename(cleanUrl)
+    if (!byBasename.has(filename)) byBasename.set(filename, { id: p.id, filename })
   }
-  return [...names].sort()
+  return [...byBasename.values()].sort((a, b) => a.filename.localeCompare(b.filename))
 }
 
 // ---------------------------------------------------------------------------
@@ -113,26 +118,53 @@ async function detectBorders(inputPath) {
     const m = s / n
     return { m, sd: Math.sqrt(Math.max(0, s2 / n - m * m)) }
   }
-  const core = rowStat(H >> 1)
-  const isBorderRow = (y) => { const r = rowStat(y); return r.sd < 8 && Math.abs(r.m - core.m) > 28 }
-  const isBorderCol = (x) => { const c = colStat(x); return c.sd < 8 && Math.abs(c.m - core.m) > 28 }
+  // Reference the image's MEDIAN row/column rather than the single middle
+  // scanline: on a tile whose centre happens to fall on a grout line or a
+  // dark vein, one scanline is a poor stand-in for "typical tile content".
+  const median = (arr) => { const s = arr.slice().sort((a, b) => a - b); return s[s.length >> 1] }
+  const sampleStep = Math.max(1, H >> 5)
+  const coreRowM = median(Array.from({ length: Math.ceil(H / sampleStep) }, (_, i) => rowStat(Math.min(H - 1, i * sampleStep)).m))
+  const sampleStepX = Math.max(1, W >> 5)
+  const coreColM = median(Array.from({ length: Math.ceil(W / sampleStepX) }, (_, i) => colStat(Math.min(W - 1, i * sampleStepX)).m))
+
+  // A flat edge band that is even modestly offset from the tile's typical
+  // brightness is page background, not tile. The previous cutoff of 28 sat
+  // just above the real-world white-page-on-cream-tile delta (~25), so those
+  // bands survived and repeated as white grid lines once tiled.
+  const OFFSET = 14
+  const isBorderRow = (y) => { const r = rowStat(y); return r.sd < 8 && Math.abs(r.m - coreRowM) > OFFSET }
+  const isBorderCol = (x) => { const c = colStat(x); return c.sd < 8 && Math.abs(c.m - coreColM) > OFFSET }
 
   let T = 0, B = 0, L = 0, R = 0
-  const capY = Math.floor(H * 0.3)
-  const capX = Math.floor(W * 0.3)
+  // Cap generously: some re-extracted crops carry a page-background band
+  // covering 40%+ of the image (a chip swatch sitting low in its slot), and
+  // trimming that fully is exactly right.
+  const capY = Math.floor(H * 0.55)
+  const capX = Math.floor(W * 0.55)
   while (T < capY && isBorderRow(T)) T++
   while (B < capY && isBorderRow(H - 1 - B)) B++
   while (L < capX && isBorderCol(L)) L++
   while (R < capX && isBorderCol(W - 1 - R)) R++
 
-  // Fallback: a detector misfire on a busy/high-contrast tile can walk too
-  // far in. Cap each side individually rather than discarding the whole
-  // detection, since the other three sides may be perfectly legitimate.
+  // A large trim is only suspicious if the band it removed doesn't actually
+  // look like page background. Flat-and-strongly-offset (near-zero variance,
+  // far from the tile's typical brightness) is the unmistakable signature of
+  // paper white / solid backdrop, and should be trimmed however thick it is.
+  // Anything else that ran long is treated as a detector misfire on busy tile
+  // content and falls back to a conservative nibble.
   const FALLBACK_FRAC = 0.02
-  if (T > H * 0.15) T = Math.round(H * FALLBACK_FRAC)
-  if (B > H * 0.15) B = Math.round(H * FALLBACK_FRAC)
-  if (L > W * 0.15) L = Math.round(W * FALLBACK_FRAC)
-  if (R > W * 0.15) R = Math.round(W * FALLBACK_FRAC)
+  const meanOf = (stats) => stats.reduce((a, s) => a + s.m, 0) / stats.length
+  const bandIsBackground = (stats) =>
+    stats.length > 0 && stats.every((s) => s.sd < 3.5) && Math.abs(meanOf(stats) - coreRowM) > 25
+  const rowsIn = (from, to) => { const out = []; for (let y = from; y < to; y += Math.max(1, Math.floor((to - from) / 12) || 1)) out.push(rowStat(y)); return out }
+  const colsIn = (from, to) => { const out = []; for (let x = from; x < to; x += Math.max(1, Math.floor((to - from) / 12) || 1)) out.push(colStat(x)); return out }
+  const bandIsBackgroundCol = (stats) =>
+    stats.length > 0 && stats.every((s) => s.sd < 3.5) && Math.abs(meanOf(stats) - coreColM) > 25
+
+  if (T > H * 0.15 && !bandIsBackground(rowsIn(0, T))) T = Math.round(H * FALLBACK_FRAC)
+  if (B > H * 0.15 && !bandIsBackground(rowsIn(H - B, H))) B = Math.round(H * FALLBACK_FRAC)
+  if (L > W * 0.15 && !bandIsBackgroundCol(colsIn(0, L))) L = Math.round(W * FALLBACK_FRAC)
+  if (R > W * 0.15 && !bandIsBackgroundCol(colsIn(W - R, W))) R = Math.round(W * FALLBACK_FRAC)
 
   return { W, H, T, B, L, R }
 }
@@ -260,8 +292,10 @@ async function measureWrapDiscontinuity(buffer) {
 // ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
-async function processOne(filename) {
-  const srcPath = path.join(SRC_DIR, filename)
+async function processOne({ id, filename }) {
+  const v2Path = path.join(V2_DIR, `${id}-swatch.webp`)
+  const usedV2 = fs.existsSync(v2Path)
+  const srcPath = usedV2 ? v2Path : path.join(SRC_DIR, filename)
   if (!fs.existsSync(srcPath)) return { filename, status: 'missing' }
 
   const meta = await sharp(srcPath).metadata()
@@ -292,7 +326,7 @@ async function processOne(filename) {
   if (!passed) {
     fs.mkdirSync(QUARANTINE_DIR, { recursive: true })
     await sharp(srcPath).toFile(path.join(QUARANTINE_DIR, filename))
-    return { filename, status: 'quarantined', reason: 'wrap-discontinuity', colDiff, rowDiff, border: { T, B, L, R } }
+    return { filename, status: 'quarantined', reason: 'wrap-discontinuity', colDiff, rowDiff, border: { T, B, L, R }, source: usedV2 ? 'v2' : 'original' }
   }
 
   const desktopName = `${base}@2048.webp`
@@ -311,6 +345,7 @@ async function processOne(filename) {
     border: { T, B, L, R },
     colDiff: +colDiff.toFixed(1),
     rowDiff: +rowDiff.toFixed(1),
+    source: usedV2 ? 'v2' : 'original',
   }
 }
 
@@ -338,22 +373,23 @@ async function buildContactSheet(entries) {
 
 async function main() {
   fs.mkdirSync(OUT_DIR, { recursive: true })
-  const files = collectReferencedFiles()
+  const files = await collectReferencedFiles()
   console.log(`Found ${files.length} unique textures referenced by the visualizer.`)
 
   const results = []
-  let ok = 0, quarantined = 0, missing = 0, trimFailed = 0
+  let ok = 0, quarantined = 0, missing = 0, trimFailed = 0, fromV2 = 0
   for (const f of files) {
-    process.stdout.write(`  processing ${f} ... `)
+    process.stdout.write(`  processing ${f.filename} ... `)
     try {
       const r = await processOne(f)
       results.push(r)
-      if (r.status === 'ok') { ok++; console.log('ok') }
+      if (r.source === 'v2') fromV2++
+      if (r.status === 'ok') { ok++; console.log(`ok${r.source === 'v2' ? ' [v2]' : ''}`) }
       else if (r.status === 'quarantined') { quarantined++; console.log(`QUARANTINED [${r.reason}] (col ${r.colDiff.toFixed(0)}, row ${r.rowDiff.toFixed(0)}, flat ${r.flatFraction})`) }
       else if (r.status === 'missing') { missing++; console.log('MISSING SOURCE') }
       else { trimFailed++; console.log('TRIM FAILED') }
     } catch (err) {
-      results.push({ filename: f, status: 'error', error: String(err) })
+      results.push({ filename: f.filename, status: 'error', error: String(err) })
       console.log('ERROR: ' + err.message)
     }
   }
@@ -367,6 +403,7 @@ async function main() {
 
   console.log('')
   console.log(`Done. ok=${ok} quarantined=${quarantined} missing=${missing} trimFailed=${trimFailed} total=${files.length}`)
+  console.log(`Sources: ${fromV2} from clean_swatches_v2 (re-extracted), ${files.length - fromV2} from original clean_swatches.`)
   console.log(`Manifest: ${MANIFEST_PATH}`)
   console.log(`Contact sheet: ${path.join(OUT_DIR, '_contactsheet.webp')}`)
   if (quarantined > 0) {
