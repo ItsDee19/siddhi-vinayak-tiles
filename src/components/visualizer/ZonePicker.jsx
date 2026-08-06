@@ -4,6 +4,7 @@ import { visualizerProducts as products } from '../../data/visualizerCatalogue'
 import { ACCEPTED_IMAGE_TYPES, validateImageFile } from '../../utils/imageUpload'
 import { resolveZoneSource } from '../../utils/threeTextures'
 import { surfaceMatches } from '../../utils/surfaces'
+import { matchesQuery } from '../../utils/productSearch'
 
 const INITIAL_BATCH = 28
 
@@ -17,6 +18,7 @@ export default function ZonePicker({
 }) {
   const fileRef = useRef(null)
   const [subFilter, setSubFilter] = useState('all') // 'all' | '12x18' | '2x4' | 'floor'
+  const [query, setQuery] = useState('')
   const [limit, setLimit] = useState(INITIAL_BATCH)
   const [uploadError, setUploadError] = useState('')
 
@@ -46,8 +48,11 @@ export default function ZonePicker({
       list = list.filter((p) => p.id.startsWith('gt-floor') || surfaceMatches(p.surface, 'Floor'))
     }
 
+    // Name / code search runs last so it narrows whatever the size chips left.
+    if (query.trim()) list = list.filter((p) => matchesQuery(p, query))
+
     return list
-  }, [surface, subFilter])
+  }, [surface, subFilter, query])
 
   const isActive = zone?.id === activeZoneId
   const current = zoneTextures[zone?.id]
@@ -59,13 +64,28 @@ export default function ZonePicker({
   const hasMore = limit < compatible.length
 
   return (
+    // The whole card selects the zone, not just the label. Clicks bubble up
+    // from the panel below too, but every control in there only exists while
+    // this zone is already active, so re-selecting it is a no-op — no need to
+    // stop propagation and risk swallowing a swatch or search click.
+    //
+    // The heading stays a real <button> so the card is still reachable and
+    // operable by keyboard and screen readers; the div is a mouse-convenience
+    // layer on top of it, not a replacement for it.
     <div
+      onClick={() => onActivateZone(zone.id)}
       className={`rounded-card border p-4 transition-all ${
-        isActive ? 'border-gold bg-charcoal-800' : 'border-white/5 bg-charcoal-800/60'
+        isActive
+          ? 'border-gold bg-charcoal-800'
+          : 'cursor-pointer border-white/5 bg-charcoal-800/60 hover:border-gold/40 hover:bg-charcoal-800'
       }`}
     >
       <div className="flex items-center justify-between">
-        <button onClick={() => onActivateZone(zone.id)} className="text-left">
+        <button
+          onClick={() => onActivateZone(zone.id)}
+          aria-pressed={isActive}
+          className="text-left focus:outline-none focus-visible:ring-1 focus-visible:ring-gold/60 rounded"
+        >
           <span className="text-[10px] uppercase tracking-wider text-sand/60">Zone</span>
           <h4 className="font-display text-base text-cream">{zone.label}</h4>
         </button>
@@ -83,8 +103,35 @@ export default function ZonePicker({
 
       {isActive && (
         <>
+          {/* Search by tile name or code. Sits above the size chips because it
+              is the fastest route to a specific tile when the customer already
+              knows what they are asking for — the chips are for browsing. */}
+          <div className="relative mt-3">
+            <Icon
+              name="search"
+              className="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-sand/40"
+            />
+            <input
+              type="search"
+              value={query}
+              onChange={(e) => { setQuery(e.target.value); setLimit(INITIAL_BATCH) }}
+              placeholder="Search by tile name or code…"
+              aria-label={`Search tiles for ${zone.label}`}
+              className="w-full rounded-btn border border-white/10 bg-charcoal-900/60 py-2 pl-9 pr-8 text-xs text-cream placeholder:text-sand/40 focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold/40"
+            />
+            {query && (
+              <button
+                onClick={() => { setQuery(''); setLimit(INITIAL_BATCH) }}
+                aria-label="Clear search"
+                className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full p-1 text-sand/50 hover:bg-white/10 hover:text-cream"
+              >
+                <Icon name="close" className="h-3 w-3" />
+              </button>
+            )}
+          </div>
+
           {/* Quick Collection Filters */}
-          <div className="mt-3 flex items-center gap-1.5 overflow-x-auto pb-1 text-[11px]">
+          <div className="mt-2.5 flex items-center gap-1.5 overflow-x-auto pb-1 text-[11px]">
             <button
               onClick={() => { setSubFilter('all'); setLimit(INITIAL_BATCH) }}
               className={`rounded-full px-2.5 py-0.5 transition-colors whitespace-nowrap ${
@@ -166,6 +213,15 @@ export default function ZonePicker({
               Floor Collection
             </button>
           </div>
+
+          {compatible.length === 0 && (
+            <p className="mt-3 rounded-btn border border-dashed border-white/10 px-3 py-3 text-center text-[11px] text-sand/60">
+              No tiles match “{query}”.{' '}
+              <button onClick={() => { setQuery(''); setSubFilter('all') }} className="text-gold hover:underline">
+                Clear search
+              </button>
+            </p>
+          )}
 
           {/* Touch-Optimized Swatch Strip */}
           <div className="mt-2.5 flex gap-2 overflow-x-auto pb-2 scroll-smooth [scroll-snap-type:x_mandatory]">

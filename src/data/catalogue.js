@@ -24,59 +24,22 @@
 // loader does not guess extensions.
 import { importedProducts } from './importedCatalogue.js'
 
-export const subCategories = {
-  tiles:        ['Floor Tiles', 'Wall Tiles', 'Exterior', 'Décor'],
-  marble:       ['Italian', 'Indian', 'Statuario', 'Plain'],
-  granite:      ['Kitchen', 'Stairs', 'Outdoor', 'Countertop'],
-  quartz:       ['Countertop', 'Backsplash', 'Feature Wall'],
-  sanitaryware: ['Basins', 'Faucets', 'Closets', 'Showers'],
-}
+// NOTE: `subCategories` and the hex-distance `getColorFamily` helper used to
+// live here and drove the catalogue's sub-type strip and colour filter. Both
+// were removed as unusable rather than reworked:
+//
+//   * The sub-category lists never matched the data. Real values are
+//     "Wall & Floor Tiles" (292) and "Floor & Wall Tiles" (50) — the same thing
+//     with the words swapped — while the declared Exterior and Décor options
+//     matched nothing at all. The catalogue now filters on Surface instead, via
+//     surfacesOfProduct() in utils/productSearch.js.
+//
+//   * getColorFamily() classified by nearest-hex to `product.color`, but that
+//     field is a placeholder: 554 of 557 products carry the identical
+//     #e5dec9, so it put 556 products in "Beige" and left six of its nine
+//     families empty. Colour is now measured from the tile imagery at build
+//     time — see scripts/build_product_facets.mjs and data/productFacets.json.
 
-export const colorFamilies = {
-  White: '#FFFFFF',
-  Black: '#000000',
-  Grey: '#808080',
-  Beige: '#F5F5DC',
-  Brown: '#A52A2A',
-  Blue: '#0000FF',
-  Green: '#008000',
-  Red: '#FF0000',
-  Gold: '#FFD700',
-  Multi: null,
-};
-
-function hexToRgb(hex) {
-  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  return result ? {
-    r: parseInt(result[1], 16),
-    g: parseInt(result[2], 16),
-    b: parseInt(result[3], 16)
-  } : null;
-}
-
-export function getColorFamily(hexColor) {
-  if (!hexColor) return 'Multi';
-  const rgb = hexToRgb(hexColor);
-  if (!rgb) return 'Multi';
-
-  let minDistance = Infinity;
-  let closestFamily = 'Multi';
-
-  for (const [family, refHex] of Object.entries(colorFamilies)) {
-    if (!refHex) continue;
-    const refRgb = hexToRgb(refHex);
-    const distance = Math.sqrt(
-      Math.pow(rgb.r - refRgb.r, 2) +
-      Math.pow(rgb.g - refRgb.g, 2) +
-      Math.pow(rgb.b - refRgb.b, 2)
-    );
-    if (distance < minDistance) {
-      minDistance = distance;
-      closestFamily = family;
-    }
-  }
-  return closestFamily;
-}
 
 export const finishes = ['Matte', 'Glossy', 'Satin', 'Polished', 'Rough']
 export const priceRanges = ['Budget', 'Mid', 'Premium']
