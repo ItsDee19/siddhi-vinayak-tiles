@@ -1,7 +1,14 @@
 import { resolveZoneSource } from '../../utils/threeTextures'
+import { tileUrl2d } from '../../data/tileQuality2d'
 import { loadImage } from './loadImage'
 
 const imageCache = new Map()
+// Layer cache: zone+product+scale+dims → pre-lit masked canvas
+const layerCache = new Map()
+// Mask alpha cache: maskUrl+w+h → alpha canvas
+const maskCache = new Map()
+// Base luminance buffer cache: baseUrl+w+h → Float32Array of lum 0..1
+const lumCache = new Map()
 
 async function cachedImage(src) {
   if (!src) return null
@@ -14,7 +21,6 @@ async function cachedImage(src) {
   return p
 }
 
-/** Parse "600×1200mm" / "600x1200" → major edge length in mm, or null. */
 function parseMajorMM(sizeStr) {
   if (!sizeStr) return null
   const m = String(sizeStr).match(/(\d+(?:\.\d+)?)\s*[x×]\s*(\d+(?:\.\d+)?)/i)
@@ -22,11 +28,10 @@ function parseMajorMM(sizeStr) {
   return Math.max(parseFloat(m[1]), parseFloat(m[2]))
 }
 
-/**
- * Convert a grayscale mask (white = paint zone) into a proper alpha mask.
- * Dilates slightly so hairline gaps at mask edges do not leave white seams.
- */
-function maskToAlphaCanvas(maskImg, width, height, dilatePx = 1.5) {
+function maskToAlphaCanvas(maskImg, width, height, dilatePx = 1.25) {
+  const key = `${maskImg.src || maskImg}|${width}x${height}|${dilatePx}`
+  if (maskCache.has(key)) return maskCache.get(key)
+
   const c = document.createElement('canvas')
   c.width = width
   c.height = height
@@ -35,7 +40,6 @@ function maskToAlphaCanvas(maskImg, width, height, dilatePx = 1.5) {
   ctx.imageSmoothingQuality = 'high'
   ctx.drawImage(maskImg, 0, 0, width, height)
 
-  // Soft dilate: redraw mask slightly larger so thin black cracks close.
   if (dilatePx > 0) {
     ctx.globalCompositeOperation = 'lighten'
     const offsets = [
@@ -51,7 +55,6 @@ function maskToAlphaCanvas(maskImg, width, height, dilatePx = 1.5) {
   const img = ctx.getImageData(0, 0, width, height)
   const d = img.data
   for (let i = 0; i < d.length; i += 4) {
-    // Luminance → alpha. Pure white keeps tile; pure black clears.
     const a = (0.299 * d[i] + 0.587 * d[i + 1] + 0.114 * d[i + 2]) | 0
     d[i] = 255
     d[i + 1] = 255
@@ -59,17 +62,28 @@ function maskToAlphaCanvas(maskImg, width, height, dilatePx = 1.5) {
     d[i + 3] = a
   }
   ctx.putImageData(img, 0, 0)
+  maskCache.set(key, c)
   return c
 }
 
-/**
- * Tile a seamless texture across the full canvas using createPattern
- * (no white gutters between cells).
- *
- * tileScale: 1 = default density; higher = larger tiles; lower = finer mosaic.
- * productSize: catalogue size string used for physical scale when present.
- * roomWidthMM: approximate real-world width of the photo room.
- */
+function getBaseLuminance(baseImg, width, height) {
+  const key = `${baseImg.src || 'base'}|${width}x${height}`
+  if (lumCache.has(key)) return lumCache.get(key)
+
+  const baseC = document.createElement('canvas')
+  baseC.width = width
+  baseC.height = height
+  const bctx = baseC.getContext('2d', { willReadFrequently: true })
+  bctx.drawImage(baseImg, 0, 0, width, height)
+  const data = bctx.getImageData(0, 0, width, height).data
+  const lum = new Float32Array(width * height)
+  for (let i = 0, p = 0; i < data.length; i += 4, p++) {
+    lum[p] = (0.299 * data[i] + 0.587 * data[i + 1] + 0.114 * data[i + 2]) / 255
+  }
+  lumCache.set(key, lum)
+  return lum
+}
+
 function buildTiledLayer(width, height, tileImg, product, tileScale = 1, roomWidthMM = 3600) {
   const layer = document.createElement('canvas')
   layer.width = width
@@ -79,7 +93,6 @@ function buildTiledLayer(width, height, tileImg, product, tileScale = 1, roomWid
   ctx.imageSmoothingQuality = 'high'
 
   const majorMM = parseMajorMM(product?.size) || 600
-  // How many major tile edges fit across the room width.
   const tilesAcross = Math.max(2.5, (roomWidthMM / majorMM) / Math.max(0.35, tileScale))
   const tileW = width / tilesAcross
   const aspect =
@@ -87,9 +100,7 @@ function buildTiledLayer(width, height, tileImg, product, tileScale = 1, roomWid
     (tileImg.naturalWidth / Math.max(1, tileImg.naturalHeight))
   const tileH = tileW / aspect
 
-  // Draw tile into a cell-sized canvas so createPattern tiles cleanly.
   const cell = document.createElement('canvas')
-  // Use integer pixel sizes ≥ 32 to avoid degenerate patterns.
   cell.width = Math.max(32, Math.round(tileW))
   cell.height = Math.max(32, Math.round(tileH))
   const cctx = cell.getContext('2d')
@@ -99,7 +110,6 @@ function buildTiledLayer(width, height, tileImg, product, tileScale = 1, roomWid
 
   const pattern = ctx.createPattern(cell, 'repeat')
   if (!pattern) {
-    // Fallback: manual loop (should rarely hit)
     for (let y = 0; y < height + cell.height; y += cell.height) {
       for (let x = 0; x < width + cell.width; x += cell.width) {
         ctx.drawImage(cell, x, y)
@@ -112,9 +122,6 @@ function buildTiledLayer(width, height, tileImg, product, tileScale = 1, roomWid
   return layer
 }
 
-/**
- * Clip a full-frame layer to the zone mask (white regions kept).
- */
 function applyMask(layerCanvas, alphaMaskCanvas) {
   const ctx = layerCanvas.getContext('2d')
   ctx.globalCompositeOperation = 'destination-in'
@@ -123,40 +130,20 @@ function applyMask(layerCanvas, alphaMaskCanvas) {
   return layerCanvas
 }
 
-/**
- * Multiply tile albedo by base-photo luminance so contact shadows / ambient
- * occlusion from the lifestyle shot survive the material swap.
- */
-function bakeLighting(tileLayer, baseImg, width, height) {
+function bakeLighting(tileLayer, lum, width, height) {
   const out = document.createElement('canvas')
   out.width = width
   out.height = height
   const ctx = out.getContext('2d', { willReadFrequently: true })
   ctx.imageSmoothingEnabled = true
   ctx.imageSmoothingQuality = 'high'
-
-  // Draw tiles
   ctx.drawImage(tileLayer, 0, 0)
 
-  // Sample base into temp
-  const baseC = document.createElement('canvas')
-  baseC.width = width
-  baseC.height = height
-  const bctx = baseC.getContext('2d', { willReadFrequently: true })
-  bctx.drawImage(baseImg, 0, 0, width, height)
-
   const tileData = ctx.getImageData(0, 0, width, height)
-  const baseData = bctx.getImageData(0, 0, width, height)
   const td = tileData.data
-  const bd = baseData.data
-
-  for (let i = 0; i < td.length; i += 4) {
-    const a = td[i + 3]
-    if (a < 2) continue
-    // Soft lighting: lift midtones so tiles stay bright but pick up shadows.
-    const lum = (0.299 * bd[i] + 0.587 * bd[i + 1] + 0.114 * bd[i + 2]) / 255
-    // Map luminance into 0.55–1.15 so dark corners darken tiles without mud.
-    const light = 0.55 + lum * 0.6
+  for (let i = 0, p = 0; i < td.length; i += 4, p++) {
+    if (td[i + 3] < 2) continue
+    const light = 0.55 + lum[p] * 0.6
     td[i] = Math.min(255, td[i] * light)
     td[i + 1] = Math.min(255, td[i + 1] * light)
     td[i + 2] = Math.min(255, td[i + 2] * light)
@@ -165,15 +152,9 @@ function bakeLighting(tileLayer, baseImg, width, height) {
   return out
 }
 
-/**
- * Resolve the same seamless tile URL the 3D visualizer uses.
- * Never fall back to catalogue product photos (those have white packaging
- * backgrounds and caused the grid-of-swatches look).
- */
-function resolveTextureUrl(product) {
+function resolveTextureUrl(product, tier = 'full') {
   if (!product) return null
 
-  // Custom upload — use the blob URL as a seamless face.
   if (product.isCustom && product.url) {
     return {
       url: product.url,
@@ -185,8 +166,21 @@ function resolveTextureUrl(product) {
     }
   }
 
-  // Same processed seamless tile the 3D visualizer uses (never raw catalogue photos).
-  const source = resolveZoneSource(product, 'full')
+  // Prefer 2d tier helper; fall back to shared 3D resolver.
+  const url2d = tileUrl2d(product, tier)
+  if (url2d) {
+    const source = resolveZoneSource(product, tier === 'lite' ? 'lite' : 'full')
+    return {
+      url: url2d,
+      aspect: source?.aspect,
+      size: product.size || source?.size,
+      finish: product.finish || source?.finish,
+      id: product.id,
+      name: product.name,
+    }
+  }
+
+  const source = resolveZoneSource(product, tier === 'lite' ? 'lite' : 'full')
   if (source?.url) {
     return {
       url: source.url,
@@ -197,22 +191,72 @@ function resolveTextureUrl(product) {
       name: product.name,
     }
   }
-
-  // Procedural / missing pipeline texture — refuse to paint brochure photos.
   return null
 }
 
+function layerCacheKey(zoneId, product, tileScale, w, h, tier) {
+  const id = product?.id || product?.url || 'none'
+  return `${zoneId}|${id}|${tileScale}|${w}x${h}|${tier}`
+}
+
+async function buildZoneLayer({
+  zone,
+  product,
+  baseImg,
+  width,
+  height,
+  tileScale,
+  roomWidthMM,
+  tier,
+}) {
+  const resolved = resolveTextureUrl(product, tier)
+  const texUrl = resolved?.url
+  if (!texUrl) {
+    return { layer: null, error: `“${product?.name || product?.id}” has no seamless tile` }
+  }
+
+  const cacheKey = layerCacheKey(zone.id, product, tileScale, width, height, tier)
+  if (layerCache.has(cacheKey)) {
+    return { layer: layerCache.get(cacheKey), error: null }
+  }
+
+  const [tileImg, maskImg] = await Promise.all([
+    cachedImage(texUrl),
+    cachedImage(zone.maskUrl),
+  ])
+  if (!tileImg || !maskImg) {
+    return { layer: null, error: 'failed to load tile or mask' }
+  }
+
+  let layer = buildTiledLayer(width, height, tileImg, resolved, tileScale, roomWidthMM)
+  const alphaMask = maskToAlphaCanvas(maskImg, width, height, 1.25)
+  layer = applyMask(layer, alphaMask)
+  const lum = getBaseLuminance(baseImg, width, height)
+  layer = bakeLighting(layer, lum, width, height)
+
+  layerCache.set(cacheKey, layer)
+  // Bound cache growth (keep last ~24 zone layers).
+  if (layerCache.size > 24) {
+    const first = layerCache.keys().next().value
+    layerCache.delete(first)
+  }
+  return { layer, error: null }
+}
+
 /**
- * Compose the 2D room onto a canvas at high quality:
- * base → masked seamless tile layers (with lighting) → locked fixture overlay.
+ * Compose the 2D room.
+ * @param {object} opts.dirtyZones - if set, only rebuild these zone ids (others reused from cache)
+ * @param {string} opts.tier - 'lite' | 'full'
+ * @param {number} opts.maxWidth
  */
 export async function composeRoom(canvas, room, zoneTextures = {}, opts = {}) {
   const {
     tileScale = 1,
-    // Keep near-native resolution for crisp tiles (source is 3344px wide).
-    maxWidth = 2800,
-    roomWidthMM = 3600,
+    maxWidth = 1800,
+    roomWidthMM = room?.roomWidthMM || 3600,
+    tier = 'full',
   } = opts
+
   if (!canvas || !room) return { ok: false, errors: ['No canvas/room'] }
 
   const base = await cachedImage(room.baseUrl)
@@ -222,7 +266,6 @@ export async function composeRoom(canvas, room, zoneTextures = {}, opts = {}) {
   const w = Math.round(nativeW * scale)
   const h = Math.round(nativeH * scale)
 
-  // Reset backing store (clears previous frame completely).
   canvas.width = w
   canvas.height = h
   const ctx = canvas.getContext('2d')
@@ -244,32 +287,22 @@ export async function composeRoom(canvas, room, zoneTextures = {}, opts = {}) {
       continue
     }
 
-    const resolved = resolveTextureUrl(product)
-    const texUrl = typeof resolved === 'string' ? resolved : resolved?.url
-    if (!texUrl) {
-      errors.push(
-        `${zone.id}: “${product.name || product.id}” has no seamless tile texture (catalogue photo blocked)`,
-      )
-      continue
-    }
-
-    const meta = typeof resolved === 'object' && resolved ? resolved : product
-
     try {
-      const [tileImg, maskImg] = await Promise.all([
-        cachedImage(texUrl),
-        cachedImage(zone.maskUrl),
-      ])
-      if (!tileImg || !maskImg) {
-        errors.push(`${zone.id}: failed to load tile or mask image`)
+      const { layer, error } = await buildZoneLayer({
+        zone,
+        product,
+        baseImg: base,
+        width: w,
+        height: h,
+        tileScale,
+        roomWidthMM,
+        tier,
+      })
+      if (error) {
+        errors.push(`${zone.id}: ${error}`)
         continue
       }
-
-      let layer = buildTiledLayer(w, h, tileImg, meta, tileScale, roomWidthMM)
-      const alphaMask = maskToAlphaCanvas(maskImg, w, h, 1.25)
-      layer = applyMask(layer, alphaMask)
-      layer = bakeLighting(layer, base, w, h)
-      ctx.drawImage(layer, 0, 0)
+      if (layer) ctx.drawImage(layer, 0, 0)
     } catch (err) {
       console.warn(`[2D visualizer] zone ${zone.id} failed:`, err)
       errors.push(`${zone.id}: ${err?.message || 'compose failed'}`)
@@ -279,14 +312,20 @@ export async function composeRoom(canvas, room, zoneTextures = {}, opts = {}) {
   if (room.overlayUrl) {
     try {
       const overlay = await cachedImage(room.overlayUrl)
-      if (overlay) {
-        ctx.drawImage(overlay, 0, 0, w, h)
-      }
+      if (overlay) ctx.drawImage(overlay, 0, 0, w, h)
     } catch (err) {
-      console.warn('[2D visualizer] overlay failed:', err)
       errors.push(`overlay: ${err?.message || 'failed'}`)
     }
   }
 
-  return { ok: errors.length === 0, errors, width: w, height: h }
+  return { ok: errors.length === 0, errors, width: w, height: h, tier }
+}
+
+/** Full-resolution export for Download (uses full tier + native-ish width). */
+export async function composeRoomExport(canvas, room, zoneTextures, opts = {}) {
+  return composeRoom(canvas, room, zoneTextures, {
+    ...opts,
+    tier: 'full',
+    maxWidth: opts.maxWidth ?? 3344,
+  })
 }

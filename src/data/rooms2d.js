@@ -6,8 +6,9 @@ export const rooms2d = [
     id: 'bathroom-01',
     name: 'Modern Bathroom',
     blurb: 'Vanity wall · lifestyle photo',
-    baseUrl: '/2d-rooms/bathroom-01/base.png',
-    overlayUrl: '/2d-rooms/bathroom-01/overlay-locked.png',
+    // WebP room pack (~150KB base / ~55KB overlay vs multi‑MB PNG) for fast first paint.
+    baseUrl: '/2d-rooms/bathroom-01/base.webp',
+    overlayUrl: '/2d-rooms/bathroom-01/overlay-locked.webp',
     // Approximate real width of the framed room for physical tile scale.
     roomWidthMM: 3600,
     zones: [

@@ -1,6 +1,6 @@
 import { useMemo, useRef, useState } from 'react'
 import Icon from '../Icons'
-import { visualizerProducts as products } from '../../data/visualizerCatalogue'
+import { visualizerProducts as defaultProducts } from '../../data/visualizerCatalogue'
 import { ACCEPTED_IMAGE_TYPES, validateImageFile } from '../../utils/imageUpload'
 import { resolveZoneSource } from '../../utils/threeTextures'
 import { surfaceMatches } from '../../utils/surfaces'
@@ -15,6 +15,7 @@ export default function ZonePicker({
   onSwatchPick,               // (zoneId, swatch) => void
   onActivateZone,             // (zoneId) => void
   onCustomUpload,             // (zoneId, file) => void
+  products = defaultProducts, // optional override (e.g. strong tiles only for 2D)
 }) {
   const fileRef = useRef(null)
   const [subFilter, setSubFilter] = useState('all') // 'all' | '12x18' | '2x4' | 'floor'
@@ -52,7 +53,7 @@ export default function ZonePicker({
     if (query.trim()) list = list.filter((p) => matchesQuery(p, query))
 
     return list
-  }, [surface, subFilter, query])
+  }, [surface, subFilter, query, products])
 
   const isActive = zone?.id === activeZoneId
   const current = zoneTextures[zone?.id]

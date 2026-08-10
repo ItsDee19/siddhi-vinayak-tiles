@@ -5,27 +5,20 @@ import Icon from '../Icons'
 import { rooms2d } from '../../data/rooms2d'
 import { visualizerProducts as products } from '../../data/visualizerCatalogue'
 import { surfaceMatches } from '../../utils/surfaces'
-import { tileUrl } from '../../data/visualizerTiles'
+import { isStrong2dTile } from '../../data/tileQuality2d'
 import { captureAndDownload } from '../visualizer/ScreenshotHelper'
 import { validateImageFile } from '../../utils/imageUpload'
 import RoomCanvas from '../visualizer2d/RoomCanvas'
+import { composeRoomExport } from '../visualizer2d/composeRoom'
 
-/** Prefer products that have a real seamless tile (same gate as 3D). */
-function hasSeamlessTile(p) {
-  if (!p) return false
-  if (p.isCustom && p.url) return true
-  if (!p.textureUrl) return false
-  return !!tileUrl(p, 'full')
-}
+/** Strong seamless tiles only — weak/tiny pipeline WebPs are excluded from 2D. */
+const strongProducts = products.filter(isStrong2dTile)
 
 function defaultZoneTextures(zones) {
   const out = {}
   const used = new Set()
   zones.forEach((z) => {
-    const matching = products.filter(
-      (p) => surfaceMatches(p.surface, z.surface) && hasSeamlessTile(p),
-    )
-    // Prefer denser / more tile-like sizes for a realistic first paint.
+    const matching = strongProducts.filter((p) => surfaceMatches(p.surface, z.surface))
     const ranked = [...matching].sort((a, b) => {
       const score = (p) => {
         const s = String(p.size || '')
@@ -49,8 +42,8 @@ export default function Visualizer2D() {
   const room = rooms2d[0]
   const [activeZoneId, setActiveZoneId] = useState(room.zones[0].id)
   const [zoneTextures, setZoneTextures] = useState(() => defaultZoneTextures(room.zones))
-  // 1 = natural density from product mm size; lower = finer tiles.
   const [tileScale, setTileScale] = useState(0.85)
+  const [exporting, setExporting] = useState(false)
   const canvasRef = useRef(null)
 
   const activeZone = useMemo(
@@ -59,7 +52,6 @@ export default function Visualizer2D() {
   )
 
   const onSwatchPick = useCallback((zoneId, swatch) => {
-    // Always apply to the zone that owns the picker click (floor OR wall).
     setZoneTextures((prev) => ({ ...prev, [zoneId]: swatch }))
   }, [])
 
@@ -86,8 +78,24 @@ export default function Visualizer2D() {
     setActiveZoneId(room.zones[0].id)
   }
 
-  const handleScreenshot = () => {
-    captureAndDownload(canvasRef.current)
+  /** Full-resolution export (native room width, full tier textures). */
+  const handleScreenshot = async () => {
+    if (exporting) return
+    setExporting(true)
+    try {
+      const off = document.createElement('canvas')
+      await composeRoomExport(off, room, zoneTextures, {
+        tileScale,
+        maxWidth: 3344,
+        roomWidthMM: room.roomWidthMM || 3600,
+      })
+      await captureAndDownload(off)
+    } catch (err) {
+      console.warn('[2D visualizer] export failed, falling back to display canvas', err)
+      captureAndDownload(canvasRef.current)
+    } finally {
+      setExporting(false)
+    }
   }
 
   return (
@@ -96,16 +104,17 @@ export default function Visualizer2D() {
         <SectionHeading
           eyebrow="Lifestyle Preview"
           title="2D Room Visualizer"
-          subtitle="Seamless catalogue tiles on a fixed bathroom photo — floor and wall independently. Fixtures stay locked from the photo overlay."
+          subtitle="High-quality seamless tiles only — progressive preview then HQ. Floor and wall independently; fixtures locked from the photo overlay."
         />
 
         <div className="mt-8 grid gap-6 lg:grid-cols-[minmax(0,1.4fr)_minmax(280px,0.85fr)] lg:items-start">
-          {/* Stage */}
           <div className="space-y-3">
             <div className="flex flex-wrap items-center justify-between gap-2">
               <div>
                 <p className="text-sm font-semibold text-cream">{room.name}</p>
-                <p className="text-xs text-sand/70">{room.blurb}</p>
+                <p className="text-xs text-sand/70">
+                  {room.blurb} · {strongProducts.length} HQ tiles
+                </p>
               </div>
               <div className="flex flex-wrap gap-2">
                 <button
@@ -119,10 +128,11 @@ export default function Visualizer2D() {
                 <button
                   type="button"
                   onClick={handleScreenshot}
-                  className="inline-flex items-center gap-1.5 rounded-btn border border-gold/40 bg-gold/10 px-3 py-1.5 text-xs font-semibold text-gold transition hover:bg-gold/20"
+                  disabled={exporting}
+                  className="inline-flex items-center gap-1.5 rounded-btn border border-gold/40 bg-gold/10 px-3 py-1.5 text-xs font-semibold text-gold transition hover:bg-gold/20 disabled:opacity-60"
                 >
                   <Icon name="search" className="h-3.5 w-3.5" />
-                  Download
+                  {exporting ? 'Exporting…' : 'Download HQ'}
                 </button>
               </div>
             </div>
@@ -132,11 +142,12 @@ export default function Visualizer2D() {
               zoneTextures={zoneTextures}
               tileScale={tileScale}
               canvasRef={canvasRef}
+              displayMaxWidth={1800}
               className="border border-white/5 shadow-card"
             />
 
             <label className="flex items-center gap-3 text-xs text-sand/80">
-              <span className="shrink-0 w-16">Tile size</span>
+              <span className="w-16 shrink-0">Tile size</span>
               <span className="text-[10px] text-sand/50">finer</span>
               <input
                 type="range"
@@ -153,7 +164,6 @@ export default function Visualizer2D() {
               </span>
             </label>
 
-            {/* Live zone summary so floor vs wall assignment is obvious */}
             <div className="flex flex-wrap gap-3 text-[11px] text-sand/70">
               {room.zones.map((z) => (
                 <span key={z.id} className="rounded-btn border border-white/10 bg-charcoal px-2 py-1">
@@ -164,7 +174,6 @@ export default function Visualizer2D() {
             </div>
           </div>
 
-          {/* Pickers */}
           <div className="space-y-3">
             <div className="flex flex-wrap gap-2">
               {room.zones.map((z) => {
@@ -195,7 +204,7 @@ export default function Visualizer2D() {
             <p className="text-[11px] text-sand/60">
               Active zone:{' '}
               <strong className="text-cream">{activeZone.label}</strong>
-              {' — '}swatches below apply only to this surface.
+              {' — '}swatches apply only here. Soft/empty pipeline tiles are hidden.
             </p>
 
             <ZonePicker
@@ -205,13 +214,12 @@ export default function Visualizer2D() {
               onSwatchPick={onSwatchPick}
               onActivateZone={setActiveZoneId}
               onCustomUpload={onCustomUpload}
+              products={strongProducts}
             />
 
             <p className="text-[11px] leading-relaxed text-sand/55">
-              Uses the same seamless tile pipeline as the 3D visualizer (not catalogue product
-              photos). Select <strong className="text-sand/80">Floor</strong>, pick a swatch —
-              then <strong className="text-sand/80">Wall</strong> for walls. Download exports the
-              composed preview.
+              Preview paints quickly, then upgrades to HQ textures. Download HQ exports at full room
+              resolution with desktop-grade tiles.
             </p>
           </div>
         </div>
