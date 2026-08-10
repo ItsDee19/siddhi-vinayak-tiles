@@ -3,6 +3,7 @@ import Navbar from './components/sections/Navbar'
 import Hero from './components/sections/Hero'
 import ProductCategories from './components/sections/ProductCategories'
 import VisualizerLazy from './components/sections/VisualizerLazy'
+import Visualizer2DLazy from './components/sections/Visualizer2DLazy'
 
 const Catalogue = lazy(() => import('./components/sections/Catalogue'))
 const WhyChooseUs = lazy(() => import('./components/sections/WhyChooseUs'))
@@ -20,6 +21,7 @@ export default function App() {
         <Hero />
         <ProductCategories />
         <VisualizerLazy />
+        <Visualizer2DLazy />
         <Suspense fallback={null}>
           <Catalogue />
           <WhyChooseUs />
