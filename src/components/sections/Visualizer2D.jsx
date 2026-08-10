@@ -43,6 +43,7 @@ export default function Visualizer2D() {
   const [activeZoneId, setActiveZoneId] = useState(room.zones[0].id)
   const [zoneTextures, setZoneTextures] = useState(() => defaultZoneTextures(room.zones))
   const [tileScale, setTileScale] = useState(0.85)
+  const [groutOn, setGroutOn] = useState(true)
   const [exporting, setExporting] = useState(false)
   const canvasRef = useRef(null)
 
@@ -75,6 +76,7 @@ export default function Visualizer2D() {
   const handleReset = () => {
     setZoneTextures(defaultZoneTextures(room.zones))
     setTileScale(0.85)
+    setGroutOn(true)
     setActiveZoneId(room.zones[0].id)
   }
 
@@ -88,6 +90,7 @@ export default function Visualizer2D() {
         tileScale,
         maxWidth: 3344,
         roomWidthMM: room.roomWidthMM || 3600,
+        groutEnabled: groutOn,
       })
       await captureAndDownload(off)
     } catch (err) {
@@ -141,8 +144,9 @@ export default function Visualizer2D() {
               room={room}
               zoneTextures={zoneTextures}
               tileScale={tileScale}
+              groutEnabled={groutOn}
               canvasRef={canvasRef}
-              displayMaxWidth={1800}
+              displayMaxWidth={1600}
               className="border border-white/5 shadow-card"
             />
 
@@ -162,6 +166,16 @@ export default function Visualizer2D() {
               <span className="w-12 text-right tabular-nums text-cream/80">
                 {tileScale.toFixed(2)}×
               </span>
+            </label>
+
+            <label className="flex cursor-pointer items-center gap-2 text-xs text-sand/80">
+              <input
+                type="checkbox"
+                checked={groutOn}
+                onChange={(e) => setGroutOn(e.target.checked)}
+                className="accent-gold"
+              />
+              Show grout lines (realistic tile layout)
             </label>
 
             <div className="flex flex-wrap gap-3 text-[11px] text-sand/70">

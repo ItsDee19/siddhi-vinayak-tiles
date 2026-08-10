@@ -10,9 +10,10 @@ export default function RoomCanvas({
   room,
   zoneTextures,
   tileScale = 1,
+  groutEnabled = true,
   canvasRef: externalRef,
   className = '',
-  displayMaxWidth = 1800,
+  displayMaxWidth = 1600,
 }) {
   const localRef = useRef(null)
   const canvasRef = externalRef || localRef
@@ -42,13 +43,14 @@ export default function RoomCanvas({
     setTier('lite')
 
     const run = async () => {
-      // Pass 1 — fast lite textures
+      // Pass 1 — fast lite textures at lower res (perspective warp is CPU-heavy)
       try {
         const lite = await composeRoom(canvas, room, zoneTextures, {
           tileScale,
-          maxWidth: Math.min(displayMaxWidth, 1400),
+          maxWidth: Math.min(displayMaxWidth, 1200),
           tier: 'lite',
           roomWidthMM: room.roomWidthMM || 3600,
+          groutEnabled,
         })
         if (cancelled || gen !== genRef.current) return
         setWarnings(lite.errors || [])
@@ -64,8 +66,8 @@ export default function RoomCanvas({
       // Pass 2 — full quality when browser is idle
       const schedule =
         typeof window !== 'undefined' && window.requestIdleCallback
-          ? (fn) => window.requestIdleCallback(fn, { timeout: 600 })
-          : (fn) => setTimeout(fn, 80)
+          ? (fn) => window.requestIdleCallback(fn, { timeout: 900 })
+          : (fn) => setTimeout(fn, 120)
 
       schedule(async () => {
         if (cancelled || gen !== genRef.current) return
@@ -75,6 +77,7 @@ export default function RoomCanvas({
             maxWidth: displayMaxWidth,
             tier: 'full',
             roomWidthMM: room.roomWidthMM || 3600,
+            groutEnabled,
           })
           if (cancelled || gen !== genRef.current) return
           setWarnings(full.errors || [])
@@ -90,7 +93,7 @@ export default function RoomCanvas({
       cancelled = true
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [room, textureKey, tileScale, displayMaxWidth, canvasRef])
+  }, [room, textureKey, tileScale, groutEnabled, displayMaxWidth, canvasRef])
 
   return (
     <div className={`relative overflow-hidden rounded-card bg-charcoal-800 ${className}`}>
