@@ -43,7 +43,7 @@ export default function Visualizer2D() {
   const [activeZoneId, setActiveZoneId] = useState(room.zones[0].id)
   const [zoneTextures, setZoneTextures] = useState(() => defaultZoneTextures(room.zones))
   const [tileScale, setTileScale] = useState(0.85)
-  const [groutOn, setGroutOn] = useState(true)
+  const [groutOn, setGroutOn] = useState(false)
   const [exporting, setExporting] = useState(false)
   const canvasRef = useRef(null)
 
@@ -76,7 +76,7 @@ export default function Visualizer2D() {
   const handleReset = () => {
     setZoneTextures(defaultZoneTextures(room.zones))
     setTileScale(0.85)
-    setGroutOn(true)
+    setGroutOn(false)
     setActiveZoneId(room.zones[0].id)
   }
 
@@ -175,7 +175,7 @@ export default function Visualizer2D() {
                 onChange={(e) => setGroutOn(e.target.checked)}
                 className="accent-gold"
               />
-              Show grout lines (realistic tile layout)
+              Show fine grout lines
             </label>
 
             <div className="flex flex-wrap gap-3 text-[11px] text-sand/70">

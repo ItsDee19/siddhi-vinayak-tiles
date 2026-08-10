@@ -10,7 +10,7 @@ export default function RoomCanvas({
   room,
   zoneTextures,
   tileScale = 1,
-  groutEnabled = true,
+  groutEnabled = false,
   canvasRef: externalRef,
   className = '',
   displayMaxWidth = 1600,

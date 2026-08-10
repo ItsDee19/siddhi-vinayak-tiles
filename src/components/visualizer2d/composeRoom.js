@@ -1,12 +1,11 @@
 import { resolveZoneSource } from '../../utils/threeTextures'
 import { tileUrl2d } from '../../data/tileQuality2d'
 import { loadImage } from './loadImage'
-import {
-  inverseBilinear,
-  quadToPixels,
-  quadBBox,
-  samplePattern,
-} from './perspective'
+
+// Phase-1 style compositor (full-mask seamless createPattern) with quality extras:
+// soft mask feather, AO lighting, optional fine grout.
+// Perspective warps were removed as default — they left holes and partial bands
+// on this near-frontal bathroom photo (worse than flat seamless tiling).
 
 const imageCache = new Map()
 const layerCache = new Map()
@@ -31,14 +30,6 @@ function parseMajorMM(sizeStr) {
   return Math.max(parseFloat(m[1]), parseFloat(m[2]))
 }
 
-function parseMinorMM(sizeStr) {
-  if (!sizeStr) return null
-  const m = String(sizeStr).match(/(\d+(?:\.\d+)?)\s*[x×]\s*(\d+(?:\.\d+)?)/i)
-  if (!m) return null
-  return Math.min(parseFloat(m[1]), parseFloat(m[2]))
-}
-
-/** Soften mask edges so tiles blend into the photo without hard cutouts. */
 function featherAlpha(canvas, radius) {
   if (radius <= 0) return canvas
   const w = canvas.width
@@ -49,7 +40,6 @@ function featherAlpha(canvas, radius) {
   for (let i = 0, p = 0; i < src.data.length; i += 4, p++) a[p] = src.data[i + 3]
 
   const r = Math.max(1, Math.round(radius))
-  // Separable box blur on alpha.
   const tmp = new Float32Array(w * h)
   const pass = (inp, out, horizontal) => {
     for (let y = 0; y < h; y++) {
@@ -89,7 +79,7 @@ function featherAlpha(canvas, radius) {
   return canvas
 }
 
-function maskToAlphaCanvas(maskImg, width, height, dilatePx = 1.25, featherPx = 2) {
+function maskToAlphaCanvas(maskImg, width, height, dilatePx = 1, featherPx = 1.5) {
   const key = `${maskImg.src || 'm'}|${width}x${height}|${dilatePx}|${featherPx}`
   if (maskCache.has(key)) return maskCache.get(key)
 
@@ -106,7 +96,6 @@ function maskToAlphaCanvas(maskImg, width, height, dilatePx = 1.25, featherPx = 
     const o = dilatePx
     for (const [ox, oy] of [
       [o, 0], [-o, 0], [0, o], [0, -o],
-      [o, o], [-o, o], [o, -o], [-o, -o],
     ]) {
       ctx.drawImage(maskImg, ox, oy, width, height)
     }
@@ -128,12 +117,8 @@ function maskToAlphaCanvas(maskImg, width, height, dilatePx = 1.25, featherPx = 
   return c
 }
 
-/**
- * Luminance + soft ambient occlusion boost (dark contact regions under vanity).
- * Returns Float32Array length w*h of lighting multipliers ~0.4–1.2
- */
 function getLightingField(baseImg, width, height) {
-  const key = `${baseImg.src || 'base'}|${width}x${height}|v2`
+  const key = `${baseImg.src || 'base'}|${width}x${height}|v3`
   if (lumCache.has(key)) return lumCache.get(key)
 
   const baseC = document.createElement('canvas')
@@ -144,136 +129,70 @@ function getLightingField(baseImg, width, height) {
   const data = bctx.getImageData(0, 0, width, height).data
   const field = new Float32Array(width * height)
 
+  // Gentle lighting — keep the clean look from Phase 1, only soft AO.
   for (let i = 0, p = 0; i < data.length; i += 4, p++) {
     const lum = (0.299 * data[i] + 0.587 * data[i + 1] + 0.114 * data[i + 2]) / 255
-    // Soft AO: push dark areas darker (contact shadows), keep mids open.
-    const ao = Math.pow(lum, 0.85)
-    field[p] = 0.42 + ao * 0.78
+    field[p] = 0.62 + lum * 0.48
   }
   lumCache.set(key, field)
   return field
 }
 
 /**
- * Build one tile cell (with optional grout border) used as the pattern atlas.
+ * Full-frame seamless tile fill (createPattern) — covers the entire mask
+ * continuously, matching the cleaner Phase-1 look.
  */
-function buildTileCell(tileImg, product, cellW, cellH, grout) {
-  const cell = document.createElement('canvas')
-  cell.width = Math.max(32, cellW)
-  cell.height = Math.max(32, cellH)
-  const ctx = cell.getContext('2d')
-  ctx.imageSmoothingEnabled = true
-  ctx.imageSmoothingQuality = 'high'
-
-  const gw = grout?.enabled
-    ? Math.max(1, Math.round(Math.min(cell.width, cell.height) * ((grout.mm || 2.5) / 120)))
-    : 0
-  const gcol = grout?.color || '#d4cdc0'
-
-  if (gw > 0) {
-    ctx.fillStyle = gcol
-    ctx.fillRect(0, 0, cell.width, cell.height)
-  }
-
-  // Slight inset so grout shows; face fill.
-  ctx.drawImage(
-    tileImg,
-    gw,
-    gw,
-    cell.width - gw * 2,
-    cell.height - gw * 2,
-  )
-
-  // Finish cue: glossy = subtle top highlight strip; matte = flatten a touch.
-  const finish = String(product?.finish || '').toLowerCase()
-  if (finish.includes('gloss') || finish.includes('polish')) {
-    const grad = ctx.createLinearGradient(0, gw, 0, cell.height * 0.45)
-    grad.addColorStop(0, 'rgba(255,255,255,0.14)')
-    grad.addColorStop(1, 'rgba(255,255,255,0)')
-    ctx.fillStyle = grad
-    ctx.fillRect(gw, gw, cell.width - gw * 2, (cell.height - gw * 2) * 0.45)
-  } else if (finish.includes('matte') || finish.includes('matt')) {
-    ctx.fillStyle = 'rgba(0,0,0,0.04)'
-    ctx.fillRect(gw, gw, cell.width - gw * 2, cell.height - gw * 2)
-  }
-
-  return cell
-}
-
-/**
- * Perspective-correct tile fill for a zone plane, then clip with mask.
- */
-function buildPerspectiveZoneLayer({
-  width,
-  height,
-  tileImg,
-  product,
-  zone,
-  tileScale,
-  room,
-  grout,
-}) {
+function buildSeamlessLayer(width, height, tileImg, product, tileScale, roomWidthMM, grout) {
   const layer = document.createElement('canvas')
   layer.width = width
   layer.height = height
-  const ctx = layer.getContext('2d', { willReadFrequently: true })
+  const ctx = layer.getContext('2d')
+  ctx.imageSmoothingEnabled = true
+  ctx.imageSmoothingQuality = 'high'
 
   const majorMM = parseMajorMM(product?.size) || 600
-  const minorMM = parseMinorMM(product?.size) || majorMM
+  // Density: more tiles across the room = smaller, cleaner look.
+  const tilesAcross = Math.max(4, (roomWidthMM / majorMM) / Math.max(0.4, tileScale))
+  const tileW = width / tilesAcross
   const aspect =
     (product?.aspect > 0 && product.aspect) ||
     (tileImg.naturalWidth / Math.max(1, tileImg.naturalHeight)) ||
-    majorMM / minorMM
+    1
+  const tileH = tileW / aspect
 
-  const tilesAcross = Math.max(
-    2.2,
-    ((zone.tilesAcrossNear || 6) * (600 / majorMM)) / Math.max(0.35, tileScale),
-  )
-  // V tiles: scale by aspect so rectangles stay correct on the plane.
-  const tilesDown = Math.max(1.5, tilesAcross / aspect)
+  const cellW = Math.max(48, Math.round(tileW))
+  const cellH = Math.max(48, Math.round(tileH))
+  const cell = document.createElement('canvas')
+  cell.width = cellW
+  cell.height = cellH
+  const cctx = cell.getContext('2d')
+  cctx.imageSmoothingEnabled = true
+  cctx.imageSmoothingQuality = 'high'
 
-  // Pattern cell resolution — larger for full quality, enough for sharp sampling.
-  const cellW = Math.max(64, Math.min(512, Math.round(width / tilesAcross)))
-  const cellH = Math.max(64, Math.min(512, Math.round(cellW / aspect)))
-  const cell = buildTileCell(tileImg, product, cellW, cellH, grout)
-  const pctx = cell.getContext('2d', { willReadFrequently: true })
-  const pat = pctx.getImageData(0, 0, cell.width, cell.height)
-  const patW = cell.width
-  const patH = cell.height
-  const patData = pat.data
-
-  if (zone.quad && zone.quad.length === 4) {
-    const corners = quadToPixels(zone.quad, width, height)
-    const box = quadBBox(corners)
-    const x0 = Math.max(0, box.x0)
-    const y0 = Math.max(0, box.y0)
-    const x1 = Math.min(width, box.x1)
-    const y1 = Math.min(height, box.y1)
-
-    const out = ctx.createImageData(width, height)
-    const od = out.data
-
-    for (let y = y0; y < y1; y++) {
-      for (let x = x0; x < x1; x++) {
-        const uv = inverseBilinear(x + 0.5, y + 0.5, corners)
-        if (!uv) continue
-        const [u, v] = uv
-        const [r, g, b] = samplePattern(patData, patW, patH, u, v, tilesAcross, tilesDown)
-        const i = (y * width + x) * 4
-        od[i] = r
-        od[i + 1] = g
-        od[i + 2] = b
-        od[i + 3] = 255
-      }
-    }
-    ctx.putImageData(out, 0, 0)
+  // Fine grout only (thin). Default off via grout.enabled.
+  const gw =
+    grout?.enabled
+      ? Math.max(1, Math.round(Math.min(cellW, cellH) * 0.012))
+      : 0
+  if (gw > 0) {
+    cctx.fillStyle = grout.color || '#d4cdc0'
+    cctx.fillRect(0, 0, cellW, cellH)
+    cctx.drawImage(tileImg, gw, gw, cellW - gw * 2, cellH - gw * 2)
   } else {
-    // Fallback: orthogonal createPattern fill
-    const pattern = ctx.createPattern(cell, 'repeat')
-    ctx.fillStyle = pattern || '#ccc'
-    ctx.fillRect(0, 0, width, height)
+    cctx.drawImage(tileImg, 0, 0, cellW, cellH)
   }
 
+  const pattern = ctx.createPattern(cell, 'repeat')
+  if (pattern) {
+    ctx.fillStyle = pattern
+    ctx.fillRect(0, 0, width, height)
+  } else {
+    for (let y = 0; y < height + cellH; y += cellH) {
+      for (let x = 0; x < width + cellW; x += cellW) {
+        ctx.drawImage(cell, x, y)
+      }
+    }
+  }
   return layer
 }
 
@@ -350,7 +269,7 @@ function resolveTextureUrl(product, tier = 'full') {
 
 function layerCacheKey(zoneId, product, tileScale, w, h, tier, groutOn) {
   const id = product?.id || product?.url || 'none'
-  return `${zoneId}|${id}|${tileScale}|${w}x${h}|${tier}|g${groutOn ? 1 : 0}`
+  return `${zoneId}|${id}|${tileScale}|${w}x${h}|${tier}|g${groutOn ? 1 : 0}|flat`
 }
 
 async function buildZoneLayer({
@@ -360,9 +279,10 @@ async function buildZoneLayer({
   width,
   height,
   tileScale,
-  room,
+  roomWidthMM,
   tier,
   grout,
+  featherPx,
 }) {
   const resolved = resolveTextureUrl(product, tier)
   const texUrl = resolved?.url
@@ -391,18 +311,16 @@ async function buildZoneLayer({
     return { layer: null, error: 'failed to load tile or mask' }
   }
 
-  const feather = (room.maskFeatherPx || 2.5) * (width / 1600)
-  let layer = buildPerspectiveZoneLayer({
+  let layer = buildSeamlessLayer(
     width,
     height,
     tileImg,
-    product: resolved,
-    zone,
+    resolved,
     tileScale,
-    room,
+    roomWidthMM,
     grout,
-  })
-  const alphaMask = maskToAlphaCanvas(maskImg, width, height, 1.25, feather)
+  )
+  const alphaMask = maskToAlphaCanvas(maskImg, width, height, 1, featherPx)
   layer = applyMask(layer, alphaMask)
   const field = getLightingField(baseImg, width, height)
   layer = bakeLighting(layer, field, width, height)
@@ -421,7 +339,7 @@ export async function composeRoom(canvas, room, zoneTextures = {}, opts = {}) {
     maxWidth = 1800,
     roomWidthMM = room?.roomWidthMM || 3600,
     tier = 'full',
-    groutEnabled,
+    groutEnabled = false,
   } = opts
 
   if (!canvas || !room) return { ok: false, errors: ['No canvas/room'] }
@@ -442,12 +360,10 @@ export async function composeRoom(canvas, room, zoneTextures = {}, opts = {}) {
   ctx.drawImage(base, 0, 0, w, h)
 
   const grout = {
-    ...(room.grout || {}),
-    enabled:
-      typeof groutEnabled === 'boolean'
-        ? groutEnabled
-        : room.grout?.enabled !== false,
+    color: room.grout?.color || '#d4cdc0',
+    enabled: !!groutEnabled,
   }
+  const featherPx = room.maskFeatherPx ?? 1.5
 
   const errors = []
 
@@ -470,9 +386,10 @@ export async function composeRoom(canvas, room, zoneTextures = {}, opts = {}) {
         width: w,
         height: h,
         tileScale,
-        room: { ...room, roomWidthMM },
+        roomWidthMM,
         tier,
         grout,
+        featherPx,
       })
       if (error) {
         errors.push(`${zone.id}: ${error}`)
