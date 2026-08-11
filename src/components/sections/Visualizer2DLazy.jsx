@@ -8,16 +8,16 @@ function Placeholder({ innerRef }) {
   return (
     <section
       ref={innerRef}
-      id="visualizer-2d"
-      className="section-pad relative border-t border-white/5 bg-charcoal-800"
+      id="visualizer"
+      className="section-pad relative bg-charcoal"
     >
       <div className="container-px">
         <SectionHeading
-          eyebrow="Lifestyle Preview"
-          title="2D Room Visualizer"
-          subtitle="Apply real catalogue tiles onto a fixed bathroom photo."
+          eyebrow="Room Preview"
+          title="Tile Visualizer"
+          subtitle="Apply real catalogue tiles onto lifestyle room photos."
         />
-        <div className="mt-8 aspect-[16/9] w-full animate-pulse rounded-card border border-white/5 bg-charcoal" />
+        <div className="mt-8 aspect-[16/9] w-full animate-pulse rounded-card border border-white/5 bg-charcoal-800" />
       </div>
     </section>
   )

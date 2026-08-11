@@ -1,0 +1,11 @@
+{
+  "id": "feature-wall-d",
+  "zones": [
+    {
+      "id": "wall",
+      "label": "Wall",
+      "surface": "Wall"
+    }
+  ],
+  "quality": "auto-mask-draft"
+}

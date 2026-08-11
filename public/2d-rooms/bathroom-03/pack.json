@@ -1,0 +1,13 @@
+{
+  "id": "bathroom-03",
+  "width": 1280,
+  "height": 720,
+  "widthMm": 3600,
+  "files": [
+    "base.png",
+    "mask-floor.png",
+    "mask-wall.png",
+    "overlay-locked.png",
+    "README.txt"
+  ]
+}

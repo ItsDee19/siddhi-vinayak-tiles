@@ -1,0 +1,187 @@
+{
+  "source": "scripts/skype-catalogue-structured.json",
+  "count": 16,
+  "highConfidenceNames": 16,
+  "placeholderNames": 0,
+  "sizeHistogram": {
+    "600×1200mm": 16
+  },
+  "products": [
+    {
+      "id": "skype-c001",
+      "name": "Skype 2551",
+      "code": null,
+      "sizeMm": "600×1200mm",
+      "sizeFt": "2×4 Ft",
+      "finish": "Glossy",
+      "surface": "Floor & Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/skype-2x4-p03-t1-clean.webp"
+    },
+    {
+      "id": "skype-c002",
+      "name": "Skype 2547",
+      "code": "2547",
+      "sizeMm": "600×1200mm",
+      "sizeFt": "2×4 Ft",
+      "finish": "Glossy",
+      "surface": "Floor & Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/skype-2x4-p05-t1-clean.webp"
+    },
+    {
+      "id": "skype-c003",
+      "name": "Skype 2553",
+      "code": null,
+      "sizeMm": "600×1200mm",
+      "sizeFt": "2×4 Ft",
+      "finish": "Glossy",
+      "surface": "Floor & Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/skype-2x4-p07-t1-clean.webp"
+    },
+    {
+      "id": "skype-c004",
+      "name": "Skype 2554",
+      "code": null,
+      "sizeMm": "600×1200mm",
+      "sizeFt": "2×4 Ft",
+      "finish": "Glossy",
+      "surface": "Floor & Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/skype-2x4-p09-t1-clean.webp"
+    },
+    {
+      "id": "skype-c005",
+      "name": "Skype 2555",
+      "code": null,
+      "sizeMm": "600×1200mm",
+      "sizeFt": "2×4 Ft",
+      "finish": "Glossy",
+      "surface": "Floor & Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/skype-2x4-p11-t1-clean.webp"
+    },
+    {
+      "id": "skype-c006",
+      "name": "Skype 2556",
+      "code": null,
+      "sizeMm": "600×1200mm",
+      "sizeFt": "2×4 Ft",
+      "finish": "Glossy",
+      "surface": "Floor & Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/skype-2x4-p13-t1-clean.webp"
+    },
+    {
+      "id": "skype-c007",
+      "name": "Skype 2557",
+      "code": null,
+      "sizeMm": "600×1200mm",
+      "sizeFt": "2×4 Ft",
+      "finish": "Glossy",
+      "surface": "Floor & Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/skype-2x4-p15-t1-clean.webp"
+    },
+    {
+      "id": "skype-c008",
+      "name": "Skype 2558",
+      "code": null,
+      "sizeMm": "600×1200mm",
+      "sizeFt": "2×4 Ft",
+      "finish": "Glossy",
+      "surface": "Floor & Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/skype-2x4-p17-t1-clean.webp"
+    },
+    {
+      "id": "skype-c009",
+      "name": "Skype 2538",
+      "code": "2538",
+      "sizeMm": "600×1200mm",
+      "sizeFt": "2×4 Ft",
+      "finish": "Glossy",
+      "surface": "Floor & Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/skype-2x4-p19-t1-clean.webp"
+    },
+    {
+      "id": "skype-c010",
+      "name": "Skype 2560",
+      "code": null,
+      "sizeMm": "600×1200mm",
+      "sizeFt": "2×4 Ft",
+      "finish": "Glossy",
+      "surface": "Floor & Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/skype-2x4-p21-t1-clean.webp"
+    },
+    {
+      "id": "skype-c011",
+      "name": "Skype 2561",
+      "code": null,
+      "sizeMm": "600×1200mm",
+      "sizeFt": "2×4 Ft",
+      "finish": "Glossy",
+      "surface": "Floor & Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/skype-2x4-p23-t1-clean.webp"
+    },
+    {
+      "id": "skype-c012",
+      "name": "Skype 2562",
+      "code": null,
+      "sizeMm": "600×1200mm",
+      "sizeFt": "2×4 Ft",
+      "finish": "Glossy",
+      "surface": "Floor & Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/skype-2x4-p25-t1-clean.webp"
+    },
+    {
+      "id": "skype-c013",
+      "name": "Skype 2563",
+      "code": null,
+      "sizeMm": "600×1200mm",
+      "sizeFt": "2×4 Ft",
+      "finish": "Glossy",
+      "surface": "Floor & Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/skype-2x4-p27-t1-clean.webp"
+    },
+    {
+      "id": "skype-c014",
+      "name": "Skype 2564",
+      "code": null,
+      "sizeMm": "600×1200mm",
+      "sizeFt": "2×4 Ft",
+      "finish": "Glossy",
+      "surface": "Floor & Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/skype-2x4-p29-t1-clean.webp"
+    },
+    {
+      "id": "skype-c015",
+      "name": "Skype 2565",
+      "code": null,
+      "sizeMm": "600×1200mm",
+      "sizeFt": "2×4 Ft",
+      "finish": "Glossy",
+      "surface": "Floor & Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/skype-2x4-p31-t1-clean.webp"
+    },
+    {
+      "id": "skype-c016",
+      "name": "Skype 2566",
+      "code": null,
+      "sizeMm": "600×1200mm",
+      "sizeFt": "2×4 Ft",
+      "finish": "Glossy",
+      "surface": "Floor & Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/skype-2x4-p33-t1-clean.webp"
+    }
+  ]
+}

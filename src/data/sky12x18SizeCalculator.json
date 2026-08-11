@@ -1,0 +1,731 @@
+{
+  "source": "scripts/sky12x18-catalogue-structured.json",
+  "count": 72,
+  "highConfidenceNames": 66,
+  "placeholderNames": 6,
+  "sizeHistogram": {
+    "450×300mm": 72
+  },
+  "products": [
+    {
+      "id": "sky12x18-c001",
+      "name": "123-L",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p2-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c002",
+      "name": "150-L",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p3-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c003",
+      "name": "150-AQUA",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p4-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c004",
+      "name": "150-L",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p5-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c005",
+      "name": "150-L",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p6-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c006",
+      "name": "151-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p7-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c007",
+      "name": "230-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p8-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c008",
+      "name": "236-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p9-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c009",
+      "name": "242-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p10-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c010",
+      "name": "252-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p11-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c011",
+      "name": "255-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p12-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c012",
+      "name": "293-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p13-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c013",
+      "name": "293-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p14-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c014",
+      "name": "310-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p15-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c015",
+      "name": "310-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p16-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c016",
+      "name": "318-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p17-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c017",
+      "name": "335-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p18-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c018",
+      "name": "362-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p19-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c019",
+      "name": "367-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p20-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c020",
+      "name": "423-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p21-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c021",
+      "name": "429-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p22-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c022",
+      "name": "456-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p23-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c023",
+      "name": "919-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p24-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c024",
+      "name": "1049-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p25-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c025",
+      "name": "1052-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p26-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c026",
+      "name": "1054-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p27-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c027",
+      "name": "1233-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p28-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c028",
+      "name": "1234-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p29-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c029",
+      "name": "1309-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p30-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c030",
+      "name": "1309-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p31-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c031",
+      "name": "Sky 12x18 Concept #31",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "placeholder",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p32-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c032",
+      "name": "1601-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p33-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c033",
+      "name": "1606-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p34-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c034",
+      "name": "1650-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p35-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c035",
+      "name": "1655-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p36-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c036",
+      "name": "1671-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p37-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c037",
+      "name": "1680-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p38-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c038",
+      "name": "1690-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p39-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c039",
+      "name": "1691-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p40-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c040",
+      "name": "1691-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p41-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c041",
+      "name": "1755-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p42-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c042",
+      "name": "1756-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p43-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c043",
+      "name": "1765-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p44-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c044",
+      "name": "1814-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p45-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c045",
+      "name": "2016-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p46-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c046",
+      "name": "2026-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p47-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c047",
+      "name": "2033-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p48-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c048",
+      "name": "2044-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p49-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c049",
+      "name": "2062-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p50-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c050",
+      "name": "Sky 12x18 Concept #50",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "placeholder",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p51-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c051",
+      "name": "Sky 12x18 Concept #51",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "placeholder",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p52-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c052",
+      "name": "4002-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p53-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c053",
+      "name": "4006-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p54-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c054",
+      "name": "4007-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p55-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c055",
+      "name": "4016-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p56-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c056",
+      "name": "4035-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p57-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c057",
+      "name": "4039-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p58-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c058",
+      "name": "Sky 12x18 Concept #58",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Matte",
+      "surface": "Wall",
+      "confidence": "placeholder",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p59-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c059",
+      "name": "6057-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Matte",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p60-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c060",
+      "name": "ARCH-WHITE",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p61-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c061",
+      "name": "ARCH-WHITE",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p62-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c062",
+      "name": "ARCH-WHITE",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p63-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c063",
+      "name": "ARCH-WHITE",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p64-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c064",
+      "name": "Special Colour",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p65-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c065",
+      "name": "Sky 12x18 Concept #65",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "placeholder",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p66-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c066",
+      "name": "Special Colour",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p67-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c067",
+      "name": "Special Colour",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p68-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c068",
+      "name": "WOOD-1-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p69-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c069",
+      "name": "WOOD-8-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p70-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c070",
+      "name": "WOOD-10-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p71-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c071",
+      "name": "WOOD-11-LT",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "high",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p72-t1-clean.webp"
+    },
+    {
+      "id": "sky12x18-c072",
+      "name": "Sky 12x18 Concept #72",
+      "sizeMm": "450×300mm",
+      "sizeIn": "12\"×18\"",
+      "finish": "Glossy",
+      "surface": "Wall",
+      "confidence": "placeholder",
+      "textureUrl": "/assets/catalogue/clean_swatches/sky12x18-p73-t1-clean.webp"
+    }
+  ]
+}

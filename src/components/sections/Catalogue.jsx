@@ -179,8 +179,8 @@ export default function Catalogue() {
   const visible = filtered.slice(0, visibleCount)
   const hasMore = visibleCount < filtered.length
 
-  const onViewIn3D = (p) => {
-    window.dispatchEvent(new CustomEvent('view-in-3d', { detail: p }))
+  const onViewIn3D = () => {
+    // 3D visualizer removed — scroll to 2D room visualizer in its place
     document.getElementById('visualizer')?.scrollIntoView({ behavior: 'smooth' })
   }
 

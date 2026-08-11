@@ -1,0 +1,10 @@
+{
+  "room": "vanity-e",
+  "engine": "headless",
+  "sam": "fal-ai/sam-3/image",
+  "tile_zones": [
+    "floor",
+    "wall"
+  ],
+  "fixture_pixels": 1469027
+}

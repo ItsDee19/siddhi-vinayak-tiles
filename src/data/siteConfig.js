@@ -53,8 +53,8 @@ export const navLinks = [
   { label: 'Home', href: '#home' },
   { label: 'Products', href: '#products' },
   { label: 'Visualizer', href: '#visualizer' },
-  { label: '2D Room', href: '#visualizer-2d' },
   { label: 'Catalogue', href: '#catalogue' },
+  { label: 'Size Calc', href: '#size-calculator' },
   { label: 'About', href: '#about' },
   { label: 'Contact', href: '#contact' },
 ]

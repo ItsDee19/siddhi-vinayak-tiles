@@ -1,0 +1,7 @@
+{
+  "room": "feature-wall-d",
+  "tile_zones": [
+    "wall"
+  ],
+  "note": "wall only, no floor"
+}

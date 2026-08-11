@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Photopea — refine 2D room pack</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 24px; background: #1a1410; color: #f5e6c8; }
+    h1 { font-size: 1.25rem; }
+    p, li { color: #c9a97a; max-width: 52rem; line-height: 1.5; }
+    a.btn {
+      display: inline-block; margin: 8px 8px 8px 0; padding: 10px 16px;
+      background: #c49a3c; color: #1a0e05; text-decoration: none; border-radius: 4px; font-weight: 600;
+    }
+    code { background: #2c1a0e; padding: 2px 6px; border-radius: 3px; }
+    .note { border-left: 3px solid #c49a3c; padding-left: 12px; margin: 16px 0; }
+  </style>
+</head>
+<body>
+  <h1>Photopea pack refine (bathroom-01 quality bar)</h1>
+  <p>
+    Photopea’s API does <strong>not</strong> auto-segment. Use it like Model A:
+    open the base, paint white masks on black, export fixtures as transparent overlay.
+  </p>
+  <div class="note">
+    <p><strong>Target files per room</strong> (same pixel size as base):</p>
+    <ul>
+      <li><code>mask-floor.png</code> / zone masks — pure white (#FFF) on pure black (#000)</li>
+      <li><code>overlay-locked.png</code> — fixtures + contact shadows only, transparent elsewhere</li>
+    </ul>
+  </div>
+  <p>Serve this project with Vite, then open Photopea with a public/local file URL, or drag the base into Photopea manually from:</p>
+  <ul>
+    <li><code>public/2d-rooms/large-bathroom-b/base.png</code></li>
+    <li><code>public/2d-rooms/staircase-c/base.png</code></li>
+    <li><code>public/2d-rooms/feature-wall-d/base.png</code></li>
+    <li><code>public/2d-rooms/vanity-e/base.png</code></li>
+  </ul>
+  <p>
+    <a class="btn" href="https://www.photopea.com" target="_blank" rel="noopener">Open Photopea</a>
+  </p>
+  <p>
+    After export, overwrite the matching <code>mask-*.png</code> and <code>overlay-locked.png</code>
+    in that room folder. Refresh <code>#visualizer-2d</code>.
+  </p>
+  <p class="note">
+    Automated path: <code>fal_generate_2d_bases.py</code> (GPT Image 2) +
+    <code>fal_sam_remask_2d.py</code> (SAM only). Photopea is for final QA to match bathroom-01.
+  </p>
+</body>
+</html>

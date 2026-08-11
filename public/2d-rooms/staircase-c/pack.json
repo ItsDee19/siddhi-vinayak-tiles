@@ -1,0 +1,16 @@
+{
+  "id": "staircase-c",
+  "zones": [
+    {
+      "id": "floor",
+      "label": "Floor",
+      "surface": "Floor"
+    },
+    {
+      "id": "wall",
+      "label": "Wall",
+      "surface": "Wall"
+    }
+  ],
+  "quality": "auto-mask-draft"
+}

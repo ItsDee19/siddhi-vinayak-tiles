@@ -39,13 +39,26 @@ function defaultZoneTextures(zones) {
 }
 
 export default function Visualizer2D() {
-  const room = rooms2d[0]
+  const [roomId, setRoomId] = useState(rooms2d[0].id)
+  const room = useMemo(
+    () => rooms2d.find((r) => r.id === roomId) || rooms2d[0],
+    [roomId],
+  )
   const [activeZoneId, setActiveZoneId] = useState(room.zones[0].id)
   const [zoneTextures, setZoneTextures] = useState(() => defaultZoneTextures(room.zones))
   const [tileScale, setTileScale] = useState(0.85)
   const [groutOn, setGroutOn] = useState(false)
   const [exporting, setExporting] = useState(false)
   const canvasRef = useRef(null)
+
+  const switchRoom = useCallback((id) => {
+    const next = rooms2d.find((r) => r.id === id) || rooms2d[0]
+    setRoomId(next.id)
+    setActiveZoneId(next.zones[0].id)
+    setZoneTextures(defaultZoneTextures(next.zones))
+    setTileScale(0.85)
+    setGroutOn(false)
+  }, [])
 
   const activeZone = useMemo(
     () => room.zones.find((z) => z.id === activeZoneId) || room.zones[0],
@@ -80,6 +93,11 @@ export default function Visualizer2D() {
     setActiveZoneId(room.zones[0].id)
   }
 
+  // Keep zone id valid if room definition changes
+  if (!room.zones.some((z) => z.id === activeZoneId) && room.zones[0]) {
+    // no-op state fix on next render via switchRoom only
+  }
+
   /** Full-resolution export (native room width, full tier textures). */
   const handleScreenshot = async () => {
     if (exporting) return
@@ -102,16 +120,38 @@ export default function Visualizer2D() {
   }
 
   return (
-    <section id="visualizer-2d" className="section-pad relative border-t border-white/5 bg-charcoal-800">
+    <section id="visualizer" className="section-pad relative bg-charcoal">
       <div className="container-px">
         <SectionHeading
-          eyebrow="Lifestyle Preview"
-          title="2D Room Visualizer"
-          subtitle="High-quality seamless tiles only — progressive preview then HQ. Floor and wall independently; fixtures locked from the photo overlay."
+          eyebrow="Room Preview"
+          title="Tile Visualizer"
+          subtitle="Apply real catalogue tiles onto lifestyle room photos. Floor and wall independently; fixtures stay locked from the photo overlay."
         />
 
         <div className="mt-8 grid gap-6 lg:grid-cols-[minmax(0,1.4fr)_minmax(280px,0.85fr)] lg:items-start">
           <div className="space-y-3">
+            {rooms2d.length > 1 && (
+              <div className="flex flex-wrap gap-2">
+                {rooms2d.map((r) => {
+                  const active = r.id === room.id
+                  return (
+                    <button
+                      key={r.id}
+                      type="button"
+                      onClick={() => switchRoom(r.id)}
+                      className={`rounded-btn border px-3 py-1.5 text-xs font-semibold transition ${
+                        active
+                          ? 'border-gold bg-gold/15 text-gold ring-1 ring-gold/40'
+                          : 'border-white/10 bg-charcoal text-sand hover:border-gold/30'
+                      }`}
+                    >
+                      {r.name}
+                    </button>
+                  )
+                })}
+              </div>
+            )}
+
             <div className="flex flex-wrap items-center justify-between gap-2">
               <div>
                 <p className="text-sm font-semibold text-cream">{room.name}</p>

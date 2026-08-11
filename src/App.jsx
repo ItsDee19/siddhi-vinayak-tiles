@@ -2,10 +2,10 @@ import { Suspense, lazy } from 'react'
 import Navbar from './components/sections/Navbar'
 import Hero from './components/sections/Hero'
 import ProductCategories from './components/sections/ProductCategories'
-import VisualizerLazy from './components/sections/VisualizerLazy'
 import Visualizer2DLazy from './components/sections/Visualizer2DLazy'
 
 const Catalogue = lazy(() => import('./components/sections/Catalogue'))
+const SizeCalculator = lazy(() => import('./components/sections/SizeCalculator'))
 const WhyChooseUs = lazy(() => import('./components/sections/WhyChooseUs'))
 const About = lazy(() => import('./components/sections/About'))
 const Testimonials = lazy(() => import('./components/sections/Testimonials'))
@@ -20,10 +20,10 @@ export default function App() {
       <main>
         <Hero />
         <ProductCategories />
-        <VisualizerLazy />
         <Visualizer2DLazy />
         <Suspense fallback={null}>
           <Catalogue />
+          <SizeCalculator />
           <WhyChooseUs />
           <About />
           <Testimonials />

@@ -1,0 +1,8 @@
+{
+  "model": "fal-ai/sam-3/image",
+  "zones": [
+    "wall",
+    "wall-lower",
+    "wall-upper"
+  ]
+}
