@@ -2,7 +2,7 @@ import { useMemo, useRef, useState } from 'react'
 import Icon from '../Icons'
 import { visualizerProducts as defaultProducts } from '../../data/visualizerCatalogue'
 import { ACCEPTED_IMAGE_TYPES, validateImageFile } from '../../utils/imageUpload'
-import { resolveZoneSource } from '../../utils/threeTextures'
+import { resolveZoneSource } from '../../utils/tileSource'
 import { surfaceMatches } from '../../utils/surfaces'
 import { matchesQuery } from '../../utils/productSearch'
 

@@ -1,4 +1,4 @@
-import { resolveZoneSource } from '../../utils/threeTextures'
+import { resolveZoneSource } from '../../utils/tileSource'
 import { tileUrl2d } from '../../data/tileQuality2d'
 import { loadImage } from './loadImage'
 

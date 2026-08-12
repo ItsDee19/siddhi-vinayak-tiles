@@ -2,7 +2,7 @@ import { business } from '../../data/siteConfig'
 
 // Capture the WebGL canvas, stamp the shop name + date, trigger a PNG download.
 // Caller must pass the <canvas> element from the active 3D model.
-// Requires `preserveDrawingBuffer: true` on the renderer (set in ModelShell).
+// Works with any HTMLCanvasElement (2D room canvas or other).
 
 export async function captureAndDownload(canvas) {
   if (!canvas) return

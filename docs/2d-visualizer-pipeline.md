@@ -378,7 +378,18 @@ Tune by eye until grout lines vanish correctly into the room; leave omitted for 
 
 ---
 
-## 11. Performance notes (high ROI)
+## 11. Dead code removed (cleanup)
+
+Demounted **3D room visualizer** (not Hero) was deleted to stop shipping unused code/assets:
+
+- Removed: `Visualizer.jsx` / `VisualizerLazy.jsx`, GLB models, room ModelA–E, ModelShell, MobileDrawer/ModelTabs/ControlBar for 3D
+- Removed unused packs: bathroom-02/03, kitchen-01, living-01, `_generated-bases`
+- **2D no longer imports `threeTextures.js`** — uses pure `src/utils/tileSource.js` so canvas compose does not depend on Three’s module graph
+- **Kept:** Hero `TileWall3D` + `Logo3D` (homepage), live packs A–E, catalogue pipeline scripts
+
+---
+
+## 12. Performance notes (high ROI)
 
 | Optimization | Status |
 |--------------|--------|

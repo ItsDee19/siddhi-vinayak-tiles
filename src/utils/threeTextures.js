@@ -2,6 +2,9 @@ import * as THREE from 'three'
 import { makeMaterialCanvas } from './textures'
 import { tileEntry, tileUrl } from '../data/visualizerTiles'
 
+// Re-export pure resolver for 3D callers that still import from here.
+export { resolveZoneSource } from './tileSource'
+
 // Cache so we don't regenerate the same canvas/texture repeatedly.
 const cache = new Map()
 
@@ -147,25 +150,6 @@ export function loadZoneTexture(source, repeatX = 1, size = 512, repeatY = repea
 // filters those out of the picker, so this is a backstop: it is better for a
 // surface to keep its previous material than to have a brochure cover page
 // painted across it.
-export function resolveZoneSource(product, tier = 'full') {
-  if (!product) return null
-  if (product.url) return product  // already a custom upload
-  if (product.textureUrl) {
-    const url = tileUrl(product, tier)
-    if (!url) return null
-    return { id: product.id, name: product.name, url, finish: product.finish, size: product.size, aspect: tileEntry(product)?.aspect }
-  }
-  // No textureUrl → treat as procedural. Build a procedural swatch from
-  // the catalogue product's color/category.
-  return {
-    id: product.id,
-    type: (product.category || 'ceramic').toLowerCase(),
-    color: product.color || '#cfc6b4',
-    accent: product.color || '#cfc6b4',
-    finish: product.finish,
-  }
-}
-
 // Fetch the raw (cached) base texture for a source without applying repeat.
 // Used by the grout compositor, which needs the underlying image.
 export function loadRawTexture(source) {
