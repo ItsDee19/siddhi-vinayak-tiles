@@ -27,3 +27,8 @@ blender/*.blend*
 
 # Build/QA artifacts from scripts/build_visualizer_tiles.mjs
 build-artifacts/
+
+# Local only
+catalogue-pdfs/
+.claude/
+
