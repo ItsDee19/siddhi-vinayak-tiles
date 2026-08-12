@@ -16,6 +16,7 @@ export default function ZonePicker({
   onActivateZone,             // (zoneId) => void
   onCustomUpload,             // (zoneId, file) => void
   products = defaultProducts, // optional override (e.g. strong tiles only for 2D)
+  compact = false,            // mobile bottom-sheet: denser chrome
 }) {
   const fileRef = useRef(null)
   const [subFilter, setSubFilter] = useState('all') // 'all' | '12x18' | '2x4' | 'floor'
@@ -75,12 +76,17 @@ export default function ZonePicker({
     // layer on top of it, not a replacement for it.
     <div
       onClick={() => onActivateZone(zone.id)}
-      className={`rounded-card border p-4 transition-all ${
-        isActive
+      className={`rounded-card border transition-all ${
+        compact ? 'border-transparent bg-transparent p-0' : 'p-4'
+      } ${
+        !compact && isActive
           ? 'border-gold bg-charcoal-800'
-          : 'cursor-pointer border-white/5 bg-charcoal-800/60 hover:border-gold/40 hover:bg-charcoal-800'
+          : !compact
+            ? 'cursor-pointer border-white/5 bg-charcoal-800/60 hover:border-gold/40 hover:bg-charcoal-800'
+            : ''
       }`}
     >
+      {!compact && (
       <div className="flex items-center justify-between">
         <button
           onClick={() => onActivateZone(zone.id)}
@@ -101,13 +107,14 @@ export default function ZonePicker({
           </span>
         </div>
       </div>
+      )}
 
-      {isActive && (
+      {(isActive || compact) && (
         <>
           {/* Search by tile name or code. Sits above the size chips because it
               is the fastest route to a specific tile when the customer already
               knows what they are asking for — the chips are for browsing. */}
-          <div className="relative mt-3">
+          <div className={`relative ${compact ? 'mt-0' : 'mt-3'}`}>
             <Icon
               name="search"
               className="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-sand/40"
@@ -118,7 +125,7 @@ export default function ZonePicker({
               onChange={(e) => { setQuery(e.target.value); setLimit(INITIAL_BATCH) }}
               placeholder="Search by tile name or code…"
               aria-label={`Search tiles for ${zone.label}`}
-              className="w-full rounded-btn border border-white/10 bg-charcoal-900/60 py-2 pl-9 pr-8 text-xs text-cream placeholder:text-sand/40 focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold/40"
+              className="w-full rounded-btn border border-white/10 bg-charcoal-900/60 py-2.5 pl-9 pr-8 text-xs text-cream placeholder:text-sand/40 focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold/40 touch-manipulation"
             />
             {query && (
               <button
@@ -224,8 +231,8 @@ export default function ZonePicker({
             </p>
           )}
 
-          {/* Touch-Optimized Swatch Strip */}
-          <div className="mt-2.5 flex gap-2 overflow-x-auto pb-2 scroll-smooth [scroll-snap-type:x_mandatory]">
+          {/* Touch-Optimized Swatch Strip — larger targets on mobile/compact */}
+          <div className="mt-2.5 flex gap-2 overflow-x-auto pb-2 scroll-smooth [scroll-snap-type:x_mandatory] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {visibleSwatches.map((p) => {
               const sel = current?.id === p.id
               // Resolve through the same pipeline that supplies the actual
@@ -240,7 +247,9 @@ export default function ZonePicker({
                   key={p.id}
                   onClick={() => onSwatchPick(zone.id, p)}
                   title={`${p.name}${p.size ? ` · ${p.size}` : ''}`}
-                  className={`relative h-14 w-20 shrink-0 overflow-hidden rounded border-2 transition-all [scroll-snap-align:start] ${
+                  className={`relative shrink-0 overflow-hidden rounded border-2 transition-all [scroll-snap-align:start] touch-manipulation ${
+                    compact ? 'h-16 w-24' : 'h-14 w-20'
+                  } ${
                     sel
                       ? 'border-gold shadow-glow ring-2 ring-gold/40'
                       : 'border-transparent hover:border-sand/40'
@@ -269,7 +278,9 @@ export default function ZonePicker({
             {hasMore && (
               <button
                 onClick={() => setLimit((l) => l + 28)}
-                className="h-14 px-3 shrink-0 flex items-center justify-center gap-1 rounded border border-gold/30 bg-gold/10 text-xs font-medium text-gold hover:bg-gold/20"
+                className={`shrink-0 flex items-center justify-center gap-1 rounded border border-gold/30 bg-gold/10 text-xs font-medium text-gold hover:bg-gold/20 touch-manipulation ${
+                  compact ? 'h-16 px-4' : 'h-14 px-3'
+                }`}
               >
                 + More
               </button>
@@ -278,7 +289,7 @@ export default function ZonePicker({
 
           <button
             onClick={() => fileRef.current?.click()}
-            className="mt-2 flex w-full items-center justify-center gap-2 rounded-btn border border-dashed border-white/10 px-3 py-2 text-xs text-sand/70 hover:border-gold hover:text-gold"
+            className="mt-2 flex w-full min-h-[44px] items-center justify-center gap-2 rounded-btn border border-dashed border-white/10 px-3 py-2.5 text-xs text-sand/70 hover:border-gold hover:text-gold touch-manipulation"
           >
             <Icon name="send" className="h-3.5 w-3.5" /> Upload custom tile photo
           </button>

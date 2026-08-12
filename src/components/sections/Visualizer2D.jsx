@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import SectionHeading from '../ui/SectionHeading'
 import ZonePicker from '../visualizer/ZonePicker'
 import Icon from '../Icons'
@@ -28,18 +28,15 @@ function starterTileScore(product, zoneSurface) {
   const finish = String(product.finish || '').toLowerCase()
   const size = String(product.size || '')
 
-  // Prefer mid formats that tile cleanly at starter scale (avoid giant 600×1200 cells)
   if (/600\s*[x×]\s*600/i.test(size)) score += 5
   else if (/300\s*[x×]\s*600/i.test(size)) score += 4
   else if (/600\s*[x×]\s*1200/i.test(size)) score += 1
   else if (/300\s*[x×]\s*300/i.test(size)) score += 2
   else score += 2
 
-  // Neutral stone-like names blend with lifestyle bases
   if (/(grey|gray|beige|ivory|cream|white|ash|fog|stone|cement|concrete|sand|taupe|pearl|silver|mist)/i.test(name)) {
     score += 6
   }
-  // Flashy veins / metals look broken as the default “first paint”
   if (/(gold|golden|yellow|neon|copper|bronze|metallic|glitter|sparkle|black.?gold)/i.test(name)) {
     score -= 8
   }
@@ -47,7 +44,6 @@ function starterTileScore(product, zoneSurface) {
   if (/(matte|matt|soft|honed)/i.test(finish)) score += 2
   if (/(gloss|polished|high.?gloss)/i.test(finish)) score -= 1
 
-  // Exact surface match over "Both"
   const surf = String(product.surface || '')
   if (zoneSurface && surf === zoneSurface) score += 3
   else if (/Both/i.test(surf)) score += 1
@@ -72,7 +68,22 @@ function defaultZoneTextures(zones) {
   return out
 }
 
+function useIsMobile(breakpoint = 1024) {
+  const [mobile, setMobile] = useState(() =>
+    typeof window !== 'undefined' ? window.matchMedia(`(max-width: ${breakpoint - 1}px)`).matches : false,
+  )
+  useEffect(() => {
+    const mq = window.matchMedia(`(max-width: ${breakpoint - 1}px)`)
+    const onChange = () => setMobile(mq.matches)
+    onChange()
+    mq.addEventListener?.('change', onChange)
+    return () => mq.removeEventListener?.('change', onChange)
+  }, [breakpoint])
+  return mobile
+}
+
 export default function Visualizer2D() {
+  const isMobile = useIsMobile(1024)
   const [roomId, setRoomId] = useState(rooms2d[0].id)
   const room = useMemo(
     () => rooms2d.find((r) => r.id === roomId) || rooms2d[0],
@@ -83,7 +94,19 @@ export default function Visualizer2D() {
   const [tileScale, setTileScale] = useState(() => roomTileScale(room))
   const [groutOn, setGroutOn] = useState(false)
   const [exporting, setExporting] = useState(false)
+  const [sheetOpen, setSheetOpen] = useState(false)
+  const [showScale, setShowScale] = useState(false)
   const canvasRef = useRef(null)
+
+  // Lock body scroll when mobile sheet is open
+  useEffect(() => {
+    if (!sheetOpen || !isMobile) return undefined
+    const prev = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.body.style.overflow = prev
+    }
+  }, [sheetOpen, isMobile])
 
   const switchRoom = useCallback((id) => {
     const next = rooms2d.find((r) => r.id === id) || rooms2d[0]
@@ -127,12 +150,10 @@ export default function Visualizer2D() {
     setActiveZoneId(room.zones[0].id)
   }
 
-  // Keep zone id valid if room definition changes
   if (!room.zones.some((z) => z.id === activeZoneId) && room.zones[0]) {
-    // no-op state fix on next render via switchRoom only
+    // no-op; next interaction via switchRoom
   }
 
-  /** Full-resolution export (native room width, full tier textures). */
   const handleScreenshot = async () => {
     if (exporting) return
     setExporting(true)
@@ -140,7 +161,7 @@ export default function Visualizer2D() {
       const off = document.createElement('canvas')
       await composeRoomExport(off, room, zoneTextures, {
         tileScale,
-        maxWidth: 3344,
+        maxWidth: isMobile ? 2048 : 3344,
         roomWidthMM: room.roomWidthMM || 3600,
         groutEnabled: groutOn,
       })
@@ -153,6 +174,261 @@ export default function Visualizer2D() {
     }
   }
 
+  const displayMaxWidth = isMobile ? 960 : 1600
+
+  const roomChips = (
+    <div
+      className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      role="tablist"
+      aria-label="Room models"
+    >
+      {rooms2d.map((r) => {
+        const active = r.id === room.id
+        return (
+          <button
+            key={r.id}
+            type="button"
+            role="tab"
+            aria-selected={active}
+            onClick={() => switchRoom(r.id)}
+            className={`shrink-0 rounded-full border px-3.5 py-2 text-xs font-semibold transition touch-manipulation ${
+              active
+                ? 'border-gold bg-gold/15 text-gold ring-1 ring-gold/40'
+                : 'border-white/10 bg-charcoal text-sand active:bg-white/5'
+            }`}
+          >
+            {r.name}
+          </button>
+        )
+      })}
+    </div>
+  )
+
+  const zoneChips = (
+    <div className="flex gap-2 overflow-x-auto pb-0.5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      {room.zones.map((z) => {
+        const active = z.id === activeZoneId
+        const swatch = zoneTextures[z.id]
+        return (
+          <button
+            key={z.id}
+            type="button"
+            onClick={() => {
+              setActiveZoneId(z.id)
+              if (isMobile) setSheetOpen(true)
+            }}
+            className={`min-h-[44px] shrink-0 rounded-btn border px-3 py-2 text-left text-xs font-semibold transition touch-manipulation ${
+              active
+                ? 'border-gold bg-gold/15 text-gold ring-1 ring-gold/40'
+                : 'border-white/10 bg-charcoal text-sand'
+            }`}
+          >
+            <span className="block">{z.label}</span>
+            {swatch?.name ? (
+              <span className="mt-0.5 block max-w-[9rem] truncate text-[10px] font-normal opacity-70">
+                {swatch.name}
+              </span>
+            ) : null}
+          </button>
+        )
+      })}
+    </div>
+  )
+
+  const scaleControl = (
+    <label className="flex items-center gap-2 text-xs text-sand/80">
+      <span className="w-14 shrink-0 sm:w-16">Tile size</span>
+      <span className="hidden text-[10px] text-sand/50 sm:inline">finer</span>
+      <input
+        type="range"
+        min="0.4"
+        max="1.8"
+        step="0.05"
+        value={tileScale}
+        onChange={(e) => setTileScale(Number(e.target.value))}
+        className="h-8 w-full accent-gold touch-manipulation"
+        aria-label="Tile size"
+      />
+      <span className="hidden text-[10px] text-sand/50 sm:inline">larger</span>
+      <span className="w-11 shrink-0 text-right tabular-nums text-cream/80">
+        {tileScale.toFixed(2)}×
+      </span>
+    </label>
+  )
+
+  const canvasBlock = (
+    <RoomCanvas
+      room={room}
+      zoneTextures={zoneTextures}
+      tileScale={tileScale}
+      groutEnabled={groutOn}
+      canvasRef={canvasRef}
+      displayMaxWidth={displayMaxWidth}
+      preferLiteFirst={isMobile}
+      className="border border-white/5 shadow-card"
+    />
+  )
+
+  /* ─── Mobile layout ─── */
+  if (isMobile) {
+    return (
+      <section id="visualizer" className="relative bg-charcoal pb-[calc(5.5rem+env(safe-area-inset-bottom))] pt-10">
+        <div className="container-px">
+          <SectionHeading
+            eyebrow="Room Preview"
+            title="Tile Visualizer"
+            subtitle="Tap a zone, pick a tile. Fixtures stay locked."
+          />
+
+          <div className="mt-5 space-y-3">
+            {roomChips}
+
+            <div className="flex items-center justify-between gap-2">
+              <div className="min-w-0">
+                <p className="truncate text-sm font-semibold text-cream">{room.name}</p>
+                <p className="truncate text-[11px] text-sand/65">{room.blurb}</p>
+              </div>
+              <div className="flex shrink-0 gap-1.5">
+                <button
+                  type="button"
+                  onClick={handleReset}
+                  className="inline-flex h-10 min-w-[2.75rem] items-center justify-center gap-1 rounded-btn border border-white/10 bg-charcoal px-2.5 text-[11px] font-medium text-sand touch-manipulation"
+                  aria-label="Reset tiles"
+                >
+                  <Icon name="compass" className="h-3.5 w-3.5" />
+                  <span className="hidden xs:inline">Reset</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={handleScreenshot}
+                  disabled={exporting}
+                  className="inline-flex h-10 items-center justify-center gap-1 rounded-btn border border-gold/40 bg-gold/10 px-2.5 text-[11px] font-semibold text-gold touch-manipulation disabled:opacity-60"
+                >
+                  <Icon name="search" className="h-3.5 w-3.5" />
+                  {exporting ? '…' : 'Save'}
+                </button>
+              </div>
+            </div>
+
+            {/* Preview — keep in view while scrolling controls below */}
+            <div className="sticky top-14 z-10 -mx-1 rounded-card bg-charcoal/95 p-1 backdrop-blur-sm">
+              {canvasBlock}
+            </div>
+
+            <div className="space-y-2 rounded-card border border-white/10 bg-charcoal-800/80 p-3">
+              <p className="text-[10px] font-semibold uppercase tracking-wider text-sand/50">
+                Active zone
+              </p>
+              {zoneChips}
+
+              <button
+                type="button"
+                onClick={() => setShowScale((v) => !v)}
+                className="flex w-full items-center justify-between py-1 text-left text-[11px] text-sand/70 touch-manipulation"
+              >
+                <span>Tile size · {tileScale.toFixed(2)}×</span>
+                <span className="text-gold">{showScale ? 'Hide' : 'Adjust'}</span>
+              </button>
+              {showScale && (
+                <div className="space-y-2 border-t border-white/5 pt-2">
+                  {scaleControl}
+                  <label className="flex min-h-[44px] cursor-pointer items-center gap-2 text-xs text-sand/80">
+                    <input
+                      type="checkbox"
+                      checked={groutOn}
+                      onChange={(e) => setGroutOn(e.target.checked)}
+                      className="h-4 w-4 accent-gold"
+                    />
+                    Show fine grout lines
+                  </label>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* Sticky bottom bar */}
+        <div className="fixed inset-x-0 bottom-0 z-30 border-t border-gold/25 bg-charcoal-900/95 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 backdrop-blur-md">
+          <button
+            type="button"
+            onClick={() => setSheetOpen(true)}
+            className="flex w-full min-h-[48px] items-center justify-center gap-2 rounded-btn bg-gold px-4 py-3 text-sm font-semibold uppercase tracking-wide text-ink touch-manipulation active:brightness-95"
+          >
+            <Icon name="search" className="h-4 w-4" />
+            Choose tiles · {activeZone.label}
+          </button>
+        </div>
+
+        {/* Bottom sheet — tile browser */}
+        {sheetOpen && (
+          <>
+            <button
+              type="button"
+              aria-label="Close tile picker"
+              className="fixed inset-0 z-40 bg-charcoal/65 backdrop-blur-sm"
+              onClick={() => setSheetOpen(false)}
+            />
+            <div
+              role="dialog"
+              aria-modal="true"
+              aria-label="Choose tiles"
+              className="fixed inset-x-0 bottom-0 z-50 flex max-h-[78vh] flex-col rounded-t-2xl border-t border-gold/30 bg-charcoal-800 shadow-card"
+            >
+              <div className="mx-auto mt-2 h-1 w-12 shrink-0 rounded-full bg-gold/40" />
+              <div className="flex items-center justify-between gap-3 px-4 py-3">
+                <div className="min-w-0">
+                  <h3 className="font-display text-lg text-cream">Choose tiles</h3>
+                  <p className="truncate text-[11px] text-sand/60">
+                    {activeZone.label}
+                    {zoneTextures[activeZone.id]?.name
+                      ? ` · ${zoneTextures[activeZone.id].name}`
+                      : ''}
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setSheetOpen(false)}
+                  className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white/5 text-cream touch-manipulation"
+                  aria-label="Close"
+                >
+                  <Icon name="close" className="h-4 w-4" />
+                </button>
+              </div>
+
+              <div className="shrink-0 border-b border-white/5 px-4 pb-3">
+                {zoneChips}
+              </div>
+
+              <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-3">
+                <ZonePicker
+                  zone={activeZone}
+                  activeZoneId={activeZoneId}
+                  zoneTextures={zoneTextures}
+                  onSwatchPick={onSwatchPick}
+                  onActivateZone={setActiveZoneId}
+                  onCustomUpload={onCustomUpload}
+                  products={strongProducts}
+                  compact
+                />
+              </div>
+
+              <div className="shrink-0 border-t border-white/10 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3">
+                <button
+                  type="button"
+                  onClick={() => setSheetOpen(false)}
+                  className="flex w-full min-h-[48px] items-center justify-center rounded-btn bg-gold text-sm font-semibold uppercase tracking-wide text-ink touch-manipulation"
+                >
+                  Done
+                </button>
+              </div>
+            </div>
+          </>
+        )}
+      </section>
+    )
+  }
+
+  /* ─── Desktop layout ─── */
   return (
     <section id="visualizer" className="section-pad relative bg-charcoal">
       <div className="container-px">
@@ -164,27 +440,7 @@ export default function Visualizer2D() {
 
         <div className="mt-8 grid gap-6 lg:grid-cols-[minmax(0,1.4fr)_minmax(280px,0.85fr)] lg:items-start">
           <div className="space-y-3">
-            {rooms2d.length > 1 && (
-              <div className="flex flex-wrap gap-2">
-                {rooms2d.map((r) => {
-                  const active = r.id === room.id
-                  return (
-                    <button
-                      key={r.id}
-                      type="button"
-                      onClick={() => switchRoom(r.id)}
-                      className={`rounded-btn border px-3 py-1.5 text-xs font-semibold transition ${
-                        active
-                          ? 'border-gold bg-gold/15 text-gold ring-1 ring-gold/40'
-                          : 'border-white/10 bg-charcoal text-sand hover:border-gold/30'
-                      }`}
-                    >
-                      {r.name}
-                    </button>
-                  )
-                })}
-              </div>
-            )}
+            {rooms2d.length > 1 && roomChips}
 
             <div className="flex flex-wrap items-center justify-between gap-2">
               <div>
@@ -214,33 +470,9 @@ export default function Visualizer2D() {
               </div>
             </div>
 
-            <RoomCanvas
-              room={room}
-              zoneTextures={zoneTextures}
-              tileScale={tileScale}
-              groutEnabled={groutOn}
-              canvasRef={canvasRef}
-              displayMaxWidth={1600}
-              className="border border-white/5 shadow-card"
-            />
+            {canvasBlock}
 
-            <label className="flex items-center gap-3 text-xs text-sand/80">
-              <span className="w-16 shrink-0">Tile size</span>
-              <span className="text-[10px] text-sand/50">finer</span>
-              <input
-                type="range"
-                min="0.4"
-                max="1.8"
-                step="0.05"
-                value={tileScale}
-                onChange={(e) => setTileScale(Number(e.target.value))}
-                className="w-full accent-gold"
-              />
-              <span className="text-[10px] text-sand/50">larger</span>
-              <span className="w-12 text-right tabular-nums text-cream/80">
-                {tileScale.toFixed(2)}×
-              </span>
-            </label>
+            {scaleControl}
 
             <label className="flex cursor-pointer items-center gap-2 text-xs text-sand/80">
               <input
@@ -263,31 +495,7 @@ export default function Visualizer2D() {
           </div>
 
           <div className="space-y-3">
-            <div className="flex flex-wrap gap-2">
-              {room.zones.map((z) => {
-                const active = z.id === activeZoneId
-                const swatch = zoneTextures[z.id]
-                return (
-                  <button
-                    key={z.id}
-                    type="button"
-                    onClick={() => setActiveZoneId(z.id)}
-                    className={`rounded-btn border px-3 py-2 text-xs font-semibold transition ${
-                      active
-                        ? 'border-gold bg-gold/15 text-gold ring-1 ring-gold/40'
-                        : 'border-white/10 bg-charcoal text-sand hover:border-gold/30'
-                    }`}
-                  >
-                    <span className="block">{z.label}</span>
-                    {swatch?.name ? (
-                      <span className="mt-0.5 block max-w-[140px] truncate text-[10px] font-normal opacity-70">
-                        {swatch.name}
-                      </span>
-                    ) : null}
-                  </button>
-                )
-              })}
-            </div>
+            {zoneChips}
 
             <p className="text-[11px] text-sand/60">
               Active zone:{' '}
@@ -306,8 +514,8 @@ export default function Visualizer2D() {
             />
 
             <p className="text-[11px] leading-relaxed text-sand/55">
-              Preview paints quickly, then upgrades to HQ textures. Download HQ exports at full room
-              resolution with desktop-grade tiles.
+              Preview paints at HQ textures for a clean first look. Download HQ exports at full room
+              resolution.
             </p>
           </div>
         </div>

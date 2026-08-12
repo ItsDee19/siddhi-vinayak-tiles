@@ -2,9 +2,9 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { composeRoom } from './composeRoom'
 
 /**
- * Progressive 2D room compositor:
- * 1) lite (mobile @1024) for fast feedback
- * 2) full (desktop @2048) upgrade when idle / after lite paints
+ * 2D room compositor canvas.
+ * Mobile: lite first for speed, then HQ upgrade.
+ * Desktop: full quality first paint.
  */
 export default function RoomCanvas({
   room,
@@ -14,13 +14,14 @@ export default function RoomCanvas({
   canvasRef: externalRef,
   className = '',
   displayMaxWidth = 1600,
+  preferLiteFirst = false,
 }) {
   const localRef = useRef(null)
   const canvasRef = externalRef || localRef
   const [status, setStatus] = useState('loading')
   const [error, setError] = useState('')
   const [warnings, setWarnings] = useState([])
-  const [tier, setTier] = useState('lite')
+  const [tier, setTier] = useState(preferLiteFirst ? 'lite' : 'full')
   const genRef = useRef(0)
 
   const textureKey = useMemo(() => {
@@ -31,6 +32,12 @@ export default function RoomCanvas({
       .join('|')
   }, [zoneTextures])
 
+  // Prefer room-native aspect when known; fallback wide lifestyle ratio
+  const aspectStyle = useMemo(() => {
+    // Packs are ~1920×1072 (16:9-ish) or bathroom-01 ~16:9
+    return { aspectRatio: '16 / 9' }
+  }, [])
+
   useEffect(() => {
     let cancelled = false
     const canvas = canvasRef.current
@@ -40,34 +47,58 @@ export default function RoomCanvas({
     setStatus('loading')
     setError('')
     setWarnings([])
-    setTier('lite')
+    setTier(preferLiteFirst ? 'lite' : 'full')
 
     const run = async () => {
-      // First paint at full quality so the starter never looks like a soft/buggy preview.
-      // (Lite pass was useful for speed but made Large Bathroom open looking broken.)
-      try {
-        const full = await composeRoom(canvas, room, zoneTextures, {
-          tileScale,
-          maxWidth: displayMaxWidth,
-          tier: 'full',
-          roomWidthMM: room.roomWidthMM || 3600,
-          groutEnabled,
+      const common = {
+        tileScale,
+        roomWidthMM: room.roomWidthMM || 3600,
+        groutEnabled,
+      }
+
+      const paint = async (tierName, maxW) =>
+        composeRoom(canvas, room, zoneTextures, {
+          ...common,
+          tier: tierName,
+          maxWidth: maxW,
         })
-        if (cancelled || gen !== genRef.current) return
-        setWarnings(full.errors || [])
-        setStatus('ready')
-        setTier('full')
+
+      try {
+        if (preferLiteFirst) {
+          // Fast first frame on phones
+          const lite = await paint('lite', Math.min(displayMaxWidth, 880))
+          if (cancelled || gen !== genRef.current) return
+          setWarnings(lite.errors || [])
+          setStatus('ready')
+          setTier('lite')
+
+          const schedule =
+            typeof window !== 'undefined' && window.requestIdleCallback
+              ? (fn) => window.requestIdleCallback(fn, { timeout: 700 })
+              : (fn) => setTimeout(fn, 100)
+
+          schedule(async () => {
+            if (cancelled || gen !== genRef.current) return
+            try {
+              const full = await paint('full', displayMaxWidth)
+              if (cancelled || gen !== genRef.current) return
+              setWarnings(full.errors || [])
+              setTier('full')
+            } catch {
+              // keep lite
+            }
+          })
+        } else {
+          const full = await paint('full', displayMaxWidth)
+          if (cancelled || gen !== genRef.current) return
+          setWarnings(full.errors || [])
+          setStatus('ready')
+          setTier('full')
+        }
       } catch (err) {
         if (cancelled || gen !== genRef.current) return
-        // Fallback: lite tier if full fails (missing desktop assets)
         try {
-          const lite = await composeRoom(canvas, room, zoneTextures, {
-            tileScale,
-            maxWidth: Math.min(displayMaxWidth, 1200),
-            tier: 'lite',
-            roomWidthMM: room.roomWidthMM || 3600,
-            groutEnabled,
-          })
+          const lite = await paint('lite', Math.min(displayMaxWidth, 880))
           if (cancelled || gen !== genRef.current) return
           setWarnings(lite.errors || [])
           setStatus('ready')
@@ -85,14 +116,16 @@ export default function RoomCanvas({
       cancelled = true
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [room, textureKey, tileScale, groutEnabled, displayMaxWidth, canvasRef])
+  }, [room, textureKey, tileScale, groutEnabled, displayMaxWidth, canvasRef, preferLiteFirst])
 
   return (
-    <div className={`relative overflow-hidden rounded-card bg-charcoal-800 ${className}`}>
+    <div
+      className={`relative overflow-hidden rounded-card bg-charcoal-800 ${className}`}
+    >
       <canvas
         ref={canvasRef}
-        className="block h-auto w-full"
-        style={{ aspectRatio: '3344 / 1882' }}
+        className="block h-auto w-full max-h-[min(52vh,420px)] object-contain object-center sm:max-h-none"
+        style={aspectStyle}
       />
       {status === 'loading' && (
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-charcoal/40">

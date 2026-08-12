@@ -7,7 +7,7 @@ import { loadImage } from './loadImage'
  *  - Seamless createPattern (stable default)
  *  - Optional floor/wall perspective quad (homography grid warp)
  *  - Luminance multiply from base.png (room light/shadow recovery)
- *  - Soft mask feather + micro-depth on tile cells
+ *  - Soft mask feather (no fake per-cell grid lines)
  *
  * Perspective is opt-in via zone.perspectiveQuad (normalized 0–1 corners).
  * Flat tiling remains default so rooms without quads stay stable.
@@ -235,40 +235,9 @@ function applyLuminanceMultiply(tileLayer, baseImg, alphaMask, width, height, st
 }
 
 /**
- * Micro-depth on each tile cell: soft edge shade + subtle bevel
- * (fake height/grout recess without full normal maps).
- */
-function applyCellMicroDepth(cctx, cellW, cellH, gw) {
-  const inset = Math.max(gw, 1)
-  // Soft vignette at cell edges (sunken grout feel)
-  const grad = cctx.createLinearGradient(0, 0, 0, cellH)
-  grad.addColorStop(0, 'rgba(0,0,0,0.10)')
-  grad.addColorStop(0.08, 'rgba(0,0,0,0)')
-  grad.addColorStop(0.92, 'rgba(0,0,0,0)')
-  grad.addColorStop(1, 'rgba(0,0,0,0.12)')
-  cctx.fillStyle = grad
-  cctx.fillRect(inset, inset, cellW - inset * 2, cellH - inset * 2)
-
-  const gradX = cctx.createLinearGradient(0, 0, cellW, 0)
-  gradX.addColorStop(0, 'rgba(0,0,0,0.08)')
-  gradX.addColorStop(0.06, 'rgba(0,0,0,0)')
-  gradX.addColorStop(0.94, 'rgba(0,0,0,0)')
-  gradX.addColorStop(1, 'rgba(0,0,0,0.10)')
-  cctx.fillStyle = gradX
-  cctx.fillRect(inset, inset, cellW - inset * 2, cellH - inset * 2)
-
-  // Thin highlight top-left (porcelain sheen)
-  cctx.strokeStyle = 'rgba(255,255,255,0.14)'
-  cctx.lineWidth = 1
-  cctx.beginPath()
-  cctx.moveTo(inset + 1, cellH - inset - 1)
-  cctx.lineTo(inset + 1, inset + 1)
-  cctx.lineTo(cellW - inset - 1, inset + 1)
-  cctx.stroke()
-}
-
-/**
  * Full-frame seamless tile fill (createPattern).
+ * No per-cell vignette/bevel — those looked like translucent grid lines.
+ * Optional grout only when user enables "Show fine grout lines".
  */
 function buildSeamlessLayer(width, height, tileImg, product, tileScale, roomWidthMM, grout) {
   const layer = document.createElement('canvas')
@@ -305,9 +274,9 @@ function buildSeamlessLayer(width, height, tileImg, product, tileScale, roomWidt
     cctx.fillRect(0, 0, cellW, cellH)
     cctx.drawImage(tileImg, gw, gw, cellW - gw * 2, cellH - gw * 2)
   } else {
+    // Full-bleed cell — seamless pattern, no edge overlay
     cctx.drawImage(tileImg, 0, 0, cellW, cellH)
   }
-  applyCellMicroDepth(cctx, cellW, cellH, gw)
 
   const pattern = ctx.createPattern(cell, 'repeat')
   if (pattern) {
@@ -489,7 +458,7 @@ function resolveTextureUrl(product, tier = 'full') {
 function layerCacheKey(zoneId, product, tileScale, w, h, tier, groutOn, hasPersp, lightStr) {
   const id = product?.id || product?.url || 'none'
   // bump suffix when lighting/scale bake changes so old cache entries are not reused
-  return `${zoneId}|${id}|${tileScale}|${w}x${h}|${tier}|g${groutOn ? 1 : 0}|p${hasPersp ? 1 : 0}|L${lightStr}|r6`
+  return `${zoneId}|${id}|${tileScale}|${w}x${h}|${tier}|g${groutOn ? 1 : 0}|p${hasPersp ? 1 : 0}|L${lightStr}|r7`
 }
 
 async function buildZoneLayer({
