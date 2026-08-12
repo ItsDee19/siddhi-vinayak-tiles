@@ -17,15 +17,15 @@ export const rooms2dPrdBE = [
   {
     id: 'staircase-c',
     name: 'Staircase',
-    blurb: 'PRD Model C · floor + wall',
+    blurb: 'PRD Model C · stair floor only',
     baseUrl: '/2d-rooms/staircase-c/base.png',
     overlayUrl: '/2d-rooms/staircase-c/overlay-locked.png',
     roomWidthMM: 1220,
-    maskFeatherPx: 1.5,
+    maskFeatherPx: 2.0,
+    lightStrength: 0.70,
     grout: { enabled: false, color: '#d4cdc0' },
     zones: [
-      { id: 'floor', label: 'Floor', surface: 'Floor', maskUrl: '/2d-rooms/staircase-c/mask-floor.png' },
-      { id: 'wall', label: 'Wall', surface: 'Wall', maskUrl: '/2d-rooms/staircase-c/mask-wall.png' },
+      { id: 'floor', label: 'Stair Floor', surface: 'Floor', maskUrl: '/2d-rooms/staircase-c/mask-floor.png' },
     ],
   },
   {

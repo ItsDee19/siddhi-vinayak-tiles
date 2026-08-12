@@ -39,8 +39,13 @@ TILE_PROMPTS = {
         "wall": ["wall tiles", "tiled wall", "wall"],
     },
     "staircase-c": {
-        "floor": ["stair treads and landing", "steps top surfaces", "floor and stairs walking surface"],
-        "wall": ["wall beside stairs", "painted wall", "wall"],
+        # floor/treads only — walls must stay photo-locked (no wall zone)
+        "floor": [
+            "stair treads",
+            "horizontal step tops",
+            "stair walking surfaces",
+            "landing floor",
+        ],
     },
     "feature-wall-d": {
         # wall only — no floor zone for this model
@@ -199,6 +204,46 @@ def split_wall_bands(wall: np.ndarray, lower_frac=0.25, feature_frac=0.5) -> tup
     return lower, feature, upper
 
 
+def soft_mask_edges(mask: np.ndarray, near_sigma: float = 0.8, far_sigma: float = 2.2) -> np.ndarray:
+    """
+    Depth-ish soft edges: tighter blur near bottom of frame (camera-near),
+    softer blur higher up (receding into room). Approximates DOF without a depth map.
+    """
+    if mask is None or not mask.any():
+        return mask
+    h, w = mask.shape[:2]
+    hard = (mask > 127).astype(np.uint8) * 255
+    near = cv2.GaussianBlur(hard, (0, 0), near_sigma)
+    far = cv2.GaussianBlur(hard, (0, 0), far_sigma)
+    # y=0 top (far) → weight 1 on far blur; y=h bottom (near) → near blur
+    ys = np.linspace(1.0, 0.0, h, dtype=np.float32).reshape(h, 1)
+    blend = far.astype(np.float32) * ys + near.astype(np.float32) * (1.0 - ys)
+    return np.clip(blend, 0, 255).astype(np.uint8)
+
+
+def contact_ao_darken(bgr: np.ndarray, fixture_alpha: np.ndarray, strength: float = 0.45) -> np.ndarray:
+    """
+    Bake contact shadow along fixture edges (where furniture meets floor/wall).
+    Sobel on alpha → darken RGB near contact for heavier, anchored look.
+    """
+    if fixture_alpha is None or not fixture_alpha.any():
+        return bgr
+    a = fixture_alpha.astype(np.float32) / 255.0
+    gx = cv2.Sobel(a, cv2.CV_32F, 1, 0, ksize=3)
+    gy = cv2.Sobel(a, cv2.CV_32F, 0, 1, ksize=3)
+    edge = cv2.magnitude(gx, gy)
+    if edge.max() > 0:
+        edge = edge / edge.max()
+    edge = cv2.GaussianBlur(edge, (0, 0), 1.5)
+    # Only darken on the fixture side near boundary
+    contact = edge * (a > 0.05).astype(np.float32)
+    factor = 1.0 - contact * strength
+    out = bgr.astype(np.float32)
+    for c in range(3):
+        out[:, :, c] *= factor
+    return np.clip(out, 0, 255).astype(np.uint8)
+
+
 def build_overlay(bgr: np.ndarray, tile_masks: list[np.ndarray], fixture: np.ndarray | None) -> np.ndarray:
     h, w = bgr.shape[:2]
     tile = np.zeros((h, w), np.uint8)
@@ -210,22 +255,20 @@ def build_overlay(bgr: np.ndarray, tile_masks: list[np.ndarray], fixture: np.nda
         tile = cv2.bitwise_or(tile, (m > 127).astype(np.uint8) * 255)
 
     if fixture is not None and fixture.any():
-        alpha = fixture.copy()
-        # soft edge
-        alpha = cv2.GaussianBlur(alpha, (0, 0), 1.2)
-        _, ab = cv2.threshold(alpha, 20, 255, cv2.THRESH_BINARY)
+        alpha = soft_mask_edges(fixture, near_sigma=0.9, far_sigma=2.4)
+        _, ab = cv2.threshold(alpha, 12, 255, cv2.THRESH_BINARY)
         alpha = cv2.bitwise_and(alpha, ab)
     else:
         k = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (11, 11))
         tile_d = cv2.dilate(tile, k, iterations=1)
-        alpha = cv2.bitwise_not(tile_d)
-        alpha = cv2.GaussianBlur(alpha, (0, 0), 1.2)
-        _, ab = cv2.threshold(alpha, 24, 255, cv2.THRESH_BINARY)
+        alpha = soft_mask_edges(cv2.bitwise_not(tile_d), near_sigma=0.9, far_sigma=2.4)
+        _, ab = cv2.threshold(alpha, 16, 255, cv2.THRESH_BINARY)
         alpha = cv2.bitwise_and(alpha, ab)
 
-    bgra = cv2.cvtColor(bgr, cv2.COLOR_BGR2BGRA)
+    rgb = contact_ao_darken(bgr, alpha, strength=0.42)
+    bgra = cv2.cvtColor(rgb, cv2.COLOR_BGR2BGRA)
     bgra[:, :, 3] = alpha
-    bgra[alpha < 8, :3] = 0
+    bgra[alpha < 6, :3] = 0
     return bgra
 
 
@@ -277,12 +320,17 @@ def process_room(c, room_id: str):
     if do_wall:
         wall = try_prompts(c, uri, (h, w), tile_cfg["wall"])
     if floor is not None:
+        # Soft anti-aliased edges (gray fringe) — compositor reads luminance as alpha
+        floor = soft_mask_edges(floor, near_sigma=0.6, far_sigma=1.8)
         tile_masks["floor"] = floor
         cv2.imwrite(str(room / "mask-floor.png"), floor)
         print(f"  floor area={(floor > 127).sum()}")
     if wall is not None:
         if floor is not None:
-            wall = cv2.bitwise_and(wall, cv2.bitwise_not(floor))
+            # Subtract hard core of floor so soft fringes don't double-fill
+            floor_core = (floor > 127).astype(np.uint8) * 255
+            wall = cv2.bitwise_and(wall, cv2.bitwise_not(floor_core))
+        wall = soft_mask_edges(wall, near_sigma=0.7, far_sigma=2.0)
         tile_masks["wall"] = wall
         cv2.imwrite(str(room / "mask-wall.png"), wall)
         print(f"  wall area={(wall > 127).sum()}")

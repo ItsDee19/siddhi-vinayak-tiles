@@ -341,10 +341,48 @@ npm run dev
 
 ---
 
-## 10. One-sentence mental model
+## 10. Realism upgrades (post–flat tiling)
 
-**We generate lifestyle room photos, cut them into floor/wall masks with cloud SAM + OpenCV, lock fixtures in an RGBA overlay, then in the browser fill those masks with seamless catalogue textures via canvas `createPattern` — with Photopea reserved only when hand quality must match Model A.**
+Default fill remains **stable** `createPattern`. Realism layers on top:
+
+| Upgrade | Where | What |
+|---------|--------|------|
+| **Luminance multiply** | `composeRoom.js` → `applyLuminanceMultiply` | Grayscale lighting plate from `base.png`, multiply-blended through the zone mask so window light / soft shadows return onto tiles |
+| **Soft mask feather** | Compositor + headless | Stronger anti-aliased mask edges; headless uses depth-ish near/far Gaussian |
+| **Micro-depth cells** | `applyCellMicroDepth` | Soft edge shade + thin highlight on each tile cell (fake height / recessed grout) |
+| **Contact AO** | `fal_headless_2d_pack.py` → `contact_ao_darken` | Sobel on fixture alpha darkens overlay RGB at furniture contact lines |
+| **Perspective (opt-in)** | `zone.perspectiveQuad` | Normalized TL,TR,BR,BL; grid warp via affine triangles. **Off by default** (bad quads cause holes) |
+| **Room knobs** | `rooms2d.js` | `lightStrength` (0–1), `maskFeatherPx` |
+
+### Tuning perspective (optional)
+
+```js
+// on a floor zone in rooms2d.js — corners in 0–1 image UV
+perspectiveQuad: [
+  [0.12, 0.62], // TL
+  [0.88, 0.62], // TR
+  [0.98, 0.96], // BR
+  [0.02, 0.96], // BL
+],
+```
+
+Tune by eye until grout lines vanish correctly into the room; leave omitted for flat fill.
+
+### Not yet built
+
+| Item | Status |
+|------|--------|
+| Auto normal maps in `build_visualizer_tiles.mjs` | Deferred (micro-depth covers light bevel) |
+| OpenCV.js in browser | Not required (custom triangle warp) |
+| Variable per-pixel DOF blur on live canvas | Approximated via headless soft edges |
 
 ---
 
-*Last updated to match: floor+wall zone policy, feature-wall wall-only, 2D visualizer at `#visualizer`, fal SAM-3 + OpenCV headless pack pipeline.*
+## 11. One-sentence mental model
+
+**We generate lifestyle room photos, cut them into floor/wall masks with cloud SAM + OpenCV, lock fixtures in an RGBA overlay (with contact AO), then in the browser fill those masks with seamless catalogue textures via canvas `createPattern`, multiply room luminance back on, and optionally warp floors into a perspective quad — with Photopea reserved when hand quality must match Model A.**
+
+---
+
+*Last updated: luminance multiply, micro-depth cells, opt-in perspective quads, headless soft edges + contact AO; floor+wall zone policy; feature-wall wall-only; 2D at `#visualizer`.*
+

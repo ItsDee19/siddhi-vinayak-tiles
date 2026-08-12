@@ -42,7 +42,6 @@ ROOM_PROMPTS = {
     ],
     "staircase-c": [
         ("floor", "stair treads and landing"),
-        ("wall", "wall beside stairs"),
     ],
     "feature-wall-d": [
         ("wall", "stone tiled wall facade"),

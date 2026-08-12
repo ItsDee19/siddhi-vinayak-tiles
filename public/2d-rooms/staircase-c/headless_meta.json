@@ -1,10 +1,8 @@
 {
   "room": "staircase-c",
-  "engine": "headless",
-  "sam": "fal-ai/sam-3/image",
   "tile_zones": [
-    "floor",
-    "wall"
+    "floor"
   ],
-  "fixture_pixels": 1642447
+  "floor_area": 791546,
+  "note": "full staircase treads+risers+landing floor; walls locked; multi-SAM+color"
 }

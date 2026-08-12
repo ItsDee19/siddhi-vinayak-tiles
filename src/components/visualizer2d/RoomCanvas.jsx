@@ -43,49 +43,41 @@ export default function RoomCanvas({
     setTier('lite')
 
     const run = async () => {
-      // Pass 1 — fast lite textures at lower res (perspective warp is CPU-heavy)
+      // First paint at full quality so the starter never looks like a soft/buggy preview.
+      // (Lite pass was useful for speed but made Large Bathroom open looking broken.)
       try {
-        const lite = await composeRoom(canvas, room, zoneTextures, {
+        const full = await composeRoom(canvas, room, zoneTextures, {
           tileScale,
-          maxWidth: Math.min(displayMaxWidth, 1200),
-          tier: 'lite',
+          maxWidth: displayMaxWidth,
+          tier: 'full',
           roomWidthMM: room.roomWidthMM || 3600,
           groutEnabled,
         })
         if (cancelled || gen !== genRef.current) return
-        setWarnings(lite.errors || [])
+        setWarnings(full.errors || [])
         setStatus('ready')
-        setTier('lite')
+        setTier('full')
       } catch (err) {
         if (cancelled || gen !== genRef.current) return
-        setStatus('error')
-        setError(err?.message || 'Could not compose room')
-        return
-      }
-
-      // Pass 2 — full quality when browser is idle
-      const schedule =
-        typeof window !== 'undefined' && window.requestIdleCallback
-          ? (fn) => window.requestIdleCallback(fn, { timeout: 900 })
-          : (fn) => setTimeout(fn, 120)
-
-      schedule(async () => {
-        if (cancelled || gen !== genRef.current) return
+        // Fallback: lite tier if full fails (missing desktop assets)
         try {
-          const full = await composeRoom(canvas, room, zoneTextures, {
+          const lite = await composeRoom(canvas, room, zoneTextures, {
             tileScale,
-            maxWidth: displayMaxWidth,
-            tier: 'full',
+            maxWidth: Math.min(displayMaxWidth, 1200),
+            tier: 'lite',
             roomWidthMM: room.roomWidthMM || 3600,
             groutEnabled,
           })
           if (cancelled || gen !== genRef.current) return
-          setWarnings(full.errors || [])
-          setTier('full')
-        } catch {
-          // Keep lite frame if full upgrade fails.
+          setWarnings(lite.errors || [])
+          setStatus('ready')
+          setTier('lite')
+        } catch (err2) {
+          if (cancelled || gen !== genRef.current) return
+          setStatus('error')
+          setError(err2?.message || err?.message || 'Could not compose room')
         }
-      })
+      }
     }
 
     run()

@@ -14,21 +14,55 @@ import { composeRoomExport } from '../visualizer2d/composeRoom'
 /** Strong seamless tiles only — weak/tiny pipeline WebPs are excluded from 2D. */
 const strongProducts = products.filter(isStrong2dTile)
 
+const FALLBACK_TILE_SCALE = 0.55
+
+function roomTileScale(room) {
+  const s = room?.defaultTileScale
+  return typeof s === 'number' && s > 0 ? s : FALLBACK_TILE_SCALE
+}
+
+/** Score product for a calm, realistic first-open starter (not flashy hero tiles). */
+function starterTileScore(product, zoneSurface) {
+  let score = 0
+  const name = String(product.name || '').toLowerCase()
+  const finish = String(product.finish || '').toLowerCase()
+  const size = String(product.size || '')
+
+  // Prefer mid formats that tile cleanly at starter scale (avoid giant 600×1200 cells)
+  if (/600\s*[x×]\s*600/i.test(size)) score += 5
+  else if (/300\s*[x×]\s*600/i.test(size)) score += 4
+  else if (/600\s*[x×]\s*1200/i.test(size)) score += 1
+  else if (/300\s*[x×]\s*300/i.test(size)) score += 2
+  else score += 2
+
+  // Neutral stone-like names blend with lifestyle bases
+  if (/(grey|gray|beige|ivory|cream|white|ash|fog|stone|cement|concrete|sand|taupe|pearl|silver|mist)/i.test(name)) {
+    score += 6
+  }
+  // Flashy veins / metals look broken as the default “first paint”
+  if (/(gold|golden|yellow|neon|copper|bronze|metallic|glitter|sparkle|black.?gold)/i.test(name)) {
+    score -= 8
+  }
+
+  if (/(matte|matt|soft|honed)/i.test(finish)) score += 2
+  if (/(gloss|polished|high.?gloss)/i.test(finish)) score -= 1
+
+  // Exact surface match over "Both"
+  const surf = String(product.surface || '')
+  if (zoneSurface && surf === zoneSurface) score += 3
+  else if (/Both/i.test(surf)) score += 1
+
+  return score
+}
+
 function defaultZoneTextures(zones) {
   const out = {}
   const used = new Set()
   zones.forEach((z) => {
     const matching = strongProducts.filter((p) => surfaceMatches(p.surface, z.surface))
-    const ranked = [...matching].sort((a, b) => {
-      const score = (p) => {
-        const s = String(p.size || '')
-        if (s.includes('600x1200') || s.includes('600×1200')) return 3
-        if (s.includes('300x600') || s.includes('300×600')) return 2
-        if (s.includes('300x300') || s.includes('300×300')) return 1
-        return 0
-      }
-      return score(b) - score(a)
-    })
+    const ranked = [...matching].sort(
+      (a, b) => starterTileScore(b, z.surface) - starterTileScore(a, z.surface),
+    )
     const candidate = ranked.find((p) => !used.has(p.id)) || ranked[0]
     if (candidate) {
       out[z.id] = candidate
@@ -46,7 +80,7 @@ export default function Visualizer2D() {
   )
   const [activeZoneId, setActiveZoneId] = useState(room.zones[0].id)
   const [zoneTextures, setZoneTextures] = useState(() => defaultZoneTextures(room.zones))
-  const [tileScale, setTileScale] = useState(0.85)
+  const [tileScale, setTileScale] = useState(() => roomTileScale(room))
   const [groutOn, setGroutOn] = useState(false)
   const [exporting, setExporting] = useState(false)
   const canvasRef = useRef(null)
@@ -56,7 +90,7 @@ export default function Visualizer2D() {
     setRoomId(next.id)
     setActiveZoneId(next.zones[0].id)
     setZoneTextures(defaultZoneTextures(next.zones))
-    setTileScale(0.85)
+    setTileScale(roomTileScale(next))
     setGroutOn(false)
   }, [])
 
@@ -88,7 +122,7 @@ export default function Visualizer2D() {
 
   const handleReset = () => {
     setZoneTextures(defaultZoneTextures(room.zones))
-    setTileScale(0.85)
+    setTileScale(roomTileScale(room))
     setGroutOn(false)
     setActiveZoneId(room.zones[0].id)
   }

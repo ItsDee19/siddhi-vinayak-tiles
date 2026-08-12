@@ -37,7 +37,7 @@ DEFAULT_ROOMS = [
 # Every room: floor + wall only (matches bathroom-01)
 ROOM_LAYERS = {
     "large-bathroom-b": ["floor", "wall", "OVERLAY_fixtures"],
-    "staircase-c": ["floor", "wall", "OVERLAY_fixtures"],
+    "staircase-c": ["floor", "OVERLAY_fixtures"],
     "feature-wall-d": ["wall", "OVERLAY_fixtures"],
     "vanity-e": ["floor", "wall", "OVERLAY_fixtures"],
     "bathroom-01": ["floor", "wall", "OVERLAY_fixtures"],
