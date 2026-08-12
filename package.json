@@ -9,7 +9,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "build:tiles": "node scripts/build_visualizer_tiles.mjs",
-    "build:facets": "node scripts/build_product_facets.mjs"
+    "build:facets": "node scripts/build_product_facets.mjs",
+    "build:2d-webp": "node scripts/build_2d_room_webp.mjs"
   },
   "dependencies": {
     "@react-three/drei": "^9.114.0",

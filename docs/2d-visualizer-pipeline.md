@@ -378,7 +378,19 @@ Tune by eye until grout lines vanish correctly into the room; leave omitted for 
 
 ---
 
-## 11. One-sentence mental model
+## 11. Performance notes (high ROI)
+
+| Optimization | Status |
+|--------------|--------|
+| **WebP room packs** | `npm run build:2d-webp` → `.webp` for base/overlay/masks; `rooms2d.js` serves WebP |
+| **Preload** | `preloadRoomAssets()` on mount + room switch |
+| **Catalogue → 2D** | `view-in-2d` custom event applies product to matching zones |
+| **Mobile lite-first** | `RoomCanvas preferLiteFirst` on small screens |
+| PNG sources | Kept for Python/SAM tooling; browser uses WebP |
+
+---
+
+## 12. One-sentence mental model
 
 **We generate lifestyle room photos, cut them into floor/wall masks with cloud SAM + OpenCV, lock fixtures in an RGBA overlay (with contact AO), then in the browser fill those masks with seamless catalogue textures via canvas `createPattern`, multiply room luminance back on, and optionally warp floors into a perspective quad — with Photopea reserved when hand quality must match Model A.**
 

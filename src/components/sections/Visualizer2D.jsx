@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import SectionHeading from '../ui/SectionHeading'
 import ZonePicker from '../visualizer/ZonePicker'
 import Icon from '../Icons'
-import { rooms2d } from '../../data/rooms2d'
+import { rooms2d, preloadRoomAssets } from '../../data/rooms2d'
 import { visualizerProducts as products } from '../../data/visualizerCatalogue'
 import { surfaceMatches } from '../../utils/surfaces'
 import { isStrong2dTile } from '../../data/tileQuality2d'
@@ -115,7 +115,49 @@ export default function Visualizer2D() {
     setZoneTextures(defaultZoneTextures(next.zones))
     setTileScale(roomTileScale(next))
     setGroutOn(false)
+    preloadRoomAssets(next)
+    // Warm-cache neighbour rooms for snappy tab switches
+    const idx = rooms2d.findIndex((r) => r.id === next.id)
+    if (idx >= 0) {
+      if (rooms2d[idx + 1]) preloadRoomAssets(rooms2d[idx + 1])
+      if (rooms2d[idx - 1]) preloadRoomAssets(rooms2d[idx - 1])
+    }
   }, [])
+
+  // Prefetch first room (+ next) as soon as the section mounts
+  useEffect(() => {
+    preloadRoomAssets(rooms2d[0])
+    if (rooms2d[1]) preloadRoomAssets(rooms2d[1])
+  }, [])
+
+  // Catalogue "Try Visualizer" → apply product onto matching zone(s)
+  useEffect(() => {
+    const handler = (e) => {
+      const product = e?.detail
+      if (!product) return
+      setZoneTextures((prev) => {
+        const next = { ...prev }
+        const zones = (rooms2d.find((r) => r.id === roomId) || rooms2d[0]).zones
+        let applied = false
+        for (const z of zones) {
+          if (surfaceMatches(product.surface, z.surface)) {
+            next[z.id] = product
+            applied = true
+            // Prefer floor first when product is Both / Floor
+            if (z.surface === 'Floor' || z.id === 'floor') {
+              setActiveZoneId(z.id)
+            }
+          }
+        }
+        // Only apply when surface matches a zone — don't force wall tile onto stairs-only room
+        if (!applied) return prev
+        return next
+      })
+      if (isMobile) setSheetOpen(true)
+    }
+    window.addEventListener('view-in-2d', handler)
+    return () => window.removeEventListener('view-in-2d', handler)
+  }, [roomId, isMobile])
 
   const activeZone = useMemo(
     () => room.zones.find((z) => z.id === activeZoneId) || room.zones[0],
