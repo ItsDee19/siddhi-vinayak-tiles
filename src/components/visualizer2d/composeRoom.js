@@ -458,7 +458,7 @@ function resolveTextureUrl(product, tier = 'full') {
 function layerCacheKey(zoneId, product, tileScale, w, h, tier, groutOn, hasPersp, lightStr) {
   const id = product?.id || product?.url || 'none'
   // bump suffix when lighting/scale bake changes so old cache entries are not reused
-  return `${zoneId}|${id}|${tileScale}|${w}x${h}|${tier}|g${groutOn ? 1 : 0}|p${hasPersp ? 1 : 0}|L${lightStr}|r7`
+  return `${zoneId}|${id}|${tileScale}|${w}x${h}|${tier}|g${groutOn ? 1 : 0}|p${hasPersp ? 1 : 0}|L${lightStr}|r8`
 }
 
 async function buildZoneLayer({

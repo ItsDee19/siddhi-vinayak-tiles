@@ -82,21 +82,74 @@ function useIsMobile(breakpoint = 1024) {
   return mobile
 }
 
+/** Parse `#visualizer?room=&floor=&wall=&scale=` deep-link params. */
+function parseVisualizerHash() {
+  if (typeof window === 'undefined') return {}
+  const hash = window.location.hash || ''
+  if (!hash.includes('visualizer')) return {}
+  const q = hash.indexOf('?')
+  if (q < 0) return {}
+  try {
+    return Object.fromEntries(new URLSearchParams(hash.slice(q + 1)).entries())
+  } catch {
+    return {}
+  }
+}
+
+function productById(id) {
+  if (!id) return null
+  return strongProducts.find((p) => p.id === id) || products.find((p) => p.id === id) || null
+}
+
+function buildVisualizerHash(roomId, zoneTextures, tileScale) {
+  const params = new URLSearchParams()
+  params.set('room', roomId)
+  Object.entries(zoneTextures || {}).forEach(([zid, p]) => {
+    if (p?.id && !String(p.id).startsWith('custom-')) params.set(zid, p.id)
+  })
+  if (typeof tileScale === 'number') params.set('scale', tileScale.toFixed(2))
+  return `#visualizer?${params.toString()}`
+}
+
+function initialFromUrl() {
+  const p = parseVisualizerHash()
+  const room = rooms2d.find((r) => r.id === p.room) || rooms2d[0]
+  const textures = defaultZoneTextures(room.zones)
+  for (const z of room.zones) {
+    const pid = p[z.id]
+    const prod = productById(pid)
+    if (prod && surfaceMatches(prod.surface, z.surface)) textures[z.id] = prod
+  }
+  let scale = roomTileScale(room)
+  if (p.scale && !Number.isNaN(Number(p.scale))) {
+    scale = Math.min(1.8, Math.max(0.4, Number(p.scale)))
+  }
+  return {
+    roomId: room.id,
+    activeZoneId: room.zones[0].id,
+    zoneTextures: textures,
+    tileScale: scale,
+  }
+}
+
 export default function Visualizer2D() {
   const isMobile = useIsMobile(1024)
-  const [roomId, setRoomId] = useState(rooms2d[0].id)
+  const boot = useMemo(() => initialFromUrl(), [])
+  const [roomId, setRoomId] = useState(boot.roomId)
   const room = useMemo(
     () => rooms2d.find((r) => r.id === roomId) || rooms2d[0],
     [roomId],
   )
-  const [activeZoneId, setActiveZoneId] = useState(room.zones[0].id)
-  const [zoneTextures, setZoneTextures] = useState(() => defaultZoneTextures(room.zones))
-  const [tileScale, setTileScale] = useState(() => roomTileScale(room))
+  const [activeZoneId, setActiveZoneId] = useState(boot.activeZoneId)
+  const [zoneTextures, setZoneTextures] = useState(boot.zoneTextures)
+  const [tileScale, setTileScale] = useState(boot.tileScale)
   const [groutOn, setGroutOn] = useState(false)
   const [exporting, setExporting] = useState(false)
   const [sheetOpen, setSheetOpen] = useState(false)
   const [showScale, setShowScale] = useState(false)
+  const [linkCopied, setLinkCopied] = useState(false)
   const canvasRef = useRef(null)
+  const skipHashWrite = useRef(false)
 
   // Lock body scroll when mobile sheet is open
   useEffect(() => {
@@ -124,11 +177,30 @@ export default function Visualizer2D() {
     }
   }, [])
 
-  // Prefetch first room (+ next) as soon as the section mounts
+  // Prefetch active room (+ neighbours) on mount
   useEffect(() => {
-    preloadRoomAssets(rooms2d[0])
-    if (rooms2d[1]) preloadRoomAssets(rooms2d[1])
-  }, [])
+    preloadRoomAssets(room)
+    const idx = rooms2d.findIndex((r) => r.id === room.id)
+    if (idx >= 0) {
+      if (rooms2d[idx + 1]) preloadRoomAssets(rooms2d[idx + 1])
+      if (rooms2d[idx - 1]) preloadRoomAssets(rooms2d[idx - 1])
+    }
+  }, [room])
+
+  // Keep shareable deep-link in the URL (room + zone product ids + scale)
+  useEffect(() => {
+    if (typeof window === 'undefined') return undefined
+    if (skipHashWrite.current) {
+      skipHashWrite.current = false
+      return undefined
+    }
+    const nextHash = buildVisualizerHash(roomId, zoneTextures, tileScale)
+    if (window.location.hash !== nextHash) {
+      const url = `${window.location.pathname}${window.location.search}${nextHash}`
+      window.history.replaceState(null, '', url)
+    }
+    return undefined
+  }, [roomId, zoneTextures, tileScale])
 
   // Catalogue "Try Visualizer" → apply product onto matching zone(s)
   useEffect(() => {
@@ -143,13 +215,11 @@ export default function Visualizer2D() {
           if (surfaceMatches(product.surface, z.surface)) {
             next[z.id] = product
             applied = true
-            // Prefer floor first when product is Both / Floor
             if (z.surface === 'Floor' || z.id === 'floor') {
               setActiveZoneId(z.id)
             }
           }
         }
-        // Only apply when surface matches a zone — don't force wall tile onto stairs-only room
         if (!applied) return prev
         return next
       })
@@ -167,6 +237,19 @@ export default function Visualizer2D() {
   const onSwatchPick = useCallback((zoneId, swatch) => {
     setZoneTextures((prev) => ({ ...prev, [zoneId]: swatch }))
   }, [])
+
+  const handleCopyLink = useCallback(async () => {
+    const hash = buildVisualizerHash(roomId, zoneTextures, tileScale)
+    const full = `${window.location.origin}${window.location.pathname}${hash}`
+    try {
+      await navigator.clipboard.writeText(full)
+      setLinkCopied(true)
+      window.setTimeout(() => setLinkCopied(false), 1800)
+    } catch {
+      // Fallback for older browsers
+      window.prompt('Copy this link:', full)
+    }
+  }, [roomId, zoneTextures, tileScale])
 
   const onCustomUpload = useCallback((zoneId, file) => {
     const result = validateImageFile(file)
@@ -342,6 +425,14 @@ export default function Visualizer2D() {
                 </button>
                 <button
                   type="button"
+                  onClick={handleCopyLink}
+                  className="inline-flex h-10 items-center justify-center gap-1 rounded-btn border border-white/10 bg-charcoal px-2.5 text-[11px] font-medium text-sand touch-manipulation"
+                  aria-label="Copy share link"
+                >
+                  {linkCopied ? 'Copied' : 'Link'}
+                </button>
+                <button
+                  type="button"
                   onClick={handleScreenshot}
                   disabled={exporting}
                   className="inline-flex h-10 items-center justify-center gap-1 rounded-btn border border-gold/40 bg-gold/10 px-2.5 text-[11px] font-semibold text-gold touch-manipulation disabled:opacity-60"
@@ -499,6 +590,13 @@ export default function Visualizer2D() {
                 >
                   <Icon name="compass" className="h-3.5 w-3.5" />
                   Reset
+                </button>
+                <button
+                  type="button"
+                  onClick={handleCopyLink}
+                  className="inline-flex items-center gap-1.5 rounded-btn border border-white/10 bg-charcoal px-3 py-1.5 text-xs font-medium text-sand transition hover:border-gold/40 hover:text-cream"
+                >
+                  {linkCopied ? 'Link copied' : 'Copy link'}
                 </button>
                 <button
                   type="button"

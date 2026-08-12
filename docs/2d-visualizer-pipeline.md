@@ -385,8 +385,16 @@ Tune by eye until grout lines vanish correctly into the room; leave omitted for 
 | **WebP room packs** | `npm run build:2d-webp` → `.webp` for base/overlay/masks; `rooms2d.js` serves WebP |
 | **Preload** | `preloadRoomAssets()` on mount + room switch |
 | **Catalogue → 2D** | `view-in-2d` custom event applies product to matching zones |
+| **Deep links** | `#visualizer?room=&floor=&wall=&scale=` + **Copy link** button |
 | **Mobile lite-first** | `RoomCanvas preferLiteFirst` on small screens |
 | PNG sources | Kept for Python/SAM tooling; browser uses WebP |
+
+### Deep-link examples
+
+```
+#visualizer?room=large-bathroom-b&floor=gt-floor-p12-t1&wall=sky12x18-p03-v1&scale=0.50
+#visualizer?room=staircase-c&floor=gt-floor-p20-t2&scale=0.55
+```
 
 ---
 
