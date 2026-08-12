@@ -1,6 +1,22 @@
 # Security headers for Netlify / Cloudflare Pages.
 # (Vite copies everything in /public to the site root, so this ships as-is.)
-# For Vercel, the equivalent lives in vercel.json.
+# For Vercel, the equivalent lives in vercel.json — KEEP THE TWO IN SYNC.
+#
+# CSP notes, so nothing gets loosened again by reflex:
+#
+#   script-src is 'self' only. It previously carried 'wasm-unsafe-eval' and
+#   blob:, both of which existed solely for the Draco decoder in the old 3D
+#   visualizer. That is gone, and blob: in script-src is a genuine XSS
+#   amplifier — it lets injected code run a payload it assembles at runtime as
+#   a Blob. Do not re-add either without a decoder that actually needs them.
+#
+#   blob: remains in img-src ONLY. The "upload your own tile" flow mints a
+#   blob: URL and assigns it to an <img> (see visualizer2d/loadImage.js), which
+#   is an img-src fetch. It is never fetched via XHR and never executed, so
+#   connect-src / worker-src / child-src do not need it.
+#
+#   style-src keeps 'unsafe-inline' because React inline styles and Tailwind's
+#   runtime classes require it. This is the one remaining relaxation.
 /*
   X-Content-Type-Options: nosniff
   X-Frame-Options: SAMEORIGIN
@@ -8,11 +24,7 @@
   Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains
   Cross-Origin-Opener-Policy: same-origin
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'wasm-unsafe-eval' blob:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; frame-src https://www.google.com https://maps.google.com; connect-src 'self' blob:; worker-src 'self' blob:; child-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests
-
-/draco/*.wasm
-  Content-Type: application/wasm
-  Cache-Control: public, max-age=31536000, immutable
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; frame-src https://www.google.com https://maps.google.com; connect-src 'self'; worker-src 'self'; child-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests
 
 # Long-cache the fingerprinted build assets.
 /assets/*

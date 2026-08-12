@@ -251,10 +251,18 @@ export default function Visualizer2D() {
     }
   }, [roomId, zoneTextures, tileScale])
 
+  // Every blob: URL minted for a custom upload, so none of them outlive the
+  // swatch that referenced it. An un-revoked object URL pins the entire file
+  // in memory for the life of the document — with an 8MB cap per upload and no
+  // limit on how many a visitor can try, that grows without bound, and the
+  // image data of every tile they ever previewed stays resident.
+  const objectUrlsRef = useRef(new Set())
+
   const onCustomUpload = useCallback((zoneId, file) => {
     const result = validateImageFile(file)
     if (!result.ok) return
     const url = URL.createObjectURL(file)
+    objectUrlsRef.current.add(url)
     setZoneTextures((prev) => ({
       ...prev,
       [zoneId]: {
@@ -266,6 +274,29 @@ export default function Visualizer2D() {
         size: '600x600mm',
       },
     }))
+  }, [])
+
+  // Release object URLs once no zone points at them any more (swatch replaced,
+  // room switched, reset pressed).
+  useEffect(() => {
+    const inUse = new Set(
+      Object.values(zoneTextures).map((t) => t?.url).filter(Boolean),
+    )
+    objectUrlsRef.current.forEach((url) => {
+      if (!inUse.has(url)) {
+        URL.revokeObjectURL(url)
+        objectUrlsRef.current.delete(url)
+      }
+    })
+  }, [zoneTextures])
+
+  // ...and release whatever is still held when the visualizer unmounts.
+  useEffect(() => {
+    const urls = objectUrlsRef.current
+    return () => {
+      urls.forEach((url) => URL.revokeObjectURL(url))
+      urls.clear()
+    }
   }, [])
 
   const handleReset = () => {

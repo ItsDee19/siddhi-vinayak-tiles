@@ -32,3 +32,11 @@ build-artifacts/
 catalogue-pdfs/
 .claude/
 
+
+# Secrets — never commit. Contact.jsx notes a real form handler / email
+# service is planned, which is exactly when a .env tends to appear.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
