@@ -3,6 +3,7 @@ import { useGLTF } from '@react-three/drei'
 import * as THREE from 'three'
 import { loadZoneTexture, loadRawTexture, composeGroutTexture, resolveZoneSource } from '../../utils/threeTextures'
 import { getFinish } from '../../utils/finishMaterial'
+import { deriveSurfaceMaps } from '../../utils/derivedMaps'
 import { applyStructuralEdits, applyMaterialEdits } from './sceneEdits'
 
 // Set up Draco decoder path — self-hosted so mobile browsers (iOS Safari with
@@ -93,6 +94,39 @@ function meshWorldSizeMM(mesh, mmPerUnit) {
 // Combining them — major length from the catalogue, minor length derived from
 // the texture's true aspect — gives a tile that is both the right size and
 // never stretched.
+// Convert a MeshStandardMaterial into an equivalent MeshPhysicalMaterial.
+//
+// Not done with `physical.copy(standard)`: MeshPhysicalMaterial.copy()
+// unconditionally reads physical-only fields off its source — the first is
+// `source.clearcoatNormalScale.x` — which a MeshStandardMaterial does not
+// have, so it throws. That failure lands inside GLBModel's render, where the
+// GLBErrorBoundary catches it and silently swaps in the procedural fallback
+// model; the scene still renders, so it looks like nothing is wrong.
+//
+// Copying an explicit whitelist instead. Physical-only properties keep their
+// constructor defaults, which is what we want — the finish table sets the ones
+// that matter straight after.
+const STANDARD_PROPS = [
+  'name', 'map', 'color', 'roughness', 'metalness', 'emissive', 'emissiveIntensity',
+  'emissiveMap', 'aoMap', 'aoMapIntensity', 'normalMap', 'normalScale', 'normalMapType',
+  'roughnessMap', 'metalnessMap', 'alphaMap', 'bumpMap', 'bumpScale', 'displacementMap',
+  'envMapIntensity', 'side', 'flatShading', 'transparent', 'opacity', 'alphaTest',
+  'depthWrite', 'depthTest', 'vertexColors', 'toneMapped', 'wireframe', 'visible',
+]
+
+function toPhysical(source) {
+  const out = new THREE.MeshPhysicalMaterial()
+  for (const key of STANDARD_PROPS) {
+    const value = source[key]
+    if (value === undefined || value === null) continue
+    // Colors and Vector2s must be copied by value; assigning the source's
+    // instance would alias two materials onto one object.
+    if (value.isColor || value.isVector2) out[key].copy(value)
+    else out[key] = value
+  }
+  return out
+}
+
 export function computeRepeat(mesh, product, glbUrl, sizeMultiplier, texAspect) {
   const tileMM = parseSizeMM(product?.size)
   const meshMM = meshWorldSizeMM(mesh, mmPerSceneUnit(glbUrl))
@@ -152,11 +186,13 @@ export default function GLBModel({
     [scene, sceneEdits],
   )
 
-  // Tracks the texture THIS component created and assigned per mesh, so we
-  // only ever dispose textures we own — never the master cached in
-  // useGLTF's scene or threeTextures' urlCache. Disposing the shared master
+  // Tracks the textures THIS component created and assigned per mesh — the
+  // albedo clone plus its derived normal and roughness clones — so we only
+  // ever dispose textures we own, never the master cached in useGLTF's scene,
+  // threeTextures' urlCache or derivedMaps' cache. Disposing a shared master
   // on the first texture-apply pass was a real bug: remounting the same GLB
   // (switching model tabs and back) would find it already dead on the GPU.
+  // Values are arrays; a mesh now owns up to three textures, not one.
   const ownedTextures = useRef(new WeakMap())
 
   // Build a map of zoneId → mesh objects for quick lookup
@@ -189,10 +225,26 @@ export default function GLBModel({
   // per-mesh clone below), leaking a Material each time and forcing a
   // shader-program recompile for no reason.
   useEffect(() => {
+    // Tile surfaces are upgraded to MeshPhysicalMaterial so the glaze coat in
+    // the finish table actually renders. `clearcoat` models a thin colourless
+    // specular layer over the base material, which is exactly what a fired
+    // glaze is — but MeshStandardMaterial has no such lobe and silently drops
+    // the property, so the table's clearcoat values were inert until now.
+    //
+    // Only zone meshes get the upgrade. Clearcoat costs a second specular
+    // evaluation per fragment, and fixtures (taps, basins, glass) already have
+    // hand-tuned materials from sceneEdits that do not need it.
+    const isTile = new Set()
+    for (const list of Object.values(zoneMeshes)) for (const m of list) isTile.add(m)
+
     cloned.traverse((obj) => {
       if (obj.type !== 'Mesh') return
       if (obj.material) {
-        obj.material = obj.material.clone()
+        if (isTile.has(obj) && !obj.material.isMeshPhysicalMaterial) {
+          obj.material = toPhysical(obj.material)
+        } else {
+          obj.material = obj.material.clone()
+        }
         obj.material.needsUpdate = true
       }
       // Walls/fixtures cast; everything receives. Non-zone backdrop planes
@@ -200,7 +252,7 @@ export default function GLBModel({
       obj.castShadow = true
       obj.receiveShadow = true
     })
-  }, [cloned])
+  }, [cloned, zoneMeshes])
 
   // Per-model material overrides. Must run after the clone pass above, which
   // would otherwise replace the materials these edits were written onto.
@@ -291,6 +343,14 @@ export default function GLBModel({
           if (!baseTex) baseTex = await loadZoneTexture(src, 1, 512)
         }
 
+        // Surface relief and gloss variation, derived from the albedo once per
+        // source and shared by every mesh in the zone. Skipped when grout has
+        // been composited in, because that canvas is a different image from
+        // the one the maps would describe. See utils/derivedMaps.js.
+        const derived = baseTex && !isGroutComposited && src?.url
+          ? deriveSurfaceMaps(baseTex.image, src.url, tier === 'lite' ? 256 : 512)
+          : null
+
         if (cancelled) return
 
         for (const mesh of meshes) {
@@ -302,32 +362,68 @@ export default function GLBModel({
 
           const previousOwned = ownedTextures.current.get(mesh)
           if (previousOwned) {
-            previousOwned.dispose()
+            for (const tex of previousOwned) tex.dispose()
             ownedTextures.current.delete(mesh)
           }
 
           if (baseTex) {
+            const owned = []
             const texClone = baseTex.clone()
+            let repeatX = 1, repeatY = 1
             if (isGroutComposited) {
               texClone.wrapS = texClone.wrapT = THREE.ClampToEdgeWrapping
               texClone.repeat.set(1, 1)
             } else {
-              const { x: repeatX, y: repeatY } = computeRepeat(mesh, rawSource, glbUrl, sizeMultiplier, src.aspect)
+              ;({ x: repeatX, y: repeatY } = computeRepeat(mesh, rawSource, glbUrl, sizeMultiplier, src.aspect))
               texClone.wrapS = texClone.wrapT = THREE.RepeatWrapping
               texClone.repeat.set(repeatX, repeatY)
             }
             texClone.needsUpdate = true
             mesh.material.map = texClone
             mesh.material.color = new THREE.Color(0xffffff)
-            ownedTextures.current.set(mesh, texClone)
+            owned.push(texClone)
+
+            if (derived) {
+              // The relief has to sit in exactly the same UV frame as the
+              // colour it came from, so each mesh gets its own clone carrying
+              // that mesh's repeat — a shared master would misregister on any
+              // zone whose meshes differ in real width.
+              const nrm = derived.normalMap.clone()
+              nrm.repeat.set(repeatX, repeatY)
+              nrm.needsUpdate = true
+              const rgh = derived.roughnessMap.clone()
+              rgh.repeat.set(repeatX, repeatY)
+              rgh.needsUpdate = true
+
+              mesh.material.normalMap = nrm
+              mesh.material.normalScale = new THREE.Vector2(finish.normalScale, finish.normalScale)
+              mesh.material.roughnessMap = rgh
+              owned.push(nrm, rgh)
+            } else {
+              mesh.material.normalMap = null
+              mesh.material.roughnessMap = null
+            }
+
+            ownedTextures.current.set(mesh, owned)
           } else {
             mesh.material.map = null
+            mesh.material.normalMap = null
+            mesh.material.roughnessMap = null
             mesh.material.color = new THREE.Color('#5C3A22')
           }
 
-          mesh.material.roughness = finish.roughness
+          // three multiplies material.roughness by roughnessMap.g, so without
+          // compensating for the map's mean the whole range would come out
+          // glossier than its finish says.
+          mesh.material.roughness = derived
+            ? Math.min(1, finish.roughness / derived.roughnessMean)
+            : finish.roughness
           mesh.material.metalness = finish.metalness
           mesh.material.envMapIntensity = finish.envMapIntensity
+          if (mesh.material.isMeshPhysicalMaterial) {
+            mesh.material.clearcoat = finish.clearcoat
+            mesh.material.clearcoatRoughness = finish.clearcoatRoughness
+          }
           mesh.material.emissive = isActive ? new THREE.Color('#C49A3C') : new THREE.Color('#000000')
           mesh.material.emissiveIntensity = isActive ? 0.12 : 0
           mesh.material.needsUpdate = true

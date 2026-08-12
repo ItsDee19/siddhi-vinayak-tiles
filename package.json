@@ -9,11 +9,13 @@
     "build": "vite build",
     "preview": "vite preview",
     "build:tiles": "node scripts/build_visualizer_tiles.mjs",
-    "build:facets": "node scripts/build_product_facets.mjs"
+    "build:facets": "node scripts/build_product_facets.mjs",
+    "build:hdri": "node scripts/build_environment_hdr.mjs"
   },
   "dependencies": {
     "@react-three/drei": "^9.114.0",
     "@react-three/fiber": "^8.17.10",
+    "@react-three/postprocessing": "2.19.1",
     "framer-motion": "^11.11.9",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

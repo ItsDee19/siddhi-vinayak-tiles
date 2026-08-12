@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { Suspense, lazy, useEffect, useRef } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { ContactShadows, Environment, Lightformer } from '@react-three/drei'
 import * as THREE from 'three'
@@ -6,6 +6,26 @@ import { useReducedMotion } from '../../../hooks/useReducedMotion'
 import { setMaxAnisotropy } from '../../../utils/threeTextures'
 import CameraRig, { OrbitControls } from './CameraRig'
 import BackdropGradient from './BackdropGradient'
+
+// Lazily imported so the postprocessing library — ~280KB, the single largest
+// dependency the visualizer pulls in — is only ever downloaded by the tier
+// that actually runs it. Statically imported it landed in the Visualizer
+// chunk for everyone, including the phones where PostFX is switched off.
+const PostFX = lazy(() => import('./PostFX'))
+
+// The original procedural rig: four Lightformer planes baked into a cube map
+// once. Retained as the phone-tier environment and as the desktop Suspense
+// fallback while the HDR loads. Zero bytes, zero network.
+function ProceduralEnvironment({ resolution }) {
+  return (
+    <Environment resolution={resolution} frames={1} background={false}>
+      <Lightformer form="rect" intensity={2.6} color="#fff5e0" position={[4, 6, 4]} scale={[8, 8, 1]} target={[0, 1, 0]} />
+      <Lightformer form="rect" intensity={0.9} color="#dfe6f0" position={[-5, 4, -3]} scale={[6, 6, 1]} target={[0, 1, 0]} />
+      <Lightformer form="rect" intensity={1.4} color="#ffecd2" position={[0, 9, 0]} rotation={[Math.PI / 2, 0, 0]} scale={[14, 14, 1]} />
+      <Lightformer form="ring" intensity={0.7} color="#7A4A28" position={[0, -3, 0]} rotation={[-Math.PI / 2, 0, 0]} scale={[16, 16, 1]} />
+    </Environment>
+  )
+}
 
 // Wraps every model. Children render the actual geometry.
 // cameraPresets is a { [name]: { position, target } } map; first preset is the default.
@@ -65,18 +85,26 @@ export default function ModelShell({
           radius={50}
         />
 
-        {/* ── Studio IBL (procedural, zero asset bytes, zero network fetches) ──
-            drei's <Environment> renders these Lightformer planes into a cube
-            render target once (frames={1}) and reuses it every frame after —
-            this is what finally gives metallic surfaces (vanity mirror,
-            faucets, staircase nosing) something real to reflect, replacing
-            the flat/near-black look they had with only analytic lights. */}
-        <Environment resolution={lite ? 128 : 256} frames={1} background={false}>
-          <Lightformer form="rect" intensity={2.6} color="#fff5e0" position={[4, 6, 4]} scale={[8, 8, 1]} target={[0, 1, 0]} />
-          <Lightformer form="rect" intensity={0.9} color="#dfe6f0" position={[-5, 4, -3]} scale={[6, 6, 1]} target={[0, 1, 0]} />
-          <Lightformer form="rect" intensity={1.4} color="#ffecd2" position={[0, 9, 0]} rotation={[Math.PI / 2, 0, 0]} scale={[14, 14, 1]} />
-          <Lightformer form="ring" intensity={0.7} color="#7A4A28" position={[0, -3, 0]} rotation={[-Math.PI / 2, 0, 0]} scale={[16, 16, 1]} />
-        </Environment>
+        {/* ── Image-based lighting ────────────────────────────────────────
+            Desktop loads a real HDR environment (public/hdri/showroom.hdr,
+            authored by scripts/build_environment_hdr.mjs): a mullioned window
+            bank, ceiling softboxes and warm floor bounce, at a 207:1 dynamic
+            range. Glossy tile sells its realism through what it reflects, and
+            a window with structure reads as a room where a plain bright
+            rectangle reads as nothing.
+
+            Phones keep the procedural Lightformer rig — it costs no download
+            and no HDR decode, which matters far more there than reflection
+            detail does. The same rig is the Suspense fallback on desktop, so
+            the scene is correctly lit from the first frame and simply gets
+            better when the 778KB HDR arrives, rather than flashing black. */}
+        {lite ? (
+          <ProceduralEnvironment resolution={128} />
+        ) : (
+          <Suspense fallback={<ProceduralEnvironment resolution={256} />}>
+            <Environment files="/hdri/showroom.hdr" resolution={256} background={false} />
+          </Suspense>
+        )}
 
         {/* ── Analytic lighting — kept minimal now that IBL supplies the
             ambient wrap. The old flat ambient/hemisphere fill (1.35 combined)
@@ -109,12 +137,15 @@ export default function ModelShell({
 
         {children}
 
-        {/* Soft contact shadows under the model — better AO approximation.
+        {/* Soft contact shadows under the model — a cheap AO approximation.
             `frames={1}` bakes it once at mount instead of every frame, so
-            it's now affordable on mobile too rather than skipped outright. */}
+            it's now affordable on mobile too rather than skipped outright.
+            Eased off on desktop, where N8AO in PostFX now supplies real
+            per-frame contact darkening and the two would otherwise stack into
+            an over-dark pool under the model. */}
         <ContactShadows
           position={[0, 0.005, 0]}
-          opacity={0.5}
+          opacity={lite ? 0.5 : 0.3}
           scale={20}
           blur={2.8}
           far={6}
@@ -122,6 +153,16 @@ export default function ModelShell({
           frames={1}
           color="#1A0E05"
         />
+
+        {/* Screen-space AO, reflections and specular bloom. Desktop only —
+            see PostFX for why each pass earns its cost. Gated by rendering
+            rather than by a prop, so the lazy chunk is never even requested
+            on the phone tier. */}
+        {!lite && (
+          <Suspense fallback={null}>
+            <PostFX />
+          </Suspense>
+        )}
 
         {showControls && (
           <OrbitControls
