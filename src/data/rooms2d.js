@@ -75,11 +75,11 @@ export const rooms2d = [
       { id: 'wall', label: 'Wall', surface: 'Wall', maskUrl: W('feature-wall-d', 'mask-wall') },
     ],
   },
-  // Model E — Vanity
+  // Model E — Vanity (floor + wall + vanity countertop)
   {
     id: 'vanity-e',
     name: 'Vanity Counter',
-    blurb: 'PRD Model E · floor + wall',
+    blurb: 'PRD Model E · floor + wall + vanity',
     baseUrl: W('vanity-e', 'base'),
     overlayUrl: W('vanity-e', 'overlay-locked'),
     roomWidthMM: 3600,
@@ -90,6 +90,8 @@ export const rooms2d = [
     zones: [
       { id: 'floor', label: 'Floor', surface: 'Floor', maskUrl: W('vanity-e', 'mask-floor') },
       { id: 'wall', label: 'Wall', surface: 'Wall', maskUrl: W('vanity-e', 'mask-wall') },
+      // Vanity counter accepts floor/wall catalogue tiles (Both); basin/cabinet stay locked.
+      { id: 'vanity', label: 'Vanity', surface: 'Both', maskUrl: W('vanity-e', 'mask-vanity') },
     ],
   },
 ]

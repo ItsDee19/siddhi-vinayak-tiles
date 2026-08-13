@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "build:tiles": "node scripts/build_visualizer_tiles.mjs",
     "build:facets": "node scripts/build_product_facets.mjs",
-    "build:2d-webp": "node scripts/build_2d_room_webp.mjs"
+    "build:2d-webp": "node scripts/build_2d_room_webp.mjs",
+    "test:e2e": "node scripts/e2e-rigorous.mjs"
   },
   "dependencies": {
     "@react-three/drei": "^9.114.0",

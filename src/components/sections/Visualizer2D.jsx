@@ -150,6 +150,29 @@ export default function Visualizer2D() {
   const [linkCopied, setLinkCopied] = useState(false)
   const canvasRef = useRef(null)
 
+  // Apply deep-link when the hash changes without a full document reload
+  // (same-document navigations, back/forward, shared links, e2e goto-to-hash).
+  // history.replaceState (used by our hash writer) does NOT fire hashchange, so
+  // this will not loop with the write effect below.
+  useEffect(() => {
+    const applyFromHash = () => {
+      if (!(window.location.hash || '').includes('visualizer')) return
+      const p = parseVisualizerHash()
+      // bare #visualizer with no query — leave current room as-is
+      if (Object.keys(p).length === 0) return
+      const next = initialFromUrl()
+      skipHashWrite.current = true
+      setRoomId(next.roomId)
+      setActiveZoneId(next.activeZoneId)
+      setZoneTextures(next.zoneTextures)
+      setTileScale(next.tileScale)
+      setGroutOn(false)
+      preloadRoomAssets(rooms2d.find((r) => r.id === next.roomId) || rooms2d[0])
+    }
+    window.addEventListener('hashchange', applyFromHash)
+    return () => window.removeEventListener('hashchange', applyFromHash)
+  }, [])
+
   // Lock body scroll when mobile sheet is open
   useEffect(() => {
     if (!sheetOpen || !isMobile) return undefined
@@ -536,7 +559,7 @@ export default function Visualizer2D() {
               role="dialog"
               aria-modal="true"
               aria-label="Choose tiles"
-              className="fixed inset-x-0 bottom-0 z-50 flex max-h-[78vh] flex-col rounded-t-2xl border-t border-gold/30 bg-charcoal-800 shadow-card"
+              className="fixed inset-x-0 bottom-0 z-50 flex max-h-[78vh] min-w-0 flex-col rounded-t-2xl border-t border-gold/30 bg-charcoal-800 shadow-card"
             >
               <div className="mx-auto mt-2 h-1 w-12 shrink-0 rounded-full bg-gold/40" />
               <div className="flex items-center justify-between gap-3 px-4 py-3">
@@ -563,7 +586,11 @@ export default function Visualizer2D() {
                 {zoneChips}
               </div>
 
-              <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-3">
+              {/*
+                min-w-0 is required so ZonePicker's horizontal swatch strip can
+                overflow-x-scroll inside this vertical sheet scroller.
+              */}
+              <div className="min-h-0 min-w-0 flex-1 overflow-y-auto overflow-x-hidden overscroll-contain px-4 py-3">
                 <ZonePicker
                   zone={activeZone}
                   activeZoneId={activeZoneId}

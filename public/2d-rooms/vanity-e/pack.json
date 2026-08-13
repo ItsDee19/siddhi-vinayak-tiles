@@ -10,7 +10,23 @@
       "id": "wall",
       "label": "Wall",
       "surface": "Wall"
+    },
+    {
+      "id": "vanity",
+      "label": "Vanity",
+      "surface": "Both"
     }
   ],
-  "quality": "auto-mask-draft"
+  "quality": "user-pack-3zone-2026-08-13",
+  "size": [
+    1536,
+    1024
+  ],
+  "sources": {
+    "base": "ChatGPT Image Aug 13, 2026, 06_16_44 PM.png",
+    "mask-floor": "image (6).png",
+    "mask-wall": "image (4) (1).png",
+    "mask-vanity": "image (5) (1).png",
+    "overlay": "base where not floor|wall|vanity (cabinet/basin/faucet/glass/ceiling locked)"
+  }
 }

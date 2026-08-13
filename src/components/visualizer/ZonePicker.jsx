@@ -74,9 +74,12 @@ export default function ZonePicker({
     // The heading stays a real <button> so the card is still reachable and
     // operable by keyboard and screen readers; the div is a mouse-convenience
     // layer on top of it, not a replacement for it.
+    //
+    // min-w-0 / max-w-full is required so nested overflow-x-auto can actually
+    // scroll inside mobile bottom sheets (flex parents default to min-width:auto).
     <div
       onClick={() => onActivateZone(zone.id)}
-      className={`rounded-card border transition-all ${
+      className={`w-full min-w-0 max-w-full rounded-card border transition-all ${
         compact ? 'border-transparent bg-transparent p-0' : 'p-4'
       } ${
         !compact && isActive
@@ -138,11 +141,15 @@ export default function ZonePicker({
             )}
           </div>
 
-          {/* Quick Collection Filters */}
-          <div className="mt-2.5 flex items-center gap-1.5 overflow-x-auto pb-1 text-[11px]">
+          {/* Quick Collection Filters — horizontal scroll on small screens */}
+          <div
+            className="mt-2.5 flex w-full min-w-0 max-w-full items-center gap-1.5 overflow-x-auto overflow-y-hidden pb-1.5 text-[11px] touch-pan-x overscroll-x-contain [-webkit-overflow-scrolling:touch]"
+            onClick={(e) => e.stopPropagation()}
+          >
             <button
+              type="button"
               onClick={() => { setSubFilter('all'); setLimit(INITIAL_BATCH) }}
-              className={`rounded-full px-2.5 py-0.5 transition-colors whitespace-nowrap ${
+              className={`shrink-0 rounded-full px-2.5 py-1.5 transition-colors whitespace-nowrap touch-manipulation ${
                 subFilter === 'all'
                   ? 'bg-gold text-ink font-semibold'
                   : 'bg-white/5 text-sand/70 hover:bg-white/10'
@@ -150,76 +157,29 @@ export default function ZonePicker({
             >
               All ({compatible.length})
             </button>
-            <button
-              onClick={() => { setSubFilter('12x18'); setLimit(INITIAL_BATCH) }}
-              className={`rounded-full px-2.5 py-0.5 transition-colors whitespace-nowrap ${
-                subFilter === '12x18'
-                  ? 'bg-gold text-ink font-semibold'
-                  : 'bg-white/5 text-sand/70 hover:bg-white/10'
-              }`}
-            >
-              12x18 Wall
-            </button>
-            <button
-              onClick={() => { setSubFilter('3x12'); setLimit(INITIAL_BATCH) }}
-              className={`rounded-full px-2.5 py-0.5 transition-colors whitespace-nowrap ${
-                subFilter === '3x12' ? 'bg-gold text-ink font-semibold' : 'bg-white/5 text-sand/70 hover:bg-white/10'
-              }`}
-            >
-              3x12 Wall
-            </button>
-            <button
-              onClick={() => { setSubFilter('6x12'); setLimit(INITIAL_BATCH) }}
-              className={`rounded-full px-2.5 py-0.5 transition-colors whitespace-nowrap ${
-                subFilter === '6x12' ? 'bg-gold text-ink font-semibold' : 'bg-white/5 text-sand/70 hover:bg-white/10'
-              }`}
-            >
-              6x12 Wall
-            </button>
-            <button
-              onClick={() => { setSubFilter('12x12-wall'); setLimit(INITIAL_BATCH) }}
-              className={`rounded-full px-2.5 py-0.5 transition-colors whitespace-nowrap ${
-                subFilter === '12x12-wall' ? 'bg-gold text-ink font-semibold' : 'bg-white/5 text-sand/70 hover:bg-white/10'
-              }`}
-            >
-              12x12 Wall
-            </button>
-            <button
-              onClick={() => { setSubFilter('16x16-parking'); setLimit(INITIAL_BATCH) }}
-              className={`rounded-full px-2.5 py-0.5 transition-colors whitespace-nowrap ${
-                subFilter === '16x16-parking' ? 'bg-gold text-ink font-semibold' : 'bg-white/5 text-sand/70 hover:bg-white/10'
-              }`}
-            >
-              16x16 Parking
-            </button>
-            <button
-              onClick={() => { setSubFilter('12x12-parking'); setLimit(INITIAL_BATCH) }}
-              className={`rounded-full px-2.5 py-0.5 transition-colors whitespace-nowrap ${
-                subFilter === '12x12-parking' ? 'bg-gold text-ink font-semibold' : 'bg-white/5 text-sand/70 hover:bg-white/10'
-              }`}
-            >
-              12x12 Parking
-            </button>
-            <button
-              onClick={() => { setSubFilter('2x4'); setLimit(INITIAL_BATCH) }}
-              className={`rounded-full px-2.5 py-0.5 transition-colors whitespace-nowrap ${
-                subFilter === '2x4'
-                  ? 'bg-gold text-ink font-semibold'
-                  : 'bg-white/5 text-sand/70 hover:bg-white/10'
-              }`}
-            >
-              2x4 Slabs
-            </button>
-            <button
-              onClick={() => { setSubFilter('floor'); setLimit(INITIAL_BATCH) }}
-              className={`rounded-full px-2.5 py-0.5 transition-colors whitespace-nowrap ${
-                subFilter === 'floor'
-                  ? 'bg-gold text-ink font-semibold'
-                  : 'bg-white/5 text-sand/70 hover:bg-white/10'
-              }`}
-            >
-              Floor Collection
-            </button>
+            {[
+              ['12x18', '12x18 Wall'],
+              ['3x12', '3x12 Wall'],
+              ['6x12', '6x12 Wall'],
+              ['12x12-wall', '12x12 Wall'],
+              ['16x16-parking', '16x16 Parking'],
+              ['12x12-parking', '12x12 Parking'],
+              ['2x4', '2x4 Slabs'],
+              ['floor', 'Floor Collection'],
+            ].map(([key, label]) => (
+              <button
+                key={key}
+                type="button"
+                onClick={() => { setSubFilter(key); setLimit(INITIAL_BATCH) }}
+                className={`shrink-0 rounded-full px-2.5 py-1.5 transition-colors whitespace-nowrap touch-manipulation ${
+                  subFilter === key
+                    ? 'bg-gold text-ink font-semibold'
+                    : 'bg-white/5 text-sand/70 hover:bg-white/10'
+                }`}
+              >
+                {label}
+              </button>
+            ))}
           </div>
 
           {compatible.length === 0 && (
@@ -231,59 +191,78 @@ export default function ZonePicker({
             </p>
           )}
 
-          {/* Touch-Optimized Swatch Strip — larger targets on mobile/compact */}
-          <div className="mt-2.5 flex gap-2 overflow-x-auto pb-2 scroll-smooth [scroll-snap-type:x_mandatory] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            {visibleSwatches.map((p) => {
-              const sel = current?.id === p.id
-              // Resolve through the same pipeline that supplies the actual
-              // 3D wall texture (border-trimmed, seamless-healed, and
-              // preferring the re-extracted clean_swatches_v2 source when
-              // available) — a raw p.textureUrl here would show the
-              // un-fixed original crop, out of sync with what gets applied.
-              const resolved = resolveZoneSource(p)
-              const thumb = resolved?.url || p.imageUrl
-              return (
-                <button
-                  key={p.id}
-                  onClick={() => onSwatchPick(zone.id, p)}
-                  title={`${p.name}${p.size ? ` · ${p.size}` : ''}`}
-                  className={`relative shrink-0 overflow-hidden rounded border-2 transition-all [scroll-snap-align:start] touch-manipulation ${
-                    compact ? 'h-16 w-24' : 'h-14 w-20'
-                  } ${
-                    sel
-                      ? 'border-gold shadow-glow ring-2 ring-gold/40'
-                      : 'border-transparent hover:border-sand/40'
-                  }`}
-                  style={{ background: p.color || '#333' }}
-                >
-                  {thumb && (
-                    <img
-                      src={thumb}
-                      alt={p.name}
-                      loading="lazy"
-                      decoding="async"
-                      className="h-full w-full object-cover"
-                    />
-                  )}
-                  {sel && (
-                    <Icon name="star" className="absolute right-1 top-1 h-3.5 w-3.5 text-gold" filled />
-                  )}
-                  <span className="absolute inset-x-0 bottom-0 bg-black/70 px-1 py-0.5 text-[9px] font-medium text-cream truncate text-center">
-                    {p.name.replace(/^Sky\s+/, '')}
-                  </span>
-                </button>
-              )
-            })}
+          {/*
+            Horizontal swatch strip.
+            - min-w-0 + max-w-full: allows overflow inside flex/sheet parents
+            - touch-pan-x: horizontal swipe wins over parent vertical scroll
+            - thin scrollbar: discoverability on mobile (hidden bars feel broken)
+          */}
+          <div
+            className="mt-2.5 w-full min-w-0 max-w-full"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div
+              className="flex w-full gap-2 overflow-x-auto overflow-y-hidden pb-2 scroll-smooth touch-pan-x overscroll-x-contain [-webkit-overflow-scrolling:touch] [scroll-snap-type:x_mandatory] [scrollbar-width:thin] [scrollbar-color:rgba(196,154,60,0.55)_transparent] [&::-webkit-scrollbar]:h-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gold/50"
+              role="listbox"
+              aria-label={`Tile swatches for ${zone.label}`}
+            >
+              {visibleSwatches.map((p) => {
+                const sel = current?.id === p.id
+                const resolved = resolveZoneSource(p)
+                const thumb = resolved?.url || p.imageUrl
+                return (
+                  <button
+                    key={p.id}
+                    type="button"
+                    role="option"
+                    aria-selected={sel}
+                    onClick={() => onSwatchPick(zone.id, p)}
+                    title={`${p.name}${p.size ? ` · ${p.size}` : ''}`}
+                    className={`relative shrink-0 overflow-hidden rounded border-2 transition-all [scroll-snap-align:start] touch-manipulation ${
+                      compact ? 'h-16 w-24' : 'h-14 w-20'
+                    } ${
+                      sel
+                        ? 'border-gold shadow-glow ring-2 ring-gold/40'
+                        : 'border-transparent hover:border-sand/40'
+                    }`}
+                    style={{ background: p.color || '#333' }}
+                  >
+                    {thumb && (
+                      <img
+                        src={thumb}
+                        alt={p.name}
+                        loading="lazy"
+                        decoding="async"
+                        draggable={false}
+                        className="pointer-events-none h-full w-full object-cover"
+                      />
+                    )}
+                    {sel && (
+                      <Icon name="star" className="absolute right-1 top-1 h-3.5 w-3.5 text-gold" filled />
+                    )}
+                    <span className="absolute inset-x-0 bottom-0 bg-black/70 px-1 py-0.5 text-center text-[9px] font-medium text-cream truncate">
+                      {p.name.replace(/^Sky\s+/, '')}
+                    </span>
+                  </button>
+                )
+              })}
 
-            {hasMore && (
-              <button
-                onClick={() => setLimit((l) => l + 28)}
-                className={`shrink-0 flex items-center justify-center gap-1 rounded border border-gold/30 bg-gold/10 text-xs font-medium text-gold hover:bg-gold/20 touch-manipulation ${
-                  compact ? 'h-16 px-4' : 'h-14 px-3'
-                }`}
-              >
-                + More
-              </button>
+              {hasMore && (
+                <button
+                  type="button"
+                  onClick={() => setLimit((l) => l + 28)}
+                  className={`shrink-0 flex items-center justify-center gap-1 rounded border border-gold/30 bg-gold/10 text-xs font-medium text-gold hover:bg-gold/20 touch-manipulation ${
+                    compact ? 'h-16 px-4' : 'h-14 px-3'
+                  }`}
+                >
+                  + More
+                </button>
+              )}
+            </div>
+            {compatible.length > 4 && (
+              <p className="mt-1 text-center text-[10px] text-sand/45">
+                Swipe sideways for more tiles
+              </p>
             )}
           </div>
 
