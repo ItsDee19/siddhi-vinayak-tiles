@@ -151,6 +151,29 @@ export default function Visualizer2D() {
   const canvasRef = useRef(null)
   const skipHashWrite = useRef(false)
 
+  // Apply deep-link when the hash changes without a full document reload
+  // (same-document navigations, back/forward, shared links, e2e goto-to-hash).
+  // history.replaceState (used by our hash writer) does NOT fire hashchange, so
+  // this will not loop with the write effect below.
+  useEffect(() => {
+    const applyFromHash = () => {
+      if (!(window.location.hash || '').includes('visualizer')) return
+      const p = parseVisualizerHash()
+      // bare #visualizer with no query — leave current room as-is
+      if (Object.keys(p).length === 0) return
+      const next = initialFromUrl()
+      skipHashWrite.current = true
+      setRoomId(next.roomId)
+      setActiveZoneId(next.activeZoneId)
+      setZoneTextures(next.zoneTextures)
+      setTileScale(next.tileScale)
+      setGroutOn(false)
+      preloadRoomAssets(rooms2d.find((r) => r.id === next.roomId) || rooms2d[0])
+    }
+    window.addEventListener('hashchange', applyFromHash)
+    return () => window.removeEventListener('hashchange', applyFromHash)
+  }, [])
+
   // Lock body scroll when mobile sheet is open
   useEffect(() => {
     if (!sheetOpen || !isMobile) return undefined
