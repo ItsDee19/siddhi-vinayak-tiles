@@ -151,9 +151,8 @@ export default function Visualizer2D() {
   const canvasRef = useRef(null)
 
   // Apply deep-link when the hash changes without a full document reload
-  // (same-document navigations, back/forward, shared links, e2e goto-to-hash).
-  // history.replaceState (used by our hash writer) does NOT fire hashchange, so
-  // this will not loop with the write effect below.
+  // (same-document navigations, back/forward, shared links). The visualizer
+  // does not auto-write the address bar, so this only runs for explicit links.
   useEffect(() => {
     const applyFromHash = () => {
       if (!(window.location.hash || '').includes('visualizer')) return
@@ -161,7 +160,6 @@ export default function Visualizer2D() {
       // bare #visualizer with no query — leave current room as-is
       if (Object.keys(p).length === 0) return
       const next = initialFromUrl()
-      skipHashWrite.current = true
       setRoomId(next.roomId)
       setActiveZoneId(next.activeZoneId)
       setZoneTextures(next.zoneTextures)
