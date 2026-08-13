@@ -149,7 +149,6 @@ export default function Visualizer2D() {
   const [showScale, setShowScale] = useState(false)
   const [linkCopied, setLinkCopied] = useState(false)
   const canvasRef = useRef(null)
-  const skipHashWrite = useRef(false)
 
   // Lock body scroll when mobile sheet is open
   useEffect(() => {
@@ -187,20 +186,21 @@ export default function Visualizer2D() {
     }
   }, [room])
 
-  // Keep shareable deep-link in the URL (room + zone product ids + scale)
-  useEffect(() => {
-    if (typeof window === 'undefined') return undefined
-    if (skipHashWrite.current) {
-      skipHashWrite.current = false
-      return undefined
-    }
-    const nextHash = buildVisualizerHash(roomId, zoneTextures, tileScale)
-    if (window.location.hash !== nextHash) {
-      const url = `${window.location.pathname}${window.location.search}${nextHash}`
-      window.history.replaceState(null, '', url)
-    }
-    return undefined
-  }, [roomId, zoneTextures, tileScale])
+  // NOTE: the visualizer deliberately does NOT write its state back into the
+  // address bar as the user browses.
+  //
+  // It used to, on every room / tile / scale change, which had two bad
+  // effects. The address bar filled up with
+  // `#visualizer?room=…&floor=…&wall=…&scale=…` that the visitor never asked
+  // for, so anyone copying the URL to share the site actually shared their own
+  // half-finished tile selection. Worse, because the fragment names a section,
+  // the next visit or refresh jumped straight down to the visualizer and the
+  // homepage hero was never seen.
+  //
+  // Deep links still work in both directions without it: initialFromUrl()
+  // reads the params on load, and handleCopyLink() builds the full shareable
+  // URL on demand. Sharing is an explicit action, so the URL only changes when
+  // the user actually asks for a link.
 
   // Catalogue "Try Visualizer" → apply product onto matching zone(s)
   useEffect(() => {
