@@ -73,7 +73,9 @@ const ROOMS = [
   { id: 'large-bathroom-b', name: 'Large Bathroom', zones: ['Floor', 'Wall'] },
   { id: 'staircase-c', name: 'Staircase', zones: ['Stairs'] },
   { id: 'feature-wall-d', name: 'Feature Wall', zones: ['Wall'] },
-  { id: 'vanity-e', name: 'Vanity Counter', zones: ['Floor', 'Wall'] },
+  // Vanity gained a third zone (the countertop) — listed here so the suite
+  // actually exercises it rather than passing on the two it always had.
+  { id: 'vanity-e', name: 'Vanity Counter', zones: ['Floor', 'Wall', 'Vanity'] },
 ]
 
 async function runDesktop(browser) {
@@ -285,20 +287,27 @@ async function runDesktop(browser) {
   })
 
   await check('desktop:copy-link', async () => {
+    const hashBefore = await page.evaluate(() => location.hash)
     await page.locator('#visualizer button', { hasText: /Copy link|Link copied/ }).first().click()
     await page.waitForTimeout(400)
-    let clip = ''
-    try {
-      clip = await page.evaluate(() => navigator.clipboard.readText())
-    } catch {
-      // clipboard may fail headless — accept hash update
+
+    // The share link lives in the CLIPBOARD, not in the address bar. This used
+    // to fall back to asserting location.hash, which only passed back when the
+    // visualizer wrote its state into the URL on every change. That was removed
+    // deliberately — it hijacked the landing scroll and meant copying the
+    // address bar shared a half-finished tile selection — so asserting on the
+    // hash here would now be testing for the bug rather than the feature.
+    const clip = await page.evaluate(() => navigator.clipboard.readText())
+    if (!clip.includes('#visualizer?') || !clip.includes('room=')) {
+      throw new Error(`clipboard=${clip.slice(0, 120)}`)
     }
-    const hash = await page.evaluate(() => location.hash)
-    if (!hash.includes('visualizer') || !hash.includes('room=')) {
-      throw new Error(`bad hash ${hash}`)
+
+    // Regression guard for that fix: copying a link must not mutate the URL.
+    const hashAfter = await page.evaluate(() => location.hash)
+    if (hashAfter !== hashBefore) {
+      throw new Error(`copy mutated the address bar: ${hashBefore} -> ${hashAfter}`)
     }
-    if (clip && !clip.includes('visualizer')) throw new Error(`clipboard=${clip.slice(0, 80)}`)
-    return hash.slice(0, 100)
+    return clip.slice(clip.indexOf('#'), clip.indexOf('#') + 80)
   })
 
   await check('desktop:reset', async () => {

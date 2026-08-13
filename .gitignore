@@ -40,3 +40,6 @@ catalogue-pdfs/
 !.env.example
 *.pem
 *.key
+
+# e2e run output (scripts/e2e-rigorous.mjs)
+scripts/e2e-report.json
