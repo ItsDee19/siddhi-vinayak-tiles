@@ -55,7 +55,7 @@ export const rooms2d = [
   {
     id: 'large-bathroom-b',
     name: 'Large Bathroom',
-    blurb: 'PRD Model B · floor + wall',
+    blurb: 'PRD Model B · 3 wall bands + floor',
     baseUrl: W('large-bathroom-b', 'base'),
     overlayUrl: W('large-bathroom-b', 'overlay-locked'),
     roomWidthMM: 4000,
@@ -63,9 +63,22 @@ export const rooms2d = [
     maskFeatherPx: 2.0,
     lightStrength: 0.72,
     grout: { enabled: false, color: '#d4cdc0' },
+    // The wall runs in three horizontal bands — 30% / 40% / 30% of wall height
+    // — across BOTH planes: the receding vanity wall and the frontal far wall,
+    // continuous through the corner. Cut per column by
+    // scripts/build_large_bathroom_walls.mjs, which measures each band against
+    // the uncut wall plane so a band stays level whether or not a fixture
+    // stands in front of it. See that script for why a flat row-wise cut would
+    // step at the corner.
+    //
+    // Note the bands are 30/40/30 by HEIGHT, not by pixel count: the vanity,
+    // toilet and planter eat much more of the lower band than the upper one,
+    // so the painted areas come out around 41% / 36% / 23%.
     zones: [
+      { id: 'wall-upper', label: 'Upper', surface: 'Wall', maskUrl: W('large-bathroom-b', 'mask-wall-upper') },
+      { id: 'wall-middle', label: 'Middle', surface: 'Wall', maskUrl: W('large-bathroom-b', 'mask-wall-middle') },
+      { id: 'wall-lower', label: 'Lower', surface: 'Wall', maskUrl: W('large-bathroom-b', 'mask-wall-lower') },
       { id: 'floor', label: 'Floor', surface: 'Floor', maskUrl: W('large-bathroom-b', 'mask-floor') },
-      { id: 'wall', label: 'Wall', surface: 'Wall', maskUrl: W('large-bathroom-b', 'mask-wall') },
     ],
   },
   // Model C — Staircase (full stair surfaces only — walls stay photo-locked)
