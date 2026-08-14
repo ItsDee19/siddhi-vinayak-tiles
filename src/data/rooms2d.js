@@ -22,20 +22,14 @@ const W = (room, file) => {
 export const rooms2d = [
   // Model A — Small Bathroom (Photopea-quality pack)
   //
-  // The wall is split into three vertical panels at 30% / 40% / 30% of the
-  // wall's own width, so a customer can specify a different tile per panel —
-  // the 40% centre band frames the vanity and mirror, which is where a feature
-  // tile usually goes. Masks are cut by
-  // scripts/build_bathroom01_wall_partitions.mjs from the original mask-wall,
-  // and verified to reassemble to it exactly: no overlap, no gap, no spill.
-  //
-  // The floor is deliberately NOT a zone. It stays as photographed so the room
-  // reads as a fixed setting and attention sits on the wall panels. mask-floor
-  // is kept in the pack so the zone can be restored by adding it back here.
+  // Wall is three straight horizontal bands (PRD §4.2 3-2-3): lower, a thin
+  // accent strip, then upper. Floor is also tileable. Tiling is computed
+  // across the whole plate and then masked per zone, so panels given the same
+  // tile still line up across the seams.
   {
     id: 'bathroom-01',
     name: 'Small Bathroom',
-    blurb: 'PRD Model A · 3 wall panels',
+    blurb: 'PRD Model A · floor + 3-2-3 wall bands',
     baseUrl: W('bathroom-01', 'base'),
     overlayUrl: W('bathroom-01', 'overlay-locked'),
     roomWidthMM: 2438,
@@ -43,19 +37,26 @@ export const rooms2d = [
     maskFeatherPx: 2.2,
     lightStrength: 0.75,
     grout: { enabled: false, color: '#d4cdc0' },
-    // Tiling is computed across the whole plate and then masked per zone, so
-    // panels given the same tile still line up across the seams.
     zones: [
-      { id: 'wall-left', label: 'Left', surface: 'Wall', maskUrl: W('bathroom-01', 'mask-wall-left') },
-      { id: 'wall-center', label: 'Center', surface: 'Wall', maskUrl: W('bathroom-01', 'mask-wall-center') },
-      { id: 'wall-right', label: 'Right', surface: 'Wall', maskUrl: W('bathroom-01', 'mask-wall-right') },
+      {
+        id: 'floor',
+        label: 'Floor',
+        surface: 'Floor',
+        maskUrl: W('bathroom-01', 'mask-floor'),
+      },
+      { id: 'lower', label: 'Lower Wall', surface: 'Wall', maskUrl: W('bathroom-01', 'mask-wall-lower') },
+      { id: 'feature', label: 'Accent Strip', surface: 'Wall', maskUrl: W('bathroom-01', 'mask-wall-feature') },
+      { id: 'upper', label: 'Upper Wall', surface: 'Wall', maskUrl: W('bathroom-01', 'mask-wall-upper') },
     ],
   },
   // Model B — Large Bathroom
+  //
+  // Frontal pack (no mirror): floor plus three straight horizontal wall bands
+  // (PRD §4.3 2-4-2) — lower, feature, upper. Fixtures stay in overlay-locked.
   {
     id: 'large-bathroom-b',
     name: 'Large Bathroom',
-    blurb: 'PRD Model B · 3 wall bands + floor',
+    blurb: 'PRD Model B · floor + 2-4-2 wall bands',
     baseUrl: W('large-bathroom-b', 'base'),
     overlayUrl: W('large-bathroom-b', 'overlay-locked'),
     roomWidthMM: 4000,
@@ -63,22 +64,11 @@ export const rooms2d = [
     maskFeatherPx: 2.0,
     lightStrength: 0.72,
     grout: { enabled: false, color: '#d4cdc0' },
-    // The wall runs in three horizontal bands — 30% / 40% / 30% of wall height
-    // — across BOTH planes: the receding vanity wall and the frontal far wall,
-    // continuous through the corner. Cut per column by
-    // scripts/build_large_bathroom_walls.mjs, which measures each band against
-    // the uncut wall plane so a band stays level whether or not a fixture
-    // stands in front of it. See that script for why a flat row-wise cut would
-    // step at the corner.
-    //
-    // Note the bands are 30/40/30 by HEIGHT, not by pixel count: the vanity,
-    // toilet and planter eat much more of the lower band than the upper one,
-    // so the painted areas come out around 41% / 36% / 23%.
     zones: [
-      { id: 'wall-upper', label: 'Upper', surface: 'Wall', maskUrl: W('large-bathroom-b', 'mask-wall-upper') },
-      { id: 'wall-middle', label: 'Middle', surface: 'Wall', maskUrl: W('large-bathroom-b', 'mask-wall-middle') },
-      { id: 'wall-lower', label: 'Lower', surface: 'Wall', maskUrl: W('large-bathroom-b', 'mask-wall-lower') },
       { id: 'floor', label: 'Floor', surface: 'Floor', maskUrl: W('large-bathroom-b', 'mask-floor') },
+      { id: 'lower', label: 'Lower Band', surface: 'Wall', maskUrl: W('large-bathroom-b', 'mask-wall-lower') },
+      { id: 'feature', label: 'Feature Band', surface: 'Wall', maskUrl: W('large-bathroom-b', 'mask-wall-feature') },
+      { id: 'upper', label: 'Upper Band', surface: 'Wall', maskUrl: W('large-bathroom-b', 'mask-wall-upper') },
     ],
   },
   // Model C — Staircase (full stair surfaces only — walls stay photo-locked)
