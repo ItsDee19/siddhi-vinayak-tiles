@@ -1,7 +1,23 @@
 // 2D lifestyle room packs — photo + masks + locked overlay.
 // Prefer WebP when present (built by scripts/build_2d_room_webp.mjs); PNG remains for tools.
 
-const W = (room, file) => `/2d-rooms/${room}/${file}.webp`
+import roomAssetVersions from './roomAssetVersions.json'
+
+// These assets live in public/, so Vite copies them out verbatim and never
+// fingerprints them — /2d-rooms/vanity-e/base.webp is a permanent URL. Swapping
+// the image behind it leaves anyone holding a cached copy looking at the old
+// room, which is precisely what happened when the vanity pack was rebuilt: the
+// deploy was correct and the CDN had the right bytes, but browsers kept
+// painting the previous vanity.
+//
+// Appending a content hash gives each revision its own URL, so a stale entry
+// can never satisfy the request. Hashes are per file (see
+// scripts/build_room_asset_versions.mjs, which runs before every build), so
+// rebuilding one room does not invalidate the other four.
+const W = (room, file) => {
+  const version = roomAssetVersions[`${room}/${file}`]
+  return `/2d-rooms/${room}/${file}.webp${version ? `?v=${version}` : ''}`
+}
 
 export const rooms2d = [
   // Model A — Small Bathroom (Photopea-quality pack)
