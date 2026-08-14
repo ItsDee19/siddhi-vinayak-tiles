@@ -69,7 +69,9 @@ async function assetOk(page, urlPath) {
 }
 
 const ROOMS = [
-  { id: 'bathroom-01', name: 'Small Bathroom', zones: ['Floor', 'Wall'] },
+  // Wall split into three selectable panels (30/40/30); floor is fixed and
+  // intentionally not a zone.
+  { id: 'bathroom-01', name: 'Small Bathroom', zones: ['Left', 'Center', 'Right'] },
   { id: 'large-bathroom-b', name: 'Large Bathroom', zones: ['Floor', 'Wall'] },
   { id: 'staircase-c', name: 'Staircase', zones: ['Stairs'] },
   { id: 'feature-wall-d', name: 'Feature Wall', zones: ['Wall'] },

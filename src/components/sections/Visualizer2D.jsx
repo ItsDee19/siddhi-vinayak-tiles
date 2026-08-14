@@ -231,24 +231,33 @@ export default function Visualizer2D() {
       setZoneTextures((prev) => {
         const next = { ...prev }
         const zones = (rooms2d.find((r) => r.id === roomId) || rooms2d[0]).zones
-        let applied = false
-        for (const z of zones) {
-          if (surfaceMatches(product.surface, z.surface)) {
-            next[z.id] = product
-            applied = true
-            if (z.surface === 'Floor' || z.id === 'floor') {
-              setActiveZoneId(z.id)
-            }
-          }
+        const matching = zones.filter((z) => surfaceMatches(product.surface, z.surface))
+        if (matching.length === 0) return prev
+
+        // If the zone the user is already working on can take this tile, apply
+        // it there only. Rooms can now have several zones of the same surface —
+        // the Small Bathroom has three wall panels — and filling all of them
+        // would silently discard the other panels' selections.
+        const active = matching.find((z) => z.id === activeZoneId)
+        if (active) {
+          next[active.id] = product
+          return next
         }
-        if (!applied) return prev
+
+        for (const z of matching) {
+          next[z.id] = product
+          if (z.surface === 'Floor' || z.id === 'floor') setActiveZoneId(z.id)
+        }
         return next
       })
       if (isMobile) setSheetOpen(true)
     }
     window.addEventListener('view-in-2d', handler)
     return () => window.removeEventListener('view-in-2d', handler)
-  }, [roomId, isMobile])
+    // activeZoneId is read inside the handler to target the panel in focus, so
+    // the listener has to be re-bound when it changes or it would close over a
+    // stale one.
+  }, [roomId, isMobile, activeZoneId])
 
   const activeZone = useMemo(
     () => room.zones.find((z) => z.id === activeZoneId) || room.zones[0],

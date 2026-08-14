@@ -21,10 +21,21 @@ const W = (room, file) => {
 
 export const rooms2d = [
   // Model A — Small Bathroom (Photopea-quality pack)
+  //
+  // The wall is split into three vertical panels at 30% / 40% / 30% of the
+  // wall's own width, so a customer can specify a different tile per panel —
+  // the 40% centre band frames the vanity and mirror, which is where a feature
+  // tile usually goes. Masks are cut by
+  // scripts/build_bathroom01_wall_partitions.mjs from the original mask-wall,
+  // and verified to reassemble to it exactly: no overlap, no gap, no spill.
+  //
+  // The floor is deliberately NOT a zone. It stays as photographed so the room
+  // reads as a fixed setting and attention sits on the wall panels. mask-floor
+  // is kept in the pack so the zone can be restored by adding it back here.
   {
     id: 'bathroom-01',
     name: 'Small Bathroom',
-    blurb: 'PRD Model A · floor + wall',
+    blurb: 'PRD Model A · 3 wall panels',
     baseUrl: W('bathroom-01', 'base'),
     overlayUrl: W('bathroom-01', 'overlay-locked'),
     roomWidthMM: 2438,
@@ -32,14 +43,12 @@ export const rooms2d = [
     maskFeatherPx: 2.2,
     lightStrength: 0.75,
     grout: { enabled: false, color: '#d4cdc0' },
+    // Tiling is computed across the whole plate and then masked per zone, so
+    // panels given the same tile still line up across the seams.
     zones: [
-      {
-        id: 'floor',
-        label: 'Floor',
-        surface: 'Floor',
-        maskUrl: W('bathroom-01', 'mask-floor'),
-      },
-      { id: 'wall', label: 'Wall', surface: 'Wall', maskUrl: W('bathroom-01', 'mask-wall') },
+      { id: 'wall-left', label: 'Left', surface: 'Wall', maskUrl: W('bathroom-01', 'mask-wall-left') },
+      { id: 'wall-center', label: 'Center', surface: 'Wall', maskUrl: W('bathroom-01', 'mask-wall-center') },
+      { id: 'wall-right', label: 'Right', surface: 'Wall', maskUrl: W('bathroom-01', 'mask-wall-right') },
     ],
   },
   // Model B — Large Bathroom
