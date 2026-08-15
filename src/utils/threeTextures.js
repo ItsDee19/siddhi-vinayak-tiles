@@ -1,6 +1,5 @@
 import * as THREE from 'three'
 import { makeMaterialCanvas } from './textures'
-import { tileEntry, tileUrl } from '../data/visualizerTiles'
 
 // Re-export pure resolver for 3D callers that still import from here.
 export { resolveZoneSource } from './tileSource'
