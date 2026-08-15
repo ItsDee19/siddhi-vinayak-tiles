@@ -69,12 +69,10 @@ async function assetOk(page, urlPath) {
 }
 
 const ROOMS = [
-  // Wall split into three selectable panels (30/40/30); floor is fixed and
-  // intentionally not a zone.
-  { id: 'bathroom-01', name: 'Small Bathroom', zones: ['Left', 'Center', 'Right'] },
-  // Wall split into three connected horizontal bands (30/40/30) across both
-  // wall planes; floor stays tileable.
-  { id: 'large-bathroom-b', name: 'Large Bathroom', zones: ['Upper', 'Middle', 'Lower', 'Floor'] },
+  // Wall is three straight horizontal bands (PRD §4.2 3-2-3) plus the floor.
+  { id: 'bathroom-01', name: 'Small Bathroom', zones: ['Floor', 'Lower Wall', 'Accent Strip', 'Upper Wall'] },
+  // Same idea at 2-4-2 (PRD §4.3); floor stays tileable.
+  { id: 'large-bathroom-b', name: 'Large Bathroom', zones: ['Floor', 'Lower Band', 'Feature Band', 'Upper Band'] },
   { id: 'staircase-c', name: 'Staircase', zones: ['Stairs'] },
   { id: 'feature-wall-d', name: 'Feature Wall', zones: ['Wall'] },
   // Vanity gained a third zone (the countertop) — listed here so the suite
