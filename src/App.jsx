@@ -6,7 +6,6 @@ import Visualizer2DLazy from './components/sections/Visualizer2DLazy'
 
 const Catalogue = lazy(() => import('./components/sections/Catalogue'))
 const SizeCalculator = lazy(() => import('./components/sections/SizeCalculator'))
-const WhyChooseUs = lazy(() => import('./components/sections/WhyChooseUs'))
 const About = lazy(() => import('./components/sections/About'))
 const Testimonials = lazy(() => import('./components/sections/Testimonials'))
 const Contact = lazy(() => import('./components/sections/Contact'))
@@ -24,7 +23,6 @@ export default function App() {
         <Suspense fallback={null}>
           <Catalogue />
           <SizeCalculator />
-          <WhyChooseUs />
           <About />
           <Testimonials />
           <Contact />

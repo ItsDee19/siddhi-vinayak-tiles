@@ -319,13 +319,6 @@ export default function SizeCalculator() {
             </div>
           </Reveal>
         </div>
-
-        <Reveal delay={0.12}>
-          <p className="mt-8 text-center text-xs text-sand/45">
-            Data from {sizeCalculatorProducts.length} catalogue entries across 5 PDF collections ·{' '}
-            {sizeOptions.length} unique sizes
-          </p>
-        </Reveal>
       </div>
     </section>
   )
