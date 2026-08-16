@@ -15,6 +15,7 @@ export default function RoomCanvas({
   className = '',
   displayMaxWidth = 1600,
   preferLiteFirst = false,
+  maxHeight = 'none',
 }) {
   const localRef = useRef(null)
   const canvasRef = externalRef || localRef
@@ -118,37 +119,51 @@ export default function RoomCanvas({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [room, textureKey, tileScale, groutEnabled, displayMaxWidth, canvasRef, preferLiteFirst])
 
+  // Two nested boxes on purpose. The outer one is allowed to run the full width
+  // of the screen; the inner one shrink-wraps the canvas, which keeps its 16:9
+  // ratio while obeying maxHeight. Overlays hang off the inner box so the HQ
+  // badge sits on the image corner rather than out at the viewport edge when
+  // the height cap makes the canvas narrower than its container.
   return (
-    <div
-      className={`relative overflow-hidden rounded-card bg-charcoal-800 ${className}`}
-    >
-      <canvas
-        ref={canvasRef}
-        className="block h-auto w-full max-h-[min(52vh,420px)] object-contain object-center sm:max-h-none"
-        style={aspectStyle}
-      />
-      {status === 'loading' && (
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-charcoal/40">
-          <span className="text-sm text-sand/80">Composing room…</span>
+    <div className={`relative flex justify-center ${className}`}>
+      <div className="relative max-w-full">
+        <canvas
+          ref={canvasRef}
+          className="block max-w-full object-contain object-center"
+          style={{ ...aspectStyle, maxHeight, width: 'auto' }}
+        />
+
+        <div
+          className={`pointer-events-none absolute inset-0 flex items-center justify-center bg-charcoal/40 backdrop-blur-[1px] transition-opacity duration-200 ease-out ${
+            status === 'loading' ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
+          <span className="inline-flex items-center gap-2 text-sm text-sand/80">
+            <span className="h-3.5 w-3.5 animate-spin rounded-full border-2 border-gold/30 border-t-gold" />
+            Composing room…
+          </span>
         </div>
-      )}
-      {status === 'error' && (
-        <div className="absolute inset-0 flex items-center justify-center bg-charcoal/70 p-6 text-center">
-          <p className="text-sm text-terracotta">{error}</p>
-        </div>
-      )}
-      {status === 'ready' && (
-        <div className="pointer-events-none absolute right-2 top-2 rounded-full border border-white/10 bg-charcoal/80 px-2 py-0.5 text-[10px] uppercase tracking-wider text-sand/70">
+
+        {status === 'error' && (
+          <div className="absolute inset-0 flex items-center justify-center bg-charcoal/70 p-6 text-center">
+            <p className="text-sm text-terracotta">{error}</p>
+          </div>
+        )}
+        <div
+          className={`pointer-events-none absolute right-2 top-2 rounded-full border border-white/10 bg-charcoal/80 px-2 py-0.5 text-[10px] uppercase tracking-wider text-sand/70 transition-opacity duration-200 ease-out ${
+            status === 'ready' ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
           {tier === 'full' ? 'HQ' : 'Preview'}
         </div>
-      )}
-      {status === 'ready' && warnings.length > 0 && (
-        <div className="absolute bottom-2 left-2 right-2 rounded-btn border border-gold/30 bg-charcoal/90 px-3 py-2 text-[11px] text-sand/90">
-          {warnings.map((w) => (
-            <div key={w}>{w}</div>
-          ))}
-        </div>
-      )}
+        {status === 'ready' && warnings.length > 0 && (
+          <div className="absolute bottom-2 left-2 right-2 rounded-btn border border-gold/30 bg-charcoal/90 px-3 py-2 text-[11px] text-sand/90">
+            {warnings.map((w) => (
+              <div key={w}>{w}</div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   )
 }

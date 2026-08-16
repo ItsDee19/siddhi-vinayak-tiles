@@ -78,18 +78,28 @@ export default {
           '100%': { transform: 'scale(1.4)', opacity: '0' },
         },
         'fade-up': {
-          '0%': { opacity: '0', transform: 'translateY(24px)' },
+          '0%': { opacity: '0', transform: 'translateY(14px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
         shimmer: {
           '0%': { backgroundPosition: '-200% 0' },
           '100%': { backgroundPosition: '200% 0' },
         },
+        // Placeholder breathing. Bottoms out at 0.55 rather than Tailwind's
+        // built-in 0, so a skeleton never blinks fully out — that read as a
+        // flicker at the quicker duration.
+        'skeleton-pulse': {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.55' },
+        },
       },
       animation: {
         'pulse-ring': 'pulse-ring 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite',
-        'fade-up': 'fade-up 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards',
-        shimmer: 'shimmer 3s linear infinite',
+        // Decelerating curves (fast start, soft landing) rather than ease-in-out,
+        // which makes a short animation feel sluggish at both ends.
+        'fade-up': 'fade-up 0.34s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        shimmer: 'shimmer 1.8s linear infinite',
+        'skeleton-pulse': 'skeleton-pulse 1.2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
     },
   },

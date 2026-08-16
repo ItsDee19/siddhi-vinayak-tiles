@@ -22,7 +22,15 @@ function Placeholder({ innerRef }) {
           title="Tile Visualizer"
           subtitle="Apply real catalogue tiles onto lifestyle room photos."
         />
-        <div className="mt-8 aspect-[16/9] w-full animate-pulse rounded-card border border-white/5 bg-charcoal-800" />
+        {/* Mirrors the mounted visualiser's full-bleed canvas — same negative
+            gutters, same 16:9, same height cap — so swapping the real one in
+            does not shift the page under the reader. */}
+        <div className="mt-8 -mx-5 flex justify-center sm:-mx-8 lg:-mx-16 xl:-mx-24">
+          <div
+            className="aspect-[16/9] w-full animate-skeleton-pulse bg-charcoal-800 max-lg:mx-5 max-lg:rounded-card max-lg:border max-lg:border-white/5"
+            style={{ maxHeight: 'min(78vh, 900px)' }}
+          />
+        </div>
       </div>
     </section>
   )

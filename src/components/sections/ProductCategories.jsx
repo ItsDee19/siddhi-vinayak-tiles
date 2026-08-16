@@ -23,7 +23,7 @@ export default function ProductCategories() {
 
         <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {categories.map((cat, i) => (
-            <Reveal key={cat.id} delay={i * 0.07}>
+            <Reveal key={cat.id} delay={i * 0.04}>
                 <TiltCard
                   onClick={() => goToCatalogue(cat.id)}
                 className="group h-full cursor-pointer rounded-2xl"

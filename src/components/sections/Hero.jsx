@@ -111,14 +111,14 @@ export default function Hero() {
         </Reveal>
 
         {/* Tagline */}
-        <Reveal delay={0.24}>
+        <Reveal delay={0.1}>
           <p className="mt-6 text-center font-display text-xl italic text-gold-light sm:text-2xl lg:text-3xl">
             &ldquo;{business.tagline}&rdquo;
           </p>
         </Reveal>
 
         {/* CTA Buttons */}
-        <Reveal delay={0.32}>
+        <Reveal delay={0.17}>
           <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
             <a href="#products" className="btn-gold">
               Explore Collection
@@ -132,7 +132,7 @@ export default function Hero() {
         </Reveal>
 
         {/* Business hours & location */}
-        <Reveal delay={0.4}>
+        <Reveal delay={0.24}>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-sand/80">
             <span className="inline-flex items-center gap-2">
               <span className="h-2 w-2 animate-pulse rounded-full bg-green-400" />

@@ -185,6 +185,35 @@ async function runDesktop(browser) {
     return `${pixels.w}×${pixels.h} rgba(${pixels.r},${pixels.g},${pixels.b},${pixels.a})`
   })
 
+  // The room runs full-bleed and the tile picker sits underneath it. Both are
+  // easy to undo by accident — a stray wrapper restoring the container padding,
+  // or a grid class putting the picker back in a side column — and neither
+  // shows up as an error, so they are asserted rather than eyeballed.
+  await check('desktop:visualizer-full-bleed', async () => {
+    const box = await page.locator('#visualizer canvas').first().boundingBox()
+    const vw = await page.evaluate(() => window.innerWidth)
+    const vh = await page.evaluate(() => window.innerHeight)
+    const pct = Math.round((box.width / vw) * 100)
+    // 16:9 plates on a viewport wider than 16:9 are height-bound, so the floor
+    // for this assertion is the geometric limit, not an arbitrary percentage.
+    const ceiling = Math.min(vw, vh * 0.92 * (16 / 9))
+    if (box.width < ceiling * 0.9) {
+      throw new Error(`canvas ${Math.round(box.width)}px is well under the ${Math.round(ceiling)}px the viewport allows`)
+    }
+    if (box.height > vh + 1) throw new Error(`canvas ${Math.round(box.height)}px taller than viewport ${vh}px`)
+    return `${Math.round(box.width)}×${Math.round(box.height)} = ${pct}% of ${vw}px, room fully visible`
+  })
+
+  await check('desktop:picker-below-canvas', async () => {
+    const canvas = await page.locator('#visualizer canvas').first().boundingBox()
+    const search = await page.locator('#visualizer input[placeholder*="Search by tile"]').first().boundingBox()
+    if (!search) throw new Error('tile search box not found')
+    if (search.y < canvas.y + canvas.height - 2) {
+      throw new Error(`picker top ${Math.round(search.y)} overlaps canvas bottom ${Math.round(canvas.y + canvas.height)} — still side-by-side`)
+    }
+    return `picker starts ${Math.round(search.y - (canvas.y + canvas.height))}px below the room`
+  })
+
   // All 5 rooms
   for (const room of ROOMS) {
     await check(`desktop:room-${room.id}`, async () => {

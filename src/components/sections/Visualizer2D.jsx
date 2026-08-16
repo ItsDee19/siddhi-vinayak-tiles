@@ -82,6 +82,29 @@ function useIsMobile(breakpoint = 1024) {
   return mobile
 }
 
+/**
+ * Viewport width, sampled on resize through rAF so a window drag coalesces to
+ * one update per frame rather than one per resize event.
+ */
+function useViewportWidth() {
+  const [width, setWidth] = useState(() =>
+    typeof window !== 'undefined' ? window.innerWidth : 1440,
+  )
+  useEffect(() => {
+    let frame = 0
+    const onResize = () => {
+      cancelAnimationFrame(frame)
+      frame = requestAnimationFrame(() => setWidth(window.innerWidth))
+    }
+    window.addEventListener('resize', onResize, { passive: true })
+    return () => {
+      cancelAnimationFrame(frame)
+      window.removeEventListener('resize', onResize)
+    }
+  }, [])
+  return width
+}
+
 /** Parse `#visualizer?room=&floor=&wall=&scale=` deep-link params. */
 function parseVisualizerHash() {
   if (typeof window === 'undefined') return {}
@@ -134,6 +157,7 @@ function initialFromUrl() {
 
 export default function Visualizer2D() {
   const isMobile = useIsMobile(1024)
+  const viewportWidth = useViewportWidth()
   const boot = useMemo(() => initialFromUrl(), [])
   const [roomId, setRoomId] = useState(boot.roomId)
   const room = useMemo(
@@ -360,7 +384,17 @@ export default function Visualizer2D() {
     }
   }
 
-  const displayMaxWidth = isMobile ? 960 : 1600
+  // The canvas is now full-bleed, so the composed bitmap has to track the
+  // viewport instead of a fixed 1600. It is quantised to 320px steps and capped
+  // at 2560: displayMaxWidth is a dependency of RoomCanvas's compose effect, so
+  // feeding it a raw pixel width would recompose the whole room on every frame
+  // of a window drag.
+  const displayMaxWidth = useMemo(() => {
+    if (isMobile) return 960
+    const step = 320
+    const dpr = Math.min(viewportWidth >= 1920 ? 1 : 1.5, 2)
+    return Math.max(1280, Math.min(2560, Math.ceil((viewportWidth * dpr) / step) * step))
+  }, [isMobile, viewportWidth])
 
   const roomChips = (
     <div
@@ -451,8 +485,29 @@ export default function Visualizer2D() {
       canvasRef={canvasRef}
       displayMaxWidth={displayMaxWidth}
       preferLiteFirst={isMobile}
-      className="border border-white/5 shadow-card"
+      maxHeight={isMobile ? 'min(56vh, 460px)' : 'min(92vh, 1200px)'}
+      className={
+        isMobile
+          ? 'overflow-hidden rounded-card border border-white/5 bg-charcoal-800 shadow-card'
+          : ''
+      }
     />
+  )
+
+  // Full-bleed on desktop: cancel the container's horizontal padding so the room
+  // runs edge to edge.
+  //
+  // Width is capped by height, not the other way round, and that is deliberate.
+  // The room plates are 16:9, so on any viewport wider than 16:9 a genuinely
+  // edge-to-edge canvas would be taller than the screen and cut the floor off
+  // below the fold — the one thing a tile visualiser must not do. Capping at
+  // 92vh keeps the whole room visible and lets it grow as wide as that allows:
+  // ~92% of the width on a 16:9 monitor, less on a short wide window, where the
+  // plate's own aspect ratio is the binding constraint rather than this rule.
+  // The leftover gutters are the section's own background, so it still reads as
+  // full width with nothing framing it.
+  const fullBleedCanvas = (
+    <div className="-mx-5 sm:-mx-8 lg:-mx-16 xl:-mx-24">{canvasBlock}</div>
   )
 
   /* ─── Mobile layout ─── */
@@ -636,11 +691,11 @@ export default function Visualizer2D() {
           subtitle="Apply real catalogue tiles onto lifestyle room photos. Floor and wall independently; fixtures stay locked from the photo overlay."
         />
 
-        <div className="mt-8 grid gap-6 lg:grid-cols-[minmax(0,1.4fr)_minmax(280px,0.85fr)] lg:items-start">
-          <div className="space-y-3">
+        <div className="mt-8 space-y-3">
+          <div>
             {rooms2d.length > 1 && roomChips}
 
-            <div className="flex flex-wrap items-center justify-between gap-2">
+            <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
               <div>
                 <p className="text-sm font-semibold text-cream">{room.name}</p>
                 <p className="text-xs text-sand/70">
@@ -675,31 +730,34 @@ export default function Visualizer2D() {
               </div>
             </div>
 
-            {canvasBlock}
+            <div className="mt-3">{fullBleedCanvas}</div>
 
-            {scaleControl}
+            <div className="mt-3 space-y-3">
+              {scaleControl}
 
-            <label className="flex cursor-pointer items-center gap-2 text-xs text-sand/80">
-              <input
-                type="checkbox"
-                checked={groutOn}
-                onChange={(e) => setGroutOn(e.target.checked)}
-                className="accent-gold"
-              />
-              Show fine grout lines
-            </label>
+              <label className="flex cursor-pointer items-center gap-2 text-xs text-sand/80">
+                <input
+                  type="checkbox"
+                  checked={groutOn}
+                  onChange={(e) => setGroutOn(e.target.checked)}
+                  className="accent-gold"
+                />
+                Show fine grout lines
+              </label>
 
-            <div className="flex flex-wrap gap-3 text-[11px] text-sand/70">
-              {room.zones.map((z) => (
-                <span key={z.id} className="rounded-btn border border-white/10 bg-charcoal px-2 py-1">
-                  <span className="text-gold">{z.label}:</span>{' '}
-                  {zoneTextures[z.id]?.name || '—'}
-                </span>
-              ))}
+              <div className="flex flex-wrap gap-3 text-[11px] text-sand/70">
+                {room.zones.map((z) => (
+                  <span key={z.id} className="rounded-btn border border-white/10 bg-charcoal px-2 py-1">
+                    <span className="text-gold">{z.label}:</span>{' '}
+                    {zoneTextures[z.id]?.name || '—'}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
 
-          <div className="space-y-3">
+          {/* Tile selection sits below the room now that the room is full width. */}
+          <div className="space-y-3 pt-2">
             {zoneChips}
 
             <p className="text-[11px] text-sand/60">

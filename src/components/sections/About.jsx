@@ -51,7 +51,7 @@ export default function About() {
         {/* value cards */}
         <div className="mx-auto mt-12 grid max-w-4xl gap-5 sm:grid-cols-3">
           {aboutPoints.map((p, i) => (
-            <Reveal key={p.title} delay={0.1 + i * 0.08}>
+            <Reveal key={p.title} delay={0.06 + i * 0.045}>
               <div className="h-full rounded-2xl border border-white/5 bg-charcoal/60 p-6 text-center shadow-card">
                 <span className="mx-auto grid h-11 w-11 place-items-center rounded-full bg-gold/15 text-gold">
                   <Icon name="star" className="h-5 w-5" filled />
@@ -68,7 +68,7 @@ export default function About() {
         </div>
 
         {/* featured quote */}
-        <Reveal delay={0.2}>
+        <Reveal delay={0.14}>
           <blockquote className="mx-auto mt-12 max-w-2xl rounded-2xl border-l-2 border-gold bg-gradient-to-r from-gold/10 to-transparent p-6 text-center">
             <p className="font-display text-2xl italic text-gold-light sm:text-3xl">
               “{business.tagline}”

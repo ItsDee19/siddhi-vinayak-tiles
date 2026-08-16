@@ -15,7 +15,7 @@ export default function Testimonials() {
 
         <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((t, i) => (
-            <Reveal key={i} delay={i * 0.08}>
+            <Reveal key={i} delay={i * 0.045}>
               <figure className="flex h-full flex-col rounded-2xl border border-white/5 bg-charcoal-800 p-7 shadow-card">
                 <div className="mb-4 flex gap-1 text-gold">
                   {Array.from({ length: t.rating }).map((_, s) => (
