@@ -83,6 +83,39 @@ function useIsMobile(breakpoint = 1024) {
 }
 
 /**
+ * Whether the referenced element is actually on screen right now.
+ *
+ * Deliberately not useInView: that hook carries a 2.5s backstop that force-sets
+ * `visible` so lazy content can never stay stuck behind a placeholder. Correct
+ * for mounting, wrong here — the mobile action bar is position:fixed, so a
+ * backstop would pop it over the hero a couple of seconds after load, which is
+ * the bug this hook exists to fix. No IntersectionObserver means no bar.
+ */
+function useOnScreen(ref) {
+  const [onScreen, setOnScreen] = useState(false)
+  useEffect(() => {
+    const el = ref.current
+    // No IntersectionObserver: fall back to always-on rather than never-on.
+    // Hiding is the enhancement here; the bar is the only way into the tile
+    // browser on a phone, so losing it outright is far worse than showing it a
+    // section early.
+    if (!el || typeof IntersectionObserver === 'undefined') {
+      setOnScreen(true)
+      return undefined
+    }
+    const io = new IntersectionObserver(
+      (entries) => setOnScreen(entries.some((e) => e.isIntersecting)),
+      // A little slack so the bar is already there as the room scrolls in,
+      // rather than snapping in a beat late.
+      { rootMargin: '-10% 0px -10% 0px' },
+    )
+    io.observe(el)
+    return () => io.disconnect()
+  }, [ref])
+  return onScreen
+}
+
+/**
  * Viewport width, sampled on resize through rAF so a window drag coalesces to
  * one update per frame rather than one per resize event.
  */
@@ -158,6 +191,8 @@ function initialFromUrl() {
 export default function Visualizer2D() {
   const isMobile = useIsMobile(1024)
   const viewportWidth = useViewportWidth()
+  const sectionRef = useRef(null)
+  const sectionOnScreen = useOnScreen(sectionRef)
   const boot = useMemo(() => initialFromUrl(), [])
   const [roomId, setRoomId] = useState(boot.roomId)
   const room = useMemo(
@@ -513,7 +548,13 @@ export default function Visualizer2D() {
   /* ─── Mobile layout ─── */
   if (isMobile) {
     return (
-      <section id="visualizer" className="relative bg-charcoal pb-[calc(5.5rem+env(safe-area-inset-bottom))] pt-10">
+      <section
+        ref={sectionRef}
+        id="visualizer"
+        className={`relative bg-charcoal pt-10 ${
+          sectionOnScreen ? 'pb-[calc(5.5rem+env(safe-area-inset-bottom))]' : 'pb-10'
+        }`}
+      >
         <div className="container-px">
           <SectionHeading
             eyebrow="Room Preview"
@@ -596,17 +637,22 @@ export default function Visualizer2D() {
           </div>
         </div>
 
-        {/* Sticky bottom bar */}
-        <div className="fixed inset-x-0 bottom-0 z-30 border-t border-gold/25 bg-charcoal-900/95 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 backdrop-blur-md">
-          <button
-            type="button"
-            onClick={() => setSheetOpen(true)}
-            className="flex w-full min-h-[48px] items-center justify-center gap-2 rounded-btn bg-gold px-4 py-3 text-sm font-semibold uppercase tracking-wide text-ink touch-manipulation active:brightness-95"
-          >
-            <Icon name="search" className="h-4 w-4" />
-            Choose tiles · {activeZone.label}
-          </button>
-        </div>
+        {/* Sticky bottom bar — only while the visualiser is actually on screen.
+            It is position:fixed, so without this gate it floats over the hero
+            and every other section from the moment the lazy visualiser mounts,
+            which happens 500px early (or immediately on a #visualizer link). */}
+        {sectionOnScreen && (
+          <div className="fixed inset-x-0 bottom-0 z-30 animate-fade-up border-t border-gold/25 bg-charcoal-900/95 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 backdrop-blur-md">
+            <button
+              type="button"
+              onClick={() => setSheetOpen(true)}
+              className="flex w-full min-h-[48px] items-center justify-center gap-2 rounded-btn bg-gold px-4 py-3 text-sm font-semibold uppercase tracking-wide text-ink touch-manipulation active:brightness-95"
+            >
+              <Icon name="search" className="h-4 w-4" />
+              Choose tiles · {activeZone.label}
+            </button>
+          </div>
+        )}
 
         {/* Bottom sheet — tile browser */}
         {sheetOpen && (

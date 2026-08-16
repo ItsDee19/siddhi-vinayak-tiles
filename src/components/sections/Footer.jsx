@@ -66,19 +66,11 @@ export default function Footer() {
               </li>
             </ul>
 
-            {/* socials */}
-            <div className="mt-6 flex gap-3">
-              {business.socials.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  aria-label={s.label}
-                  className="grid h-10 w-10 place-items-center rounded-full border border-white/10 text-sand transition-colors hover:border-gold hover:text-gold"
-                >
-                  <Icon name={s.icon} className="h-5 w-5" />
-                </a>
-              ))}
-            </div>
+            {/* Social links are on hold at the client's request — this sits in
+                their place rather than leaving the column short. */}
+            <p className="mt-6 text-sm font-semibold tracking-wide text-gold">
+              Made by Avlys AI
+            </p>
           </div>
         </div>
 

@@ -651,6 +651,30 @@ async function runMobile(browser) {
     return `visualizer links=${links}; menu closed`
   })
 
+  // The action bar is position:fixed and the visualiser mounts 500px early, so
+  // it used to hover over the hero from first paint. It must appear only while
+  // the visualiser itself is on screen.
+  await check('mobile:no-choose-tiles-bar-at-top', async () => {
+    await page.goto(BASE + '/', { waitUntil: 'domcontentloaded' })
+    await page.waitForTimeout(3500) // past any lazy-mount / observer backstop
+    await closeMobileChrome()
+    await page.evaluate(() => window.scrollTo(0, 0))
+    await page.waitForTimeout(600)
+    const bar = page.locator('button', { hasText: /Choose tiles/ })
+    if (await bar.first().isVisible().catch(() => false)) {
+      throw new Error('"Choose tiles" bar is visible at the top of the page')
+    }
+    return 'hidden at hero'
+  })
+
+  await check('mobile:choose-tiles-bar-appears-in-visualizer', async () => {
+    await page.evaluate(() => document.getElementById('visualizer')?.scrollIntoView())
+    await page.waitForTimeout(1200)
+    const bar = page.locator('button', { hasText: /Choose tiles/ })
+    await bar.first().waitFor({ state: 'visible', timeout: 10000 })
+    return 'visible once the room is on screen'
+  })
+
   await check('mobile:visualizer-layout', async () => {
     await page.goto(BASE + '/#visualizer', { waitUntil: 'domcontentloaded' })
     await page.waitForSelector('#visualizer', { timeout: 30000 })
