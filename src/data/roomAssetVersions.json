@@ -16,12 +16,13 @@
   "large-bathroom-b/mask-wall-lower": "9be0c466",
   "large-bathroom-b/mask-wall-upper": "86afe1ba",
   "large-bathroom-b/overlay-locked": "073fac6d",
-  "staircase-c/base": "78c0802f",
-  "staircase-c/mask-floor": "aaba6687",
-  "staircase-c/overlay-locked": "fa497bac",
-  "vanity-e/base": "3513064c",
-  "vanity-e/mask-floor": "f0e7b910",
-  "vanity-e/mask-vanity": "9801ef68",
-  "vanity-e/mask-wall": "34eb789e",
-  "vanity-e/overlay-locked": "a093b6ad"
+  "staircase-c/base": "70a1cd44",
+  "staircase-c/mask-floor": "0c676258",
+  "staircase-c/overlay-locked": "ccde2731",
+  "vanity-e/base": "f11dc395",
+  "vanity-e/mask-basin": "585f1f94",
+  "vanity-e/mask-floor": "1faa3944",
+  "vanity-e/mask-vanity": "88c022cc",
+  "vanity-e/mask-wall": "a5795a3a",
+  "vanity-e/overlay-locked": "7b6b47bd"
 }

@@ -75,7 +75,7 @@ export const rooms2d = [
   {
     id: 'staircase-c',
     name: 'Staircase',
-    blurb: 'PRD Model C · full stairs only',
+    blurb: 'PRD Model C · upper+lower treads, sides locked',
     baseUrl: W('staircase-c', 'base'),
     overlayUrl: W('staircase-c', 'overlay-locked'),
     roomWidthMM: 4200,
@@ -103,11 +103,11 @@ export const rooms2d = [
       { id: 'wall', label: 'Wall', surface: 'Wall', maskUrl: W('feature-wall-d', 'mask-wall') },
     ],
   },
-  // Model E — Vanity (floor + wall + vanity countertop)
+  // Model E — Vanity (wall + floor + basin/granite hero slab)
   {
     id: 'vanity-e',
     name: 'Vanity Counter',
-    blurb: 'PRD Model E · floor + wall + vanity',
+    blurb: 'PRD Model E · wall + floor + basin',
     baseUrl: W('vanity-e', 'base'),
     overlayUrl: W('vanity-e', 'overlay-locked'),
     roomWidthMM: 3600,
@@ -116,10 +116,11 @@ export const rooms2d = [
     lightStrength: 0.72,
     grout: { enabled: false, color: '#d4cdc0' },
     zones: [
-      { id: 'floor', label: 'Floor', surface: 'Floor', maskUrl: W('vanity-e', 'mask-floor') },
       { id: 'wall', label: 'Wall', surface: 'Wall', maskUrl: W('vanity-e', 'mask-wall') },
-      // Vanity counter accepts floor/wall catalogue tiles (Both); basin/cabinet stay locked.
-      { id: 'vanity', label: 'Vanity', surface: 'Both', maskUrl: W('vanity-e', 'mask-vanity') },
+      { id: 'floor', label: 'Floor', surface: 'Floor', maskUrl: W('vanity-e', 'mask-floor') },
+      // Basin chip covers the wash basin + the granite counter as one hero surface.
+      // Tap, wood drawers and watermark stay locked in the overlay.
+      { id: 'basin', label: 'Basin', surface: 'Both', maskUrl: W('vanity-e', 'mask-basin') },
     ],
   },
 ]

@@ -75,9 +75,9 @@ const ROOMS = [
   { id: 'large-bathroom-b', name: 'Large Bathroom', zones: ['Floor', 'Lower Band', 'Feature Band', 'Upper Band'] },
   { id: 'staircase-c', name: 'Staircase', zones: ['Stairs'] },
   { id: 'feature-wall-d', name: 'Feature Wall', zones: ['Wall'] },
-  // Vanity gained a third zone (the countertop) — listed here so the suite
-  // actually exercises it rather than passing on the two it always had.
-  { id: 'vanity-e', name: 'Vanity Counter', zones: ['Floor', 'Wall', 'Vanity'] },
+  // Vanity zones rebuilt around photo A: Wall, Floor and one combined
+  // Basin chip (wash basin + granite counter). Cabinet/tap stay locked.
+  { id: 'vanity-e', name: 'Vanity Counter', zones: ['Wall', 'Floor', 'Basin'] },
 ]
 
 async function runDesktop(browser) {
