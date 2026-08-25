@@ -5,7 +5,7 @@ import { loadImage } from './loadImage'
 /**
  * 2D room compositor — mask + fill + overlay with realism extras:
  *  - Seamless createPattern (stable default)
- *  - Optional floor/wall perspective quad (homography grid warp)
+ *  - Optional photo-plane quads (per-tread / landing warp, still 2D)
  *  - Luminance multiply from base.png (room light/shadow recovery)
  *  - Soft mask feather (no fake per-cell grid lines)
  *
@@ -396,14 +396,63 @@ function drawTexturedTriangle(ctx, img, s0, s1, s2, d0, d1, d2) {
   ctx.restore()
 }
 
-/** Normalize zone.perspectiveQuad (0–1 corners) → pixel quad. */
-function resolveQuad(zone, width, height) {
-  const q = zone.perspectiveQuad
+function toPixelQuad(q, width, height) {
   if (!q || q.length !== 4) return null
   return q.map((p) => ({
     x: (Array.isArray(p) ? p[0] : p.x) * width,
     y: (Array.isArray(p) ? p[1] : p.y) * height,
   }))
+}
+
+/** One or more photo-plane quads (normalized 0–1 corners, TL TR BR BL). */
+function resolveQuads(zone, width, height) {
+  if (Array.isArray(zone.perspectiveQuads) && zone.perspectiveQuads.length) {
+    return zone.perspectiveQuads.map((q) => toPixelQuad(q, width, height)).filter(Boolean)
+  }
+  const one = toPixelQuad(zone.perspectiveQuad, width, height)
+  return one ? [one] : []
+}
+
+function edgeLen(a, b) {
+  return Math.hypot(a.x - b.x, a.y - b.y)
+}
+
+/**
+ * Warp a screen-sized slice of the repeating pattern onto one dest quad.
+ * Source size follows the quad edges so tiles stay the right scale
+ * (mapping the full plate onto a tread would squash every tile onto one step).
+ */
+function warpPatternToQuad(patternCanvas, quad, width, height, grid) {
+  const [tl, tr, br, bl] = quad
+  const srcW = Math.max(16, Math.round((edgeLen(tl, tr) + edgeLen(bl, br)) / 2))
+  const srcH = Math.max(16, Math.round((edgeLen(tl, bl) + edgeLen(tr, br)) / 2))
+  const src = document.createElement('canvas')
+  src.width = srcW
+  src.height = srcH
+  const sctx = src.getContext('2d')
+  sctx.imageSmoothingEnabled = true
+  sctx.imageSmoothingQuality = 'high'
+  const pat = sctx.createPattern(patternCanvas, 'repeat')
+  if (pat) {
+    sctx.fillStyle = pat
+    sctx.fillRect(0, 0, srcW, srcH)
+  } else {
+    sctx.drawImage(patternCanvas, 0, 0)
+  }
+  return warpToQuad(src, quad, width, height, grid)
+}
+
+function compositeQuads(patternCanvas, quads, width, height, grid) {
+  const out = document.createElement('canvas')
+  out.width = width
+  out.height = height
+  const ctx = out.getContext('2d')
+  ctx.imageSmoothingEnabled = true
+  ctx.imageSmoothingQuality = 'high'
+  for (const quad of quads) {
+    ctx.drawImage(warpPatternToQuad(patternCanvas, quad, width, height, grid), 0, 0)
+  }
+  return out
 }
 
 function applyMask(layerCanvas, alphaMaskCanvas) {
@@ -455,10 +504,10 @@ function resolveTextureUrl(product, tier = 'full') {
   return null
 }
 
-function layerCacheKey(zoneId, product, tileScale, w, h, tier, groutOn, hasPersp, lightStr) {
+function layerCacheKey(zoneId, product, tileScale, w, h, tier, groutOn, quadCount, lightStr) {
   const id = product?.id || product?.url || 'none'
   // bump suffix when lighting/scale bake changes so old cache entries are not reused
-  return `${zoneId}|${id}|${tileScale}|${w}x${h}|${tier}|g${groutOn ? 1 : 0}|p${hasPersp ? 1 : 0}|L${lightStr}|r8`
+  return `${zoneId}|${id}|${tileScale}|${w}x${h}|${tier}|g${groutOn ? 1 : 0}|q${quadCount}|L${lightStr}|r10`
 }
 
 async function buildZoneLayer({
@@ -480,7 +529,7 @@ async function buildZoneLayer({
     return { layer: null, error: `“${product?.name || product?.id}” has no seamless tile` }
   }
 
-  const quad = resolveQuad(zone, width, height)
+  const quads = resolveQuads(zone, width, height)
   const cacheKey = layerCacheKey(
     zone.id,
     product,
@@ -489,7 +538,7 @@ async function buildZoneLayer({
     height,
     tier,
     !!grout?.enabled,
-    !!quad,
+    quads.length,
     lightStrength,
   )
   if (layerCache.has(cacheKey)) {
@@ -514,10 +563,14 @@ async function buildZoneLayer({
     grout,
   )
 
-  // Optional perspective: warp full pattern into room plane quad (floors mostly)
-  if (quad) {
+  // Photo-plane warp sits ON the seamless fill so mask pixels outside a
+  // quad (inner stair miters, nosing leftovers) still get tiles, not the
+  // base photo.
+  if (quads.length) {
     const grid = tier === 'lite' ? 14 : 28
-    layer = warpToQuad(layer, quad, width, height, grid)
+    const warped = compositeQuads(layer, quads, width, height, grid)
+    const ctx = layer.getContext('2d')
+    ctx.drawImage(warped, 0, 0)
   }
 
   const alphaMask = maskToAlphaCanvas(maskImg, width, height, 1, featherPx)

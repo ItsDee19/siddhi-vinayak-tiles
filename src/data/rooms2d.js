@@ -75,7 +75,7 @@ export const rooms2d = [
   {
     id: 'staircase-c',
     name: 'Staircase',
-    blurb: 'PRD Model C · upper+lower treads, sides locked',
+    blurb: 'PRD Model C · treads + landing, sides locked',
     baseUrl: W('staircase-c', 'base'),
     overlayUrl: W('staircase-c', 'overlay-locked'),
     roomWidthMM: 4200,
@@ -84,7 +84,22 @@ export const rooms2d = [
     lightStrength: 0.88,
     grout: { enabled: false, color: '#d4cdc0' },
     zones: [
-      { id: 'floor', label: 'Stairs', surface: 'Floor', maskUrl: W('staircase-c', 'mask-floor') },
+      {
+        id: 'floor',
+        label: 'Stairs',
+        surface: 'Floor',
+        maskUrl: W('staircase-c', 'mask-floor'),
+        // Photo planes only (Kajaria/Tilesview-style). Landing first, then left treads.
+        perspectiveQuads: [
+          [[0.39583, 0.25926], [0.99948, 0.31481], [0.99948, 0.99907], [0.13021, 0.99907]],
+          [[0.0, 0.07222], [0.318, 0.0], [0.305, 0.168], [0.0, 0.198]],
+          [[0.0, 0.1713], [0.352, 0.105], [0.338, 0.275], [0.0, 0.328]],
+          [[0.0, 0.29444], [0.392, 0.212], [0.378, 0.405], [0.0, 0.472]],
+          [[0.0, 0.42407], [0.438, 0.328], [0.422, 0.545], [0.02, 0.622]],
+          [[0.032, 0.57222], [0.472, 0.462], [0.455, 0.705], [0.068, 0.798]],
+          [[0.078, 0.74074], [0.505, 0.612], [0.488, 0.86], [0.112, 0.955]],
+        ],
+      },
     ],
   },
   // Model D — Feature Wall (wall only — no floor zone)
