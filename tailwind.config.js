@@ -81,6 +81,12 @@ export default {
           '0%': { opacity: '0', transform: 'translateY(14px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
+        // Used where a deferred layer (the hero's WebGL tile wall) replaces the
+        // static stand-in — without it the upgrade lands as a hard cut.
+        'fade-in': {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
         shimmer: {
           '0%': { backgroundPosition: '-200% 0' },
           '100%': { backgroundPosition: '200% 0' },
@@ -98,6 +104,7 @@ export default {
         // Decelerating curves (fast start, soft landing) rather than ease-in-out,
         // which makes a short animation feel sluggish at both ends.
         'fade-up': 'fade-up 0.34s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'fade-in': 'fade-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
         shimmer: 'shimmer 1.8s linear infinite',
         'skeleton-pulse': 'skeleton-pulse 1.2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },

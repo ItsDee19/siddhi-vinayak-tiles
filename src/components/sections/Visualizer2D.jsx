@@ -8,6 +8,7 @@ import { surfaceMatches } from '../../utils/surfaces'
 import { isStrong2dTile } from '../../data/tileQuality2d'
 import { captureAndDownload } from '../visualizer/ScreenshotHelper'
 import { validateImageFile } from '../../utils/imageUpload'
+import { useDebouncedValue } from '../../hooks/useDebouncedValue'
 import RoomCanvas from '../visualizer2d/RoomCanvas'
 import { composeRoomExport } from '../visualizer2d/composeRoom'
 
@@ -202,6 +203,14 @@ export default function Visualizer2D() {
   const [activeZoneId, setActiveZoneId] = useState(boot.activeZoneId)
   const [zoneTextures, setZoneTextures] = useState(boot.zoneTextures)
   const [tileScale, setTileScale] = useState(boot.tileScale)
+  // The slider fires on every pixel of drag; each change is a dependency of
+  // RoomCanvas's compose effect, which repaints the whole room from scratch
+  // (mask blur, luminance plate, pattern tiling — not cheap even after the
+  // canvas-side speedups). Composing on the live value turned a drag into a
+  // recompose per mousemove and stalled the frame it happened on. The slider
+  // itself still tracks `tileScale` so the thumb and the "×" label stay
+  // instant; only the expensive repaint waits for the drag to pause.
+  const tileScaleComposed = useDebouncedValue(tileScale, 120)
   const [groutOn, setGroutOn] = useState(false)
   const [exporting, setExporting] = useState(false)
   const [sheetOpen, setSheetOpen] = useState(false)
@@ -515,7 +524,7 @@ export default function Visualizer2D() {
     <RoomCanvas
       room={room}
       zoneTextures={zoneTextures}
-      tileScale={tileScale}
+      tileScale={tileScaleComposed}
       groutEnabled={groutOn}
       canvasRef={canvasRef}
       displayMaxWidth={displayMaxWidth}

@@ -1,4 +1,4 @@
-import { Suspense, lazy, useEffect, useRef } from 'react'
+import { Suspense, lazy, useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import Icon from '../Icons'
 import Reveal from '../ui/Reveal'
@@ -58,6 +58,29 @@ export default function Hero() {
   // scrolls out of view.
   const [stageRef, , heroVisible] = useInView({ rootMargin: '0px', initial: true })
 
+  // The tile wall is decoration, but mounting it on the first effect pulled
+  // three.js (~260KB gzipped) into the initial page load, where it competed
+  // with the hero's own text and CTAs for bandwidth and main-thread time.
+  // Waiting for idle lets the hero paint first and the 2D tile grid below
+  // stand in until the animated version is genuinely free to load.
+  const [wallReady, setWallReady] = useState(false)
+  useEffect(() => {
+    let idleId
+    let timerId
+    const start = () => setWallReady(true)
+    if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
+      idleId = window.requestIdleCallback(start, { timeout: 2500 })
+    } else {
+      timerId = setTimeout(start, 1200)
+    }
+    return () => {
+      if (idleId != null && 'cancelIdleCallback' in window) {
+        window.cancelIdleCallback(idleId)
+      }
+      if (timerId != null) clearTimeout(timerId)
+    }
+  }, [])
+
   useEffect(() => {
     const onScroll = () => {
       const vh = window.innerHeight || 1
@@ -72,12 +95,14 @@ export default function Hero() {
     <section id="home" className="relative min-h-[100svh] w-full overflow-hidden">
       {/* 3D background tile wall / fallback layer */}
       <div ref={stageRef} className="absolute inset-0">
-        {webgl ? (
+        {webgl && wallReady ? (
           <Suspense fallback={<div className="h-full w-full bg-charcoal" />}>
-            <TileWall3D
-              scrollRef={scrollRef}
-              frameloop={heroVisible ? 'always' : 'never'}
-            />
+            <div className="h-full w-full animate-fade-in">
+              <TileWall3D
+                scrollRef={scrollRef}
+                frameloop={heroVisible ? 'always' : 'never'}
+              />
+            </div>
           </Suspense>
         ) : (
           <div className="relative h-full w-full bg-charcoal">

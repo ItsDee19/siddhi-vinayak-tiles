@@ -36,52 +36,55 @@ function parseMajorMM(sizeStr) {
   return Math.max(parseFloat(m[1]), parseFloat(m[2]))
 }
 
+/**
+ * Soft-edge a white-on-transparent alpha plate.
+ *
+ * This was a hand-rolled separable box blur in JS: two passes over every pixel,
+ * each summing 2r+1 neighbours. On a 2240×1261 plate that is tens of millions of
+ * operations plus a getImageData/putImageData round trip, and it landed as a
+ * multi-hundred-millisecond main-thread stall every time a zone recomposed.
+ *
+ * Canvas's own blur does the same job natively. The catch is that it samples
+ * transparent space outside the bitmap, so a mask running to the frame edge (a
+ * floor reaching the bottom of the photo) would fade out along that border. The
+ * old loop avoided this by averaging only in-bounds samples. Padding the plate
+ * with replicated edge pixels reproduces that clamped behaviour, so the visible
+ * result matches while the work moves off the JS thread.
+ */
 function featherAlpha(canvas, radius) {
   if (radius <= 0) return canvas
   const w = canvas.width
   const h = canvas.height
+  if (w < 2 || h < 2) return canvas
+  const pad = Math.ceil(radius * 3) + 1
+
+  const padded = document.createElement('canvas')
+  padded.width = w + pad * 2
+  padded.height = h + pad * 2
+  const pctx = padded.getContext('2d')
+
+  // centre, then stretch the outermost row/column outwards to fill the margin
+  pctx.drawImage(canvas, pad, pad)
+  pctx.drawImage(canvas, 0, 0, 1, h, 0, pad, pad, h)
+  pctx.drawImage(canvas, w - 1, 0, 1, h, w + pad, pad, pad, h)
+  pctx.drawImage(canvas, 0, 0, w, 1, pad, 0, w, pad)
+  pctx.drawImage(canvas, 0, h - 1, w, 1, pad, h + pad, w, pad)
+  pctx.drawImage(canvas, 0, 0, 1, 1, 0, 0, pad, pad)
+  pctx.drawImage(canvas, w - 1, 0, 1, 1, w + pad, 0, pad, pad)
+  pctx.drawImage(canvas, 0, h - 1, 1, 1, 0, h + pad, pad, pad)
+  pctx.drawImage(canvas, w - 1, h - 1, 1, 1, w + pad, h + pad, pad, pad)
+
+  const blurred = document.createElement('canvas')
+  blurred.width = padded.width
+  blurred.height = padded.height
+  const bctx = blurred.getContext('2d')
+  bctx.filter = `blur(${radius}px)`
+  bctx.drawImage(padded, 0, 0)
+  bctx.filter = 'none'
+
   const ctx = canvas.getContext('2d', { willReadFrequently: true })
-  const src = ctx.getImageData(0, 0, w, h)
-  const a = new Float32Array(w * h)
-  for (let i = 0, p = 0; i < src.data.length; i += 4, p++) a[p] = src.data[i + 3]
-
-  const r = Math.max(1, Math.round(radius))
-  const tmp = new Float32Array(w * h)
-  const pass = (inp, out, horizontal) => {
-    for (let y = 0; y < h; y++) {
-      for (let x = 0; x < w; x++) {
-        let sum = 0
-        let n = 0
-        if (horizontal) {
-          for (let k = -r; k <= r; k++) {
-            const xx = x + k
-            if (xx < 0 || xx >= w) continue
-            sum += inp[y * w + xx]
-            n++
-          }
-        } else {
-          for (let k = -r; k <= r; k++) {
-            const yy = y + k
-            if (yy < 0 || yy >= h) continue
-            sum += inp[yy * w + x]
-            n++
-          }
-        }
-        out[y * w + x] = sum / Math.max(1, n)
-      }
-    }
-  }
-  pass(a, tmp, true)
-  pass(tmp, a, false)
-
-  const out = ctx.createImageData(w, h)
-  for (let i = 0, p = 0; i < out.data.length; i += 4, p++) {
-    out.data[i] = 255
-    out.data[i + 1] = 255
-    out.data[i + 2] = 255
-    out.data[i + 3] = Math.min(255, Math.max(0, a[p] | 0))
-  }
-  ctx.putImageData(out, 0, 0)
+  ctx.clearRect(0, 0, w, h)
+  ctx.drawImage(blurred, pad, pad, w, h, 0, 0, w, h)
   return canvas
 }
 
@@ -125,6 +128,25 @@ function maskToAlphaCanvas(maskImg, width, height, dilatePx = 1, featherPx = 1.5
   return c
 }
 
+/** Average brightness (0–1) of the room photo, sampled from a thumbnail. */
+function meanLuminance(baseImg, width, height) {
+  const sw = Math.max(1, Math.min(64, width))
+  const sh = Math.max(1, Math.round((height / Math.max(1, width)) * sw))
+  const c = document.createElement('canvas')
+  c.width = sw
+  c.height = sh
+  const ctx = c.getContext('2d', { willReadFrequently: true })
+  ctx.imageSmoothingEnabled = true
+  ctx.imageSmoothingQuality = 'high'
+  ctx.drawImage(baseImg, 0, 0, sw, sh)
+  const d = ctx.getImageData(0, 0, sw, sh).data
+  let sum = 0
+  for (let i = 0; i < d.length; i += 4) {
+    sum += (0.299 * d[i] + 0.587 * d[i + 1] + 0.114 * d[i + 2]) / 255
+  }
+  return sum / Math.max(1, d.length / 4)
+}
+
 /**
  * Grayscale lighting plate from base photo (mid-gray ≈ no change under multiply).
  * Soft blur preserves ambient gradients / window light without tile texture.
@@ -141,20 +163,15 @@ function getLuminancePlate(baseImg, width, height) {
   const data = sctx.getImageData(0, 0, width, height)
   const d = data.data
 
-  // Convert to grayscale, center around mid-gray for multiply friendliness
-  let sum = 0
-  const n = width * height
-  const gray = new Float32Array(n)
-  for (let i = 0, p = 0; i < d.length; i += 4, p++) {
-    const g = (0.299 * d[i] + 0.587 * d[i + 1] + 0.114 * d[i + 2]) / 255
-    gray[p] = g
-    sum += g
-  }
-  const mean = sum / Math.max(1, n)
+  // Mean brightness only needs to be representative, not exact, so read it off a
+  // thumbnail instead of walking millions of full-res pixels. That drops a whole
+  // pass over the plate along with the Float32Array that used to cache every
+  // grey value (~11MB for a 2240×1261 room, and the GC churn that came with it).
+  const mean = meanLuminance(baseImg, width, height)
 
   // Soft plate: keep more contrast so step edges / soft shadows read on tiles
-  for (let i = 0, p = 0; i < d.length; i += 4, p++) {
-    const g = gray[p]
+  for (let i = 0; i < d.length; i += 4) {
+    const g = (0.299 * d[i] + 0.587 * d[i + 1] + 0.114 * d[i + 2]) / 255
     // mean → ~0.68; stronger relative shade (less “sticker on top” look)
     const rel = (g - mean) * 1.15
     const v = Math.min(1, Math.max(0, 0.68 + rel))
