@@ -67,7 +67,7 @@ export default function ProductCategories() {
                 </p>
               </div>
               <a href="#visualizer" className="btn-gold mt-6 self-start">
-                Try the Visualizer
+                See Our Showcase
                 <Icon name="arrowRight" className="h-4 w-4" />
               </a>
             </div>

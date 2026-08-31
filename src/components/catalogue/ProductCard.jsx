@@ -16,7 +16,7 @@ function asSwatch(p) {
 export default function ProductCard({ product, onOpen, onViewIn3D }) {
   const canPreview = ['Floor', 'Wall', 'Both', 'Countertop'].includes(product.surface)
   return (
-    // Not a <button> — it contains a nested "Try Visualizer" button below, and
+    // Not a <button> — it contains a nested "View in Showcase" button below, and
     // a <button> can't validly contain another <button> (invalid HTML,
     // unreliable on mobile touch/screen readers). role="button" + keyboard
     // handling keeps it fully accessible without the nesting problem.
@@ -57,7 +57,7 @@ export default function ProductCard({ product, onOpen, onViewIn3D }) {
             onClick={(e) => { e.stopPropagation(); onViewIn3D(product) }}
             className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-gold hover:underline"
           >
-            <Icon name="compass" className="h-3.5 w-3.5" /> Try Visualizer
+            <Icon name="compass" className="h-3.5 w-3.5" /> View in Showcase
           </button>
         )}
       </div>

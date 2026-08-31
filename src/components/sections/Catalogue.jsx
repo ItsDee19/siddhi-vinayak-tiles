@@ -180,9 +180,10 @@ export default function Catalogue() {
   const hasMore = visibleCount < filtered.length
 
   const onViewIn3D = (product) => {
-    // Apply catalogue product onto the 2D visualizer, then scroll into view
+    // Jump the showcase carousel to this product if it's one of the curated
+    // slides, then scroll it into view either way.
     if (product) {
-      window.dispatchEvent(new CustomEvent('view-in-2d', { detail: product }))
+      window.dispatchEvent(new CustomEvent('view-in-showcase', { detail: product }))
     }
     document.getElementById('visualizer')?.scrollIntoView({ behavior: 'smooth' })
   }

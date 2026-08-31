@@ -2,7 +2,7 @@ import { Suspense, lazy } from 'react'
 import Navbar from './components/sections/Navbar'
 import Hero from './components/sections/Hero'
 import ProductCategories from './components/sections/ProductCategories'
-import Visualizer2DLazy from './components/sections/Visualizer2DLazy'
+import TileShowcase from './components/sections/TileShowcase'
 
 const Catalogue = lazy(() => import('./components/sections/Catalogue'))
 const SizeCalculator = lazy(() => import('./components/sections/SizeCalculator'))
@@ -19,7 +19,7 @@ export default function App() {
       <main>
         <Hero />
         <ProductCategories />
-        <Visualizer2DLazy />
+        <TileShowcase />
         <Suspense fallback={null}>
           <Catalogue />
           <SizeCalculator />

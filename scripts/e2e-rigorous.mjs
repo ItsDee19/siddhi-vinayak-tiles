@@ -68,17 +68,11 @@ async function assetOk(page, urlPath) {
   return String(res.status())
 }
 
-const ROOMS = [
-  // Wall is three straight horizontal bands (PRD §4.2 3-2-3) plus the floor.
-  { id: 'bathroom-01', name: 'Small Bathroom', zones: ['Floor', 'Lower Wall', 'Accent Strip', 'Upper Wall'] },
-  // Same idea at 2-4-2 (PRD §4.3); floor stays tileable.
-  { id: 'large-bathroom-b', name: 'Large Bathroom', zones: ['Floor', 'Lower Band', 'Feature Band', 'Upper Band'] },
-  { id: 'staircase-c', name: 'Staircase', zones: ['Stairs'] },
-  { id: 'feature-wall-d', name: 'Feature Wall', zones: ['Wall'] },
-  // Vanity zones rebuilt around photo A: Wall, Floor and one combined
-  // Basin chip (wash basin + granite counter). Cabinet/tap stay locked.
-  { id: 'vanity-e', name: 'Vanity Counter', zones: ['Wall', 'Floor', 'Basin'] },
-]
+// Mirrors src/data/tileShowcase.js's curation: 2 slides × 5 ranges. Only used
+// here to know how many slides to expect — the actual titles/images are read
+// live from the page, not hardcoded, so this suite doesn't need updating if
+// the curated set changes later.
+const SHOWCASE_SLIDE_COUNT = 10
 
 async function runDesktop(browser) {
   console.log('\n══ DESKTOP (1440×900) ══')
@@ -153,234 +147,129 @@ async function runDesktop(browser) {
     return `${titles} titles, ${links} links`
   })
 
-  // ── Visualizer core ──
-  await check('desktop:visualizer-heading', async () => {
+  // ── Tile showcase carousel ──
+  // Replaced the interactive 2D room visualizer (now on the archive/2d-visualizer
+  // branch) with a passive 3D coverflow — see src/components/showcase/Coverflow.jsx.
+  // `id="visualizer"` was kept on the section for anchor/deep-link stability.
+  // Slide buttons' aria-labels always end in "current slide" or start with
+  // "Go to " — the Next/Previous chevrons live in the same [role="group"]
+  // container but don't match either pattern, so this selector naturally
+  // excludes them without needing an explicit :not().
+  const slideButtons = (p) =>
+    p.locator('#visualizer [role="group"] button[aria-label$="current slide"], #visualizer [role="group"] button[aria-label^="Go to"]')
+  const activeSlide = (p) => p.locator('#visualizer button[aria-label$="current slide"]')
+
+  await check('desktop:showcase-heading', async () => {
     await scrollTo(page, 'visualizer')
     await page.waitForSelector('#visualizer', { timeout: 20000 })
-    await page.waitForTimeout(2000) // canvas compose
+    await page.waitForTimeout(500)
     const h = await page.locator('#visualizer').innerText()
-    if (!/Tile Visualizer|Room Preview/i.test(h)) throw new Error('heading missing')
+    if (!/Tile Showcase/i.test(h)) throw new Error('heading missing')
     return 'ok'
   })
 
-  await check('desktop:visualizer-canvas', async () => {
-    const canvas = page.locator('#visualizer canvas').first()
-    await canvas.waitFor({ state: 'visible', timeout: 30000 })
-    const box = await canvas.boundingBox()
-    if (!box || box.width < 200 || box.height < 150) throw new Error(`canvas ${JSON.stringify(box)}`)
-    // non-blank sample
-    const pixels = await page.evaluate(() => {
-      const c = document.querySelector('#visualizer canvas')
-      if (!c) return null
-      const ctx = c.getContext('2d', { willReadFrequently: true })
-      if (!ctx) return { note: 'no-2d-ctx' }
-      const { width: w, height: h } = c
-      if (w < 2 || h < 2) return { note: 'tiny', w, h }
-      const data = ctx.getImageData(Math.floor(w / 2), Math.floor(h / 2), 1, 1).data
-      return { w, h, r: data[0], g: data[1], b: data[2], a: data[3] }
-    })
-    if (!pixels) throw new Error('no canvas')
-    if (pixels.note === 'no-2d-ctx') return 'WebGL/other ctx ok'
-    if (pixels.a === 0) throw new Error('canvas fully transparent at center')
-    return `${pixels.w}×${pixels.h} rgba(${pixels.r},${pixels.g},${pixels.b},${pixels.a})`
-  })
-
-  // The room runs full-bleed and the tile picker sits underneath it. Both are
-  // easy to undo by accident — a stray wrapper restoring the container padding,
-  // or a grid class putting the picker back in a side column — and neither
-  // shows up as an error, so they are asserted rather than eyeballed.
-  await check('desktop:visualizer-full-bleed', async () => {
-    const box = await page.locator('#visualizer canvas').first().boundingBox()
+  // The carousel keeps the old visualizer's exact full-bleed footprint (same
+  // negative gutters, same 16:9 band, same height cap) so the page doesn't
+  // shift under the reader. A stray wrapper re-adding container padding, or a
+  // CSS regression collapsing the aspect box, wouldn't show up as an error —
+  // hence asserted, not eyeballed.
+  await check('desktop:showcase-full-bleed', async () => {
+    const box = await page.locator('#visualizer [role="group"]').first().boundingBox()
     const vw = await page.evaluate(() => window.innerWidth)
     const vh = await page.evaluate(() => window.innerHeight)
     const pct = Math.round((box.width / vw) * 100)
-    // 16:9 plates on a viewport wider than 16:9 are height-bound, so the floor
-    // for this assertion is the geometric limit, not an arbitrary percentage.
     const ceiling = Math.min(vw, vh * 0.92 * (16 / 9))
     if (box.width < ceiling * 0.9) {
-      throw new Error(`canvas ${Math.round(box.width)}px is well under the ${Math.round(ceiling)}px the viewport allows`)
+      throw new Error(`carousel ${Math.round(box.width)}px is well under the ${Math.round(ceiling)}px the viewport allows`)
     }
-    if (box.height > vh + 1) throw new Error(`canvas ${Math.round(box.height)}px taller than viewport ${vh}px`)
-    return `${Math.round(box.width)}×${Math.round(box.height)} = ${pct}% of ${vw}px, room fully visible`
+    if (box.height > vh + 1) throw new Error(`carousel ${Math.round(box.height)}px taller than viewport ${vh}px`)
+    return `${Math.round(box.width)}×${Math.round(box.height)} = ${pct}% of ${vw}px`
   })
 
-  await check('desktop:picker-below-canvas', async () => {
-    const canvas = await page.locator('#visualizer canvas').first().boundingBox()
-    const search = await page.locator('#visualizer input[placeholder*="Search by tile"]').first().boundingBox()
-    if (!search) throw new Error('tile search box not found')
-    if (search.y < canvas.y + canvas.height - 2) {
-      throw new Error(`picker top ${Math.round(search.y)} overlaps canvas bottom ${Math.round(canvas.y + canvas.height)} — still side-by-side`)
+  await check('desktop:showcase-slides-rendered', async () => {
+    const n = await slideButtons(page).count()
+    if (n !== SHOWCASE_SLIDE_COUNT) throw new Error(`expected ${SHOWCASE_SLIDE_COUNT} slides, found ${n}`)
+    const activeCount = await activeSlide(page).count()
+    if (activeCount !== 1) throw new Error(`expected exactly 1 active slide, found ${activeCount}`)
+    return `${n} slides, 1 active`
+  })
+
+  await check('desktop:showcase-next-prev', async () => {
+    const before = await activeSlide(page).getAttribute('aria-label')
+    await page.locator('#visualizer button[aria-label="Next tile"]').click()
+    await page.waitForTimeout(500)
+    const afterNext = await activeSlide(page).getAttribute('aria-label')
+    if (afterNext === before) throw new Error('Next did not change the active slide')
+    await page.locator('#visualizer button[aria-label="Previous tile"]').click()
+    await page.waitForTimeout(500)
+    const afterPrev = await activeSlide(page).getAttribute('aria-label')
+    if (afterPrev !== before) throw new Error(`Prev should return to "${before}", got "${afterPrev}"`)
+    return `${before} → ${afterNext} → ${afterPrev}`
+  })
+
+  // Side panels overlap the (higher z-index) active panel — that's the
+  // coverflow look. Only their outer ~35% sliver is actually painted on top,
+  // so that's where a real click lands; the geometric center of the button's
+  // own box sits under the active panel and would hit the wrong element.
+  await check('desktop:showcase-click-side-panel', async () => {
+    const target = page.locator('#visualizer button[aria-label^="Go to"]').first()
+    const label = await target.getAttribute('aria-label')
+    const box = await target.boundingBox()
+    await page.mouse.click(box.x + box.width * 0.85, box.y + box.height * 0.5)
+    await page.waitForTimeout(500)
+    const active = await activeSlide(page).getAttribute('aria-label')
+    if (!label.includes(active.replace(', current slide', ''))) {
+      throw new Error(`clicked "${label}" but active is now "${active}"`)
     }
-    return `picker starts ${Math.round(search.y - (canvas.y + canvas.height))}px below the room`
+    return `clicked "${label}" → active`
   })
 
-  // All 5 rooms
-  for (const room of ROOMS) {
-    await check(`desktop:room-${room.id}`, async () => {
-      await scrollTo(page, 'visualizer')
-      const tab = page.locator('#visualizer button[role="tab"]', { hasText: room.name })
-      await tab.first().click()
-      await page.waitForTimeout(1800)
-      const selected = await tab.first().getAttribute('aria-selected')
-      if (selected !== 'true') throw new Error(`aria-selected=${selected}`)
-      // zone chips
-      for (const z of room.zones) {
-        const zc = page.locator('#visualizer button', { hasText: new RegExp(`^${z}`) })
-        if ((await zc.count()) < 1) throw new Error(`zone chip missing: ${z}`)
-      }
-      // staircase should NOT show Wall as active zone chip row for tiling walls
-      if (room.id === 'staircase-c') {
-        const wallOnly = page.locator('#visualizer button').filter({ hasText: /^Wall$/ })
-        // may exist in room list? no — zone chips only Floor/Stairs
-        const stairs = page.locator('#visualizer button', { hasText: /Stairs/ })
-        if ((await stairs.count()) < 1) throw new Error('Stairs zone missing')
-      }
-      if (room.id === 'feature-wall-d') {
-        const floor = page.locator('#visualizer button', { hasText: /^Floor$/ })
-        // Feature wall has only Wall zone — Floor zone chip should be absent
-        // (product labels may still say Floor elsewhere — check zone chips area carefully)
-        const zoneLabels = await page.evaluate(() => {
-          const sec = document.getElementById('visualizer')
-          // zone chips are buttons with label block
-          return [...sec.querySelectorAll('button')].map((b) => b.innerText.trim().split('\n')[0])
-        })
-        if (zoneLabels.includes('Floor') && !zoneLabels.includes('Wall')) {
-          throw new Error('Feature wall should have Wall zone')
-        }
-        if (!zoneLabels.some((t) => t === 'Wall')) throw new Error(`no Wall zone; labels=${zoneLabels.slice(0, 20)}`)
-      }
-      const canvas = page.locator('#visualizer canvas').first()
-      await canvas.waitFor({ state: 'visible', timeout: 15000 })
-      return `selected · zones ${room.zones.join('+')}`
-    })
-  }
-
-  // Switch back to bathroom for tile interactions
-  await check('desktop:pick-tile-swatch', async () => {
-    await scrollTo(page, 'visualizer')
-    await page.locator('#visualizer button[role="tab"]', { hasText: 'Small Bathroom' }).first().click()
-    await page.waitForTimeout(1200)
-    // Floor zone
-    const floorBtn = page.locator('#visualizer button', { hasText: /^Floor/ }).first()
-    await floorBtn.click()
-    await page.waitForTimeout(300)
-    const options = page.locator('#visualizer [role="option"]')
-    await options.first().waitFor({ state: 'visible', timeout: 15000 })
-    const n = await options.count()
-    if (n < 5) throw new Error(`only ${n} swatches`)
-    // pick a later swatch
-    const target = options.nth(Math.min(5, n - 1))
-    await target.click()
-    await page.waitForTimeout(800)
-    const sel = await target.getAttribute('aria-selected')
-    if (sel !== 'true') throw new Error('swatch not selected')
-    return `${n} swatches`
+  await check('desktop:showcase-keyboard-nav', async () => {
+    await page.locator('#visualizer [role="group"]').focus()
+    const before = await activeSlide(page).getAttribute('aria-label')
+    await page.keyboard.press('ArrowRight')
+    await page.waitForTimeout(500)
+    const afterRight = await activeSlide(page).getAttribute('aria-label')
+    if (afterRight === before) throw new Error('ArrowRight did not change the active slide')
+    await page.keyboard.press('ArrowLeft')
+    await page.waitForTimeout(500)
+    const afterLeft = await activeSlide(page).getAttribute('aria-label')
+    if (afterLeft !== before) throw new Error(`ArrowLeft should return to "${before}", got "${afterLeft}"`)
+    return `${before} → ${afterRight} → ${afterLeft}`
   })
 
-  await check('desktop:tile-search', async () => {
-    const input = page.locator('#visualizer input[type="search"]').first()
-    await input.fill('grey')
-    await page.waitForTimeout(400)
-    const n = await page.locator('#visualizer [role="option"]').count()
-    await input.fill('')
-    await page.waitForTimeout(200)
-    return `grey → ${n} results`
-  })
-
-  await check('desktop:tile-size-filter-chips', async () => {
-    const chip = page.locator('#visualizer button', { hasText: /2x4 Slabs|Floor Collection|All \(/ }).first()
-    await chip.click()
-    await page.waitForTimeout(300)
-    const n = await page.locator('#visualizer [role="option"]').count()
-    // reset All
-    await page.locator('#visualizer button', { hasText: /^All \(/ }).first().click()
-    return `${n} after filter`
-  })
-
-  await check('desktop:scale-slider', async () => {
-    const range = page.locator('#visualizer input[type="range"][aria-label="Tile size"]')
-    await range.waitFor({ state: 'visible', timeout: 10000 })
-    const before = await range.inputValue()
-    await range.fill('1.2')
-    const after = await range.inputValue()
-    if (Number(after) < 1.1) throw new Error(`scale ${before}→${after}`)
-    await page.waitForTimeout(600)
+  await check('desktop:showcase-drag', async () => {
+    const box = await page.locator('#visualizer [role="group"]').first().boundingBox()
+    const before = await activeSlide(page).getAttribute('aria-label')
+    await page.mouse.move(box.x + box.width * 0.5, box.y + box.height * 0.5)
+    await page.mouse.down()
+    await page.mouse.move(box.x + box.width * 0.15, box.y + box.height * 0.5, { steps: 10 })
+    await page.mouse.up()
+    await page.waitForTimeout(500)
+    const after = await activeSlide(page).getAttribute('aria-label')
+    if (after === before) throw new Error('drag-left did not change the active slide')
     return `${before} → ${after}`
   })
 
-  await check('desktop:grout-toggle', async () => {
-    const cb = page.locator('#visualizer label', { hasText: /grout/i }).locator('input[type="checkbox"]')
-    await cb.check()
-    await page.waitForTimeout(400)
-    if (!(await cb.isChecked())) throw new Error('not checked')
-    await cb.uncheck()
-    return 'ok'
+  // Autoplay is the thing that shows off "smooth sliding" to a visitor who
+  // never touches the carousel — but it must not fight a user who's hovering
+  // to read a caption or aim a click. AUTOPLAY_MS in Coverflow.jsx is 4500ms,
+  // so this has to wait past a full interval — anything shorter would pass
+  // whether or not the pause-on-hover actually works.
+  await check('desktop:showcase-autoplay-pauses-on-hover', async () => {
+    await page.locator('#visualizer [role="group"]').hover()
+    const before = await activeSlide(page).getAttribute('aria-label')
+    await page.waitForTimeout(5200)
+    const after = await activeSlide(page).getAttribute('aria-label')
+    if (after !== before) throw new Error(`active slide changed while hovered: "${before}" → "${after}"`)
+    return 'unchanged across a full autoplay interval while hovered'
   })
 
-  await check('desktop:copy-link', async () => {
-    const hashBefore = await page.evaluate(() => location.hash)
-    await page.locator('#visualizer button', { hasText: /Copy link|Link copied/ }).first().click()
-    await page.waitForTimeout(400)
-
-    // The share link lives in the CLIPBOARD, not in the address bar. This used
-    // to fall back to asserting location.hash, which only passed back when the
-    // visualizer wrote its state into the URL on every change. That was removed
-    // deliberately — it hijacked the landing scroll and meant copying the
-    // address bar shared a half-finished tile selection — so asserting on the
-    // hash here would now be testing for the bug rather than the feature.
-    const clip = await page.evaluate(() => navigator.clipboard.readText())
-    if (!clip.includes('#visualizer?') || !clip.includes('room=')) {
-      throw new Error(`clipboard=${clip.slice(0, 120)}`)
-    }
-
-    // Regression guard for that fix: copying a link must not mutate the URL.
-    const hashAfter = await page.evaluate(() => location.hash)
-    if (hashAfter !== hashBefore) {
-      throw new Error(`copy mutated the address bar: ${hashBefore} -> ${hashAfter}`)
-    }
-    return clip.slice(clip.indexOf('#'), clip.indexOf('#') + 80)
-  })
-
-  await check('desktop:reset', async () => {
-    await page.locator('#visualizer button', { hasText: /^Reset$/ }).first().click()
-    await page.waitForTimeout(600)
-    return 'ok'
-  })
-
-  await check('desktop:download-hq-button', async () => {
-    const btn = page.locator('#visualizer button', { hasText: /Download HQ|Exporting/ }).first()
-    await btn.waitFor({ state: 'visible' })
-    // Don't fully download (file dialog); just ensure clickable and no crash
-    return 'visible'
-  })
-
-  // Deep link cold load
-  await check('desktop:deep-link-room', async () => {
-    const url = `${BASE}/#visualizer?room=staircase-c&scale=0.90`
-    await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 })
-    await page.waitForSelector('#visualizer', { timeout: 30000 })
-    const tab = page.locator('#visualizer button[role="tab"]', { hasText: 'Staircase' })
-    await tab.first().waitFor({ state: 'visible', timeout: 25000 })
-    // Poll until deep-link boot selects the room (lazy chunk + force-from-hash).
-    // Note: Playwright waitForFunction(fn, arg, options) — options are 3rd arg.
-    let selected = 'false'
-    let scale = '?'
-    let hash = ''
-    for (let i = 0; i < 40; i++) {
-      selected = await tab.first().getAttribute('aria-selected')
-      const range = page.locator('#visualizer input[type="range"][aria-label="Tile size"]')
-      scale = (await range.count()) ? await range.inputValue() : '?'
-      hash = await page.evaluate(() => location.hash)
-      if (selected === 'true' && Math.abs(Number(scale) - 0.9) < 0.06) break
-      await page.waitForTimeout(250)
-    }
-    if (selected !== 'true') {
-      throw new Error(`Staircase not selected after boot; scale=${scale} hash=${hash}`)
-    }
-    if (Math.abs(Number(scale) - 0.9) >= 0.06) {
-      throw new Error(`scale expected ~0.90 got ${scale}; hash=${hash}`)
-    }
-    return `selected=${selected} scale=${scale} hash=${hash.slice(0, 90)}`
+  await check('desktop:showcase-image-assets', async () => {
+    const srcs = await page.locator('#visualizer [role="group"] img').evaluateAll((imgs) => imgs.map((i) => new URL(i.src).pathname))
+    if (srcs.length !== SHOWCASE_SLIDE_COUNT) throw new Error(`expected ${SHOWCASE_SLIDE_COUNT} images, found ${srcs.length}`)
+    for (const src of srcs) await assetOk(page, src)
+    return `${srcs.length} images 200`
   })
 
   // ── Catalogue ──
@@ -412,14 +301,15 @@ async function runDesktop(browser) {
     return `${n} after search white`
   })
 
-  await check('desktop:catalogue-try-visualizer', async () => {
+  await check('desktop:catalogue-view-in-showcase', async () => {
     await scrollTo(page, 'catalogue')
     await page.waitForTimeout(800)
-    const tryBtn = page.locator('#catalogue button', { hasText: /Try Visualizer/ }).first()
+    const tryBtn = page.locator('#catalogue button', { hasText: /View in Showcase/ }).first()
     await tryBtn.waitFor({ state: 'visible', timeout: 15000 })
     await tryBtn.click()
     await page.waitForTimeout(1500)
-    // should scroll/navigate to visualizer and update hash or tiles
+    // should scroll to the showcase carousel (view-in-showcase event dispatch
+    // + scrollIntoView — see Catalogue.jsx's onViewIn3D)
     const viz = page.locator('#visualizer')
     const inView = await page.evaluate(() => {
       const el = document.getElementById('visualizer')
@@ -427,14 +317,11 @@ async function runDesktop(browser) {
       const r = el.getBoundingClientRect()
       return r.top < window.innerHeight && r.bottom > 0
     })
-    if (!inView) {
-      // event may apply tiles without scroll — still check hash or zone labels
-      await scrollTo(page, 'visualizer')
-    }
-    await page.waitForTimeout(800)
+    if (!inView) await scrollTo(page, 'visualizer')
+    await page.waitForTimeout(500)
     const text = await viz.innerText()
-    if (!/Tile Visualizer|Floor|Wall/i.test(text)) throw new Error('visualizer not ready after Try')
-    return inView ? 'scrolled to visualizer' : 'applied (scrolled manually)'
+    if (!/Tile Showcase/i.test(text)) throw new Error('showcase not ready after View in Showcase')
+    return inView ? 'scrolled to showcase' : 'applied (scrolled manually)'
   })
 
   await check('desktop:catalogue-lightbox', async () => {
@@ -538,39 +425,13 @@ async function runDesktop(browser) {
     return 'visible'
   })
 
-  // ── Room assets HTTP ──
-  for (const room of ROOMS) {
-    await check(`desktop:asset-${room.id}-base.webp`, () =>
-      assetOk(page, `/2d-rooms/${room.id}/base.webp`),
-    )
-    await check(`desktop:asset-${room.id}-overlay.webp`, () =>
-      assetOk(page, `/2d-rooms/${room.id}/overlay-locked.webp`),
-    )
-  }
-  await check('desktop:asset-bathroom-masks', async () => {
-    await assetOk(page, '/2d-rooms/bathroom-01/mask-floor.webp')
-    await assetOk(page, '/2d-rooms/bathroom-01/mask-wall.webp')
-    return 'ok'
-  })
-  await check('desktop:asset-staircase-mask-only-floor', async () => {
-    await assetOk(page, '/2d-rooms/staircase-c/mask-floor.webp')
-    const wall = await page.request.get(new URL('/2d-rooms/staircase-c/mask-wall.webp', BASE).href)
-    // wall mask should not exist (or 404) for stairs-only model
-    if (wall.ok()) return 'WARN: mask-wall exists (unexpected but not crash)'
-    return `wall mask status ${wall.status()} (expected missing)`
-  })
-  await check('desktop:asset-feature-wall-mask-only-wall', async () => {
-    await assetOk(page, '/2d-rooms/feature-wall-d/mask-wall.webp')
-    const floor = await page.request.get(new URL('/2d-rooms/feature-wall-d/mask-floor.webp', BASE).href)
-    if (floor.ok()) return 'WARN: mask-floor exists'
-    return `floor mask status ${floor.status()} (expected missing)`
-  })
-
-  // ── No dead 3D visualizer GLB route ──
-  await check('desktop:no-3d-visualizer-section', async () => {
+  // ── No dead visualizer routes (2D room compositor or legacy 3D) ──
+  await check('desktop:no-legacy-visualizer-section', async () => {
     const has3d = await page.evaluate(() => !!document.getElementById('visualizer-3d'))
     if (has3d) throw new Error('legacy #visualizer-3d present')
-    return 'only 2D #visualizer'
+    const hasRoomCanvas = await page.evaluate(() => !!document.querySelector('#visualizer canvas'))
+    if (hasRoomCanvas) throw new Error('a <canvas> is present in #visualizer — the 2D room visualizer should be fully replaced by the CSS-only showcase carousel')
+    return 'only the showcase carousel'
   })
 
   await context.close()
@@ -603,7 +464,6 @@ async function runMobile(browser) {
     // Close open hamburger menu so it cannot intercept clicks
     const burger = page.locator('button[aria-label="Toggle menu"]')
     if ((await burger.count()) > 0) {
-      const menuOpen = await page.locator('header a[href="#home"]').nth(1).isVisible().catch(() => false)
       // If mobile drawer links are visible below nav, close
       const drawerLink = page.locator('header ul a[href="#visualizer"]')
       if ((await drawerLink.count()) > 0 && (await drawerLink.first().isVisible().catch(() => false))) {
@@ -613,143 +473,56 @@ async function runMobile(browser) {
     }
   }
 
-  async function clickRoomTab(name) {
-    await closeMobileChrome()
-    await scrollTo(page, 'visualizer')
-    // Center room chips under fixed header / above sticky bottom bar
-    await page.evaluate(() => {
-      const el = document.getElementById('visualizer')
-      if (!el) return
-      const y = el.getBoundingClientRect().top + window.scrollY - 70
-      window.scrollTo(0, Math.max(0, y))
-    })
-    await page.waitForTimeout(300)
-    const tab = page.locator('#visualizer button[role="tab"]', { hasText: name }).first()
-    await tab.waitFor({ state: 'attached', timeout: 15000 })
-    // force: sticky chrome + open menu can intercept synthetic clicks
-    await tab.click({ force: true })
-    await page.waitForTimeout(1200)
-    const sel = await tab.getAttribute('aria-selected')
-    if (sel !== 'true') {
-      // retry once via DOM click
-      await tab.evaluate((el) => el.click())
-      await page.waitForTimeout(1000)
-    }
-    const sel2 = await tab.getAttribute('aria-selected')
-    if (sel2 !== 'true') throw new Error(`aria-selected=${sel2}`)
-  }
-
   await check('mobile:nav-menu', async () => {
     const burger = page.locator('button[aria-label="Toggle menu"]')
     await burger.click()
     await page.waitForTimeout(400)
     const links = await page.locator('header a[href="#visualizer"]').count()
-    if (links < 1) throw new Error('no visualizer link')
+    if (links < 1) throw new Error('no showcase link')
     // CRITICAL: close menu so later tests are not blocked by the drawer overlay
     await burger.click()
     await page.waitForTimeout(350)
-    return `visualizer links=${links}; menu closed`
+    return `showcase links=${links}; menu closed`
   })
 
-  // The action bar is position:fixed and the visualiser mounts 500px early, so
-  // it used to hover over the hero from first paint. It must appear only while
-  // the visualiser itself is on screen.
-  await check('mobile:no-choose-tiles-bar-at-top', async () => {
-    await page.goto(BASE + '/', { waitUntil: 'domcontentloaded' })
-    await page.waitForTimeout(3500) // past any lazy-mount / observer backstop
-    await closeMobileChrome()
-    await page.evaluate(() => window.scrollTo(0, 0))
-    await page.waitForTimeout(600)
-    const bar = page.locator('button', { hasText: /Choose tiles/ })
-    if (await bar.first().isVisible().catch(() => false)) {
-      throw new Error('"Choose tiles" bar is visible at the top of the page')
-    }
-    return 'hidden at hero'
-  })
-
-  await check('mobile:choose-tiles-bar-appears-in-visualizer', async () => {
-    await page.evaluate(() => document.getElementById('visualizer')?.scrollIntoView())
-    await page.waitForTimeout(1200)
-    const bar = page.locator('button', { hasText: /Choose tiles/ })
-    await bar.first().waitFor({ state: 'visible', timeout: 10000 })
-    return 'visible once the room is on screen'
-  })
-
-  await check('mobile:visualizer-layout', async () => {
+  await check('mobile:showcase-layout', async () => {
     await page.goto(BASE + '/#visualizer', { waitUntil: 'domcontentloaded' })
     await page.waitForSelector('#visualizer', { timeout: 30000 })
-    await page.waitForTimeout(2000)
+    await page.waitForTimeout(1200)
     await closeMobileChrome()
-    const choose = page.locator('#visualizer button', { hasText: /Choose tiles/ })
-    await choose.first().waitFor({ state: 'visible', timeout: 15000 })
-    const canvas = page.locator('#visualizer canvas').first()
-    await canvas.waitFor({ state: 'visible', timeout: 20000 })
-    return 'sheet bar + canvas'
+    const group = page.locator('#visualizer [role="group"]').first()
+    await group.waitFor({ state: 'visible', timeout: 15000 })
+    const n = await page.locator('#visualizer [role="group"] button[aria-label$="current slide"], #visualizer [role="group"] button[aria-label^="Go to"]').count()
+    if (n !== SHOWCASE_SLIDE_COUNT) throw new Error(`expected ${SHOWCASE_SLIDE_COUNT} slides, found ${n}`)
+    return `carousel + ${n} slides`
   })
 
-  for (const room of ROOMS) {
-    await check(`mobile:room-${room.id}`, async () => {
-      await clickRoomTab(room.name)
-      return 'ok'
-    })
-  }
-
-  await check('mobile:open-tile-sheet', async () => {
-    await clickRoomTab('Small Bathroom')
-    await page.locator('#visualizer button', { hasText: /Choose tiles/ }).first().click({ force: true })
+  await check('mobile:showcase-tap-arrow', async () => {
+    await closeMobileChrome()
+    const activeSlideM = () => page.locator('#visualizer button[aria-label$="current slide"]')
+    const before = await activeSlideM().getAttribute('aria-label')
+    await page.locator('#visualizer button[aria-label="Next tile"]').click({ force: true })
     await page.waitForTimeout(500)
-    const dialog = page.locator('[role="dialog"][aria-label="Choose tiles"]')
-    await dialog.waitFor({ state: 'visible', timeout: 10000 })
-    return 'dialog open'
+    const after = await activeSlideM().getAttribute('aria-label')
+    if (after === before) throw new Error('tapping Next did not change the active slide')
+    return `${before} → ${after}`
   })
 
-  await check('mobile:horizontal-swatch-scroll', async () => {
-    const listbox = page.locator('[role="dialog"] [role="listbox"]').first()
-    await listbox.waitFor({ state: 'visible', timeout: 10000 })
-    const metrics = await listbox.evaluate((el) => ({
-      scrollWidth: el.scrollWidth,
-      clientWidth: el.clientWidth,
-      canScroll: el.scrollWidth > el.clientWidth + 8,
-    }))
-    if (!metrics.canScroll) {
-      throw new Error(
-        `swatch strip not horizontally scrollable (scrollWidth=${metrics.scrollWidth}, clientWidth=${metrics.clientWidth})`,
-      )
-    }
-    await listbox.evaluate((el) => {
-      el.scrollLeft = Math.min(el.scrollWidth - el.clientWidth, 200)
-    })
-    await page.waitForTimeout(200)
-    const after = await listbox.evaluate((el) => el.scrollLeft)
-    if (after < 10) throw new Error(`scrollLeft stayed ${after}`)
-    return `scrollWidth=${metrics.scrollWidth} client=${metrics.clientWidth} left=${after}`
-  })
-
-  await check('mobile:pick-swatch-in-sheet', async () => {
-    const opt = page.locator('[role="dialog"] [role="option"]').nth(3)
-    await opt.click({ force: true })
-    await page.waitForTimeout(600)
-    const sel = await opt.getAttribute('aria-selected')
-    if (sel !== 'true') throw new Error('not selected')
-    await page.locator('[role="dialog"] button', { hasText: /^Done$/ }).click({ force: true })
-    await page.waitForTimeout(400)
-    return 'picked + closed'
-  })
-
-  await check('mobile:zone-switch-opens-sheet', async () => {
-    await closeMobileChrome()
-    const wall = page.locator('#visualizer button', { hasText: /^Wall/ }).first()
-    if ((await wall.count()) > 0) {
-      await wall.click({ force: true })
-      await page.waitForTimeout(500)
-      const dialog = page.locator('[role="dialog"]')
-      const open = await dialog.isVisible().catch(() => false)
-      if (open) {
-        await page.locator('button[aria-label="Close"]').first().click({ force: true }).catch(() => {})
-      }
-      return open ? 'sheet opened' : 'zone switched (no auto sheet)'
-    }
-    return 'no wall zone on current room'
+  await check('mobile:showcase-swipe', async () => {
+    const activeSlideM = () => page.locator('#visualizer button[aria-label$="current slide"]')
+    const before = await activeSlideM().getAttribute('aria-label')
+    const box = await page.locator('#visualizer [role="group"]').first().boundingBox()
+    await page.touchscreen.tap(box.x + box.width * 0.5, box.y + box.height * 0.5).catch(() => {})
+    // touchscreen has no drag primitive in playwright-core; simulate the swipe
+    // with pointer/mouse move, which the component's drag="x" handles the same way
+    await page.mouse.move(box.x + box.width * 0.7, box.y + box.height * 0.5)
+    await page.mouse.down()
+    await page.mouse.move(box.x + box.width * 0.2, box.y + box.height * 0.5, { steps: 10 })
+    await page.mouse.up()
+    await page.waitForTimeout(500)
+    const after = await activeSlideM().getAttribute('aria-label')
+    if (after === before) throw new Error('swipe-left did not change the active slide')
+    return `${before} → ${after}`
   })
 
   await check('mobile:catalogue-cards', async () => {
