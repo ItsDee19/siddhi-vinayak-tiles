@@ -19,6 +19,7 @@ import {
   collectionLabel,
 } from '../../utils/productSearch'
 import { COLOR_SWATCHES } from '../../data/colorFamilies'
+import { publishVisualizerSelection } from '../../utils/visualizerPreview'
 
 const PAGE_SIZE = 24
 
@@ -180,7 +181,7 @@ export default function Catalogue() {
   const hasMore = visibleCount < filtered.length
 
   const onViewIn3D = (p) => {
-    window.dispatchEvent(new CustomEvent('view-in-3d', { detail: p }))
+    if (!publishVisualizerSelection(p)) return
     document.getElementById('visualizer')?.scrollIntoView({ behavior: 'smooth' })
   }
 

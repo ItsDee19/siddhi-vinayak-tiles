@@ -24,12 +24,12 @@
 // finishes get more visible relief: a carved or structured tile should catch
 // light across its face, a polished one should stay nearly flat.
 const FINISH_TABLE = {
-  Polished: { roughness: 0.12, metalness: 0, clearcoat: 0.55, clearcoatRoughness: 0.06, envMapIntensity: 1.3,  normalScale: 0.35 },
-  Glossy:   { roughness: 0.22, metalness: 0, clearcoat: 0.45, clearcoatRoughness: 0.14, envMapIntensity: 1.15, normalScale: 0.55 },
-  Satin:    { roughness: 0.38, metalness: 0, clearcoat: 0.15, clearcoatRoughness: 0.35, envMapIntensity: 0.9,  normalScale: 0.8 },
-  Rough:    { roughness: 0.92, metalness: 0, clearcoat: 0,    clearcoatRoughness: 0.30, envMapIntensity: 0.6,  normalScale: 1.2 },
+  Polished: { roughness: 0.16, metalness: 0, clearcoat: 0.5,  clearcoatRoughness: 0.1,  envMapIntensity: 1,    normalScale: 0 },
+  Glossy:   { roughness: 0.25, metalness: 0, clearcoat: 0.4,  clearcoatRoughness: 0.16, envMapIntensity: 1,    normalScale: 0 },
+  Satin:    { roughness: 0.48, metalness: 0, clearcoat: 0.1,  clearcoatRoughness: 0.4,  envMapIntensity: 0.85, normalScale: 0.12 },
+  Rough:    { roughness: 0.88, metalness: 0, clearcoat: 0,    clearcoatRoughness: 0.4,  envMapIntensity: 0.7,  normalScale: 0.35 },
 }
-const DEFAULT_FINISH = { roughness: 0.55, metalness: 0, clearcoat: 0.2, clearcoatRoughness: 0.25, envMapIntensity: 0.8, normalScale: 0.7 }
+const DEFAULT_FINISH = { roughness: 0.55, metalness: 0, clearcoat: 0.15, clearcoatRoughness: 0.3, envMapIntensity: 0.85, normalScale: 0 }
 
 // Catalogue finish strings aren't all clean single words (e.g. 'Matt / Glossy',
 // 'Carving'). Normalize the common variants to the closest physical bucket.

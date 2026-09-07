@@ -1,537 +1,254 @@
-import { useEffect, useMemo, useRef } from 'react'
+import { useEffect, useMemo } from 'react'
 import { useGLTF } from '@react-three/drei'
 import * as THREE from 'three'
-import { loadZoneTexture, loadRawTexture, composeGroutTexture, resolveZoneSource } from '../../utils/threeTextures'
+import { loadZoneTexture, resolveZoneSource } from '../../utils/threeTextures'
 import { getFinish } from '../../utils/finishMaterial'
 import { deriveSurfaceMaps } from '../../utils/derivedMaps'
+import { computeTileRepeat, configureTileSurface, getTileSizeMM, repairTileUVs } from '../../utils/tileMaterial'
 import { applyStructuralEdits, applyMaterialEdits } from './sceneEdits'
+import { applyModelDetails, disposeModelDetails } from './modelDetails'
 
-// Set up Draco decoder path — self-hosted so mobile browsers (iOS Safari with
-// content blockers, etc.) can always load the WASM decoder without relying on
-// gstatic.com CDN which can be blocked or stall on cellular networks.
 useGLTF.setDecoderPath('/draco/')
 
-// =========================================================================
-// GLBModel — loads a Blender-exported GLB file and dynamically swaps
-// textures on zone meshes. Mesh names follow the convention:
-//   "meshName__zoneId"
-// e.g. "back_wall_lower__lower" → zone "lower"
-//
-// The component traverses the GLB scene, finds meshes by zone suffix,
-// clones their materials (so the cached GLTF isn't mutated), and applies
-// the appropriate texture from the zoneTextures state.
-//
-// Non-zone meshes (fixtures, nosing, etc.) are left with their original
-// Blender materials.
-// =========================================================================
-
-// Every GLB is authored in metres, so one scene unit is 1000mm. Used to
-// convert scene units to millimetres for real-world tiling.
-//
-// This previously returned 304.8 (feet) for everything except the staircase,
-// on the assumption that models A/B/D/E were authored in feet. Measuring the
-// exports against objects of known real size shows otherwise — read as metres
-// the bath is 737x492x1193mm, the toilet 251x189x362mm, the basin 412x176mm
-// and the bathroom floor 2500x2000mm, all correct; read as feet they come out
-// at 225mm, 76mm, 126mm and 762mm, which is doll's-house scale.
-//
-// The 3.28x error made every tile render far too large: a 600x1200mm tile on
-// a 2.5-unit wall computed to 762/1200 = 0.63 repeats, i.e. less than a single
-// tile spanning the whole wall, which is why walls showed smeared diagonal
-// bands instead of tiles. At 1000 the same wall correctly takes ~2.1 tiles
-// across.
-const MM_PER_SCENE_UNIT = 1000
-
-function mmPerSceneUnit() {
-  return MM_PER_SCENE_UNIT
-}
-
-// Parse a catalogue size string like "600×1200mm" or "600x1200mm" into
-// [wMM, hMM]. Returns null if unparseable.
-function parseSizeMM(sizeStr) {
-  if (!sizeStr) return null
-  const m = String(sizeStr).match(/(\d+(?:\.\d+)?)\s*[x×]\s*(\d+(?:\.\d+)?)/i)
-  if (!m) return null
-  return [parseFloat(m[1]), parseFloat(m[2])]
-}
-
-// Compute a mesh's real-world width/height in millimetres from its local
-// (untransformed) geometry bounding box — the two largest axis extents are
-// treated as width/height, the smallest as thickness. Local space is used
-// because it is unaffected by the parent group's world rotation, so it
-// stays consistent whichever way a wall panel is rotated into the scene.
-function meshWorldSizeMM(mesh, mmPerUnit) {
-  if (!mesh.geometry) return null
-  if (!mesh.geometry.boundingBox) mesh.geometry.computeBoundingBox()
-  const box = mesh.geometry.boundingBox
-  if (!box) return null
-  const size = new THREE.Vector3()
-  box.getSize(size)
-  const dims = [size.x, size.y, size.z].sort((a, b) => b - a)
-  const [d0, d1] = dims
-  if (!(d0 > 0) || !(d1 > 0)) return null
-  return [d0 * mmPerUnit, d1 * mmPerUnit]
-}
-
-// Compute anisotropic repeat.x/y for a mesh from the product's real tile
-// size against the mesh's real-world dimensions, replacing the old isotropic
-// `repeat.set(r, r)` (which visibly stretched sources up to ~3.9:1 aspect).
-// `sizeMultiplier` is the existing "Tile size" slider (repeatScale) applied
-// as a scale on top of the physically-correct baseline, so the control still
-// does something meaningful instead of using its own disconnected formula.
-//
-// Two things decide how the tile lands, and they come from different places:
-//
-//   SHAPE comes from the texture's own aspect (`resolved.aspect`, recorded by
-//   the tile pipeline). It cannot come from the declared `size`, because a
-//   large part of the catalogue's declared sizes are simply wrong — every
-//   76x300mm 3x12 elevation tile is labelled "300x600mm", for instance. Using
-//   the declared aspect there squashed a 3.95:1 tile into a 2:1 slot.
-//
-//   SCALE comes from the declared size's larger dimension, which is reliable
-//   enough (600 / 400 / 300 mm) and is what sets how many tiles span a wall.
-//
-// Combining them — major length from the catalogue, minor length derived from
-// the texture's true aspect — gives a tile that is both the right size and
-// never stretched.
-// Convert a MeshStandardMaterial into an equivalent MeshPhysicalMaterial.
-//
-// Not done with `physical.copy(standard)`: MeshPhysicalMaterial.copy()
-// unconditionally reads physical-only fields off its source — the first is
-// `source.clearcoatNormalScale.x` — which a MeshStandardMaterial does not
-// have, so it throws. That failure lands inside GLBModel's render, where the
-// GLBErrorBoundary catches it and silently swaps in the procedural fallback
-// model; the scene still renders, so it looks like nothing is wrong.
-//
-// Copying an explicit whitelist instead. Physical-only properties keep their
-// constructor defaults, which is what we want — the finish table sets the ones
-// that matter straight after.
 const STANDARD_PROPS = [
   'name', 'map', 'color', 'roughness', 'metalness', 'emissive', 'emissiveIntensity',
   'emissiveMap', 'aoMap', 'aoMapIntensity', 'normalMap', 'normalScale', 'normalMapType',
-  'roughnessMap', 'metalnessMap', 'alphaMap', 'bumpMap', 'bumpScale', 'displacementMap',
+  'roughnessMap', 'metalnessMap', 'alphaMap', 'bumpMap', 'bumpScale',
   'envMapIntensity', 'side', 'flatShading', 'transparent', 'opacity', 'alphaTest',
-  'depthWrite', 'depthTest', 'vertexColors', 'toneMapped', 'wireframe', 'visible',
+  'depthWrite', 'depthTest', 'vertexColors', 'toneMapped',
 ]
 
 function toPhysical(source) {
+  if (source.isMeshPhysicalMaterial) return source.clone()
   const out = new THREE.MeshPhysicalMaterial()
   for (const key of STANDARD_PROPS) {
     const value = source[key]
     if (value === undefined || value === null) continue
-    // Colors and Vector2s must be copied by value; assigning the source's
-    // instance would alias two materials onto one object.
     if (value.isColor || value.isVector2) out[key].copy(value)
     else out[key] = value
   }
   return out
 }
 
-export function computeRepeat(mesh, product, glbUrl, sizeMultiplier, texAspect) {
-  const tileMM = parseSizeMM(product?.size)
-  const meshMM = meshWorldSizeMM(mesh, mmPerSceneUnit(glbUrl))
-  if (!tileMM || !meshMM) return { x: sizeMultiplier, y: sizeMultiplier }
-  const [meshW, meshH] = meshMM
+// Kept as a named export for callers; UV derivatives include all parent scale.
+export function computeRepeat(mesh, product, _glbUrl, sizeMultiplier, texAspect) {
+  return computeTileRepeat(mesh, product, sizeMultiplier, texAspect)
+}
 
-  const tileMajor = Math.max(tileMM[0], tileMM[1])
-  const declaredAspect = tileMajor / Math.min(tileMM[0], tileMM[1])
-  // texAspect is width/height of the shipped texture; fold it to >= 1 to get
-  // the tile's long:short ratio, independent of which way it was photographed.
-  const trueAspect = texAspect
-    ? (texAspect >= 1 ? texAspect : 1 / texAspect)
-    : declaredAspect
-  const tileMinor = tileMajor / trueAspect
-
-  // The tile's long axis follows the surface's long axis, so tiles run along
-  // a wall rather than against it.
-  const [meshMajor, meshMinor] = meshW >= meshH ? [meshW, meshH] : [meshH, meshW]
-  const repeatMajor = (meshMajor / tileMajor) * sizeMultiplier
-  const repeatMinor = (meshMinor / tileMinor) * sizeMultiplier
-  const clamp = (v) => Math.min(64, Math.max(0.25, v))
-  // Re-project back onto x/y in the mesh's own orientation.
-  return meshW >= meshH
-    ? { x: clamp(repeatMajor), y: clamp(repeatMinor) }
-    : { x: clamp(repeatMinor), y: clamp(repeatMajor) }
+function prepareScene(scene, sceneEdits, glbUrl, zones) {
+  const root = applyModelDetails(applyStructuralEdits(scene.clone(true), sceneEdits), glbUrl)
+  const zoneMeshes = {}
+  const zoneIds = new Set(zones.map((zone) => zone.id))
+  root.traverse((obj) => {
+    if (!obj.isMesh) return
+    const zone = obj.name.match(/__([^_]+)$/)?.[1]
+    const isTile = zoneIds.has(zone)
+    const prepareMaterial = (source) => {
+      const material = isTile ? toPhysical(source) : obj.userData.generated ? source : source.clone()
+      // Exported glass had metallicFactor=1 and alpha=1, so the shower
+      // partitions rendered as opaque silver panels hiding the selected tiles.
+      if (/glass.in.frame|glass.partitions/i.test(obj.name + ' ' + source.name)) {
+        material.color.set('#e5eeeb')
+        material.metalness = 0
+        material.roughness = 0.12
+        material.transparent = true
+        material.opacity = 0.16
+        material.depthWrite = false
+        material.side = THREE.DoubleSide
+      }
+      if (isTile) {
+        material.emissive.set('#000000')
+        material.emissiveIntensity = 0
+        // Single-sided room walls act as architectural cutaways at the arc ends.
+        if (/wall_(lower|feature|upper)/.test(obj.name)) material.side = THREE.FrontSide
+      }
+      return material
+    }
+    obj.material = Array.isArray(obj.material) ? obj.material.map(prepareMaterial) : prepareMaterial(obj.material)
+    obj.castShadow = !(Array.isArray(obj.material) ? obj.material : [obj.material]).some((material) => material.transparent)
+    obj.receiveShadow = true
+    if (isTile) {
+      const previousGeometry = obj.geometry
+      const ownedGeometry = obj.userData.ownedGeometry
+      if (repairTileUVs(obj)) {
+        if (ownedGeometry) previousGeometry.dispose()
+        obj.userData.ownedGeometry = true
+      }
+      obj.userData.tileBaseline = {
+        color: obj.material.color.clone(), map: obj.material.map,
+        normalMap: obj.material.normalMap, roughnessMap: obj.material.roughnessMap,
+        roughness: obj.material.roughness, metalness: obj.material.metalness,
+        envMapIntensity: obj.material.envMapIntensity,
+        normalScale: obj.material.normalScale.clone(),
+        clearcoat: obj.material.clearcoat, clearcoatRoughness: obj.material.clearcoatRoughness,
+      }
+      obj.userData.zoneId = zone
+      ;(zoneMeshes[zone] ||= []).push(obj)
+    }
+  })
+  applyMaterialEdits(root, sceneEdits)
+  return { root, zoneMeshes, ownedTextures: new Map(), active: false }
 }
 
 export default function GLBModel({
   glbUrl,
   zones = [],
   zoneTextures = {},
-  activeZone,
   onZoneClick,
-  layout,        // 'full' | 'bands' | 'grid' — Model D only
-  groutEnabled = false, // Model D only: apply grout compositing (PRD §4.5)
-  modelExtras = {}, // fixture toggles + controls (PRD §4): showShower, showWC,
-                    // showNosing, showFaucet, showVanityLight, repeatScale, etc.
-  tier = 'full', // 'full' | 'lite' — selects desktop/mobile derived tile variant
-  sceneEdits,    // optional per-model scene differentiation — see sceneEdits.js
+  layout,
+  groutEnabled = false,
+  modelExtras = {},
+  tier = 'full',
+  sceneEdits,
 }) {
-  const groupRef = useRef(null)
   const { scene } = useGLTF(glbUrl)
-
-  // Derive the per-model key (e.g. "a-bathroom") from the glb url so we can
-  // resolve the Blender-baked ambient-occlusion textures in /models/ao/<key>/.
-  const modelKey = useMemo(() => {
-    const m = (glbUrl || '').match(/model-([^/?#]+)\.glb/)
-    return m ? m[1] : ''
-  }, [glbUrl])
-  const aoLoader = useMemo(() => new THREE.TextureLoader(), [])
-
-  // Clone the scene so we don't mutate the cached GLTF. Structural scene edits
-  // are applied here rather than in an effect because reparenting is not
-  // idempotent and StrictMode double-invokes effects in development.
-  const cloned = useMemo(
-    () => applyStructuralEdits(scene.clone(true), sceneEdits),
-    [scene, sceneEdits],
-  )
-
-  // Tracks the textures THIS component created and assigned per mesh — the
-  // albedo clone plus its derived normal and roughness clones — so we only
-  // ever dispose textures we own, never the master cached in useGLTF's scene,
-  // threeTextures' urlCache or derivedMaps' cache. Disposing a shared master
-  // on the first texture-apply pass was a real bug: remounting the same GLB
-  // (switching model tabs and back) would find it already dead on the GPU.
-  // Values are arrays; a mesh now owns up to three textures, not one.
-  const ownedTextures = useRef(new WeakMap())
-
-  // Build a map of zoneId → mesh objects for quick lookup
-  const zoneMeshes = useMemo(() => {
-    const map = {}
-    const isBathroom = /bathroom/i.test(glbUrl)
-    cloned.traverse((obj) => {
-      if (obj.type !== 'Mesh') return
-      const name = obj.name || ''
-      const match = name.match(/__([^_]+)$/)
-      if (match) {
-        const zoneId = match[1]
-        // Bathroom floor meshes: force white, non-interactive
-        if (isBathroom && zoneId === 'floor') {
-          obj.material = new THREE.MeshStandardMaterial({
-            color: 0xffffff, roughness: 0.25, metalness: 0,
-          })
-          obj.receiveShadow = true
-          return // don't add to zone map — not tileable
-        }
-        if (!map[zoneId]) map[zoneId] = []
-        map[zoneId].push(obj)
-      }
-    })
-    return map
-  }, [cloned, glbUrl])
-
-  // Clone materials once on mount and set shadow flags. Previously this ran
-  // on every texture-apply pass (a second, redundant clone on top of the
-  // per-mesh clone below), leaking a Material each time and forcing a
-  // shader-program recompile for no reason.
-  useEffect(() => {
-    // Tile surfaces are upgraded to MeshPhysicalMaterial so the glaze coat in
-    // the finish table actually renders. `clearcoat` models a thin colourless
-    // specular layer over the base material, which is exactly what a fired
-    // glaze is — but MeshStandardMaterial has no such lobe and silently drops
-    // the property, so the table's clearcoat values were inert until now.
-    //
-    // Only zone meshes get the upgrade. Clearcoat costs a second specular
-    // evaluation per fragment, and fixtures (taps, basins, glass) already have
-    // hand-tuned materials from sceneEdits that do not need it.
-    const isTile = new Set()
-    for (const list of Object.values(zoneMeshes)) for (const m of list) isTile.add(m)
-
-    cloned.traverse((obj) => {
-      if (obj.type !== 'Mesh') return
-      if (obj.material) {
-        if (isTile.has(obj) && !obj.material.isMeshPhysicalMaterial) {
-          obj.material = toPhysical(obj.material)
-        } else {
-          obj.material = obj.material.clone()
-        }
-        obj.material.needsUpdate = true
-      }
-      // Walls/fixtures cast; everything receives. Non-zone backdrop planes
-      // (e.g. Model D's bare "Plane") still benefit from receiving shadows.
-      obj.castShadow = true
-      obj.receiveShadow = true
-    })
-  }, [cloned, zoneMeshes])
-
-  // Per-model material overrides. Must run after the clone pass above, which
-  // would otherwise replace the materials these edits were written onto.
-  // Idempotent, so re-running on a prop change is safe.
-  useEffect(() => {
-    applyMaterialEdits(cloned, sceneEdits)
-  }, [cloned, sceneEdits])
-
-  // Apply Blender-baked ambient occlusion as aoMap (uses uv1 = TEXCOORD_1).
-  // Each mesh's AO was baked into /models/ao/<modelKey>/<meshName>__ao.png.
-  // Loaded in parallel (not one-at-a-time) — models with many meshes (e.g.
-  // the staircase) would otherwise take one sequential round-trip per mesh,
-  // which is especially costly on higher-latency mobile connections.
-  // Meshes with no matching bake (or GLBs with no TEXCOORD_1 at all) simply
-  // fail the load and are left without an aoMap — handled gracefully below.
-  useEffect(() => {
-    if (!modelKey) return
-    let cancelled = false
-    const meshes = []
-    cloned.traverse((o) => {
-      // Skip meshes generated by sceneEdits — nothing in the bake matches them.
-      if (o.type === 'Mesh' && !o.userData.generated) meshes.push(o)
-    })
-
-    const loadOne = (o) =>
-      new Promise((resolve) => {
-        const base = glbUrl.replace(/model-[^/?#]+\.glb.*$/, 'ao/' + modelKey)
-        const url = `${base}/${o.name}__ao.png`
-        aoLoader.load(
-          url,
-          (tex) => {
-            if (cancelled) { resolve(); return }
-            tex.colorSpace = THREE.NoColorSpace
-            tex.wrapS = tex.wrapT = THREE.ClampToEdgeWrapping
-            tex.channel = 1
-            o.material.aoMap = tex
-            o.material.aoMapIntensity = 0.9
-            o.material.needsUpdate = true
-            resolve()
-          },
-          undefined,
-          () => resolve(), // no AO texture for this mesh — leave as-is
-        )
-      })
-
-    Promise.all(meshes.map(loadOne))
-    return () => { cancelled = true }
-  }, [cloned, modelKey, aoLoader, glbUrl])
-
-  // Apply textures + finish-driven material response to zone meshes whenever
-  // zoneTextures changes. repeatScale (PRD §4.5) now scales the physically
-  // computed repeat (see computeRepeat) rather than driving an independent,
-  // disconnected formula.
+  const instance = useMemo(() => prepareScene(scene, sceneEdits, glbUrl, zones), [scene, sceneEdits, glbUrl, zones])
+  const { root, zoneMeshes, ownedTextures } = instance
   const sizeMultiplier = modelExtras.repeatScale ?? 1
 
+  // All resources owned by the clone are released, never the useGLTF cache.
+  // Deferring cleanup by a microtask allows React StrictMode's effect replay.
+  useEffect(() => {
+    instance.active = true
+    return () => {
+      instance.active = false
+      queueMicrotask(() => {
+        if (instance.active) return
+        ownedTextures.forEach((textures) => textures.forEach((texture) => texture.dispose()))
+        ownedTextures.clear()
+        const materials = new Set()
+        root.traverse((obj) => {
+          if (!obj.isMesh) return
+          ;(Array.isArray(obj.material) ? obj.material : [obj.material]).forEach((mat) => materials.add(mat))
+        })
+        materials.forEach((mat) => mat.dispose())
+        disposeModelDetails(root)
+      })
+    }
+  }, [instance, root, ownedTextures])
+
   useEffect(() => {
     let cancelled = false
-
-    async function applyTextures() {
-      for (const zone of zones) {
-        const meshes = zoneMeshes[zone.id]
-        if (!meshes) continue
-
-        const rawSource = zoneTextures[zone.id]
-        const src = resolveZoneSource(rawSource, tier)
-        const finish = getFinish(src?.finish)
-
-        // Load once per zone (not per mesh) — individual meshes still get
-        // their own repeat-configured clone below since two walls sharing
-        // a zone can have different real widths.
-        let baseTex = null
-        let isGroutComposited = false
-        if (src) {
-          if (groutEnabled && modelExtras.groutColor && modelExtras.groutColor !== 'none') {
-            const base = await loadRawTexture(src)
-            if (base) {
-              // Derive the grout cell counts from the same real-world repeat
-              // math as the non-composited path (using the zone's first
-              // mesh as the representative size) instead of an unrelated
-              // constant, so the grout grid matches the physical tile size.
-              // Passed as separate x/y counts: averaging them into one square
-              // grid distorted every non-square tile.
-              const { x: gx, y: gy } = computeRepeat(meshes[0], rawSource, glbUrl, sizeMultiplier, src.aspect)
-              baseTex = composeGroutTexture(base, modelExtras.groutColor, gx, gy, 1024)
-              isGroutComposited = true
-            }
-          }
-          if (!baseTex) baseTex = await loadZoneTexture(src, 1, 512)
-        }
-
-        // Surface relief and gloss variation, derived from the albedo once per
-        // source and shared by every mesh in the zone. Skipped when grout has
-        // been composited in, because that canvas is a different image from
-        // the one the maps would describe. See utils/derivedMaps.js.
-        const derived = baseTex && !isGroutComposited && src?.url
-          ? deriveSurfaceMaps(baseTex.image, src.url, tier === 'lite' ? 256 : 512)
-          : null
-
-        if (cancelled) return
-
-        for (const mesh of meshes) {
-          const isActive = activeZone === zone.id
-          // Microscopic 0.1% geometry overlap to eliminate sub-pixel gaps
-          // between adjacent mesh bands. `.set()` is absolute, so re-running
-          // this every pass does not compound.
-          mesh.scale.set(1.001, 1.001, 1.001)
-
-          const previousOwned = ownedTextures.current.get(mesh)
-          if (previousOwned) {
-            for (const tex of previousOwned) tex.dispose()
-            ownedTextures.current.delete(mesh)
-          }
-
-          if (baseTex) {
-            const owned = []
-            const texClone = baseTex.clone()
-            let repeatX = 1, repeatY = 1
-            if (isGroutComposited) {
-              texClone.wrapS = texClone.wrapT = THREE.ClampToEdgeWrapping
-              texClone.repeat.set(1, 1)
-            } else {
-              ;({ x: repeatX, y: repeatY } = computeRepeat(mesh, rawSource, glbUrl, sizeMultiplier, src.aspect))
-              texClone.wrapS = texClone.wrapT = THREE.RepeatWrapping
-              texClone.repeat.set(repeatX, repeatY)
-            }
-            texClone.needsUpdate = true
-            mesh.material.map = texClone
-            mesh.material.color = new THREE.Color(0xffffff)
-            owned.push(texClone)
-
-            if (derived) {
-              // The relief has to sit in exactly the same UV frame as the
-              // colour it came from, so each mesh gets its own clone carrying
-              // that mesh's repeat — a shared master would misregister on any
-              // zone whose meshes differ in real width.
-              const nrm = derived.normalMap.clone()
-              nrm.repeat.set(repeatX, repeatY)
-              nrm.needsUpdate = true
-              const rgh = derived.roughnessMap.clone()
-              rgh.repeat.set(repeatX, repeatY)
-              rgh.needsUpdate = true
-
-              mesh.material.normalMap = nrm
-              mesh.material.normalScale = new THREE.Vector2(finish.normalScale, finish.normalScale)
-              mesh.material.roughnessMap = rgh
-              owned.push(nrm, rgh)
-            } else {
-              mesh.material.normalMap = null
-              mesh.material.roughnessMap = null
-            }
-
-            ownedTextures.current.set(mesh, owned)
-          } else {
-            mesh.material.map = null
-            mesh.material.normalMap = null
-            mesh.material.roughnessMap = null
-            mesh.material.color = new THREE.Color('#5C3A22')
-          }
-
-          // three multiplies material.roughness by roughnessMap.g, so without
-          // compensating for the map's mean the whole range would come out
-          // glossier than its finish says.
-          mesh.material.roughness = derived
-            ? Math.min(1, finish.roughness / derived.roughnessMean)
-            : finish.roughness
-          mesh.material.metalness = finish.metalness
-          mesh.material.envMapIntensity = finish.envMapIntensity
-          if (mesh.material.isMeshPhysicalMaterial) {
-            mesh.material.clearcoat = finish.clearcoat
-            mesh.material.clearcoatRoughness = finish.clearcoatRoughness
-          }
-          mesh.material.emissive = isActive ? new THREE.Color('#C49A3C') : new THREE.Color('#000000')
-          mesh.material.emissiveIntensity = isActive ? 0.12 : 0
-          mesh.material.needsUpdate = true
-        }
-      }
-    }
-
-    applyTextures()
-    return () => { cancelled = true }
-    // Deliberately excludes `activeZone` — the emissive highlight is applied
-    // by the lightweight effect below instead of re-running the whole async
-    // texture load + grout composite just to change which zone is selected.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [zones, zoneMeshes, zoneTextures, tier, sizeMultiplier, groutEnabled, modelExtras.groutColor, glbUrl])
-
-  // Zone-selection highlight only — synchronous, no texture work.
-  useEffect(() => {
-    for (const zone of zones) {
+    const applyZone = async (zone) => {
       const meshes = zoneMeshes[zone.id]
-      if (!meshes) continue
-      const isActive = activeZone === zone.id
+      if (!meshes) return
+      const product = zoneTextures[zone.id]
+      const source = resolveZoneSource(product, tier)
+      const finish = getFinish(source?.finish)
+      const base = source ? await loadZoneTexture(source, 1, tier === 'lite' ? 512 : 1024) : null
+      if (cancelled) { base?.dispose(); return }
+      const aspect = source?.aspect || (base?.image?.width && base?.image?.height ? base.image.width / base.image.height : undefined)
+      // Colour printed into polished marble is not physical relief. Only
+      // textured finishes use the image-derived normal estimate.
+      const derived = base && source?.url && finish.normalScale > 0.1
+        ? deriveSurfaceMaps(base.image, source.url, tier === 'lite' ? 256 : 512)
+        : null
       for (const mesh of meshes) {
-        if (!mesh.material) continue
-        mesh.material.emissive.set(isActive ? '#C49A3C' : '#000000')
-        mesh.material.emissiveIntensity = isActive ? 0.12 : 0
-        mesh.material.needsUpdate = true
+        const material = mesh.material
+        const previous = ownedTextures.get(mesh) || []
+        const owned = []
+        if (!product) {
+          for (const [key, value] of Object.entries(mesh.userData.tileBaseline)) {
+            if (value?.isColor || value?.isVector2) material[key].copy(value)
+            else material[key] = value
+          }
+          configureTileSurface(material, { enabled: false })
+          material.needsUpdate = true
+          ownedTextures.delete(mesh)
+          previous.forEach((texture) => texture.dispose())
+          continue
+        }
+        if (base) {
+          const repeat = computeTileRepeat(mesh, product, sizeMultiplier, aspect)
+          const map = base.clone()
+          map.wrapS = map.wrapT = THREE.RepeatWrapping
+          map.repeat.set(repeat.x, repeat.y)
+          map.needsUpdate = true
+          material.map = map
+          material.color.set('#ffffff')
+          owned.push(map)
+          if (derived) {
+            const normal = derived.normalMap.clone()
+            const rough = derived.roughnessMap.clone()
+            for (const texture of [normal, rough]) {
+              texture.repeat.copy(map.repeat)
+              texture.flipY = map.flipY
+              texture.needsUpdate = true
+            }
+            material.normalMap = normal
+            material.normalScale.set(finish.normalScale, finish.normalScale)
+            material.roughnessMap = rough
+            owned.push(normal, rough)
+          } else {
+            material.normalMap = null
+            material.roughnessMap = null
+          }
+          configureTileSurface(material, {
+            tileSizeMM: getTileSizeMM(product, aspect).map((dimension) => dimension / sizeMultiplier),
+            groutColor: groutEnabled ? modelExtras.groutColor || '#c9c5bd' : '#c9c5bd',
+            enabled: zone.id !== 'nosing' && zone.id !== 'counterTop',
+          })
+        } else {
+          material.map = null
+          material.normalMap = null
+          material.roughnessMap = null
+          material.color.set('#d6d0c5')
+        }
+        material.roughness = derived ? Math.min(1, finish.roughness / derived.roughnessMean) : finish.roughness
+        material.metalness = 0
+        material.envMapIntensity = finish.envMapIntensity
+        material.clearcoat = finish.clearcoat
+        material.clearcoatRoughness = finish.clearcoatRoughness
+        // Selection is communicated by the picker, preserving the tile colour.
+        material.emissive.set('#000000')
+        material.emissiveIntensity = 0
+        material.needsUpdate = true
+        ownedTextures.set(mesh, owned)
+        previous.forEach((texture) => texture.dispose())
       }
+      base?.dispose()
     }
-  }, [zones, zoneMeshes, activeZone])
+    Promise.all(zones.map(applyZone)).catch((error) => {
+      if (!cancelled) console.warn('[Visualizer] Could not apply tile material', error)
+    })
+    return () => { cancelled = true }
+  }, [zones, zoneMeshes, zoneTextures, ownedTextures, tier, sizeMultiplier, groutEnabled, modelExtras.groutColor])
 
-  // Fixture visibility toggles (PRD §4.2–§4.6). The GLB ships fixture meshes
-  // (shower_fixture, wc_fixture, *_nosing, faucet_*, vanity_light) that the
-  // UI toggles via modelExtras. Hide/show them by name pattern.
   useEffect(() => {
-    const { showShower, showWC, showNosing, showFaucet, showVanityLight } = modelExtras
-    cloned.traverse((obj) => {
-      if (obj.type !== 'Mesh') return
-      const name = (obj.name || '').toLowerCase()
-      if (name.includes('shower')) obj.visible = showShower !== false
-      else if (name.includes('wc')) obj.visible = showWC !== false
+    const { showShower, showWC, showNosing, showFaucet, showVanityLight, basinStyle } = modelExtras
+    root.traverse((obj) => {
+      if (!obj.isMesh || obj.userData.replaced) return
+      const name = obj.name.toLowerCase()
+      const fixture = obj.userData.fixture
+      if (fixture === 'shower' || name.includes('shower')) obj.visible = showShower !== false
+      else if (fixture === 'wc' || name.includes('wc')) obj.visible = showWC !== false
       else if (name.includes('nosing')) obj.visible = showNosing !== false
       else if (name.includes('faucet')) obj.visible = showFaucet !== false
       else if (name.includes('vanity_light')) obj.visible = showVanityLight !== false
-    })
-  }, [cloned, modelExtras, modelExtras.showShower, modelExtras.showWC, modelExtras.showNosing, modelExtras.showFaucet, modelExtras.showVanityLight])
-
-  // Basin style (PRD §4.6): the vanity GLB ships three basin variants per
-  // position — basin_round_*, basin_rect_*, basin_vessel_*. Show only the
-  // set matching the selected style.
-  useEffect(() => {
-    const style = modelExtras.basinStyle
-    if (!style) return
-    cloned.traverse((obj) => {
-      if (obj.type !== 'Mesh') return
-      const name = (obj.name || '').toLowerCase()
-      if (!name.startsWith('basin_')) return
-      let show = false
-      if (name.startsWith('basin_round')) show = style === 'round'
-      else if (name.startsWith('basin_rect')) show = style === 'rect'
-      else if (name.startsWith('basin_vessel')) show = style === 'vessel'
-      obj.visible = show
-    })
-  }, [cloned, modelExtras, modelExtras.basinStyle])
-
-  // Wire up click handlers for zone selection
-  useEffect(() => {
-    cloned.traverse((obj) => {
-      if (obj.type !== 'Mesh') return
-      const name = obj.name || ''
-      const match = name.match(/__([^_]+)$/)
-      if (match && onZoneClick) {
-        const zoneId = match[1]
-        obj.userData.zoneId = zoneId
+      if (name.startsWith('basin_')) {
+        obj.visible = name.startsWith(`basin_${basinStyle || 'vessel'}`)
       }
-    })
-  }, [cloned, onZoneClick])
-
-  // Model D layout switching — toggle visibility of mesh groups
-  useEffect(() => {
-    if (!layout) return
-    cloned.traverse((obj) => {
-      if (obj.type !== 'Mesh') return
-      const name = obj.name || ''
-      // Meshes prefixed with "wall_full_" = full layout
-      // "wall_bands_" = bands layout
-      // "wall_grid_" = grid layout
       const isFull = name.startsWith('wall_full')
       const isBands = name.startsWith('wall_bands')
       const isGrid = name.startsWith('wall_grid')
-
       if (isFull || isBands || isGrid) {
-        obj.visible = (layout === 'full' && isFull) ||
-                      (layout === 'bands' && isBands) ||
-                      (layout === 'grid' && isGrid)
+        obj.visible = (layout === 'full' && isFull) || (layout === 'bands' && isBands) || (layout === 'grid' && isGrid)
       }
     })
-  }, [cloned, layout])
+  }, [root, layout, modelExtras])
 
-  const handleClick = (e) => {
-    if (!onZoneClick) return
-    e.stopPropagation()
-    const zoneId = e.object?.userData?.zoneId
-    if (zoneId) onZoneClick(zoneId)
-  }
-
+  // A neutral shadow receiver places the room on a stable studio surface.
+  const groundY = glbUrl.includes('feature-wall') ? -1.135 : -0.045
   return (
-    <group ref={groupRef} onClick={handleClick}>
-      <primitive object={cloned} />
+    <group onClick={(event) => {
+      const zone = event.object?.userData?.zoneId
+      if (zone && onZoneClick) { event.stopPropagation(); onZoneClick(zone) }
+    }}>
+      <primitive object={root} />
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, groundY, 0]} receiveShadow>
+        <circleGeometry args={[16, 64]} />
+        <meshStandardMaterial color="#c7c0b5" roughness={1} metalness={0} />
+      </mesh>
     </group>
   )
 }

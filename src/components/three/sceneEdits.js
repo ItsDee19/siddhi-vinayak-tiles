@@ -133,6 +133,7 @@ function addJets(root, spec) {
     // Flags this mesh as ours so GLBModel skips it when fetching the
     // Blender-baked AO atlas — there is no bake for geometry we invented.
     jet.userData.generated = true
+    jet.userData.ownedGeometry = true
     jet.position.set(x, y, z)
     // Lay the cylinder on its side facing the tub's centre, so the flat face
     // reads as a nozzle set into the wall rather than a disc on the floor.

@@ -2,7 +2,7 @@ import Icon from '../Icons'
 import { useState } from 'react'
 import { business } from '../../data/siteConfig'
 
-// Reset Camera / Save Preview (screenshot PNG) / Ask on WhatsApp.
+// Reset design / Save Preview (screenshot PNG) / Ask on WhatsApp.
 // Also renders camera-preset buttons when ≥2 presets exist.
 // Also renders model-specific controls (PRD §4.5 / §4.6) when `modelControls` is set:
 //   - 'layout'      : Full / Bands / Grid radio
@@ -55,18 +55,20 @@ export default function ControlBar({
   return (
     <div className="space-y-3">
       {hasMultiplePresets && (
-        <div className="flex flex-wrap gap-1">
-          {presetEntries.map(([name, _]) => (
+        <div className="flex flex-wrap gap-1" role="group" aria-label="Camera views">
+          {presetEntries.map(([name, preset]) => (
             <button
               key={name}
+              type="button"
+              aria-pressed={activePreset === name}
               onClick={() => onPresetChange?.(name)}
-              className={`rounded-btn px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wider transition-all ${
+              className={`min-h-10 rounded-btn px-3 py-2 text-xs font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold ${
                 activePreset === name
                   ? 'bg-gold/20 text-gold'
                   : 'bg-white/5 text-sand/70 hover:bg-white/10'
               }`}
             >
-              {name}
+              {preset.label || name}
             </button>
           ))}
         </div>
@@ -217,8 +219,8 @@ export default function ControlBar({
 
       {/* Standard controls */}
       <div className="flex flex-wrap items-center gap-2 border-t border-white/5 pt-3">
-        <button onClick={onReset} className="btn-outline px-4 py-2 text-xs">
-          <Icon name="compass" className="h-4 w-4" /> Reset
+        <button onClick={onReset} className="btn-outline px-4 py-2 text-xs" title="Restore the starter tiles, fixtures and camera view">
+          <Icon name="compass" className="h-4 w-4" /> Reset design
         </button>
         <button onClick={onShot} disabled={busy} className="btn-outline px-4 py-2 text-xs">
           <Icon name="search" className="h-4 w-4" /> {busy ? 'Saving…' : 'Save Preview'}

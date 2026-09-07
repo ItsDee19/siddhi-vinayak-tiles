@@ -66,6 +66,42 @@ export function getMaterialTexture(swatch, repeat = 1, size = 512) {
 
 const loader = new THREE.TextureLoader()
 const urlCache = new Map()
+const pendingUrls = new Map()
+
+function loadMasterTexture(url) {
+  if (urlCache.has(url)) return Promise.resolve(urlCache.get(url))
+  if (pendingUrls.has(url)) return pendingUrls.get(url).promise
+  const request = { cancelled: false, texture: null, reject: null, promise: null }
+  request.promise = new Promise((resolve, reject) => {
+    request.reject = reject
+    request.texture = loader.load(url, (texture) => {
+      if (request.cancelled) { texture.dispose(); THREE.Cache.remove(url); return }
+      urlCache.set(url, texture)
+      resolve(texture)
+    }, undefined, () => reject(new Error('The tile photo could not be loaded.')))
+  })
+  pendingUrls.set(url, request)
+  const finish = () => { if (pendingUrls.get(url) === request) pendingUrls.delete(url) }
+  request.promise.then(finish, finish)
+  return request.promise
+}
+
+// Call only after no saved room references this upload. Disposing a cached
+// master does not mutate the clones still mounted during React's cleanup.
+// A request released before image decoding finishes cannot re-enter the cache.
+export function releaseCustomTexture(url) {
+  if (typeof url !== 'string' || !url.startsWith('blob:')) return
+  const pending = pendingUrls.get(url)
+  if (pending) {
+    pending.cancelled = true
+    pending.reject(new Error('This tile photo is no longer selected.'))
+    pending.texture?.dispose()
+    pendingUrls.delete(url)
+  }
+  urlCache.get(url)?.dispose()
+  urlCache.delete(url)
+  THREE.Cache.remove(url)
+}
 
 function isUrlSource(src) {
   return src && typeof src.url === 'string'
@@ -97,44 +133,21 @@ export function disposeTexture(tex) {
 
 // repeat may be a single number (isotropic, existing callers) or left
 // undefined and set by the caller afterwards via tex.repeat.set(x, y).
-export function loadZoneTexture(source, repeatX = 1, size = 512, repeatY = repeatX) {
-  return new Promise((resolve) => {
-    if (isUrlSource(source)) {
-      const url = source.url
-      if (urlCache.has(url)) {
-        const cached = urlCache.get(url)
-        const out = cached.clone()
-        applyTexProps(out, repeatX, repeatY)
-        resolve(out)
-        return
-      }
-      loader.load(
-        url,
-        (tex) => {
-          urlCache.set(url, tex)
-          const out = tex.clone()
-          applyTexProps(out, repeatX, repeatY)
-          resolve(out)
-        },
-        undefined,
-        () => {
-          // On URL load failure, fall back to procedural with a neutral grey
-          resolve(
-            getMaterialTexture(
-              source.fallback || { type: 'ceramic', color: '#cfc6b4' },
-              repeatX,
-              size,
-            ),
-          )
-        },
-      )
-    } else if (source) {
-      // Procedural swatch
-      resolve(getMaterialTexture(source, repeatX, size))
-    } else {
-      resolve(null)
+export async function loadZoneTexture(source, repeatX = 1, size = 512, repeatY = repeatX, { rejectOnError = false } = {}) {
+  if (isUrlSource(source)) {
+    try {
+      const cached = await loadMasterTexture(source.url)
+      const out = cached.clone()
+      applyTexProps(out, repeatX, repeatY)
+      return out
+    } catch (error) {
+      if (rejectOnError) throw error
+      // Legacy decorative surfaces retain their procedural fallback. Product
+      // previews opt into rejection so a grey substitute cannot be mislabeled.
+      return getMaterialTexture(source.fallback || { type: 'ceramic', color: '#cfc6b4' }, repeatX, size).clone()
     }
-  })
+  }
+  return source ? getMaterialTexture(source, repeatX, size).clone() : null
 }
 
 // If the source has a `textureUrl` (catalogue product), convert to a URL source.
@@ -168,23 +181,9 @@ export function resolveZoneSource(product, tier = 'full') {
 
 // Fetch the raw (cached) base texture for a source without applying repeat.
 // Used by the grout compositor, which needs the underlying image.
-export function loadRawTexture(source) {
-  return new Promise((resolve) => {
-    if (isUrlSource(source)) {
-      const url = source.url
-      if (urlCache.has(url)) { resolve(urlCache.get(url)); return }
-      loader.load(
-        url,
-        (tex) => { urlCache.set(url, tex); resolve(tex) },
-        undefined,
-        () => resolve(null),
-      )
-    } else if (source) {
-      resolve(getMaterialTexture(source, 1, 512))
-    } else {
-      resolve(null)
-    }
-  })
+export async function loadRawTexture(source) {
+  if (isUrlSource(source)) return loadMasterTexture(source.url).catch(() => null)
+  return source ? getMaterialTexture(source, 1, 512) : null
 }
 
 // Compose a tile texture with grout lines drawn between repeated tiles.

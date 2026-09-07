@@ -53,12 +53,13 @@ export function deriveSurfaceMaps(image, key, size = 512) {
   src.width = W
   src.height = H
   const sctx = src.getContext('2d', { willReadFrequently: true })
+  let data
   try {
     sctx.drawImage(image, 0, 0, W, H)
+    data = sctx.getImageData(0, 0, W, H).data
   } catch {
     return null // tainted canvas (cross-origin source) — skip silently
   }
-  const data = sctx.getImageData(0, 0, W, H).data
   const maps = computeSurfaceMaps(data, W, H)
 
   const normal = document.createElement('canvas')

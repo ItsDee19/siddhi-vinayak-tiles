@@ -6,9 +6,9 @@ const Visualizer = lazy(() => import('./Visualizer'))
 
 const HEADING = {
   eyebrow: 'See It Before You Buy',
-  title: 'Interactive Tile Visualizer',
+  title: 'Your tiles. A real sense of home.',
   subtitle:
-    'Pick a model, then assign tiles to each surface zone. Drag to orbit, scroll to zoom — preview the look before you visit.',
+    'Explore five spaces, choose a surface, and see how your favourite tiles work at room scale.',
 }
 
 // Lightweight placeholder shown before (and while) the real Visualizer loads.
@@ -25,7 +25,7 @@ function Placeholder({ innerRef }) {
 }
 
 // Defers the entire Visualizer — and the ~300KB gzip three.js / @react-three
-// chunk + all 5 GLB model preloads it pulls in — until this section is near
+// chunk and native room factories — until this section is near
 // the viewport. Keeps the heavy 3D engine off the critical path for anyone
 // who never scrolls this far, and off mobile connections until it's needed.
 export default function VisualizerLazy() {

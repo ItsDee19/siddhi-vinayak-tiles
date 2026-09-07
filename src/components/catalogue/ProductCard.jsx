@@ -1,5 +1,6 @@
 import SwatchThumb from '../ui/SwatchThumb'
 import Icon from '../Icons'
+import { canPreviewProduct } from '../../utils/visualizerPreview'
 
 // Convert catalogue product → shape SwatchThumb understands
 function asSwatch(p) {
@@ -14,9 +15,7 @@ function asSwatch(p) {
 }
 
 export default function ProductCard({ product, onOpen, onViewIn3D }) {
-  // The visualizer uses procedural textures derived from color/type when no
-  // textureUrl is present, so every product can be previewed in 3D.
-  const has3D = ['Floor', 'Wall', 'Both', 'Countertop'].includes(product.surface)
+  const has3D = canPreviewProduct(product)
   return (
     // Not a <button> — it contains a nested "View in 3D" button below, and
     // a <button> can't validly contain another <button> (invalid HTML,
@@ -27,6 +26,7 @@ export default function ProductCard({ product, onOpen, onViewIn3D }) {
       tabIndex={0}
       onClick={() => onOpen(product)}
       onKeyDown={(e) => {
+        if (e.target !== e.currentTarget) return
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault()
           onOpen(product)
@@ -56,6 +56,7 @@ export default function ProductCard({ product, onOpen, onViewIn3D }) {
         </div>
         {has3D && (
           <button
+            type="button"
             onClick={(e) => { e.stopPropagation(); onViewIn3D(product) }}
             className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-gold hover:underline"
           >

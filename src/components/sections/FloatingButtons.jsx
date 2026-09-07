@@ -11,10 +11,18 @@ export default function FloatingButtons() {
   const reduce = useReducedMotion()
 
   useEffect(() => {
-    const onScroll = () => setShow(window.scrollY > window.innerHeight * 0.6)
+    const onScroll = () => {
+      const preview = document.getElementById('visualizer')?.getBoundingClientRect()
+      const browsingRoom = window.innerWidth < 1024 && preview && preview.top < window.innerHeight && preview.bottom > 0
+      setShow(window.scrollY > window.innerHeight * 0.6 && !browsingRoom)
+    }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    window.addEventListener('resize', onScroll)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
   }, [])
 
   const waHref = `${business.whatsapp}?text=${encodeURIComponent(
