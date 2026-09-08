@@ -1,4 +1,4 @@
-import { useMemo, useRef } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 import { getMaterialTexture } from '../../utils/threeTextures'
@@ -36,16 +36,24 @@ const WALL_SWATCHES = [
   'marble-beige',
 ]
 
-function Tile({ position, swatch, index }) {
+function Tile({ position, swatch, index, reduce }) {
   const ref = useRef()
   // Hero tiles are small on screen — a 256px texture is plenty and ~4x cheaper.
   const texture = useMemo(() => getMaterialTexture(swatch, 1, 256), [swatch])
-  const phase = useMemo(() => Math.random() * Math.PI * 2, [])
-  const reduce = useReducedMotion()
+  const phase = index * 2.399963
+  const elapsed = useRef(0)
 
-  useFrame((state) => {
+  useEffect(() => {
+    if (!reduce || !ref.current) return
+    ref.current.position.z = position[2]
+    ref.current.rotation.set(0, 0, 0)
+  }, [reduce, position])
+
+  useFrame((state, delta) => {
     if (reduce || !ref.current) return
-    const t = state.clock.elapsedTime
+    // Accumulate active time only, so resuming a hidden hero never jumps.
+    elapsed.current += Math.min(delta, 0.05)
+    const t = elapsed.current
     // gentle bobbing drift
     ref.current.position.z = position[2] + Math.sin(t * 0.6 + phase) * 0.18
     ref.current.rotation.x = Math.sin(t * 0.4 + phase) * 0.04
@@ -62,9 +70,9 @@ function Tile({ position, swatch, index }) {
   )
 }
 
-function Wall({ scrollRef }) {
+function Wall({ scrollRef, reduce }) {
   const group = useRef()
-  const reduce = useReducedMotion()
+  const progress = useRef(0)
 
   const tiles = useMemo(() => {
     const arr = []
@@ -89,22 +97,35 @@ function Wall({ scrollRef }) {
     return arr
   }, [])
 
-  useFrame((state) => {
+  useEffect(() => {
+    if (!reduce || !group.current) return
+    group.current.rotation.set(0.05, 0, 0)
+    group.current.scale.setScalar(1)
+    group.current.position.z = 0
+    group.current.children.forEach((child) => { child.position.y = child.userData.baseY })
+    progress.current = 0
+  }, [reduce])
+
+  useFrame((state, delta) => {
     if (reduce || !group.current) return
     const p = state.pointer // normalized -1..1
     // parallax tilt toward pointer
-    group.current.rotation.y = THREE.MathUtils.lerp(
+    const dt = Math.min(delta, 0.05)
+    group.current.rotation.y = THREE.MathUtils.damp(
       group.current.rotation.y,
       p.x * 0.35,
-      0.05,
+      4,
+      dt,
     )
-    group.current.rotation.x = THREE.MathUtils.lerp(
+    group.current.rotation.x = THREE.MathUtils.damp(
       group.current.rotation.x,
       -p.y * 0.25,
-      0.05,
+      4,
+      dt,
     )
     // scroll spreads tiles apart + pushes back
-    const s = scrollRef.current
+    progress.current = THREE.MathUtils.damp(progress.current, scrollRef.current, 8, dt)
+    const s = progress.current
     group.current.scale.setScalar(1 + s * 0.45)
     group.current.position.z = -s * 6
     group.current.children.forEach((child, idx) => {
@@ -121,7 +142,7 @@ function Wall({ scrollRef }) {
           position={t.base}
           ref={(o) => o && (o.userData.baseY = t.base[1])}
         >
-          <Tile position={[0, 0, 0]} swatch={t.swatch} index={t.index} />
+          <Tile position={[0, 0, 0]} swatch={t.swatch} index={t.index} reduce={reduce} />
         </group>
       ))}
     </group>
@@ -129,10 +150,11 @@ function Wall({ scrollRef }) {
 }
 
 export default function TileWall3D({ scrollRef, frameloop = 'always' }) {
+  const reduce = useReducedMotion()
   // scrollRef is a ref holding 0..1 hero scroll progress, updated by the parent.
   return (
     <Canvas
-      frameloop={frameloop}
+      frameloop={frameloop === 'never' ? 'never' : reduce ? 'demand' : frameloop}
       dpr={[1, 1.8]}
       camera={{ position: [0, 0, 9], fov: 42 }}
       gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
@@ -142,7 +164,7 @@ export default function TileWall3D({ scrollRef, frameloop = 'always' }) {
       <ambientLight intensity={0.6} />
       <directionalLight position={[5, 6, 8]} intensity={1.5} color="#f3e6cf" />
       <directionalLight position={[-6, -2, 4]} intensity={0.5} color="#b08d4f" />
-      <Wall scrollRef={scrollRef} />
+      <Wall scrollRef={scrollRef} reduce={reduce} />
     </Canvas>
   )
 }

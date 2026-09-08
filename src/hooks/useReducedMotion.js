@@ -4,7 +4,8 @@ import { useEffect, useState } from 'react'
 // components. Returns true when the user has requested reduced motion.
 // SSR-safe and listener-updating (responds to OS setting changes live).
 export function useReducedMotion() {
-  const [reduced, setReduced] = useState(false)
+  const [reduced, setReduced] = useState(() => typeof window !== 'undefined'
+    && Boolean(window.matchMedia?.('(prefers-reduced-motion: reduce)').matches))
 
   useEffect(() => {
     if (typeof window === 'undefined' || !window.matchMedia) return

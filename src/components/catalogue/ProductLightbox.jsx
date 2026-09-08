@@ -1,8 +1,11 @@
-import { motion } from 'framer-motion'
+import { useEffect, useId, useRef } from 'react'
+import { createPortal } from 'react-dom'
+import { motion, useReducedMotion } from 'framer-motion'
 import Icon from '../Icons'
 import SwatchThumb from '../ui/SwatchThumb'
 import { business } from '../../data/siteConfig'
 import { canPreviewProduct } from '../../utils/visualizerPreview'
+import { MOTION_DURATION, MOTION_EASE } from '../../utils/motion'
 
 function asSwatch(p) {
   return {
@@ -16,40 +19,96 @@ function asSwatch(p) {
 }
 
 export default function ProductLightbox({ product, onClose, onViewIn3D }) {
-  if (!product) return null
+  const titleId = useId()
+  const dialogRef = useRef(null)
+  const closeRef = useRef(null)
+  const afterCloseRef = useRef(null)
+  const reduceMotion = useReducedMotion()
+
+  useEffect(() => {
+    const dialog = dialogRef.current
+    const trigger = document.activeElement
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    dialog.showModal()
+    closeRef.current?.focus({ preventScroll: true })
+
+    // AnimatePresence retains the native modal until its exit finishes. The
+    // background stays inert and scroll-locked for the whole transition.
+    return () => {
+      dialog.close()
+      document.body.style.overflow = previousOverflow
+      if (afterCloseRef.current) {
+        afterCloseRef.current()
+      } else if (trigger?.isConnected) {
+        trigger.focus({ preventScroll: true })
+      }
+    }
+  }, [])
+
   const waText = encodeURIComponent(
     `Hi! I'd like to know more about "${product.name}" (${product.size}, ${product.finish}). Is it available?`
   )
   const waHref = `${business.whatsapp}?text=${waText}`
 
-  return (
-    <motion.div
+  return createPortal(
+    <motion.dialog
+      ref={dialogRef}
+      aria-labelledby={titleId}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      onClick={onClose}
-      className="fixed inset-0 z-[60] flex items-center justify-center bg-charcoal/90 p-4 backdrop-blur-sm"
+      transition={{ duration: reduceMotion ? 0 : MOTION_DURATION.fast, ease: MOTION_EASE }}
+      onCancel={(event) => { event.preventDefault(); onClose() }}
+      onKeyDown={(event) => {
+        if (event.key !== 'Tab') return
+        const dialog = event.currentTarget
+        const controls = Array.from(dialog.querySelectorAll('a[href], button:not([disabled]), [tabindex]'))
+          .filter((element) => element.tabIndex >= 0 && !element.matches(':disabled') &&
+            element.getClientRects().length > 0 && window.getComputedStyle(element).visibility !== 'hidden')
+        const first = controls[0]
+        const last = controls.at(-1)
+        if (!first) {
+          event.preventDefault()
+          return
+        }
+        // Some browsers hand focus to their chrome at the modal's Tab edges.
+        // Keep that cycle within the visible product actions instead.
+        if (event.shiftKey && (document.activeElement === first || document.activeElement === dialog)) {
+          event.preventDefault()
+          last.focus({ preventScroll: true })
+        } else if (!event.shiftKey && (document.activeElement === last || document.activeElement === dialog)) {
+          event.preventDefault()
+          first.focus({ preventScroll: true })
+        }
+      }}
+      onClick={(event) => { if (event.target === event.currentTarget) onClose() }}
+      className="fixed inset-0 m-0 h-dvh max-h-none w-screen max-w-none items-center justify-center overflow-hidden border-0 bg-charcoal/90 p-4 text-cream open:flex backdrop:bg-transparent"
     >
-      <button
-        onClick={onClose}
-        aria-label="Close"
-        className="absolute right-5 top-5 grid h-11 w-11 place-items-center rounded-full bg-white/10 text-cream hover:bg-white/20"
-      >
-        <Icon name="close" className="h-5 w-5" />
-      </button>
       <motion.div
-        initial={{ scale: 0.92, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        exit={{ scale: 0.92, opacity: 0 }}
-        onClick={(e) => e.stopPropagation()}
-        className="w-full max-w-3xl overflow-hidden rounded-card border border-white/10 bg-charcoal-800 shadow-card"
+        initial={{ y: reduceMotion ? 0 : 12 }}
+        animate={{ y: 0 }}
+        exit={{ y: reduceMotion ? 0 : 8 }}
+        transition={{ duration: reduceMotion ? 0 : MOTION_DURATION.base, ease: MOTION_EASE }}
+        className="max-h-full w-full max-w-3xl overflow-y-auto overscroll-contain rounded-card bg-charcoal-800 text-left shadow-card"
       >
+        <div className="sticky top-0 z-10 flex items-center justify-between gap-4 border-b border-white/10 bg-charcoal-800 px-5 py-3 sm:px-6">
+          <h3 id={titleId} className="font-display text-xl text-cream sm:text-2xl">{product.name}</h3>
+          <button
+            ref={closeRef}
+            type="button"
+            onClick={onClose}
+            aria-label="Close product details"
+            className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-white/10 text-cream transition-colors hover:bg-white/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+          >
+            <Icon name="close" className="h-5 w-5" />
+          </button>
+        </div>
         <SwatchThumb swatch={asSwatch(product)} className="aspect-video w-full" eager size={640} />
         <div className="p-6">
           <span className="text-xs uppercase tracking-wider text-gold">
             {product.category} · {product.subCategory}
           </span>
-          <h3 className="mt-1 font-display text-2xl text-cream">{product.name}</h3>
           <dl className="mt-5 grid grid-cols-2 gap-4 text-sm sm:grid-cols-4">
             <div>
               <dt className="text-[10px] uppercase tracking-wider text-sand/60">Size</dt>
@@ -82,13 +141,21 @@ export default function ProductLightbox({ product, onClose, onViewIn3D }) {
               <Icon name="whatsapp" className="h-4 w-4" filled /> Ask for this product
             </a>
             {canPreviewProduct(product) && (
-              <button type="button" onClick={() => onViewIn3D(product)} className="btn-outline">
+              <button
+                type="button"
+                onClick={() => {
+                  afterCloseRef.current = () => onViewIn3D(product)
+                  onClose()
+                }}
+                className="btn-outline"
+              >
                 <Icon name="compass" className="h-4 w-4" /> View in 3D
               </button>
             )}
           </div>
         </div>
       </motion.div>
-    </motion.div>
+    </motion.dialog>,
+    document.body,
   )
 }

@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import SectionHeading from '../ui/SectionHeading'
 import CategoryTabs from '../catalogue/CategoryTabs'
 import FilterGroup from '../catalogue/FilterGroup'
@@ -20,6 +20,9 @@ import {
 } from '../../utils/productSearch'
 import { COLOR_SWATCHES } from '../../data/colorFamilies'
 import { publishVisualizerSelection } from '../../utils/visualizerPreview'
+import { subscribeCatalogueCategory } from '../../utils/catalogueSelection'
+import { scrollToSection } from '../../utils/sectionNavigation'
+import { MOTION_DURATION, MOTION_EASE } from '../../utils/motion'
 
 const PAGE_SIZE = 24
 
@@ -44,12 +47,34 @@ const PAGE_SIZE = 24
 //
 // Counts on each pill are contextual: they are computed against every OTHER
 // active filter, so a pill's number is what you would actually get by clicking
-// it. Options that would return nothing are hidden entirely.
+// it. Stocked options retain a stable order as counts change; unavailable
+// combinations are disabled, while active filters can always be removed.
 // ---------------------------------------------------------------------------
 
 const SURFACE_OPTIONS = ['Floor', 'Wall', 'Countertop']
 
+// Build the displayed inventory once so filtering never moves a customer's
+// next target out from under their pointer or keyboard focus.
+const stockCounts = { color: {}, size: {}, finish: {}, collection: {} }
+for (const product of products) {
+  const values = {
+    color: colorOf(product),
+    size: normalizeSize(product.size),
+    finish: product.finish,
+    collection: collectionOf(product)?.id,
+  }
+  for (const [facet, value] of Object.entries(values)) {
+    if (value) stockCounts[facet][value] = (stockCounts[facet][value] || 0) + 1
+  }
+}
+const stockedValues = Object.fromEntries(Object.entries(stockCounts).map(([facet, counts]) => [
+  facet,
+  Object.keys(counts).sort((a, b) => counts[b] - counts[a]),
+]))
+
 export default function Catalogue() {
+  const reduceMotion = useReducedMotion()
+  const searchRef = useRef(null)
   const [cat, setCat] = useState('all')
   const [query, setQuery] = useState('')
   const [selectedColors, setSelectedColors] = useState([])
@@ -59,28 +84,23 @@ export default function Catalogue() {
   const [selectedCollections, setSelectedCollections] = useState([])
 
   const [open, setOpen] = useState(null)
-  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE)
+  const [page, setPage] = useState({ results: null, count: PAGE_SIZE })
 
-  const clearAllFilters = () => {
+  const clearAllFilters = (focusSearch = true) => {
     setQuery('')
     setSelectedColors([])
     setSelectedSurfaces([])
     setSelectedSizes([])
     setSelectedFinishes([])
     setSelectedCollections([])
+    if (focusSearch) searchRef.current?.focus({ preventScroll: true })
   }
 
-  // Listen for "filter-catalogue" events from the ProductCategories section —
-  // clicking a category card scrolls here and pre-selects that filter.
-  useEffect(() => {
-    const handler = (e) => {
-      if (!e.detail) return
-      setCat(e.detail)
-      clearAllFilters()
-    }
-    window.addEventListener('filter-catalogue', handler)
-    return () => window.removeEventListener('filter-catalogue', handler)
-  }, [])
+  // The bridge retains a category chosen before this lazy section mounts.
+  useEffect(() => subscribeCatalogueCategory((category) => {
+    setCat(category)
+    clearAllFilters(false)
+  }), [])
 
   // One predicate per facet, so counts can be computed with a single facet
   // deliberately left out (see facetCounts below).
@@ -115,51 +135,48 @@ export default function Catalogue() {
     const pool = matchAllExcept('color')
     const counts = {}
     for (const p of pool) { const c = colorOf(p); if (c) counts[c] = (counts[c] || 0) + 1 }
-    return Object.keys(COLOR_SWATCHES)
+    return stockedValues.color
       .map((c) => ({ value: c, label: c, count: counts[c] || 0, dot: COLOR_SWATCHES[c] }))
-      .sort((a, b) => b.count - a.count)
   }, [matchAllExcept])
 
   const surfaceOptions = useMemo(() => {
     const pool = matchAllExcept('surface')
     const counts = {}
     for (const p of pool) for (const s of surfacesOfProduct(p)) counts[s] = (counts[s] || 0) + 1
-    return SURFACE_OPTIONS.map((s) => ({ value: s, label: s, count: counts[s] || 0 }))
+    return SURFACE_OPTIONS.filter((s) => products.some((p) => surfacesOfProduct(p).includes(s)))
+      .map((s) => ({ value: s, label: s, count: counts[s] || 0 }))
   }, [matchAllExcept])
 
   const sizeOptions = useMemo(() => {
     const pool = matchAllExcept('size')
     const counts = {}
     for (const p of pool) { const s = normalizeSize(p.size); if (s) counts[s] = (counts[s] || 0) + 1 }
-    return Object.entries(counts)
-      .map(([value, count]) => {
+    return stockedValues.size
+      .map((value) => {
         const sample = products.find((p) => normalizeSize(p.size) === value)
         const trade = sizeTrade(sample?.size)
         return {
           value,
           label: trade ? `${sizeLabel(sample?.size)} · ${trade}` : sizeLabel(sample?.size),
-          count,
+          count: counts[value] || 0,
         }
       })
-      .sort((a, b) => b.count - a.count)
   }, [matchAllExcept])
 
   const finishOptions = useMemo(() => {
     const pool = matchAllExcept('finish')
     const counts = {}
     for (const p of pool) if (p.finish) counts[p.finish] = (counts[p.finish] || 0) + 1
-    return Object.entries(counts)
-      .map(([value, count]) => ({ value, label: value, count }))
-      .sort((a, b) => b.count - a.count)
+    return stockedValues.finish
+      .map((value) => ({ value, label: value, count: counts[value] || 0 }))
   }, [matchAllExcept])
 
   const collectionOptions = useMemo(() => {
     const pool = matchAllExcept('collection')
     const counts = {}
     for (const p of pool) { const c = collectionOf(p); if (c) counts[c.id] = (counts[c.id] || 0) + 1 }
-    return Object.entries(counts)
-      .map(([value, count]) => ({ value, label: collectionLabel(value), count }))
-      .sort((a, b) => b.count - a.count)
+    return stockedValues.collection
+      .map((value) => ({ value, label: collectionLabel(value), count: counts[value] || 0 }))
   }, [matchAllExcept])
 
   // Only offer category tabs the shop actually stocks.
@@ -174,15 +191,15 @@ export default function Catalogue() {
 
   // Rendering all 550+ products at once is a real DOM/layout cost on low-end
   // mobile CPUs, so only mount PAGE_SIZE at a time and grow with "Load more".
-  // Reset back to the first page whenever the result set changes.
-  useEffect(() => { setVisibleCount(PAGE_SIZE) }, [filtered])
-
+  // Derive the reset synchronously, avoiding a frame of the old expanded grid
+  // followed by a second layout jump after the filtering effect runs.
+  const visibleCount = page.results === filtered ? page.count : PAGE_SIZE
   const visible = filtered.slice(0, visibleCount)
   const hasMore = visibleCount < filtered.length
 
   const onViewIn3D = (p) => {
     if (!publishVisualizerSelection(p)) return
-    document.getElementById('visualizer')?.scrollIntoView({ behavior: 'smooth' })
+    scrollToSection('visualizer', { focus: true })
   }
 
   const toggle = (setter) => (value) =>
@@ -203,9 +220,7 @@ export default function Catalogue() {
         <div className="mt-12">
           <CategoryTabs active={cat} onChange={setCat} counts={categoryCounts} />
 
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
+          <div
             className="mt-6 flex flex-col gap-4 rounded-2xl border border-white/5 bg-charcoal-800/50 p-5 backdrop-blur-sm"
           >
             {/* Search first: it is the fastest path for anyone who already
@@ -216,30 +231,33 @@ export default function Catalogue() {
                 className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-sand/40"
               />
               <input
+                ref={searchRef}
                 type="search"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search by name, code or size — e.g. “Anilaz”, “gt-floor-c001”, “600x1200”"
                 aria-label="Search the catalogue"
-                className="w-full rounded-btn border border-white/10 bg-charcoal-900/60 py-2.5 pl-10 pr-9 text-sm text-cream placeholder:text-sand/40 focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold/40"
+                className="min-h-11 w-full rounded-btn border border-white/10 bg-charcoal-900/60 py-2.5 pl-10 pr-12 text-sm text-cream placeholder:text-sand focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold/40 [&::-webkit-search-cancel-button]:appearance-none"
               />
               {query && (
                 <button
-                  onClick={() => setQuery('')}
+                  type="button"
+                  onClick={() => { setQuery(''); searchRef.current?.focus({ preventScroll: true }) }}
                   aria-label="Clear search"
-                  className="absolute right-2.5 top-1/2 -translate-y-1/2 rounded-full p-1 text-sand/50 hover:bg-white/10 hover:text-cream"
+                  className="absolute right-0.5 top-1/2 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-btn text-sand hover:bg-white/10 hover:text-cream focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold"
                 >
                   <Icon name="close" className="h-3.5 w-3.5" />
                 </button>
               )}
             </div>
 
-            <div className="flex items-center justify-between">
+            <div className="flex min-h-9 items-center justify-between">
               <h3 className="text-sm font-semibold text-cream">Filters</h3>
               {activeFilterCount > 0 && (
                 <button
                   onClick={clearAllFilters}
-                  className="text-xs text-gold transition-colors hover:text-gold-light"
+                  type="button"
+                  className="min-h-9 text-xs text-gold transition-colors hover:text-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
                 >
                   Clear all ({activeFilterCount})
                 </button>
@@ -253,38 +271,38 @@ export default function Catalogue() {
               <FilterGroup label="Finish" options={finishOptions} selected={selectedFinishes} onToggle={toggle(setSelectedFinishes)} />
               <FilterGroup label="Range" options={collectionOptions} selected={selectedCollections} onToggle={toggle(setSelectedCollections)} />
             </div>
-          </motion.div>
+          </div>
         </div>
 
+        <p className="mt-6 text-sm text-sand" role="status" aria-atomic="true">
+          {filtered.length} {filtered.length === 1 ? 'product' : 'products'} found
+        </p>
         {filtered.length === 0 ? (
-          <div className="mt-10">
+          <div className="mt-5">
             <EmptyState onClear={() => { setCat('all'); clearAllFilters() }} />
           </div>
         ) : (
           <>
-            <motion.div layout className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              <AnimatePresence mode="popLayout">
-                {visible.map((p) => (
-                  <motion.div
-                    key={p.id}
-                    layout
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.9 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <ProductCard product={p} onOpen={setOpen} onViewIn3D={onViewIn3D} />
-                  </motion.div>
-                ))}
-              </AnimatePresence>
-            </motion.div>
+            <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {visible.map((p) => (
+                <motion.div
+                  key={p.id}
+                  initial={reduceMotion ? false : { opacity: 0.6, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: reduceMotion ? 0 : MOTION_DURATION.fast, ease: MOTION_EASE }}
+                >
+                  <ProductCard product={p} onOpen={setOpen} onViewIn3D={onViewIn3D} />
+                </motion.div>
+              ))}
+            </div>
             <div className="mt-8 flex flex-col items-center gap-2">
-              <p className="text-xs text-sand/60">
+              <p className="text-xs text-sand" role="status" aria-atomic="true">
                 Showing {visible.length} of {filtered.length} products
               </p>
               {hasMore && (
                 <button
-                  onClick={() => setVisibleCount((c) => c + PAGE_SIZE)}
+                  type="button"
+                  onClick={() => setPage({ results: filtered, count: visibleCount + PAGE_SIZE })}
                   className="btn-outline px-6 py-2.5 text-xs"
                 >
                   Load more
@@ -300,7 +318,7 @@ export default function Catalogue() {
           <ProductLightbox
             product={open}
             onClose={() => setOpen(null)}
-            onViewIn3D={(p) => { setOpen(null); onViewIn3D(p) }}
+            onViewIn3D={onViewIn3D}
           />
         )}
       </AnimatePresence>

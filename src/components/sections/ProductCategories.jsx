@@ -3,12 +3,13 @@ import Reveal from '../ui/Reveal'
 import TiltCard from '../ui/TiltCard'
 import SectionHeading from '../ui/SectionHeading'
 import { categories } from '../../data/products'
+import { publishCatalogueCategory } from '../../utils/catalogueSelection'
+import { scrollToSection } from '../../utils/sectionNavigation'
 
 // Clicking a category scrolls to the catalogue and pre-selects that filter.
 function goToCatalogue(id) {
-  window.dispatchEvent(new CustomEvent('filter-catalogue', { detail: id }))
-  const el = document.getElementById('catalogue')
-  if (el) el.scrollIntoView({ behavior: 'smooth' })
+  if (publishCatalogueCategory(id)) scrollToSection('catalogue', { focus: true })
+  else scrollToSection('contact', { focus: true })
 }
 
 export default function ProductCategories() {
@@ -18,15 +19,17 @@ export default function ProductCategories() {
         <SectionHeading
           eyebrow="What We Offer"
           title="Five Surfaces, One Roof"
-          subtitle="From everyday ceramic tiles to statement marble slabs — explore our complete range, then tap a category to browse the catalogue."
+          subtitle="Browse tiles and sanitaryware online, or ask our showroom team about marble, granite and quartz."
         />
 
         <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {categories.map((cat, i) => (
             <Reveal key={cat.id} delay={i * 0.07}>
                 <TiltCard
+                  as="button"
+                  type="button"
                   onClick={() => goToCatalogue(cat.id)}
-                className="group h-full cursor-pointer rounded-2xl"
+                className="group h-full w-full cursor-pointer rounded-2xl text-left"
               >
                 <div className="relative h-full overflow-hidden rounded-2xl border border-white/5 bg-gradient-to-b from-charcoal-700 to-charcoal-800 p-7 shadow-card transition-colors duration-300 group-hover:border-gold/30">
                   <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-gold/12 ring-1 ring-gold/25 transition-all duration-300 group-hover:bg-gold/20 group-hover:shadow-glow">
@@ -40,9 +43,9 @@ export default function ProductCategories() {
                     {cat.blurb}
                   </p>
 
-                  <span className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-gold transition-all duration-300 group-hover:gap-3">
-                    View in Catalogue
-                    <Icon name="arrowRight" className="h-4 w-4" />
+                  <span className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-gold">
+                    {['tiles', 'sanitaryware'].includes(cat.id) ? 'View in Catalogue' : 'Enquire at showroom'}
+                    <Icon name="arrowRight" className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
                   </span>
 
                   {/* number watermark */}

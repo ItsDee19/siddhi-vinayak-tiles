@@ -3,6 +3,7 @@ import Logo from '../Logo'
 import { business, navLinks } from '../../data/siteConfig'
 
 export default function Footer() {
+  const socials = business.socials.filter((social) => /^https?:\/\//.test(social.href || ''))
   return (
     <footer className="relative border-t border-white/5 bg-charcoal grain-overlay">
       <div className="container-px py-16">
@@ -67,18 +68,22 @@ export default function Footer() {
             </ul>
 
             {/* socials */}
-            <div className="mt-6 flex gap-3">
-              {business.socials.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  aria-label={s.label}
-                  className="grid h-10 w-10 place-items-center rounded-full border border-white/10 text-sand transition-colors hover:border-gold hover:text-gold"
-                >
-                  <Icon name={s.icon} className="h-5 w-5" />
-                </a>
-              ))}
-            </div>
+            {socials.length > 0 && (
+              <div className="mt-6 flex gap-3">
+                {socials.map((s) => (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={s.label}
+                    className="grid h-10 w-10 place-items-center rounded-full border border-white/10 text-sand transition-colors hover:border-gold hover:text-gold"
+                  >
+                    <Icon name={s.icon} className="h-5 w-5" />
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 

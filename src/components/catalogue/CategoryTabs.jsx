@@ -11,12 +11,14 @@ export default function CategoryTabs({ active, onChange, counts = {} }) {
 
   const items = [{ id: 'all', name: 'All' }, ...stocked]
   return (
-    <div className="flex flex-wrap justify-center gap-2.5">
+    <div role="group" aria-label="Product category" className="flex flex-wrap justify-center gap-2.5">
       {items.map((c) => (
         <button
           key={c.id}
+          type="button"
           onClick={() => onChange(c.id)}
-          className={`rounded-btn px-5 py-2.5 text-sm font-semibold transition-all duration-150 ease-pr ${
+          aria-pressed={active === c.id}
+          className={`min-h-11 rounded-btn px-5 py-2.5 text-sm font-semibold transition-colors duration-150 ease-pr focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold ${
             active === c.id
               ? 'bg-gold text-ink shadow-glow'
               : 'bg-white/5 text-sand hover:bg-white/10'

@@ -18,7 +18,19 @@ function Placeholder({ innerRef }) {
     <section ref={innerRef} id="visualizer" className="section-pad relative bg-charcoal">
       <div className="container-px">
         <SectionHeading {...HEADING} />
-        <div className="mt-8 aspect-[4/3] w-full animate-pulse rounded-card border border-white/5 bg-charcoal-800 lg:aspect-auto lg:min-h-[540px]" />
+        <div aria-hidden="true">
+          <div className="mt-8 h-[59px] w-full rounded-card bg-charcoal-800 lg:h-12" />
+          <div className="mt-4 h-8 lg:h-4" />
+          <div className="mt-4 flex flex-col gap-4 lg:grid lg:grid-cols-[minmax(0,1fr)_310px] xl:grid-cols-[minmax(0,1fr)_330px]">
+            <div className="overflow-hidden rounded-card border border-white/10 bg-charcoal-800">
+              <div className="h-[min(310px,34svh)] min-h-[210px] sm:h-[440px] lg:h-[536px]" />
+              <div className="h-16" />
+            </div>
+            <div className="h-[530px] rounded-card bg-charcoal-800 lg:h-[600px]" />
+          </div>
+          <div className="mt-4 h-[184px] rounded-card bg-charcoal-800 sm:h-[130px] lg:h-[70px]" />
+          <div className="mt-3 h-[76px] sm:h-[40px]" />
+        </div>
       </div>
     </section>
   )

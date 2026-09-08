@@ -1,28 +1,37 @@
-import { useRef, useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
+import { MOTION_DURATION, MOTION_EASE } from '../../utils/motion'
 
 // ─── CSS-based 3D Logo with animations ──────────────────────────────
 // Vertically stacked: Logo → Shloka → Brand name
 // Uses CSS 3D transforms + framer-motion for a premium, performant
 // 3D logo that doesn't require a separate WebGL context.
 
-function useMouseParallax() {
+function useMouseParallax(active) {
   const rotateX = useMotionValue(0)
   const rotateY = useMotionValue(0)
   const springX = useSpring(rotateX, { stiffness: 100, damping: 20 })
   const springY = useSpring(rotateY, { stiffness: 100, damping: 20 })
 
   useEffect(() => {
+    if (!active || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      rotateX.set(0)
+      rotateY.set(0)
+      springX.jump(0)
+      springY.jump(0)
+      return
+    }
     const handleMove = (e) => {
+      if (e.pointerType !== 'mouse') return
       const x = (e.clientX / window.innerWidth - 0.5) * 2
       const y = (e.clientY / window.innerHeight - 0.5) * 2
-      rotateY.set(x * 8)
-      rotateX.set(-y * 5)
+      rotateY.set(x * 5)
+      rotateX.set(-y * 3)
     }
-    window.addEventListener('mousemove', handleMove, { passive: true })
-    return () => window.removeEventListener('mousemove', handleMove)
-  }, [rotateX, rotateY])
+    window.addEventListener('pointermove', handleMove, { passive: true })
+    return () => window.removeEventListener('pointermove', handleMove)
+  }, [active, rotateX, rotateY, springX, springY])
 
   return { rotateX: springX, rotateY: springY }
 }
@@ -36,18 +45,15 @@ function Shloka3D({ reduce }) {
         transformStyle: 'preserve-3d',
         transform: 'translateZ(12px)',
       }}
-      initial={{ opacity: 0, y: 20, rotateX: 15 }}
-      animate={{ opacity: 1, y: 0, rotateX: 0 }}
-      transition={{ delay: 0.55, duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+      initial={reduce ? false : { opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={reduce ? { duration: 0 } : { delay: 0.1, duration: MOTION_DURATION.reveal, ease: MOTION_EASE }}
     >
       <div className="flex items-center gap-4 sm:gap-6">
         {/* Left || mark */}
         <motion.div
           className="text-[#C49A3C] font-serif text-2xl sm:text-3xl font-bold"
           style={{ textShadow: '0 2px 10px rgba(196,154,60,0.5)' }}
-          initial={{ opacity: 0, x: -10 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.7, duration: 0.6 }}
         >
           ||
         </motion.div>
@@ -71,9 +77,6 @@ function Shloka3D({ reduce }) {
               filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.8)) drop-shadow(0 0 15px rgba(245,217,138,0.4))',
               transformStyle: 'preserve-3d',
             }}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.75, duration: 0.5 }}
           >
             वक्रतुंड महाकाय सूर्यकोटि समप्रभ
           </motion.div>
@@ -95,9 +98,6 @@ function Shloka3D({ reduce }) {
               filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.8)) drop-shadow(0 0 15px rgba(245,217,138,0.4))',
               transformStyle: 'preserve-3d',
             }}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.85, duration: 0.5 }}
           >
             निर्विघ्नं कुरुमेदेव सर्वकार्येषु सर्वदा
           </motion.div>
@@ -107,9 +107,6 @@ function Shloka3D({ reduce }) {
         <motion.div
           className="text-[#C49A3C] font-serif text-2xl sm:text-3xl font-bold"
           style={{ textShadow: '0 2px 10px rgba(196,154,60,0.5)' }}
-          initial={{ opacity: 0, x: 10 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.7, duration: 0.6 }}
         >
           ||
         </motion.div>
@@ -128,10 +125,10 @@ function Shloka3D({ reduce }) {
   )
 }
 
-export default function Logo3D() {
+export default function Logo3D({ active = true }) {
   const reduce = useReducedMotion()
-  const { rotateX, rotateY } = useMouseParallax()
-  const [hovered, setHovered] = useState(false)
+  const animateDecoration = active && !reduce
+  const { rotateX, rotateY } = useMouseParallax(animateDecoration)
 
   return (
     <div
@@ -142,16 +139,9 @@ export default function Logo3D() {
       <motion.div
         className="relative shrink-0"
         style={reduce ? {} : { rotateX, rotateY, transformStyle: 'preserve-3d' }}
-        initial={{ scale: 0, rotateZ: -30, opacity: 0 }}
-        animate={{ scale: 1, rotateZ: 0, opacity: 1 }}
-        transition={{
-          type: 'spring',
-          stiffness: 80,
-          damping: 15,
-          delay: 0.2,
-        }}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
+        initial={reduce ? false : { scale: 0.96, y: 8, opacity: 0 }}
+        animate={{ scale: 1, y: 0, opacity: 1 }}
+        transition={reduce ? { duration: 0 } : { duration: MOTION_DURATION.reveal, ease: MOTION_EASE }}
       >
         {/* Glow ring */}
         <motion.div
@@ -160,11 +150,11 @@ export default function Logo3D() {
             background: 'radial-gradient(circle, rgba(245,166,35,0.25) 0%, transparent 70%)',
             filter: 'blur(12px)',
           }}
-          animate={reduce ? {} : {
+          animate={animateDecoration ? {
             scale: [1, 1.08, 1],
             opacity: [0.6, 0.9, 0.6],
-          }}
-          transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+          } : { scale: 1, opacity: 0.6 }}
+          transition={animateDecoration ? { duration: 4, repeat: Infinity, ease: 'easeInOut' } : { duration: 0 }}
         />
 
         {/* Outer ring shimmer */}
@@ -173,6 +163,7 @@ export default function Logo3D() {
           style={{
             background: 'conic-gradient(from 0deg, transparent, rgba(217,177,86,0.3), transparent, rgba(217,177,86,0.15), transparent)',
             animation: reduce ? 'none' : 'spin-slow 8s linear infinite',
+            animationPlayState: animateDecoration ? 'running' : 'paused',
           }}
         />
 
@@ -192,15 +183,6 @@ export default function Logo3D() {
             transformStyle: 'preserve-3d',
             transform: 'translateZ(20px)',
           }}
-          animate={reduce ? {} : {
-            boxShadow: hovered
-              ? [
-                  '0 0 0 2px rgba(245,166,35,0.3), 0 8px 32px -8px rgba(194,54,22,0.6), 0 20px 80px -20px rgba(240,140,24,0.5), inset 0 -4px 12px rgba(0,0,0,0.15), inset 0 4px 12px rgba(255,255,255,0.1)',
-                ]
-              : [
-                  '0 0 0 2px rgba(245,166,35,0.2), 0 8px 32px -8px rgba(194,54,22,0.5), 0 20px 60px -20px rgba(240,140,24,0.4), inset 0 -4px 12px rgba(0,0,0,0.15), inset 0 4px 12px rgba(255,255,255,0.1)',
-                ],
-          }}
         >
           <motion.img
             src="/logo-emblem.png"
@@ -209,9 +191,9 @@ export default function Logo3D() {
             style={{
               transform: 'translateZ(10px) scale(1.02)',
             }}
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1.02 }}
-            transition={{ delay: 0.4, duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+            width="170"
+            height="170"
+            fetchpriority="high"
           />
 
           {/* Surface highlight */}
@@ -225,15 +207,15 @@ export default function Logo3D() {
         </motion.div>
 
         {/* Floating particles */}
-        {!reduce && (
-          <div className="pointer-events-none absolute inset-0">
+        {animateDecoration && (
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0">
             {[...Array(5)].map((_, i) => (
               <motion.div
                 key={i}
                 className="absolute h-1 w-1 rounded-full bg-gold-light"
                 style={{
-                  left: `${20 + Math.random() * 60}%`,
-                  top: `${20 + Math.random() * 60}%`,
+                  left: `${22 + ((i * 29) % 57)}%`,
+                  top: `${25 + ((i * 17) % 53)}%`,
                 }}
                 animate={{
                   y: [0, -12, 0],
@@ -263,9 +245,9 @@ export default function Logo3D() {
           transformStyle: 'preserve-3d',
           transform: 'translateZ(10px)',
         }}
-        initial={{ y: 30, opacity: 0 }}
+        initial={reduce ? false : { y: 10, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.95, duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
+        transition={reduce ? { duration: 0 } : { delay: 0.16, duration: MOTION_DURATION.reveal, ease: MOTION_EASE }}
       >
         {/* sidhhi binayak tiles — one line */}
         <motion.div
@@ -278,9 +260,6 @@ export default function Logo3D() {
             letterSpacing: '0.04em',
             textShadow: '0 2px 20px rgba(0,0,0,0.35), 0 0 40px rgba(245,166,35,0.12)',
           }}
-          initial={{ y: 15, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 1.0, duration: 0.5 }}
         >
           sidhhi binayak{' '}
           <span

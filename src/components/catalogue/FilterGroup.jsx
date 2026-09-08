@@ -1,32 +1,29 @@
 // A labelled row of multi-select filter pills.
 //
-// Every option carries its own result count, and options that would return
-// nothing are not rendered at all. That rule is the whole point of this
-// component: the catalogue previously showed 20 filter options of which 11
-// matched zero products (Marble, Granite and Quartz tabs, Exterior and Décor
-// sub-types, and six of the nine colour pills), so a customer's most likely
-// first click led to an empty grid.
+// Only stocked options are supplied. Keep their positions stable as counts
+// change, and keep selected zero-result options available to deselect.
 export default function FilterGroup({ label, options, selected, onToggle }) {
-  const live = options.filter((o) => o.count > 0)
-  if (live.length === 0) return null
+  if (options.length === 0) return null
 
   return (
-    <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:gap-3">
-      <span className="shrink-0 pt-1.5 text-[11px] uppercase tracking-wider text-sand/50 sm:min-w-[72px]">
+    <div role="group" aria-label={label} className="flex flex-col gap-2 sm:flex-row sm:items-start sm:gap-3">
+      <span className="shrink-0 pt-2 text-[11px] uppercase tracking-wider text-sand sm:min-w-[72px]">
         {label}
       </span>
       <div className="flex flex-wrap gap-2">
-        {live.map((o) => {
+        {options.map((o) => {
           const active = selected.includes(o.value)
           return (
             <button
               key={o.value}
+              type="button"
               onClick={() => onToggle(o.value)}
               aria-pressed={active}
-              className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-all duration-200 whitespace-nowrap ${
+              disabled={!active && o.count === 0}
+              className={`inline-flex min-h-9 items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-colors duration-150 whitespace-nowrap disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold ${
                 active
-                  ? 'border border-gold bg-gold/20 text-gold shadow-[0_0_10px_rgba(196,154,60,0.2)]'
-                  : 'border border-white/10 bg-charcoal-700 text-sand/70 hover:bg-charcoal-600 hover:text-cream'
+                  ? 'border border-gold bg-gold/20 text-gold'
+                  : 'border border-white/10 bg-charcoal-700 text-sand enabled:hover:bg-charcoal-600 enabled:hover:text-cream'
               }`}
             >
               {o.dot && (
@@ -36,7 +33,7 @@ export default function FilterGroup({ label, options, selected, onToggle }) {
                 />
               )}
               {o.label}
-              <span className={active ? 'text-gold/70' : 'text-sand/40'}>{o.count}</span>
+              <span className={`min-w-[3ch] text-right tabular-nums ${active ? 'text-gold-light' : 'text-sand'}`}>{o.count}</span>
             </button>
           )
         })}

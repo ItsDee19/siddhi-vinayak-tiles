@@ -4,69 +4,60 @@ import SectionHeading from '../ui/SectionHeading'
 import { testimonials, business } from '../../data/siteConfig'
 
 export default function Testimonials() {
+  const reviews = testimonials.filter((review) => !review.placeholder && review.name && review.text)
+  const feedbackLink = business.googleReviewLink || `${business.whatsapp}?text=${encodeURIComponent(
+    `Hello ${business.name}, I'd like to share feedback about my showroom visit.`,
+  )}`
+
   return (
-    <section className="section-pad relative bg-charcoal">
+    <section className="relative bg-charcoal py-12 sm:py-16">
       <div className="container-px">
-        <SectionHeading
-          eyebrow="Kind Words"
-          title="What Our Families Say"
-          subtitle="We’re just getting started online. Be one of the first to share your experience and help other families choose with confidence."
-        />
+        {reviews.length > 0 && (
+          <>
+            <SectionHeading
+              eyebrow="Kind Words"
+              title="From Our Customers"
+              subtitle="Experiences shared by visitors to our showroom."
+            />
+            <div className="mb-10 mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {reviews.map((review, index) => (
+                <Reveal key={`${review.name}-${index}`} delay={index * 0.06}>
+                  <figure className="flex h-full flex-col rounded-2xl border border-white/5 bg-charcoal-800 p-7">
+                    {Number.isInteger(review.rating) && review.rating >= 1 && review.rating <= 5 && (
+                      <div className="mb-4 flex gap-1 text-gold" role="img" aria-label={`${review.rating} out of 5 stars`}>
+                        {Array.from({ length: review.rating }, (_, star) => (
+                          <Icon key={star} name="star" className="h-4 w-4" filled />
+                        ))}
+                      </div>
+                    )}
+                    <blockquote className="flex-1 text-sand/85">“{review.text}”</blockquote>
+                    <figcaption className="mt-6">
+                      <span className="block font-medium text-cream">{review.name}</span>
+                      <span className="block text-xs text-sand/70">{review.place}</span>
+                    </figcaption>
+                  </figure>
+                </Reveal>
+              ))}
+            </div>
+          </>
+        )}
 
-        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {testimonials.map((t, i) => (
-            <Reveal key={i} delay={i * 0.08}>
-              <figure className="flex h-full flex-col rounded-2xl border border-white/5 bg-charcoal-800 p-7 shadow-card">
-                <div className="mb-4 flex gap-1 text-gold">
-                  {Array.from({ length: t.rating }).map((_, s) => (
-                    <Icon key={s} name="star" className="h-4 w-4" filled />
-                  ))}
-                </div>
-                <blockquote className="flex-1 text-sand/85">“{t.text}”</blockquote>
-                <figcaption className="mt-6 flex items-center gap-3">
-                  <span className="grid h-11 w-11 place-items-center rounded-full bg-gold/15 font-display text-lg text-gold">
-                    {t.name.charAt(0)}
-                  </span>
-                  <span>
-                    <span className="block font-medium text-cream">{t.name}</span>
-                    <span className="block text-xs text-sand/60">{t.place}</span>
-                  </span>
-                  {t.placeholder && (
-                    <span className="ml-auto rounded-full border border-sand/20 px-2.5 py-1 text-[9px] uppercase tracking-wider text-sand/50">
-                      Sample
-                    </span>
-                  )}
-                </figcaption>
-              </figure>
-            </Reveal>
-          ))}
-
-          {/* Be the first to review CTA */}
-          <Reveal delay={testimonials.length * 0.08}>
-            <a
-              href={business.googleReviewLink}
-              target="_blank"
-              rel="noreferrer"
-              className="group flex h-full flex-col items-center justify-center rounded-2xl border border-dashed border-gold/40 bg-gold/5 p-7 text-center transition-colors hover:bg-gold/10"
-            >
-              <span className="mb-3 flex gap-1 text-gold/50 transition-colors group-hover:text-gold">
-                {Array.from({ length: 5 }).map((_, s) => (
-                  <Icon key={s} name="star" className="h-5 w-5" />
-                ))}
-              </span>
-              <h3 className="font-display text-xl text-cream">
-                Be the first to review us
-              </h3>
-              <p className="mt-2 text-sm text-sand/75">
-                Visited the showroom? Leave us a review on Google.
+        <Reveal>
+          <div className="flex flex-col items-start justify-between gap-6 border-y border-white/10 py-8 sm:flex-row sm:items-center">
+            <div className="max-w-xl">
+              <h2 className="font-display text-2xl text-cream">Visited the showroom?</h2>
+              <p className="mt-2 text-sm leading-relaxed text-sand/80">
+                {business.googleReviewLink
+                  ? 'Share your experience on Google to help others plan their visit.'
+                  : 'Share your experience with our team. We’d love to hear what helped and what we can improve.'}
               </p>
-              <span className="btn-outline mt-5 px-5 py-2.5 text-xs">
-                Write a Review
-                <Icon name="arrowRight" className="h-4 w-4" />
-              </span>
+            </div>
+            <a href={feedbackLink} target="_blank" rel="noopener noreferrer" className="btn-outline shrink-0">
+              <Icon name={business.googleReviewLink ? 'star' : 'whatsapp'} className="h-4 w-4" />
+              {business.googleReviewLink ? 'Write a Google review' : 'Share feedback on WhatsApp'}
             </a>
-          </Reveal>
-        </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   )

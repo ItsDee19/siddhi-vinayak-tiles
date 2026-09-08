@@ -1,32 +1,69 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Icon from '../Icons'
 import Logo from '../Logo'
 import { business, navLinks } from '../../data/siteConfig'
+import { useReducedMotion } from '../../hooks/useReducedMotion'
+import { MOTION_DURATION, MOTION_EASE } from '../../utils/motion'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const [active, setActive] = useState('home')
+  const headerRef = useRef(null)
+  const toggleRef = useRef(null)
+  const menuRef = useRef(null)
+  const reduce = useReducedMotion()
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24)
+    let frame = 0
+    const update = () => {
+      frame = 0
+      setScrolled(window.scrollY > 24)
+      const current = navLinks.map(link => document.getElementById(link.href.slice(1)))
+        .filter(Boolean).filter(section => section.getBoundingClientRect().top <= 160).at(-1)
+      if (current) setActive(current.id)
+    }
+    const onScroll = () => { if (!frame) frame = requestAnimationFrame(update) }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    return () => { window.removeEventListener('scroll', onScroll); cancelAnimationFrame(frame) }
   }, [])
 
+  useEffect(() => {
+    if (!open) return
+    menuRef.current?.querySelector('a')?.focus({ preventScroll: true })
+    const closeOnEscape = event => {
+      if (event.key !== 'Escape') return
+      setOpen(false)
+      toggleRef.current?.focus({ preventScroll: true })
+    }
+    const closeOutside = event => { if (!headerRef.current?.contains(event.target)) setOpen(false) }
+    const desktop = window.matchMedia('(min-width: 1024px)')
+    const closeOnDesktop = event => { if (event.matches) setOpen(false) }
+    document.addEventListener('keydown', closeOnEscape)
+    document.addEventListener('pointerdown', closeOutside)
+    desktop.addEventListener('change', closeOnDesktop)
+    return () => {
+      document.removeEventListener('keydown', closeOnEscape)
+      document.removeEventListener('pointerdown', closeOutside)
+      desktop.removeEventListener('change', closeOnDesktop)
+    }
+  }, [open])
+
   return (
-    <motion.header
-      initial={{ y: -80, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? 'border-b border-white/5 bg-charcoal/85 backdrop-blur-md py-3 shadow-soft'
-          : 'bg-transparent py-5'
+    <header
+      ref={headerRef}
+      onBlurCapture={event => {
+        if (event.relatedTarget && !event.currentTarget.contains(event.relatedTarget)) setOpen(false)
+      }}
+      className={`fixed inset-x-0 top-0 z-50 h-20 border-b transition-[background-color,border-color] duration-200 ${
+        scrolled || open
+          ? 'border-white/10 bg-charcoal/95'
+          : 'border-transparent bg-transparent'
       }`}
     >
-      <nav className="container-px flex items-center justify-between">
+      <nav aria-label="Main navigation" className="container-px flex h-full items-center justify-between">
         {/* Brand — PRD §1 L4: full on desktop, icon-only on mobile, shrinks on scroll */}
         <a href="#home" className="group flex items-center">
           <span className="lg:hidden">
@@ -50,7 +87,8 @@ export default function Navbar() {
             <li key={l.href}>
               <a
                 href={l.href}
-                className="link-underline text-sm font-medium text-sand hover:text-cream"
+                aria-current={active === l.href.slice(1) ? 'location' : undefined}
+                className={`link-underline py-3 text-sm font-medium hover:text-cream ${active === l.href.slice(1) ? 'text-cream after:scale-x-100' : 'text-sand'}`}
               >
                 {l.label}
               </a>
@@ -68,9 +106,13 @@ export default function Navbar() {
             Call Now
           </a>
           <button
+            ref={toggleRef}
+            type="button"
             onClick={() => setOpen((v) => !v)}
-            aria-label="Toggle menu"
-            className="grid h-10 w-10 place-items-center rounded-lg text-cream ring-1 ring-white/10 lg:hidden"
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-expanded={open}
+            aria-controls="mobile-navigation"
+            className="grid h-11 w-11 place-items-center rounded-lg text-cream ring-1 ring-white/15 transition-colors hover:bg-white/10 lg:hidden"
           >
             <Icon name={open ? 'close' : 'menu'} className="h-5 w-5" />
           </button>
@@ -81,11 +123,13 @@ export default function Navbar() {
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="overflow-hidden lg:hidden"
+            id="mobile-navigation"
+            ref={menuRef}
+            initial={{ opacity: 0, y: reduce ? 0 : -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: reduce ? 0 : -4 }}
+            transition={{ duration: reduce ? 0 : MOTION_DURATION.fast, ease: MOTION_EASE }}
+            className="absolute inset-x-0 top-full max-h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain border-b border-gold/20 bg-charcoal shadow-soft lg:hidden"
           >
             <ul className="container-px flex flex-col gap-1 py-4">
               {navLinks.map((l) => (
@@ -93,7 +137,8 @@ export default function Navbar() {
                   <a
                     href={l.href}
                     onClick={() => setOpen(false)}
-                    className="block rounded-lg px-3 py-3 text-base font-medium text-sand hover:bg-white/5 hover:text-cream"
+                    aria-current={active === l.href.slice(1) ? 'location' : undefined}
+                    className="block rounded-lg px-3 py-3 text-base font-medium text-sand transition-colors hover:bg-white/5 hover:text-cream aria-[current=location]:bg-gold/10 aria-[current=location]:text-cream"
                   >
                     {l.label}
                   </a>
@@ -116,6 +161,6 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </header>
   )
 }

@@ -25,6 +25,8 @@ export function useInView({
     if (el && typeof IntersectionObserver !== 'undefined') {
       const io = new IntersectionObserver(
         (entries) => {
+          // A real offscreen result must not be overwritten by the fallback.
+          clearTimeout(timer)
           const v = entries.some((e) => e.isIntersecting)
           setVisible(v)
           if (v) setEntered(true)
@@ -47,7 +49,7 @@ export function useInView({
     setEntered(true)
     setVisible(true)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [rootMargin, fallbackMs])
 
   return [ref, entered, visible]
 }

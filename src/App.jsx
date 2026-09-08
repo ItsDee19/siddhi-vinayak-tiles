@@ -1,4 +1,6 @@
 import { Suspense, lazy } from 'react'
+import { MotionConfig } from 'framer-motion'
+import SectionNavigation from './components/ui/SectionNavigation'
 import Navbar from './components/sections/Navbar'
 import Hero from './components/sections/Hero'
 import ProductCategories from './components/sections/ProductCategories'
@@ -14,9 +16,11 @@ const FloatingButtons = lazy(() => import('./components/sections/FloatingButtons
 
 export default function App() {
   return (
-    <>
+    <MotionConfig reducedMotion="user">
+      <SectionNavigation />
+      <a href="#main-content" className="skip-link">Skip to content</a>
       <Navbar />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <Hero />
         <ProductCategories />
         <VisualizerLazy />
@@ -32,6 +36,6 @@ export default function App() {
         <Footer />
         <FloatingButtons />
       </Suspense>
-    </>
+    </MotionConfig>
   )
 }

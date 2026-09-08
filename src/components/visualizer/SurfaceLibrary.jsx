@@ -23,11 +23,14 @@ export default function SurfaceLibrary({
   const sizeId = useId()
   const uploadHintId = useId()
   const fileRef = useRef(null)
+  const searchRef = useRef(null)
+  const uploadPendingRef = useRef(false)
   const gridRef = useRef(null)
   const [query, setQuery] = useState('')
   const [size, setSize] = useState('all')
   const [limit, setLimit] = useState(INITIAL_BATCH)
   const [uploadError, setUploadError] = useState('')
+  const [uploading, setUploading] = useState(false)
   const zone = zones.find((item) => item.id === activeZoneId) || zones[0]
   const selected = zoneTextures[zone?.id]
   const selectedSource = resolveZoneSource(selected, 'lite')
@@ -37,9 +40,10 @@ export default function SurfaceLibrary({
   )), [zone?.surface])
   const sizes = useMemo(() => [...new Set(compatible.map((product) => product.size).filter(Boolean))]
     .sort((a, b) => a.localeCompare(b, undefined, { numeric: true })), [compatible])
+  const activeSize = sizes.includes(size) ? size : 'all'
   const filtered = useMemo(() => compatible.filter((product) => (
-    (size === 'all' || product.size === size) && matchesQuery(product, query)
-  )), [compatible, query, size])
+    (activeSize === 'all' || product.size === activeSize) && matchesQuery(product, query)
+  )), [compatible, query, activeSize])
   const visible = filtered.slice(0, limit)
 
   const resetResults = () => {
@@ -50,6 +54,7 @@ export default function SurfaceLibrary({
     setQuery('')
     setSize('all')
     resetResults()
+    searchRef.current?.focus({ preventScroll: true })
   }
 
   if (!zone) return null
@@ -113,18 +118,29 @@ export default function SurfaceLibrary({
             <label className="sr-only" htmlFor={searchId}>Search tiles for {zone.label}</label>
             <Icon name="search" className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-sand" />
             <input
+              ref={searchRef}
               id={searchId}
               type="search"
               value={query}
               onChange={(event) => { setQuery(event.target.value); resetResults() }}
               placeholder="Search tiles"
-              className={`min-h-11 w-full min-w-0 rounded-btn border border-sand/30 bg-charcoal py-2 pl-9 pr-2 text-xs text-cream placeholder:text-sand ${focusStyle}`}
+              className={`min-h-11 w-full min-w-0 rounded-btn border border-sand/30 bg-charcoal py-2 pl-9 pr-11 text-xs text-cream placeholder:text-sand [&::-webkit-search-cancel-button]:appearance-none ${focusStyle}`}
             />
+            {query && (
+              <button
+                type="button"
+                aria-label="Clear tile search"
+                onClick={() => { setQuery(''); resetResults(); searchRef.current?.focus({ preventScroll: true }) }}
+                className={`absolute right-0 top-0 grid h-11 w-11 place-items-center rounded-btn text-sand transition-colors hover:bg-white/10 hover:text-cream ${focusStyle}`}
+              >
+                <Icon name="close" className="h-3.5 w-3.5" />
+              </button>
+            )}
           </div>
           <label className="sr-only" htmlFor={sizeId}>Tile size for {zone.label}</label>
           <select
             id={sizeId}
-            value={size}
+            value={activeSize}
             onChange={(event) => { setSize(event.target.value); resetResults() }}
             className={`min-h-11 w-[116px] shrink-0 rounded-btn border border-sand/30 bg-charcoal px-2 text-xs text-cream ${focusStyle}`}
           >
@@ -139,7 +155,7 @@ export default function SurfaceLibrary({
 
       <div
         ref={gridRef}
-        className="min-h-[120px] flex-1 overflow-y-auto overscroll-contain pb-1 pr-1 [scrollbar-color:#9A7530_#2C1A0E] [scrollbar-width:thin]"
+        className="min-h-[120px] flex-1 overflow-y-auto overscroll-contain pb-1 pr-1 [scrollbar-gutter:stable]"
         aria-label={`Tile library for ${zone.label}`}
       >
         {filtered.length ? (
@@ -196,7 +212,7 @@ export default function SurfaceLibrary({
         ) : (
           <div className="px-3 py-5 text-center text-xs leading-relaxed text-sand-light">
             <p>{compatible.length ? 'No tiles match your search and size.' : 'No catalogue tile photos are available for this surface yet.'}</p>
-            {(query || size !== 'all') && (
+            {(query || activeSize !== 'all') && (
               <button type="button" onClick={clearFilters} className={`mt-2 min-h-11 px-3 text-gold-light underline underline-offset-4 ${focusStyle}`}>
                 Clear filters
               </button>
@@ -209,10 +225,12 @@ export default function SurfaceLibrary({
         <button
           type="button"
           onClick={() => { setUploadError(''); fileRef.current?.click() }}
+          disabled={uploading}
+          aria-busy={uploading}
           aria-describedby={uploadHintId}
-          className={`min-h-11 w-full rounded-btn border border-sand/30 px-3 py-2 text-xs font-semibold text-cream hover:border-gold hover:bg-charcoal ${focusStyle}`}
+          className={`min-h-11 w-full rounded-btn border border-sand/30 px-3 py-2 text-xs font-semibold text-cream transition-colors enabled:hover:border-gold enabled:hover:bg-charcoal disabled:cursor-wait disabled:opacity-60 ${focusStyle}`}
         >
-          Use your own tile photo
+          {uploading ? 'Adding tile photo…' : 'Use your own tile photo'}
         </button>
         <p id={uploadHintId} className="mt-2 text-[10px] leading-relaxed text-sand-light">
           JPG, PNG or WebP · Up to 8 MB.<br />
@@ -228,14 +246,19 @@ export default function SurfaceLibrary({
           onChange={async (event) => {
             const file = event.target.files?.[0]
             event.target.value = ''
-            if (!file) return
+            if (!file || uploadPendingRef.current) return
             const result = validateImageFile(file)
             setUploadError(result.ok ? '' : result.error)
             if (!result.ok) return
+            uploadPendingRef.current = true
+            setUploading(true)
             try {
               await onCustomUpload?.(zone.id, file)
             } catch {
               setUploadError('This image could not be added. Try another JPG, PNG or WebP.')
+            } finally {
+              uploadPendingRef.current = false
+              setUploading(false)
             }
           }}
         />

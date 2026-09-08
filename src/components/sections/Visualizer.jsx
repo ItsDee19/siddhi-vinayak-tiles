@@ -18,6 +18,7 @@ import { surfaceMatches } from '../../utils/surfaces'
 import { business } from '../../data/siteConfig'
 import { publishVisualizerSelection, subscribeVisualizerSelection } from '../../utils/visualizerPreview'
 import { releaseCustomTexture } from '../../utils/threeTextures'
+import { usePageVisible } from '../../hooks/usePageVisible'
 
 const starters = { wall: 'sky12x18-c019', feature: 'sky12x18-p019-t3', floor: 'gt-floor-c011' }
 function defaultTiles(model) {
@@ -34,6 +35,7 @@ const grouts = [
 ]
 
 export default function Visualizer() {
+  const pageVisible = usePageVisible()
   const webgl = useWebGL()
   const quality = useDeviceTier()
   const [stageRef, stageEntered, stageVisible] = useInView({ rootMargin: '300px' })
@@ -141,7 +143,7 @@ export default function Visualizer() {
                 {webgl && stageEntered ? (
                   <div ref={canvasWrapRef} className="h-full w-full">
                     <ModelShell roomId={activeModelId} cameraPresets={activeModel.presets} presetName={presetName} cameraResetKey={cameraResetKey}
-                      frameloop={stageVisible ? 'always' : 'never'} quality={quality}>
+                      frameloop={stageVisible && pageVisible ? 'always' : 'never'} quality={quality}>
                       <Suspense fallback={null}>
                         <RoomModel roomId={activeModelId} zones={activeModel.zones} zoneTextures={zoneTextures}
                           onZoneClick={setActiveZoneId} modelExtras={{ groutColor }} tier={quality}

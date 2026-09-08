@@ -3,6 +3,9 @@
 // site — name, address, phone, hours, links, taglines, stats.
 // ---------------------------------------------------------------------------
 
+const showroomAddress = 'Ward No. 03, Gayatri Mandir Chowk, Patora Road, Motanuapada, Nuapada, Odisha 766105'
+const mapAddressQuery = encodeURIComponent(showroomAddress)
+
 export const business = {
   name: 'Sidhhi Binayak Tiles',
   shortName: 'Sidhhi Binayak',
@@ -16,8 +19,7 @@ export const business = {
     city: 'Nuapada',
     state: 'Odisha',
     pin: '766105',
-    full:
-      'Ward No. 03, Gayatri Mandir Chowk, Patora Road, Motanuapada, Nuapada, Odisha 766105',
+    full: showroomAddress,
   },
 
   // Display number vs. dial number (E.164 for tel: / wa.me)
@@ -28,25 +30,21 @@ export const business = {
     "Hello Sidhhi Binayak Tiles! I'd like to know more about your collection.",
 
   hours: {
-    label: 'Open Today',
+    label: 'Showroom hours',
     time: '9:00 AM – 8:00 PM',
     note: 'Open daily · Closes 8 PM',
   },
 
-  // Google Maps embed — centred on Motanuapada, Nuapada. The exact pin can be
-  // replaced later with the shop's verified place ID / coordinates.
-  mapEmbedSrc:
-    'https://www.google.com/maps?q=Motanuapada,+Nuapada,+Odisha+766105&output=embed',
-  mapLink: 'https://www.google.com/maps/search/?api=1&query=Motanuapada,+Nuapada,+Odisha+766105',
+  // Address lookup, not a verified shop pin. Replace both with the Google
+  // Business profile's verified location when the owner supplies it.
+  mapEmbedSrc: `https://www.google.com/maps?q=${mapAddressQuery}&output=embed`,
+  mapLink: `https://www.google.com/maps/search/?api=1&query=${mapAddressQuery}`,
 
-  // Placeholder review link — point to the Google Business profile once live.
-  googleReviewLink: 'https://www.google.com/search?q=Sidhhi+Binayak+Tiles+Nuapada',
+  // Set only when the real Google Business review URL is available.
+  googleReviewLink: null,
 
-  socials: [
-    { label: 'Facebook', href: '#', icon: 'facebook' },
-    { label: 'Instagram', href: '#', icon: 'instagram' },
-    { label: 'YouTube', href: '#', icon: 'youtube' },
-  ],
+  // Add verified account URLs here; unconfigured accounts are not displayed.
+  socials: [],
 }
 
 export const navLinks = [
@@ -89,20 +87,5 @@ export const whyChooseUs = [
   },
 ]
 
-// Editable placeholder testimonials (shop has no Google reviews yet).
-export const testimonials = [
-  {
-    name: 'A Happy Customer',
-    place: 'Nuapada',
-    text: 'Replace this with a real review. Lovely range of tiles and the family made us feel completely at home while choosing.',
-    rating: 5,
-    placeholder: true,
-  },
-  {
-    name: 'Your Review Here',
-    place: 'Odisha',
-    text: 'Be one of the first to share your experience with Sidhhi Binayak Tiles. Your words help other families choose with confidence.',
-    rating: 5,
-    placeholder: true,
-  },
-]
+// Publish genuine customer reviews only, with permission and source details.
+export const testimonials = []

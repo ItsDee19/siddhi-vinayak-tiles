@@ -18,10 +18,14 @@
     --border: rgba(197, 154, 60, 0.2);
 
     /* PRD §2.5 — Motion */
-    --duration-micro: 150ms;
-    --duration-reveal: 500ms;
-    --ease-ui: cubic-bezier(0.4, 0, 0.2, 1);
-    --ease-reveal: ease-out;
+    --duration-micro: 160ms;
+    --duration-reveal: 420ms;
+    --ease-ui: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-reveal: var(--ease-ui);
+    --scrollbar-track: #3D2512;
+    --scrollbar-thumb: #937044;
+    --scrollbar-hover: #C49A3C;
+    --scrollbar-active: #D9B156;
   }
 
   html {
@@ -29,6 +33,7 @@
     /* Offset anchored scroll so sticky navbar doesn't cover headings */
     scroll-padding-top: 5rem;
     overflow-x: clip;
+    scrollbar-gutter: stable;
   }
 
   body {
@@ -40,18 +45,36 @@
     @apply bg-gold/40 text-cream;
   }
 
+  :where(button, [role="button"], a, select, summary) { cursor: pointer; }
+  :where(button:disabled, [aria-disabled="true"]) { cursor: not-allowed; }
+  :where(a, button, input, textarea, select, [tabindex]):focus-visible {
+    outline: 2px solid var(--accent-gold);
+    outline-offset: 4px;
+  }
+  :where(input, textarea) { caret-color: var(--accent-gold); }
+  :where([tabindex], button, input, select, textarea) { scroll-margin-block: 6rem 2rem; }
+  * { scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track); scrollbar-width: auto; }
+
   /* Custom scrollbar — subtle, warm */
   ::-webkit-scrollbar {
     width: 11px;
+    height: 11px;
   }
   ::-webkit-scrollbar-track {
-    @apply bg-charcoal-800;
+    background: var(--scrollbar-track);
   }
   ::-webkit-scrollbar-thumb {
-    @apply bg-graphite rounded-full border-2 border-charcoal-800;
+    border: 2px solid var(--scrollbar-track);
+    border-radius: 999px;
+    background: var(--scrollbar-thumb);
   }
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-gold;
+    background: var(--scrollbar-hover);
+  }
+  ::-webkit-scrollbar-thumb:active { background: var(--scrollbar-active); }
+  @media (forced-colors: active) {
+    * { scrollbar-color: auto; }
+    :where(a, button, input, select, textarea, [tabindex]):focus-visible { outline-color: Highlight; }
   }
 
   /* PRD §2.5 / NF5 — Respect prefers-reduced-motion globally. */
@@ -66,6 +89,9 @@
 }
 
 @layer components {
+  .skip-link {
+    @apply fixed left-4 top-4 z-[100] -translate-y-24 rounded-btn bg-cream px-5 py-3 font-semibold text-ink focus:translate-y-0;
+  }
   .container-px {
     @apply px-5 sm:px-8 lg:px-16 xl:px-24;
   }
@@ -86,20 +112,22 @@
   /* Primary gold CTA — PRD §2.4: button radius 2px (sharp luxury). */
   .btn-gold {
     @apply inline-flex items-center justify-center gap-2 rounded-btn bg-gold px-7 py-3.5
-      text-sm font-semibold uppercase tracking-wider text-ink transition-all duration-150 ease-pr
-      hover:bg-gold-light hover:shadow-glow active:scale-[0.97];
+      text-sm font-semibold uppercase tracking-wider text-ink
+      hover:bg-gold-light active:scale-[0.98];
+    transition: background-color var(--duration-micro) var(--ease-ui), transform var(--duration-micro) var(--ease-ui);
   }
 
   /* Outlined / ghost button */
   .btn-outline {
     @apply inline-flex items-center justify-center gap-2 rounded-btn border border-sand/40
-      px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-cream transition-all
-      duration-150 ease-pr hover:border-gold hover:text-gold active:scale-[0.97];
+      px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-cream
+      hover:border-gold hover:text-gold active:scale-[0.98];
+    transition: border-color var(--duration-micro) var(--ease-ui), color var(--duration-micro) var(--ease-ui), transform var(--duration-micro) var(--ease-ui);
   }
 
   .link-underline {
-    @apply relative after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0
-      after:bg-gold after:transition-all after:duration-300 hover:after:w-full;
+    @apply relative after:absolute after:bottom-1 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0
+      after:bg-gold after:transition-transform after:duration-200 hover:after:scale-x-100 focus-visible:after:scale-x-100;
   }
 }
 

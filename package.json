@@ -11,7 +11,8 @@
     "build:tiles": "node scripts/build_visualizer_tiles.mjs",
     "build:facets": "node scripts/build_product_facets.mjs",
     "build:hdri": "node scripts/build_environment_hdr.mjs",
-    "test:visualizer": "node --test src/components/three/primitives/interiorCameraSettings.test.js src/utils/tileMaterial.test.js src/utils/visualizerSelection.test.js scripts/room_models.test.mjs"
+    "test:visualizer": "node --test src/components/three/primitives/interiorCameraSettings.test.js src/utils/tileMaterial.test.js src/utils/visualizerSelection.test.js scripts/room_models.test.mjs",
+    "test:ui": "node --test src/utils/sectionNavigation.test.js"
   },
   "dependencies": {
     "@react-three/drei": "^9.114.0",

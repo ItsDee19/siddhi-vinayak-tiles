@@ -9,6 +9,7 @@ export default {
         // semantic aliases below (primary, accent-gold, etc.).
         charcoal: {
           DEFAULT: '#2C1A0E',   // --bg-primary  (was #1c1a18)
+          900: '#1A0E05',       // inset fields; matches the established ink tone
           800: '#3D2512',       // --bg-secondary (was #232120)
           700: '#4A2E1A',       // --bg-surface   (was #2e2b29)
           600: '#5C3A22',       // hover/elevated (was #3a3633)
