@@ -26,7 +26,8 @@
 const FINISH_TABLE = {
   Polished: { roughness: 0.16, metalness: 0, clearcoat: 0.5,  clearcoatRoughness: 0.1,  envMapIntensity: 1,    normalScale: 0 },
   Glossy:   { roughness: 0.25, metalness: 0, clearcoat: 0.4,  clearcoatRoughness: 0.16, envMapIntensity: 1,    normalScale: 0 },
-  Satin:    { roughness: 0.48, metalness: 0, clearcoat: 0.1,  clearcoatRoughness: 0.4,  envMapIntensity: 0.85, normalScale: 0.12 },
+  // A satin/matte photograph describes printed colour, not measured relief.
+  Satin:    { roughness: 0.48, metalness: 0, clearcoat: 0.1,  clearcoatRoughness: 0.4,  envMapIntensity: 0.85, normalScale: 0 },
   Rough:    { roughness: 0.88, metalness: 0, clearcoat: 0,    clearcoatRoughness: 0.4,  envMapIntensity: 0.7,  normalScale: 0.35 },
 }
 const DEFAULT_FINISH = { roughness: 0.55, metalness: 0, clearcoat: 0.15, clearcoatRoughness: 0.3, envMapIntensity: 0.85, normalScale: 0 }

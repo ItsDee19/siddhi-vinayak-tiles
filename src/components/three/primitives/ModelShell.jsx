@@ -1,23 +1,44 @@
-import { Suspense, lazy, useMemo } from 'react'
+import { Component, Suspense, lazy, useEffect, useMemo } from 'react'
 import { Canvas } from '@react-three/fiber'
-import { Environment, Lightformer } from '@react-three/drei'
+import { Environment, Lightformer, useEnvironment } from '@react-three/drei'
 import * as THREE from 'three'
 import { setMaxAnisotropy } from '../../../utils/threeTextures'
 import InteriorCamera from './InteriorCamera'
-import { getRoomLighting } from './roomLighting'
+import { createNeutralEnvironmentMap, getRoomLighting, ROOM_COLOR_PIPELINE, ROOM_LIGHT_COLORS } from './roomLighting'
 
 const PostFX = lazy(() => import('./PostFX'))
 
-// Broad neutral light sources retain the same material colours on mobile.
+// Broad neutral sources remain usable while the HDR loads, or if it fails.
 function ProceduralEnvironment({ resolution, intensity }) {
   return (
     <Environment resolution={resolution} frames={1} background={false} environmentIntensity={intensity}>
-      <color attach="background" args={['#a6a29b']} />
-      <Lightformer form="rect" intensity={3} color="#fffaf2" position={[-4, 5, 5]} scale={[5, 7, 1]} target={[0, 1, 0]} />
-      <Lightformer form="rect" intensity={1.5} color="#edf3ff" position={[5, 3, 2]} scale={[3, 5, 1]} target={[0, 1, 0]} />
-      <Lightformer form="rect" intensity={1.8} color="#ffffff" position={[0, 7, 0]} rotation={[Math.PI / 2, 0, 0]} scale={[8, 8, 1]} />
+      <color attach="background" args={[ROOM_LIGHT_COLORS.environment]} />
+      <Lightformer form="rect" intensity={3} color={ROOM_LIGHT_COLORS.source} position={[-4, 5, 5]} scale={[5, 7, 1]} target={[0, 1, 0]} />
+      <Lightformer form="rect" intensity={1.5} color={ROOM_LIGHT_COLORS.source} position={[5, 3, 2]} scale={[3, 5, 1]} target={[0, 1, 0]} />
+      <Lightformer form="rect" intensity={1.8} color={ROOM_LIGHT_COLORS.source} position={[0, 7, 0]} rotation={[Math.PI / 2, 0, 0]} scale={[8, 8, 1]} />
     </Environment>
   )
+}
+
+class EnvironmentFallback extends Component {
+  state = { failed: false }
+  static getDerivedStateFromError() { return { failed: true } }
+  render() { return this.state.failed ? this.props.fallback : this.props.children }
+}
+
+function NeutralEnvironment({ intensity }) {
+  const source = useEnvironment({ files: '/hdri/showroom.hdr' })
+  const resource = useMemo(() => ({ texture: createNeutralEnvironmentMap(source), active: false }), [source])
+  useEffect(() => {
+    resource.active = true
+    return () => {
+      resource.active = false
+      queueMicrotask(() => {
+        if (!resource.active) resource.texture.dispose()
+      })
+    }
+  }, [resource])
+  return <Environment map={resource.texture} background={false} environmentIntensity={intensity} />
 }
 
 // A stationary architectural scene, viewed through a bounded front-facing arc.
@@ -54,30 +75,29 @@ export default function ModelShell({
         antialias: true,
         powerPreference: lite ? 'low-power' : 'high-performance',
         preserveDrawingBuffer: true,
-        toneMapping: THREE.ACESFilmicToneMapping,
-        toneMappingExposure: 1,
+        toneMapping: ROOM_COLOR_PIPELINE.toneMapping,
+        toneMappingExposure: ROOM_COLOR_PIPELINE.exposure,
+        outputColorSpace: ROOM_COLOR_PIPELINE.outputColorSpace,
       }}
       onCreated={({ gl, scene, camera }) => {
         setMaxAnisotropy(gl.capabilities.getMaxAnisotropy())
         if (import.meta.env.DEV) window.__three = { gl, scene, camera }
       }}
     >
-      <color attach="background" args={['#d8d3ca']} />
-      {lite ? (
-        <ProceduralEnvironment resolution={128} intensity={0.6} />
-      ) : (
-        <Suspense fallback={<ProceduralEnvironment resolution={256} intensity={0.6} />}>
-          <Environment files="/hdri/showroom.hdr" background={false} environmentIntensity={light.environmentIntensity} />
+      <color attach="background" args={[ROOM_LIGHT_COLORS.background]} />
+      <EnvironmentFallback fallback={<ProceduralEnvironment resolution={lite ? 128 : 256} intensity={0.6} />}>
+        <Suspense fallback={<ProceduralEnvironment resolution={lite ? 128 : 256} intensity={0.6} />}>
+          <NeutralEnvironment intensity={light.environmentIntensity} />
         </Suspense>
-      )}
-      <hemisphereLight args={['#ffffff', '#b8aa91', 0.24]} />
+      </EnvironmentFallback>
+      <hemisphereLight args={[ROOM_LIGHT_COLORS.source, ROOM_LIGHT_COLORS.bounce, 0.24]} />
       <primitive object={lightTarget} />
       <directionalLight
         key={roomId}
         target={lightTarget}
         position={light.key}
         intensity={light.keyIntensity}
-        color="#fff9f0"
+        color={ROOM_LIGHT_COLORS.source}
         castShadow
         shadow-mapSize={lite ? [1024, 1024] : [2048, 2048]}
         shadow-camera-left={-light.extent}
@@ -90,8 +110,8 @@ export default function ModelShell({
         shadow-normalBias={0.002}
         shadow-radius={4}
       />
-      <directionalLight position={[5, 4, 3]} intensity={light.fillIntensity} color="#edf3ff" />
-      <directionalLight position={[0, 6, -4]} intensity={0.16} color="#ffffff" />
+      <directionalLight position={light.fill} intensity={light.fillIntensity} color={ROOM_LIGHT_COLORS.source} />
+      <directionalLight position={[0, 6, -4]} intensity={0.16} color={ROOM_LIGHT_COLORS.source} />
 
       {children}
       {!lite && <Suspense fallback={null}><PostFX /></Suspense>}

@@ -92,7 +92,7 @@ function doubleVanity(root, { leftX, backZ }, finishes) {
   root.add(reeds)
   box(root, 'spa_vanity_stone_counter', [1.52, 0.040, depth], [x, 0.84, z], quartz, 0.008)
   glow(box(root, 'spa_vanity_underside_glow', [1.38, 0.005, 0.020], [x, 0.397, frontZ - 0.025], light, 0.002))
-  const underlight = new THREE.PointLight('#ffddb3', 0.45, 1.35, 2)
+  const underlight = new THREE.PointLight('#ffffff', 0.25, 1.35, 2)
   underlight.name = 'spa_vanity_soft_underlight'
   underlight.position.set(x, 0.36, frontZ - 0.01)
   root.add(underlight)

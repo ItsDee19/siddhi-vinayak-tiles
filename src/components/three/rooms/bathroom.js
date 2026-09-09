@@ -128,9 +128,9 @@ function addShower(root, { rightX, backZ, large }, finishes) {
   const showerDepth = large ? 1.15 : 0.75
   const screenHeight = large ? 2.10 : 1.97
   const screenX = rightX - (large ? 0.95 : 0.84)
-  const glass = material('#deebe4', 0.07)
+  const glass = material('#ffffff', 0.07)
   glass.transparent = true
-  glass.opacity = large ? 0.085 : 0.12
+  glass.opacity = 0.045
   glass.depthWrite = false
   glass.side = THREE.DoubleSide
   glass.clearcoat = 0.9
@@ -202,8 +202,8 @@ export function createBathroom({ widthFeet = 8, depthFeet = 5, bandsFeet = [3, 2
   ceramic.clearcoatRoughness = 0.12
   const linen = fabricMaterial('#e5e0d5')
   linen.side = THREE.DoubleSide
-  const light = material('#fff0d6', 0.5)
-  light.emissive.set('#ffe4bc')
+  const light = material('#ffffff', 0.5)
+  light.emissive.set('#ffffff')
   light.emissiveIntensity = 0.48
 
   const floor = architecture(box(root, 'bathroom_floor', [width, 0.065, depth], [0, -0.0325, 0], fixedFloorMaterial(width, depth, large)))

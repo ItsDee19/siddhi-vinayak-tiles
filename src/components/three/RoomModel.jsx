@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef } from 'react'
 import { useFrame, useThree } from '@react-three/fiber'
+import { useGLTF } from '@react-three/drei'
 import * as THREE from 'three'
 import { loadZoneTexture, resolveZoneSource } from '../../utils/threeTextures'
 import { getFinish } from '../../utils/finishMaterial'
@@ -9,10 +10,22 @@ import { roomFactories } from './rooms'
 import { prepareRoom } from './rooms/prepareRoom'
 import { disposeRoom } from './rooms/roomKit'
 import RoomMirror from './rooms/RoomMirror'
+import { applyAuthoredFixtures, AUTHORED_FIXTURES_URL } from './rooms/authoredFixtures'
+
+useGLTF.setDecoderPath('/draco/')
 
 export default function RoomModel({ roomId, zones, zoneTextures, onZoneClick, modelExtras = {}, tier = 'full', materialKey, onMaterialStatus }) {
   const { invalidate } = useThree()
-  const instance = useMemo(() => prepareRoom(roomFactories[roomId](), zones), [roomId, zones])
+  const { scene: fixtures } = useGLTF(AUTHORED_FIXTURES_URL)
+  const instance = useMemo(() => {
+    const root = roomFactories[roomId]()
+    try {
+      return prepareRoom(applyAuthoredFixtures(root, fixtures), zones)
+    } catch (error) {
+      disposeRoom(root)
+      throw error
+    }
+  }, [roomId, zones, fixtures])
   const { root, zoneMeshes, ownedTextures } = instance
   const readyAfterFrame = useRef(null)
   const sizeMultiplier = 1

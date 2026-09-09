@@ -90,8 +90,8 @@ export function createVanity() {
   ceramic.clearcoat = 0.65
   ceramic.clearcoatRoughness = 0.11
   const linen = fabricMaterial('#d8d0bd')
-  const light = material('#fff0d7', 0.5)
-  light.emissive.set('#ffe6bd')
+  const light = material('#ffffff', 0.5)
+  light.emissive.set('#ffffff')
   light.emissiveIntensity = 0.5
 
   const floor = architecture(box(root, 'vanity_fixed_limestone_floor', [ROOM_WIDTH + 0.24, 0.1, ROOM_DEPTH + 0.24], [0, -0.05, ROOM_DEPTH / 2 - 0.06], limestone))
@@ -109,8 +109,8 @@ export function createVanity() {
   box(root, 'vanity_door_lintel', [1.0, 0.04, 0.032], [-0.12, 2.18, ROOM_DEPTH - 0.042], dark, 0.002)
   box(root, 'vanity_door_lever', [0.11, 0.014, 0.037], [0.2, 1.01, ROOM_DEPTH - 0.058], bronze, 0.005)
 
-  const daylight = material('#dee7df', 0.7)
-  daylight.emissive.set('#d0ded1')
+  const daylight = material('#e0e0e0', 0.7)
+  daylight.emissive.set('#ffffff')
   daylight.emissiveIntensity = 0.20
   architecture(panel(root, 'vanity_window_daylight', 1.68, 1.6, [ROOM_WIDTH / 2 + 0.095, 1.6, 2.41], [0, -Math.PI / 2, 0], daylight))
   for (const z of [1.57, 2.41, 3.25]) box(root, `vanity_window_mullion_${z}`, [0.08, 1.64, 0.032], [ROOM_WIDTH / 2 - 0.025, 1.6, z], oak, 0.003)

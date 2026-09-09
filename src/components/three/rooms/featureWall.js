@@ -95,8 +95,8 @@ export function createFeatureWall() {
   const oak = woodMaterial('#a28360')
   const darkOak = woodMaterial('#64513e')
   const bronze = material('#625b4d', 0.36, 0.72)
-  const light = material('#fff3dc', 0.45)
-  light.emissive.set('#ffe8c4')
+  const light = material('#ffffff', 0.45)
+  light.emissive.set('#ffffff')
   light.emissiveIntensity = 0.48
 
   tile(root, 'feature_wall', 'wall', [WALL_WIDTH, WALL_HEIGHT, 0.14], [0, WALL_HEIGHT / 2, -0.07])
@@ -113,11 +113,11 @@ export function createFeatureWall() {
   architecture(box(root, 'feature_entrance_door', [1.04, 2.30, 0.035], [3.15, 1.15, ROOM_DEPTH - 0.018], oak, 0.004))
   box(root, 'feature_entrance_handle', [0.11, 0.014, 0.035], [3.51, 1.03, ROOM_DEPTH - 0.043], bronze, 0.005)
 
-  const daylight = material('#e0e7db', 0.75)
-  daylight.emissive.set('#d4dfca')
+  const daylight = material('#e0e0e0', 0.75)
+  daylight.emissive.set('#ffffff')
   daylight.emissiveIntensity = 0.2
   architecture(panel(root, 'feature_window_daylight', 1.90, 1.95, [-WALL_WIDTH / 2 - 0.09, 1.725, 2.05], [0, Math.PI / 2, 0], daylight))
-  const glass = new THREE.MeshPhysicalMaterial({ color: '#dce8e3', roughness: 0.09, transparent: true, opacity: 0.13, metalness: 0, clearcoat: 1, depthWrite: false })
+  const glass = new THREE.MeshPhysicalMaterial({ color: '#ffffff', roughness: 0.09, transparent: true, opacity: 0.06, metalness: 0, clearcoat: 1, depthWrite: false })
   architecture(panel(root, 'feature_window_glazing', 1.88, 1.93, [-WALL_WIDTH / 2 - 0.022, 1.725, 2.05], [0, Math.PI / 2, 0], glass))
   for (const z of [1.10, 2.05, 3.0]) box(root, `feature_window_mullion_${z}`, [0.09, 1.98, 0.035], [-WALL_WIDTH / 2 + 0.025, 1.725, z], oak, 0.003)
   for (const y of [0.75, 2.7]) box(root, `feature_window_rail_${y}`, [0.10, 0.038, 1.97], [-WALL_WIDTH / 2 + 0.025, y, 2.05], oak, 0.003)
