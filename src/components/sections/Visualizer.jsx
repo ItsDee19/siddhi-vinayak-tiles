@@ -19,6 +19,7 @@ import { business } from '../../data/siteConfig'
 import { publishVisualizerSelection, subscribeVisualizerSelection } from '../../utils/visualizerPreview'
 import { releaseCustomTexture } from '../../utils/threeTextures'
 import { usePageVisible } from '../../hooks/usePageVisible'
+import { basinProducts, getBasinProduct } from '../../data/basinCatalogue'
 
 const starters = { wall: 'sky12x18-c019', feature: 'sky12x18-p019-t3', floor: 'gt-floor-c011' }
 function defaultTiles(model) {
@@ -45,6 +46,7 @@ export default function Visualizer() {
   const [cameraResetKey, setCameraResetKey] = useState(0)
   const [designs, setDesigns] = useState(() => Object.fromEntries(models.map(model => [model.id, defaultTiles(model)])))
   const [roomGrouts, setRoomGrouts] = useState({})
+  const [selectedBasin, setSelectedBasin] = useState(basinProducts[0])
   const groutColor = roomGrouts[activeModelId] || grouts[0].color
   const setGroutColor = color => setRoomGrouts(current => ({ ...current, [activeModelId]: color }))
   const [saving, setSaving] = useState(false)
@@ -54,8 +56,11 @@ export default function Visualizer() {
   const canvasWrapRef = useRef(null)
   const activeModel = models.find(model => model.id === activeModelId)
   const zoneTextures = designs[activeModelId]
-  const activeZone = activeModel.zones.find(zone => zone.id === activeZoneId) || activeModel.zones[0]
-  const materialKey = JSON.stringify([activeModelId, quality, groutColor, ...activeModel.zones.map(zone => [zone.id, zoneTextures[zone.id]?.id, zoneTextures[zone.id]?.url])])
+  const hasBasin = activeModelId === 'vanity'
+  const activeZone = hasBasin && activeZoneId === 'basin'
+    ? { id: 'basin', label: 'Tabletop basin' }
+    : activeModel.zones.find(zone => zone.id === activeZoneId) || activeModel.zones[0]
+  const materialKey = JSON.stringify([activeModelId, quality, groutColor, hasBasin ? selectedBasin.id : null, ...activeModel.zones.map(zone => [zone.id, zoneTextures[zone.id]?.id, zoneTextures[zone.id]?.url])])
   const materialsReady = materialStatus.key === materialKey && materialStatus.phase === 'ready'
   const materialError = materialStatus.key === materialKey ? materialStatus.error : ''
 
@@ -71,6 +76,10 @@ export default function Visualizer() {
   const onSwatchPick = (zoneId, product) => {
     setMaterialStatus({ key: null, phase: 'loading', error: '' })
     setDesigns(current => ({ ...current, [activeModelId]: { ...current[activeModelId], [zoneId]: product } }))
+  }
+  const onBasinPick = product => {
+    const basin = getBasinProduct(product?.id)
+    if (basin) setSelectedBasin(basin)
   }
   const onCustomUpload = (zoneId, file) => {
     if (!validateImageFile(file).ok) return
@@ -90,6 +99,14 @@ export default function Visualizer() {
   }, [])
   useEffect(() => {
     const handler = product => {
+      const basin = getBasinProduct(product?.id)
+      if (basin) {
+        setSelectedBasin(basin)
+        onModelChange('vanity')
+        setActiveZoneId('basin')
+        setPresetName('detail')
+        return
+      }
       // Prefer the current room when it already has a compatible surface.
       const ordered = [activeModel, ...models.filter(model => model !== activeModel)]
       const model = ordered.find(item => item.zones.some(zone => surfaceMatches(product.surface, zone.surface)))
@@ -108,9 +125,14 @@ export default function Visualizer() {
   }, [activeModel, onModelChange])
 
   const onPresetChange = name => { setPresetName(name); setCameraResetKey(key => key + 1) }
+  const onActivateZone = id => {
+    setActiveZoneId(id)
+    if (id === 'basin') onPresetChange('detail')
+  }
   const onReset = () => {
     setMaterialStatus({ key: null, phase: 'loading', error: '' })
     setDesigns(current => ({ ...current, [activeModelId]: defaultTiles(activeModel) }))
+    if (hasBasin) setSelectedBasin(basinProducts[0])
     setGroutColor(grouts[0].color)
     onPresetChange('default')
   }
@@ -120,11 +142,15 @@ export default function Visualizer() {
     try {
       const canvas = canvasWrapRef.current?.querySelector('canvas')
       if (!canvas) throw new Error('Preview is still preparing. Please try again.')
-      await captureAndDownload(canvas, { roomName: activeModel.name, selections: activeModel.zones.map(zone => `${zone.label}: ${zoneTextures[zone.id]?.name || 'Custom tile'}`) })
+      await captureAndDownload(canvas, { roomName: activeModel.name, selections: designSummary })
     } catch (error) { setSaveError(error.message || 'Could not save this preview. Please try again.') }
     finally { setSaving(false) }
   }
-  const summary = activeModel.zones.map(zone => `${zone.label}: ${zoneTextures[zone.id]?.name || 'Unselected'}`).join('; ')
+  const designSummary = [
+    ...activeModel.zones.map(zone => `${zone.label}: ${zoneTextures[zone.id]?.name || 'Unselected'}`),
+    ...(hasBasin ? [`Tabletop basin: ${selectedBasin.name} (${selectedBasin.size}) · approximate 3D shape`] : []),
+  ]
+  const summary = designSummary.join('; ')
   const waHref = `${business.whatsapp}?text=${encodeURIComponent(`Hi! I designed a ${activeModel.name} in your tile visualizer. ${summary}. Can we discuss these in-store?`)}`
 
   return (
@@ -147,6 +173,7 @@ export default function Visualizer() {
                       <Suspense fallback={null}>
                         <RoomModel roomId={activeModelId} zones={activeModel.zones} zoneTextures={zoneTextures}
                           onZoneClick={setActiveZoneId} modelExtras={{ groutColor }} tier={quality}
+                          basinProduct={hasBasin ? selectedBasin : null}
                           materialKey={materialKey} onMaterialStatus={setMaterialStatus} />
                       </Suspense>
                     </ModelShell>
@@ -179,10 +206,11 @@ export default function Visualizer() {
               <span className="hidden text-[10px] text-sand/65 sm:block">Drag to look · 150° · Pinch or scroll to zoom</span>
             </div>
           </div>
-          <aside aria-label="Choose room tiles" className="flex h-[530px] min-h-0 w-full flex-col rounded-card border border-white/10 bg-charcoal-800 lg:h-[600px]">
+          <aside aria-label={hasBasin ? 'Choose room tiles and basin' : 'Choose room tiles'} className="flex h-[530px] min-h-0 w-full flex-col rounded-card border border-white/10 bg-charcoal-800 lg:h-[600px]">
             <SurfaceLibrary key={`${activeModelId}-${activeZoneId}`} zones={activeModel.zones} activeZoneId={activeZoneId}
               surfaceNote={activeModel.surfaceNote}
-              zoneTextures={zoneTextures} onActivateZone={setActiveZoneId} onSwatchPick={onSwatchPick} onCustomUpload={onCustomUpload} />
+              basinProducts={hasBasin ? basinProducts : []} selectedBasin={selectedBasin} onBasinPick={onBasinPick}
+              zoneTextures={zoneTextures} onActivateZone={onActivateZone} onSwatchPick={onSwatchPick} onCustomUpload={onCustomUpload} />
           </aside>
         </div>
         <div className="mt-4 flex flex-wrap items-center justify-between gap-4 rounded-card border border-white/5 px-4 py-3">
@@ -196,9 +224,9 @@ export default function Visualizer() {
             <span className="text-[10px] text-sand/60">2 mm joints</span>
           </div>
           <div className="flex flex-wrap gap-2">
-            <button onClick={onReset} className="btn-outline min-h-11 px-3 py-2 text-xs">Reset tiles</button>
+            <button onClick={onReset} className="btn-outline min-h-11 px-3 py-2 text-xs">{hasBasin ? 'Reset design' : 'Reset tiles'}</button>
             <button onClick={onScreenshot} disabled={saving || !webgl || !materialsReady} className="btn-outline min-h-11 px-4 py-2 text-xs">{saving ? 'Saving…' : !materialsReady && webgl && !materialError ? 'Loading tiles…' : 'Save room'}</button>
-            <a href={waHref} target="_blank" rel="noreferrer" className="btn-gold min-h-11 px-4 py-2 text-xs"><Icon name="whatsapp" className="h-4 w-4" filled /> Ask about these tiles</a>
+            <a href={waHref} target="_blank" rel="noreferrer" className="btn-gold min-h-11 px-4 py-2 text-xs"><Icon name="whatsapp" className="h-4 w-4" filled /> {hasBasin ? 'Ask about this design' : 'Ask about these tiles'}</a>
           </div>
         </div>
         {saveError && <p role="alert" className="mt-2 text-sm text-terracotta">{saveError}</p>}

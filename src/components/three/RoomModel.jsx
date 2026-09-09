@@ -11,14 +11,15 @@ import { prepareRoom } from './rooms/prepareRoom'
 import { disposeRoom } from './rooms/roomKit'
 import RoomMirror from './rooms/RoomMirror'
 import { applyAuthoredFixtures, AUTHORED_FIXTURES_URL } from './rooms/authoredFixtures'
+import { createVanityBasin } from './rooms/vanity'
 
 useGLTF.setDecoderPath('/draco/')
 
-export default function RoomModel({ roomId, zones, zoneTextures, onZoneClick, modelExtras = {}, tier = 'full', materialKey, onMaterialStatus }) {
+export default function RoomModel({ roomId, zones, zoneTextures, onZoneClick, basinProduct, modelExtras = {}, tier = 'full', materialKey, onMaterialStatus }) {
   const { invalidate } = useThree()
   const { scene: fixtures } = useGLTF(AUTHORED_FIXTURES_URL)
   const instance = useMemo(() => {
-    const root = roomFactories[roomId]()
+    const root = roomFactories[roomId](roomId === 'vanity' ? { includeBasin: false } : undefined)
     try {
       return prepareRoom(applyAuthoredFixtures(root, fixtures), zones)
     } catch (error) {
@@ -26,6 +27,26 @@ export default function RoomModel({ roomId, zones, zoneTextures, onZoneClick, mo
       throw error
     }
   }, [roomId, zones, fixtures])
+  // Basin choices own their mesh and finish. Replacing one never rebuilds the
+  // tiled room or mutates the GLTF cache shared with the two bathrooms.
+  const basinInstance = useMemo(() => {
+    if (roomId !== 'vanity') return null
+    const root = createVanityBasin(basinProduct)
+    try {
+      return { root: applyAuthoredFixtures(root, fixtures), active: false }
+    } catch (error) {
+      disposeRoom(root)
+      throw error
+    }
+  }, [roomId, basinProduct, fixtures])
+  useEffect(() => {
+    if (!basinInstance) return
+    basinInstance.active = true
+    return () => {
+      basinInstance.active = false
+      queueMicrotask(() => { if (!basinInstance.active) disposeRoom(basinInstance.root) })
+    }
+  }, [basinInstance])
   const { root, zoneMeshes, ownedTextures } = instance
   const readyAfterFrame = useRef(null)
   const sizeMultiplier = 1
@@ -159,8 +180,7 @@ export default function RoomModel({ roomId, zones, zoneTextures, onZoneClick, mo
     onMaterialStatus?.({ key: pending.key, phase: 'ready', error: '' })
   })
 
-  return <>
-    <primitive object={root} dispose={null} onClick={event => {
+  const onRoomClick = event => {
       if (event.delta > 4) return
       const material = Array.isArray(event.object.material)
         ? event.object.material[event.face?.materialIndex || 0] : event.object.material
@@ -168,9 +188,17 @@ export default function RoomModel({ roomId, zones, zoneTextures, onZoneClick, mo
       // occlude it, so a click cannot select a tiled wall hidden behind them.
       if (material?.transparent && material.opacity < 0.3) return
       event.stopPropagation()
+      let target = event.object
+      while (target) {
+        if (target.userData.fixtureSelectionId === 'basin') { onZoneClick?.('basin'); return }
+        target = target.parent
+      }
       const zone = event.object?.userData?.zoneId
       if (zoneMeshes[zone]?.includes(event.object)) onZoneClick?.(zone)
-    }} />
+  }
+  return <>
+    <primitive object={root} dispose={null} onClick={onRoomClick} />
+    {basinInstance && <primitive object={basinInstance.root} dispose={null} onClick={onRoomClick} />}
     <RoomMirror root={root} tier={tier} />
   </>
 }

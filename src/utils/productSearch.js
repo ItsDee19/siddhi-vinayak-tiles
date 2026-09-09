@@ -60,11 +60,11 @@ export function surfacesOfProduct(product) {
 // null rather than guessing, so an unmeasured product is simply absent from
 // every colour bucket instead of being dumped into a wrong one.
 export function colorOf(product) {
-  return productFacets[product?.id]?.color || null
+  return product?.colorFamily || productFacets[product?.id]?.color || null
 }
 
 export function colorHexOf(product) {
-  return productFacets[product?.id]?.hex || null
+  return (product?.colorFamily ? product.color : null) || productFacets[product?.id]?.hex || null
 }
 
 // Which source catalogue a product came from. Useful as a filter because the
@@ -108,6 +108,7 @@ function haystack(product) {
     product.finish,
     product.surface,
     product.subCategory,
+    product.shapeLabel,
     product.category,
     colorOf(product),
     collectionOf(product)?.label,

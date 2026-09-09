@@ -55,17 +55,17 @@ export const models = [
   },
   {
     id: 'vanity', name: 'Basin wall 10 × 5', letter: 'E',
-    blurb: 'Twin basins · 10 × 5 ft back wall above the counter · tiled front',
+    blurb: 'One statement basin · 10 × 5 ft tiled back wall · tiled front',
     dimensions: '10 ft wide × 2 ft deep counter',
-    selectionHint: 'Try tiles on the back wall, front panel and side returns. The quartz counter and basins stay fixed.',
+    selectionHint: 'Choose a tabletop basin from the catalogue, then compare tiles on the back wall, front panel and side returns.',
     zones: [
       { id: 'backWall', label: 'Back wall', surface: 'Wall', defaultTileRole: 'feature' },
       { id: 'frontPanel', label: 'Front panel', surface: 'Wall', defaultTileRole: 'feature' },
       { id: 'sideReturns', label: 'Side returns', surface: 'Wall' },
     ],
     presets: {
-      default: { label: 'Vanity', position: [1.25, 1.55, 3.05], target: [0, 0.95, 0], fov: 52, fitAspect: 1.5 },
-      detail: { label: 'Basin detail', position: [0, 1.55, 1.4], target: [-0.6, 0.9, 0], fov: 48 },
+      default: { label: 'Basin & walls', position: [0.72, 1.60, 2.70], target: [0, 1.14, 0.10], fov: 49, fitAspect: 1.5 },
+      detail: { label: 'Basin detail', position: [0.25, 1.50, 1.15], target: [0, 0.94, 0.33], fov: 44, fitAspect: 1 },
       front: { label: 'Front panel', position: [0.15, 1.05, 1.9], target: [0.15, 0.36, 0.6096], fov: 48 },
     },
   },

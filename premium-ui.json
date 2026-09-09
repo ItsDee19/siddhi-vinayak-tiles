@@ -1,0 +1,8 @@
+{
+  "profile": "product-admin",
+  "sourceRoots": ["src"],
+  "locale": "en-IN",
+  "canonicalMap": "docs/3d-visualizer-quality.md",
+  "requiredCapabilities": ["Select/Listbox", "Scrollbar"],
+  "ownership": { "Select/Listbox": "native" }
+}

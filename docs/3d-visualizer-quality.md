@@ -19,7 +19,7 @@ selections, making coordinated combinations easy to compare.
 | B · Bathroom | 10 × 10 ft floor; two 8 ft walls; 2 / 4 / 2 ft bands | Lower, middle and upper wall bands only |
 | C · Staircase | Two flights joined by an intermediate landing | Treads and landing, risers, hall floor, walls |
 | D · Feature wall | 30 ft wide × 10 ft high | Full wall |
-| E · Basin wall | 10 ft wide × 5 ft high above a 10 × 2 ft counter | Back wall, front panel, side returns |
+| E · Basin wall | 10 ft wide × 5 ft high above a 10 × 2 ft counter | Back wall, front panel, side returns; interchangeable tabletop basin |
 
 The bathroom floors are fixed neutral stone. They have no selectable zone, and
 the renderer accepts clicks only on meshes belonging to a registered zone.
@@ -40,9 +40,21 @@ structural core, preventing the support from hiding the selected treads.
 
 Model E follows the original project specification: the 5 ft back wall starts
 at the 2.5 ft counter level, reaching 7.5 ft above the floor. Two 2 ft deep
-upper side returns meet the back wall. Two hollow ceramic basins sit on a
-fixed quartz counter. The front panel is independently tileable. The catalogue
+upper side returns meet the back wall. One centred hollow ceramic basin sits on a
+fixed quartz counter. A smaller mirror exposes more tile; the overview and close
+basin preset enlarge the useful display area without distorting product scale.
+The front panel is independently tileable. The catalogue
 has no approved countertop faces, so the counter retains its authored finish.
+
+The tabletop selector offers the two verified Lavish products from the source
+catalogue: Beige (`gt2025-c398`) and Grey (`gt2025-c402`), both Matt Table Top,
+455 × 340 × 135 mm. `basinCatalogue.js` corrects these previously misclassified
+tile entries. Their explicit colour families supersede measurements of the white
+catalogue-page background. Basin geometry and colours approximate the photos;
+no manufacturer CAD or calibrated finish swatches were supplied. The UI says so.
+Product photos remain in the picker and never enter the tile texture pipeline.
+The basin and its adaptive faucet form an independently owned group. Changing
+products preserves wall materials and the shared Blender geometry cache.
 
 ## Interaction
 
@@ -55,14 +67,25 @@ interior viewpoints. Pointer, touch, wheel and keyboard controls share bounds.
 The desktop tile library sits next to the preview. On phones the preview stays
 visible above the scrolling tile library; contact buttons yield space while
 browsing the visualizer. Clicking a tileable surface selects its library.
-Selections and grout colour persist independently for each room. Reset tiles
-resets the current room; Reset room view preserves the design.
+Selections and grout colour persist independently for each room. The basin
+choice also persists across room changes. Reset tiles resets the current room;
+in Basin Wall, Reset design also restores the default basin. Reset room view
+preserves all product choices.
 
 Catalogue selections are queued until the lazy visualizer is mounted. Only
 products with compatible surfaces and approved processed tile faces expose
-View in 3D. Saving waits for the current materials to load and render, and adds
+View in 3D; verified tabletop products open Basin Wall with that basin selected.
+Saving waits for the current materials to load and render, and adds
 the room name and selected products below the exported image. Failed texture
 loads retain the previous visible design and prevent a mislabeled export.
+Exports and enquiry drafts include the selected basin alongside the wall tiles.
+
+### Canonical UI ownership
+
+| Capability | Canonical owner | Source of truth | Allowed variants | Verification |
+| --- | --- | --- | --- | --- |
+| Select/Listbox | Native select in SurfaceLibrary and Contact | DESIGN.md and existing form controls | Platform popup and keyboard behavior; hide redundant basin size filter for one available size | Browser selection, keyboard, narrow viewport |
+| Scrollbar | Global application stylesheet (`src/index.css`) | Existing runtime tokens | Library owns scrolling with stable gutter; page retains native scrolling | Browser overflow and mobile inspection |
 
 ## Rendering and scale
 

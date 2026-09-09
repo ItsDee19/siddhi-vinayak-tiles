@@ -23,6 +23,7 @@
 // module chain directly under plain Node (no Vite resolver), and Node's ESM
 // loader does not guess extensions.
 import { importedProducts } from './importedCatalogue.js'
+import { getBasinProduct } from './basinCatalogue.js'
 
 // NOTE: `subCategories` and the hex-distance `getColorFamily` helper used to
 // live here and drove the catalogue's sub-type strip and colour filter. Both
@@ -49,7 +50,9 @@ export const surfaces = ['Floor', 'Wall', 'Both', 'Countertop']
 // Floor book → surface "Floor"; 2025 book → surface "Wall" (OCR may override).
 // Placeholders removed so ZonePicker + Catalogue only show real tiles.
 export const products = [
-  ...importedProducts,
+  // A few photographed tabletop basins were imported as tile crops. Use their
+  // printed product identity and dimensions, with no repeatable tile texture.
+  ...importedProducts.map(product => getBasinProduct(product.id) || product),
 
   // Sanitaryware (fixtures — no surface textures needed)
   { id: 'sani-001', name: 'Modern Basin Suite', category: 'Sanitaryware', subCategory: 'Basins', size: '24×18 in', finish: 'Glossy', color: '#f4f1ec', accent: '#d0ccc4', surface: 'Countertop', priceRange: 'Mid', imageUrl: null, textureUrl: null, tags: ['white', 'bathroom'], featured: true },

@@ -19,7 +19,7 @@ function architecture(object) {
 }
 
 function mirror(root, finish) {
-  const width = 1.98, height = 0.54, radius = 0.06
+  const width = 0.94, height = 0.58, radius = 0.06
   const left = -width / 2, right = width / 2, bottom = -height / 2, top = height / 2
   const shape = new THREE.Shape()
   shape.moveTo(left + radius, bottom)
@@ -41,28 +41,61 @@ function mirror(root, finish) {
   root.add(face)
 }
 
-function basinAndFaucet(root, x, index, ceramic, chrome, dark) {
-  const geometry = createBasinGeometry(0.555, 0.370, 0.12, 'rect')
+/** A separately owned fixture can change without recreating the tiled room. */
+export function createVanityBasin(basinProduct = null) {
+  const root = room('vanity_basin_fixture')
+  root.userData.fixtureSelectionId = 'basin'
+  const fallback = [600, 400, 150]
+  const dimensions = fallback.map((value, index) => {
+    const supplied = basinProduct?.dimensionsMM?.[index]
+    return (Number.isFinite(supplied) && supplied > 0 ? supplied : value) / 1000
+  })
+  const [width, depth, height] = dimensions
+  root.userData.dimensions = { width, depth, height }
+  root.userData.basinProductId = basinProduct?.id ?? null
+  const isMatte = /matt/i.test(basinProduct?.finish || '')
+  const ceramic = material(basinProduct?.color || '#ffffff', isMatte ? 0.38 : 0.13)
+  ceramic.clearcoat = isMatte ? 0.08 : 0.65
+  ceramic.clearcoatRoughness = isMatte ? 0.32 : 0.11
+  const chrome = material('#d7dcd5', 0.17, 0.93)
+  const dark = material('#494b42', 0.52)
+  const geometry = createBasinGeometry(width, depth, height, basinProduct?.shape === 'oval' ? 'vessel' : 'rect')
+  // Normalize the procedural envelope to the stated product size. Authored
+  // Blender shells inherit these exact bounds when they replace this geometry.
+  const bounds = geometry.boundingBox
+  const size = bounds.getSize(new THREE.Vector3())
+  geometry.translate(0, -bounds.min.y, 0)
+  geometry.scale(width / size.x, height / size.y, depth / size.z)
+  geometry.computeBoundingBox()
+  const basinZ = DEPTH / 2 + 0.045
   const bowl = new THREE.Mesh(geometry, ceramic)
-  bowl.name = `vanity_vessel_basin_${index}`
-  // The authored shell has a small underside profile; seat that profile on
-  // the quartz instead of leaving the basin visibly floating above it.
-  bowl.position.set(x, COUNTER_HEIGHT - geometry.boundingBox.min.y + 0.0005, 0.333)
+  bowl.name = 'vanity_vessel_basin_center'
+  bowl.position.set(0, COUNTER_HEIGHT + 0.0005, basinZ)
   bowl.castShadow = true
   bowl.receiveShadow = true
   bowl.userData.ownedGeometry = true
+  bowl.userData.authoredSource = basinProduct?.assetMeshName || 'basin_vanity'
+  bowl.userData.authoredWasteName = 'vanity_basin_waste_center'
   root.add(bowl)
-  cylinder(root, `vanity_basin_waste_${index}`, 0.019, 0.019, 0.004, [x, bowl.position.y + 0.12 * 0.18 + 0.002, 0.333], chrome, 40)
-  const faucetZ = 0.080
-  cylinder(root, `vanity_mixer_rosette_${index}`, 0.026, 0.028, 0.009, [x, COUNTER_HEIGHT + 0.005, faucetZ], chrome, 40)
-  tube(root, `vanity_mixer_neck_${index}`, [
-    [x, COUNTER_HEIGHT + 0.009, faucetZ], [x, 0.978, faucetZ],
-    [x, 1.016, 0.125], [x, 1.010, 0.238], [x, 0.978, 0.25],
+  cylinder(root, 'vanity_basin_waste_center', 0.019, 0.019, 0.004, [0, bowl.position.y + height * 0.18 + 0.002, basinZ], chrome, 40)
+  const faucetZ = 0.065
+  const rimY = COUNTER_HEIGHT + height + 0.0005
+  const spoutY = rimY + 0.09
+  const outletZ = basinZ - depth * 0.10
+  cylinder(root, 'vanity_mixer_rosette_center', 0.026, 0.028, 0.009, [0, COUNTER_HEIGHT + 0.005, faucetZ], chrome, 40)
+  tube(root, 'vanity_mixer_neck_center', [
+    [0, COUNTER_HEIGHT + 0.009, faucetZ], [0, spoutY, faucetZ],
+    [0, spoutY + 0.037, faucetZ + 0.045], [0, spoutY + 0.030, outletZ - 0.015], [0, spoutY, outletZ],
   ], 0.012, chrome)
-  cylinder(root, `vanity_mixer_aerator_${index}`, 0.0125, 0.0125, 0.017, [x, 0.968, 0.25], chrome, 32)
-  tube(root, `vanity_mixer_lever_mount_${index}`, [[x, 0.817, faucetZ], [x + 0.046, 0.817, faucetZ]], 0.013, chrome)
-  box(root, `vanity_mixer_lever_${index}`, [0.011, 0.07, 0.031], [x + 0.047, 0.85, faucetZ], chrome, 0.005)
-  box(root, `vanity_mixer_index_${index}`, [0.002, 0.018, 0.002], [x + 0.047, 0.87, faucetZ + 0.0165], dark, 0.0005)
+  cylinder(root, 'vanity_mixer_aerator_center', 0.0125, 0.0125, 0.017, [0, spoutY - 0.010, outletZ], chrome, 32)
+  tube(root, 'vanity_mixer_lever_mount_center', [[0, COUNTER_HEIGHT + 0.055, faucetZ], [0.046, COUNTER_HEIGHT + 0.055, faucetZ]], 0.013, chrome)
+  box(root, 'vanity_mixer_lever_center', [0.011, 0.07, 0.031], [0.047, COUNTER_HEIGHT + 0.088, faucetZ], chrome, 0.005)
+  box(root, 'vanity_mixer_index_center', [0.002, 0.018, 0.002], [0.047, COUNTER_HEIGHT + 0.108, faucetZ + 0.0165], dark, 0.0005)
+  root.traverse(object => { if (object.isMesh) object.userData.fixtureSelectionId = 'basin' })
+  root.updateMatrixWorld(true)
+  const interior = new THREE.Raycaster(new THREE.Vector3(0, rimY + 0.05, basinZ), new THREE.Vector3(0, -1, 0)).intersectObject(bowl, false)[0]
+  if (interior) root.getObjectByName('vanity_basin_waste_center').position.y = interior.point.y - 0.0005
+  return root
 }
 
 function foldedTowels(root, x, linen) {
@@ -74,8 +107,8 @@ function foldedTowels(root, x, linen) {
 }
 
 /** Exact 10 ft wash counter with a 5 ft tiled wall ABOVE its 2.5 ft top. */
-export function createVanity() {
-  const root = room('10 ft double vanity')
+export function createVanity({ basinProduct, includeBasin = true } = {}) {
+  const root = room('10 ft single basin wall')
   root.userData.dimensions = { width: WIDTH, backWallHeight: BACK_HEIGHT, counterHeight: COUNTER_HEIGHT, counterDepth: DEPTH }
   const plaster = plasterMaterial('#e9e5db', { roughness: 0.85 })
   const limestone = stoneMaterial('#cbc5b8', { polished: false, roughness: 0.61, scale: 4 })
@@ -84,7 +117,6 @@ export function createVanity() {
   quartz.clearcoatRoughness = 0.18
   const oak = woodMaterial('#aa8763')
   const dark = material('#494b42', 0.52)
-  const chrome = material('#d7dcd5', 0.17, 0.93)
   const bronze = material('#b59a6e', 0.31, 0.73)
   const ceramic = material('#faf9f4', 0.13)
   ceramic.clearcoat = 0.65
@@ -133,21 +165,20 @@ export function createVanity() {
   architecture(box(root, 'vanity_recessed_carcass', [WIDTH - 0.046, apronHeight - 0.03, DEPTH - 0.047], [0, (apronHeight - 0.03) / 2, (DEPTH - 0.047) / 2 + 0.006], plaster))
   architecture(box(root, 'vanity_under_counter_light', [WIDTH - 0.07, 0.004, 0.008], [0, apronHeight - 0.013, DEPTH + 0.0045], light))
 
-  basinAndFaucet(root, -0.72, 'left', ceramic, chrome, dark)
-  basinAndFaucet(root, 0.72, 'right', ceramic, chrome, dark)
+  if (includeBasin) root.add(createVanityBasin(basinProduct))
   const silver = material('#d8e0dc', 0.08, 0.68)
   silver.envMapIntensity = 1.2
-  architecture(box(root, 'vanity_mirror_backlight', [2.016, 0.576, 0.009], [0, 1.64, 0.012], light, 0.069))
-  box(root, 'vanity_mirror_bronze_frame', [2.002, 0.562, 0.024], [0, 1.64, 0.031], bronze, 0.065)
+  architecture(box(root, 'vanity_mirror_backlight', [0.976, 0.616, 0.009], [0, 1.64, 0.012], light, 0.069))
+  box(root, 'vanity_mirror_bronze_frame', [0.962, 0.602, 0.024], [0, 1.64, 0.031], bronze, 0.065)
   mirror(root, silver)
-  // Leave over three quarters of the back wall as exposed tile.
+  // The compact single mirror leaves almost nine tenths of the back wall tiled.
   architecture(box(root, 'vanity_wall_wash_lip', [WIDTH, 0.025, 0.065], [0, COUNTER_HEIGHT + BACK_HEIGHT + 0.013, 0.028], plaster, 0.003))
   architecture(box(root, 'vanity_wall_wash_diffuser', [WIDTH - 0.08, 0.005, 0.016], [0, COUNTER_HEIGHT + BACK_HEIGHT - 0.001, 0.031], light))
 
-  foldedTowels(root, -1.27, linen)
-  cylinder(root, 'vanity_soap_dispenser', 0.03, 0.033, 0.115, [0, COUNTER_HEIGHT + 0.058, 0.20], ceramic, 40)
-  cylinder(root, 'vanity_soap_pump_neck', 0.011, 0.012, 0.022, [0, COUNTER_HEIGHT + 0.126, 0.20], bronze, 28)
-  tube(root, 'vanity_soap_pump_spout', [[0, COUNTER_HEIGHT + 0.14, 0.20], [0, COUNTER_HEIGHT + 0.14, 0.259]], 0.005, bronze)
+  foldedTowels(root, -0.90, linen)
+  cylinder(root, 'vanity_soap_dispenser', 0.03, 0.033, 0.115, [0.49, COUNTER_HEIGHT + 0.058, 0.20], ceramic, 40)
+  cylinder(root, 'vanity_soap_pump_neck', 0.011, 0.012, 0.022, [0.49, COUNTER_HEIGHT + 0.126, 0.20], bronze, 28)
+  tube(root, 'vanity_soap_pump_spout', [[0.49, COUNTER_HEIGHT + 0.14, 0.20], [0.49, COUNTER_HEIGHT + 0.14, 0.259]], 0.005, bronze)
   box(root, 'vanity_small_quartz_tray', [0.24, 0.018, 0.17], [1.28, COUNTER_HEIGHT + 0.009, 0.25], quartz, 0.018)
   cylinder(root, 'vanity_lidded_ceramic_jar', 0.04, 0.042, 0.072, [1.28, COUNTER_HEIGHT + 0.054, 0.25], ceramic, 40)
   cylinder(root, 'vanity_ceramic_jar_lid', 0.043, 0.043, 0.012, [1.28, COUNTER_HEIGHT + 0.096, 0.25], ceramic, 40)

@@ -7,7 +7,7 @@ export const AUTHORED_FIXTURES_URL = '/models/showroom-fixtures.glb'
 const REPLACEMENTS = [
   [/^ceramic_vessel_basin$/, 'basin_compact', 'basin_pop_up_waste'],
   [/^spa_basin_(-?1)$/, 'basin_spa', match => `spa_basin_waste_${match[1]}`],
-  [/^vanity_vessel_basin_(left|right)$/, 'basin_vanity', match => `vanity_basin_waste_${match[1]}`],
+  [/^vanity_vessel_basin_(left|right|center)$/, 'basin_vanity', match => `vanity_basin_waste_${match[1]}`],
   [/^spa_freestanding_soaking_tub$/, 'bath_soaking', 'spa_tub_waste'],
   [/^folded_hand_towel$/, 'towel_drape'],
   [/^vanity_folded_towel_\d+$/, 'towel_folded'],
@@ -141,11 +141,12 @@ export function applyAuthoredFixtures(root, assetScene) {
       for (const [pattern, sourceName, wasteName] of REPLACEMENTS) {
         const match = object.name.match(pattern)
         if (!match) continue
-        const geometry = fitGeometry(sourceGeometry(assetScene, sourceName), object.geometry)
+        const source = object.userData.authoredSource || sourceName
+        const geometry = fitGeometry(sourceGeometry(assetScene, source), object.geometry)
         retiredGeometries.push(object.geometry)
         object.geometry = geometry
         object.userData.ownedGeometry = true
-        object.userData.authoredFixture = sourceName
+        object.userData.authoredFixture = source
         if (wasteName) wastes.push([object, typeof wasteName === 'function' ? wasteName(match) : wasteName])
         break
       }

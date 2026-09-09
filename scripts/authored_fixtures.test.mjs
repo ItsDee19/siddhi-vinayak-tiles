@@ -4,6 +4,8 @@ import { createHash } from 'node:crypto'
 import { Box3, Raycaster, Vector3 } from 'three'
 import { roomFactories } from '../src/components/three/rooms/index.js'
 import { models } from '../src/components/three/models/registry.js'
+import { createVanity, createVanityBasin } from '../src/components/three/rooms/vanity.js'
+import { basinProducts } from '../src/data/basinCatalogue.js'
 import { applyAuthoredFixtures } from '../src/components/three/rooms/authoredFixtures.js'
 import { prepareRoom } from '../src/components/three/rooms/prepareRoom.js'
 import { disposeRoom } from '../src/components/three/rooms/roomKit.js'
@@ -123,7 +125,7 @@ const EXPECTED_REPLACEMENTS = {
   'bathroom-l': ['spa_basin_-1', 'spa_basin_1', 'spa_freestanding_soaking_tub'],
   stairs: [],
   'feature-wall': ['feature_bench_linen_pad', 'feature_olive_foliage', 'feature_olive_branches'],
-  vanity: ['vanity_vessel_basin_left', 'vanity_vessel_basin_right', 'vanity_folded_towel_0', 'vanity_folded_towel_1', 'vanity_folded_towel_2'],
+  vanity: ['vanity_vessel_basin_center', 'vanity_folded_towel_0', 'vanity_folded_towel_1', 'vanity_folded_towel_2'],
 }
 
 for (const model of models) {
@@ -176,8 +178,7 @@ test('live waste discs follow each new bowl floor and furnishings retain contact
     ['bathroom-l', 'spa_basin_-1', 'spa_basin_waste_-1', 'spa_vanity_stone_counter'],
     ['bathroom-l', 'spa_basin_1', 'spa_basin_waste_1', 'spa_vanity_stone_counter'],
     ['bathroom-l', 'spa_freestanding_soaking_tub', 'spa_tub_waste', 'bathroom_floor'],
-    ['vanity', 'vanity_vessel_basin_left', 'vanity_basin_waste_left', null],
-    ['vanity', 'vanity_vessel_basin_right', 'vanity_basin_waste_right', null],
+    ['vanity', 'vanity_vessel_basin_center', 'vanity_basin_waste_center', null],
   ]
   const roots = new Map()
   for (const id of new Set(fixtures.map(entry => entry[0]))) {
@@ -211,6 +212,47 @@ test('live waste discs follow each new bowl floor and furnishings retain contact
   assert.equal(meshes(feature).filter(mesh => /^(feature_olive_branch_|feature_leaf_petiole_|feature_olive_leaf_)/.test(mesh.name)).length, 0)
   assert.deepEqual(feature.getObjectByName('feature_olive_foliage').position.toArray(), [3.95, 0, 0.48])
   assert.ok(feature.getObjectByName('feature_earthen_planter'), 'the original planter must remain')
+})
+
+test('catalogue basin swaps preserve room tiles and use independent, correctly seated Blender shells', t => {
+  const room = applyAuthoredFixtures(createVanity({ includeBasin: false }), asset.scene)
+  t.after(() => disposeRoom(room))
+  const tiles = meshes(room).filter(mesh => mesh.userData.zoneId).map(mesh => [mesh, mesh.geometry, mesh.material])
+  const cached = asset.scene.getObjectByName('basin_vanity').geometry
+  const digest = geometryDigest(cached)
+  let previous = null
+  for (const product of [...basinProducts, basinProducts[0]]) {
+    const group = applyAuthoredFixtures(createVanityBasin(product), asset.scene)
+    const bowl = group.getObjectByName('vanity_vessel_basin_center')
+    const bounds = new Box3().setFromObject(bowl)
+    const [width, depth, height] = product.dimensionsMM.map(value => value / 1000)
+    const size = bounds.getSize(new Vector3())
+    close(size.x, width, 0.00005, 'catalogue width')
+    close(size.z, depth, 0.00005, 'catalogue depth')
+    close(size.y, height, 0.00005, 'catalogue height')
+    close(bounds.min.y, room.userData.dimensions.counterHeight + 0.0005, 0.00005, 'counter contact')
+    const interior = downHit(bowl)
+    assert.ok(interior && bounds.max.y - interior.point.y > height * 0.6)
+    const waste = new Box3().setFromObject(group.getObjectByName('vanity_basin_waste_center'))
+    close(waste.max.y - interior.point.y, 0.0015, 0.0001, 'waste contact')
+    assert.equal(bowl.material.color.getHexString(), product.color.slice(1))
+    assert.equal(bowl.userData.fixtureSelectionId, 'basin')
+    assert.equal(bowl.userData.zoneId, undefined, 'a basin must not enter the repeatable tile pipeline')
+    if (previous) {
+      assert.notEqual(previous.getObjectByName(bowl.name).geometry, bowl.geometry)
+      room.remove(previous)
+      disposeRoom(previous)
+    }
+    room.add(group)
+    previous = group
+    assert.equal(meshes(room).filter(mesh => mesh.name === bowl.name).length, 1)
+    for (const [mesh, geometry, material] of tiles) {
+      assert.equal(mesh.geometry, geometry)
+      assert.equal(mesh.material, material)
+    }
+    assert.equal(geometryDigest(cached), digest, 'swapping changed the cached source')
+    assert.ok(downHit(bowl), 'disposing the old selection invalidated the new bowl')
+  }
 })
 
 test('injection disposes retired native resources once while independent room clones leave the GLTF cache untouched', () => {
