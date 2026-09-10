@@ -45,7 +45,7 @@ function Shloka3D({ reduce }) {
         transformStyle: 'preserve-3d',
         transform: 'translateZ(12px)',
       }}
-      initial={reduce ? false : { opacity: 0, y: 8 }}
+      initial={false}
       animate={{ opacity: 1, y: 0 }}
       transition={reduce ? { duration: 0 } : { delay: 0.1, duration: MOTION_DURATION.reveal, ease: MOTION_EASE }}
     >
@@ -139,7 +139,7 @@ export default function Logo3D({ active = true }) {
       <motion.div
         className="relative shrink-0"
         style={reduce ? {} : { rotateX, rotateY, transformStyle: 'preserve-3d' }}
-        initial={reduce ? false : { scale: 0.96, y: 8, opacity: 0 }}
+        initial={false}
         animate={{ scale: 1, y: 0, opacity: 1 }}
         transition={reduce ? { duration: 0 } : { duration: MOTION_DURATION.reveal, ease: MOTION_EASE }}
       >
@@ -245,7 +245,7 @@ export default function Logo3D({ active = true }) {
           transformStyle: 'preserve-3d',
           transform: 'translateZ(10px)',
         }}
-        initial={reduce ? false : { y: 10, opacity: 0 }}
+        initial={false}
         animate={{ y: 0, opacity: 1 }}
         transition={reduce ? { duration: 0 } : { delay: 0.16, duration: MOTION_DURATION.reveal, ease: MOTION_EASE }}
       >

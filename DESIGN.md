@@ -60,6 +60,17 @@ screens the preview remains visible above the picker. Controls reserve at least
 Only one basin is shown in Basin Wall; its detail preset gives it more screen
 space without falsifying catalogue dimensions.
 
+On phones, category and supporting information cards become compact rows.
+The homepage catalogue uses two columns and six products per page; desktop
+pages show 24. Search remains visible, advanced filters use an explicit
+expand/collapse button, and paging returns focus to the result range. Full
+product specifications remain in the existing dialog. Floating contact actions
+give product choices and enquiry fields clear space on narrow screens.
+
+The built homepage contains visible content before JavaScript. Scroll reveals
+must not start essential text at zero opacity. Static catalogue browse pages
+share the existing styles and provide ordinary links to every catalogue page.
+
 ## Elevation & Depth
 
 Fine borders and subtle shadows separate the preview and library. Depth belongs

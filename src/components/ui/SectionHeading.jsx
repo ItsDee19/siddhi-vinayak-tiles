@@ -13,13 +13,13 @@ export default function SectionHeading({
   return (
     <Reveal className={`flex flex-col ${alignment}`}>
       {eyebrow && (
-        <span className="eyebrow mb-4">
+        <span className="eyebrow mb-3 sm:mb-4">
           <span className="h-px w-8 bg-gold" />
           {eyebrow}
         </span>
       )}
       <h2
-        className={`heading-display text-4xl sm:text-5xl lg:text-[3.4rem] ${
+        className={`heading-display text-3xl sm:text-5xl lg:text-[3.4rem] ${
           light ? 'text-charcoal' : 'text-cream'
         }`}
       >
@@ -27,7 +27,7 @@ export default function SectionHeading({
       </h2>
       {subtitle && (
         <p
-          className={`mt-5 max-w-2xl text-base leading-relaxed sm:text-lg ${
+          className={`mt-3 max-w-2xl text-base leading-relaxed sm:mt-5 sm:text-lg ${
             light ? 'text-charcoal-600' : 'text-sand/85'
           }`}
         >

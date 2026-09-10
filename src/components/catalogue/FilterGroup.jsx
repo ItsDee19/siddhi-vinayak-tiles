@@ -20,7 +20,7 @@ export default function FilterGroup({ label, options, selected, onToggle }) {
               onClick={() => onToggle(o.value)}
               aria-pressed={active}
               disabled={!active && o.count === 0}
-              className={`inline-flex min-h-9 items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-colors duration-150 whitespace-nowrap disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold ${
+              className={`inline-flex min-h-11 items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-colors duration-150 whitespace-nowrap disabled:cursor-not-allowed disabled:opacity-40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold sm:min-h-9 ${
                 active
                   ? 'border border-gold bg-gold/20 text-gold'
                   : 'border border-white/10 bg-charcoal-700 text-sand enabled:hover:bg-charcoal-600 enabled:hover:text-cream'

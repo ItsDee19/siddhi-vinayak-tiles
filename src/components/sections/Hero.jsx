@@ -70,6 +70,10 @@ export default function Hero() {
           </div>
         </Reveal>
 
+        <h1 className="mt-4 max-w-2xl text-center font-display text-xl text-cream sm:text-2xl">
+          Tiles, stone &amp; sanitaryware in Nuapada
+        </h1>
+
         {/* Tagline */}
         <Reveal delay={0.1}>
           <p className="mt-6 text-center font-display text-xl italic text-gold-light sm:text-2xl lg:text-3xl">

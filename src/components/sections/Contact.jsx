@@ -65,21 +65,21 @@ export default function Contact() {
           subtitle="Drop by the showroom, call us, or send a quick enquiry — we’d love to help with your project."
         />
 
-        <div className="mt-14 grid gap-8 lg:grid-cols-2">
+        <div className="mt-8 grid gap-6 sm:mt-14 sm:gap-8 lg:grid-cols-2">
           {/* left: details + address lookup */}
           <Reveal>
             <div className="flex h-full flex-col gap-6">
               {/* quick contact cards */}
-              <div className="grid gap-4 sm:grid-cols-2">
+              <div className="grid grid-cols-2 gap-3 sm:gap-4">
                 <a
                   href={`tel:${business.phoneTel}`}
-                  className="group rounded-2xl border border-white/5 bg-charcoal-700 p-5 transition-colors hover:border-gold/30"
+                  className="group rounded-2xl border border-white/5 bg-charcoal-700 p-4 transition-colors hover:border-gold/30 sm:p-5"
                 >
                   <Icon name="phone" className="h-6 w-6 text-gold" />
                   <p className="mt-3 text-xs uppercase tracking-wider text-sand">
                     Call us
                   </p>
-                  <p className="font-display text-lg text-cream">
+                  <p className="font-display text-base text-cream sm:text-lg">
                     {business.phoneDisplay}
                   </p>
                 </a>
@@ -87,13 +87,13 @@ export default function Contact() {
                   href={business.whatsapp}
                   target="_blank"
                   rel="noreferrer"
-                  className="group rounded-2xl border border-white/5 bg-charcoal-700 p-5 transition-colors hover:border-gold/30"
+                  className="group rounded-2xl border border-white/5 bg-charcoal-700 p-4 transition-colors hover:border-gold/30 sm:p-5"
                 >
                   <Icon name="whatsapp" className="h-6 w-6 text-gold" />
                   <p className="mt-3 text-xs uppercase tracking-wider text-sand">
                     WhatsApp
                   </p>
-                  <p className="font-display text-lg text-cream">Chat with us</p>
+                  <p className="font-display text-base text-cream sm:text-lg">Chat with us</p>
                 </a>
               </div>
 
@@ -125,7 +125,7 @@ export default function Contact() {
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-gold/20 bg-charcoal-700 p-7 sm:p-9">
+              <div className="rounded-2xl border border-gold/20 bg-charcoal-700 p-5 sm:p-9">
                 <Icon name="mapPin" className="h-7 w-7 text-gold" />
                 <h3 className="mt-4 font-display text-2xl text-cream">Find the showroom</h3>
                 <p className="mt-3 text-sm leading-relaxed text-sand/90">
@@ -147,7 +147,7 @@ export default function Contact() {
 
           {/* right: enquiry form */}
           <Reveal delay={0.1}>
-            <div className="rounded-3xl border border-white/5 bg-charcoal-700 p-7 shadow-card sm:p-9">
+            <div className="rounded-3xl border border-white/5 bg-charcoal-700 p-5 shadow-card sm:p-9">
               <h3 className="font-display text-2xl text-cream">Send an Enquiry</h3>
               <p className="mt-2 text-sm text-sand/90">
                 WhatsApp opens with your draft. Review it and press Send to reach us.
@@ -236,6 +236,33 @@ export default function Contact() {
               </form>
             </div>
           </Reveal>
+        </div>
+
+        <div className="mx-auto mt-8 max-w-3xl sm:mt-12">
+          <h3 className="font-display text-2xl text-cream">Before your visit</h3>
+          <div className="mt-3 divide-y divide-sand/20 border-y border-sand/20">
+            <details className="group">
+              <summary className="min-h-11 py-3 text-sm font-medium text-cream">Which products can I browse online?</summary>
+              <p className="pb-4 text-sm leading-relaxed text-sand/90">
+                Browse tiles and sanitaryware in our <a href="/catalogue/" className="text-gold underline underline-offset-4">online catalogue</a>.
+                {' '}For marble, granite and quartz, contact {business.name} or visit our Nuapada showroom to see the selection.
+              </p>
+            </details>
+            <details className="group">
+              <summary className="min-h-11 py-3 text-sm font-medium text-cream">Can I see how tiles will look in a room?</summary>
+              <p className="pb-4 text-sm leading-relaxed text-sand/90">
+                Our <a href="#visualizer" className="text-gold underline underline-offset-4">3D visualizer</a> previews tiles on bathroom walls, stairs, a feature wall and a basin wall.
+                {' '}Bathroom floors stay fixed while you compare wall tiles. Check physical samples at the showroom before choosing colours and finishes.
+              </p>
+            </details>
+            <details className="group">
+              <summary className="min-h-11 py-3 text-sm font-medium text-cream">How do I confirm prices and availability?</summary>
+              <p className="pb-4 text-sm leading-relaxed text-sand/90">
+                Share the product name, size and required quantity through our enquiry form, or call {business.phoneDisplay}.
+                {' '}Our showroom team can confirm current pricing and availability for your project.
+              </p>
+            </details>
+          </div>
         </div>
       </div>
     </section>

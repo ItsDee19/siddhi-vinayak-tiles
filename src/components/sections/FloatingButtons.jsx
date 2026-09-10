@@ -6,7 +6,7 @@ import { business } from '../../data/siteConfig'
 import { usePageVisible } from '../../hooks/usePageVisible'
 import { MOTION_DURATION, MOTION_EASE } from '../../utils/motion'
 
-// Quick contact actions appear after the hero and leave mobile forms unobstructed.
+// Quick contact actions leave mobile product choices and forms unobstructed.
 export default function FloatingButtons() {
   const [show, setShow] = useState(false)
   const reduce = useReducedMotion()
@@ -16,7 +16,7 @@ export default function FloatingButtons() {
     let frame = 0
     const update = () => {
       frame = 0
-      const needsClearSpace = window.innerWidth < 1024 && ['visualizer', 'contact'].some(id => {
+      const needsClearSpace = window.innerWidth < 1024 && ['products', 'catalogue', 'visualizer', 'contact'].some(id => {
         const section = document.getElementById(id)?.getBoundingClientRect()
         return section && section.top < window.innerHeight && section.bottom > 0
       })

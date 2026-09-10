@@ -24,18 +24,14 @@ export default function App() {
         <Hero />
         <ProductCategories />
         <VisualizerLazy />
-        <Suspense fallback={null}>
-          <Catalogue />
-          <WhyChooseUs />
-          <About />
-          <Testimonials />
-          <Contact />
-        </Suspense>
+        <Suspense fallback={null}><Catalogue /></Suspense>
+        <Suspense fallback={null}><WhyChooseUs /></Suspense>
+        <Suspense fallback={null}><About /></Suspense>
+        <Suspense fallback={null}><Testimonials /></Suspense>
+        <Suspense fallback={null}><Contact /></Suspense>
       </main>
-      <Suspense fallback={null}>
-        <Footer />
-        <FloatingButtons />
-      </Suspense>
+      <Suspense fallback={null}><Footer /></Suspense>
+      <Suspense fallback={null}><FloatingButtons /></Suspense>
     </MotionConfig>
   )
 }

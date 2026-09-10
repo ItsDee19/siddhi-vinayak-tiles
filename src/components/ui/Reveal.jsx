@@ -2,8 +2,8 @@ import { motion } from 'framer-motion'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 import { MOTION_DURATION, MOTION_EASE } from '../../utils/motion'
 
-// Fade + slide-up on scroll into view. Wrap any block to animate it.
-// Respects prefers-reduced-motion (PRD §2.5 / NF5).
+// Keep pre-rendered content visible before JavaScript and while hydrating.
+// Animate a small positional reveal only after this block enters the viewport.
 export default function Reveal({
   children,
   delay = 0,
@@ -16,9 +16,8 @@ export default function Reveal({
   return (
     <motion.div
       className={className}
-      initial={reduce ? false : { opacity: 0, y }}
-      animate={reduce ? { opacity: 1, y: 0 } : undefined}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={false}
+      whileInView={reduce ? undefined : { y: [Math.min(y, 12), 0] }}
       viewport={{ once, amount: 0.25 }}
       transition={
         reduce

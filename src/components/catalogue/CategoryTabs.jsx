@@ -1,8 +1,8 @@
 import { categories } from '../../data/products'
 
 // `counts` maps category id -> number of products in stock. Categories with
-// none are not rendered: the shop carries no Marble, Granite or Quartz, so
-// those three tabs only ever led to an empty grid.
+// none are not rendered: marble, granite and quartz are showroom enquiries,
+// with no product records in the online catalogue.
 export default function CategoryTabs({ active, onChange, counts = {} }) {
   const stocked = categories.filter((c) => (counts[c.id] || 0) > 0)
   // With a single stocked category the tab row is just a label — the "All" tab
@@ -11,14 +11,14 @@ export default function CategoryTabs({ active, onChange, counts = {} }) {
 
   const items = [{ id: 'all', name: 'All' }, ...stocked]
   return (
-    <div role="group" aria-label="Product category" className="flex flex-wrap justify-center gap-2.5">
+    <div role="group" aria-label="Product category" className="flex flex-wrap justify-center gap-1.5 sm:gap-2.5">
       {items.map((c) => (
         <button
           key={c.id}
           type="button"
           onClick={() => onChange(c.id)}
           aria-pressed={active === c.id}
-          className={`min-h-11 rounded-btn px-5 py-2.5 text-sm font-semibold transition-colors duration-150 ease-pr focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold ${
+          className={`min-h-11 min-w-11 rounded-btn px-2.5 py-2.5 text-[13px] font-semibold transition-colors duration-150 ease-pr focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold sm:px-5 sm:text-sm ${
             active === c.id
               ? 'bg-gold text-ink shadow-glow'
               : 'bg-white/5 text-sand hover:bg-white/10'

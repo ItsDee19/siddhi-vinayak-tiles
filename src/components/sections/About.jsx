@@ -34,12 +34,12 @@ export default function About() {
             </span>
           </Reveal>
           <Reveal delay={0.05}>
-            <h2 className="heading-display mt-5 text-4xl text-cream sm:text-5xl">
+            <h2 className="heading-display mt-4 text-3xl text-cream sm:mt-5 sm:text-5xl">
               A Family Showroom in the Heart of Nuapada
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
-            <p className="mt-6 text-base leading-relaxed text-sand/85 sm:text-lg">
+            <p className="mt-4 text-base leading-relaxed text-sand/85 sm:mt-6 sm:text-lg">
               {business.name} began with a simple belief — that choosing the
               surfaces for your home should feel personal, not transactional.
               From our showroom at Gayatri Mandir Chowk, we help families across
@@ -49,17 +49,17 @@ export default function About() {
         </div>
 
         {/* value cards */}
-        <div className="mx-auto mt-12 grid max-w-4xl gap-5 sm:grid-cols-3">
+        <div className="mx-auto mt-6 grid max-w-4xl gap-3 sm:mt-12 sm:grid-cols-3 sm:gap-5">
           {aboutPoints.map((p, i) => (
             <Reveal key={p.title} delay={0.1 + i * 0.08}>
-              <div className="h-full rounded-2xl border border-white/5 bg-charcoal/60 p-6 text-center shadow-card">
-                <span className="mx-auto grid h-11 w-11 place-items-center rounded-full bg-gold/15 text-gold">
+              <div className="grid h-full grid-cols-[2.75rem_minmax(0,1fr)] items-center gap-x-3 rounded-2xl border border-white/5 bg-charcoal/60 p-4 shadow-card sm:block sm:p-6 sm:text-center">
+                <span className="row-span-2 mx-auto grid h-11 w-11 place-items-center rounded-full bg-gold/15 text-gold">
                   <Icon name="star" className="h-5 w-5" filled />
                 </span>
-                <h3 className="mt-4 font-display text-lg text-cream">
+                <h3 className="font-display text-lg text-cream sm:mt-4">
                   {p.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-sand/80">
+                <p className="mt-1 text-sm leading-relaxed text-sand/80 sm:mt-2">
                   {p.text}
                 </p>
               </div>
@@ -69,7 +69,7 @@ export default function About() {
 
         {/* featured quote */}
         <Reveal delay={0.2}>
-          <blockquote className="mx-auto mt-12 max-w-2xl rounded-2xl border-l-2 border-gold bg-gradient-to-r from-gold/10 to-transparent p-6 text-center">
+          <blockquote className="mx-auto mt-6 max-w-2xl rounded-2xl border-l-2 border-gold bg-gradient-to-r from-gold/10 to-transparent p-4 text-center sm:mt-12 sm:p-6">
             <p className="font-display text-2xl italic text-gold-light sm:text-3xl">
               “{business.tagline}”
             </p>

@@ -12,7 +12,8 @@ export default function StatCounter({ value, suffix = '', duration = 1000 }) {
   const reduce = useReducedMotion()
   const pageVisible = usePageVisible()
   const started = useRef(false)
-  const count = useMotionValue(reduce ? value : 0)
+  // The server document must show the actual value even without JavaScript.
+  const count = useMotionValue(value)
   const display = useTransform(count, (n) => Math.round(n).toLocaleString('en-IN'))
 
   useEffect(() => {
@@ -22,6 +23,7 @@ export default function StatCounter({ value, suffix = '', duration = 1000 }) {
     }
     if (!inView || !pageVisible) return
     started.current = true
+    count.set(0)
     const controls = animate(count, value, { duration: duration / 1000, ease: MOTION_EASE })
     return () => controls.stop()
   }, [inView, pageVisible, value, duration, reduce, count])
