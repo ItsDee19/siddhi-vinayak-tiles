@@ -46,6 +46,16 @@ Brown surfaces, cream text and restrained gold selection/focus styling follow
 the established theme. Interface selection must never tint tile artwork or
 ceramic materials. Catalogue photography and the 3D scene keep their own colours.
 
+Small labels and secondary text use opaque sand. Accent text on tinted badges
+uses gold-light; retain the darker gold for fills, borders and ornament. Do not
+reduce text opacity to create hierarchy: the warm card surfaces need full text
+contrast. Use size, weight and spacing instead. Fonts are self-hosted WOFF2 with
+swap loading, with their open font licenses in `src/assets/fonts`.
+
+The first-visit privacy notice is non-modal and dismissible. It explains the
+actual absence of advertising/analytics cookies; dismissal only stores that
+preference. Permanent policy links remain in the footer.
+
 ## Typography
 
 Playfair Display is reserved for showroom headings. Manrope handles controls,
@@ -70,6 +80,8 @@ give product choices and enquiry fields clear space on narrow screens.
 The built homepage contains visible content before JavaScript. Scroll reveals
 must not start essential text at zero opacity. Static catalogue browse pages
 share the existing styles and provide ordinary links to every catalogue page.
+The hero keeps a decorative 2D stone backdrop and CSS logo animation. WebGL
+belongs to the interactive room preview and loads as that section approaches.
 
 ## Elevation & Depth
 

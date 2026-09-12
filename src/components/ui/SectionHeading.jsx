@@ -28,7 +28,7 @@ export default function SectionHeading({
       {subtitle && (
         <p
           className={`mt-3 max-w-2xl text-base leading-relaxed sm:mt-5 sm:text-lg ${
-            light ? 'text-charcoal-600' : 'text-sand/85'
+            light ? 'text-charcoal-600' : 'text-sand'
           }`}
         >
           {subtitle}

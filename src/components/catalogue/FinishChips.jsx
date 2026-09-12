@@ -9,8 +9,8 @@ export default function FinishChips({ active, onChange }) {
           onClick={() => onChange(active === f ? null : f)}
           className={`rounded-full border px-3 py-1 text-[11px] font-semibold uppercase tracking-wider transition-all ${
             active === f
-              ? 'border-gold bg-gold/15 text-gold'
-              : 'border-white/10 text-sand/70 hover:border-sand/30'
+              ? 'border-gold bg-gold/15 text-gold-light'
+              : 'border-white/10 text-sand hover:border-sand/30'
           }`}
         >
           {f}

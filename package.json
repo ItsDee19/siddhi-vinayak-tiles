@@ -6,14 +6,17 @@
   "description": "Premium 3D-interactive website for Siddhi Vinayak Tiles, Nuapada, Odisha",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/build_seo.mjs",
+    "build": "vite build && node scripts/build_seo.mjs && node scripts/check_frontend_security.mjs",
     "preview": "vite preview",
     "build:tiles": "node scripts/build_visualizer_tiles.mjs",
     "build:facets": "node scripts/build_product_facets.mjs",
     "build:hdri": "node scripts/build_environment_hdr.mjs",
+    "build:images": "node scripts/build_responsive_images.mjs",
     "test:visualizer": "node --test src/components/three/primitives/interiorCameraSettings.test.js src/components/three/primitives/roomLighting.test.js src/utils/tileMaterial.test.js src/utils/finishMaterial.test.js src/utils/visualizerSelection.test.js src/data/basinCatalogue.test.js scripts/room_models.test.mjs scripts/stair_structure.test.mjs scripts/authored_fixtures.test.mjs scripts/vanity_basin.test.mjs",
     "test:ui": "node --test src/utils/sectionNavigation.test.js src/utils/cataloguePagination.test.js",
-    "test:seo": "node --test src/data/seo.test.js"
+    "test:seo": "node --test src/data/seo.test.js",
+    "test:images": "node --test scripts/responsive_images.test.mjs",
+    "check:build": "node scripts/check_built_seo.mjs && node scripts/check_frontend_security.mjs"
   },
   "dependencies": {
     "@react-three/drei": "^9.114.0",

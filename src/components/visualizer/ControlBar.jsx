@@ -64,8 +64,8 @@ export default function ControlBar({
               onClick={() => onPresetChange?.(name)}
               className={`min-h-10 rounded-btn px-3 py-2 text-xs font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold ${
                 activePreset === name
-                  ? 'bg-gold/20 text-gold'
-                  : 'bg-white/5 text-sand/70 hover:bg-white/10'
+                  ? 'bg-gold/20 text-gold-light'
+                  : 'bg-white/5 text-sand hover:bg-white/10'
               }`}
             >
               {preset.label || name}
@@ -77,7 +77,7 @@ export default function ControlBar({
       {/* Model-specific controls */}
       {controls.includes('layout') && (
         <div>
-          <span className="mb-1.5 block text-[10px] font-semibold uppercase tracking-wider text-sand/60">
+          <span className="mb-1.5 block text-[10px] font-semibold uppercase tracking-wider text-sand">
             Layout
           </span>
           <div className="flex gap-1">
@@ -87,8 +87,8 @@ export default function ControlBar({
                 onClick={() => setExtra('layout', l)}
                 className={`flex-1 rounded-btn px-2 py-1.5 text-[10px] font-semibold uppercase tracking-wider transition-all ${
                   (modelExtras?.layout || 'full') === l
-                    ? 'bg-gold/20 text-gold'
-                    : 'bg-white/5 text-sand/70 hover:bg-white/10'
+                    ? 'bg-gold/20 text-gold-light'
+                    : 'bg-white/5 text-sand hover:bg-white/10'
                 }`}
               >
                 {l}
@@ -100,9 +100,9 @@ export default function ControlBar({
 
       {controls.includes('repeatScale') && (
         <div>
-          <label className="mb-1.5 flex items-center justify-between text-[10px] font-semibold uppercase tracking-wider text-sand/60">
+          <label className="mb-1.5 flex items-center justify-between text-[10px] font-semibold uppercase tracking-wider text-sand">
             <span>Tile size</span>
-            <span className="text-gold">
+            <span className="text-gold-light">
               {/* repeatScale scales the repeat COUNT (higher = more repeats
                   = smaller tiles), so the mm readout is inverse, not direct,
                   proportion — this was previously multiplying, which showed
@@ -119,7 +119,7 @@ export default function ControlBar({
             onChange={(e) => setExtra('repeatScale', parseFloat(e.target.value))}
             className="w-full accent-[#C49A3C]"
           />
-          <div className="mt-1 flex justify-between text-[9px] text-sand/50">
+          <div className="mt-1 flex justify-between text-[9px] text-sand">
             <span>1200mm</span><span>600mm</span><span>300mm</span>
           </div>
         </div>
@@ -127,7 +127,7 @@ export default function ControlBar({
 
       {controls.includes('groutColor') && (
         <div>
-          <span className="mb-1.5 block text-[10px] font-semibold uppercase tracking-wider text-sand/60">
+          <span className="mb-1.5 block text-[10px] font-semibold uppercase tracking-wider text-sand">
             Grout
           </span>
           <div className="flex gap-1.5">
@@ -141,8 +141,8 @@ export default function ControlBar({
                   title={g.name}
                   className={`flex h-7 w-7 items-center justify-center rounded-full border-2 text-[9px] font-semibold uppercase transition-all ${
                     active
-                      ? 'border-gold scale-110 text-gold'
-                      : 'border-white/15 text-sand/60 hover:border-sand/50'
+                      ? 'border-gold scale-110 text-gold-light'
+                      : 'border-white/15 text-sand hover:border-sand/50'
                   } ${isNone ? 'bg-transparent' : ''}`}
                   style={isNone ? undefined : { background: g.value }}
                 >
@@ -156,7 +156,7 @@ export default function ControlBar({
 
       {controls.includes('basinStyle') && (
         <div>
-          <span className="mb-1.5 block text-[10px] font-semibold uppercase tracking-wider text-sand/60">
+          <span className="mb-1.5 block text-[10px] font-semibold uppercase tracking-wider text-sand">
             Basin style
           </span>
           <div className="flex gap-1">
@@ -166,8 +166,8 @@ export default function ControlBar({
                 onClick={() => setExtra('basinStyle', s)}
                 className={`flex-1 rounded-btn px-2 py-1.5 text-[10px] font-semibold uppercase tracking-wider transition-all ${
                   (modelExtras?.basinStyle || 'rect') === s
-                    ? 'bg-gold/20 text-gold'
-                    : 'bg-white/5 text-sand/70 hover:bg-white/10'
+                    ? 'bg-gold/20 text-gold-light'
+                    : 'bg-white/5 text-sand hover:bg-white/10'
                 }`}
               >
                 {s}
@@ -236,7 +236,7 @@ export default function ControlBar({
 function CheckRow({ label, checked, onChange }) {
   return (
     <label className="flex cursor-pointer items-center justify-between rounded-btn bg-white/[0.03] px-3 py-2">
-      <span className="text-xs text-sand/80">{label}</span>
+      <span className="text-xs text-sand">{label}</span>
       <input
         type="checkbox"
         checked={checked}

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { makeMaterialDataURL } from '../../utils/textures'
+import { getResponsiveImageProps } from '../../utils/responsiveImages'
 
 // Renders a procedural material (or a real photo if `swatch.image` is set).
 //
@@ -13,9 +14,17 @@ export default function SwatchThumb({
   className = '',
   size = 320,
   eager = false,
+  sizes = `${size}px`,
 }) {
   const ref = useRef(null)
   const [src, setSrc] = useState(swatch.image || null)
+  const [failedResponsiveSource, setFailedResponsiveSource] = useState(null)
+  // Use the current photograph immediately when a product changes, so neither
+  // hydration nor a reused thumbnail displays the previous product's image.
+  const imageSource = swatch.image || src
+  const imageProps = swatch.image && failedResponsiveSource !== swatch.image
+    ? getResponsiveImageProps(swatch.image, { sizes })
+    : { src: imageSource }
 
   useEffect(() => {
     if (swatch.image) {
@@ -85,12 +94,15 @@ export default function SwatchThumb({
       className={`relative overflow-hidden ${className}`}
       style={{ backgroundColor: swatch.color }}
     >
-      {src && (
+      {imageSource && (
         <img
-          src={src}
+          {...imageProps}
           alt={swatch.name || swatch.title || 'Material sample'}
-          loading="lazy"
+          loading={eager ? 'eager' : 'lazy'}
           decoding="async"
+          onError={() => {
+            if (imageProps.srcSet) setFailedResponsiveSource(swatch.image)
+          }}
           className="h-full w-full object-cover"
         />
       )}

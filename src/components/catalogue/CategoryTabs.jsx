@@ -26,7 +26,7 @@ export default function CategoryTabs({ active, onChange, counts = {} }) {
         >
           {c.name}
           {c.id !== 'all' && (
-            <span className={`ml-1.5 text-xs ${active === c.id ? 'text-ink/60' : 'text-sand/50'}`}>
+            <span className={`ml-1.5 text-xs ${active === c.id ? 'text-ink' : 'text-sand'}`}>
               {counts[c.id]}
             </span>
           )}

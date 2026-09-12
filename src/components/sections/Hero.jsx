@@ -1,4 +1,3 @@
-import { Suspense, lazy, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import Icon from '../Icons'
 import Reveal from '../ui/Reveal'
@@ -6,55 +5,28 @@ import CanvasFallback from '../ui/CanvasFallback'
 import Logo3D from '../three/Logo3D'
 import { business } from '../../data/siteConfig'
 import { swatches } from '../../data/products'
-import { useWebGL } from '../../hooks/useWebGL'
 import { useInView } from '../../hooks/useInView'
 import { usePageVisible } from '../../hooks/usePageVisible'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 
-const TileWall3D = lazy(() => import('../three/TileWall3D'))
-
 const fallbackSwatches = swatches.slice(0, 9)
 
 export default function Hero() {
-  const webgl = useWebGL()
   const pageVisible = usePageVisible()
   const reduce = useReducedMotion()
-  const scrollRef = useRef(0)
-  // Above the fold, so start visible; pause the render loop once the hero
-  // scrolls out of view.
+  // Pause the CSS logo and scroll cue once the hero leaves the viewport.
   const [stageRef, , heroVisible] = useInView({ rootMargin: '0px', initial: true })
   const active = heroVisible && pageVisible
 
-  useEffect(() => {
-    if (!active || reduce) return
-    const onScroll = () => {
-      const vh = window.innerHeight || 1
-      scrollRef.current = Math.min(1, Math.max(0, window.scrollY / vh))
-    }
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [active, reduce])
-
   return (
     <section id="home" className="relative min-h-[100svh] w-full overflow-hidden">
-      {/* 3D background tile wall / fallback layer */}
-      <div ref={stageRef} className="absolute inset-0">
-        {webgl ? (
-          <Suspense fallback={<div className="h-full w-full bg-charcoal" />}>
-            <TileWall3D
-              scrollRef={scrollRef}
-              frameloop={active ? 'always' : 'never'}
-            />
-          </Suspense>
-        ) : (
-          <div className="relative h-full w-full bg-charcoal">
-            <div className="absolute inset-0 opacity-50">
-              <CanvasFallback swatchList={fallbackSwatches} className="h-full" />
-            </div>
-            <div className="absolute inset-0 bg-gradient-to-b from-charcoal/40 via-charcoal/70 to-charcoal" />
-          </div>
-        )}
+      {/* Decorative stone backdrop uses 2D canvas. Reserve the WebGL engine for
+          the customer's room preview further down the page. */}
+      <div ref={stageRef} aria-hidden="true" className="absolute inset-0 bg-charcoal">
+        <div className="absolute -inset-8 opacity-50 [transform:perspective(1400px)_rotateX(8deg)_rotateY(-8deg)_scale(1.08)]">
+          <CanvasFallback swatchList={fallbackSwatches} className="h-full" />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-charcoal/40 via-charcoal/70 to-charcoal" />
       </div>
 
       {/* Keep fine gold text readable over even the lightest tile swatches. */}

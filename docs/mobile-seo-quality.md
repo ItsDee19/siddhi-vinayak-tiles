@@ -66,30 +66,27 @@ the site does not claim separate indexed product-detail URLs.
 
 ## Production origin and preview indexing
 
-Canonical URLs must use the owner’s preferred public production origin. Configure
-the **SITE_URL** environment variable with that exact HTTPS origin, for example
-`https://your-confirmed-domain.example` (replace this example with the real
-domain). In Vercel, add it to the project’s environment settings and rebuild.
-Use the same production identity for preview builds.
+The owner-confirmed public production origin is **https://sidhhibinayaktiles.com**.
+The build now uses it by default. An explicit **SITE_URL** environment variable
+can override this when the owner changes the preferred domain; configure it as
+an HTTPS origin in Vercel and rebuild. Use the production identity for preview
+builds too.
 
-When `SITE_URL` is absent, the build can use Vercel’s provided
-`VERCEL_PROJECT_PRODUCTION_URL`. It deliberately never derives the canonical
-from `VERCEL_URL`, which identifies an individual deployment. Values with
+Neither `VERCEL_PROJECT_PRODUCTION_URL` nor the per-deployment `VERCEL_URL`
+overrides the confirmed domain. Values in `SITE_URL` with
 credentials, non-HTTPS protocols, paths, query strings, fragments, non-default
 ports or local hosts are rejected.
 
-If neither production-origin value is available, the build logs that limitation
-and omits the canonical, absolute social URLs and sitemap. It does not guess a
-domain. Titles, descriptions, visible content and business facts still render.
-
-With a configured origin, the build generates a sitemap containing the homepage
-and real static catalogue pages. Hash destinations and product-filter URLs are
-not sitemap entries. No synthetic freshness dates are added.
+The build generates absolute canonical/social URLs and a sitemap containing the
+homepage, real static catalogue pages, `/privacy-policy/` and
+`/terms-and-conditions/`. Hash destinations, product-filter URLs and the branded
+`404.html` are not sitemap entries. No synthetic freshness dates are added.
 
 Builds with `VERCEL_ENV=preview` or `development` emit `noindex, follow` metadata.
 Their robots.txt allows crawling so crawlers can read that directive, and does
 not advertise a sitemap. Production builds allow indexing and advertise the
-sitemap when the origin is configured. The wildcard crawl permission includes
+sitemap. The error document always uses `noindex, follow` and has no canonical.
+The wildcard crawl permission includes
 ordinary search crawlers and OAI-SearchBot; no separate training-policy change
 is required. Authentication-protected previews are not evidence of public
 indexability.
@@ -130,8 +127,10 @@ node scripts/check_built_seo.mjs
 The SEO unit tests cover production-origin validation, preview behavior,
 metadata/JSON-LD escaping, factual schema fields, pagination coverage and crawler
 file generation. The built-output check reads raw HTML, verifies the homepage’s
-primary content and H1, walks all static catalogue pages, confirms their product
-links, parses structured data and checks referenced local photographs and CSS.
+primary content and H1, walks all static catalogue and policy pages, confirms
+their links and unique titles, parses structured data and checks every referenced
+responsive image candidate and CSS file. It also checks that the error document
+is noindex and excluded from the sitemap.
 
 Use `npm run preview` to check the **built** homepage’s hydration and static
 catalogue pages. A successful development-server check alone does not verify

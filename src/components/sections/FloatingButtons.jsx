@@ -46,6 +46,7 @@ export default function FloatingButtons() {
           exit={{ opacity: 0, y: reduce ? 0 : 8 }}
           transition={{ duration: reduce ? 0 : MOTION_DURATION.fast, ease: MOTION_EASE }}
           className="fixed bottom-5 right-5 z-40 flex flex-col gap-3"
+          style={{ bottom: 'calc(1.25rem + var(--privacy-notice-height, 0px))' }}
         >
           {/* WhatsApp */}
           <a

@@ -24,11 +24,11 @@ export default class ErrorBoundary extends Component {
     return (
       <div className="m-4 rounded-card border border-terracotta/50 bg-charcoal-700 p-6 shadow-card">
         <h3 className="font-display text-xl text-cream">Something went wrong</h3>
-        <p className="mt-2 text-sm text-sand/80">
+        <p className="mt-2 text-sm text-sand">
           {e?.name}: {e?.message || 'Unknown error'}
         </p>
         {import.meta.env.DEV && e?.stack && (
-          <pre className="mt-4 max-h-64 overflow-auto rounded bg-charcoal-800 p-3 text-[10px] text-sand/60">
+          <pre className="mt-4 max-h-64 overflow-auto rounded bg-charcoal-800 p-3 text-[10px] text-sand">
             {e.stack}
           </pre>
         )}

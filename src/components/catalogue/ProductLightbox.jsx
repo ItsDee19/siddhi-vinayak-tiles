@@ -6,6 +6,7 @@ import SwatchThumb from '../ui/SwatchThumb'
 import { business } from '../../data/siteConfig'
 import { canPreviewProduct } from '../../utils/visualizerPreview'
 import { MOTION_DURATION, MOTION_EASE } from '../../utils/motion'
+import { PRODUCT_DETAIL_IMAGE_SIZES } from '../../utils/responsiveImages'
 
 function asSwatch(p) {
   return {
@@ -104,33 +105,33 @@ export default function ProductLightbox({ product, onClose, onViewIn3D }) {
             <Icon name="close" className="h-5 w-5" />
           </button>
         </div>
-        <SwatchThumb swatch={asSwatch(product)} className="aspect-video w-full" eager size={640} />
+        <SwatchThumb swatch={asSwatch(product)} className="aspect-video w-full" eager size={640} sizes={PRODUCT_DETAIL_IMAGE_SIZES} />
         <div className="p-6">
-          <span className="text-xs uppercase tracking-wider text-gold">
+          <span className="text-xs uppercase tracking-wider text-gold-light">
             {product.category} · {product.subCategory}
           </span>
           <dl className="mt-5 grid grid-cols-2 gap-4 text-sm sm:grid-cols-4">
             <div>
-              <dt className="text-[10px] uppercase tracking-wider text-sand/60">Size</dt>
+              <dt className="text-[10px] uppercase tracking-wider text-sand">Size</dt>
               <dd className="mt-1 text-cream">{product.size}</dd>
             </div>
             <div>
-              <dt className="text-[10px] uppercase tracking-wider text-sand/60">Finish</dt>
+              <dt className="text-[10px] uppercase tracking-wider text-sand">Finish</dt>
               <dd className="mt-1 text-cream">{product.finish}</dd>
             </div>
             <div>
-              <dt className="text-[10px] uppercase tracking-wider text-sand/60">Surface</dt>
+              <dt className="text-[10px] uppercase tracking-wider text-sand">Surface</dt>
               <dd className="mt-1 text-cream">{product.surface}</dd>
             </div>
             <div>
-              <dt className="text-[10px] uppercase tracking-wider text-sand/60">Price</dt>
+              <dt className="text-[10px] uppercase tracking-wider text-sand">Price</dt>
               <dd className="mt-1 text-cream">{product.priceRange}</dd>
             </div>
           </dl>
           {product.tags?.length > 0 && (
             <div className="mt-4 flex flex-wrap gap-1.5">
               {product.tags.map((t) => (
-                <span key={t} className="rounded-full bg-white/5 px-2 py-0.5 text-[10px] text-sand/70">
+                <span key={t} className="rounded-full bg-white/5 px-2 py-0.5 text-[10px] text-sand">
                   #{t}
                 </span>
               ))}

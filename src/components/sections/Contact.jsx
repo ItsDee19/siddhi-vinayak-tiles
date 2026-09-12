@@ -75,7 +75,7 @@ export default function Contact() {
                   href={`tel:${business.phoneTel}`}
                   className="group rounded-2xl border border-white/5 bg-charcoal-700 p-4 transition-colors hover:border-gold/30 sm:p-5"
                 >
-                  <Icon name="phone" className="h-6 w-6 text-gold" />
+                  <Icon name="phone" className="h-6 w-6 text-gold-light" />
                   <p className="mt-3 text-xs uppercase tracking-wider text-sand">
                     Call us
                   </p>
@@ -89,7 +89,7 @@ export default function Contact() {
                   rel="noreferrer"
                   className="group rounded-2xl border border-white/5 bg-charcoal-700 p-4 transition-colors hover:border-gold/30 sm:p-5"
                 >
-                  <Icon name="whatsapp" className="h-6 w-6 text-gold" />
+                  <Icon name="whatsapp" className="h-6 w-6 text-gold-light" />
                   <p className="mt-3 text-xs uppercase tracking-wider text-sand">
                     WhatsApp
                   </p>
@@ -99,26 +99,26 @@ export default function Contact() {
 
               <div className="rounded-2xl border border-white/5 bg-charcoal-700 p-5">
                 <div className="flex items-start gap-3">
-                  <Icon name="mapPin" className="mt-0.5 h-5 w-5 shrink-0 text-gold" />
+                  <Icon name="mapPin" className="mt-0.5 h-5 w-5 shrink-0 text-gold-light" />
                   <div>
                     <p className="text-xs uppercase tracking-wider text-sand">
                       Address
                     </p>
                     <p className="text-cream">{business.address.line1}</p>
-                    <p className="text-sand/90">
+                    <p className="text-sand">
                       {business.address.line2}, {business.address.city},{' '}
                       {business.address.state} {business.address.pin}
                     </p>
                   </div>
                 </div>
                 <div className="mt-4 flex items-center gap-3 border-t border-white/5 pt-4">
-                  <Icon name="clock" className="h-5 w-5 shrink-0 text-gold" />
+                  <Icon name="clock" className="h-5 w-5 shrink-0 text-gold-light" />
                   <p className="text-sm text-sand">
                     <span className="font-medium text-cream">
                       {business.hours.label}
                     </span>{' '}
                     · {business.hours.time}
-                    <span className="block text-xs text-sand/90">
+                    <span className="block text-xs text-sand">
                       {business.hours.note}
                     </span>
                   </p>
@@ -126,9 +126,9 @@ export default function Contact() {
               </div>
 
               <div className="rounded-2xl border border-gold/20 bg-charcoal-700 p-5 sm:p-9">
-                <Icon name="mapPin" className="h-7 w-7 text-gold" />
+                <Icon name="mapPin" className="h-7 w-7 text-gold-light" />
                 <h3 className="mt-4 font-display text-2xl text-cream">Find the showroom</h3>
-                <p className="mt-3 text-sm leading-relaxed text-sand/90">
+                <p className="mt-3 text-sm leading-relaxed text-sand">
                   Look up our address in Maps to plan your visit. Call us for help finding the entrance.
                 </p>
                 <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
@@ -136,7 +136,7 @@ export default function Contact() {
                     Find address in Maps
                     <Icon name="arrowRight" className="h-4 w-4" />
                   </a>
-                  <a href={`tel:${business.phoneTel}`} className="inline-flex min-h-11 items-center gap-2 text-sm text-gold underline underline-offset-4 hover:text-gold-light">
+                  <a href={`tel:${business.phoneTel}`} className="inline-flex min-h-11 items-center gap-2 text-sm text-gold-light underline underline-offset-4 hover:text-gold-light">
                     <Icon name="phone" className="h-4 w-4" />
                     Call for directions
                   </a>
@@ -149,7 +149,7 @@ export default function Contact() {
           <Reveal delay={0.1}>
             <div className="rounded-3xl border border-white/5 bg-charcoal-700 p-5 shadow-card sm:p-9">
               <h3 className="font-display text-2xl text-cream">Send an Enquiry</h3>
-              <p className="mt-2 text-sm text-sand/90">
+              <p className="mt-2 text-sm text-sand">
                 WhatsApp opens with your draft. Review it and press Send to reach us.
               </p>
 
@@ -224,15 +224,18 @@ export default function Contact() {
                 <div className="min-h-[5.5rem] text-center text-sm" role="status" aria-live="polite" aria-atomic="true">
                   {draftUrl ? (
                     <>
-                      <p className="text-sand/90">Your draft is ready. Review it and press Send in WhatsApp.</p>
-                      <a href={draftUrl} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex min-h-11 items-center text-gold underline underline-offset-4 hover:text-gold-light">
+                      <p className="text-sand">Your draft is ready. Review it and press Send in WhatsApp.</p>
+                      <a href={draftUrl} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex min-h-11 items-center text-gold-light underline underline-offset-4 hover:text-gold-light">
                         Open your WhatsApp draft again
                       </a>
                     </>
                   ) : (
-                    <p className="text-xs leading-relaxed text-sand/90">Your details are added to a WhatsApp draft. Nothing is sent until you choose Send in WhatsApp.</p>
+                    <p className="text-xs leading-relaxed text-sand">Continuing shares these details with WhatsApp to prepare a draft. Our team receives your message only after you press Send.</p>
                   )}
                 </div>
+                <p className="text-center text-xs leading-relaxed text-sand">
+                  Please avoid sensitive information. <a href="/privacy-policy/" className="text-cream underline underline-offset-4 hover:text-gold-light">How we handle your enquiry</a>
+                </p>
               </form>
             </div>
           </Reveal>
@@ -243,21 +246,21 @@ export default function Contact() {
           <div className="mt-3 divide-y divide-sand/20 border-y border-sand/20">
             <details className="group">
               <summary className="min-h-11 py-3 text-sm font-medium text-cream">Which products can I browse online?</summary>
-              <p className="pb-4 text-sm leading-relaxed text-sand/90">
-                Browse tiles and sanitaryware in our <a href="/catalogue/" className="text-gold underline underline-offset-4">online catalogue</a>.
+              <p className="pb-4 text-sm leading-relaxed text-sand">
+                Browse tiles and sanitaryware in our <a href="/catalogue/" className="text-gold-light underline underline-offset-4">online catalogue</a>.
                 {' '}For marble, granite and quartz, contact {business.name} or visit our Nuapada showroom to see the selection.
               </p>
             </details>
             <details className="group">
               <summary className="min-h-11 py-3 text-sm font-medium text-cream">Can I see how tiles will look in a room?</summary>
-              <p className="pb-4 text-sm leading-relaxed text-sand/90">
-                Our <a href="#visualizer" className="text-gold underline underline-offset-4">3D visualizer</a> previews tiles on bathroom walls, stairs, a feature wall and a basin wall.
+              <p className="pb-4 text-sm leading-relaxed text-sand">
+                Our <a href="#visualizer" className="text-gold-light underline underline-offset-4">3D visualizer</a> previews tiles on bathroom walls, stairs, a feature wall and a basin wall.
                 {' '}Bathroom floors stay fixed while you compare wall tiles. Check physical samples at the showroom before choosing colours and finishes.
               </p>
             </details>
             <details className="group">
               <summary className="min-h-11 py-3 text-sm font-medium text-cream">How do I confirm prices and availability?</summary>
-              <p className="pb-4 text-sm leading-relaxed text-sand/90">
+              <p className="pb-4 text-sm leading-relaxed text-sand">
                 Share the product name, size and required quantity through our enquiry form, or call {business.phoneDisplay}.
                 {' '}Our showroom team can confirm current pricing and availability for your project.
               </p>

@@ -288,7 +288,7 @@ export default function Catalogue() {
             <div className="relative">
               <Icon
                 name="search"
-                className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-sand/40"
+                className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-sand"
               />
               <input
                 ref={searchRef}
@@ -322,14 +322,14 @@ export default function Catalogue() {
                 className="inline-flex min-h-11 items-center gap-2 rounded-btn text-sm font-semibold text-cream focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold sm:hidden"
               >
                 {filtersOpen ? 'Hide filters' : 'Filters'}
-                {activeFilterCount > 0 && <span className="rounded-full bg-gold/15 px-2 py-0.5 text-xs text-gold">{activeFilterCount}<span className="sr-only"> active</span></span>}
+                {activeFilterCount > 0 && <span className="rounded-full bg-gold/15 px-2 py-0.5 text-xs text-gold-light">{activeFilterCount}<span className="sr-only"> active</span></span>}
                 <Icon name="arrowDown" className={`h-3.5 w-3.5 transition-transform duration-200 motion-reduce:transition-none ${filtersOpen ? 'rotate-180' : ''}`} />
               </button>
               {activeFilterCount > 0 && (
                 <button
                   onClick={() => clearAllFilters()}
                   type="button"
-                  className="min-h-11 text-xs text-gold transition-colors hover:text-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+                  className="min-h-11 text-xs text-gold-light transition-colors hover:text-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
                 >
                   Clear all ({activeFilterCount})
                 </button>
@@ -355,7 +355,7 @@ export default function Catalogue() {
 
         <p ref={resultsRef} tabIndex={-1} className="mt-5 scroll-mt-24 text-sm text-sand focus:outline-none sm:mt-6" role="status" aria-atomic="true">
           {filtered.length} {filtered.length === 1 ? 'product' : 'products'} found
-          {filtered.length > 0 && <span className="ml-2 text-xs text-sand/80">· Showing {currentPage.start}–{currentPage.end}</span>}
+          {filtered.length > 0 && <span className="ml-2 text-xs text-sand">· Showing {currentPage.start}–{currentPage.end}</span>}
         </p>
         {filtered.length === 0 ? (
           <div className="mt-5">
@@ -399,7 +399,7 @@ export default function Catalogue() {
           </>
         )}
         <p className="mt-5 text-center">
-          <a href="/catalogue/" className="inline-flex min-h-11 items-center text-xs text-gold underline decoration-gold/40 underline-offset-4 hover:text-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold">
+          <a href="/catalogue/" className="inline-flex min-h-11 items-center text-xs text-gold-light underline decoration-gold/40 underline-offset-4 hover:text-gold-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold">
             Browse all catalogue pages
           </a>
         </p>

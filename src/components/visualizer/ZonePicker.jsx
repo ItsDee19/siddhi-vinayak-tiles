@@ -86,16 +86,16 @@ export default function ZonePicker({
           aria-pressed={isActive}
           className="text-left focus:outline-none focus-visible:ring-1 focus-visible:ring-gold/60 rounded"
         >
-          <span className="text-[10px] uppercase tracking-wider text-sand/60">Zone</span>
+          <span className="text-[10px] uppercase tracking-wider text-sand">Zone</span>
           <h4 className="font-display text-base text-cream">{zone.label}</h4>
         </button>
         <div className="flex items-center gap-2">
           {current?.name && (
-            <span className="text-[11px] font-medium text-gold max-w-[140px] truncate sm:max-w-none">
+            <span className="text-[11px] font-medium text-gold-light max-w-[140px] truncate sm:max-w-none">
               {current.name}
             </span>
           )}
-          <span className="rounded-full bg-gold/15 px-2 py-0.5 text-[10px] font-medium text-gold shrink-0">
+          <span className="rounded-full bg-gold/15 px-2 py-0.5 text-[10px] font-medium text-gold-light shrink-0">
             {surface}
           </span>
         </div>
@@ -109,7 +109,7 @@ export default function ZonePicker({
           <div className="relative mt-3">
             <Icon
               name="search"
-              className="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-sand/40"
+              className="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-sand"
             />
             <input
               type="search"
@@ -117,13 +117,13 @@ export default function ZonePicker({
               onChange={(e) => { setQuery(e.target.value); setLimit(INITIAL_BATCH) }}
               placeholder="Search by tile name or code…"
               aria-label={`Search tiles for ${zone.label}`}
-              className="w-full rounded-btn border border-white/10 bg-charcoal-900/60 py-2 pl-9 pr-8 text-xs text-cream placeholder:text-sand/40 focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold/40"
+              className="w-full rounded-btn border border-white/10 bg-charcoal-900/60 py-2 pl-9 pr-8 text-xs text-cream placeholder:text-sand focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold/40"
             />
             {query && (
               <button
                 onClick={() => { setQuery(''); setLimit(INITIAL_BATCH) }}
                 aria-label="Clear search"
-                className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full p-1 text-sand/50 hover:bg-white/10 hover:text-cream"
+                className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full p-1 text-sand hover:bg-white/10 hover:text-cream"
               >
                 <Icon name="close" className="h-3 w-3" />
               </button>
@@ -137,7 +137,7 @@ export default function ZonePicker({
               className={`rounded-full px-2.5 py-0.5 transition-colors whitespace-nowrap ${
                 subFilter === 'all'
                   ? 'bg-gold text-ink font-semibold'
-                  : 'bg-white/5 text-sand/70 hover:bg-white/10'
+                  : 'bg-white/5 text-sand hover:bg-white/10'
               }`}
             >
               All ({compatible.length})
@@ -147,7 +147,7 @@ export default function ZonePicker({
               className={`rounded-full px-2.5 py-0.5 transition-colors whitespace-nowrap ${
                 subFilter === '12x18'
                   ? 'bg-gold text-ink font-semibold'
-                  : 'bg-white/5 text-sand/70 hover:bg-white/10'
+                  : 'bg-white/5 text-sand hover:bg-white/10'
               }`}
             >
               12x18 Wall
@@ -155,7 +155,7 @@ export default function ZonePicker({
             <button
               onClick={() => { setSubFilter('3x12'); setLimit(INITIAL_BATCH) }}
               className={`rounded-full px-2.5 py-0.5 transition-colors whitespace-nowrap ${
-                subFilter === '3x12' ? 'bg-gold text-ink font-semibold' : 'bg-white/5 text-sand/70 hover:bg-white/10'
+                subFilter === '3x12' ? 'bg-gold text-ink font-semibold' : 'bg-white/5 text-sand hover:bg-white/10'
               }`}
             >
               3x12 Wall
@@ -163,7 +163,7 @@ export default function ZonePicker({
             <button
               onClick={() => { setSubFilter('6x12'); setLimit(INITIAL_BATCH) }}
               className={`rounded-full px-2.5 py-0.5 transition-colors whitespace-nowrap ${
-                subFilter === '6x12' ? 'bg-gold text-ink font-semibold' : 'bg-white/5 text-sand/70 hover:bg-white/10'
+                subFilter === '6x12' ? 'bg-gold text-ink font-semibold' : 'bg-white/5 text-sand hover:bg-white/10'
               }`}
             >
               6x12 Wall
@@ -171,7 +171,7 @@ export default function ZonePicker({
             <button
               onClick={() => { setSubFilter('12x12-wall'); setLimit(INITIAL_BATCH) }}
               className={`rounded-full px-2.5 py-0.5 transition-colors whitespace-nowrap ${
-                subFilter === '12x12-wall' ? 'bg-gold text-ink font-semibold' : 'bg-white/5 text-sand/70 hover:bg-white/10'
+                subFilter === '12x12-wall' ? 'bg-gold text-ink font-semibold' : 'bg-white/5 text-sand hover:bg-white/10'
               }`}
             >
               12x12 Wall
@@ -179,7 +179,7 @@ export default function ZonePicker({
             <button
               onClick={() => { setSubFilter('16x16-parking'); setLimit(INITIAL_BATCH) }}
               className={`rounded-full px-2.5 py-0.5 transition-colors whitespace-nowrap ${
-                subFilter === '16x16-parking' ? 'bg-gold text-ink font-semibold' : 'bg-white/5 text-sand/70 hover:bg-white/10'
+                subFilter === '16x16-parking' ? 'bg-gold text-ink font-semibold' : 'bg-white/5 text-sand hover:bg-white/10'
               }`}
             >
               16x16 Parking
@@ -187,7 +187,7 @@ export default function ZonePicker({
             <button
               onClick={() => { setSubFilter('12x12-parking'); setLimit(INITIAL_BATCH) }}
               className={`rounded-full px-2.5 py-0.5 transition-colors whitespace-nowrap ${
-                subFilter === '12x12-parking' ? 'bg-gold text-ink font-semibold' : 'bg-white/5 text-sand/70 hover:bg-white/10'
+                subFilter === '12x12-parking' ? 'bg-gold text-ink font-semibold' : 'bg-white/5 text-sand hover:bg-white/10'
               }`}
             >
               12x12 Parking
@@ -197,7 +197,7 @@ export default function ZonePicker({
               className={`rounded-full px-2.5 py-0.5 transition-colors whitespace-nowrap ${
                 subFilter === '2x4'
                   ? 'bg-gold text-ink font-semibold'
-                  : 'bg-white/5 text-sand/70 hover:bg-white/10'
+                  : 'bg-white/5 text-sand hover:bg-white/10'
               }`}
             >
               2x4 Slabs
@@ -207,7 +207,7 @@ export default function ZonePicker({
               className={`rounded-full px-2.5 py-0.5 transition-colors whitespace-nowrap ${
                 subFilter === 'floor'
                   ? 'bg-gold text-ink font-semibold'
-                  : 'bg-white/5 text-sand/70 hover:bg-white/10'
+                  : 'bg-white/5 text-sand hover:bg-white/10'
               }`}
             >
               Floor Collection
@@ -215,9 +215,9 @@ export default function ZonePicker({
           </div>
 
           {compatible.length === 0 && (
-            <p className="mt-3 rounded-btn border border-dashed border-white/10 px-3 py-3 text-center text-[11px] text-sand/60">
+            <p className="mt-3 rounded-btn border border-dashed border-white/10 px-3 py-3 text-center text-[11px] text-sand">
               No tiles match “{query}”.{' '}
-              <button onClick={() => { setQuery(''); setSubFilter('all') }} className="text-gold hover:underline">
+              <button onClick={() => { setQuery(''); setSubFilter('all') }} className="text-gold-light hover:underline">
                 Clear search
               </button>
             </p>
@@ -256,7 +256,7 @@ export default function ZonePicker({
                     />
                   )}
                   {sel && (
-                    <Icon name="star" className="absolute right-1 top-1 h-3.5 w-3.5 text-gold" filled />
+                    <Icon name="star" className="absolute right-1 top-1 h-3.5 w-3.5 text-gold-light" filled />
                   )}
                   <span className="absolute inset-x-0 bottom-0 bg-black/70 px-1 py-0.5 text-[9px] font-medium text-cream truncate text-center">
                     {p.name.replace(/^Sky\s+/, '')}
@@ -268,7 +268,7 @@ export default function ZonePicker({
             {hasMore && (
               <button
                 onClick={() => setLimit((l) => l + 28)}
-                className="h-14 px-3 shrink-0 flex items-center justify-center gap-1 rounded border border-gold/30 bg-gold/10 text-xs font-medium text-gold hover:bg-gold/20"
+                className="h-14 px-3 shrink-0 flex items-center justify-center gap-1 rounded border border-gold/30 bg-gold/10 text-xs font-medium text-gold-light hover:bg-gold/20"
               >
                 + More
               </button>
@@ -277,12 +277,12 @@ export default function ZonePicker({
 
           <button
             onClick={() => fileRef.current?.click()}
-            className="mt-2 flex w-full items-center justify-center gap-2 rounded-btn border border-dashed border-white/10 px-3 py-2 text-xs text-sand/70 hover:border-gold hover:text-gold"
+            className="mt-2 flex w-full items-center justify-center gap-2 rounded-btn border border-dashed border-white/10 px-3 py-2 text-xs text-sand hover:border-gold hover:text-gold-light"
           >
             <Icon name="send" className="h-3.5 w-3.5" /> Upload custom tile photo
           </button>
           {uploadError && (
-            <p className="mt-1.5 text-center text-[11px] text-terracotta" role="alert">
+            <p className="mt-1.5 text-center text-[11px] text-sand-light" role="alert">
               {uploadError}
             </p>
           )}

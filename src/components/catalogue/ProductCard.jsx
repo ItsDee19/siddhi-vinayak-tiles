@@ -1,6 +1,7 @@
 import SwatchThumb from '../ui/SwatchThumb'
 import Icon from '../Icons'
 import { canPreviewProduct } from '../../utils/visualizerPreview'
+import { CATALOGUE_IMAGE_SIZES } from '../../utils/responsiveImages'
 
 // Convert catalogue product → shape SwatchThumb understands
 function asSwatch(p) {
@@ -25,7 +26,7 @@ export default function ProductCard({ product, onOpen, onViewIn3D }) {
           Featured
         </span>
       )}
-      <SwatchThumb swatch={asSwatch(product)} className="aspect-[4/3] w-full" />
+      <SwatchThumb swatch={asSwatch(product)} className="aspect-[4/3] w-full" sizes={CATALOGUE_IMAGE_SIZES} />
       <div className="p-3 sm:p-4">
         <h3 className="font-sans text-sm font-medium leading-snug text-cream sm:font-display sm:text-base sm:font-normal">
           <button
@@ -40,13 +41,13 @@ export default function ProductCard({ product, onOpen, onViewIn3D }) {
         </h3>
         <p className="mt-1 text-[11px] text-sand sm:text-xs">{product.size}</p>
         <div className="mt-1.5 flex flex-wrap gap-1.5 sm:mt-2">
-          <span className="rounded-full bg-gold/15 px-2 py-0.5 text-[10px] font-medium text-gold">
+          <span className="rounded-full bg-gold/15 px-2 py-0.5 text-[10px] font-medium text-gold-light">
             {product.finish}
           </span>
-          <span className="hidden rounded-full bg-white/5 px-2 py-0.5 text-[10px] font-medium text-sand/70 sm:inline">
+          <span className="hidden rounded-full bg-white/5 px-2 py-0.5 text-[10px] font-medium text-sand sm:inline">
             {product.surface}
           </span>
-          <span className="hidden rounded-full bg-white/5 px-2 py-0.5 text-[10px] font-medium text-sand/70 sm:inline">
+          <span className="hidden rounded-full bg-white/5 px-2 py-0.5 text-[10px] font-medium text-sand sm:inline">
             {product.priceRange}
           </span>
         </div>
@@ -54,7 +55,7 @@ export default function ProductCard({ product, onOpen, onViewIn3D }) {
           <button
             type="button"
             onClick={() => onViewIn3D(product)}
-            className="relative z-10 mt-1 inline-flex min-h-11 items-center gap-1.5 text-xs font-semibold text-gold hover:text-gold-light hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold sm:mt-2"
+            className="relative z-10 mt-1 inline-flex min-h-11 items-center gap-1.5 text-xs font-semibold text-gold-light hover:text-gold-light hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold sm:mt-2"
           >
             <Icon name="compass" className="h-3.5 w-3.5" /> View in 3D
           </button>

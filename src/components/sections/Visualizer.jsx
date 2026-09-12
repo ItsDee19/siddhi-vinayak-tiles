@@ -159,7 +159,7 @@ export default function Visualizer() {
         <SectionHeading eyebrow="See It Before You Buy" title="Your tiles. A real sense of home."
           subtitle="Explore five spaces, choose a surface, and see how your favourite tiles work at room scale." />
         <div className="mt-8"><ModelTabs active={activeModelId} onChange={onModelChange} /></div>
-        <div className="mt-4 flex items-center justify-between gap-4 text-xs text-sand/70">
+        <div className="mt-4 flex items-center justify-between gap-4 text-xs text-sand">
           <p>{activeModel.blurb}</p><span className="shrink-0 tabular-nums">{activeModel.dimensions}</span>
         </div>
         <div className="mt-4 flex flex-col items-start gap-4 lg:grid lg:grid-cols-[minmax(0,1fr)_310px] xl:grid-cols-[minmax(0,1fr)_330px]">
@@ -179,14 +179,14 @@ export default function Visualizer() {
                     </ModelShell>
                   </div>
                 ) : webgl ? (
-                  <div className="flex h-full items-center justify-center text-sm text-sand/70">Preparing your room…</div>
+                  <div className="flex h-full items-center justify-center text-sm text-sand">Preparing your room…</div>
                 ) : (
                   <div className="h-full p-4"><CanvasFallback swatchList={Object.values(zoneTextures).filter(Boolean)} />
                     <p className="absolute inset-x-4 bottom-4 text-center text-xs text-sand">3D is unavailable on this device. You can still browse tile samples.</p>
                   </div>
                 )}
                 <div className="pointer-events-none absolute left-3 top-3 rounded-btn bg-cream/95 px-3 py-2 text-[11px] font-medium text-ink shadow-sm">
-                  {activeModel.name} <span className="mx-1 text-ink/40">/</span> {activeZone.label}
+                  {activeModel.name} <span className="mx-1 text-ink">/</span> {activeZone.label}
                 </div>
                 <button type="button" onClick={() => onPresetChange('default')} aria-label="Reset room view"
                   className="absolute right-3 top-3 flex h-10 w-10 items-center justify-center rounded-btn bg-cream/95 text-ink shadow-sm hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold">
@@ -198,12 +198,12 @@ export default function Visualizer() {
               <div role="group" aria-label="Camera views" className="flex gap-1">
                 {Object.entries(activeModel.presets).map(([name, preset]) => (
                   <button key={name} type="button" aria-pressed={presetName === name} onClick={() => onPresetChange(name)}
-                    className={`min-h-10 rounded-btn px-3 text-xs font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold ${presetName === name ? 'bg-gold/20 text-gold' : 'text-sand/80 hover:bg-white/10'}`}>
+                    className={`min-h-10 rounded-btn px-3 text-xs font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold ${presetName === name ? 'bg-gold/20 text-gold-light' : 'text-sand hover:bg-white/10'}`}>
                     {preset.label}
                   </button>
                 ))}
               </div>
-              <span className="hidden text-[10px] text-sand/65 sm:block">Drag to look · 150° · Pinch or scroll to zoom</span>
+              <span className="hidden text-[10px] text-sand sm:block">Drag to look · 150° · Pinch or scroll to zoom</span>
             </div>
           </div>
           <aside aria-label={hasBasin ? 'Choose room tiles and basin' : 'Choose room tiles'} className="flex h-[530px] min-h-0 w-full flex-col rounded-card border border-white/10 bg-charcoal-800 lg:h-[600px]">
@@ -215,13 +215,13 @@ export default function Visualizer() {
         </div>
         <div className="mt-4 flex flex-wrap items-center justify-between gap-4 rounded-card border border-white/5 px-4 py-3">
           <div className="flex items-center gap-3" role="group" aria-label="Grout colour">
-            <span className="text-xs text-sand/75">Grout</span>
+            <span className="text-xs text-sand">Grout</span>
             {grouts.map(grout => <button key={grout.color} type="button" onClick={() => setGroutColor(grout.color)}
               aria-label={`${grout.name} grout`} aria-pressed={groutColor === grout.color} title={grout.name}
               className={`flex h-11 w-11 items-center justify-center rounded-full border transition-colors ${groutColor === grout.color ? 'border-gold' : 'border-transparent hover:border-white/30'}`}>
               <span className="h-6 w-6 rounded-full border border-white/20" style={{ backgroundColor: grout.color }} />
             </button>)}
-            <span className="text-[10px] text-sand/60">2 mm joints</span>
+            <span className="text-[10px] text-sand">2 mm joints</span>
           </div>
           <div className="flex flex-wrap gap-2">
             <button onClick={onReset} className="btn-outline min-h-11 px-3 py-2 text-xs">{hasBasin ? 'Reset design' : 'Reset tiles'}</button>
@@ -229,10 +229,10 @@ export default function Visualizer() {
             <a href={waHref} target="_blank" rel="noreferrer" className="btn-gold min-h-11 px-4 py-2 text-xs"><Icon name="whatsapp" className="h-4 w-4" filled /> {hasBasin ? 'Ask about this design' : 'Ask about these tiles'}</a>
           </div>
         </div>
-        {saveError && <p role="alert" className="mt-2 text-sm text-terracotta">{saveError}</p>}
+        {saveError && <p role="alert" className="mt-2 text-sm text-sand-light">{saveError}</p>}
         {materialError && <p role="alert" className="mt-2 text-sm text-[#ffc2a8]">{materialError}</p>}
-        <p className="mt-3 text-xs leading-relaxed text-sand/80">{activeModel.selectionHint}</p>
-        <p className="mt-1 text-xs leading-relaxed text-sand/60">Drag to look around within 150°. Room dimensions and tile spacing help you judge the pattern; colour and sheen can vary with your screen and lighting.</p>
+        <p className="mt-3 text-xs leading-relaxed text-sand">{activeModel.selectionHint}</p>
+        <p className="mt-1 text-xs leading-relaxed text-sand">Drag to look around within 150°. Room dimensions and tile spacing help you judge the pattern; colour and sheen can vary with your screen and lighting.</p>
       </div>
     </section>
   )

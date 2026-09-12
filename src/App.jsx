@@ -5,6 +5,7 @@ import Navbar from './components/sections/Navbar'
 import Hero from './components/sections/Hero'
 import ProductCategories from './components/sections/ProductCategories'
 import VisualizerLazy from './components/sections/VisualizerLazy'
+import PrivacyNotice from './components/ui/PrivacyNotice'
 
 const Catalogue = lazy(() => import('./components/sections/Catalogue'))
 const WhyChooseUs = lazy(() => import('./components/sections/WhyChooseUs'))
@@ -32,6 +33,7 @@ export default function App() {
       </main>
       <Suspense fallback={null}><Footer /></Suspense>
       <Suspense fallback={null}><FloatingButtons /></Suspense>
+      <PrivacyNotice />
     </MotionConfig>
   )
 }

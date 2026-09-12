@@ -1,16 +1,22 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { business } from './siteConfig.js'
+import { products as catalogue } from './catalogue.js'
+import { getResponsiveImageProps } from '../utils/responsiveImages.js'
+import { policyPages, renderPolicyBody, notFoundPage, renderNotFoundBody } from './policyPages.js'
 import {
+  PRODUCTION_ORIGIN, policyLinks,
   resolveSiteOrigin, isPreviewBuild, escapeHtml, serializeJsonLd, structuredData,
   renderSeoHead, renderRobots, renderSitemap, cataloguePages,
   cataloguePagePath, productDetailsPath, renderCatalogueBody,
 } from './seo.js'
 
-test('canonical origin only uses configured production identity', () => {
-  assert.equal(resolveSiteOrigin({}), null)
-  assert.equal(resolveSiteOrigin({ VERCEL_URL: 'ephemeral-deployment.vercel.app' }), null)
-  assert.equal(resolveSiteOrigin({ VERCEL_PROJECT_PRODUCTION_URL: 'showroom.vercel.app' }), 'https://showroom.vercel.app')
+test('canonical origin defaults to the owner-confirmed domain and ignores deployment hosts', () => {
+  assert.equal(PRODUCTION_ORIGIN, 'https://sidhhibinayaktiles.com')
+  assert.equal(resolveSiteOrigin({}), PRODUCTION_ORIGIN)
+  assert.equal(resolveSiteOrigin({ SITE_URL: '   ' }), PRODUCTION_ORIGIN)
+  assert.equal(resolveSiteOrigin({ VERCEL_URL: 'ephemeral-deployment.vercel.app' }), PRODUCTION_ORIGIN)
+  assert.equal(resolveSiteOrigin({ VERCEL_PROJECT_PRODUCTION_URL: 'showroom.vercel.app' }), PRODUCTION_ORIGIN)
   assert.equal(resolveSiteOrigin({ SITE_URL: ' https://tiles.example/ ', VERCEL_PROJECT_PRODUCTION_URL: 'showroom.vercel.app' }), 'https://tiles.example')
 })
 
@@ -33,11 +39,11 @@ test('metadata has one canonical and shares the production URL across cards and 
   assert.ok(head.includes('name="robots" content="index, follow, max-image-preview:large"'))
 })
 
-test('unconfigured builds do not invent canonical URLs or social image origins', () => {
+test('builds without an environment override use the confirmed canonical and social URLs', () => {
   const head = renderSeoHead()
-  assert.ok(!head.includes('rel="canonical"'))
-  assert.ok(!head.includes('property="og:url"'))
-  assert.ok(!head.includes('property="og:image"'))
+  assert.ok(head.includes(`rel="canonical" href="${PRODUCTION_ORIGIN}/"`))
+  assert.ok(head.includes(`property="og:url" content="${PRODUCTION_ORIGIN}/"`))
+  assert.ok(head.includes(`property="og:image" content="${PRODUCTION_ORIGIN}/logo-emblem.png"`))
   assert.ok(!head.includes('vercel.app'))
   assert.equal(renderSitemap(null, ['/']), null)
 })
@@ -108,11 +114,70 @@ test('static product records expose real links and safely escaped source fields'
 })
 
 test('sitemap exposes actual pages, with no synthetic lastmod or hash routes', () => {
-  const paths = ['/', ...cataloguePages(Array.from({ length: 25 }, (_, id) => ({ id }))).map(page => page.path)]
+  const paths = ['/', ...cataloguePages(Array.from({ length: 25 }, (_, id) => ({ id }))).map(page => page.path), ...policyPages.map(page => page.path)]
   const sitemap = renderSitemap('https://tiles.example', paths)
-  assert.equal((sitemap.match(/<loc>/g) || []).length, 3)
+  assert.equal((sitemap.match(/<loc>/g) || []).length, 5)
   assert.ok(sitemap.includes('<loc>https://tiles.example/catalogue/page/2/</loc>'))
   assert.ok(!sitemap.includes('#'))
   assert.ok(!sitemap.includes('<lastmod>'))
+  assert.ok(!sitemap.includes('/404'))
+  for (const { href } of policyLinks) assert.ok(sitemap.includes(`<loc>https://tiles.example${href}</loc>`))
   assert.ok(renderRobots('https://tiles.example').includes('Sitemap: https://tiles.example/sitemap.xml'))
+})
+
+test('static policies have unique metadata, correct page schema and reciprocal accessible links', () => {
+  assert.equal(new Set(policyPages.map(page => page.title)).size, 2)
+  assert.equal(new Set(policyPages.map(page => page.description)).size, 2)
+  for (const page of policyPages) {
+    const head = renderSeoHead(page)
+    const body = renderPolicyBody(page)
+    assert.ok(head.includes(`<title>${escapeHtml(page.title)}</title>`))
+    assert.ok(head.includes(`href="${PRODUCTION_ORIGIN}${page.path}"`))
+    assert.equal((body.match(/<h1(?:\s|>)/g) || []).length, 1)
+    assert.ok(body.includes('href="#page-content"'))
+    assert.ok(body.includes('id="page-content" tabindex="-1"'))
+    assert.ok(body.includes('href="/catalogue/"'))
+    assert.ok(body.includes(`href="tel:${business.phoneTel}"`))
+    for (const { href } of policyLinks) assert.ok(body.includes(`href="${href}"`))
+    assert.ok(!body.includes('<script'))
+    const schema = structuredData(page)
+    assert.ok(schema['@graph'].some(item => item['@type'] === 'WebPage'))
+    assert.ok(!schema['@graph'].some(item => item['@type'] === 'CollectionPage'))
+    assert.ok(renderSeoHead({ ...page, preview: true }).includes('content="noindex, follow"'))
+  }
+})
+
+test('policy headings, paragraphs and links are HTML-escaped', () => {
+  const value = '<script>"unsafe"&</script>'
+  const body = renderPolicyBody({
+    heading: value, intro: value,
+    sections: [{ heading: value, paragraphs: [value], links: [{ label: value, href: `https://example.com/?q=${value}` }] }],
+  })
+  assert.ok(body.includes(escapeHtml(value)))
+  assert.ok(!body.includes('<script>'))
+})
+
+test('404 recovery document is noindex, has no canonical or page schema and keeps navigation usable', () => {
+  const head = renderSeoHead(notFoundPage)
+  const body = renderNotFoundBody()
+  assert.ok(head.includes('content="noindex, follow"'))
+  assert.ok(!head.includes('rel="canonical"'))
+  assert.ok(!head.includes('property="og:url"'))
+  assert.ok(!head.includes('application/ld+json'))
+  assert.equal((body.match(/<h1(?:\s|>)/g) || []).length, 1)
+  assert.ok(body.includes('href="/"'))
+  assert.ok(body.includes('href="/catalogue/"'))
+  for (const { href } of policyLinks) assert.ok(body.includes(`href="${href}"`))
+})
+
+test('static catalogue shares responsive candidates and native dimensions with interactive images', () => {
+  const product = catalogue.find(item => getResponsiveImageProps(item.imageUrl).srcSet)
+  assert.ok(product, 'The catalogue should contain generated responsive images')
+  const props = getResponsiveImageProps(product.imageUrl)
+  const [page] = cataloguePages([product])
+  const body = renderCatalogueBody(page)
+  assert.ok(body.includes(`srcset="${escapeHtml(props.srcSet)}"`))
+  assert.ok(body.includes(`sizes="${escapeHtml(props.sizes)}"`))
+  assert.ok(body.includes(`width="${props.width}" height="${props.height}"`))
+  assert.ok(body.includes(`src="${escapeHtml(product.imageUrl)}"`))
 })

@@ -39,11 +39,11 @@ export default function ProductCategories() {
                   <h3 className="font-display text-xl font-semibold text-cream sm:text-2xl">
                     {cat.name}
                   </h3>
-                  <p className="mt-1 text-sm leading-relaxed text-sand/85 sm:mt-3">
+                  <p className="mt-1 text-sm leading-relaxed text-sand sm:mt-3">
                     {cat.blurb}
                   </p>
 
-                  <span className="mt-2 inline-flex items-center gap-2 text-xs font-semibold text-gold sm:mt-6 sm:uppercase sm:tracking-wider">
+                  <span className="mt-2 inline-flex items-center gap-2 text-xs font-semibold text-gold-light sm:mt-6 sm:uppercase sm:tracking-wider">
                     {['tiles', 'sanitaryware'].includes(cat.id) ? 'View in Catalogue' : 'Enquire at showroom'}
                     <Icon name="arrowRight" className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
                   </span>

@@ -23,7 +23,7 @@ export default function WhyChooseUs() {
                   <Icon name={f.icon} className="h-5 w-5 text-gold-light sm:h-6 sm:w-6" />
                 </div>
                 <h3 className="font-display text-xl text-cream">{f.title}</h3>
-                <p className="mt-1 text-sm leading-relaxed text-sand/80 sm:mt-3">
+                <p className="mt-1 text-sm leading-relaxed text-sand sm:mt-3">
                   {f.body}
                 </p>
               </div>
@@ -39,10 +39,10 @@ export default function WhyChooseUs() {
                 key={s.label}
                 className="bg-charcoal-800 px-4 py-5 text-center sm:px-6 sm:py-10"
               >
-                <div className="font-display text-4xl font-bold text-gold sm:text-5xl">
+                <div className="font-display text-4xl font-bold text-gold-light sm:text-5xl">
                   <StatCounter value={s.value} suffix={s.suffix} />
                 </div>
-                <p className="mt-2 text-sm uppercase tracking-wider text-sand/80">
+                <p className="mt-2 text-sm uppercase tracking-wider text-sand">
                   {s.label}
                 </p>
               </div>
