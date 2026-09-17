@@ -28,33 +28,27 @@ export const business = {
     "Hello Sidhhi Binayak Tiles! I'd like to know more about your collection.",
 
   hours: {
-    label: 'Open Today',
+    label: 'Showroom hours',
     time: '9:00 AM – 8:00 PM',
-    note: 'Open daily · Closes 8 PM',
+    note: 'Please call to confirm before travelling.',
   },
 
   // Google Maps embed — centred on Motanuapada, Nuapada. The exact pin can be
   // replaced later with the shop's verified place ID / coordinates.
   mapEmbedSrc:
     'https://www.google.com/maps?q=Motanuapada,+Nuapada,+Odisha+766105&output=embed',
-  mapLink: 'https://www.google.com/maps/search/?api=1&query=Motanuapada,+Nuapada,+Odisha+766105',
+  mapLink: 'https://www.google.com/maps/search/?api=1&query=Ward+No.+03,+Gayatri+Mandir+Chowk,+Patora+Road,+Motanuapada,+Nuapada,+Odisha+766105',
 
   // Placeholder review link — point to the Google Business profile once live.
-  googleReviewLink: 'https://www.google.com/search?q=Sidhhi+Binayak+Tiles+Nuapada',
+  googleReviewLink: null,
 
-  socials: [
-    { label: 'Facebook', href: '#', icon: 'facebook' },
-    { label: 'Instagram', href: '#', icon: 'instagram' },
-    { label: 'YouTube', href: '#', icon: 'youtube' },
-  ],
+  socials: [],
 }
 
 export const navLinks = [
   { label: 'Home', href: '#home' },
-  { label: 'Products', href: '#products' },
-  { label: 'Visualizer', href: '#visualizer' },
-  { label: 'Catalogue', href: '#catalogue' },
-  { label: 'Size Calc', href: '#size-calculator' },
+  { label: 'Collections', href: '#catalogue' },
+  { label: 'Our range', href: '#products' },
   { label: 'About', href: '#about' },
   { label: 'Contact', href: '#contact' },
 ]
@@ -91,19 +85,4 @@ export const whyChooseUs = [
 ]
 
 // Editable placeholder testimonials (shop has no Google reviews yet).
-export const testimonials = [
-  {
-    name: 'A Happy Customer',
-    place: 'Nuapada',
-    text: 'Replace this with a real review. Lovely range of tiles and the family made us feel completely at home while choosing.',
-    rating: 5,
-    placeholder: true,
-  },
-  {
-    name: 'Your Review Here',
-    place: 'Odisha',
-    text: 'Be one of the first to share your experience with Sidhhi Binayak Tiles. Your words help other families choose with confidence.',
-    rating: 5,
-    placeholder: true,
-  },
-]
+export const testimonials = []

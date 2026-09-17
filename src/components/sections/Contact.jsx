@@ -1,38 +1,65 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import Icon from '../Icons'
 import Reveal from '../ui/Reveal'
 import SectionHeading from '../ui/SectionHeading'
 import { business } from '../../data/siteConfig'
 import { categories } from '../../data/products'
+import { useReducedMotion } from '../../hooks/useReducedMotion'
 
 export default function Contact() {
+  const reduceMotion = useReducedMotion()
   const [form, setForm] = useState({
     name: '',
     phone: '',
     interest: '',
     message: '',
   })
-  const [sent, setSent] = useState(false)
+  const [errors, setErrors] = useState({})
+  const [draftUrl, setDraftUrl] = useState('')
+  const formRef = useRef(null)
+  const lastDraftRef = useRef({ url: '', at: 0 })
 
-  const update = (k) => (e) => setForm({ ...form, [k]: e.target.value })
+  const update = (key) => (event) => {
+    setForm((current) => ({ ...current, [key]: event.target.value }))
+    setDraftUrl('')
+    setErrors((current) => ({ ...current, [key]: undefined }))
+  }
 
-  // No backend: compose a pre-filled WhatsApp message so enquiries reach the
-  // shop instantly. Swap for a real form handler / email service later.
+  // This prepares a draft only. Sending happens in WhatsApp, and cannot be
+  // confirmed by this website. Keep the form and a retry link available.
   const handleSubmit = (e) => {
     e.preventDefault()
+    const nextErrors = {}
+    if (!form.name.trim()) nextErrors.name = 'Enter your name so we know who to reply to.'
+    const phoneDigits = form.phone.replace(/\D/g, '')
+    if (!/^[+\d\s().-]+$/.test(form.phone.trim()) || phoneDigits.length < 10 || phoneDigits.length > 15) {
+      nextErrors.phone = 'Enter 10 digits, or include your country code (for example, +91).'
+    }
+    setErrors(nextErrors)
+    if (Object.keys(nextErrors).length) {
+      // Focus after React has attached the inline error description.
+      requestAnimationFrame(() => {
+        const field = formRef.current?.elements.namedItem(Object.keys(nextErrors)[0])
+        field?.scrollIntoView({ behavior: reduceMotion ? 'instant' : 'smooth', block: 'center', inline: 'nearest' })
+        field?.focus({ preventScroll: true })
+      })
+      return
+    }
     const text = [
       `New enquiry for ${business.name}`,
-      `Name: ${form.name}`,
-      `Phone: ${form.phone}`,
+      `Name: ${form.name.trim()}`,
+      `Phone: ${form.phone.trim()}`,
       `Interested in: ${form.interest || 'Not specified'}`,
-      `Message: ${form.message || '-'}`,
+      `Message: ${form.message.trim() || '-'}`,
     ].join('\n')
-    window.open(
-      `${business.whatsapp}?text=${encodeURIComponent(text)}`,
-      '_blank',
-      'noopener',
-    )
-    setSent(true)
+    const url = `${business.whatsapp}?text=${encodeURIComponent(text)}`
+    setDraftUrl(url)
+    // A quick double-click must not open two copies of the same draft. This
+    // is a local navigation guard, not a claim of server-side spam protection.
+    const now = Date.now()
+    if (lastDraftRef.current.url === url && now - lastDraftRef.current.at < 1000) return
+    lastDraftRef.current = { url, at: now }
+    window.open(url, '_blank', 'noopener,noreferrer')
   }
 
   return (
@@ -44,21 +71,21 @@ export default function Contact() {
           subtitle="Drop by the showroom, call us, or send a quick enquiry — we’d love to help with your project."
         />
 
-        <div className="mt-14 grid gap-8 lg:grid-cols-2">
-          {/* left: details + map */}
+        <div className="mt-8 grid gap-6 sm:mt-14 sm:gap-8 lg:grid-cols-2">
+          {/* left: details + address lookup */}
           <Reveal>
             <div className="flex h-full flex-col gap-6">
               {/* quick contact cards */}
-              <div className="grid gap-4 sm:grid-cols-2">
+              <div className="grid grid-cols-2 gap-3 sm:gap-4">
                 <a
                   href={`tel:${business.phoneTel}`}
-                  className="group rounded-2xl border border-white/5 bg-charcoal-700 p-5 transition-colors hover:border-gold/30"
+                  className="group rounded-2xl border border-white/5 bg-charcoal-700 p-4 transition-colors hover:border-gold/30 sm:p-5"
                 >
-                  <Icon name="phone" className="h-6 w-6 text-gold" />
-                  <p className="mt-3 text-xs uppercase tracking-wider text-sand/60">
+                  <Icon name="phone" className="h-6 w-6 text-gold-light" />
+                  <p className="mt-3 text-xs uppercase tracking-wider text-sand">
                     Call us
                   </p>
-                  <p className="font-display text-lg text-cream">
+                  <p className="font-display text-base text-cream sm:text-lg">
                     {business.phoneDisplay}
                   </p>
                 </a>
@@ -66,172 +93,206 @@ export default function Contact() {
                   href={business.whatsapp}
                   target="_blank"
                   rel="noreferrer"
-                  className="group rounded-2xl border border-white/5 bg-charcoal-700 p-5 transition-colors hover:border-gold/30"
+                  className="group rounded-2xl border border-white/5 bg-charcoal-700 p-4 transition-colors hover:border-gold/30 sm:p-5"
                 >
-                  <Icon name="whatsapp" className="h-6 w-6 text-gold" />
-                  <p className="mt-3 text-xs uppercase tracking-wider text-sand/60">
+                  <Icon name="whatsapp" className="h-6 w-6 text-gold-light" />
+                  <p className="mt-3 text-xs uppercase tracking-wider text-sand">
                     WhatsApp
                   </p>
-                  <p className="font-display text-lg text-cream">Chat with us</p>
+                  <p className="font-display text-base text-cream sm:text-lg">Chat with us</p>
                 </a>
               </div>
 
               <div className="rounded-2xl border border-white/5 bg-charcoal-700 p-5">
                 <div className="flex items-start gap-3">
-                  <Icon name="mapPin" className="mt-0.5 h-5 w-5 shrink-0 text-gold" />
+                  <Icon name="mapPin" className="mt-0.5 h-5 w-5 shrink-0 text-gold-light" />
                   <div>
-                    <p className="text-xs uppercase tracking-wider text-sand/60">
+                    <p className="text-xs uppercase tracking-wider text-sand">
                       Address
                     </p>
                     <p className="text-cream">{business.address.line1}</p>
-                    <p className="text-sand/80">
+                    <p className="text-sand">
                       {business.address.line2}, {business.address.city},{' '}
                       {business.address.state} {business.address.pin}
                     </p>
                   </div>
                 </div>
                 <div className="mt-4 flex items-center gap-3 border-t border-white/5 pt-4">
-                  <Icon name="clock" className="h-5 w-5 shrink-0 text-gold" />
+                  <Icon name="clock" className="h-5 w-5 shrink-0 text-gold-light" />
                   <p className="text-sm text-sand">
                     <span className="font-medium text-cream">
                       {business.hours.label}
                     </span>{' '}
                     · {business.hours.time}
-                    <span className="block text-xs text-sand/60">
+                    <span className="block text-xs text-sand">
                       {business.hours.note}
                     </span>
                   </p>
                 </div>
               </div>
 
-              {/* map */}
-              <div className="relative flex-1 overflow-hidden rounded-2xl border border-white/5 shadow-card">
-                <iframe
-                  title="Sidhhi Binayak Tiles location"
-                  src={business.mapEmbedSrc}
-                  className="h-full min-h-[260px] w-full"
-                  style={{ border: 0, filter: 'grayscale(0.3) contrast(1.05)' }}
-                  loading="lazy"
-                  referrerPolicy="no-referrer"
-                  allowFullScreen
-                />
-                <a
-                  href={business.mapLink}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="absolute bottom-3 right-3 rounded-full bg-charcoal/85 px-3 py-1.5 text-xs text-gold backdrop-blur hover:bg-charcoal"
-                >
-                  Open in Maps →
-                </a>
+              <div className="rounded-2xl border border-gold/20 bg-charcoal-700 p-5 sm:p-9">
+                <Icon name="mapPin" className="h-7 w-7 text-gold-light" />
+                <h3 className="mt-4 font-display text-2xl text-cream">Find the showroom</h3>
+                <p className="mt-3 text-sm leading-relaxed text-sand">
+                  Look up our address in Maps to plan your visit. Call us for help finding the entrance.
+                </p>
+                <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
+                  <a href={business.mapLink} target="_blank" rel="noopener noreferrer" className="btn-outline">
+                    Find address in Maps
+                    <Icon name="arrowRight" className="h-4 w-4" />
+                  </a>
+                  <a href={`tel:${business.phoneTel}`} className="inline-flex min-h-11 items-center gap-2 text-sm text-gold-light underline underline-offset-4 hover:text-gold-light">
+                    <Icon name="phone" className="h-4 w-4" />
+                    Call for directions
+                  </a>
+                </div>
               </div>
             </div>
           </Reveal>
 
           {/* right: enquiry form */}
           <Reveal delay={0.1}>
-            <div className="rounded-3xl border border-white/5 bg-charcoal-700 p-7 shadow-card sm:p-9">
+            <div className="rounded-3xl border border-white/5 bg-charcoal-700 p-5 shadow-card sm:p-9">
               <h3 className="font-display text-2xl text-cream">Send an Enquiry</h3>
-              <p className="mt-2 text-sm text-sand/70">
-                Fill this in and we’ll get back to you on WhatsApp.
+              <p className="mt-2 text-sm text-sand">
+                WhatsApp opens with your draft. Review it and press Send to reach us.
               </p>
 
-              {sent ? (
-                <div className="mt-8 rounded-2xl border border-gold/30 bg-gold/10 p-6 text-center">
-                  <Icon
-                    name="whatsapp"
-                    className="mx-auto h-10 w-10 text-gold"
-                  />
-                  <p className="mt-3 font-display text-lg text-cream">
-                    Thank you, {form.name || 'friend'}!
-                  </p>
-                  <p className="mt-1 text-sm text-sand/80">
-                    Your WhatsApp should have opened with your enquiry. If not,
-                    just call us at {business.phoneDisplay}.
-                  </p>
-                  <button
-                    onClick={() => setSent(false)}
-                    className="btn-outline mt-5 px-5 py-2.5 text-xs"
+              <form ref={formRef} onSubmit={handleSubmit} noValidate className="mt-7 space-y-4">
+                <Field
+                  id="enquiry-name"
+                  name="name"
+                  label="Your Name"
+                  value={form.name}
+                  onChange={update('name')}
+                  autoComplete="name"
+                  maxLength={80}
+                  error={errors.name}
+                  placeholder="e.g. Rahul Sahu"
+                  required
+                />
+                <Field
+                  id="enquiry-phone"
+                  name="phone"
+                  label="Phone Number"
+                  value={form.phone}
+                  onChange={update('phone')}
+                  type="tel"
+                  inputMode="tel"
+                  autoComplete="tel"
+                  maxLength={24}
+                  error={errors.phone}
+                  placeholder="10-digit mobile"
+                  required
+                />
+                <div>
+                  <label htmlFor="enquiry-interest" className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-sand">
+                    Interested In <span className="normal-case tracking-normal">(optional)</span>
+                  </label>
+                  <select
+                    id="enquiry-interest"
+                    name="interest"
+                    value={form.interest}
+                    onChange={update('interest')}
+                    className="w-full rounded-xl border border-white/10 bg-charcoal-800 px-4 py-3 text-cream outline-none transition-colors focus:border-gold"
                   >
-                    Send another
-                  </button>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="mt-7 space-y-4">
-                  <Field
-                    label="Your Name"
-                    value={form.name}
-                    onChange={update('name')}
-                    placeholder="e.g. Rahul Sahu"
-                    required
-                  />
-                  <Field
-                    label="Phone Number"
-                    value={form.phone}
-                    onChange={update('phone')}
-                    type="tel"
-                    placeholder="10-digit mobile"
-                    required
-                  />
-                  <div>
-                    <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-sand/70">
-                      Interested In
-                    </label>
-                    <select
-                      value={form.interest}
-                      onChange={update('interest')}
-                      className="w-full rounded-xl border border-white/10 bg-charcoal-800 px-4 py-3 text-cream outline-none transition-colors focus:border-gold"
-                    >
-                      <option value="">Select a category…</option>
-                      {categories.map((c) => (
-                        <option key={c.id} value={c.name}>
-                          {c.name}
-                        </option>
-                      ))}
-                      <option value="Multiple / Not sure">
-                        Multiple / Not sure
+                    <option value="">Select a category…</option>
+                    {categories.map((c) => (
+                      <option key={c.id} value={c.name}>
+                        {c.name}
                       </option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-sand/70">
-                      Message
-                    </label>
-                    <textarea
-                      value={form.message}
-                      onChange={update('message')}
-                      rows={4}
-                      placeholder="Tell us about your project, sizes, budget…"
-                      className="w-full resize-none rounded-xl border border-white/10 bg-charcoal-800 px-4 py-3 text-cream outline-none transition-colors placeholder:text-sand/40 focus:border-gold"
-                    />
-                  </div>
-                  <button type="submit" className="btn-gold w-full">
-                    <Icon name="send" className="h-4 w-4" />
-                    Send via WhatsApp
-                  </button>
-                  <p className="text-center text-xs text-sand/50">
-                    No spam — your details are only used to reply to your enquiry.
-                  </p>
-                </form>
-              )}
+                    ))}
+                    <option value="Multiple / Not sure">
+                      Multiple / Not sure
+                    </option>
+                  </select>
+                </div>
+                <div>
+                  <label htmlFor="enquiry-message" className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-sand">
+                    Message <span className="normal-case tracking-normal">(optional)</span>
+                  </label>
+                  <textarea
+                    id="enquiry-message"
+                    name="message"
+                    value={form.message}
+                    onChange={update('message')}
+                    rows={5}
+                    maxLength={2000}
+                    placeholder="Tell us about your project, sizes, budget…"
+                    className="w-full resize-none rounded-xl border border-white/10 bg-charcoal-800 px-4 py-3 text-cream outline-none transition-colors placeholder:text-sand focus:border-gold"
+                  />
+                </div>
+                <button type="submit" className="btn-gold w-full">
+                  <Icon name="send" className="h-4 w-4" />
+                  Continue to WhatsApp
+                </button>
+                <div className="min-h-[5.5rem] text-center text-sm" role="status" aria-live="polite" aria-atomic="true">
+                  {draftUrl ? (
+                    <>
+                      <p className="text-sand">Your draft is ready. Review it and press Send in WhatsApp.</p>
+                      <a href={draftUrl} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex min-h-11 items-center text-gold-light underline underline-offset-4 hover:text-gold-light">
+                        Open your WhatsApp draft again
+                      </a>
+                    </>
+                  ) : (
+                    <p className="text-xs leading-relaxed text-sand">Continuing shares these details with WhatsApp to prepare a draft. Our team receives your message only after you press Send.</p>
+                  )}
+                </div>
+                <p className="text-center text-xs leading-relaxed text-sand">
+                  Please avoid sensitive information. <a href="/privacy-policy/" className="text-cream underline underline-offset-4 hover:text-gold-light">How we handle your enquiry</a>
+                </p>
+              </form>
             </div>
           </Reveal>
+        </div>
+
+        <div className="mx-auto mt-8 max-w-3xl sm:mt-12">
+          <h3 className="font-display text-2xl text-cream">Before your visit</h3>
+          <div className="mt-3 divide-y divide-sand/20 border-y border-sand/20">
+            <details className="group">
+              <summary className="min-h-11 py-3 text-sm font-medium text-cream">Which products can I browse online?</summary>
+              <p className="pb-4 text-sm leading-relaxed text-sand">
+                Browse the original Global floor, Global wall, Sky 12×18 and Sunflora 2×4 <a href="/catalogues/" className="text-gold-light underline underline-offset-4">tile catalogues</a>.
+                {' '}For marble, granite, quartz and sanitaryware, contact {business.name} or visit our Nuapada showroom to see the selection.
+              </p>
+            </details>
+            <details className="group">
+              <summary className="min-h-11 py-3 text-sm font-medium text-cream">How can I see each tile’s details?</summary>
+              <p className="pb-4 text-sm leading-relaxed text-sand">
+                Open a collection in our <a href="#catalogue" className="text-gold-light underline underline-offset-4">catalogue viewer</a> and enlarge the original page to read its design codes, sizes and finishes. You can also open the original PDF.
+                {' '}Details vary by catalogue; confirm any specification that is not printed with the showroom. Check a physical sample before choosing colours and finishes.
+              </p>
+            </details>
+            <details className="group">
+              <summary className="min-h-11 py-3 text-sm font-medium text-cream">How do I confirm prices and availability?</summary>
+              <p className="pb-4 text-sm leading-relaxed text-sand">
+                Share the collection, page number, printed design code and required quantity through our enquiry form, or call {business.phoneDisplay}.
+                {' '}Our showroom team can confirm current pricing and availability for your project.
+              </p>
+            </details>
+          </div>
         </div>
       </div>
     </section>
   )
 }
 
-function Field({ label, type = 'text', ...props }) {
+function Field({ id, label, type = 'text', error, ...props }) {
   return (
     <div>
-      <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-sand/70">
+      <label htmlFor={id} className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-sand">
         {label}
       </label>
       <input
+        id={id}
         type={type}
         {...props}
-        className="w-full rounded-xl border border-white/10 bg-charcoal-800 px-4 py-3 text-cream outline-none transition-colors placeholder:text-sand/40 focus:border-gold"
+        aria-invalid={error ? 'true' : undefined}
+        aria-describedby={error ? `${id}-error` : undefined}
+        className={`w-full rounded-xl border bg-charcoal-800 px-4 py-3 text-cream outline-none transition-colors placeholder:text-sand focus:border-gold ${error ? 'border-terracotta' : 'border-white/10'}`}
       />
+      <p id={`${id}-error`} className="mt-1 min-h-8 text-xs leading-4 text-cream">{error || '\u00a0'}</p>
     </div>
   )
 }

@@ -4,6 +4,8 @@ import SectionHeading from '../ui/SectionHeading'
 import { testimonials, business } from '../../data/siteConfig'
 
 export default function Testimonials() {
+  // Only publish genuine, approved reviews once the showroom supplies them.
+  if (!testimonials.length) return null
   return (
     <section className="section-pad relative bg-charcoal">
       <div className="container-px">

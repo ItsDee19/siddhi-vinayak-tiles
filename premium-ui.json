@@ -1,0 +1,9 @@
+{
+  "profile": "hybrid",
+  "sourceRoots": ["src"],
+  "ownership": {
+    "Select/Listbox": "native",
+    "Form": "native",
+    "Scrollbar": "native"
+  }
+}

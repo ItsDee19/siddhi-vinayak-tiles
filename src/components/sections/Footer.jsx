@@ -1,6 +1,7 @@
 import Icon from '../Icons'
 import Logo from '../Logo'
 import { business, navLinks } from '../../data/siteConfig'
+import { policyLinks } from '../../data/seo'
 
 export default function Footer() {
   return (
@@ -12,7 +13,7 @@ export default function Footer() {
             <div className="flex items-center gap-3">
               <Logo variant="dark" />
             </div>
-            <p className="mt-5 max-w-sm text-sm leading-relaxed text-sand/75">
+            <p className="mt-5 max-w-sm text-sm leading-relaxed text-sand">
               {business.intro}
             </p>
             <p className="mt-5 font-display text-lg italic text-gold-light">
@@ -30,12 +31,13 @@ export default function Footer() {
                 <li key={l.href}>
                   <a
                     href={l.href}
-                    className="text-sm text-sand/75 transition-colors hover:text-gold"
+                    className="text-sm text-sand transition-colors hover:text-gold-light"
                   >
                     {l.label}
                   </a>
                 </li>
               ))}
+              <li><a href="/catalogues/" className="text-sm text-sand hover:text-gold-light">Catalogue page index</a></li>
             </ul>
           </div>
 
@@ -44,7 +46,7 @@ export default function Footer() {
             <h4 className="text-xs font-semibold uppercase tracking-[0.25em] text-gold">
               Visit / Contact
             </h4>
-            <ul className="mt-5 space-y-4 text-sm text-sand/75">
+            <ul className="mt-5 space-y-4 text-sm text-sand">
               <li className="flex items-start gap-3">
                 <Icon name="mapPin" className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
                 <span>{business.address.full}</span>
@@ -74,7 +76,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-white/5 pt-7 text-xs text-sand/50 sm:flex-row">
+        <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-white/5 pt-7 text-xs text-sand sm:flex-row">
           <p>
             © {new Date().getFullYear()} {business.name}. All rights reserved.
           </p>
@@ -83,6 +85,9 @@ export default function Footer() {
             for our customers.
           </p>
         </div>
+        <nav aria-label="Website policies" className="mt-4 flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs text-sand sm:justify-start">
+          {policyLinks.map(link => <a key={link.href} href={link.href} className="inline-flex min-h-11 items-center underline underline-offset-4 hover:text-cream">{link.label}</a>)}
+        </nav>
       </div>
     </footer>
   )

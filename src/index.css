@@ -2,9 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face { font-family: 'Manrope'; font-style: normal; font-weight: 200 800; font-display: swap; src: url('./assets/fonts/manrope-latin-v20.woff2') format('woff2'); }
+@font-face { font-family: 'Playfair Display'; font-style: normal; font-weight: 400 900; font-display: swap; src: url('./assets/fonts/playfair-latin-v40.woff2') format('woff2'); }
+@font-face { font-family: 'Playfair Display'; font-style: italic; font-weight: 400 900; font-display: swap; src: url('./assets/fonts/playfair-italic-latin-v40.woff2') format('woff2'); }
+
 @layer base {
   :root {
     color-scheme: dark;
+    scrollbar-color: #A8884F #3D2512;
+    scrollbar-width: auto;
 
     /* PRD §2.2 — Color System */
     --bg-primary: #2C1A0E;
@@ -28,11 +34,13 @@
     scroll-behavior: smooth;
     /* Offset anchored scroll so sticky navbar doesn't cover headings */
     scroll-padding-top: 5rem;
+    scroll-padding-bottom: calc(var(--privacy-notice-height, 0px) + 1rem);
     overflow-x: hidden;
   }
 
   body {
     @apply bg-charcoal text-cream font-sans antialiased;
+    padding-bottom: var(--privacy-notice-height, 0px);
     overflow-x: hidden;
   }
 
