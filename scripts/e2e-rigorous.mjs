@@ -101,7 +101,7 @@ async function runDesktop(browser) {
   })
 
   // ── Nav links present ──
-  const navHrefs = ['#home', '#products', '#visualizer', '#catalogue', '#size-calculator', '#about', '#contact']
+  const navHrefs = ['#home', '#products', '#visualizer', '#size-calculator', '#about', '#contact']
   for (const href of navHrefs) {
     await check(`desktop:nav-link${href}`, async () => {
       const n = await page.locator(`nav a[href="${href}"], a[href="${href}"]`).count()
@@ -111,7 +111,7 @@ async function runDesktop(browser) {
   }
 
   // ── Sections exist after lazy load (scroll full page) ──
-  for (const id of ['home', 'products', 'visualizer', 'catalogue', 'size-calculator', 'about', 'contact']) {
+  for (const id of ['home', 'products', 'visualizer', 'size-calculator', 'about', 'contact']) {
     await check(`desktop:section#${id}`, async () => {
       await scrollTo(page, id)
       // lazy sections need a moment
@@ -124,7 +124,7 @@ async function runDesktop(browser) {
   await check('desktop:hero-content', async () => {
     await scrollTo(page, 'home')
     const hasCta =
-      (await page.locator('#home a[href="#visualizer"], #home a[href="#catalogue"], #home a[href="#contact"]').count()) > 0
+      (await page.locator('#home a[href="#visualizer"], #home a[href="#products"], #home a[href="#contact"]').count()) > 0
     if (!hasCta) {
       // Accept logo/text presence
       const text = await page.locator('#home').innerText()
@@ -263,77 +263,6 @@ async function runDesktop(browser) {
     if (srcs.length !== CATALOGUE_BOOK_COUNT) throw new Error(`expected ${CATALOGUE_BOOK_COUNT} book thumbnails, found ${srcs.length}`)
     for (const src of srcs) await assetOk(page, src)
     return `${srcs.length} thumbnails 200`
-  })
-
-  // ── Catalogue ──
-  await check('desktop:catalogue-products', async () => {
-    await page.goto(BASE + '/#catalogue', { waitUntil: 'domcontentloaded' })
-    await scrollTo(page, 'catalogue')
-    await page.waitForTimeout(1500)
-    const cards = page.locator('#catalogue [role="button"]')
-    await cards.first().waitFor({ state: 'visible', timeout: 20000 })
-    const n = await cards.count()
-    if (n < 8) throw new Error(`only ${n} cards`)
-    return `${n} cards`
-  })
-
-  await check('desktop:catalogue-search', async () => {
-    const search = page.locator('#catalogue input[type="search"], #catalogue input[placeholder*="Search"]').first()
-    if ((await search.count()) === 0) {
-      // try any text input in catalogue
-      const any = page.locator('#catalogue input').first()
-      await any.fill('marble')
-      await page.waitForTimeout(500)
-      return 'used generic input'
-    }
-    await search.fill('white')
-    await page.waitForTimeout(600)
-    const n = await page.locator('#catalogue [role="button"]').count()
-    await search.fill('')
-    await page.waitForTimeout(300)
-    return `${n} after search white`
-  })
-
-  await check('desktop:catalogue-view-in-library', async () => {
-    await scrollTo(page, 'catalogue')
-    await page.waitForTimeout(800)
-    const tryBtn = page.locator('#catalogue button', { hasText: /View in Library/ }).first()
-    await tryBtn.waitFor({ state: 'visible', timeout: 15000 })
-    await tryBtn.click()
-    await page.waitForTimeout(1500)
-    // should scroll to the catalogue library (see Catalogue.jsx's onViewIn3D)
-    const viz = page.locator('#visualizer')
-    const inView = await page.evaluate(() => {
-      const el = document.getElementById('visualizer')
-      if (!el) return false
-      const r = el.getBoundingClientRect()
-      return r.top < window.innerHeight && r.bottom > 0
-    })
-    if (!inView) await scrollTo(page, 'visualizer')
-    await page.waitForTimeout(500)
-    const text = await viz.innerText()
-    if (!/tile library/i.test(text)) throw new Error('library not ready after View in Library')
-    return inView ? 'scrolled to library' : 'applied (scrolled manually)'
-  })
-
-  await check('desktop:catalogue-lightbox', async () => {
-    await scrollTo(page, 'catalogue')
-    await page.waitForTimeout(500)
-    const card = page.locator('#catalogue [role="button"]').first()
-    await card.click()
-    await page.waitForTimeout(600)
-    // lightbox dialog or close button
-    const close = page.locator('[aria-label*="Close"], button:has-text("Close"), [role="dialog"]')
-    const n = await close.count()
-    if (n < 1) {
-      // click again might have toggled — not fatal if no modal
-      return 'no dialog detected (soft)'
-    }
-    // try close
-    const esc = page.locator('button[aria-label*="Close"], [role="dialog"] button').first()
-    if (await esc.count()) await esc.click().catch(() => {})
-    await page.keyboard.press('Escape').catch(() => {})
-    return `overlay elements=${n}`
   })
 
   // ── Size calculator ──
@@ -515,15 +444,6 @@ async function runMobile(browser) {
     const after = await page.locator('#visualizer .reader-heading h3').innerText()
     if (after === before) throw new Error('Collection details link did not switch the open catalogue')
     return `${before} → ${after}`
-  })
-
-  await check('mobile:catalogue-cards', async () => {
-    await page.goto(BASE + '/#catalogue', { waitUntil: 'domcontentloaded' })
-    await scrollTo(page, 'catalogue')
-    await page.waitForTimeout(1500)
-    const n = await page.locator('#catalogue [role="button"]').count()
-    if (n < 4) throw new Error(`only ${n}`)
-    return `${n} cards`
   })
 
   await check('mobile:size-calculator', async () => {

@@ -5,7 +5,6 @@ import ProductCategories from './components/sections/ProductCategories'
 import CatalogueLibrary from './components/catalogue/CatalogueLibrary'
 import './styles/catalogue.css'
 
-const Catalogue = lazy(() => import('./components/sections/Catalogue'))
 const SizeCalculator = lazy(() => import('./components/sections/SizeCalculator'))
 const About = lazy(() => import('./components/sections/About'))
 const Testimonials = lazy(() => import('./components/sections/Testimonials'))
@@ -22,7 +21,6 @@ export default function App() {
         <ProductCategories />
         <CatalogueLibrary />
         <Suspense fallback={null}>
-          <Catalogue />
           <SizeCalculator />
           <About />
           <Testimonials />
