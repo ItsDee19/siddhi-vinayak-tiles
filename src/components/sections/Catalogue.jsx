@@ -179,12 +179,10 @@ export default function Catalogue() {
   const visible = filtered.slice(0, visibleCount)
   const hasMore = visibleCount < filtered.length
 
-  const onViewIn3D = (product) => {
-    // Jump the showcase carousel to this product if it's one of the curated
-    // slides, then scroll it into view either way.
-    if (product) {
-      window.dispatchEvent(new CustomEvent('view-in-showcase', { detail: product }))
-    }
+  const onViewIn3D = () => {
+    // The catalogue library shows original scanned pages, not per-product
+    // renders, so there's no specific page to deep-link to — just scroll
+    // the visitor to the library so they can find this design themselves.
     document.getElementById('visualizer')?.scrollIntoView({ behavior: 'smooth' })
   }
 

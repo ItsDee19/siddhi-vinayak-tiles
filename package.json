@@ -12,7 +12,8 @@
     "build:facets": "node scripts/build_product_facets.mjs",
     "build:2d-webp": "node scripts/build_2d_room_webp.mjs",
     "test:e2e": "node scripts/e2e-rigorous.mjs",
-    "build:room-versions": "node scripts/build_room_asset_versions.mjs"
+    "build:room-versions": "node scripts/build_room_asset_versions.mjs",
+    "check:catalogues": "node scripts/check_catalogue_library.mjs"
   },
   "dependencies": {
     "@react-three/fiber": "^8.17.10",

@@ -52,7 +52,7 @@ export const business = {
 export const navLinks = [
   { label: 'Home', href: '#home' },
   { label: 'Products', href: '#products' },
-  { label: 'Showcase', href: '#visualizer' },
+  { label: 'Library', href: '#visualizer' },
   { label: 'Catalogue', href: '#catalogue' },
   { label: 'Size Calc', href: '#size-calculator' },
   { label: 'About', href: '#about' },

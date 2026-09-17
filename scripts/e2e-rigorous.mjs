@@ -68,11 +68,10 @@ async function assetOk(page, urlPath) {
   return String(res.status())
 }
 
-// Mirrors src/data/tileShowcase.js's curation: 2 slides × 5 ranges. Only used
-// here to know how many slides to expect — the actual titles/images are read
-// live from the page, not hardcoded, so this suite doesn't need updating if
-// the curated set changes later.
-const SHOWCASE_SLIDE_COUNT = 10
+// Mirrors src/data/catalogueBooks.generated.json — 4 supplied PDF catalogues.
+// Only used here to know how many book cards to expect — titles/page counts
+// are read live from the page, not hardcoded.
+const CATALOGUE_BOOK_COUNT = 4
 
 async function runDesktop(browser) {
   console.log('\n══ DESKTOP (1440×900) ══')
@@ -147,129 +146,123 @@ async function runDesktop(browser) {
     return `${titles} titles, ${links} links`
   })
 
-  // ── Tile showcase carousel ──
-  // Replaced the interactive 2D room visualizer (now on the archive/2d-visualizer
-  // branch) with a passive 3D coverflow — see src/components/showcase/Coverflow.jsx.
+  // ── Catalogue library (PDF page reader) ──
+  // Replaced the 3D showcase carousel with a passive reader over the 4
+  // supplied PDF catalogues — see src/components/catalogue/CatalogueLibrary.jsx.
   // `id="visualizer"` was kept on the section for anchor/deep-link stability.
-  // Slide buttons' aria-labels always end in "current slide" or start with
-  // "Go to " — the Next/Previous chevrons live in the same [role="group"]
-  // container but don't match either pattern, so this selector naturally
-  // excludes them without needing an explicit :not().
-  const slideButtons = (p) =>
-    p.locator('#visualizer [role="group"] button[aria-label$="current slide"], #visualizer [role="group"] button[aria-label^="Go to"]')
-  const activeSlide = (p) => p.locator('#visualizer button[aria-label$="current slide"]')
-
-  await check('desktop:showcase-heading', async () => {
+  await check('desktop:library-heading', async () => {
     await scrollTo(page, 'visualizer')
     await page.waitForSelector('#visualizer', { timeout: 20000 })
     await page.waitForTimeout(500)
     const h = await page.locator('#visualizer').innerText()
-    if (!/Tile Showcase/i.test(h)) throw new Error('heading missing')
+    if (!/tile library/i.test(h)) throw new Error('heading missing')
     return 'ok'
   })
 
-  // The carousel keeps the old visualizer's exact full-bleed footprint (same
-  // negative gutters, same 16:9 band, same height cap) so the page doesn't
-  // shift under the reader. A stray wrapper re-adding container padding, or a
-  // CSS regression collapsing the aspect box, wouldn't show up as an error —
-  // hence asserted, not eyeballed.
-  await check('desktop:showcase-full-bleed', async () => {
-    const box = await page.locator('#visualizer [role="group"]').first().boundingBox()
-    const vw = await page.evaluate(() => window.innerWidth)
-    const vh = await page.evaluate(() => window.innerHeight)
-    const pct = Math.round((box.width / vw) * 100)
-    const ceiling = Math.min(vw, vh * 0.92 * (16 / 9))
-    if (box.width < ceiling * 0.9) {
-      throw new Error(`carousel ${Math.round(box.width)}px is well under the ${Math.round(ceiling)}px the viewport allows`)
-    }
-    if (box.height > vh + 1) throw new Error(`carousel ${Math.round(box.height)}px taller than viewport ${vh}px`)
-    return `${Math.round(box.width)}×${Math.round(box.height)} = ${pct}% of ${vw}px`
+  await check('desktop:library-books-rendered', async () => {
+    const n = await page.locator('#visualizer .catalogue-book button').count()
+    if (n !== CATALOGUE_BOOK_COUNT) throw new Error(`expected ${CATALOGUE_BOOK_COUNT} catalogue books, found ${n}`)
+    const selected = await page.locator('#visualizer .catalogue-book.is-selected').count()
+    if (selected !== 1) throw new Error(`expected exactly 1 selected book, found ${selected}`)
+    return `${n} books, 1 selected`
   })
 
-  await check('desktop:showcase-slides-rendered', async () => {
-    const n = await slideButtons(page).count()
-    if (n !== SHOWCASE_SLIDE_COUNT) throw new Error(`expected ${SHOWCASE_SLIDE_COUNT} slides, found ${n}`)
-    const activeCount = await activeSlide(page).count()
-    if (activeCount !== 1) throw new Error(`expected exactly 1 active slide, found ${activeCount}`)
-    return `${n} slides, 1 active`
-  })
-
-  await check('desktop:showcase-next-prev', async () => {
-    const before = await activeSlide(page).getAttribute('aria-label')
-    await page.locator('#visualizer button[aria-label="Next tile"]').click()
+  // Exercises the "Collection details" link specifically (not the book
+  // thumbnail button): it's a real <a href> intercepted with preventDefault
+  // so it switches catalogues in place instead of hitting a non-existent
+  // static route — the part most likely to regress silently.
+  await check('desktop:library-book-switch', async () => {
+    const before = await page.locator('#visualizer .reader-heading h3').innerText()
+    const link = page.locator('#visualizer .catalogue-book:not(.is-selected) a', { hasText: 'Collection details' }).first()
+    const href = await link.getAttribute('href')
+    if (!/^\/\?catalogue=[a-z0-9-]+&page=\d+#visualizer$/.test(href)) throw new Error(`unexpected href: ${href}`)
+    await link.click()
     await page.waitForTimeout(500)
-    const afterNext = await activeSlide(page).getAttribute('aria-label')
-    if (afterNext === before) throw new Error('Next did not change the active slide')
-    await page.locator('#visualizer button[aria-label="Previous tile"]').click()
-    await page.waitForTimeout(500)
-    const afterPrev = await activeSlide(page).getAttribute('aria-label')
-    if (afterPrev !== before) throw new Error(`Prev should return to "${before}", got "${afterPrev}"`)
-    return `${before} → ${afterNext} → ${afterPrev}`
-  })
-
-  // Side panels overlap the (higher z-index) active panel — that's the
-  // coverflow look. Only their outer ~35% sliver is actually painted on top,
-  // so that's where a real click lands; the geometric center of the button's
-  // own box sits under the active panel and would hit the wrong element.
-  await check('desktop:showcase-click-side-panel', async () => {
-    const target = page.locator('#visualizer button[aria-label^="Go to"]').first()
-    const label = await target.getAttribute('aria-label')
-    const box = await target.boundingBox()
-    await page.mouse.click(box.x + box.width * 0.85, box.y + box.height * 0.5)
-    await page.waitForTimeout(500)
-    const active = await activeSlide(page).getAttribute('aria-label')
-    if (!label.includes(active.replace(', current slide', ''))) {
-      throw new Error(`clicked "${label}" but active is now "${active}"`)
-    }
-    return `clicked "${label}" → active`
-  })
-
-  await check('desktop:showcase-keyboard-nav', async () => {
-    await page.locator('#visualizer [role="group"]').focus()
-    const before = await activeSlide(page).getAttribute('aria-label')
-    await page.keyboard.press('ArrowRight')
-    await page.waitForTimeout(500)
-    const afterRight = await activeSlide(page).getAttribute('aria-label')
-    if (afterRight === before) throw new Error('ArrowRight did not change the active slide')
-    await page.keyboard.press('ArrowLeft')
-    await page.waitForTimeout(500)
-    const afterLeft = await activeSlide(page).getAttribute('aria-label')
-    if (afterLeft !== before) throw new Error(`ArrowLeft should return to "${before}", got "${afterLeft}"`)
-    return `${before} → ${afterRight} → ${afterLeft}`
-  })
-
-  await check('desktop:showcase-drag', async () => {
-    const box = await page.locator('#visualizer [role="group"]').first().boundingBox()
-    const before = await activeSlide(page).getAttribute('aria-label')
-    await page.mouse.move(box.x + box.width * 0.5, box.y + box.height * 0.5)
-    await page.mouse.down()
-    await page.mouse.move(box.x + box.width * 0.15, box.y + box.height * 0.5, { steps: 10 })
-    await page.mouse.up()
-    await page.waitForTimeout(500)
-    const after = await activeSlide(page).getAttribute('aria-label')
-    if (after === before) throw new Error('drag-left did not change the active slide')
+    const after = await page.locator('#visualizer .reader-heading h3').innerText()
+    if (after === before) throw new Error('Collection details link did not switch the open catalogue')
+    if (!page.url().includes('#visualizer')) throw new Error(`left #visualizer, url=${page.url()}`)
     return `${before} → ${after}`
   })
 
-  // Autoplay is the thing that shows off "smooth sliding" to a visitor who
-  // never touches the carousel — but it must not fight a user who's hovering
-  // to read a caption or aim a click. AUTOPLAY_MS in Coverflow.jsx is 4500ms,
-  // so this has to wait past a full interval — anything shorter would pass
-  // whether or not the pause-on-hover actually works.
-  await check('desktop:showcase-autoplay-pauses-on-hover', async () => {
-    await page.locator('#visualizer [role="group"]').hover()
-    const before = await activeSlide(page).getAttribute('aria-label')
-    await page.waitForTimeout(5200)
-    const after = await activeSlide(page).getAttribute('aria-label')
-    if (after !== before) throw new Error(`active slide changed while hovered: "${before}" → "${after}"`)
-    return 'unchanged across a full autoplay interval while hovered'
+  await check('desktop:library-next-prev', async () => {
+    const input = page.locator('#visualizer #page-number')
+    const before = await input.inputValue()
+    await page.locator('#visualizer button[aria-label="Next page"]').click()
+    await page.waitForTimeout(400)
+    const afterNext = await input.inputValue()
+    if (afterNext === before) throw new Error('Next page did not advance')
+    await page.locator('#visualizer button[aria-label="Previous page"]').click()
+    await page.waitForTimeout(400)
+    const afterPrev = await input.inputValue()
+    if (afterPrev !== before) throw new Error(`Previous page should return to "${before}", got "${afterPrev}"`)
+    return `${before} → ${afterNext} → ${afterPrev}`
   })
 
-  await check('desktop:showcase-image-assets', async () => {
-    const srcs = await page.locator('#visualizer [role="group"] img').evaluateAll((imgs) => imgs.map((i) => new URL(i.src).pathname))
-    if (srcs.length !== SHOWCASE_SLIDE_COUNT) throw new Error(`expected ${SHOWCASE_SLIDE_COUNT} images, found ${srcs.length}`)
+  await check('desktop:library-page-jump', async () => {
+    const input = page.locator('#visualizer #page-number')
+    await input.fill('5')
+    await page.locator('#visualizer button[aria-label="Go to page"]').click()
+    await page.waitForTimeout(400)
+    const value = await input.inputValue()
+    if (value !== '5') throw new Error(`expected page 5, input shows "${value}"`)
+    const status = await page.locator('#visualizer .reader-status').innerText()
+    if (!/page 5/i.test(status)) throw new Error(`status does not confirm page 5: "${status}"`)
+    return 'jumped to page 5'
+  })
+
+  await check('desktop:library-keyboard-nav', async () => {
+    await page.locator('#visualizer .reader-stage [role="region"]').focus()
+    const input = page.locator('#visualizer #page-number')
+    const before = await input.inputValue()
+    await page.keyboard.press('ArrowRight')
+    await page.waitForTimeout(400)
+    const after = await input.inputValue()
+    if (after === before) throw new Error('ArrowRight did not advance the page')
+    await page.keyboard.press('ArrowLeft')
+    await page.waitForTimeout(400)
+    const back = await input.inputValue()
+    if (back !== before) throw new Error(`ArrowLeft should return to "${before}", got "${back}"`)
+    return `${before} → ${after} → ${back}`
+  })
+
+  await check('desktop:library-zoom', async () => {
+    const fitBtn = page.locator('#visualizer .reader-fit')
+    const before = await fitBtn.innerText()
+    await page.locator('#visualizer button[aria-label="Zoom in"]').click()
+    await page.waitForTimeout(300)
+    const after = await fitBtn.innerText()
+    if (after === before) throw new Error('Zoom in did not change the zoom level')
+    await fitBtn.click()
+    await page.waitForTimeout(300)
+    const reset = await fitBtn.innerText()
+    if (!/fit page/i.test(reset)) throw new Error(`Fit page button should reset zoom, got "${reset}"`)
+    return `${before} → ${after} → ${reset}`
+  })
+
+  await check('desktop:library-fullscreen', async () => {
+    await page.locator('#visualizer .reader-expand').click()
+    await page.waitForTimeout(500)
+    const openCount = await page.locator('dialog.reader-dialog[open]').count()
+    if (openCount < 1) throw new Error('fullscreen dialog did not open')
+    await page.locator('dialog.reader-dialog [data-close-reader]').click()
+    await page.waitForTimeout(400)
+    const stillOpen = await page.locator('dialog.reader-dialog[open]').count()
+    if (stillOpen > 0) throw new Error('fullscreen dialog did not close')
+    return 'opened and closed'
+  })
+
+  await check('desktop:library-page-image', async () => {
+    const src = await page.locator('#visualizer .reader-stage img').first().getAttribute('src')
+    if (!src) throw new Error('no page image rendered')
+    await assetOk(page, src)
+    return src
+  })
+
+  await check('desktop:library-book-thumbnails', async () => {
+    const srcs = await page.locator('#visualizer .catalogue-book img').evaluateAll((imgs) => imgs.map((i) => new URL(i.src).pathname))
+    if (srcs.length !== CATALOGUE_BOOK_COUNT) throw new Error(`expected ${CATALOGUE_BOOK_COUNT} book thumbnails, found ${srcs.length}`)
     for (const src of srcs) await assetOk(page, src)
-    return `${srcs.length} images 200`
+    return `${srcs.length} thumbnails 200`
   })
 
   // ── Catalogue ──
@@ -301,15 +294,14 @@ async function runDesktop(browser) {
     return `${n} after search white`
   })
 
-  await check('desktop:catalogue-view-in-showcase', async () => {
+  await check('desktop:catalogue-view-in-library', async () => {
     await scrollTo(page, 'catalogue')
     await page.waitForTimeout(800)
-    const tryBtn = page.locator('#catalogue button', { hasText: /View in Showcase/ }).first()
+    const tryBtn = page.locator('#catalogue button', { hasText: /View in Library/ }).first()
     await tryBtn.waitFor({ state: 'visible', timeout: 15000 })
     await tryBtn.click()
     await page.waitForTimeout(1500)
-    // should scroll to the showcase carousel (view-in-showcase event dispatch
-    // + scrollIntoView — see Catalogue.jsx's onViewIn3D)
+    // should scroll to the catalogue library (see Catalogue.jsx's onViewIn3D)
     const viz = page.locator('#visualizer')
     const inView = await page.evaluate(() => {
       const el = document.getElementById('visualizer')
@@ -320,8 +312,8 @@ async function runDesktop(browser) {
     if (!inView) await scrollTo(page, 'visualizer')
     await page.waitForTimeout(500)
     const text = await viz.innerText()
-    if (!/Tile Showcase/i.test(text)) throw new Error('showcase not ready after View in Showcase')
-    return inView ? 'scrolled to showcase' : 'applied (scrolled manually)'
+    if (!/tile library/i.test(text)) throw new Error('library not ready after View in Library')
+    return inView ? 'scrolled to library' : 'applied (scrolled manually)'
   })
 
   await check('desktop:catalogue-lightbox', async () => {
@@ -425,13 +417,13 @@ async function runDesktop(browser) {
     return 'visible'
   })
 
-  // ── No dead visualizer routes (2D room compositor or legacy 3D) ──
+  // ── No dead visualizer routes (2D room compositor or 3D carousel) ──
   await check('desktop:no-legacy-visualizer-section', async () => {
     const has3d = await page.evaluate(() => !!document.getElementById('visualizer-3d'))
     if (has3d) throw new Error('legacy #visualizer-3d present')
     const hasRoomCanvas = await page.evaluate(() => !!document.querySelector('#visualizer canvas'))
-    if (hasRoomCanvas) throw new Error('a <canvas> is present in #visualizer — the 2D room visualizer should be fully replaced by the CSS-only showcase carousel')
-    return 'only the showcase carousel'
+    if (hasRoomCanvas) throw new Error('a <canvas> is present in #visualizer — it should be fully replaced by the catalogue library')
+    return 'only the catalogue library'
   })
 
   await context.close()
@@ -478,50 +470,50 @@ async function runMobile(browser) {
     await burger.click()
     await page.waitForTimeout(400)
     const links = await page.locator('header a[href="#visualizer"]').count()
-    if (links < 1) throw new Error('no showcase link')
+    if (links < 1) throw new Error('no library link')
     // CRITICAL: close menu so later tests are not blocked by the drawer overlay
     await burger.click()
     await page.waitForTimeout(350)
-    return `showcase links=${links}; menu closed`
+    return `library links=${links}; menu closed`
   })
 
-  await check('mobile:showcase-layout', async () => {
+  await check('mobile:library-layout', async () => {
     await page.goto(BASE + '/#visualizer', { waitUntil: 'domcontentloaded' })
     await page.waitForSelector('#visualizer', { timeout: 30000 })
     await page.waitForTimeout(1200)
     await closeMobileChrome()
-    const group = page.locator('#visualizer [role="group"]').first()
-    await group.waitFor({ state: 'visible', timeout: 15000 })
-    const n = await page.locator('#visualizer [role="group"] button[aria-label$="current slide"], #visualizer [role="group"] button[aria-label^="Go to"]').count()
-    if (n !== SHOWCASE_SLIDE_COUNT) throw new Error(`expected ${SHOWCASE_SLIDE_COUNT} slides, found ${n}`)
-    return `carousel + ${n} slides`
+    const books = page.locator('#visualizer .catalogue-book button')
+    await books.first().waitFor({ state: 'visible', timeout: 15000 })
+    const n = await books.count()
+    if (n !== CATALOGUE_BOOK_COUNT) throw new Error(`expected ${CATALOGUE_BOOK_COUNT} catalogue books, found ${n}`)
+    return `library + ${n} books`
   })
 
-  await check('mobile:showcase-tap-arrow', async () => {
+  await check('mobile:library-tap-next', async () => {
     await closeMobileChrome()
-    const activeSlideM = () => page.locator('#visualizer button[aria-label$="current slide"]')
-    const before = await activeSlideM().getAttribute('aria-label')
-    await page.locator('#visualizer button[aria-label="Next tile"]').click({ force: true })
+    // The reader toolbar can land at whatever scroll depth the #visualizer
+    // hash-jump happens to settle on, which on some runs puts it directly
+    // under the fixed bottom-right WhatsApp/call buttons (FloatingButtons —
+    // present on every section, not specific to this reader). Centering the
+    // toolbar in the viewport first keeps the tap off that fixed corner.
+    await page.locator('#visualizer .reader-toolbar').first().evaluate((el) => el.scrollIntoView({ block: 'center' }))
+    await page.waitForTimeout(300)
+    const input = page.locator('#visualizer #page-number')
+    const before = await input.inputValue()
+    await page.locator('#visualizer button[aria-label="Next page"]').click({ force: true })
     await page.waitForTimeout(500)
-    const after = await activeSlideM().getAttribute('aria-label')
-    if (after === before) throw new Error('tapping Next did not change the active slide')
+    const after = await input.inputValue()
+    if (after === before) throw new Error('tapping Next page did not advance')
     return `${before} → ${after}`
   })
 
-  await check('mobile:showcase-swipe', async () => {
-    const activeSlideM = () => page.locator('#visualizer button[aria-label$="current slide"]')
-    const before = await activeSlideM().getAttribute('aria-label')
-    const box = await page.locator('#visualizer [role="group"]').first().boundingBox()
-    await page.touchscreen.tap(box.x + box.width * 0.5, box.y + box.height * 0.5).catch(() => {})
-    // touchscreen has no drag primitive in playwright-core; simulate the swipe
-    // with pointer/mouse move, which the component's drag="x" handles the same way
-    await page.mouse.move(box.x + box.width * 0.7, box.y + box.height * 0.5)
-    await page.mouse.down()
-    await page.mouse.move(box.x + box.width * 0.2, box.y + box.height * 0.5, { steps: 10 })
-    await page.mouse.up()
+  await check('mobile:library-book-switch', async () => {
+    const before = await page.locator('#visualizer .reader-heading h3').innerText()
+    const link = page.locator('#visualizer .catalogue-book:not(.is-selected) a', { hasText: 'Collection details' }).first()
+    await link.click({ force: true })
     await page.waitForTimeout(500)
-    const after = await activeSlideM().getAttribute('aria-label')
-    if (after === before) throw new Error('swipe-left did not change the active slide')
+    const after = await page.locator('#visualizer .reader-heading h3').innerText()
+    if (after === before) throw new Error('Collection details link did not switch the open catalogue')
     return `${before} → ${after}`
   })
 
