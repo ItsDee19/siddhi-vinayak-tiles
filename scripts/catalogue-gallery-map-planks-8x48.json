@@ -1,0 +1,506 @@
+{
+  "bookId": "planks-8x48",
+  "sourceHash": "53a980d82773b3b0632f903f624f95c025ac6245c080dcfaa119fa97c78f1ff9",
+  "stories": [
+    {
+      "id": "planks-8x48-p001-d1",
+      "pageNumber": 1,
+      "productIds": [
+        "planks-8x48-p1-d1"
+      ],
+      "title": "ANTIQUE WOOD BROWN - R9",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.341,
+            0.177,
+            0.492,
+            0.101
+          ],
+          "label": "Complete tile face"
+        }
+      }
+    },
+    {
+      "id": "planks-8x48-p002-d1",
+      "pageNumber": 2,
+      "productIds": [
+        "planks-8x48-p2-d1"
+      ],
+      "title": "AQUA WOOD-R5 (CV)",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.341,
+            0.177,
+            0.492,
+            0.101
+          ],
+          "label": "Complete tile face"
+        }
+      }
+    },
+    {
+      "id": "planks-8x48-p003-d1",
+      "pageNumber": 3,
+      "productIds": [
+        "planks-8x48-p3-d1"
+      ],
+      "title": "ARJUN WOOD BROWN - R5",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.341,
+            0.177,
+            0.492,
+            0.101
+          ],
+          "label": "Complete tile face"
+        }
+      }
+    },
+    {
+      "id": "planks-8x48-p004-d1",
+      "pageNumber": 4,
+      "productIds": [
+        "planks-8x48-p4-d1"
+      ],
+      "title": "BOSCO ALMOND - R9",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.341,
+            0.177,
+            0.492,
+            0.101
+          ],
+          "label": "Complete tile face"
+        }
+      }
+    },
+    {
+      "id": "planks-8x48-p005-d1",
+      "pageNumber": 5,
+      "productIds": [
+        "planks-8x48-p5-d1"
+      ],
+      "title": "BOSCO BEIGE - R9",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.341,
+            0.177,
+            0.492,
+            0.101
+          ],
+          "label": "Complete tile face"
+        }
+      }
+    },
+    {
+      "id": "planks-8x48-p006-d1",
+      "pageNumber": 6,
+      "productIds": [
+        "planks-8x48-p6-d1"
+      ],
+      "title": "BOSCO BROWN - R9",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.341,
+            0.177,
+            0.492,
+            0.101
+          ],
+          "label": "Complete tile face"
+        }
+      }
+    },
+    {
+      "id": "planks-8x48-p007-d1",
+      "pageNumber": 7,
+      "productIds": [
+        "planks-8x48-p7-d1"
+      ],
+      "title": "BOSCO NATURAL - R9",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.341,
+            0.177,
+            0.492,
+            0.101
+          ],
+          "label": "Complete tile face"
+        }
+      }
+    },
+    {
+      "id": "planks-8x48-p008-d1",
+      "pageNumber": 8,
+      "productIds": [
+        "planks-8x48-p8-d1"
+      ],
+      "title": "CANDY WOOD-R6 (CV)",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.341,
+            0.177,
+            0.492,
+            0.101
+          ],
+          "label": "Complete tile face"
+        }
+      }
+    },
+    {
+      "id": "planks-8x48-p009-d1",
+      "pageNumber": 9,
+      "productIds": [
+        "planks-8x48-p9-d1"
+      ],
+      "title": "CEMENTO GREY-R11 (CV)",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.341,
+            0.177,
+            0.492,
+            0.101
+          ],
+          "label": "Complete tile face"
+        }
+      }
+    },
+    {
+      "id": "planks-8x48-p010-d1",
+      "pageNumber": 10,
+      "productIds": [
+        "planks-8x48-p10-d1"
+      ],
+      "title": "CORSON WOOD - R6",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.341,
+            0.177,
+            0.492,
+            0.101
+          ],
+          "label": "Complete tile face"
+        }
+      }
+    },
+    {
+      "id": "planks-8x48-p011-d1",
+      "pageNumber": 11,
+      "productIds": [
+        "planks-8x48-p11-d1"
+      ],
+      "title": "OXFORD WHITE-R10 (CV)",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.341,
+            0.177,
+            0.492,
+            0.101
+          ],
+          "label": "Complete tile face"
+        }
+      }
+    },
+    {
+      "id": "planks-8x48-p012-d1",
+      "pageNumber": 12,
+      "productIds": [
+        "planks-8x48-p12-d1"
+      ],
+      "title": "OXFORD WHITE-R10 (CV)",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.341,
+            0.177,
+            0.492,
+            0.101
+          ],
+          "label": "Complete tile face"
+        }
+      }
+    },
+    {
+      "id": "planks-8x48-p013-d1",
+      "pageNumber": 13,
+      "productIds": [
+        "planks-8x48-p13-d1"
+      ],
+      "title": "PESTAL BLACK",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.341,
+            0.177,
+            0.492,
+            0.101
+          ],
+          "label": "Complete tile face"
+        }
+      }
+    },
+    {
+      "id": "planks-8x48-p014-d1",
+      "pageNumber": 14,
+      "productIds": [
+        "planks-8x48-p14-d1"
+      ],
+      "title": "PESTAL WHITE",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.341,
+            0.177,
+            0.492,
+            0.101
+          ],
+          "label": "Complete tile face"
+        }
+      }
+    },
+    {
+      "id": "planks-8x48-p015-d1",
+      "pageNumber": 15,
+      "productIds": [
+        "planks-8x48-p15-d1"
+      ],
+      "title": "ROYAL BROWN - R10",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.341,
+            0.177,
+            0.492,
+            0.101
+          ],
+          "label": "Complete tile face"
+        }
+      }
+    },
+    {
+      "id": "planks-8x48-p016-d1",
+      "pageNumber": 16,
+      "productIds": [
+        "planks-8x48-p16-d1"
+      ],
+      "title": "SISAM WENGE - R8",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.341,
+            0.177,
+            0.492,
+            0.101
+          ],
+          "label": "Complete tile face"
+        }
+      }
+    },
+    {
+      "id": "planks-8x48-p017-d1",
+      "pageNumber": 17,
+      "productIds": [
+        "planks-8x48-p17-d1"
+      ],
+      "title": "SWISS WALNUT - R4",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.341,
+            0.177,
+            0.492,
+            0.101
+          ],
+          "label": "Complete tile face"
+        }
+      }
+    },
+    {
+      "id": "planks-8x48-p018-d1",
+      "pageNumber": 18,
+      "productIds": [
+        "planks-8x48-p18-d1"
+      ],
+      "title": "TERRAZZO BROWN-R9 (CV)",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.341,
+            0.177,
+            0.492,
+            0.101
+          ],
+          "label": "Complete tile face"
+        }
+      }
+    },
+    {
+      "id": "planks-8x48-p019-d1",
+      "pageNumber": 19,
+      "productIds": [
+        "planks-8x48-p19-d1"
+      ],
+      "title": "TORINO GREY (104) - R8",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.341,
+            0.177,
+            0.492,
+            0.101
+          ],
+          "label": "Complete tile face"
+        }
+      }
+    },
+    {
+      "id": "planks-8x48-p020-d1",
+      "pageNumber": 20,
+      "productIds": [
+        "planks-8x48-p20-d1"
+      ],
+      "title": "Traventine White - R1",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.362,
+            0.216,
+            0.459,
+            0.097
+          ],
+          "label": "Complete tile face"
+        }
+      }
+    }
+  ]
+}

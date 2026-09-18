@@ -1,0 +1,814 @@
+{
+  "bookId": "rich",
+  "sourceHash": "f2e679917fd67c3df2159c34a3a7e856a02b873a5a548b6bebf72a73c1ec1398",
+  "method": "All 81 original pages visually inspected. All 37 names, printed 600x600mm Glossy labels, full square samples and matching next-page room captions verified.",
+  "excludedPages": [
+    {
+      "pdfPage": 1,
+      "reason": "Publisher introduction, technical specification or back cover"
+    },
+    {
+      "pdfPage": 2,
+      "reason": "Publisher introduction, technical specification or back cover"
+    },
+    {
+      "pdfPage": 3,
+      "reason": "Publisher introduction, technical specification or back cover"
+    },
+    {
+      "pdfPage": 4,
+      "reason": "Publisher introduction, technical specification or back cover"
+    },
+    {
+      "pdfPage": 5,
+      "reason": "Publisher introduction, technical specification or back cover"
+    },
+    {
+      "pdfPage": 7,
+      "reason": "Matching named room photograph; paired with preceding product board in gallery"
+    },
+    {
+      "pdfPage": 9,
+      "reason": "Matching named room photograph; paired with preceding product board in gallery"
+    },
+    {
+      "pdfPage": 11,
+      "reason": "Matching named room photograph; paired with preceding product board in gallery"
+    },
+    {
+      "pdfPage": 13,
+      "reason": "Matching named room photograph; paired with preceding product board in gallery"
+    },
+    {
+      "pdfPage": 15,
+      "reason": "Matching named room photograph; paired with preceding product board in gallery"
+    },
+    {
+      "pdfPage": 17,
+      "reason": "Matching named room photograph; paired with preceding product board in gallery"
+    },
+    {
+      "pdfPage": 19,
+      "reason": "Matching named room photograph; paired with preceding product board in gallery"
+    },
+    {
+      "pdfPage": 21,
+      "reason": "Matching named room photograph; paired with preceding product board in gallery"
+    },
+    {
+      "pdfPage": 23,
+      "reason": "Matching named room photograph; paired with preceding product board in gallery"
+    },
+    {
+      "pdfPage": 25,
+      "reason": "Matching named room photograph; paired with preceding product board in gallery"
+    },
+    {
+      "pdfPage": 27,
+      "reason": "Matching named room photograph; paired with preceding product board in gallery"
+    },
+    {
+      "pdfPage": 29,
+      "reason": "Matching named room photograph; paired with preceding product board in gallery"
+    },
+    {
+      "pdfPage": 31,
+      "reason": "Matching named room photograph; paired with preceding product board in gallery"
+    },
+    {
+      "pdfPage": 33,
+      "reason": "Matching named room photograph; paired with preceding product board in gallery"
+    },
+    {
+      "pdfPage": 35,
+      "reason": "Matching named room photograph; paired with preceding product board in gallery"
+    },
+    {
+      "pdfPage": 37,
+      "reason": "Matching named room photograph; paired with preceding product board in gallery"
+    },
+    {
+      "pdfPage": 39,
+      "reason": "Matching named room photograph; paired with preceding product board in gallery"
+    },
+    {
+      "pdfPage": 41,
+      "reason": "Matching named room photograph; paired with preceding product board in gallery"
+    },
+    {
+      "pdfPage": 43,
+      "reason": "Matching named room photograph; paired with preceding product board in gallery"
+    },
+    {
+      "pdfPage": 45,
+      "reason": "Matching named room photograph; paired with preceding product board in gallery"
+    },
+    {
+      "pdfPage": 47,
+      "reason": "Matching named room photograph; paired with preceding product board in gallery"
+    },
+    {
+      "pdfPage": 49,
+      "reason": "Matching named room photograph; paired with preceding product board in gallery"
+    },
+    {
+      "pdfPage": 51,
+      "reason": "Matching named room photograph; paired with preceding product board in gallery"
+    },
+    {
+      "pdfPage": 53,
+      "reason": "Matching named room photograph; paired with preceding product board in gallery"
+    },
+    {
+      "pdfPage": 55,
+      "reason": "Matching named room photograph; paired with preceding product board in gallery"
+    },
+    {
+      "pdfPage": 57,
+      "reason": "Matching named room photograph; paired with preceding product board in gallery"
+    },
+    {
+      "pdfPage": 59,
+      "reason": "Matching named room photograph; paired with preceding product board in gallery"
+    },
+    {
+      "pdfPage": 61,
+      "reason": "Matching named room photograph; paired with preceding product board in gallery"
+    },
+    {
+      "pdfPage": 63,
+      "reason": "Matching named room photograph; paired with preceding product board in gallery"
+    },
+    {
+      "pdfPage": 65,
+      "reason": "Matching named room photograph; paired with preceding product board in gallery"
+    },
+    {
+      "pdfPage": 67,
+      "reason": "Matching named room photograph; paired with preceding product board in gallery"
+    },
+    {
+      "pdfPage": 69,
+      "reason": "Matching named room photograph; paired with preceding product board in gallery"
+    },
+    {
+      "pdfPage": 71,
+      "reason": "Matching named room photograph; paired with preceding product board in gallery"
+    },
+    {
+      "pdfPage": 73,
+      "reason": "Matching named room photograph; paired with preceding product board in gallery"
+    },
+    {
+      "pdfPage": 75,
+      "reason": "Matching named room photograph; paired with preceding product board in gallery"
+    },
+    {
+      "pdfPage": 77,
+      "reason": "Matching named room photograph; paired with preceding product board in gallery"
+    },
+    {
+      "pdfPage": 79,
+      "reason": "Matching named room photograph; paired with preceding product board in gallery"
+    },
+    {
+      "pdfPage": 80,
+      "reason": "Publisher introduction, technical specification or back cover"
+    },
+    {
+      "pdfPage": 81,
+      "reason": "Publisher introduction, technical specification or back cover"
+    }
+  ],
+  "pages": [
+    {
+      "pdfPage": 6,
+      "verified": true,
+      "sizeMm": "600x600mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "Galaxy Bronze",
+          "category": "Vitrified floor tiles",
+          "aliases": [
+            "Multi Charged",
+            "Galaxy Series",
+            "Light Series"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 8,
+      "verified": true,
+      "sizeMm": "600x600mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "Galaxy White",
+          "category": "Vitrified floor tiles",
+          "aliases": [
+            "Multi Charged",
+            "Galaxy Series",
+            "Light Series"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 10,
+      "verified": true,
+      "sizeMm": "600x600mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "Galaxy Ice White",
+          "category": "Vitrified floor tiles",
+          "aliases": [
+            "Multi Charged",
+            "Galaxy Series",
+            "Light Series"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 12,
+      "verified": true,
+      "sizeMm": "600x600mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "Galaxy Lavender",
+          "category": "Vitrified floor tiles",
+          "aliases": [
+            "Multi Charged",
+            "Galaxy Series",
+            "Light Series"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 14,
+      "verified": true,
+      "sizeMm": "600x600mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "Galaxy Ice Slate",
+          "category": "Vitrified floor tiles",
+          "aliases": [
+            "Multi Charged",
+            "Galaxy Series",
+            "Light Series"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 16,
+      "verified": true,
+      "sizeMm": "600x600mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "Galaxy Graphite",
+          "category": "Vitrified floor tiles",
+          "aliases": [
+            "Multi Charged",
+            "Galaxy Series",
+            "Light Series"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 18,
+      "verified": true,
+      "sizeMm": "600x600mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "Galaxy Amber",
+          "category": "Vitrified floor tiles",
+          "aliases": [
+            "Multi Charged",
+            "Galaxy Series",
+            "Light Series"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 20,
+      "verified": true,
+      "sizeMm": "600x600mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "Galaxy Ice Fossil",
+          "category": "Vitrified floor tiles",
+          "aliases": [
+            "Multi Charged",
+            "Galaxy Series",
+            "Light Series"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 22,
+      "verified": true,
+      "sizeMm": "600x600mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "Galaxy Snow",
+          "category": "Vitrified floor tiles",
+          "aliases": [
+            "Multi Charged",
+            "Galaxy Series",
+            "Light Series"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 24,
+      "verified": true,
+      "sizeMm": "600x600mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "Galaxy Melody",
+          "category": "Vitrified floor tiles",
+          "aliases": [
+            "Multi Charged",
+            "Galaxy Series",
+            "Light Series"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 26,
+      "verified": true,
+      "sizeMm": "600x600mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "Galaxy Ice Blue",
+          "category": "Vitrified floor tiles",
+          "aliases": [
+            "Multi Charged",
+            "Galaxy Series",
+            "Light Series"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 28,
+      "verified": true,
+      "sizeMm": "600x600mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "Galaxy Copper",
+          "category": "Vitrified floor tiles",
+          "aliases": [
+            "Multi Charged",
+            "Galaxy Series",
+            "Light Series"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 30,
+      "verified": true,
+      "sizeMm": "600x600mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "Galaxy Gold",
+          "category": "Vitrified floor tiles",
+          "aliases": [
+            "Multi Charged",
+            "Galaxy Series",
+            "Light Series"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 32,
+      "verified": true,
+      "sizeMm": "600x600mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "Galaxy Camel",
+          "category": "Vitrified floor tiles",
+          "aliases": [
+            "Multi Charged",
+            "Galaxy Series",
+            "Light Series"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 34,
+      "verified": true,
+      "sizeMm": "600x600mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "Galaxy Crema",
+          "category": "Vitrified floor tiles",
+          "aliases": [
+            "Multi Charged",
+            "Galaxy Series",
+            "Light Series"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 36,
+      "verified": true,
+      "sizeMm": "600x600mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "Galaxy Pista",
+          "category": "Vitrified floor tiles",
+          "aliases": [
+            "Multi Charged",
+            "Galaxy Series",
+            "Light Series"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 38,
+      "verified": true,
+      "sizeMm": "600x600mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "Galaxy Lemon",
+          "category": "Vitrified floor tiles",
+          "aliases": [
+            "Multi Charged",
+            "Galaxy Series",
+            "Light Series"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 40,
+      "verified": true,
+      "sizeMm": "600x600mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "Galaxy Forest",
+          "category": "Vitrified floor tiles",
+          "aliases": [
+            "Multi Charged",
+            "Galaxy Series",
+            "Light Series"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 42,
+      "verified": true,
+      "sizeMm": "600x600mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "Galaxy Rock",
+          "category": "Vitrified floor tiles",
+          "aliases": [
+            "Multi Charged",
+            "Galaxy Series",
+            "Light Series"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 44,
+      "verified": true,
+      "sizeMm": "600x600mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "Galaxy Grass",
+          "category": "Vitrified floor tiles",
+          "aliases": [
+            "Multi Charged",
+            "Galaxy Series",
+            "Light Series"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 46,
+      "verified": true,
+      "sizeMm": "600x600mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "Galaxy Lava",
+          "category": "Vitrified floor tiles",
+          "aliases": [
+            "Multi Charged",
+            "Galaxy Series",
+            "Light Series"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 48,
+      "verified": true,
+      "sizeMm": "600x600mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "Galaxy Ruby",
+          "category": "Vitrified floor tiles",
+          "aliases": [
+            "Multi Charged",
+            "Galaxy Series",
+            "Light Series"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 50,
+      "verified": true,
+      "sizeMm": "600x600mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "Galaxy Rose",
+          "category": "Vitrified floor tiles",
+          "aliases": [
+            "Multi Charged",
+            "Galaxy Series",
+            "Light Series"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 52,
+      "verified": true,
+      "sizeMm": "600x600mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "Galaxy Pink",
+          "category": "Vitrified floor tiles",
+          "aliases": [
+            "Multi Charged",
+            "Galaxy Series",
+            "Light Series"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 54,
+      "verified": true,
+      "sizeMm": "600x600mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "Galaxy Pearl",
+          "category": "Vitrified floor tiles",
+          "aliases": [
+            "Multi Charged",
+            "Galaxy Series",
+            "Light Series"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 56,
+      "verified": true,
+      "sizeMm": "600x600mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "Galaxy Neon",
+          "category": "Vitrified floor tiles",
+          "aliases": [
+            "Multi Charged",
+            "Galaxy Series",
+            "Light Series"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 58,
+      "verified": true,
+      "sizeMm": "600x600mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "Galaxy Olive",
+          "category": "Vitrified floor tiles",
+          "aliases": [
+            "Multi Charged",
+            "Galaxy Series",
+            "Light Series"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 60,
+      "verified": true,
+      "sizeMm": "600x600mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "Galaxy Oreo",
+          "category": "Vitrified floor tiles",
+          "aliases": [
+            "Multi Charged",
+            "Galaxy Series",
+            "Light Series"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 62,
+      "verified": true,
+      "sizeMm": "600x600mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "Galaxy Sand",
+          "category": "Vitrified floor tiles",
+          "aliases": [
+            "Multi Charged",
+            "Galaxy Series",
+            "Light Series"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 64,
+      "verified": true,
+      "sizeMm": "600x600mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "Galaxy Stone",
+          "category": "Vitrified floor tiles",
+          "aliases": [
+            "Multi Charged",
+            "Galaxy Series",
+            "Light Series"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 66,
+      "verified": true,
+      "sizeMm": "600x600mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "Galaxy Smoke",
+          "category": "Vitrified floor tiles",
+          "aliases": [
+            "Multi Charged",
+            "Galaxy Series",
+            "Light Series"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 68,
+      "verified": true,
+      "sizeMm": "600x600mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "Galaxy Carbon",
+          "category": "Vitrified floor tiles",
+          "aliases": [
+            "Multi Charged",
+            "Galaxy Series",
+            "Dark Series"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 70,
+      "verified": true,
+      "sizeMm": "600x600mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "Galaxy Volcano",
+          "category": "Vitrified floor tiles",
+          "aliases": [
+            "Multi Charged",
+            "Galaxy Series",
+            "Dark Series"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 72,
+      "verified": true,
+      "sizeMm": "600x600mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "Galaxy Velvet",
+          "category": "Vitrified floor tiles",
+          "aliases": [
+            "Multi Charged",
+            "Galaxy Series",
+            "Dark Series"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 74,
+      "verified": true,
+      "sizeMm": "600x600mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "Galaxy Ocean",
+          "category": "Vitrified floor tiles",
+          "aliases": [
+            "Multi Charged",
+            "Galaxy Series",
+            "Dark Series"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 76,
+      "verified": true,
+      "sizeMm": "600x600mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "Galaxy Black",
+          "category": "Vitrified floor tiles",
+          "aliases": [
+            "Multi Charged",
+            "Galaxy Series",
+            "Dark Series"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 78,
+      "verified": true,
+      "sizeMm": "600x600mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "Super White",
+          "category": "Vitrified floor tiles",
+          "aliases": [
+            "Multi Charged",
+            "Super White",
+            "600x600"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,286 @@
+{
+  "bookId": "coverstone",
+  "sourceHash": "e5db9c5b1913912f7ef012e7d7cf71e6d1d28680ee68a63a212107c4c1a1351e",
+  "method": "Manual visual reading of every original PDF page (33 pages), with complete tile crops and room associations verified against publisher artwork.",
+  "notes": [
+    "All 33 source pages reviewed; Creative, Louvers and Bosta specimen boards are linked to the matching room photograph on the following page.",
+    "Texture closeups have decorative cut-out edges and are not treated as complete tiles. Full rectangular specimen faces are used instead.",
+    "Manufacturer finish abbreviations GLR (R10) and Structure Matt (R10) are preserved as printed."
+  ],
+  "excludedPages": [
+    {
+      "pdfPage": 1,
+      "reason": "Publisher series cover"
+    },
+    {
+      "pdfPage": 2,
+      "reason": "Decorative texture closeup for the following specimen board; complete named tiles are on that board"
+    },
+    {
+      "pdfPage": 4,
+      "reason": "Matching room setting for the preceding product board; linked from the gallery"
+    },
+    {
+      "pdfPage": 5,
+      "reason": "Decorative texture closeup for the following specimen board; complete named tiles are on that board"
+    },
+    {
+      "pdfPage": 7,
+      "reason": "Matching room setting for the preceding product board; linked from the gallery"
+    },
+    {
+      "pdfPage": 8,
+      "reason": "Decorative texture closeup for the following specimen board; complete named tiles are on that board"
+    },
+    {
+      "pdfPage": 10,
+      "reason": "Matching room setting for the preceding product board; linked from the gallery"
+    },
+    {
+      "pdfPage": 11,
+      "reason": "Decorative texture closeup for the following specimen board; complete named tiles are on that board"
+    },
+    {
+      "pdfPage": 13,
+      "reason": "Matching room setting for the preceding product board; linked from the gallery"
+    },
+    {
+      "pdfPage": 14,
+      "reason": "Publisher series cover"
+    },
+    {
+      "pdfPage": 15,
+      "reason": "Decorative texture closeup for the following specimen board; complete named tiles are on that board"
+    },
+    {
+      "pdfPage": 17,
+      "reason": "Matching room setting for the preceding product board; linked from the gallery"
+    },
+    {
+      "pdfPage": 18,
+      "reason": "Decorative texture closeup for the following specimen board; complete named tiles are on that board"
+    },
+    {
+      "pdfPage": 20,
+      "reason": "Matching room setting for the preceding product board; linked from the gallery"
+    },
+    {
+      "pdfPage": 21,
+      "reason": "Publisher series cover"
+    },
+    {
+      "pdfPage": 22,
+      "reason": "Decorative texture closeup for the following specimen board; complete named tiles are on that board"
+    },
+    {
+      "pdfPage": 24,
+      "reason": "Matching room setting for the preceding product board; linked from the gallery"
+    },
+    {
+      "pdfPage": 25,
+      "reason": "Decorative texture closeup for the following specimen board; complete named tiles are on that board"
+    },
+    {
+      "pdfPage": 27,
+      "reason": "Matching room setting for the preceding product board; linked from the gallery"
+    },
+    {
+      "pdfPage": 28,
+      "reason": "Decorative texture closeup for the following specimen board; complete named tiles are on that board"
+    },
+    {
+      "pdfPage": 30,
+      "reason": "Matching room setting for the preceding product board; linked from the gallery"
+    },
+    {
+      "pdfPage": 31,
+      "reason": "Decorative texture closeup for the following specimen board; complete named tiles are on that board"
+    },
+    {
+      "pdfPage": 33,
+      "reason": "Matching room setting for the preceding product board; linked from the gallery"
+    }
+  ],
+  "pages": [
+    {
+      "pdfPage": 3,
+      "verified": true,
+      "products": [
+        {
+          "name": "Creative Brilliant Clay (Punch)",
+          "sizeMm": "600×1200mm",
+          "finish": "GLR (R10)"
+        },
+        {
+          "name": "Moroccan 1007",
+          "sizeMm": "600×1200mm",
+          "finish": "GLR (R10)"
+        },
+        {
+          "name": "Brilliant Clay",
+          "sizeMm": "600×1200mm",
+          "finish": "GLR (R10)"
+        }
+      ]
+    },
+    {
+      "pdfPage": 6,
+      "verified": true,
+      "products": [
+        {
+          "name": "Creative Brilliant White (Punch)",
+          "sizeMm": "600×1200mm",
+          "finish": "GLR (R10)"
+        },
+        {
+          "name": "Moroccan 1003",
+          "sizeMm": "600×1200mm",
+          "finish": "GLR (R10)"
+        },
+        {
+          "name": "Brilliant White",
+          "sizeMm": "600×1200mm",
+          "finish": "GLR (R10)"
+        }
+      ]
+    },
+    {
+      "pdfPage": 9,
+      "verified": true,
+      "products": [
+        {
+          "name": "Creative Brilliant Steel (Punch)",
+          "sizeMm": "600×1200mm",
+          "finish": "GLR (R10)"
+        },
+        {
+          "name": "Moroccan 1005",
+          "sizeMm": "600×1200mm",
+          "finish": "GLR (R10)"
+        },
+        {
+          "name": "Brilliant Steel",
+          "sizeMm": "600×1200mm",
+          "finish": "GLR (R10)"
+        }
+      ]
+    },
+    {
+      "pdfPage": 12,
+      "verified": true,
+      "products": [
+        {
+          "name": "Creative Brilliant Aqua (Punch)",
+          "sizeMm": "600×1200mm",
+          "finish": "GLR (R10)"
+        },
+        {
+          "name": "Moroccan 1001",
+          "sizeMm": "600×1200mm",
+          "finish": "GLR (R10)"
+        },
+        {
+          "name": "Brilliant Aqua",
+          "sizeMm": "600×1200mm",
+          "finish": "GLR (R10)"
+        }
+      ]
+    },
+    {
+      "pdfPage": 16,
+      "verified": true,
+      "products": [
+        {
+          "name": "Treviso Choco",
+          "sizeMm": "600×1200mm",
+          "finish": "Structure Matt (R10)"
+        },
+        {
+          "name": "Louvers Treviso Choco (Punch)",
+          "sizeMm": "600×1200mm",
+          "finish": "Structure Matt (R10)"
+        }
+      ]
+    },
+    {
+      "pdfPage": 19,
+      "verified": true,
+      "products": [
+        {
+          "name": "Treviso Crema",
+          "sizeMm": "600×1200mm",
+          "finish": "Structure Matt (R10)"
+        },
+        {
+          "name": "Louvers Treviso Crema (Punch)",
+          "sizeMm": "600×1200mm",
+          "finish": "Structure Matt (R10)"
+        }
+      ]
+    },
+    {
+      "pdfPage": 23,
+      "verified": true,
+      "products": [
+        {
+          "name": "Vibes Dark",
+          "sizeMm": "600×1200mm",
+          "finish": "Structure Matt (R10)"
+        },
+        {
+          "name": "Bosta Vibes Dark (Punch)",
+          "sizeMm": "600×1200mm",
+          "finish": "Structure Matt (R10)"
+        }
+      ]
+    },
+    {
+      "pdfPage": 26,
+      "verified": true,
+      "products": [
+        {
+          "name": "Vibes Grey",
+          "sizeMm": "600×1200mm",
+          "finish": "Structure Matt (R10)"
+        },
+        {
+          "name": "Bosta Vibes Grey (Punch)",
+          "sizeMm": "600×1200mm",
+          "finish": "Structure Matt (R10)"
+        }
+      ]
+    },
+    {
+      "pdfPage": 29,
+      "verified": true,
+      "products": [
+        {
+          "name": "Bold Brown",
+          "sizeMm": "600×1200mm",
+          "finish": "Structure Matt (R10)"
+        },
+        {
+          "name": "Bosta Bold Brown (Punch)",
+          "sizeMm": "600×1200mm",
+          "finish": "Structure Matt (R10)"
+        }
+      ]
+    },
+    {
+      "pdfPage": 32,
+      "verified": true,
+      "products": [
+        {
+          "name": "Bold Crema",
+          "sizeMm": "600×1200mm",
+          "finish": "Structure Matt (R10)"
+        },
+        {
+          "name": "Bosta Bold Crema (Punch)",
+          "sizeMm": "600×1200mm",
+          "finish": "Structure Matt (R10)"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,516 @@
+{
+  "bookId": "seron-iconic",
+  "sourceHash": "18f94e7b572b17fea426ee5d109bd7b50df90c19cf0548b78e1cd9a419a58712",
+  "stories": [
+    {
+      "id": "seron-iconic-p007-d1",
+      "pageNumber": 7,
+      "productIds": [
+        "seron-iconic-p7-d1"
+      ],
+      "title": "FRAME FLORAL DECOR",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.032,
+            0.087,
+            0.335,
+            0.491
+          ],
+          "label": "Complete tile design"
+        },
+        "room": {
+          "rect": [
+            0.001,
+            0.38,
+            0.414,
+            0.532
+          ],
+          "label": "Room setting",
+          "pageNumber": 6
+        }
+      }
+    },
+    {
+      "id": "seron-iconic-p007-d2",
+      "pageNumber": 7,
+      "productIds": [
+        "seron-iconic-p7-d2"
+      ],
+      "title": "ALTA KREMA",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.641,
+            0.087,
+            0.328,
+            0.273
+          ],
+          "label": "Complete tile design"
+        }
+      }
+    },
+    {
+      "id": "seron-iconic-p007-d3",
+      "pageNumber": 7,
+      "productIds": [
+        "seron-iconic-p7-d3"
+      ],
+      "title": "FRAME BORDER DECOR",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.641,
+            0.415,
+            0.328,
+            0.498
+          ],
+          "label": "Complete tile design"
+        }
+      }
+    },
+    {
+      "id": "seron-iconic-p010-d1",
+      "pageNumber": 10,
+      "productIds": [
+        "seron-iconic-p10-d1"
+      ],
+      "title": "STIPPLE MOSAIC DECOR",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.032,
+            0.087,
+            0.335,
+            0.491
+          ],
+          "label": "Complete tile design"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.085,
+            1,
+            0.867
+          ],
+          "label": "Room setting",
+          "pageNumber": 8
+        }
+      }
+    },
+    {
+      "id": "seron-iconic-p010-d2",
+      "pageNumber": 10,
+      "productIds": [
+        "seron-iconic-p10-d2"
+      ],
+      "title": "DOWTH KREMA",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.641,
+            0.087,
+            0.328,
+            0.273
+          ],
+          "label": "Complete tile design"
+        }
+      }
+    },
+    {
+      "id": "seron-iconic-p010-d3",
+      "pageNumber": 10,
+      "productIds": [
+        "seron-iconic-p10-d3"
+      ],
+      "title": "STIPPLE KREAM",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.641,
+            0.415,
+            0.328,
+            0.498
+          ],
+          "label": "Complete tile design"
+        }
+      }
+    },
+    {
+      "id": "seron-iconic-p013-d1",
+      "pageNumber": 13,
+      "productIds": [
+        "seron-iconic-p13-d1"
+      ],
+      "title": "GARDEN DECOR",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.032,
+            0.087,
+            0.335,
+            0.491
+          ],
+          "label": "Complete tile design"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.09,
+            1,
+            0.77
+          ],
+          "label": "Room setting",
+          "pageNumber": 12
+        }
+      }
+    },
+    {
+      "id": "seron-iconic-p013-d2",
+      "pageNumber": 13,
+      "productIds": [
+        "seron-iconic-p13-d2"
+      ],
+      "title": "LADAKH GREY",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.641,
+            0.087,
+            0.328,
+            0.273
+          ],
+          "label": "Complete tile design"
+        }
+      }
+    },
+    {
+      "id": "seron-iconic-p013-d3",
+      "pageNumber": 13,
+      "productIds": [
+        "seron-iconic-p13-d3"
+      ],
+      "title": "LADAKH DECOR",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.641,
+            0.415,
+            0.328,
+            0.498
+          ],
+          "label": "Complete tile design"
+        }
+      }
+    },
+    {
+      "id": "seron-iconic-p016-d1",
+      "pageNumber": 16,
+      "productIds": [
+        "seron-iconic-p16-d1"
+      ],
+      "title": "PLAM DECOR",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.032,
+            0.087,
+            0.335,
+            0.491
+          ],
+          "label": "Complete tile design"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.142,
+            0.58,
+            0.772
+          ],
+          "label": "Room setting",
+          "pageNumber": 15
+        }
+      }
+    },
+    {
+      "id": "seron-iconic-p016-d2",
+      "pageNumber": 16,
+      "productIds": [
+        "seron-iconic-p16-d2"
+      ],
+      "title": "DOWN TOWN GREY",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.641,
+            0.087,
+            0.328,
+            0.273
+          ],
+          "label": "Complete tile design"
+        }
+      }
+    },
+    {
+      "id": "seron-iconic-p016-d3",
+      "pageNumber": 16,
+      "productIds": [
+        "seron-iconic-p16-d3"
+      ],
+      "title": "STIPPLE GREY",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.641,
+            0.415,
+            0.328,
+            0.498
+          ],
+          "label": "Complete tile design"
+        }
+      }
+    },
+    {
+      "id": "seron-iconic-p018-d1",
+      "pageNumber": 18,
+      "productIds": [
+        "seron-iconic-p18-d1"
+      ],
+      "title": "LA BOTTEGA DECORO",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.032,
+            0.087,
+            0.335,
+            0.491
+          ],
+          "label": "Complete tile design"
+        },
+        "room": {
+          "rect": [
+            0.006,
+            0.424,
+            0.402,
+            0.535
+          ],
+          "label": "Room setting",
+          "pageNumber": 17
+        }
+      }
+    },
+    {
+      "id": "seron-iconic-p018-d2",
+      "pageNumber": 18,
+      "productIds": [
+        "seron-iconic-p18-d2"
+      ],
+      "title": "GEM GREY",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.641,
+            0.087,
+            0.328,
+            0.273
+          ],
+          "label": "Complete tile design"
+        }
+      }
+    },
+    {
+      "id": "seron-iconic-p018-d3",
+      "pageNumber": 18,
+      "productIds": [
+        "seron-iconic-p18-d3"
+      ],
+      "title": "BRAIDS",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.641,
+            0.415,
+            0.328,
+            0.498
+          ],
+          "label": "Complete tile design"
+        }
+      }
+    },
+    {
+      "id": "seron-iconic-p019-d1",
+      "pageNumber": 19,
+      "productIds": [
+        "seron-iconic-p19-d1"
+      ],
+      "title": "DELICATE FLORAL DECOR",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.04,
+            0.104,
+            0.228,
+            0.336
+          ],
+          "label": "Complete tile design"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.136,
+            0.58,
+            0.778
+          ],
+          "label": "Room setting",
+          "pageNumber": 11
+        }
+      }
+    },
+    {
+      "id": "seron-iconic-p019-d2",
+      "pageNumber": 19,
+      "productIds": [
+        "seron-iconic-p19-d2"
+      ],
+      "title": "LADAKH BEIGE",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.452,
+            0.104,
+            0.221,
+            0.182
+          ],
+          "label": "Complete tile design"
+        }
+      }
+    },
+    {
+      "id": "seron-iconic-p019-d3",
+      "pageNumber": 19,
+      "productIds": [
+        "seron-iconic-p19-d3"
+      ],
+      "title": "LADAKH BEIGE DECOR",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.452,
+            0.321,
+            0.221,
+            0.341
+          ],
+          "label": "Complete tile design"
+        }
+      }
+    }
+  ]
+}

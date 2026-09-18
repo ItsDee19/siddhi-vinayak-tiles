@@ -1,0 +1,179 @@
+{
+  "bookId": "seron-iconic",
+  "sourceHash": "18f94e7b572b17fea426ee5d109bd7b50df90c19cf0548b78e1cd9a419a58712",
+  "source": "public/catalogues/seron-iconic/page-NNN.webp",
+  "method": "Manual visual review of all 20 original PDF pages, with direct label and specification inspection.",
+  "notes": [
+    "Each specification page prints three distinct coordinated designs; all 18 have their own complete tile crop and search destination.",
+    "R-02, R-04, R-06 and R-08 indicate random-face quantities, not product model codes, and are retained on the original pages.",
+    "Publisher spellings PLAM DECOR, DOWTH KREMA, STIPPLE KREAM and LA BOTTEGA DECORO are preserved. Room-page variants of La Bottega are included as aliases.",
+    "Room photographs are assigned only to the explicitly named floral design. Coordinating base and patterned tiles do not receive an unverified room photograph.",
+    "All specification pages print 600x1200mm, Matt + Shaped Surface, 9mm Thickness."
+  ],
+  "excludedPages": [
+    {
+      "pdfPage": 1,
+      "reason": "Publisher cover"
+    },
+    {
+      "pdfPage": 2,
+      "reason": "Flora and Fauna collection introduction"
+    },
+    {
+      "pdfPage": 3,
+      "reason": "Shaped and Tech collection introduction"
+    },
+    {
+      "pdfPage": 4,
+      "reason": "Unnamed collection showroom display"
+    },
+    {
+      "pdfPage": 5,
+      "reason": "Unnamed collection showroom display"
+    },
+    {
+      "pdfPage": 6,
+      "reason": "Frame Floral Decor room examples paired with its specification page 7"
+    },
+    {
+      "pdfPage": 8,
+      "reason": "Stipple Mosaic Decor room photograph paired with specification page 10"
+    },
+    {
+      "pdfPage": 9,
+      "reason": "Additional Stipple Mosaic Decor room photographs; named design indexed on page 10"
+    },
+    {
+      "pdfPage": 11,
+      "reason": "Delicate Floral Decor and Garden Decor room photographs; named designs indexed on pages 19 and 13"
+    },
+    {
+      "pdfPage": 12,
+      "reason": "Garden Decor room photograph paired with specification page 13"
+    },
+    {
+      "pdfPage": 14,
+      "reason": "Plam Decor room photograph; named design indexed on page 16"
+    },
+    {
+      "pdfPage": 15,
+      "reason": "Plam Decor room photographs paired with specification page 16"
+    },
+    {
+      "pdfPage": 17,
+      "reason": "La Bottega Decor room photographs paired with specification page 18"
+    },
+    {
+      "pdfPage": 20,
+      "reason": "Publisher contact page"
+    }
+  ],
+  "pages": [
+    {
+      "pdfPage": 7,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "Matt + Shaped Surface",
+      "products": [
+        {
+          "name": "FRAME FLORAL DECOR"
+        },
+        {
+          "name": "ALTA KREMA"
+        },
+        {
+          "name": "FRAME BORDER DECOR"
+        }
+      ]
+    },
+    {
+      "pdfPage": 10,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "Matt + Shaped Surface",
+      "products": [
+        {
+          "name": "STIPPLE MOSAIC DECOR"
+        },
+        {
+          "name": "DOWTH KREMA"
+        },
+        {
+          "name": "STIPPLE KREAM"
+        }
+      ]
+    },
+    {
+      "pdfPage": 13,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "Matt + Shaped Surface",
+      "products": [
+        {
+          "name": "GARDEN DECOR"
+        },
+        {
+          "name": "LADAKH GREY"
+        },
+        {
+          "name": "LADAKH DECOR"
+        }
+      ]
+    },
+    {
+      "pdfPage": 16,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "Matt + Shaped Surface",
+      "products": [
+        {
+          "name": "PLAM DECOR"
+        },
+        {
+          "name": "DOWN TOWN GREY"
+        },
+        {
+          "name": "STIPPLE GREY"
+        }
+      ]
+    },
+    {
+      "pdfPage": 18,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "Matt + Shaped Surface",
+      "products": [
+        {
+          "name": "LA BOTTEGA DECORO",
+          "aliases": [
+            "LA BOTTEGA DECOR",
+            "BOTTEGA DECOR"
+          ]
+        },
+        {
+          "name": "GEM GREY"
+        },
+        {
+          "name": "BRAIDS"
+        }
+      ]
+    },
+    {
+      "pdfPage": 19,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "Matt + Shaped Surface",
+      "products": [
+        {
+          "name": "DELICATE FLORAL DECOR"
+        },
+        {
+          "name": "LADAKH BEIGE"
+        },
+        {
+          "name": "LADAKH BEIGE DECOR"
+        }
+      ]
+    }
+  ]
+}

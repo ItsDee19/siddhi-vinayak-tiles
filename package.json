@@ -12,7 +12,11 @@
     "build:2d-webp": "node scripts/build_2d_room_webp.mjs",
     "test:e2e": "node scripts/e2e-rigorous.mjs",
     "build:room-versions": "node scripts/build_room_asset_versions.mjs",
-    "check:catalogues": "node scripts/check_catalogue_library.mjs"
+    "check:catalogues": "node scripts/check_catalogue_library.mjs",
+    "test:reader": "node --test scripts/test_catalogue_reader.mjs src/utils/pdfViewport.test.js src/utils/catalogueSearch.test.js src/utils/catalogueGallery.test.js",
+    "build:catalogue-search": "node scripts/build_catalogue_search.mjs",
+    "build:catalogue-gallery": "node scripts/build_catalogue_gallery.mjs",
+    "build:catalogue-focus": "node scripts/build_catalogue_focus.mjs"
   },
   "dependencies": {
     "@react-three/fiber": "^8.17.10",

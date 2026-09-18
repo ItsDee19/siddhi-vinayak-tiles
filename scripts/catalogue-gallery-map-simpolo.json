@@ -1,0 +1,6798 @@
+{
+  "bookId": "simpolo",
+  "sourceHash": "915afe544035b3bb23ed65436d6b2eda0d756bcd17c6c76f3e87ca46147b8598",
+  "stories": [
+    {
+      "id": "simpolo-p11-s1",
+      "pageNumber": 11,
+      "title": "VIDA",
+      "productIds": [
+        "simpolo-p11-d1"
+      ],
+      "sourceRect": [
+        0.075,
+        0.12,
+        0.86,
+        0.82
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.075,
+            0.12,
+            0.86,
+            0.82
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p13-s1",
+      "pageNumber": 13,
+      "title": "ZEST",
+      "productIds": [
+        "simpolo-p13-d1"
+      ],
+      "sourceRect": [
+        0.075,
+        0.12,
+        0.86,
+        0.82
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.075,
+            0.12,
+            0.86,
+            0.82
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p14-s1",
+      "pageNumber": 14,
+      "title": "MARC 2",
+      "productIds": [
+        "simpolo-p14-d1"
+      ],
+      "sourceRect": [
+        0.04,
+        0,
+        0.94,
+        0.925
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.04,
+            0,
+            0.94,
+            0.925
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p17-s1",
+      "pageNumber": 17,
+      "title": "Avante — Matte Black",
+      "productIds": [
+        "simpolo-p17-d1",
+        "simpolo-p17-d2"
+      ],
+      "sourceRect": [
+        0.315,
+        0.19,
+        0.57,
+        0.225
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.315,
+            0.19,
+            0.57,
+            0.225
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p17-s2",
+      "pageNumber": 17,
+      "title": "Eden — Matte Black",
+      "productIds": [
+        "simpolo-p17-d3",
+        "simpolo-p17-d4"
+      ],
+      "sourceRect": [
+        0.315,
+        0.425,
+        0.57,
+        0.22
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.315,
+            0.425,
+            0.57,
+            0.22
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p17-s3",
+      "pageNumber": 17,
+      "title": "Zeus — Matte Black",
+      "productIds": [
+        "simpolo-p17-d5",
+        "simpolo-p17-d6"
+      ],
+      "sourceRect": [
+        0.315,
+        0.65,
+        0.57,
+        0.23
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.315,
+            0.65,
+            0.57,
+            0.23
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p19-s1",
+      "pageNumber": 19,
+      "title": "Avante — Glossy White",
+      "productIds": [
+        "simpolo-p19-d1",
+        "simpolo-p19-d2"
+      ],
+      "sourceRect": [
+        0.315,
+        0.19,
+        0.57,
+        0.225
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.315,
+            0.19,
+            0.57,
+            0.225
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p19-s2",
+      "pageNumber": 19,
+      "title": "Eden — Glossy White",
+      "productIds": [
+        "simpolo-p19-d3",
+        "simpolo-p19-d4"
+      ],
+      "sourceRect": [
+        0.315,
+        0.425,
+        0.57,
+        0.22
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.315,
+            0.425,
+            0.57,
+            0.22
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p19-s3",
+      "pageNumber": 19,
+      "title": "Zeus — Glossy White",
+      "productIds": [
+        "simpolo-p19-d5",
+        "simpolo-p19-d6"
+      ],
+      "sourceRect": [
+        0.315,
+        0.65,
+        0.57,
+        0.23
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.315,
+            0.65,
+            0.57,
+            0.23
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p23-s1",
+      "pageNumber": 23,
+      "title": "Swim · 42019 / 42019SN",
+      "productIds": [
+        "simpolo-p23-d1"
+      ],
+      "sourceRect": [
+        0.21,
+        0.102,
+        0.65,
+        0.383
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.21,
+            0.102,
+            0.65,
+            0.383
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p24-s1",
+      "pageNumber": 24,
+      "title": "Swim · 42019 SNAS/BS",
+      "productIds": [
+        "simpolo-p24-d1"
+      ],
+      "sourceRect": [
+        0.09,
+        0.17,
+        0.208,
+        0.26
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.09,
+            0.17,
+            0.208,
+            0.26
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p24-s2",
+      "pageNumber": 24,
+      "title": "Blanco · 42030 AS/BS",
+      "productIds": [
+        "simpolo-p24-d2"
+      ],
+      "sourceRect": [
+        0.298,
+        0.17,
+        0.21,
+        0.26
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.298,
+            0.17,
+            0.21,
+            0.26
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p24-s3",
+      "pageNumber": 24,
+      "title": "Bistro · 42031 AS/BS",
+      "productIds": [
+        "simpolo-p24-d3"
+      ],
+      "sourceRect": [
+        0.508,
+        0.17,
+        0.207,
+        0.26
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.508,
+            0.17,
+            0.207,
+            0.26
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p24-s4",
+      "pageNumber": 24,
+      "title": "Smalto · 42108 AS/BS",
+      "productIds": [
+        "simpolo-p24-d4"
+      ],
+      "sourceRect": [
+        0.715,
+        0.17,
+        0.21,
+        0.26
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.715,
+            0.17,
+            0.21,
+            0.26
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p24-s5",
+      "pageNumber": 24,
+      "title": "Catino · 42001 AS/BS",
+      "productIds": [
+        "simpolo-p24-d5"
+      ],
+      "sourceRect": [
+        0.09,
+        0.43,
+        0.208,
+        0.219
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.09,
+            0.43,
+            0.208,
+            0.219
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p24-s6",
+      "pageNumber": 24,
+      "title": "Nicola · 42003 AS/BS",
+      "productIds": [
+        "simpolo-p24-d6"
+      ],
+      "sourceRect": [
+        0.298,
+        0.43,
+        0.21,
+        0.219
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.298,
+            0.43,
+            0.21,
+            0.219
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p24-s7",
+      "pageNumber": 24,
+      "title": "Flavio · 42107 AS/BS",
+      "productIds": [
+        "simpolo-p24-d7"
+      ],
+      "sourceRect": [
+        0.508,
+        0.43,
+        0.207,
+        0.219
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.508,
+            0.43,
+            0.207,
+            0.219
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p24-s8",
+      "pageNumber": 24,
+      "title": "Sulfax · 42102 BS",
+      "productIds": [
+        "simpolo-p24-d8"
+      ],
+      "sourceRect": [
+        0.715,
+        0.43,
+        0.21,
+        0.219
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.715,
+            0.43,
+            0.21,
+            0.219
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p25-s1",
+      "pageNumber": 25,
+      "title": "Segno · 42016 A/B/C/P",
+      "productIds": [
+        "simpolo-p25-d1"
+      ],
+      "sourceRect": [
+        0.085,
+        0.17,
+        0.199,
+        0.265
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.17,
+            0.199,
+            0.265
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p25-s2",
+      "pageNumber": 25,
+      "title": "Igor · 42101 B/P",
+      "productIds": [
+        "simpolo-p25-d2"
+      ],
+      "sourceRect": [
+        0.284,
+        0.17,
+        0.203,
+        0.265
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.284,
+            0.17,
+            0.203,
+            0.265
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p25-s3",
+      "pageNumber": 25,
+      "title": "Tulip · 42110 A/B/C",
+      "productIds": [
+        "simpolo-p25-d3"
+      ],
+      "sourceRect": [
+        0.487,
+        0.17,
+        0.209,
+        0.265
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.487,
+            0.17,
+            0.209,
+            0.265
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p25-s4",
+      "pageNumber": 25,
+      "title": "Rio · 42111 A/B/P",
+      "productIds": [
+        "simpolo-p25-d4"
+      ],
+      "sourceRect": [
+        0.696,
+        0.17,
+        0.211,
+        0.265
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.696,
+            0.17,
+            0.211,
+            0.265
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p25-s5",
+      "pageNumber": 25,
+      "title": "Sabbia · 42103 A/B/P",
+      "productIds": [
+        "simpolo-p25-d5"
+      ],
+      "sourceRect": [
+        0.085,
+        0.435,
+        0.199,
+        0.215
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.435,
+            0.199,
+            0.215
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p25-s6",
+      "pageNumber": 25,
+      "title": "Nova · 42010 A/B/C/P",
+      "productIds": [
+        "simpolo-p25-d6"
+      ],
+      "sourceRect": [
+        0.284,
+        0.435,
+        0.203,
+        0.215
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.284,
+            0.435,
+            0.203,
+            0.215
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p25-s7",
+      "pageNumber": 25,
+      "title": "Gesto · 42013BS",
+      "productIds": [
+        "simpolo-p25-d7"
+      ],
+      "sourceRect": [
+        0.487,
+        0.435,
+        0.209,
+        0.215
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.487,
+            0.435,
+            0.209,
+            0.215
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p25-s8",
+      "pageNumber": 25,
+      "title": "Atom · 42109 B/P",
+      "productIds": [
+        "simpolo-p25-d8"
+      ],
+      "sourceRect": [
+        0.696,
+        0.435,
+        0.211,
+        0.215
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.696,
+            0.435,
+            0.211,
+            0.215
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p27-s1",
+      "pageNumber": 27,
+      "title": "CRONA · 20018",
+      "productIds": [
+        "simpolo-p27-d1"
+      ],
+      "sourceRect": [
+        0.11,
+        0.116,
+        0.645,
+        0.332
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.11,
+            0.116,
+            0.645,
+            0.332
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p29-s1",
+      "pageNumber": 29,
+      "title": "SELGE · 20021",
+      "productIds": [
+        "simpolo-p29-d1"
+      ],
+      "sourceRect": [
+        0.11,
+        0.115,
+        0.64,
+        0.319
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.11,
+            0.115,
+            0.64,
+            0.319
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p31-s1",
+      "pageNumber": 31,
+      "title": "AQUAINTEL Round · 20033",
+      "productIds": [
+        "simpolo-p31-d1"
+      ],
+      "sourceRect": [
+        0.127,
+        0.288,
+        0.693,
+        0.211
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.127,
+            0.288,
+            0.693,
+            0.211
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p31-s2",
+      "pageNumber": 31,
+      "title": "AQUAINTEL Square · 20032",
+      "productIds": [
+        "simpolo-p31-d2"
+      ],
+      "sourceRect": [
+        0.139,
+        0.531,
+        0.71,
+        0.207
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.139,
+            0.531,
+            0.71,
+            0.207
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p32-s1",
+      "pageNumber": 32,
+      "title": "Zest · 20034",
+      "productIds": [
+        "simpolo-p32-d1"
+      ],
+      "sourceRect": [
+        0.085,
+        0.175,
+        0.219,
+        0.173
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.175,
+            0.219,
+            0.173
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p32-s2",
+      "pageNumber": 32,
+      "title": "Vida · 22035",
+      "productIds": [
+        "simpolo-p32-d2"
+      ],
+      "sourceRect": [
+        0.304,
+        0.175,
+        0.206,
+        0.173
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.304,
+            0.175,
+            0.206,
+            0.173
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p32-s3",
+      "pageNumber": 32,
+      "title": "Crona · 20018",
+      "productIds": [
+        "simpolo-p32-d3"
+      ],
+      "sourceRect": [
+        0.51,
+        0.175,
+        0.206,
+        0.173
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.51,
+            0.175,
+            0.206,
+            0.173
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p32-s4",
+      "pageNumber": 32,
+      "title": "Selge - Electric · 20021",
+      "productIds": [
+        "simpolo-p32-d4"
+      ],
+      "sourceRect": [
+        0.716,
+        0.175,
+        0.222,
+        0.173
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.716,
+            0.175,
+            0.222,
+            0.173
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p32-s5",
+      "pageNumber": 32,
+      "title": "Avante · 20026",
+      "productIds": [
+        "simpolo-p32-d5"
+      ],
+      "sourceRect": [
+        0.085,
+        0.41,
+        0.219,
+        0.151
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.41,
+            0.219,
+            0.151
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p32-s6",
+      "pageNumber": 32,
+      "title": "Eden · 20027",
+      "productIds": [
+        "simpolo-p32-d6"
+      ],
+      "sourceRect": [
+        0.304,
+        0.41,
+        0.206,
+        0.151
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.304,
+            0.41,
+            0.206,
+            0.151
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p32-s7",
+      "pageNumber": 32,
+      "title": "Zeus · 20028",
+      "productIds": [
+        "simpolo-p32-d7"
+      ],
+      "sourceRect": [
+        0.51,
+        0.41,
+        0.206,
+        0.151
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.51,
+            0.41,
+            0.206,
+            0.151
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p32-s8",
+      "pageNumber": 32,
+      "title": "Fusto · 22022",
+      "productIds": [
+        "simpolo-p32-d8"
+      ],
+      "sourceRect": [
+        0.716,
+        0.41,
+        0.222,
+        0.151
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.716,
+            0.41,
+            0.222,
+            0.151
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p32-s9",
+      "pageNumber": 32,
+      "title": "Stratos · 20022",
+      "productIds": [
+        "simpolo-p32-d9"
+      ],
+      "sourceRect": [
+        0.085,
+        0.59,
+        0.219,
+        0.154
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.59,
+            0.219,
+            0.154
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p32-s10",
+      "pageNumber": 32,
+      "title": "Letina · 22017",
+      "productIds": [
+        "simpolo-p32-d10"
+      ],
+      "sourceRect": [
+        0.304,
+        0.59,
+        0.206,
+        0.154
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.304,
+            0.59,
+            0.206,
+            0.154
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p32-s11",
+      "pageNumber": 32,
+      "title": "Dell · 22012",
+      "productIds": [
+        "simpolo-p32-d11"
+      ],
+      "sourceRect": [
+        0.51,
+        0.59,
+        0.206,
+        0.154
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.51,
+            0.59,
+            0.206,
+            0.154
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p32-s12",
+      "pageNumber": 32,
+      "title": "Susan · 20023",
+      "productIds": [
+        "simpolo-p32-d12"
+      ],
+      "sourceRect": [
+        0.716,
+        0.59,
+        0.222,
+        0.154
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.716,
+            0.59,
+            0.222,
+            0.154
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p32-s13",
+      "pageNumber": 32,
+      "title": "Entasi · 22023",
+      "productIds": [
+        "simpolo-p32-d13"
+      ],
+      "sourceRect": [
+        0.085,
+        0.765,
+        0.219,
+        0.156
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.765,
+            0.219,
+            0.156
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p32-s14",
+      "pageNumber": 32,
+      "title": "Svida · 20005",
+      "productIds": [
+        "simpolo-p32-d14"
+      ],
+      "sourceRect": [
+        0.304,
+        0.765,
+        0.206,
+        0.156
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.304,
+            0.765,
+            0.206,
+            0.156
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p32-s15",
+      "pageNumber": 32,
+      "title": "Optimus · 20025",
+      "productIds": [
+        "simpolo-p32-d15"
+      ],
+      "sourceRect": [
+        0.51,
+        0.765,
+        0.206,
+        0.156
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.51,
+            0.765,
+            0.206,
+            0.156
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p33-s1",
+      "pageNumber": 33,
+      "title": "Stanza · 20004",
+      "productIds": [
+        "simpolo-p33-d1"
+      ],
+      "sourceRect": [
+        0.08,
+        0.168,
+        0.206,
+        0.172
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.08,
+            0.168,
+            0.206,
+            0.172
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p33-s2",
+      "pageNumber": 33,
+      "title": "Cube · 22003",
+      "productIds": [
+        "simpolo-p33-d2"
+      ],
+      "sourceRect": [
+        0.286,
+        0.168,
+        0.208,
+        0.172
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.286,
+            0.168,
+            0.208,
+            0.172
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p33-s3",
+      "pageNumber": 33,
+      "title": "Karen · 20006",
+      "productIds": [
+        "simpolo-p33-d3"
+      ],
+      "sourceRect": [
+        0.494,
+        0.168,
+        0.206,
+        0.172
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.494,
+            0.168,
+            0.206,
+            0.172
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p33-s4",
+      "pageNumber": 33,
+      "title": "Crystal · 20007",
+      "productIds": [
+        "simpolo-p33-d4"
+      ],
+      "sourceRect": [
+        0.7,
+        0.168,
+        0.218,
+        0.172
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.7,
+            0.168,
+            0.218,
+            0.172
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p33-s5",
+      "pageNumber": 33,
+      "title": "Hilton · 20020",
+      "productIds": [
+        "simpolo-p33-d5"
+      ],
+      "sourceRect": [
+        0.08,
+        0.37,
+        0.206,
+        0.167
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.08,
+            0.37,
+            0.206,
+            0.167
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p33-s6",
+      "pageNumber": 33,
+      "title": "Simona 2.0 · 22016 / 22016J",
+      "productIds": [
+        "simpolo-p33-d6"
+      ],
+      "sourceRect": [
+        0.286,
+        0.37,
+        0.208,
+        0.167
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.286,
+            0.37,
+            0.208,
+            0.167
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p33-s7",
+      "pageNumber": 33,
+      "title": "Nevio · 22014",
+      "productIds": [
+        "simpolo-p33-d7"
+      ],
+      "sourceRect": [
+        0.494,
+        0.37,
+        0.206,
+        0.167
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.494,
+            0.37,
+            0.206,
+            0.167
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p33-s8",
+      "pageNumber": 33,
+      "title": "Leone · 20024",
+      "productIds": [
+        "simpolo-p33-d8"
+      ],
+      "sourceRect": [
+        0.7,
+        0.37,
+        0.218,
+        0.167
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.7,
+            0.37,
+            0.218,
+            0.167
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p33-s9",
+      "pageNumber": 33,
+      "title": "Nettuno 21\" · 20011",
+      "productIds": [
+        "simpolo-p33-d9"
+      ],
+      "sourceRect": [
+        0.08,
+        0.56,
+        0.206,
+        0.158
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.08,
+            0.56,
+            0.206,
+            0.158
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p33-s10",
+      "pageNumber": 33,
+      "title": "Nettuno 21\" · 20011J",
+      "productIds": [
+        "simpolo-p33-d10"
+      ],
+      "sourceRect": [
+        0.286,
+        0.56,
+        0.208,
+        0.158
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.286,
+            0.56,
+            0.208,
+            0.158
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p33-s11",
+      "pageNumber": 33,
+      "title": "Nettuno 21\" · 20011R",
+      "productIds": [
+        "simpolo-p33-d11"
+      ],
+      "sourceRect": [
+        0.494,
+        0.56,
+        0.206,
+        0.158
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.494,
+            0.56,
+            0.206,
+            0.158
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p33-s12",
+      "pageNumber": 33,
+      "title": "Nettuno 19\" · 20012",
+      "productIds": [
+        "simpolo-p33-d12"
+      ],
+      "sourceRect": [
+        0.7,
+        0.56,
+        0.218,
+        0.158
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.7,
+            0.56,
+            0.218,
+            0.158
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p33-s13",
+      "pageNumber": 33,
+      "title": "Snazzy 21\" · 20017",
+      "productIds": [
+        "simpolo-p33-d13"
+      ],
+      "sourceRect": [
+        0.08,
+        0.735,
+        0.206,
+        0.173
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.08,
+            0.735,
+            0.206,
+            0.173
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p33-s14",
+      "pageNumber": 33,
+      "title": "Mini Snazzy 19\" · 20014",
+      "productIds": [
+        "simpolo-p33-d14"
+      ],
+      "sourceRect": [
+        0.286,
+        0.735,
+        0.208,
+        0.173
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.286,
+            0.735,
+            0.208,
+            0.173
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p33-s15",
+      "pageNumber": 33,
+      "title": "Spice 21\" · 20015",
+      "productIds": [
+        "simpolo-p33-d15"
+      ],
+      "sourceRect": [
+        0.494,
+        0.735,
+        0.206,
+        0.173
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.494,
+            0.735,
+            0.206,
+            0.173
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p33-s16",
+      "pageNumber": 33,
+      "title": "Baby · 20019",
+      "productIds": [
+        "simpolo-p33-d16"
+      ],
+      "sourceRect": [
+        0.7,
+        0.735,
+        0.218,
+        0.173
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.7,
+            0.735,
+            0.218,
+            0.173
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p34-s1",
+      "pageNumber": 34,
+      "title": "Cupido · 30009",
+      "productIds": [
+        "simpolo-p34-d1"
+      ],
+      "sourceRect": [
+        0.08,
+        0.18,
+        0.247,
+        0.25
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.08,
+            0.18,
+            0.247,
+            0.25
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p34-s2",
+      "pageNumber": 34,
+      "title": "Smalto · 30010",
+      "productIds": [
+        "simpolo-p34-d2"
+      ],
+      "sourceRect": [
+        0.333,
+        0.18,
+        0.27,
+        0.25
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.333,
+            0.18,
+            0.27,
+            0.25
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p34-s3",
+      "pageNumber": 34,
+      "title": "Spice · 30008",
+      "productIds": [
+        "simpolo-p34-d3"
+      ],
+      "sourceRect": [
+        0.08,
+        0.525,
+        0.247,
+        0.25
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.08,
+            0.525,
+            0.247,
+            0.25
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p34-s4",
+      "pageNumber": 34,
+      "title": "Cupido · 30011",
+      "productIds": [
+        "simpolo-p34-d4"
+      ],
+      "sourceRect": [
+        0.333,
+        0.525,
+        0.277,
+        0.25
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.333,
+            0.525,
+            0.277,
+            0.25
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p34-s5",
+      "pageNumber": 34,
+      "title": "Nettuno · 30006",
+      "productIds": [
+        "simpolo-p34-d5"
+      ],
+      "sourceRect": [
+        0.615,
+        0.525,
+        0.315,
+        0.25
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.615,
+            0.525,
+            0.315,
+            0.25
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p35-s1",
+      "pageNumber": 35,
+      "title": "Sept · 60005",
+      "productIds": [
+        "simpolo-p35-d1"
+      ],
+      "sourceRect": [
+        0.07,
+        0.55,
+        0.215,
+        0.17
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.07,
+            0.55,
+            0.215,
+            0.17
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p35-s2",
+      "pageNumber": 35,
+      "title": "Nettuno · 60002",
+      "productIds": [
+        "simpolo-p35-d2"
+      ],
+      "sourceRect": [
+        0.285,
+        0.55,
+        0.21,
+        0.17
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.285,
+            0.55,
+            0.21,
+            0.17
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p35-s3",
+      "pageNumber": 35,
+      "title": "Sandoz · 60004S / P",
+      "productIds": [
+        "simpolo-p35-d3"
+      ],
+      "sourceRect": [
+        0.495,
+        0.55,
+        0.213,
+        0.17
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.495,
+            0.55,
+            0.213,
+            0.17
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p35-s4",
+      "pageNumber": 35,
+      "title": "Selvo · 60003",
+      "productIds": [
+        "simpolo-p35-d4"
+      ],
+      "sourceRect": [
+        0.708,
+        0.55,
+        0.217,
+        0.17
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.708,
+            0.55,
+            0.217,
+            0.17
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p35-s5",
+      "pageNumber": 35,
+      "title": "Spice Ewc · 60001S / 60001P",
+      "productIds": [
+        "simpolo-p35-d5"
+      ],
+      "sourceRect": [
+        0.07,
+        0.742,
+        0.215,
+        0.173
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.07,
+            0.742,
+            0.215,
+            0.173
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p35-s6",
+      "pageNumber": 35,
+      "title": "Combi · 62001S",
+      "productIds": [
+        "simpolo-p35-d6"
+      ],
+      "sourceRect": [
+        0.285,
+        0.742,
+        0.21,
+        0.173
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.285,
+            0.742,
+            0.21,
+            0.173
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p35-s7",
+      "pageNumber": 35,
+      "title": "Stevia · 60007S",
+      "productIds": [
+        "simpolo-p35-d7"
+      ],
+      "sourceRect": [
+        0.495,
+        0.742,
+        0.213,
+        0.173
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.495,
+            0.742,
+            0.213,
+            0.173
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p35-s8",
+      "pageNumber": 35,
+      "title": "Catino · 60006S",
+      "productIds": [
+        "simpolo-p35-d8"
+      ],
+      "sourceRect": [
+        0.708,
+        0.742,
+        0.217,
+        0.173
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.708,
+            0.742,
+            0.217,
+            0.173
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p36-s1",
+      "pageNumber": 36,
+      "title": "Magnus 2.0 · 25004",
+      "productIds": [
+        "simpolo-p36-d1"
+      ],
+      "sourceRect": [
+        0.1,
+        0.6,
+        0.245,
+        0.264
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.1,
+            0.6,
+            0.245,
+            0.264
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p36-s2",
+      "pageNumber": 36,
+      "title": "Concealed Cistern with Half Frame · 25004HF",
+      "productIds": [
+        "simpolo-p36-d2"
+      ],
+      "sourceRect": [
+        0.37,
+        0.6,
+        0.26,
+        0.264
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.37,
+            0.6,
+            0.26,
+            0.264
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p36-s3",
+      "pageNumber": 36,
+      "title": "Concealed Cistern with Full Frame · 25004FF",
+      "productIds": [
+        "simpolo-p36-d3"
+      ],
+      "sourceRect": [
+        0.645,
+        0.595,
+        0.28,
+        0.269
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.645,
+            0.595,
+            0.28,
+            0.269
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p36-s4",
+      "pageNumber": 36,
+      "title": "Gloss Chrome Actuation Button · 25004AB",
+      "productIds": [
+        "simpolo-p36-d4"
+      ],
+      "sourceRect": [
+        0.127,
+        0.875,
+        0.089,
+        0.069
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.127,
+            0.875,
+            0.089,
+            0.069
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p36-s5",
+      "pageNumber": 36,
+      "title": "Gloss Chrome Actuation Button · 25004BB",
+      "productIds": [
+        "simpolo-p36-d5"
+      ],
+      "sourceRect": [
+        0.241,
+        0.875,
+        0.089,
+        0.069
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.241,
+            0.875,
+            0.089,
+            0.069
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p36-s6",
+      "pageNumber": 36,
+      "title": "Gloss Chrome Actuation Button · 25004CB",
+      "productIds": [
+        "simpolo-p36-d6"
+      ],
+      "sourceRect": [
+        0.355,
+        0.875,
+        0.091,
+        0.069
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.355,
+            0.875,
+            0.091,
+            0.069
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p36-s7",
+      "pageNumber": 36,
+      "title": "Matte Chrome Actuation Button · 25004DB",
+      "productIds": [
+        "simpolo-p36-d7"
+      ],
+      "sourceRect": [
+        0.47,
+        0.875,
+        0.089,
+        0.069
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.47,
+            0.875,
+            0.089,
+            0.069
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p36-s8",
+      "pageNumber": 36,
+      "title": "Matte Chrome Actuation Button · 25004EB",
+      "productIds": [
+        "simpolo-p36-d8"
+      ],
+      "sourceRect": [
+        0.584,
+        0.875,
+        0.091,
+        0.069
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.584,
+            0.875,
+            0.091,
+            0.069
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p36-s9",
+      "pageNumber": 36,
+      "title": "Matte Black Actuation Button · 25004FB",
+      "productIds": [
+        "simpolo-p36-d9"
+      ],
+      "sourceRect": [
+        0.704,
+        0.875,
+        0.087,
+        0.069
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.704,
+            0.875,
+            0.087,
+            0.069
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p37-s1",
+      "pageNumber": 37,
+      "title": "Civitas · 25002",
+      "productIds": [
+        "simpolo-p37-d1"
+      ],
+      "sourceRect": [
+        0.59,
+        0.164,
+        0.345,
+        0.267
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.59,
+            0.164,
+            0.345,
+            0.267
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p37-s2",
+      "pageNumber": 37,
+      "title": "Magnus · 25003",
+      "productIds": [
+        "simpolo-p37-d2"
+      ],
+      "sourceRect": [
+        0.585,
+        0.435,
+        0.365,
+        0.276
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.585,
+            0.435,
+            0.365,
+            0.276
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p37-s3",
+      "pageNumber": 37,
+      "title": "Full Frame · 88009",
+      "productIds": [
+        "simpolo-p37-d3"
+      ],
+      "sourceRect": [
+        0.055,
+        0.71,
+        0.22,
+        0.216
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.055,
+            0.71,
+            0.22,
+            0.216
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p37-s4",
+      "pageNumber": 37,
+      "title": "Half Frame · 88008",
+      "productIds": [
+        "simpolo-p37-d4"
+      ],
+      "sourceRect": [
+        0.32,
+        0.706,
+        0.233,
+        0.22
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.32,
+            0.706,
+            0.233,
+            0.22
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p37-s5",
+      "pageNumber": 37,
+      "title": "Chair Bracket · 88004",
+      "productIds": [
+        "simpolo-p37-d5"
+      ],
+      "sourceRect": [
+        0.6,
+        0.72,
+        0.205,
+        0.208
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.6,
+            0.72,
+            0.205,
+            0.208
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p38-s1",
+      "pageNumber": 38,
+      "title": "Zest · 10164",
+      "productIds": [
+        "simpolo-p38-d1"
+      ],
+      "sourceRect": [
+        0.095,
+        0.173,
+        0.176,
+        0.136
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.095,
+            0.173,
+            0.176,
+            0.136
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p38-s2",
+      "pageNumber": 38,
+      "title": "Vida · 10165",
+      "productIds": [
+        "simpolo-p38-d2"
+      ],
+      "sourceRect": [
+        0.271,
+        0.173,
+        0.168,
+        0.136
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.271,
+            0.173,
+            0.168,
+            0.136
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p38-s3",
+      "pageNumber": 38,
+      "title": "Fusto · 10152",
+      "productIds": [
+        "simpolo-p38-d3"
+      ],
+      "sourceRect": [
+        0.439,
+        0.173,
+        0.167,
+        0.136
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.439,
+            0.173,
+            0.167,
+            0.136
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p38-s4",
+      "pageNumber": 38,
+      "title": "Nason - A · 12069",
+      "productIds": [
+        "simpolo-p38-d4"
+      ],
+      "sourceRect": [
+        0.606,
+        0.173,
+        0.167,
+        0.136
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.606,
+            0.173,
+            0.167,
+            0.136
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p38-s5",
+      "pageNumber": 38,
+      "title": "Nason - B · 12070",
+      "productIds": [
+        "simpolo-p38-d5"
+      ],
+      "sourceRect": [
+        0.773,
+        0.173,
+        0.165,
+        0.136
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.773,
+            0.173,
+            0.165,
+            0.136
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p38-s6",
+      "pageNumber": 38,
+      "title": "Nason - C · 12071",
+      "productIds": [
+        "simpolo-p38-d6"
+      ],
+      "sourceRect": [
+        0.095,
+        0.315,
+        0.176,
+        0.146
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.095,
+            0.315,
+            0.176,
+            0.146
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p38-s7",
+      "pageNumber": 38,
+      "title": "Larice - Hidden Drain · 10117",
+      "productIds": [
+        "simpolo-p38-d7"
+      ],
+      "sourceRect": [
+        0.271,
+        0.315,
+        0.168,
+        0.146
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.271,
+            0.315,
+            0.168,
+            0.146
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p38-s8",
+      "pageNumber": 38,
+      "title": "Canova · 12041",
+      "productIds": [
+        "simpolo-p38-d8"
+      ],
+      "sourceRect": [
+        0.439,
+        0.315,
+        0.167,
+        0.146
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.439,
+            0.315,
+            0.167,
+            0.146
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p38-s9",
+      "pageNumber": 38,
+      "title": "Piera · 10148",
+      "productIds": [
+        "simpolo-p38-d9"
+      ],
+      "sourceRect": [
+        0.606,
+        0.315,
+        0.167,
+        0.146
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.606,
+            0.315,
+            0.167,
+            0.146
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p38-s10",
+      "pageNumber": 38,
+      "title": "Zeus · 10157",
+      "productIds": [
+        "simpolo-p38-d10"
+      ],
+      "sourceRect": [
+        0.773,
+        0.315,
+        0.165,
+        0.146
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.773,
+            0.315,
+            0.165,
+            0.146
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p38-s11",
+      "pageNumber": 38,
+      "title": "Eden · 10156",
+      "productIds": [
+        "simpolo-p38-d11"
+      ],
+      "sourceRect": [
+        0.095,
+        0.481,
+        0.176,
+        0.135
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.095,
+            0.481,
+            0.176,
+            0.135
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p38-s12",
+      "pageNumber": 38,
+      "title": "Avante · 10160",
+      "productIds": [
+        "simpolo-p38-d12"
+      ],
+      "sourceRect": [
+        0.271,
+        0.481,
+        0.168,
+        0.135
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.271,
+            0.481,
+            0.168,
+            0.135
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p38-s13",
+      "pageNumber": 38,
+      "title": "Fiabe - A · 12067",
+      "productIds": [
+        "simpolo-p38-d13"
+      ],
+      "sourceRect": [
+        0.439,
+        0.481,
+        0.167,
+        0.135
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.439,
+            0.481,
+            0.167,
+            0.135
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p38-s14",
+      "pageNumber": 38,
+      "title": "Fiabe - B · 12068",
+      "productIds": [
+        "simpolo-p38-d14"
+      ],
+      "sourceRect": [
+        0.606,
+        0.481,
+        0.167,
+        0.135
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.606,
+            0.481,
+            0.167,
+            0.135
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p38-s15",
+      "pageNumber": 38,
+      "title": "Skyline · 12052",
+      "productIds": [
+        "simpolo-p38-d15"
+      ],
+      "sourceRect": [
+        0.773,
+        0.481,
+        0.165,
+        0.135
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.773,
+            0.481,
+            0.165,
+            0.135
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p38-s16",
+      "pageNumber": 38,
+      "title": "Lampo · 12038",
+      "productIds": [
+        "simpolo-p38-d16"
+      ],
+      "sourceRect": [
+        0.095,
+        0.64,
+        0.176,
+        0.136
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.095,
+            0.64,
+            0.176,
+            0.136
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p38-s17",
+      "pageNumber": 38,
+      "title": "Latra · 12033",
+      "productIds": [
+        "simpolo-p38-d17"
+      ],
+      "sourceRect": [
+        0.271,
+        0.64,
+        0.168,
+        0.136
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.271,
+            0.64,
+            0.168,
+            0.136
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p38-s18",
+      "pageNumber": 38,
+      "title": "Piano · 10130",
+      "productIds": [
+        "simpolo-p38-d18"
+      ],
+      "sourceRect": [
+        0.439,
+        0.64,
+        0.167,
+        0.136
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.439,
+            0.64,
+            0.167,
+            0.136
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p38-s19",
+      "pageNumber": 38,
+      "title": "Bagno · 12040",
+      "productIds": [
+        "simpolo-p38-d19"
+      ],
+      "sourceRect": [
+        0.606,
+        0.64,
+        0.167,
+        0.136
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.606,
+            0.64,
+            0.167,
+            0.136
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p38-s20",
+      "pageNumber": 38,
+      "title": "Stilo · 12036",
+      "productIds": [
+        "simpolo-p38-d20"
+      ],
+      "sourceRect": [
+        0.773,
+        0.64,
+        0.165,
+        0.136
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.773,
+            0.64,
+            0.165,
+            0.136
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p38-s21",
+      "pageNumber": 38,
+      "title": "Sedent · 10103",
+      "productIds": [
+        "simpolo-p38-d21"
+      ],
+      "sourceRect": [
+        0.095,
+        0.791,
+        0.176,
+        0.135
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.095,
+            0.791,
+            0.176,
+            0.135
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p38-s22",
+      "pageNumber": 38,
+      "title": "Durango · 12062",
+      "productIds": [
+        "simpolo-p38-d22"
+      ],
+      "sourceRect": [
+        0.271,
+        0.791,
+        0.168,
+        0.135
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.271,
+            0.791,
+            0.168,
+            0.135
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p38-s23",
+      "pageNumber": 38,
+      "title": "Sleek Big · 10142",
+      "productIds": [
+        "simpolo-p38-d23"
+      ],
+      "sourceRect": [
+        0.439,
+        0.791,
+        0.167,
+        0.135
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.439,
+            0.791,
+            0.167,
+            0.135
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p38-s24",
+      "pageNumber": 38,
+      "title": "Shallow Big · 10129",
+      "productIds": [
+        "simpolo-p38-d24"
+      ],
+      "sourceRect": [
+        0.606,
+        0.791,
+        0.167,
+        0.135
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.606,
+            0.791,
+            0.167,
+            0.135
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p38-s25",
+      "pageNumber": 38,
+      "title": "Shallow · 10011",
+      "productIds": [
+        "simpolo-p38-d25"
+      ],
+      "sourceRect": [
+        0.773,
+        0.791,
+        0.165,
+        0.135
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.773,
+            0.791,
+            0.165,
+            0.135
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p39-s1",
+      "pageNumber": 39,
+      "title": "Maria - A · 10145",
+      "productIds": [
+        "simpolo-p39-d1"
+      ],
+      "sourceRect": [
+        0.061,
+        0.169,
+        0.166,
+        0.153
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.061,
+            0.169,
+            0.166,
+            0.153
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p39-s2",
+      "pageNumber": 39,
+      "title": "Maria - B · 10146",
+      "productIds": [
+        "simpolo-p39-d2"
+      ],
+      "sourceRect": [
+        0.236,
+        0.169,
+        0.159,
+        0.153
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.236,
+            0.169,
+            0.159,
+            0.153
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p39-s3",
+      "pageNumber": 39,
+      "title": "Maria - C · 10147",
+      "productIds": [
+        "simpolo-p39-d3"
+      ],
+      "sourceRect": [
+        0.402,
+        0.169,
+        0.164,
+        0.153
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.402,
+            0.169,
+            0.164,
+            0.153
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p39-s4",
+      "pageNumber": 39,
+      "title": "Leone · 10123",
+      "productIds": [
+        "simpolo-p39-d4"
+      ],
+      "sourceRect": [
+        0.57,
+        0.169,
+        0.165,
+        0.153
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.57,
+            0.169,
+            0.165,
+            0.153
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p39-s5",
+      "pageNumber": 39,
+      "title": "Demis · 12032",
+      "productIds": [
+        "simpolo-p39-d5"
+      ],
+      "sourceRect": [
+        0.737,
+        0.169,
+        0.172,
+        0.153
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.737,
+            0.169,
+            0.172,
+            0.153
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p39-s6",
+      "pageNumber": 39,
+      "title": "Susan · 10138",
+      "productIds": [
+        "simpolo-p39-d6"
+      ],
+      "sourceRect": [
+        0.061,
+        0.332,
+        0.166,
+        0.158
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.061,
+            0.332,
+            0.166,
+            0.158
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p39-s7",
+      "pageNumber": 39,
+      "title": "Seacor · 12047",
+      "productIds": [
+        "simpolo-p39-d7"
+      ],
+      "sourceRect": [
+        0.236,
+        0.332,
+        0.159,
+        0.158
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.236,
+            0.332,
+            0.159,
+            0.158
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p39-s8",
+      "pageNumber": 39,
+      "title": "Ancap · 12053",
+      "productIds": [
+        "simpolo-p39-d8"
+      ],
+      "sourceRect": [
+        0.402,
+        0.332,
+        0.164,
+        0.158
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.402,
+            0.332,
+            0.164,
+            0.158
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p39-s9",
+      "pageNumber": 39,
+      "title": "Mini Leone · 10124",
+      "productIds": [
+        "simpolo-p39-d9"
+      ],
+      "sourceRect": [
+        0.57,
+        0.332,
+        0.165,
+        0.158
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.57,
+            0.332,
+            0.165,
+            0.158
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p39-s10",
+      "pageNumber": 39,
+      "title": "Coral · 12019",
+      "productIds": [
+        "simpolo-p39-d10"
+      ],
+      "sourceRect": [
+        0.737,
+        0.332,
+        0.172,
+        0.158
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.737,
+            0.332,
+            0.172,
+            0.158
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p39-s11",
+      "pageNumber": 39,
+      "title": "Spinner · 10101",
+      "productIds": [
+        "simpolo-p39-d11"
+      ],
+      "sourceRect": [
+        0.061,
+        0.505,
+        0.166,
+        0.154
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.061,
+            0.505,
+            0.166,
+            0.154
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p39-s12",
+      "pageNumber": 39,
+      "title": "Slapton · 12054",
+      "productIds": [
+        "simpolo-p39-d12"
+      ],
+      "sourceRect": [
+        0.236,
+        0.505,
+        0.159,
+        0.154
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.236,
+            0.505,
+            0.159,
+            0.154
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p39-s13",
+      "pageNumber": 39,
+      "title": "Abol · 10136",
+      "productIds": [
+        "simpolo-p39-d13"
+      ],
+      "sourceRect": [
+        0.061,
+        0.735,
+        0.166,
+        0.15
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.061,
+            0.735,
+            0.166,
+            0.15
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p39-s14",
+      "pageNumber": 39,
+      "title": "Star · 10018",
+      "productIds": [
+        "simpolo-p39-d14"
+      ],
+      "sourceRect": [
+        0.236,
+        0.735,
+        0.159,
+        0.15
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.236,
+            0.735,
+            0.159,
+            0.15
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p39-s15",
+      "pageNumber": 39,
+      "title": "Dario · 10144",
+      "productIds": [
+        "simpolo-p39-d15"
+      ],
+      "sourceRect": [
+        0.402,
+        0.735,
+        0.164,
+        0.15
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.402,
+            0.735,
+            0.164,
+            0.15
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p39-s16",
+      "pageNumber": 39,
+      "title": "Dante · 10143",
+      "productIds": [
+        "simpolo-p39-d16"
+      ],
+      "sourceRect": [
+        0.57,
+        0.735,
+        0.165,
+        0.15
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.57,
+            0.735,
+            0.165,
+            0.15
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p39-s17",
+      "pageNumber": 39,
+      "title": "Berta · 10151",
+      "productIds": [
+        "simpolo-p39-d17"
+      ],
+      "sourceRect": [
+        0.737,
+        0.735,
+        0.172,
+        0.15
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.737,
+            0.735,
+            0.172,
+            0.15
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p40-s1",
+      "pageNumber": 40,
+      "title": "Avante · 10162",
+      "productIds": [
+        "simpolo-p40-d1"
+      ],
+      "sourceRect": [
+        0.12,
+        0.428,
+        0.18,
+        0.159
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.12,
+            0.428,
+            0.18,
+            0.159
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p40-s2",
+      "pageNumber": 40,
+      "title": "Crema - Hidden Drain · 10116",
+      "productIds": [
+        "simpolo-p40-d2"
+      ],
+      "sourceRect": [
+        0.3,
+        0.428,
+        0.216,
+        0.159
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.3,
+            0.428,
+            0.216,
+            0.159
+          ],
+          "label": "Complete product and printed details"
+        },
+        "room": {
+          "rect": [
+            0.138,
+            0.167,
+            0.738,
+            0.247
+          ],
+          "label": "Installation setting"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p40-s3",
+      "pageNumber": 40,
+      "title": "Left Suffix · 10107L",
+      "productIds": [
+        "simpolo-p40-d3"
+      ],
+      "sourceRect": [
+        0.516,
+        0.428,
+        0.217,
+        0.159
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.516,
+            0.428,
+            0.217,
+            0.159
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p40-s4",
+      "pageNumber": 40,
+      "title": "Right Suffix · 10107R",
+      "productIds": [
+        "simpolo-p40-d4"
+      ],
+      "sourceRect": [
+        0.733,
+        0.428,
+        0.199,
+        0.159
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.733,
+            0.428,
+            0.199,
+            0.159
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p40-s5",
+      "pageNumber": 40,
+      "title": "Nick · 10035",
+      "productIds": [
+        "simpolo-p40-d5"
+      ],
+      "sourceRect": [
+        0.12,
+        0.594,
+        0.18,
+        0.157
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.12,
+            0.594,
+            0.18,
+            0.157
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p40-s6",
+      "pageNumber": 40,
+      "title": "Left Nick · 10040L",
+      "productIds": [
+        "simpolo-p40-d6"
+      ],
+      "sourceRect": [
+        0.3,
+        0.594,
+        0.216,
+        0.157
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.3,
+            0.594,
+            0.216,
+            0.157
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p40-s7",
+      "pageNumber": 40,
+      "title": "Right Nick · 10040R",
+      "productIds": [
+        "simpolo-p40-d7"
+      ],
+      "sourceRect": [
+        0.516,
+        0.594,
+        0.217,
+        0.157
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.516,
+            0.594,
+            0.217,
+            0.157
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p40-s8",
+      "pageNumber": 40,
+      "title": "Soar · 10042",
+      "productIds": [
+        "simpolo-p40-d8"
+      ],
+      "sourceRect": [
+        0.733,
+        0.594,
+        0.199,
+        0.157
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.733,
+            0.594,
+            0.199,
+            0.157
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p40-s9",
+      "pageNumber": 40,
+      "title": "Simon · 10038",
+      "productIds": [
+        "simpolo-p40-d9"
+      ],
+      "sourceRect": [
+        0.12,
+        0.755,
+        0.18,
+        0.159
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.12,
+            0.755,
+            0.18,
+            0.159
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p40-s10",
+      "pageNumber": 40,
+      "title": "Mini Simon · 10041",
+      "productIds": [
+        "simpolo-p40-d10"
+      ],
+      "sourceRect": [
+        0.3,
+        0.755,
+        0.216,
+        0.159
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.3,
+            0.755,
+            0.216,
+            0.159
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p41-s1",
+      "pageNumber": 41,
+      "title": "Since · 10031",
+      "productIds": [
+        "simpolo-p41-d1"
+      ],
+      "sourceRect": [
+        0.115,
+        0.172,
+        0.17,
+        0.16
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.115,
+            0.172,
+            0.17,
+            0.16
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p41-s2",
+      "pageNumber": 41,
+      "title": "Flaps · 10120",
+      "productIds": [
+        "simpolo-p41-d2"
+      ],
+      "sourceRect": [
+        0.285,
+        0.172,
+        0.217,
+        0.16
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.285,
+            0.172,
+            0.217,
+            0.16
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p41-s3",
+      "pageNumber": 41,
+      "title": "Elite · 10007",
+      "productIds": [
+        "simpolo-p41-d3"
+      ],
+      "sourceRect": [
+        0.502,
+        0.172,
+        0.216,
+        0.16
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.502,
+            0.172,
+            0.216,
+            0.16
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p41-s4",
+      "pageNumber": 41,
+      "title": "Skim · 10034",
+      "productIds": [
+        "simpolo-p41-d4"
+      ],
+      "sourceRect": [
+        0.718,
+        0.172,
+        0.192,
+        0.16
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.718,
+            0.172,
+            0.192,
+            0.16
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p41-s5",
+      "pageNumber": 41,
+      "title": "Nest · 10097",
+      "productIds": [
+        "simpolo-p41-d5"
+      ],
+      "sourceRect": [
+        0.115,
+        0.342,
+        0.17,
+        0.157
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.115,
+            0.342,
+            0.17,
+            0.157
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p41-s6",
+      "pageNumber": 41,
+      "title": "Shunt · 10114",
+      "productIds": [
+        "simpolo-p41-d6"
+      ],
+      "sourceRect": [
+        0.285,
+        0.342,
+        0.217,
+        0.157
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.285,
+            0.342,
+            0.217,
+            0.157
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p41-s7",
+      "pageNumber": 41,
+      "title": "Sinorita · 10050",
+      "productIds": [
+        "simpolo-p41-d7"
+      ],
+      "sourceRect": [
+        0.502,
+        0.342,
+        0.216,
+        0.157
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.502,
+            0.342,
+            0.216,
+            0.157
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p41-s8",
+      "pageNumber": 41,
+      "title": "Spouse · 10047",
+      "productIds": [
+        "simpolo-p41-d8"
+      ],
+      "sourceRect": [
+        0.718,
+        0.342,
+        0.192,
+        0.157
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.718,
+            0.342,
+            0.192,
+            0.157
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p41-s9",
+      "pageNumber": 41,
+      "title": "Carmine · 10149",
+      "productIds": [
+        "simpolo-p41-d9"
+      ],
+      "sourceRect": [
+        0.115,
+        0.508,
+        0.17,
+        0.153
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.115,
+            0.508,
+            0.17,
+            0.153
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p41-s10",
+      "pageNumber": 41,
+      "title": "Ala · 10133",
+      "productIds": [
+        "simpolo-p41-d10"
+      ],
+      "sourceRect": [
+        0.285,
+        0.508,
+        0.217,
+        0.153
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.285,
+            0.508,
+            0.217,
+            0.153
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p41-s11",
+      "pageNumber": 41,
+      "title": "Shipra · 10049",
+      "productIds": [
+        "simpolo-p41-d11"
+      ],
+      "sourceRect": [
+        0.502,
+        0.508,
+        0.216,
+        0.153
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.502,
+            0.508,
+            0.216,
+            0.153
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p41-s12",
+      "pageNumber": 41,
+      "title": "Smile · 10051",
+      "productIds": [
+        "simpolo-p41-d12"
+      ],
+      "sourceRect": [
+        0.718,
+        0.508,
+        0.192,
+        0.153
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.718,
+            0.508,
+            0.192,
+            0.153
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p41-s13",
+      "pageNumber": 41,
+      "title": "Wise · 10134",
+      "productIds": [
+        "simpolo-p41-d13"
+      ],
+      "sourceRect": [
+        0.115,
+        0.675,
+        0.17,
+        0.16
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.115,
+            0.675,
+            0.17,
+            0.16
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p41-s14",
+      "pageNumber": 41,
+      "title": "Shally · 10048",
+      "productIds": [
+        "simpolo-p41-d14"
+      ],
+      "sourceRect": [
+        0.285,
+        0.675,
+        0.217,
+        0.16
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.285,
+            0.675,
+            0.217,
+            0.16
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p41-s15",
+      "pageNumber": 41,
+      "title": "Caro · 10140",
+      "productIds": [
+        "simpolo-p41-d15"
+      ],
+      "sourceRect": [
+        0.502,
+        0.675,
+        0.216,
+        0.16
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.502,
+            0.675,
+            0.216,
+            0.16
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p42-s1",
+      "pageNumber": 42,
+      "title": "Ancona · 12049",
+      "productIds": [
+        "simpolo-p42-d1"
+      ],
+      "sourceRect": [
+        0.29,
+        0.165,
+        0.215,
+        0.184
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.29,
+            0.165,
+            0.215,
+            0.184
+          ],
+          "label": "Complete product and printed details"
+        },
+        "room": {
+          "rect": [
+            0.644,
+            0.154,
+            0.291,
+            0.191
+          ],
+          "label": "Installation setting"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p42-s2",
+      "pageNumber": 42,
+      "title": "Nettuno · 10055",
+      "productIds": [
+        "simpolo-p42-d2"
+      ],
+      "sourceRect": [
+        0.08,
+        0.407,
+        0.178,
+        0.14
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.08,
+            0.407,
+            0.178,
+            0.14
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p42-s3",
+      "pageNumber": 42,
+      "title": "Matrix · 12022",
+      "productIds": [
+        "simpolo-p42-d3"
+      ],
+      "sourceRect": [
+        0.27,
+        0.403,
+        0.19,
+        0.144
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.27,
+            0.403,
+            0.19,
+            0.144
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p42-s4",
+      "pageNumber": 42,
+      "title": "Planet · 10057",
+      "productIds": [
+        "simpolo-p42-d4"
+      ],
+      "sourceRect": [
+        0.485,
+        0.407,
+        0.166,
+        0.14
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.485,
+            0.407,
+            0.166,
+            0.14
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p42-s5",
+      "pageNumber": 42,
+      "title": "Solar · 10053",
+      "productIds": [
+        "simpolo-p42-d5"
+      ],
+      "sourceRect": [
+        0.08,
+        0.568,
+        0.178,
+        0.138
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.08,
+            0.568,
+            0.178,
+            0.138
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p42-s6",
+      "pageNumber": 42,
+      "title": "Semi Oval · 10052",
+      "productIds": [
+        "simpolo-p42-d6"
+      ],
+      "sourceRect": [
+        0.275,
+        0.565,
+        0.187,
+        0.141
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.275,
+            0.565,
+            0.187,
+            0.141
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p42-s7",
+      "pageNumber": 42,
+      "title": "Sebille · 10070",
+      "productIds": [
+        "simpolo-p42-d7"
+      ],
+      "sourceRect": [
+        0.08,
+        0.772,
+        0.157,
+        0.145
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.08,
+            0.772,
+            0.157,
+            0.145
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p42-s8",
+      "pageNumber": 42,
+      "title": "Nettuno · 10069",
+      "productIds": [
+        "simpolo-p42-d8"
+      ],
+      "sourceRect": [
+        0.24,
+        0.772,
+        0.167,
+        0.145
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.24,
+            0.772,
+            0.167,
+            0.145
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p42-s9",
+      "pageNumber": 42,
+      "title": "Planet · 10068",
+      "productIds": [
+        "simpolo-p42-d9"
+      ],
+      "sourceRect": [
+        0.41,
+        0.772,
+        0.163,
+        0.145
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.41,
+            0.772,
+            0.163,
+            0.145
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p42-s10",
+      "pageNumber": 42,
+      "title": "Lab Sink · 18001",
+      "productIds": [
+        "simpolo-p42-d10"
+      ],
+      "sourceRect": [
+        0.604,
+        0.772,
+        0.148,
+        0.145
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.604,
+            0.772,
+            0.148,
+            0.145
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p42-s11",
+      "pageNumber": 42,
+      "title": "Lab Sink Big · 18002",
+      "productIds": [
+        "simpolo-p42-d11"
+      ],
+      "sourceRect": [
+        0.758,
+        0.772,
+        0.17,
+        0.145
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.758,
+            0.772,
+            0.17,
+            0.145
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p43-s1",
+      "pageNumber": 43,
+      "title": "Sun · 405W",
+      "productIds": [
+        "simpolo-p43-d1"
+      ],
+      "sourceRect": [
+        0.064,
+        0.451,
+        0.161,
+        0.146
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.064,
+            0.451,
+            0.161,
+            0.146
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p43-s2",
+      "pageNumber": 43,
+      "title": "Sun · 406W",
+      "productIds": [
+        "simpolo-p43-d2"
+      ],
+      "sourceRect": [
+        0.225,
+        0.451,
+        0.17,
+        0.146
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.225,
+            0.451,
+            0.17,
+            0.146
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p43-s3",
+      "pageNumber": 43,
+      "title": "Sun · 408W",
+      "productIds": [
+        "simpolo-p43-d3"
+      ],
+      "sourceRect": [
+        0.395,
+        0.451,
+        0.171,
+        0.146
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.395,
+            0.451,
+            0.171,
+            0.146
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p43-s4",
+      "pageNumber": 43,
+      "title": "Isola · 901W",
+      "productIds": [
+        "simpolo-p43-d4"
+      ],
+      "sourceRect": [
+        0.566,
+        0.451,
+        0.171,
+        0.146
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.566,
+            0.451,
+            0.171,
+            0.146
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p43-s5",
+      "pageNumber": 43,
+      "title": "Isola · 905W",
+      "productIds": [
+        "simpolo-p43-d5"
+      ],
+      "sourceRect": [
+        0.737,
+        0.451,
+        0.173,
+        0.146
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.737,
+            0.451,
+            0.173,
+            0.146
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p43-s6",
+      "pageNumber": 43,
+      "title": "Sun · 405B",
+      "productIds": [
+        "simpolo-p43-d6"
+      ],
+      "sourceRect": [
+        0.064,
+        0.618,
+        0.161,
+        0.138
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.064,
+            0.618,
+            0.161,
+            0.138
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p43-s7",
+      "pageNumber": 43,
+      "title": "Sun · 406B",
+      "productIds": [
+        "simpolo-p43-d7"
+      ],
+      "sourceRect": [
+        0.225,
+        0.618,
+        0.17,
+        0.138
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.225,
+            0.618,
+            0.17,
+            0.138
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p43-s8",
+      "pageNumber": 43,
+      "title": "Sun · 408B",
+      "productIds": [
+        "simpolo-p43-d8"
+      ],
+      "sourceRect": [
+        0.395,
+        0.618,
+        0.171,
+        0.138
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.395,
+            0.618,
+            0.171,
+            0.138
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p43-s9",
+      "pageNumber": 43,
+      "title": "Isola · 901B",
+      "productIds": [
+        "simpolo-p43-d9"
+      ],
+      "sourceRect": [
+        0.566,
+        0.618,
+        0.171,
+        0.138
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.566,
+            0.618,
+            0.171,
+            0.138
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p43-s10",
+      "pageNumber": 43,
+      "title": "Isola · 905B",
+      "productIds": [
+        "simpolo-p43-d10"
+      ],
+      "sourceRect": [
+        0.737,
+        0.618,
+        0.173,
+        0.138
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.737,
+            0.618,
+            0.173,
+            0.138
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p43-s11",
+      "pageNumber": 43,
+      "title": "Safe · 307W",
+      "productIds": [
+        "simpolo-p43-d11"
+      ],
+      "sourceRect": [
+        0.064,
+        0.78,
+        0.161,
+        0.143
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.064,
+            0.78,
+            0.161,
+            0.143
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p43-s12",
+      "pageNumber": 43,
+      "title": "Spoof · 434W",
+      "productIds": [
+        "simpolo-p43-d12"
+      ],
+      "sourceRect": [
+        0.225,
+        0.78,
+        0.17,
+        0.143
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.225,
+            0.78,
+            0.17,
+            0.143
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p43-s13",
+      "pageNumber": 43,
+      "title": "Safe · 307B",
+      "productIds": [
+        "simpolo-p43-d13"
+      ],
+      "sourceRect": [
+        0.395,
+        0.78,
+        0.171,
+        0.143
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.395,
+            0.78,
+            0.171,
+            0.143
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p43-s14",
+      "pageNumber": 43,
+      "title": "Spoof · 434B",
+      "productIds": [
+        "simpolo-p43-d14"
+      ],
+      "sourceRect": [
+        0.566,
+        0.78,
+        0.171,
+        0.143
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.566,
+            0.78,
+            0.171,
+            0.143
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p44-s1",
+      "pageNumber": 44,
+      "title": "Stilo",
+      "productIds": [
+        "simpolo-p44-d1"
+      ],
+      "sourceRect": [
+        0.08,
+        0.171,
+        0.86,
+        0.226
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.08,
+            0.171,
+            0.86,
+            0.226
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p44-s2",
+      "pageNumber": 44,
+      "title": "Shallow Big",
+      "productIds": [
+        "simpolo-p44-d2"
+      ],
+      "sourceRect": [
+        0.08,
+        0.433,
+        0.86,
+        0.226
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.08,
+            0.433,
+            0.86,
+            0.226
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p44-s3",
+      "pageNumber": 44,
+      "title": "Lampo",
+      "productIds": [
+        "simpolo-p44-d3"
+      ],
+      "sourceRect": [
+        0.08,
+        0.718,
+        0.86,
+        0.21
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.08,
+            0.718,
+            0.86,
+            0.21
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p45-s1",
+      "pageNumber": 45,
+      "title": "Safe · 305",
+      "productIds": [
+        "simpolo-p45-d1"
+      ],
+      "sourceRect": [
+        0.09,
+        0.193,
+        0.18,
+        0.15
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.09,
+            0.193,
+            0.18,
+            0.15
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p45-s2",
+      "pageNumber": 45,
+      "title": "Isola · 907",
+      "productIds": [
+        "simpolo-p45-d2"
+      ],
+      "sourceRect": [
+        0.27,
+        0.193,
+        0.215,
+        0.15
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.27,
+            0.193,
+            0.215,
+            0.15
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p45-s3",
+      "pageNumber": 45,
+      "title": "Isola · 904",
+      "productIds": [
+        "simpolo-p45-d3"
+      ],
+      "sourceRect": [
+        0.485,
+        0.193,
+        0.215,
+        0.15
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.485,
+            0.193,
+            0.215,
+            0.15
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p45-s4",
+      "pageNumber": 45,
+      "title": "Isola · 906",
+      "productIds": [
+        "simpolo-p45-d4"
+      ],
+      "sourceRect": [
+        0.7,
+        0.193,
+        0.21,
+        0.15
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.7,
+            0.193,
+            0.21,
+            0.15
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p45-s5",
+      "pageNumber": 45,
+      "title": "Shallow · 173",
+      "productIds": [
+        "simpolo-p45-d5"
+      ],
+      "sourceRect": [
+        0.09,
+        0.36,
+        0.18,
+        0.143
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.09,
+            0.36,
+            0.18,
+            0.143
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p45-s6",
+      "pageNumber": 45,
+      "title": "Shallow · 205",
+      "productIds": [
+        "simpolo-p45-d6"
+      ],
+      "sourceRect": [
+        0.27,
+        0.36,
+        0.215,
+        0.143
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.27,
+            0.36,
+            0.215,
+            0.143
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p45-s7",
+      "pageNumber": 45,
+      "title": "Shallow · 206",
+      "productIds": [
+        "simpolo-p45-d7"
+      ],
+      "sourceRect": [
+        0.485,
+        0.36,
+        0.215,
+        0.143
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.485,
+            0.36,
+            0.215,
+            0.143
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p45-s8",
+      "pageNumber": 45,
+      "title": "Shallow · 106",
+      "productIds": [
+        "simpolo-p45-d8"
+      ],
+      "sourceRect": [
+        0.7,
+        0.36,
+        0.21,
+        0.143
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.7,
+            0.36,
+            0.21,
+            0.143
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p45-s9",
+      "pageNumber": 45,
+      "title": "Spoof · 436",
+      "productIds": [
+        "simpolo-p45-d9"
+      ],
+      "sourceRect": [
+        0.09,
+        0.525,
+        0.18,
+        0.145
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.09,
+            0.525,
+            0.18,
+            0.145
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p45-s10",
+      "pageNumber": 45,
+      "title": "Shallow Big · 209",
+      "productIds": [
+        "simpolo-p45-d10"
+      ],
+      "sourceRect": [
+        0.27,
+        0.525,
+        0.215,
+        0.145
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.27,
+            0.525,
+            0.215,
+            0.145
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p45-s11",
+      "pageNumber": 45,
+      "title": "Spoof · 432",
+      "productIds": [
+        "simpolo-p45-d11"
+      ],
+      "sourceRect": [
+        0.485,
+        0.525,
+        0.215,
+        0.145
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.485,
+            0.525,
+            0.215,
+            0.145
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p45-s12",
+      "pageNumber": 45,
+      "title": "Shallow · 207",
+      "productIds": [
+        "simpolo-p45-d12"
+      ],
+      "sourceRect": [
+        0.7,
+        0.525,
+        0.21,
+        0.145
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.7,
+            0.525,
+            0.21,
+            0.145
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p46-s1",
+      "pageNumber": 46,
+      "title": "Spring · 8001B",
+      "productIds": [
+        "simpolo-p46-d1"
+      ],
+      "sourceRect": [
+        0.72,
+        0.174,
+        0.165,
+        0.137
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.72,
+            0.174,
+            0.165,
+            0.137
+          ],
+          "label": "Complete product and printed details"
+        },
+        "room": {
+          "rect": [
+            0.081,
+            0.174,
+            0.559,
+            0.257
+          ],
+          "label": "Installation setting"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p46-s2",
+      "pageNumber": 46,
+      "title": "Artik · 751",
+      "productIds": [
+        "simpolo-p46-d2"
+      ],
+      "sourceRect": [
+        0.72,
+        0.343,
+        0.17,
+        0.113
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.72,
+            0.343,
+            0.17,
+            0.113
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p46-s3",
+      "pageNumber": 46,
+      "title": "Statson · 554",
+      "productIds": [
+        "simpolo-p46-d3"
+      ],
+      "sourceRect": [
+        0.085,
+        0.474,
+        0.19,
+        0.126
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.474,
+            0.19,
+            0.126
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p46-s4",
+      "pageNumber": 46,
+      "title": "Statson · 162",
+      "productIds": [
+        "simpolo-p46-d4"
+      ],
+      "sourceRect": [
+        0.278,
+        0.474,
+        0.208,
+        0.126
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.278,
+            0.474,
+            0.208,
+            0.126
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p46-s5",
+      "pageNumber": 46,
+      "title": "Statson · 183",
+      "productIds": [
+        "simpolo-p46-d5"
+      ],
+      "sourceRect": [
+        0.49,
+        0.474,
+        0.203,
+        0.126
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.49,
+            0.474,
+            0.203,
+            0.126
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p46-s6",
+      "pageNumber": 46,
+      "title": "Sleek · 628",
+      "productIds": [
+        "simpolo-p46-d6"
+      ],
+      "sourceRect": [
+        0.7,
+        0.474,
+        0.21,
+        0.126
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.7,
+            0.474,
+            0.21,
+            0.126
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p46-s7",
+      "pageNumber": 46,
+      "title": "Statson · 551",
+      "productIds": [
+        "simpolo-p46-d7"
+      ],
+      "sourceRect": [
+        0.085,
+        0.636,
+        0.19,
+        0.132
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.636,
+            0.19,
+            0.132
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p46-s8",
+      "pageNumber": 46,
+      "title": "Statson · 553",
+      "productIds": [
+        "simpolo-p46-d8"
+      ],
+      "sourceRect": [
+        0.278,
+        0.636,
+        0.208,
+        0.132
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.278,
+            0.636,
+            0.208,
+            0.132
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p46-s9",
+      "pageNumber": 46,
+      "title": "DB · 5001",
+      "productIds": [
+        "simpolo-p46-d9"
+      ],
+      "sourceRect": [
+        0.49,
+        0.636,
+        0.203,
+        0.132
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.49,
+            0.636,
+            0.203,
+            0.132
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p46-s10",
+      "pageNumber": 46,
+      "title": "Sleek · 627",
+      "productIds": [
+        "simpolo-p46-d10"
+      ],
+      "sourceRect": [
+        0.7,
+        0.636,
+        0.21,
+        0.132
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.7,
+            0.636,
+            0.21,
+            0.132
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p46-s11",
+      "pageNumber": 46,
+      "title": "DB · 4002",
+      "productIds": [
+        "simpolo-p46-d11"
+      ],
+      "sourceRect": [
+        0.085,
+        0.789,
+        0.19,
+        0.125
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.789,
+            0.19,
+            0.125
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p46-s12",
+      "pageNumber": 46,
+      "title": "DB · 4003",
+      "productIds": [
+        "simpolo-p46-d12"
+      ],
+      "sourceRect": [
+        0.278,
+        0.789,
+        0.208,
+        0.125
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.278,
+            0.789,
+            0.208,
+            0.125
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p46-s13",
+      "pageNumber": 46,
+      "title": "DB · 4001",
+      "productIds": [
+        "simpolo-p46-d13"
+      ],
+      "sourceRect": [
+        0.49,
+        0.789,
+        0.203,
+        0.125
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.49,
+            0.789,
+            0.203,
+            0.125
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p47-s1",
+      "pageNumber": 47,
+      "title": "Proton · 12058",
+      "productIds": [
+        "simpolo-p47-d1"
+      ],
+      "sourceRect": [
+        0.637,
+        0.162,
+        0.25,
+        0.238
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.637,
+            0.162,
+            0.25,
+            0.238
+          ],
+          "label": "Complete product and printed details"
+        },
+        "room": {
+          "rect": [
+            0.062,
+            0.178,
+            0.508,
+            0.459
+          ],
+          "label": "Installation setting"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p47-s2",
+      "pageNumber": 47,
+      "title": "Sifco · 12059",
+      "productIds": [
+        "simpolo-p47-d2"
+      ],
+      "sourceRect": [
+        0.637,
+        0.402,
+        0.25,
+        0.242
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.637,
+            0.402,
+            0.25,
+            0.242
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p47-s3",
+      "pageNumber": 47,
+      "title": "Shorten · 10108",
+      "productIds": [
+        "simpolo-p47-d3"
+      ],
+      "sourceRect": [
+        0.055,
+        0.72,
+        0.205,
+        0.196
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.055,
+            0.72,
+            0.205,
+            0.196
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p47-s4",
+      "pageNumber": 47,
+      "title": "Neo · 12030",
+      "productIds": [
+        "simpolo-p47-d4"
+      ],
+      "sourceRect": [
+        0.273,
+        0.72,
+        0.202,
+        0.196
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.273,
+            0.72,
+            0.202,
+            0.196
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p47-s5",
+      "pageNumber": 47,
+      "title": "Sabrina · 10141",
+      "productIds": [
+        "simpolo-p47-d5"
+      ],
+      "sourceRect": [
+        0.485,
+        0.72,
+        0.222,
+        0.196
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.485,
+            0.72,
+            0.222,
+            0.196
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p47-s6",
+      "pageNumber": 47,
+      "title": "Stevia · 10155",
+      "productIds": [
+        "simpolo-p47-d6"
+      ],
+      "sourceRect": [
+        0.727,
+        0.72,
+        0.205,
+        0.196
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.727,
+            0.72,
+            0.205,
+            0.196
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p48-s1",
+      "pageNumber": 48,
+      "title": "Alvona · 10126",
+      "productIds": [
+        "simpolo-p48-d1"
+      ],
+      "sourceRect": [
+        0.15,
+        0.155,
+        0.222,
+        0.177
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.15,
+            0.155,
+            0.222,
+            0.177
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p48-s2",
+      "pageNumber": 48,
+      "title": "Vita · 10085",
+      "productIds": [
+        "simpolo-p48-d2"
+      ],
+      "sourceRect": [
+        0.419,
+        0.155,
+        0.216,
+        0.177
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.419,
+            0.155,
+            0.216,
+            0.177
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p48-s3",
+      "pageNumber": 48,
+      "title": "Slaty · 10094",
+      "productIds": [
+        "simpolo-p48-d3"
+      ],
+      "sourceRect": [
+        0.681,
+        0.155,
+        0.192,
+        0.177
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.681,
+            0.155,
+            0.192,
+            0.177
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p48-s4",
+      "pageNumber": 48,
+      "title": "Elan · 10110",
+      "productIds": [
+        "simpolo-p48-d4"
+      ],
+      "sourceRect": [
+        0.15,
+        0.348,
+        0.222,
+        0.182
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.15,
+            0.348,
+            0.222,
+            0.182
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p48-s5",
+      "pageNumber": 48,
+      "title": "Seldom · 10099",
+      "productIds": [
+        "simpolo-p48-d5"
+      ],
+      "sourceRect": [
+        0.419,
+        0.348,
+        0.216,
+        0.182
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.419,
+            0.348,
+            0.216,
+            0.182
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p48-s6",
+      "pageNumber": 48,
+      "title": "Elisa · 10153",
+      "productIds": [
+        "simpolo-p48-d6"
+      ],
+      "sourceRect": [
+        0.681,
+        0.348,
+        0.192,
+        0.182
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.681,
+            0.348,
+            0.192,
+            0.182
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p48-s7",
+      "pageNumber": 48,
+      "title": "Nero · 10073",
+      "productIds": [
+        "simpolo-p48-d7"
+      ],
+      "sourceRect": [
+        0.15,
+        0.54,
+        0.222,
+        0.191
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.15,
+            0.54,
+            0.222,
+            0.191
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p48-s8",
+      "pageNumber": 48,
+      "title": "Refin · 10112",
+      "productIds": [
+        "simpolo-p48-d8"
+      ],
+      "sourceRect": [
+        0.419,
+        0.54,
+        0.216,
+        0.191
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.419,
+            0.54,
+            0.216,
+            0.191
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p48-s9",
+      "pageNumber": 48,
+      "title": "Samite · 10089",
+      "productIds": [
+        "simpolo-p48-d9"
+      ],
+      "sourceRect": [
+        0.681,
+        0.54,
+        0.192,
+        0.191
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.681,
+            0.54,
+            0.192,
+            0.191
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p48-s10",
+      "pageNumber": 48,
+      "title": "Selvo · 10080",
+      "productIds": [
+        "simpolo-p48-d10"
+      ],
+      "sourceRect": [
+        0.112,
+        0.739,
+        0.177,
+        0.191
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.112,
+            0.739,
+            0.177,
+            0.191
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p48-s11",
+      "pageNumber": 48,
+      "title": "Vellis · 10072",
+      "productIds": [
+        "simpolo-p48-d11"
+      ],
+      "sourceRect": [
+        0.306,
+        0.739,
+        0.19,
+        0.191
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.306,
+            0.739,
+            0.19,
+            0.191
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p48-s12",
+      "pageNumber": 48,
+      "title": "Scooty · 10079",
+      "productIds": [
+        "simpolo-p48-d12"
+      ],
+      "sourceRect": [
+        0.52,
+        0.739,
+        0.186,
+        0.191
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.52,
+            0.739,
+            0.186,
+            0.191
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p48-s13",
+      "pageNumber": 48,
+      "title": "Sophia · 10077",
+      "productIds": [
+        "simpolo-p48-d13"
+      ],
+      "sourceRect": [
+        0.728,
+        0.739,
+        0.192,
+        0.191
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.728,
+            0.739,
+            0.192,
+            0.191
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p49-s1",
+      "pageNumber": 49,
+      "title": "Refin · 10112",
+      "productIds": [
+        "simpolo-p49-d1"
+      ],
+      "sourceRect": [
+        0.67,
+        0.198,
+        0.196,
+        0.169
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.67,
+            0.198,
+            0.196,
+            0.169
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p49-s2",
+      "pageNumber": 49,
+      "title": "Scooty · 10079",
+      "productIds": [
+        "simpolo-p49-d2"
+      ],
+      "sourceRect": [
+        0.67,
+        0.384,
+        0.196,
+        0.148
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.67,
+            0.384,
+            0.196,
+            0.148
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p49-s3",
+      "pageNumber": 49,
+      "title": "Alvona · 10126",
+      "productIds": [
+        "simpolo-p49-d3"
+      ],
+      "sourceRect": [
+        0.065,
+        0.595,
+        0.19,
+        0.168
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.065,
+            0.595,
+            0.19,
+            0.168
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p49-s4",
+      "pageNumber": 49,
+      "title": "Slaty · 10094",
+      "productIds": [
+        "simpolo-p49-d4"
+      ],
+      "sourceRect": [
+        0.263,
+        0.595,
+        0.203,
+        0.168
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.263,
+            0.595,
+            0.203,
+            0.168
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p49-s5",
+      "pageNumber": 49,
+      "title": "Elan · 10110",
+      "productIds": [
+        "simpolo-p49-d5"
+      ],
+      "sourceRect": [
+        0.476,
+        0.595,
+        0.199,
+        0.168
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.476,
+            0.595,
+            0.199,
+            0.168
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p49-s6",
+      "pageNumber": 49,
+      "title": "Seldom · 10099",
+      "productIds": [
+        "simpolo-p49-d6"
+      ],
+      "sourceRect": [
+        0.688,
+        0.595,
+        0.189,
+        0.168
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.688,
+            0.595,
+            0.189,
+            0.168
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p49-s7",
+      "pageNumber": 49,
+      "title": "Sleet · 10071",
+      "productIds": [
+        "simpolo-p49-d7"
+      ],
+      "sourceRect": [
+        0.065,
+        0.772,
+        0.19,
+        0.162
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.065,
+            0.772,
+            0.19,
+            0.162
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p49-s8",
+      "pageNumber": 49,
+      "title": "Elisa · 10153",
+      "productIds": [
+        "simpolo-p49-d8"
+      ],
+      "sourceRect": [
+        0.263,
+        0.772,
+        0.203,
+        0.162
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.263,
+            0.772,
+            0.203,
+            0.162
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p49-s9",
+      "pageNumber": 49,
+      "title": "Senor · 10128",
+      "productIds": [
+        "simpolo-p49-d9"
+      ],
+      "sourceRect": [
+        0.476,
+        0.772,
+        0.199,
+        0.162
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.476,
+            0.772,
+            0.199,
+            0.162
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p49-s10",
+      "pageNumber": 49,
+      "title": "Nero · 10073",
+      "productIds": [
+        "simpolo-p49-d10"
+      ],
+      "sourceRect": [
+        0.688,
+        0.772,
+        0.189,
+        0.162
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.688,
+            0.772,
+            0.189,
+            0.162
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p50-s1",
+      "pageNumber": 50,
+      "title": "Vellis · 10072",
+      "productIds": [
+        "simpolo-p50-d1"
+      ],
+      "sourceRect": [
+        0.083,
+        0.174,
+        0.196,
+        0.171
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.083,
+            0.174,
+            0.196,
+            0.171
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p50-s2",
+      "pageNumber": 50,
+      "title": "Samite · 10089",
+      "productIds": [
+        "simpolo-p50-d2"
+      ],
+      "sourceRect": [
+        0.29,
+        0.174,
+        0.196,
+        0.171
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.29,
+            0.174,
+            0.196,
+            0.171
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p50-s3",
+      "pageNumber": 50,
+      "title": "Selvo · 10080",
+      "productIds": [
+        "simpolo-p50-d3"
+      ],
+      "sourceRect": [
+        0.502,
+        0.174,
+        0.177,
+        0.171
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.502,
+            0.174,
+            0.177,
+            0.171
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p51-s1",
+      "pageNumber": 51,
+      "title": "Orissa Pan 23\" · 70002 BR / OR",
+      "productIds": [
+        "simpolo-p51-d1"
+      ],
+      "sourceRect": [
+        0.08,
+        0.177,
+        0.204,
+        0.21
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.08,
+            0.177,
+            0.204,
+            0.21
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p51-s2",
+      "pageNumber": 51,
+      "title": "Orissa Pan 21\" · 70001 BR / OR",
+      "productIds": [
+        "simpolo-p51-d2"
+      ],
+      "sourceRect": [
+        0.289,
+        0.177,
+        0.196,
+        0.21
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.289,
+            0.177,
+            0.196,
+            0.21
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p51-s3",
+      "pageNumber": 51,
+      "title": "Orissa Pan 20\" · 70004 OR",
+      "productIds": [
+        "simpolo-p51-d3"
+      ],
+      "sourceRect": [
+        0.497,
+        0.177,
+        0.202,
+        0.21
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.497,
+            0.177,
+            0.202,
+            0.21
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p51-s4",
+      "pageNumber": 51,
+      "title": "CT Pan 20\" · 70003OR",
+      "productIds": [
+        "simpolo-p51-d4"
+      ],
+      "sourceRect": [
+        0.712,
+        0.177,
+        0.195,
+        0.21
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.712,
+            0.177,
+            0.195,
+            0.21
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p51-s5",
+      "pageNumber": 51,
+      "title": "Albero · 65012GR / 65012BR / 65012BL",
+      "productIds": [
+        "simpolo-p51-d5"
+      ],
+      "sourceRect": [
+        0.06,
+        0.489,
+        0.195,
+        0.17
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.06,
+            0.489,
+            0.195,
+            0.17
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p51-s6",
+      "pageNumber": 51,
+      "title": "Slender · 65005DF",
+      "productIds": [
+        "simpolo-p51-d6"
+      ],
+      "sourceRect": [
+        0.27,
+        0.489,
+        0.19,
+        0.17
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.27,
+            0.489,
+            0.19,
+            0.17
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p51-s7",
+      "pageNumber": 51,
+      "title": "Slim · 65007SF",
+      "productIds": [
+        "simpolo-p51-d7"
+      ],
+      "sourceRect": [
+        0.492,
+        0.489,
+        0.175,
+        0.17
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.492,
+            0.489,
+            0.175,
+            0.17
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p51-s8",
+      "pageNumber": 51,
+      "title": "Marfil · 65009DF",
+      "productIds": [
+        "simpolo-p51-d8"
+      ],
+      "sourceRect": [
+        0.708,
+        0.489,
+        0.194,
+        0.17
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.708,
+            0.489,
+            0.194,
+            0.17
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p51-s9",
+      "pageNumber": 51,
+      "title": "Fosvit · 65013SF/DF",
+      "productIds": [
+        "simpolo-p51-d9"
+      ],
+      "sourceRect": [
+        0.06,
+        0.685,
+        0.195,
+        0.171
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.06,
+            0.685,
+            0.195,
+            0.171
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p51-s10",
+      "pageNumber": 51,
+      "title": "Bonsai · 65014DF",
+      "productIds": [
+        "simpolo-p51-d10"
+      ],
+      "sourceRect": [
+        0.27,
+        0.685,
+        0.19,
+        0.171
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.27,
+            0.685,
+            0.19,
+            0.171
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p51-s11",
+      "pageNumber": 51,
+      "title": "Bonsai · 65014SF",
+      "productIds": [
+        "simpolo-p51-d11"
+      ],
+      "sourceRect": [
+        0.492,
+        0.685,
+        0.175,
+        0.171
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.492,
+            0.685,
+            0.175,
+            0.171
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p51-s12",
+      "pageNumber": 51,
+      "title": "Moxy · 65015SF",
+      "productIds": [
+        "simpolo-p51-d12"
+      ],
+      "sourceRect": [
+        0.708,
+        0.685,
+        0.194,
+        0.171
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.708,
+            0.685,
+            0.194,
+            0.171
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p52-s1",
+      "pageNumber": 52,
+      "title": "Kelos - Sensor · 52005 CF",
+      "productIds": [
+        "simpolo-p52-d1"
+      ],
+      "sourceRect": [
+        0.14,
+        0.158,
+        0.159,
+        0.157
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.14,
+            0.158,
+            0.159,
+            0.157
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p52-s2",
+      "pageNumber": 52,
+      "title": "Sfera - Sensor · 50009 OF / CF",
+      "productIds": [
+        "simpolo-p52-d2"
+      ],
+      "sourceRect": [
+        0.313,
+        0.158,
+        0.185,
+        0.157
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.313,
+            0.158,
+            0.185,
+            0.157
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p52-s3",
+      "pageNumber": 52,
+      "title": "Savvy · 50002 CF",
+      "productIds": [
+        "simpolo-p52-d3"
+      ],
+      "sourceRect": [
+        0.51,
+        0.158,
+        0.187,
+        0.157
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.51,
+            0.158,
+            0.187,
+            0.157
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p52-s4",
+      "pageNumber": 52,
+      "title": "Fluid · 50006 OF",
+      "productIds": [
+        "simpolo-p52-d4"
+      ],
+      "sourceRect": [
+        0.71,
+        0.158,
+        0.165,
+        0.157
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.71,
+            0.158,
+            0.165,
+            0.157
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p52-s5",
+      "pageNumber": 52,
+      "title": "Antea · 50001 CF",
+      "productIds": [
+        "simpolo-p52-d5"
+      ],
+      "sourceRect": [
+        0.14,
+        0.318,
+        0.159,
+        0.169
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.14,
+            0.318,
+            0.159,
+            0.169
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p52-s6",
+      "pageNumber": 52,
+      "title": "Sclupture · 50003 OF",
+      "productIds": [
+        "simpolo-p52-d6"
+      ],
+      "sourceRect": [
+        0.313,
+        0.318,
+        0.185,
+        0.169
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.313,
+            0.318,
+            0.185,
+            0.169
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p52-s7",
+      "pageNumber": 52,
+      "title": "Stamen · 50008 OF",
+      "productIds": [
+        "simpolo-p52-d7"
+      ],
+      "sourceRect": [
+        0.51,
+        0.318,
+        0.187,
+        0.169
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.51,
+            0.318,
+            0.187,
+            0.169
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p52-s8",
+      "pageNumber": 52,
+      "title": "Flat Back · 50004 OF",
+      "productIds": [
+        "simpolo-p52-d8"
+      ],
+      "sourceRect": [
+        0.71,
+        0.318,
+        0.165,
+        0.169
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.71,
+            0.318,
+            0.165,
+            0.169
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p52-s9",
+      "pageNumber": 52,
+      "title": "'S' Type Rag Bolt · 88001 / 88003",
+      "productIds": [
+        "simpolo-p52-d9"
+      ],
+      "sourceRect": [
+        0.085,
+        0.574,
+        0.186,
+        0.162
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.574,
+            0.186,
+            0.162
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p52-s10",
+      "pageNumber": 52,
+      "title": "'T' Type Rag Bolt · 88002",
+      "productIds": [
+        "simpolo-p52-d10"
+      ],
+      "sourceRect": [
+        0.276,
+        0.574,
+        0.161,
+        0.162
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.276,
+            0.574,
+            0.161,
+            0.162
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p52-s11",
+      "pageNumber": 52,
+      "title": "Rag Bolt - Screw · 88006",
+      "productIds": [
+        "simpolo-p52-d11"
+      ],
+      "sourceRect": [
+        0.444,
+        0.574,
+        0.159,
+        0.162
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.444,
+            0.574,
+            0.159,
+            0.162
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p52-s12",
+      "pageNumber": 52,
+      "title": "Concealed Kit · 88011",
+      "productIds": [
+        "simpolo-p52-d12"
+      ],
+      "sourceRect": [
+        0.61,
+        0.574,
+        0.16,
+        0.162
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.61,
+            0.574,
+            0.16,
+            0.162
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p52-s13",
+      "pageNumber": 52,
+      "title": "P-trap · 70010",
+      "productIds": [
+        "simpolo-p52-d13"
+      ],
+      "sourceRect": [
+        0.78,
+        0.574,
+        0.163,
+        0.162
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.78,
+            0.574,
+            0.163,
+            0.162
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p52-s14",
+      "pageNumber": 52,
+      "title": "Drain Pipe",
+      "productIds": [
+        "simpolo-p52-d14"
+      ],
+      "sourceRect": [
+        0.085,
+        0.756,
+        0.186,
+        0.162
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.756,
+            0.186,
+            0.162
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p52-s15",
+      "pageNumber": 52,
+      "title": "Slat · 50005",
+      "productIds": [
+        "simpolo-p52-d15"
+      ],
+      "sourceRect": [
+        0.276,
+        0.756,
+        0.161,
+        0.162
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.276,
+            0.756,
+            0.161,
+            0.162
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p52-s16",
+      "pageNumber": 52,
+      "title": "Sensor · 53001",
+      "productIds": [
+        "simpolo-p52-d16"
+      ],
+      "sourceRect": [
+        0.444,
+        0.756,
+        0.159,
+        0.162
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.444,
+            0.756,
+            0.159,
+            0.162
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p52-s17",
+      "pageNumber": 52,
+      "title": "Waste Coupling · 88005",
+      "productIds": [
+        "simpolo-p52-d17"
+      ],
+      "sourceRect": [
+        0.61,
+        0.756,
+        0.16,
+        0.162
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.61,
+            0.756,
+            0.16,
+            0.162
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    },
+    {
+      "id": "simpolo-p52-s18",
+      "pageNumber": 52,
+      "title": "WC Connector",
+      "productIds": [
+        "simpolo-p52-d18"
+      ],
+      "sourceRect": [
+        0.78,
+        0.756,
+        0.163,
+        0.162
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.78,
+            0.756,
+            0.163,
+            0.162
+          ],
+          "label": "Complete product and printed details"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,186 @@
+{
+  "bookId": "lactose",
+  "sourceHash": "5f529bff1c4a3828dc5e9895e3e0e5c2f7bff74eada81aecd16a223cb2cbe174",
+  "method": "Manual visual reading of every original PDF page (18 pages), with complete tile crops and room associations verified against publisher artwork.",
+  "notes": [
+    "All 18 source pages reviewed. First six boards print GLOSSY; later Polished Surface icons are transcribed only where present. Himaliya Blush has no printed finish and is left unspecified.",
+    "Himaliya, Fliker and Roso retain the publisher spelling.",
+    "Only the color explicitly shown in a room receives a room view: Larix Cloud, Juliet Roso and Covelano Bronze. Bianco, Natural, Olive and Smoky remain complete-tile-only views.",
+    "Juliet and Covelano collection overview pages remain available in the original PDF; the named color variants are indexed on pages 14 and 17."
+  ],
+  "excludedPages": [
+    {
+      "pdfPage": 8,
+      "reason": "Full room setting for the preceding named product, linked from the gallery"
+    },
+    {
+      "pdfPage": 10,
+      "reason": "Full room setting for the preceding named product, linked from the gallery"
+    },
+    {
+      "pdfPage": 12,
+      "reason": "Full room setting for the preceding named product, linked from the gallery"
+    },
+    {
+      "pdfPage": 13,
+      "reason": "Juliet collection overview; exact named colors are on PDF page 14"
+    },
+    {
+      "pdfPage": 15,
+      "reason": "Full room setting for the preceding named product, linked from the gallery"
+    },
+    {
+      "pdfPage": 16,
+      "reason": "Covelano collection overview; exact named colors are on PDF page 17"
+    },
+    {
+      "pdfPage": 18,
+      "reason": "Full room setting for the preceding named product, linked from the gallery"
+    }
+  ],
+  "pages": [
+    {
+      "pdfPage": 1,
+      "verified": true,
+      "products": [
+        {
+          "name": "DESERT BEIGE",
+          "sizeMm": "600×1200mm",
+          "finish": "GLOSSY"
+        }
+      ]
+    },
+    {
+      "pdfPage": 2,
+      "verified": true,
+      "products": [
+        {
+          "name": "DESERT BIANCO",
+          "sizeMm": "600×1200mm",
+          "finish": "GLOSSY"
+        }
+      ]
+    },
+    {
+      "pdfPage": 3,
+      "verified": true,
+      "products": [
+        {
+          "name": "JADE GOLD",
+          "sizeMm": "600×1200mm",
+          "finish": "GLOSSY"
+        }
+      ]
+    },
+    {
+      "pdfPage": 4,
+      "verified": true,
+      "products": [
+        {
+          "name": "GOLD ROYAL",
+          "sizeMm": "600×1200mm",
+          "finish": "GLOSSY"
+        }
+      ]
+    },
+    {
+      "pdfPage": 5,
+      "verified": true,
+      "products": [
+        {
+          "name": "STATUARIO ALMERO",
+          "sizeMm": "600×1200mm",
+          "finish": "GLOSSY"
+        }
+      ]
+    },
+    {
+      "pdfPage": 6,
+      "verified": true,
+      "products": [
+        {
+          "name": "SOLENZA NOBLE",
+          "sizeMm": "600×1200mm",
+          "finish": "GLOSSY"
+        }
+      ]
+    },
+    {
+      "pdfPage": 7,
+      "verified": true,
+      "products": [
+        {
+          "name": "Himaliya Blush",
+          "sizeMm": "600×1200mm",
+          "aliases": [
+            "Himalaya Blush"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 9,
+      "verified": true,
+      "products": [
+        {
+          "name": "Fliker Crema",
+          "sizeMm": "600×1200mm",
+          "finish": "Polished Surface"
+        }
+      ]
+    },
+    {
+      "pdfPage": 11,
+      "verified": true,
+      "products": [
+        {
+          "name": "Larix Cloud",
+          "sizeMm": "600×1200mm",
+          "finish": "Polished Surface"
+        },
+        {
+          "name": "Larix Bianco",
+          "sizeMm": "600×1200mm",
+          "finish": "Polished Surface"
+        }
+      ]
+    },
+    {
+      "pdfPage": 14,
+      "verified": true,
+      "products": [
+        {
+          "name": "Juliet Roso",
+          "sizeMm": "600×1200mm",
+          "finish": "Polished Surface"
+        },
+        {
+          "name": "Juliet Natural",
+          "sizeMm": "600×1200mm",
+          "finish": "Polished Surface"
+        }
+      ]
+    },
+    {
+      "pdfPage": 17,
+      "verified": true,
+      "products": [
+        {
+          "name": "Covelano Bronze",
+          "sizeMm": "600×1200mm",
+          "finish": "Polished Surface"
+        },
+        {
+          "name": "Covelano Olive",
+          "sizeMm": "600×1200mm",
+          "finish": "Polished Surface"
+        },
+        {
+          "name": "Covelano Smoky",
+          "sizeMm": "600×1200mm",
+          "finish": "Polished Surface"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,566 @@
+{
+  "bookId": "cyan",
+  "sourceHash": "4c87c04ff170c8db6906414ec8fac58ff33a9ec6c525a4c9887c0f63f89b48db",
+  "stories": [
+    {
+      "id": "cyan-p008-d1",
+      "pageNumber": 8,
+      "productIds": [
+        "cyan-p8-d1"
+      ],
+      "title": "AJIO BIANCO",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.047,
+            0.062,
+            0.314,
+            0.871
+          ],
+          "label": "Complete tile design"
+        },
+        "room": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.923
+          ],
+          "label": "Room setting",
+          "pageNumber": 9
+        }
+      }
+    },
+    {
+      "id": "cyan-p010-d1",
+      "pageNumber": 10,
+      "productIds": [
+        "cyan-p10-d1"
+      ],
+      "title": "AVIANCA BIANCO",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.047,
+            0.062,
+            0.314,
+            0.871
+          ],
+          "label": "Complete tile design"
+        },
+        "room": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.923
+          ],
+          "label": "Room setting",
+          "pageNumber": 11
+        }
+      }
+    },
+    {
+      "id": "cyan-p012-d1",
+      "pageNumber": 12,
+      "productIds": [
+        "cyan-p12-d1"
+      ],
+      "title": "JERICO GREY",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.047,
+            0.062,
+            0.314,
+            0.871
+          ],
+          "label": "Complete tile design"
+        },
+        "room": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.923
+          ],
+          "label": "Room setting",
+          "pageNumber": 13
+        }
+      }
+    },
+    {
+      "id": "cyan-p014-d1",
+      "pageNumber": 14,
+      "productIds": [
+        "cyan-p14-d1"
+      ],
+      "title": "JERICO NERO",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.047,
+            0.062,
+            0.314,
+            0.871
+          ],
+          "label": "Complete tile design"
+        },
+        "room": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.923
+          ],
+          "label": "Room setting",
+          "pageNumber": 15
+        }
+      }
+    },
+    {
+      "id": "cyan-p017-d1",
+      "pageNumber": 17,
+      "productIds": [
+        "cyan-p17-d1"
+      ],
+      "title": "ARION SILVER",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.047,
+            0.062,
+            0.314,
+            0.871
+          ],
+          "label": "Complete tile design"
+        },
+        "room": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.923
+          ],
+          "label": "Room setting",
+          "pageNumber": 18
+        }
+      }
+    },
+    {
+      "id": "cyan-p019-d1",
+      "pageNumber": 19,
+      "productIds": [
+        "cyan-p19-d1"
+      ],
+      "title": "DENTO GREY",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.047,
+            0.062,
+            0.314,
+            0.871
+          ],
+          "label": "Complete tile design"
+        },
+        "room": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.923
+          ],
+          "label": "Room setting",
+          "pageNumber": 20
+        }
+      }
+    },
+    {
+      "id": "cyan-p021-d1",
+      "pageNumber": 21,
+      "productIds": [
+        "cyan-p21-d1"
+      ],
+      "title": "MARBELLA BIANCO",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.047,
+            0.062,
+            0.314,
+            0.871
+          ],
+          "label": "Complete tile design"
+        },
+        "room": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.923
+          ],
+          "label": "Room setting",
+          "pageNumber": 22
+        }
+      }
+    },
+    {
+      "id": "cyan-p024-d1",
+      "pageNumber": 24,
+      "productIds": [
+        "cyan-p24-d1"
+      ],
+      "title": "AJIO BIANCO",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.047,
+            0.062,
+            0.314,
+            0.871
+          ],
+          "label": "Complete tile design"
+        },
+        "room": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.923
+          ],
+          "label": "Room setting",
+          "pageNumber": 25
+        }
+      }
+    },
+    {
+      "id": "cyan-p026-d1",
+      "pageNumber": 26,
+      "productIds": [
+        "cyan-p26-d1"
+      ],
+      "title": "AVIANCA BIANCO",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.047,
+            0.062,
+            0.314,
+            0.871
+          ],
+          "label": "Complete tile design"
+        },
+        "room": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.923
+          ],
+          "label": "Room setting",
+          "pageNumber": 27
+        }
+      }
+    },
+    {
+      "id": "cyan-p028-d1",
+      "pageNumber": 28,
+      "productIds": [
+        "cyan-p28-d1"
+      ],
+      "title": "FESTIVE BIANCO",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.047,
+            0.062,
+            0.314,
+            0.871
+          ],
+          "label": "Complete tile design"
+        },
+        "room": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.923
+          ],
+          "label": "Room setting",
+          "pageNumber": 29
+        }
+      }
+    },
+    {
+      "id": "cyan-p030-d1",
+      "pageNumber": 30,
+      "productIds": [
+        "cyan-p30-d1"
+      ],
+      "title": "FESTIVE CHOCO",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.047,
+            0.062,
+            0.314,
+            0.871
+          ],
+          "label": "Complete tile design"
+        },
+        "room": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.923
+          ],
+          "label": "Room setting",
+          "pageNumber": 31
+        }
+      }
+    },
+    {
+      "id": "cyan-p032-d1",
+      "pageNumber": 32,
+      "productIds": [
+        "cyan-p32-d1"
+      ],
+      "title": "FESTIVE GREY",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.047,
+            0.062,
+            0.314,
+            0.871
+          ],
+          "label": "Complete tile design"
+        },
+        "room": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.923
+          ],
+          "label": "Room setting",
+          "pageNumber": 33
+        }
+      }
+    },
+    {
+      "id": "cyan-p034-d1",
+      "pageNumber": 34,
+      "productIds": [
+        "cyan-p34-d1"
+      ],
+      "title": "FESTIVE SILVER",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.047,
+            0.062,
+            0.314,
+            0.871
+          ],
+          "label": "Complete tile design"
+        },
+        "room": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.923
+          ],
+          "label": "Room setting",
+          "pageNumber": 35
+        }
+      }
+    },
+    {
+      "id": "cyan-p037-d1",
+      "pageNumber": 37,
+      "productIds": [
+        "cyan-p37-d1"
+      ],
+      "title": "ARION SILVER",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.047,
+            0.062,
+            0.314,
+            0.871
+          ],
+          "label": "Complete tile design"
+        },
+        "room": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.923
+          ],
+          "label": "Room setting",
+          "pageNumber": 38
+        }
+      }
+    },
+    {
+      "id": "cyan-p039-d1",
+      "pageNumber": 39,
+      "productIds": [
+        "cyan-p39-d1"
+      ],
+      "title": "DENTO GREY",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.047,
+            0.062,
+            0.314,
+            0.871
+          ],
+          "label": "Complete tile design"
+        },
+        "room": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.923
+          ],
+          "label": "Room setting",
+          "pageNumber": 40
+        }
+      }
+    },
+    {
+      "id": "cyan-p041-d1",
+      "pageNumber": 41,
+      "productIds": [
+        "cyan-p41-d1"
+      ],
+      "title": "MARBELLA BIANCO",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.047,
+            0.062,
+            0.314,
+            0.871
+          ],
+          "label": "Complete tile design"
+        },
+        "room": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.923
+          ],
+          "label": "Room setting",
+          "pageNumber": 42
+        }
+      }
+    }
+  ]
+}

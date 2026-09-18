@@ -1,0 +1,347 @@
+{
+  "bookId": "cyan",
+  "sourceHash": "4c87c04ff170c8db6906414ec8fac58ff33a9ec6c525a4c9887c0f63f89b48db",
+  "source": "public/catalogues/cyan/page-NNN.webp",
+  "method": "Manual visual review of all 43 original PDF pages, with direct label and specification inspection.",
+  "notes": [
+    "Designs are indexed once on the page with their printed specifications. Matching room-only pages are explicitly paired as gallery sources.",
+    "Polish and Carving preserve the printed Surface value; Endless is retained as a collection alias.",
+    "Same names in Polish and Carving are distinct finish records. All pages print four randoms; original specification pages retain those details."
+  ],
+  "excludedPages": [
+    {
+      "pdfPage": 1,
+      "reason": "Publisher cover"
+    },
+    {
+      "pdfPage": 2,
+      "reason": "Company information"
+    },
+    {
+      "pdfPage": 3,
+      "reason": "Collection introduction with an unnamed room photograph"
+    },
+    {
+      "pdfPage": 4,
+      "reason": "Technical specifications and unnamed display"
+    },
+    {
+      "pdfPage": 5,
+      "reason": "Applications information"
+    },
+    {
+      "pdfPage": 6,
+      "reason": "Index of designs indexed on their specification pages"
+    },
+    {
+      "pdfPage": 7,
+      "reason": "Polish collection divider"
+    },
+    {
+      "pdfPage": 9,
+      "reason": "Named room photograph of the design indexed on PDF page 8; paired in its gallery slide"
+    },
+    {
+      "pdfPage": 11,
+      "reason": "Named room photograph of the design indexed on PDF page 10; paired in its gallery slide"
+    },
+    {
+      "pdfPage": 13,
+      "reason": "Named room photograph of the design indexed on PDF page 12; paired in its gallery slide"
+    },
+    {
+      "pdfPage": 15,
+      "reason": "Named room photograph of the design indexed on PDF page 14; paired in its gallery slide"
+    },
+    {
+      "pdfPage": 16,
+      "reason": "Polish Endless collection divider"
+    },
+    {
+      "pdfPage": 18,
+      "reason": "Named room photograph of the design indexed on PDF page 17; paired in its gallery slide"
+    },
+    {
+      "pdfPage": 20,
+      "reason": "Named room photograph of the design indexed on PDF page 19; paired in its gallery slide"
+    },
+    {
+      "pdfPage": 22,
+      "reason": "Named room photograph of the design indexed on PDF page 21; paired in its gallery slide"
+    },
+    {
+      "pdfPage": 23,
+      "reason": "Carving collection divider"
+    },
+    {
+      "pdfPage": 25,
+      "reason": "Named room photograph of the design indexed on PDF page 24; paired in its gallery slide"
+    },
+    {
+      "pdfPage": 27,
+      "reason": "Named room photograph of the design indexed on PDF page 26; paired in its gallery slide"
+    },
+    {
+      "pdfPage": 29,
+      "reason": "Named room photograph of the design indexed on PDF page 28; paired in its gallery slide"
+    },
+    {
+      "pdfPage": 31,
+      "reason": "Named room photograph of the design indexed on PDF page 30; paired in its gallery slide"
+    },
+    {
+      "pdfPage": 33,
+      "reason": "Named room photograph of the design indexed on PDF page 32; paired in its gallery slide"
+    },
+    {
+      "pdfPage": 35,
+      "reason": "Named room photograph of the design indexed on PDF page 34; paired in its gallery slide"
+    },
+    {
+      "pdfPage": 36,
+      "reason": "Carving Endless collection divider"
+    },
+    {
+      "pdfPage": 38,
+      "reason": "Named room photograph of the design indexed on PDF page 37; paired in its gallery slide"
+    },
+    {
+      "pdfPage": 40,
+      "reason": "Named room photograph of the design indexed on PDF page 39; paired in its gallery slide"
+    },
+    {
+      "pdfPage": 42,
+      "reason": "Named room photograph of the design indexed on PDF page 41; paired in its gallery slide"
+    },
+    {
+      "pdfPage": 43,
+      "reason": "Publisher contact page"
+    }
+  ],
+  "pages": [
+    {
+      "pdfPage": 8,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "POLISH",
+      "products": [
+        {
+          "name": "AJIO BIANCO",
+          "aliases": [
+            "Polish Collection"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 10,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "POLISH",
+      "products": [
+        {
+          "name": "AVIANCA BIANCO",
+          "aliases": [
+            "Polish Collection"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 12,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "POLISH",
+      "products": [
+        {
+          "name": "JERICO GREY",
+          "aliases": [
+            "Polish Collection"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 14,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "POLISH",
+      "products": [
+        {
+          "name": "JERICO NERO",
+          "aliases": [
+            "Polish Collection"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 17,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "POLISH",
+      "products": [
+        {
+          "name": "ARION SILVER",
+          "aliases": [
+            "Polish Endless Collection"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 19,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "POLISH",
+      "products": [
+        {
+          "name": "DENTO GREY",
+          "aliases": [
+            "Polish Endless Collection"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 21,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "POLISH",
+      "products": [
+        {
+          "name": "MARBELLA BIANCO",
+          "aliases": [
+            "Polish Endless Collection"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 24,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "CARVING",
+      "products": [
+        {
+          "name": "AJIO BIANCO",
+          "aliases": [
+            "Carving Collection"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 26,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "CARVING",
+      "products": [
+        {
+          "name": "AVIANCA BIANCO",
+          "aliases": [
+            "Carving Collection"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 28,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "CARVING",
+      "products": [
+        {
+          "name": "FESTIVE BIANCO",
+          "aliases": [
+            "Carving Collection"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 30,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "CARVING",
+      "products": [
+        {
+          "name": "FESTIVE CHOCO",
+          "aliases": [
+            "Carving Collection"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 32,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "CARVING",
+      "products": [
+        {
+          "name": "FESTIVE GREY",
+          "aliases": [
+            "Carving Collection"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 34,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "CARVING",
+      "products": [
+        {
+          "name": "FESTIVE SILVER",
+          "aliases": [
+            "Carving Collection"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 37,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "CARVING",
+      "products": [
+        {
+          "name": "ARION SILVER",
+          "aliases": [
+            "Carving Endless Collection"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 39,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "CARVING",
+      "products": [
+        {
+          "name": "DENTO GREY",
+          "aliases": [
+            "Carving Endless Collection"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 41,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "CARVING",
+      "products": [
+        {
+          "name": "MARBELLA BIANCO",
+          "aliases": [
+            "Carving Endless Collection"
+          ]
+        }
+      ]
+    }
+  ]
+}

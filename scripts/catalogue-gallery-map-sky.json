@@ -1,0 +1,2567 @@
+{
+  "bookId": "sky",
+  "sourceHash": "5babb9322ad8a8da6c2dd4d42fa6db2a0899adfefcd321d260e6d8610f6a40a8",
+  "stories": [
+    {
+      "id": "sky-p002-story",
+      "pageNumber": 2,
+      "productIds": [
+        "sky-p2-d1",
+        "sky-p2-d2"
+      ],
+      "title": "123-L / 123-HL_1",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p003-story",
+      "pageNumber": 3,
+      "productIds": [
+        "sky-p3-d1",
+        "sky-p3-d2",
+        "sky-p3-d3"
+      ],
+      "title": "150-L / 150-HL_3 / 150-CLASSIC BLUE",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p004-story",
+      "pageNumber": 4,
+      "productIds": [
+        "sky-p4-d1",
+        "sky-p4-d2"
+      ],
+      "title": "150-AQUA / 150-HL_4",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p005-story",
+      "pageNumber": 5,
+      "productIds": [
+        "sky-p5-d1",
+        "sky-p5-d2",
+        "sky-p5-d3"
+      ],
+      "title": "150-L / 150-HL_10 / 150-STRWBERRY",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p006-story",
+      "pageNumber": 6,
+      "productIds": [
+        "sky-p6-d1",
+        "sky-p6-d2",
+        "sky-p6-d3"
+      ],
+      "title": "150-L / 150-HL_11 / 150-VIOLET",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p007-story",
+      "pageNumber": 7,
+      "productIds": [
+        "sky-p7-d1",
+        "sky-p7-d2"
+      ],
+      "title": "151-LT / 151-HL_2",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p008-story",
+      "pageNumber": 8,
+      "productIds": [
+        "sky-p8-d1",
+        "sky-p8-d2",
+        "sky-p8-d3"
+      ],
+      "title": "230-LT / 230-HL_1 / 230-DK",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p009-story",
+      "pageNumber": 9,
+      "productIds": [
+        "sky-p9-d1",
+        "sky-p9-d2",
+        "sky-p9-d3"
+      ],
+      "title": "236-LT / 236-HL_1 / 236-DK",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p010-story",
+      "pageNumber": 10,
+      "productIds": [
+        "sky-p10-d1",
+        "sky-p10-d2",
+        "sky-p10-d3"
+      ],
+      "title": "242-LT / 242-HL_2 / 242-DK",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p011-story",
+      "pageNumber": 11,
+      "productIds": [
+        "sky-p11-d1",
+        "sky-p11-d2",
+        "sky-p11-d3"
+      ],
+      "title": "252-LT / 252-HL_1 / 252-DK",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p012-story",
+      "pageNumber": 12,
+      "productIds": [
+        "sky-p12-d1",
+        "sky-p12-d2",
+        "sky-p12-d3"
+      ],
+      "title": "255-LT / 255-HL_1 / 255-DK",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p013-story",
+      "pageNumber": 13,
+      "productIds": [
+        "sky-p13-d1",
+        "sky-p13-d2",
+        "sky-p13-d3"
+      ],
+      "title": "293-LT / 293-HL_9 / 293-GREY",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p014-story",
+      "pageNumber": 14,
+      "productIds": [
+        "sky-p14-d1",
+        "sky-p14-d2",
+        "sky-p14-d3"
+      ],
+      "title": "293-LT / 293-HL_10 / 293-GREY",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p015-story",
+      "pageNumber": 15,
+      "productIds": [
+        "sky-p15-d1",
+        "sky-p15-d2",
+        "sky-p15-d3"
+      ],
+      "title": "310-LT / 310-HL_1 / 310-DK",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p016-story",
+      "pageNumber": 16,
+      "productIds": [
+        "sky-p16-d1",
+        "sky-p16-d2",
+        "sky-p16-d3"
+      ],
+      "title": "310-LT / 310-HL_4 / 310-DK",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p017-story",
+      "pageNumber": 17,
+      "productIds": [
+        "sky-p17-d1",
+        "sky-p17-d2"
+      ],
+      "title": "318-LT / 318-HL_3",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p018-story",
+      "pageNumber": 18,
+      "productIds": [
+        "sky-p18-d1",
+        "sky-p18-d2",
+        "sky-p18-d3"
+      ],
+      "title": "335-LT / 335-HL_1 / 335-DK",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p019-story",
+      "pageNumber": 19,
+      "productIds": [
+        "sky-p19-d1",
+        "sky-p19-d2",
+        "sky-p19-d3"
+      ],
+      "title": "362-LT-(RANDOM) / 362-HL_1 / 362-DK-(RANDOM)",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p020-story",
+      "pageNumber": 20,
+      "productIds": [
+        "sky-p20-d1",
+        "sky-p20-d2",
+        "sky-p20-d3"
+      ],
+      "title": "367-LT / 367-HL_1 / 367-DK",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p021-story",
+      "pageNumber": 21,
+      "productIds": [
+        "sky-p21-d1",
+        "sky-p21-d2",
+        "sky-p21-d3"
+      ],
+      "title": "423-LT / 423-HL-1 / 423-DK",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p022-story",
+      "pageNumber": 22,
+      "productIds": [
+        "sky-p22-d1",
+        "sky-p22-d2",
+        "sky-p22-d3"
+      ],
+      "title": "429-LT / 429-HL-1 / 429-DK",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p023-story",
+      "pageNumber": 23,
+      "productIds": [
+        "sky-p23-d1",
+        "sky-p23-d2",
+        "sky-p23-d3"
+      ],
+      "title": "456-LT-(RANDOM) / 456-HL-1 / 456-DK-(RANDOM)",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p024-story",
+      "pageNumber": 24,
+      "productIds": [
+        "sky-p24-d1",
+        "sky-p24-d2",
+        "sky-p24-d3"
+      ],
+      "title": "919-LT / 919-HL_1 / 919-DK",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p025-story",
+      "pageNumber": 25,
+      "productIds": [
+        "sky-p25-d1",
+        "sky-p25-d2",
+        "sky-p25-d3"
+      ],
+      "title": "1049-LT / 1049-HL-1 / 1049-DK",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p026-story",
+      "pageNumber": 26,
+      "productIds": [
+        "sky-p26-d1",
+        "sky-p26-d2",
+        "sky-p26-d3"
+      ],
+      "title": "1052-LT / 1052-HL-2 / 1052-DK",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p027-story",
+      "pageNumber": 27,
+      "productIds": [
+        "sky-p27-d1",
+        "sky-p27-d2"
+      ],
+      "title": "1054-LT / 1054-HL-3",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p028-story",
+      "pageNumber": 28,
+      "productIds": [
+        "sky-p28-d1",
+        "sky-p28-d2",
+        "sky-p28-d3"
+      ],
+      "title": "1233-LT / 1233-HL-1 / 1233-DK",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p029-story",
+      "pageNumber": 29,
+      "productIds": [
+        "sky-p29-d1",
+        "sky-p29-d2",
+        "sky-p29-d3",
+        "sky-p29-d4"
+      ],
+      "title": "1234-LT / 1234-HL-1 / 1234-HL-2 / 1234-DK",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p030-story",
+      "pageNumber": 30,
+      "productIds": [
+        "sky-p30-d1",
+        "sky-p30-d2"
+      ],
+      "title": "1309-LT / 1309-HL-1",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p031-story",
+      "pageNumber": 31,
+      "productIds": [
+        "sky-p31-d1",
+        "sky-p31-d2"
+      ],
+      "title": "1309-LT / 1309-HL-2",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p032-story",
+      "pageNumber": 32,
+      "productIds": [
+        "sky-p32-d1"
+      ],
+      "title": "1519",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p033-story",
+      "pageNumber": 33,
+      "productIds": [
+        "sky-p33-d1",
+        "sky-p33-d2",
+        "sky-p33-d3"
+      ],
+      "title": "1601-LT / 1601-HL-1 / 1601-DK",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p034-story",
+      "pageNumber": 34,
+      "productIds": [
+        "sky-p34-d1",
+        "sky-p34-d2",
+        "sky-p34-d3"
+      ],
+      "title": "1606-LT / 1606-HL-2 / 1606-DK",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p035-story",
+      "pageNumber": 35,
+      "productIds": [
+        "sky-p35-d1",
+        "sky-p35-d2",
+        "sky-p35-d3"
+      ],
+      "title": "1650-LT / 1650-HL-1 / 1650-DK",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p036-story",
+      "pageNumber": 36,
+      "productIds": [
+        "sky-p36-d1",
+        "sky-p36-d2",
+        "sky-p36-d3"
+      ],
+      "title": "1655-LT / 1655-HL-1 / 1655-DK",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p037-story",
+      "pageNumber": 37,
+      "productIds": [
+        "sky-p37-d1",
+        "sky-p37-d2"
+      ],
+      "title": "1671-LT / 1671-HL-1",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p038-story",
+      "pageNumber": 38,
+      "productIds": [
+        "sky-p38-d1",
+        "sky-p38-d2",
+        "sky-p38-d3"
+      ],
+      "title": "1680-LT / 1680-HL-2 / 1680-DK",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p039-story",
+      "pageNumber": 39,
+      "productIds": [
+        "sky-p39-d1",
+        "sky-p39-d2",
+        "sky-p39-d3"
+      ],
+      "title": "1690-LT / 1690-HL-1 / 1690-DK",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p040-story",
+      "pageNumber": 40,
+      "productIds": [
+        "sky-p40-d1",
+        "sky-p40-d2",
+        "sky-p40-d3"
+      ],
+      "title": "1691-LT / 1691-HL-1 / 1691-DK",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p041-story",
+      "pageNumber": 41,
+      "productIds": [
+        "sky-p41-d1",
+        "sky-p41-d2",
+        "sky-p41-d3"
+      ],
+      "title": "1691-LT / 1691-HL-3 / 1691-DK",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p042-story",
+      "pageNumber": 42,
+      "productIds": [
+        "sky-p42-d1",
+        "sky-p42-d2",
+        "sky-p42-d3"
+      ],
+      "title": "1755-LT-(RANDOM) / 1755-HL-1 / 1755-DK-(RANDOM)",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p043-story",
+      "pageNumber": 43,
+      "productIds": [
+        "sky-p43-d1",
+        "sky-p43-d2",
+        "sky-p43-d3"
+      ],
+      "title": "1756-LT-(RANDOM) / 1756-HL-4 / 1756-DK-(RANDOM)",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p044-story",
+      "pageNumber": 44,
+      "productIds": [
+        "sky-p44-d1",
+        "sky-p44-d2",
+        "sky-p44-d3"
+      ],
+      "title": "1765-LT-(RANDOM) / 1765-HL-2 / 1765-DK-(RANDOM)",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p045-story",
+      "pageNumber": 45,
+      "productIds": [
+        "sky-p45-d1",
+        "sky-p45-d2",
+        "sky-p45-d3"
+      ],
+      "title": "1814-LT / 1814-HL_1 / 1814-DK",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p046-story",
+      "pageNumber": 46,
+      "productIds": [
+        "sky-p46-d1",
+        "sky-p46-d2"
+      ],
+      "title": "2016-LT / 2016-HL-2",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p047-story",
+      "pageNumber": 47,
+      "productIds": [
+        "sky-p47-d1",
+        "sky-p47-d2"
+      ],
+      "title": "2026-LT / 2026-HL-1",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p048-story",
+      "pageNumber": 48,
+      "productIds": [
+        "sky-p48-d1",
+        "sky-p48-d2"
+      ],
+      "title": "2033-LT / 2033-DK",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p049-story",
+      "pageNumber": 49,
+      "productIds": [
+        "sky-p49-d1",
+        "sky-p49-d2"
+      ],
+      "title": "2044-LT / 2044-HL_3",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p050-story",
+      "pageNumber": 50,
+      "productIds": [
+        "sky-p50-d1",
+        "sky-p50-d2"
+      ],
+      "title": "2062-LT / 2062-HL_1",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p051-story",
+      "pageNumber": 51,
+      "productIds": [
+        "sky-p51-d1"
+      ],
+      "title": "3097",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p052-story",
+      "pageNumber": 52,
+      "productIds": [
+        "sky-p52-d1"
+      ],
+      "title": "3101",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p053-story",
+      "pageNumber": 53,
+      "productIds": [
+        "sky-p53-d1",
+        "sky-p53-d2",
+        "sky-p53-d3"
+      ],
+      "title": "4002-LT / 4002-HL_1 / 4002-DK",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p054-story",
+      "pageNumber": 54,
+      "productIds": [
+        "sky-p54-d1",
+        "sky-p54-d2",
+        "sky-p54-d3"
+      ],
+      "title": "4006-LT / 4006-HL_2 / 4006-DK",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p055-story",
+      "pageNumber": 55,
+      "productIds": [
+        "sky-p55-d1",
+        "sky-p55-d2",
+        "sky-p55-d3"
+      ],
+      "title": "4007-LT / 4007-HL_1 / 4007-DK",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p056-story",
+      "pageNumber": 56,
+      "productIds": [
+        "sky-p56-d1",
+        "sky-p56-d2",
+        "sky-p56-d3"
+      ],
+      "title": "4016-LT / 4016-HL_1 / 4016-DK",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p057-story",
+      "pageNumber": 57,
+      "productIds": [
+        "sky-p57-d1",
+        "sky-p57-d2",
+        "sky-p57-d3"
+      ],
+      "title": "4035-LT / 4035-HL_2 / 4035-DK",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p058-story",
+      "pageNumber": 58,
+      "productIds": [
+        "sky-p58-d1",
+        "sky-p58-d2"
+      ],
+      "title": "4039-LT / 4039-HL_1",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p059-story",
+      "pageNumber": 59,
+      "productIds": [
+        "sky-p59-d1"
+      ],
+      "title": "5101",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p060-story",
+      "pageNumber": 60,
+      "productIds": [
+        "sky-p60-d1",
+        "sky-p60-d2",
+        "sky-p60-d3"
+      ],
+      "title": "6057-LT / 6057-HL_1 / 6057-DK",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p061-story",
+      "pageNumber": 61,
+      "productIds": [
+        "sky-p61-d1",
+        "sky-p61-d2",
+        "sky-p61-d3"
+      ],
+      "title": "ARCH-WHITE / ARCH-K-3 / ARCH-AQUA",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p062-story",
+      "pageNumber": 62,
+      "productIds": [
+        "sky-p62-d1",
+        "sky-p62-d2",
+        "sky-p62-d3"
+      ],
+      "title": "ARCH-WHITE / ARCH-K-4 / ARCH-AQUA",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p063-story",
+      "pageNumber": 63,
+      "productIds": [
+        "sky-p63-d1",
+        "sky-p63-d2",
+        "sky-p63-d3"
+      ],
+      "title": "ARCH-WHITE / ARCH-K / ARCH-AQUA",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p064-story",
+      "pageNumber": 64,
+      "productIds": [
+        "sky-p64-d1",
+        "sky-p64-d2",
+        "sky-p64-d3"
+      ],
+      "title": "ARCH-WHITE / ARCH-BLACK-HL_1 / ARCH-BLACK",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p065-story",
+      "pageNumber": 65,
+      "productIds": [
+        "sky-p65-d1"
+      ],
+      "title": "BLOOD RED",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p066-story",
+      "pageNumber": 66,
+      "productIds": [
+        "sky-p66-d1"
+      ],
+      "title": "COBALT BLUE",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p067-story",
+      "pageNumber": 67,
+      "productIds": [
+        "sky-p67-d1"
+      ],
+      "title": "FANTA ORANGE",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p068-story",
+      "pageNumber": 68,
+      "productIds": [
+        "sky-p68-d1"
+      ],
+      "title": "WHITE",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p069-story",
+      "pageNumber": 69,
+      "productIds": [
+        "sky-p69-d1",
+        "sky-p69-d2",
+        "sky-p69-d3"
+      ],
+      "title": "WOOD-1-LT / WOOD-1-HL_1 / WOOD-1-DK",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p070-story",
+      "pageNumber": 70,
+      "productIds": [
+        "sky-p70-d1",
+        "sky-p70-d2",
+        "sky-p70-d3"
+      ],
+      "title": "WOOD-8-LT / WOOD-8-HL_1 / WOOD-8-DK",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p071-story",
+      "pageNumber": 71,
+      "productIds": [
+        "sky-p71-d1",
+        "sky-p71-d2",
+        "sky-p71-d3"
+      ],
+      "title": "WOOD-10-LT / WOOD-10-HL_1 / WOOD-10-DK",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p072-story",
+      "pageNumber": 72,
+      "productIds": [
+        "sky-p72-d1",
+        "sky-p72-d2",
+        "sky-p72-d3"
+      ],
+      "title": "WOOD-11-LT / WOOD-11-HL_1 / WOOD-11-DK",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sky-p073-story",
+      "pageNumber": 73,
+      "productIds": [
+        "sky-p73-d1"
+      ],
+      "title": "ZADE BLACK",
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0,
+            1,
+            0.5
+          ],
+          "label": "Complete design board"
+        },
+        "room": {
+          "rect": [
+            0,
+            0.5,
+            1,
+            0.5
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    }
+  ]
+}

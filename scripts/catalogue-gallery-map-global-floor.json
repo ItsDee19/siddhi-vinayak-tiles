@@ -1,0 +1,3526 @@
+{
+  "bookId": "global-floor",
+  "sourceHash": "ddf4eca1303efdb4a28ea96236d5f82a3541fd57365c9fd4cfd865950977e3b8",
+  "verification": "Source-page rectangles were visually checked against the original publisher images. Independent left/right products are separate stories. Coordinated boards and colour/finish series with one shared setting remain together. PDF58 CARAMEL has no room because the nearby green setting shows FOREST. PDF70 slab designs have no room photographs.",
+  "stories": [
+    {
+      "id": "global-floor-p3-left",
+      "pageNumber": 3,
+      "productIds": [
+        "global-floor-p3-d1"
+      ],
+      "title": "ANILAZ GREY",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.129,
+            0.329,
+            0.254
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.024,
+            0.387,
+            0.452,
+            0.538
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p3-right",
+      "pageNumber": 3,
+      "productIds": [
+        "global-floor-p3-d2"
+      ],
+      "title": "JUBIL GREEN",
+      "views": {
+        "tile": {
+          "rect": [
+            0.585,
+            0.129,
+            0.329,
+            0.254
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.387,
+            0.452,
+            0.538
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0.5,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p4-left",
+      "pageNumber": 4,
+      "productIds": [
+        "global-floor-p4-d1"
+      ],
+      "title": "HOPE WAVE",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.129,
+            0.329,
+            0.254
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.024,
+            0.387,
+            0.452,
+            0.538
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p4-right",
+      "pageNumber": 4,
+      "productIds": [
+        "global-floor-p4-d2"
+      ],
+      "title": "VARTUS STATUARIO GOLD",
+      "views": {
+        "tile": {
+          "rect": [
+            0.585,
+            0.129,
+            0.329,
+            0.254
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.387,
+            0.452,
+            0.538
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0.5,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p5-left",
+      "pageNumber": 5,
+      "productIds": [
+        "global-floor-p5-d1"
+      ],
+      "title": "TAYLOR BLUE",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.129,
+            0.329,
+            0.254
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.024,
+            0.387,
+            0.452,
+            0.538
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p5-right",
+      "pageNumber": 5,
+      "productIds": [
+        "global-floor-p5-d2"
+      ],
+      "title": "G-15032",
+      "views": {
+        "tile": {
+          "rect": [
+            0.585,
+            0.129,
+            0.329,
+            0.254
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.387,
+            0.452,
+            0.538
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0.5,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p6-left",
+      "pageNumber": 6,
+      "productIds": [
+        "global-floor-p6-d1"
+      ],
+      "title": "G-15741",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.129,
+            0.329,
+            0.254
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.024,
+            0.387,
+            0.452,
+            0.538
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p6-right",
+      "pageNumber": 6,
+      "productIds": [
+        "global-floor-p6-d2"
+      ],
+      "title": "DORLIN WHITE",
+      "views": {
+        "tile": {
+          "rect": [
+            0.585,
+            0.129,
+            0.329,
+            0.254
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.387,
+            0.452,
+            0.538
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0.5,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p7-board",
+      "pageNumber": 7,
+      "productIds": [
+        "global-floor-p7-d1",
+        "global-floor-p7-d2",
+        "global-floor-p7-d3"
+      ],
+      "title": "TRINITY BEIGE / TRINITY BROWN-HL / TRINITY BROWN",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.129,
+            0.329,
+            0.806
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.108,
+            0.452,
+            0.817
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p8-left",
+      "pageNumber": 8,
+      "productIds": [
+        "global-floor-p8-d1"
+      ],
+      "title": "ARSON CREMA",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.129,
+            0.329,
+            0.254
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.024,
+            0.387,
+            0.452,
+            0.538
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p8-right",
+      "pageNumber": 8,
+      "productIds": [
+        "global-floor-p8-d2"
+      ],
+      "title": "CANYON GREY ONYX",
+      "views": {
+        "tile": {
+          "rect": [
+            0.585,
+            0.129,
+            0.329,
+            0.254
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.387,
+            0.452,
+            0.538
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0.5,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p9-left",
+      "pageNumber": 9,
+      "productIds": [
+        "global-floor-p9-d1"
+      ],
+      "title": "BELLARIAN BEIGE",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.129,
+            0.329,
+            0.254
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.024,
+            0.387,
+            0.452,
+            0.538
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p9-right",
+      "pageNumber": 9,
+      "productIds": [
+        "global-floor-p9-d2"
+      ],
+      "title": "FLORIM CEDAR",
+      "views": {
+        "tile": {
+          "rect": [
+            0.585,
+            0.129,
+            0.329,
+            0.254
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.387,
+            0.452,
+            0.538
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0.5,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p10-board",
+      "pageNumber": 10,
+      "productIds": [
+        "global-floor-p10-d1",
+        "global-floor-p10-d2",
+        "global-floor-p10-d3"
+      ],
+      "title": "TRINITY GRISS / TRINITY GREY-HL / TRINITY GREY",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.129,
+            0.329,
+            0.806
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.108,
+            0.452,
+            0.817
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p11-left",
+      "pageNumber": 11,
+      "productIds": [
+        "global-floor-p11-d1"
+      ],
+      "title": "CARRARA ULTIMA",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.129,
+            0.329,
+            0.254
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.024,
+            0.387,
+            0.452,
+            0.538
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p11-right",
+      "pageNumber": 11,
+      "productIds": [
+        "global-floor-p11-d2"
+      ],
+      "title": "DALLAS AQUA",
+      "views": {
+        "tile": {
+          "rect": [
+            0.585,
+            0.129,
+            0.329,
+            0.254
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.387,
+            0.452,
+            0.538
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0.5,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p12-left",
+      "pageNumber": 12,
+      "productIds": [
+        "global-floor-p12-d1"
+      ],
+      "title": "DOLCE GREY",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.129,
+            0.329,
+            0.254
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.024,
+            0.387,
+            0.452,
+            0.538
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p12-right",
+      "pageNumber": 12,
+      "productIds": [
+        "global-floor-p12-d2"
+      ],
+      "title": "BRECCIA GREY",
+      "views": {
+        "tile": {
+          "rect": [
+            0.585,
+            0.129,
+            0.329,
+            0.254
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.387,
+            0.452,
+            0.538
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0.5,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p13-left",
+      "pageNumber": 13,
+      "productIds": [
+        "global-floor-p13-d1"
+      ],
+      "title": "GLACIER WHITE",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.129,
+            0.329,
+            0.254
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.024,
+            0.387,
+            0.452,
+            0.538
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p13-right",
+      "pageNumber": 13,
+      "productIds": [
+        "global-floor-p13-d2"
+      ],
+      "title": "KRYPTON BIANCO",
+      "views": {
+        "tile": {
+          "rect": [
+            0.585,
+            0.129,
+            0.329,
+            0.254
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.387,
+            0.452,
+            0.538
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0.5,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p14-board",
+      "pageNumber": 14,
+      "productIds": [
+        "global-floor-p14-d1",
+        "global-floor-p14-d2",
+        "global-floor-p14-d3"
+      ],
+      "title": "WONDER GREY / WONDER GREY DECOR",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.129,
+            0.329,
+            0.806
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.108,
+            0.452,
+            0.817
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p15-left",
+      "pageNumber": 15,
+      "productIds": [
+        "global-floor-p15-d1"
+      ],
+      "title": "LEVIN ART AQUA",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.129,
+            0.329,
+            0.254
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.024,
+            0.387,
+            0.452,
+            0.538
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p15-right",
+      "pageNumber": 15,
+      "productIds": [
+        "global-floor-p15-d2"
+      ],
+      "title": "LILAC STATUARIO",
+      "views": {
+        "tile": {
+          "rect": [
+            0.585,
+            0.129,
+            0.329,
+            0.254
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.387,
+            0.452,
+            0.538
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0.5,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p16-left",
+      "pageNumber": 16,
+      "productIds": [
+        "global-floor-p16-d1"
+      ],
+      "title": "G-15726",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.129,
+            0.329,
+            0.254
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.024,
+            0.387,
+            0.452,
+            0.538
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p16-right",
+      "pageNumber": 16,
+      "productIds": [
+        "global-floor-p16-d2"
+      ],
+      "title": "LOREAL RED",
+      "views": {
+        "tile": {
+          "rect": [
+            0.585,
+            0.129,
+            0.329,
+            0.254
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.387,
+            0.452,
+            0.538
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0.5,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p17-left",
+      "pageNumber": 17,
+      "productIds": [
+        "global-floor-p17-d1"
+      ],
+      "title": "ONYX PEARL",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.129,
+            0.329,
+            0.254
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.024,
+            0.387,
+            0.452,
+            0.538
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p17-right",
+      "pageNumber": 17,
+      "productIds": [
+        "global-floor-p17-d2"
+      ],
+      "title": "PRESTIGE ASH",
+      "views": {
+        "tile": {
+          "rect": [
+            0.585,
+            0.129,
+            0.329,
+            0.254
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.387,
+            0.452,
+            0.538
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0.5,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p18-board",
+      "pageNumber": 18,
+      "productIds": [
+        "global-floor-p18-d1",
+        "global-floor-p18-d2",
+        "global-floor-p18-d3"
+      ],
+      "title": "MAXICO BEIGE / MAXICO GREY / MAXICO WHITE",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.129,
+            0.329,
+            0.806
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.108,
+            0.452,
+            0.817
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p19-left",
+      "pageNumber": 19,
+      "productIds": [
+        "global-floor-p19-d1"
+      ],
+      "title": "ORIENT AQUA",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.129,
+            0.329,
+            0.254
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.024,
+            0.387,
+            0.452,
+            0.538
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p19-right",
+      "pageNumber": 19,
+      "productIds": [
+        "global-floor-p19-d2"
+      ],
+      "title": "ORIENT GOLD",
+      "views": {
+        "tile": {
+          "rect": [
+            0.585,
+            0.129,
+            0.329,
+            0.254
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.387,
+            0.452,
+            0.538
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0.5,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p20-left",
+      "pageNumber": 20,
+      "productIds": [
+        "global-floor-p20-d1"
+      ],
+      "title": "OMINI GREEN ONYX",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.129,
+            0.329,
+            0.254
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.024,
+            0.387,
+            0.452,
+            0.538
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p20-right",
+      "pageNumber": 20,
+      "productIds": [
+        "global-floor-p20-d2"
+      ],
+      "title": "VENUS SILVER",
+      "views": {
+        "tile": {
+          "rect": [
+            0.585,
+            0.129,
+            0.329,
+            0.254
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.387,
+            0.452,
+            0.538
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0.5,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p21-board",
+      "pageNumber": 21,
+      "productIds": [
+        "global-floor-p21-d1",
+        "global-floor-p21-d2"
+      ],
+      "title": "BARCELONA PEARL / BARCELONA OLIVE",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.255,
+            0.329,
+            0.531
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.108,
+            0.452,
+            0.817
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p22-board",
+      "pageNumber": 22,
+      "productIds": [
+        "global-floor-p22-d1",
+        "global-floor-p22-d2"
+      ],
+      "title": "FALCON WHITE / FALCON BLACK",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.255,
+            0.329,
+            0.531
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.108,
+            0.452,
+            0.817
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p23-board",
+      "pageNumber": 23,
+      "productIds": [
+        "global-floor-p23-d1",
+        "global-floor-p23-d2"
+      ],
+      "title": "NOTARIA WHITE / NOTARIA GREY",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.255,
+            0.329,
+            0.531
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.108,
+            0.452,
+            0.817
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p24-board",
+      "pageNumber": 24,
+      "productIds": [
+        "global-floor-p24-d1",
+        "global-floor-p24-d2"
+      ],
+      "title": "SIRLY AQUA / SIRLY GOLD",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.255,
+            0.329,
+            0.531
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.108,
+            0.452,
+            0.817
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p25-board",
+      "pageNumber": 25,
+      "productIds": [
+        "global-floor-p25-d1",
+        "global-floor-p25-d2"
+      ],
+      "title": "PIZZARO AQUA",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.255,
+            0.329,
+            0.531
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.108,
+            0.452,
+            0.817
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p26-board",
+      "pageNumber": 26,
+      "productIds": [
+        "global-floor-p26-d1",
+        "global-floor-p26-d2"
+      ],
+      "title": "KINEN WHITE",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.255,
+            0.329,
+            0.531
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.108,
+            0.452,
+            0.817
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p27-board",
+      "pageNumber": 27,
+      "productIds": [
+        "global-floor-p27-d1",
+        "global-floor-p27-d2"
+      ],
+      "title": "VALLENCIA CLASSIC",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.255,
+            0.329,
+            0.531
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.108,
+            0.452,
+            0.817
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p28-board",
+      "pageNumber": 28,
+      "productIds": [
+        "global-floor-p28-d1",
+        "global-floor-p28-d2",
+        "global-floor-p28-d3"
+      ],
+      "title": "NEBULA WHITE / NEBULA GREY FLOWER / NEBULA GREY",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.129,
+            0.329,
+            0.806
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.108,
+            0.452,
+            0.817
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p29-board",
+      "pageNumber": 29,
+      "productIds": [
+        "global-floor-p29-d1",
+        "global-floor-p29-d2",
+        "global-floor-p29-d3"
+      ],
+      "title": "NEBULA IVORY / NEBULA BROWN FLOWER / NEBULA BROWN",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.129,
+            0.329,
+            0.806
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.108,
+            0.452,
+            0.817
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p30-board",
+      "pageNumber": 30,
+      "productIds": [
+        "global-floor-p30-d1",
+        "global-floor-p30-d2"
+      ],
+      "title": "CORTANA BIANCO / CORTANA GREY",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.255,
+            0.329,
+            0.531
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.108,
+            0.452,
+            0.817
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p31-board",
+      "pageNumber": 31,
+      "productIds": [
+        "global-floor-p31-d1",
+        "global-floor-p31-d2"
+      ],
+      "title": "ADEN TERRA / MARS TERRA",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.255,
+            0.329,
+            0.531
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.108,
+            0.452,
+            0.817
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p32-left",
+      "pageNumber": 32,
+      "productIds": [
+        "global-floor-p32-d1"
+      ],
+      "title": "COLLO AQUA",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.129,
+            0.329,
+            0.254
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.024,
+            0.387,
+            0.452,
+            0.538
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p32-right",
+      "pageNumber": 32,
+      "productIds": [
+        "global-floor-p32-d2"
+      ],
+      "title": "COLLONIAL WHITE",
+      "views": {
+        "tile": {
+          "rect": [
+            0.585,
+            0.129,
+            0.329,
+            0.254
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.387,
+            0.452,
+            0.538
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0.5,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p33-left",
+      "pageNumber": 33,
+      "productIds": [
+        "global-floor-p33-d1"
+      ],
+      "title": "CREMANO BROWN",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.129,
+            0.329,
+            0.254
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.024,
+            0.387,
+            0.452,
+            0.538
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p33-right",
+      "pageNumber": 33,
+      "productIds": [
+        "global-floor-p33-d2"
+      ],
+      "title": "OPACO WHITE",
+      "views": {
+        "tile": {
+          "rect": [
+            0.585,
+            0.129,
+            0.329,
+            0.254
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.387,
+            0.452,
+            0.538
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0.5,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p34-left",
+      "pageNumber": 34,
+      "productIds": [
+        "global-floor-p34-d1"
+      ],
+      "title": "STATUARIO MARS AQUA",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.129,
+            0.329,
+            0.254
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.024,
+            0.387,
+            0.452,
+            0.538
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p34-right",
+      "pageNumber": 34,
+      "productIds": [
+        "global-floor-p34-d2"
+      ],
+      "title": "ROMANIA WHITE",
+      "views": {
+        "tile": {
+          "rect": [
+            0.585,
+            0.129,
+            0.329,
+            0.254
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.387,
+            0.452,
+            0.538
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0.5,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p35-board",
+      "pageNumber": 35,
+      "productIds": [
+        "global-floor-p35-d1",
+        "global-floor-p35-d2"
+      ],
+      "title": "ASPERO BIANCO / SUBWAY ASPERO BIANCO",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.255,
+            0.329,
+            0.531
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.108,
+            0.452,
+            0.817
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p36-board",
+      "pageNumber": 36,
+      "productIds": [
+        "global-floor-p36-d1",
+        "global-floor-p36-d2"
+      ],
+      "title": "RAPIDO PEARL / BRICK RAPIDO PEARL",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.255,
+            0.329,
+            0.531
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.108,
+            0.452,
+            0.817
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p37-board",
+      "pageNumber": 37,
+      "productIds": [
+        "global-floor-p37-d1",
+        "global-floor-p37-d2",
+        "global-floor-p37-d3"
+      ],
+      "title": "HARROW BAMBOO BEIGE / HARROW BEIGE / HARROW BAMBOO BEIGE MULTY",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.129,
+            0.329,
+            0.806
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.108,
+            0.452,
+            0.817
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p38-board",
+      "pageNumber": 38,
+      "productIds": [
+        "global-floor-p38-d1",
+        "global-floor-p38-d2"
+      ],
+      "title": "LASA AMBER / LASA KITKAT AMBER",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.255,
+            0.329,
+            0.531
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.108,
+            0.452,
+            0.817
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p39-board",
+      "pageNumber": 39,
+      "productIds": [
+        "global-floor-p39-d1",
+        "global-floor-p39-d2"
+      ],
+      "title": "ROMAN SHARK / RAJWADI ROMAN SHARK",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.255,
+            0.329,
+            0.531
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.108,
+            0.452,
+            0.817
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p40-board",
+      "pageNumber": 40,
+      "productIds": [
+        "global-floor-p40-d1",
+        "global-floor-p40-d2"
+      ],
+      "title": "IGNIS SAND / LINER IGNIS SAND",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.255,
+            0.329,
+            0.531
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.108,
+            0.452,
+            0.817
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p41-left",
+      "pageNumber": 41,
+      "productIds": [
+        "global-floor-p41-d1"
+      ],
+      "title": "ROSSO BLACK",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.129,
+            0.329,
+            0.254
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.024,
+            0.387,
+            0.452,
+            0.538
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p41-right",
+      "pageNumber": 41,
+      "productIds": [
+        "global-floor-p41-d2"
+      ],
+      "title": "SMOKE GREEN",
+      "views": {
+        "tile": {
+          "rect": [
+            0.585,
+            0.129,
+            0.329,
+            0.254
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.387,
+            0.452,
+            0.538
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0.5,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p42-left",
+      "pageNumber": 42,
+      "productIds": [
+        "global-floor-p42-d1"
+      ],
+      "title": "MOUNTAIN BLUE",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.129,
+            0.329,
+            0.254
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.024,
+            0.387,
+            0.452,
+            0.538
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p42-right",
+      "pageNumber": 42,
+      "productIds": [
+        "global-floor-p42-d2"
+      ],
+      "title": "RCHG-02",
+      "views": {
+        "tile": {
+          "rect": [
+            0.585,
+            0.129,
+            0.329,
+            0.254
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.387,
+            0.452,
+            0.538
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0.5,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p43-left",
+      "pageNumber": 43,
+      "productIds": [
+        "global-floor-p43-d1"
+      ],
+      "title": "JET BLACK",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.129,
+            0.329,
+            0.254
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.024,
+            0.387,
+            0.452,
+            0.538
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p43-right",
+      "pageNumber": 43,
+      "productIds": [
+        "global-floor-p43-d2"
+      ],
+      "title": "15001 (PLAIN WHITE)",
+      "views": {
+        "tile": {
+          "rect": [
+            0.585,
+            0.129,
+            0.329,
+            0.254
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.387,
+            0.452,
+            0.538
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0.5,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p44-left",
+      "pageNumber": 44,
+      "productIds": [
+        "global-floor-p44-d1"
+      ],
+      "title": "ASTRUM BEIGE",
+      "views": {
+        "tile": {
+          "rect": [
+            0.047,
+            0.129,
+            0.406,
+            0.308
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.024,
+            0.444,
+            0.452,
+            0.481
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p44-right",
+      "pageNumber": 44,
+      "productIds": [
+        "global-floor-p44-d2"
+      ],
+      "title": "ENDLESS-011",
+      "views": {
+        "tile": {
+          "rect": [
+            0.547,
+            0.129,
+            0.406,
+            0.308
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.444,
+            0.452,
+            0.481
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0.5,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p45-left",
+      "pageNumber": 45,
+      "productIds": [
+        "global-floor-p45-d1"
+      ],
+      "title": "ENDLESS-020-GREY",
+      "views": {
+        "tile": {
+          "rect": [
+            0.047,
+            0.129,
+            0.406,
+            0.308
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.024,
+            0.444,
+            0.452,
+            0.481
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p45-right",
+      "pageNumber": 45,
+      "productIds": [
+        "global-floor-p45-d2"
+      ],
+      "title": "ENDLESS FLORAL STATUARIO",
+      "views": {
+        "tile": {
+          "rect": [
+            0.547,
+            0.129,
+            0.406,
+            0.308
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.444,
+            0.452,
+            0.481
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0.5,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p46-left",
+      "pageNumber": 46,
+      "productIds": [
+        "global-floor-p46-d1"
+      ],
+      "title": "ENDLESS LAPIS BIANCO",
+      "views": {
+        "tile": {
+          "rect": [
+            0.047,
+            0.129,
+            0.406,
+            0.308
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.024,
+            0.444,
+            0.452,
+            0.481
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p46-right",
+      "pageNumber": 46,
+      "productIds": [
+        "global-floor-p46-d2"
+      ],
+      "title": "ENDLESS LAPIS DARK GREY",
+      "views": {
+        "tile": {
+          "rect": [
+            0.547,
+            0.129,
+            0.406,
+            0.308
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.444,
+            0.452,
+            0.481
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0.5,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p47-left",
+      "pageNumber": 47,
+      "productIds": [
+        "global-floor-p47-d1"
+      ],
+      "title": "MOON ONYX",
+      "views": {
+        "tile": {
+          "rect": [
+            0.047,
+            0.129,
+            0.406,
+            0.308
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.024,
+            0.444,
+            0.452,
+            0.481
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p47-right",
+      "pageNumber": 47,
+      "productIds": [
+        "global-floor-p47-d2"
+      ],
+      "title": "LUMI ONYX",
+      "views": {
+        "tile": {
+          "rect": [
+            0.547,
+            0.129,
+            0.406,
+            0.308
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.444,
+            0.452,
+            0.481
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0.5,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p48-left",
+      "pageNumber": 48,
+      "productIds": [
+        "global-floor-p48-d1"
+      ],
+      "title": "TOKYO IVORY",
+      "views": {
+        "tile": {
+          "rect": [
+            0.047,
+            0.129,
+            0.406,
+            0.308
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.024,
+            0.444,
+            0.452,
+            0.481
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p48-right",
+      "pageNumber": 48,
+      "productIds": [
+        "global-floor-p48-d2"
+      ],
+      "title": "ENDLESS RENO CLARA",
+      "views": {
+        "tile": {
+          "rect": [
+            0.547,
+            0.129,
+            0.406,
+            0.308
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.444,
+            0.452,
+            0.481
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0.5,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p49-board",
+      "pageNumber": 49,
+      "productIds": [
+        "global-floor-p49-d1",
+        "global-floor-p49-d2",
+        "global-floor-p49-d3"
+      ],
+      "title": "BEIGE / ROCK BEIGE",
+      "views": {
+        "tile": {
+          "rect": [
+            0.06,
+            0.256,
+            0.38,
+            0.542
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.108,
+            0.452,
+            0.817
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p50-board",
+      "pageNumber": 50,
+      "productIds": [
+        "global-floor-p50-d1",
+        "global-floor-p50-d2",
+        "global-floor-p50-d3",
+        "global-floor-p50-d4"
+      ],
+      "title": "CHARCOAL BLACK / ROCK CHARCOAL BLACK / BRICK CHARCOAL BLACK",
+      "views": {
+        "tile": {
+          "rect": [
+            0.06,
+            0.129,
+            0.38,
+            0.809
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.108,
+            0.452,
+            0.817
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p51-board",
+      "pageNumber": 51,
+      "productIds": [
+        "global-floor-p51-d1",
+        "global-floor-p51-d2",
+        "global-floor-p51-d3",
+        "global-floor-p51-d4"
+      ],
+      "title": "DARK GREY / ROCK DARK GREY / CLOUD DARK GREY",
+      "views": {
+        "tile": {
+          "rect": [
+            0.06,
+            0.129,
+            0.38,
+            0.809
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.108,
+            0.452,
+            0.817
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p52-board",
+      "pageNumber": 52,
+      "productIds": [
+        "global-floor-p52-d1",
+        "global-floor-p52-d2",
+        "global-floor-p52-d3",
+        "global-floor-p52-d4"
+      ],
+      "title": "STEEL GREY / ROCK STEEL GREY / CLOUD STEEL GREY",
+      "views": {
+        "tile": {
+          "rect": [
+            0.06,
+            0.129,
+            0.38,
+            0.809
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.108,
+            0.452,
+            0.817
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p53-board",
+      "pageNumber": 53,
+      "productIds": [
+        "global-floor-p53-d1",
+        "global-floor-p53-d2",
+        "global-floor-p53-d3"
+      ],
+      "title": "SUPER WHITE / BRICK SUPER WHITE",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.129,
+            0.329,
+            0.809
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.108,
+            0.452,
+            0.817
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p54-left",
+      "pageNumber": 54,
+      "productIds": [
+        "global-floor-p54-d1",
+        "global-floor-p54-d3"
+      ],
+      "title": "DESERT",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.129,
+            0.329,
+            0.537
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.024,
+            0.67,
+            0.452,
+            0.255
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p54-right",
+      "pageNumber": 54,
+      "productIds": [
+        "global-floor-p54-d2",
+        "global-floor-p54-d4"
+      ],
+      "title": "GALAXY BLACK",
+      "views": {
+        "tile": {
+          "rect": [
+            0.585,
+            0.129,
+            0.329,
+            0.537
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.67,
+            0.452,
+            0.255
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0.5,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p55-left",
+      "pageNumber": 55,
+      "productIds": [
+        "global-floor-p55-d1",
+        "global-floor-p55-d3"
+      ],
+      "title": "DUSKY BUTTER",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.129,
+            0.329,
+            0.537
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.024,
+            0.67,
+            0.452,
+            0.255
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p55-right",
+      "pageNumber": 55,
+      "productIds": [
+        "global-floor-p55-d2",
+        "global-floor-p55-d4"
+      ],
+      "title": "DUSKY GREY",
+      "views": {
+        "tile": {
+          "rect": [
+            0.585,
+            0.129,
+            0.329,
+            0.537
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.67,
+            0.452,
+            0.255
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0.5,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p56-left",
+      "pageNumber": 56,
+      "productIds": [
+        "global-floor-p56-d1",
+        "global-floor-p56-d3"
+      ],
+      "title": "MOON SNOW WHITE",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.129,
+            0.329,
+            0.537
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.024,
+            0.67,
+            0.452,
+            0.255
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p56-right",
+      "pageNumber": 56,
+      "productIds": [
+        "global-floor-p56-d2",
+        "global-floor-p56-d4"
+      ],
+      "title": "SMOKE",
+      "views": {
+        "tile": {
+          "rect": [
+            0.585,
+            0.129,
+            0.329,
+            0.537
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.67,
+            0.452,
+            0.255
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0.5,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p57-left",
+      "pageNumber": 57,
+      "productIds": [
+        "global-floor-p57-d1",
+        "global-floor-p57-d3"
+      ],
+      "title": "METAL / PULPIS",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.129,
+            0.329,
+            0.537
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.024,
+            0.67,
+            0.452,
+            0.255
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p57-right",
+      "pageNumber": 57,
+      "productIds": [
+        "global-floor-p57-d2",
+        "global-floor-p57-d4"
+      ],
+      "title": "MUD / COCOA",
+      "views": {
+        "tile": {
+          "rect": [
+            0.585,
+            0.129,
+            0.329,
+            0.537
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.67,
+            0.452,
+            0.255
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0.5,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p58-caramel",
+      "pageNumber": 58,
+      "productIds": [
+        "global-floor-p58-d1"
+      ],
+      "title": "CARAMEL",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.129,
+            0.329,
+            0.265
+          ],
+          "label": "Tile design"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p58-forest",
+      "pageNumber": 58,
+      "productIds": [
+        "global-floor-p58-d3"
+      ],
+      "title": "FOREST",
+      "views": {
+        "tile": {
+          "rect": [
+            0.085,
+            0.404,
+            0.329,
+            0.26
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.024,
+            0.674,
+            0.452,
+            0.251
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p58-deck-rock-smoke",
+      "pageNumber": 58,
+      "productIds": [
+        "global-floor-p58-d2"
+      ],
+      "title": "DECK ROCK SMOKE",
+      "views": {
+        "tile": {
+          "rect": [
+            0.668,
+            0.129,
+            0.309,
+            0.265
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.394,
+            0.452,
+            0.531
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0.5,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p59-board",
+      "pageNumber": 59,
+      "productIds": [
+        "global-floor-p59-d1",
+        "global-floor-p59-d2"
+      ],
+      "title": "CRYSTAL WHITE / CRYSTAL BLACK",
+      "views": {
+        "tile": {
+          "rect": [
+            0.022,
+            0.206,
+            0.456,
+            0.625
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.108,
+            0.452,
+            0.817
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p60-board",
+      "pageNumber": 60,
+      "productIds": [
+        "global-floor-p60-d1",
+        "global-floor-p60-d2",
+        "global-floor-p60-d3"
+      ],
+      "title": "GOLDEN PORTORO / STATUARIO NATURAL / VOLGA BLUE",
+      "views": {
+        "tile": {
+          "rect": [
+            0.022,
+            0.206,
+            0.456,
+            0.625
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.108,
+            0.452,
+            0.817
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p61-board",
+      "pageNumber": 61,
+      "productIds": [
+        "global-floor-p61-d1",
+        "global-floor-p61-d2",
+        "global-floor-p61-d3"
+      ],
+      "title": "SNP GREY / SNP IVORY / SNP BROWN",
+      "views": {
+        "tile": {
+          "rect": [
+            0.022,
+            0.206,
+            0.456,
+            0.625
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.108,
+            0.452,
+            0.817
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p62-board",
+      "pageNumber": 62,
+      "productIds": [
+        "global-floor-p62-d1",
+        "global-floor-p62-d2"
+      ],
+      "title": "SNP VERDE / SNP MASHROOM",
+      "views": {
+        "tile": {
+          "rect": [
+            0.022,
+            0.206,
+            0.456,
+            0.625
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.108,
+            0.452,
+            0.817
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p63-board",
+      "pageNumber": 63,
+      "productIds": [
+        "global-floor-p63-d1",
+        "global-floor-p63-d2",
+        "global-floor-p63-d3"
+      ],
+      "title": "GRAPHITE GREY / CARMEL / SMOKE AMBER",
+      "views": {
+        "tile": {
+          "rect": [
+            0.022,
+            0.206,
+            0.456,
+            0.625
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.108,
+            0.452,
+            0.817
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p64-board",
+      "pageNumber": 64,
+      "productIds": [
+        "global-floor-p64-d1",
+        "global-floor-p64-d2",
+        "global-floor-p64-d3"
+      ],
+      "title": "WALNUT / STEEL GREY / KOTA",
+      "views": {
+        "tile": {
+          "rect": [
+            0.022,
+            0.206,
+            0.456,
+            0.625
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.108,
+            0.452,
+            0.817
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p65-board",
+      "pageNumber": 65,
+      "productIds": [
+        "global-floor-p65-d1",
+        "global-floor-p65-d2"
+      ],
+      "title": "PIXEL WHITE / PIXEL BLACK",
+      "views": {
+        "tile": {
+          "rect": [
+            0.022,
+            0.206,
+            0.456,
+            0.625
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.108,
+            0.452,
+            0.817
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p66-board",
+      "pageNumber": 66,
+      "productIds": [
+        "global-floor-p66-d1",
+        "global-floor-p66-d2"
+      ],
+      "title": "NANO WHITE / NANO BLACK",
+      "views": {
+        "tile": {
+          "rect": [
+            0.022,
+            0.206,
+            0.456,
+            0.625
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.108,
+            0.452,
+            0.817
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p67-board",
+      "pageNumber": 67,
+      "productIds": [
+        "global-floor-p67-d1"
+      ],
+      "title": "ROYAL QUARTZITE",
+      "views": {
+        "tile": {
+          "rect": [
+            0.022,
+            0.206,
+            0.456,
+            0.625
+          ],
+          "label": "Tile design"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.108,
+            0.452,
+            0.817
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p68-board",
+      "pageNumber": 68,
+      "productIds": [
+        "global-floor-p68-d1",
+        "global-floor-p68-d2",
+        "global-floor-p68-d3",
+        "global-floor-p68-d4",
+        "global-floor-p68-d5",
+        "global-floor-p68-d6"
+      ],
+      "title": "GLAM BARLY / GLAM CHARCOAL / GLAM CREMA",
+      "views": {
+        "tile": {
+          "rect": [
+            0.022,
+            0.206,
+            0.456,
+            0.625
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.108,
+            0.452,
+            0.817
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p69-board",
+      "pageNumber": 69,
+      "productIds": [
+        "global-floor-p69-d1",
+        "global-floor-p69-d2",
+        "global-floor-p69-d3",
+        "global-floor-p69-d4",
+        "global-floor-p69-d5",
+        "global-floor-p69-d6"
+      ],
+      "title": "GLAM CHOCO / GLAM NERO / GLAM WHITE",
+      "views": {
+        "tile": {
+          "rect": [
+            0.022,
+            0.206,
+            0.456,
+            0.625
+          ],
+          "label": "Design board"
+        },
+        "room": {
+          "rect": [
+            0.524,
+            0.108,
+            0.452,
+            0.817
+          ],
+          "label": "Publisher room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p70-slab-1",
+      "pageNumber": 70,
+      "productIds": [
+        "global-floor-p70-d1"
+      ],
+      "title": "NANO WHITE",
+      "views": {
+        "tile": {
+          "rect": [
+            0.021,
+            0.14,
+            0.137,
+            0.692
+          ],
+          "label": "Tile design"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p70-slab-2",
+      "pageNumber": 70,
+      "productIds": [
+        "global-floor-p70-d2"
+      ],
+      "title": "PIXEL BLACK",
+      "views": {
+        "tile": {
+          "rect": [
+            0.182,
+            0.14,
+            0.137,
+            0.692
+          ],
+          "label": "Tile design"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p70-slab-3",
+      "pageNumber": 70,
+      "productIds": [
+        "global-floor-p70-d3"
+      ],
+      "title": "GLAM CREMA",
+      "views": {
+        "tile": {
+          "rect": [
+            0.343,
+            0.14,
+            0.137,
+            0.692
+          ],
+          "label": "Tile design"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p70-slab-4",
+      "pageNumber": 70,
+      "productIds": [
+        "global-floor-p70-d4"
+      ],
+      "title": "GLAM BARLY",
+      "views": {
+        "tile": {
+          "rect": [
+            0.602,
+            0.14,
+            0.137,
+            0.692
+          ],
+          "label": "Tile design"
+        }
+      },
+      "sourceRect": [
+        0.5,
+        0,
+        0.5,
+        1
+      ]
+    },
+    {
+      "id": "global-floor-p70-slab-5",
+      "pageNumber": 70,
+      "productIds": [
+        "global-floor-p70-d5"
+      ],
+      "title": "ROYAL QUARTZITE",
+      "views": {
+        "tile": {
+          "rect": [
+            0.763,
+            0.14,
+            0.137,
+            0.692
+          ],
+          "label": "Tile design"
+        }
+      },
+      "sourceRect": [
+        0.5,
+        0,
+        0.5,
+        1
+      ]
+    }
+  ]
+}

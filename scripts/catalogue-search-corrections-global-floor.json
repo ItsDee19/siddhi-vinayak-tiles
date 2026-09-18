@@ -1,0 +1,1435 @@
+{
+  "bookId": "global-floor",
+  "sourceName": "GLOBAL TILES FLOOR CATALOGUE.pdf",
+  "verification": "Labels, codes, sizes and finishes visually read from original uncropped publisher page images. Page numbers are explicit PDF pages, not printed spread numbers. Multiple formats retain printed page-header sizes; individual square/rectangle variants on pages49-53 follow printed layouts. A second gallery crop audit verified and included the lower rectangular variants on PDF pages54-58, keeping their individual printed codes and sizes.",
+  "excludedPages": [
+    1,
+    2,
+    71,
+    72
+  ],
+  "excludedReason": "Cover/introductory pages and CERA adhesive/grout pages, not tile design listings.",
+  "pages": [
+    {
+      "pdfPage": 3,
+      "sizeMm": "600x1200mm",
+      "sizeFt": "2x4ft",
+      "products": [
+        {
+          "name": "ANILAZ GREY",
+          "finish": "Glossy",
+          "code": ""
+        },
+        {
+          "name": "JUBIL GREEN",
+          "finish": "Glossy",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 4,
+      "sizeMm": "600x1200mm",
+      "sizeFt": "2x4ft",
+      "products": [
+        {
+          "name": "HOPE WAVE",
+          "finish": "Glossy",
+          "code": ""
+        },
+        {
+          "name": "VARTUS STATUARIO GOLD",
+          "finish": "Glossy",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 5,
+      "sizeMm": "600x1200mm",
+      "sizeFt": "2x4ft",
+      "products": [
+        {
+          "name": "TAYLOR BLUE",
+          "finish": "Glossy",
+          "code": ""
+        },
+        {
+          "name": "G-15032",
+          "finish": "Glossy",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 6,
+      "sizeMm": "600x1200mm",
+      "sizeFt": "2x4ft",
+      "products": [
+        {
+          "name": "G-15741",
+          "finish": "Glossy",
+          "code": ""
+        },
+        {
+          "name": "DORLIN WHITE",
+          "finish": "Glossy",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 7,
+      "sizeMm": "600x1200mm",
+      "sizeFt": "2x4ft",
+      "products": [
+        {
+          "name": "TRINITY BEIGE",
+          "finish": "Glossy",
+          "code": ""
+        },
+        {
+          "name": "TRINITY BROWN-HL",
+          "finish": "Glossy",
+          "code": ""
+        },
+        {
+          "name": "TRINITY BROWN",
+          "finish": "Glossy & Matt",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 8,
+      "sizeMm": "600x1200mm",
+      "sizeFt": "2x4ft",
+      "products": [
+        {
+          "name": "ARSON CREMA",
+          "finish": "Glossy",
+          "code": ""
+        },
+        {
+          "name": "CANYON GREY ONYX",
+          "finish": "Glossy",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 9,
+      "sizeMm": "600x1200mm",
+      "sizeFt": "2x4ft",
+      "products": [
+        {
+          "name": "BELLARIAN BEIGE",
+          "finish": "Glossy",
+          "code": ""
+        },
+        {
+          "name": "FLORIM CEDAR",
+          "finish": "Glossy",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 10,
+      "sizeMm": "600x1200mm",
+      "sizeFt": "2x4ft",
+      "products": [
+        {
+          "name": "TRINITY GRISS",
+          "finish": "Glossy",
+          "code": ""
+        },
+        {
+          "name": "TRINITY GREY-HL",
+          "finish": "Glossy",
+          "code": ""
+        },
+        {
+          "name": "TRINITY GREY",
+          "finish": "Glossy & Matt",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 11,
+      "sizeMm": "600x1200mm",
+      "sizeFt": "2x4ft",
+      "products": [
+        {
+          "name": "CARRARA ULTIMA",
+          "finish": "Glossy",
+          "code": ""
+        },
+        {
+          "name": "DALLAS AQUA",
+          "finish": "Glossy",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 12,
+      "sizeMm": "600x1200mm",
+      "sizeFt": "2x4ft",
+      "products": [
+        {
+          "name": "DOLCE GREY",
+          "finish": "Glossy",
+          "code": ""
+        },
+        {
+          "name": "BRECCIA GREY",
+          "finish": "Glossy",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 13,
+      "sizeMm": "600x1200mm",
+      "sizeFt": "2x4ft",
+      "products": [
+        {
+          "name": "GLACIER WHITE",
+          "finish": "Glossy",
+          "code": ""
+        },
+        {
+          "name": "KRYPTON BIANCO",
+          "finish": "Glossy",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 14,
+      "sizeMm": "600x1200mm",
+      "sizeFt": "2x4ft",
+      "products": [
+        {
+          "name": "WONDER GREY",
+          "finish": "Glossy",
+          "code": ""
+        },
+        {
+          "name": "WONDER GREY DECOR",
+          "finish": "Glossy",
+          "code": ""
+        },
+        {
+          "name": "WONDER GREY",
+          "finish": "Matt",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 15,
+      "sizeMm": "600x1200mm",
+      "sizeFt": "2x4ft",
+      "products": [
+        {
+          "name": "LEVIN ART AQUA",
+          "finish": "Glossy",
+          "code": ""
+        },
+        {
+          "name": "LILAC STATUARIO",
+          "finish": "Glossy",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 16,
+      "sizeMm": "600x1200mm",
+      "sizeFt": "2x4ft",
+      "products": [
+        {
+          "name": "G-15726",
+          "finish": "Glossy",
+          "code": ""
+        },
+        {
+          "name": "LOREAL RED",
+          "finish": "Glossy",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 17,
+      "sizeMm": "600x1200mm",
+      "sizeFt": "2x4ft",
+      "products": [
+        {
+          "name": "ONYX PEARL",
+          "finish": "Glossy",
+          "code": ""
+        },
+        {
+          "name": "PRESTIGE ASH",
+          "finish": "Glossy",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 18,
+      "sizeMm": "600x1200mm",
+      "sizeFt": "2x4ft",
+      "products": [
+        {
+          "name": "MAXICO BEIGE",
+          "finish": "Glossy",
+          "code": ""
+        },
+        {
+          "name": "MAXICO GREY",
+          "finish": "Glossy",
+          "code": ""
+        },
+        {
+          "name": "MAXICO WHITE",
+          "finish": "Glossy",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 19,
+      "sizeMm": "600x1200mm",
+      "sizeFt": "2x4ft",
+      "products": [
+        {
+          "name": "ORIENT AQUA",
+          "finish": "Glossy",
+          "code": ""
+        },
+        {
+          "name": "ORIENT GOLD",
+          "finish": "Glossy",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 20,
+      "sizeMm": "600x1200mm",
+      "sizeFt": "2x4ft",
+      "products": [
+        {
+          "name": "OMINI GREEN ONYX",
+          "finish": "Glossy",
+          "code": ""
+        },
+        {
+          "name": "VENUS SILVER",
+          "finish": "Glossy & Matt",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 21,
+      "sizeMm": "600x1200mm",
+      "sizeFt": "2x4ft",
+      "products": [
+        {
+          "name": "BARCELONA PEARL",
+          "finish": "Glossy",
+          "code": ""
+        },
+        {
+          "name": "BARCELONA OLIVE",
+          "finish": "Glossy",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 22,
+      "sizeMm": "600x1200mm",
+      "sizeFt": "2x4ft",
+      "products": [
+        {
+          "name": "FALCON WHITE",
+          "finish": "Glossy",
+          "code": ""
+        },
+        {
+          "name": "FALCON BLACK",
+          "finish": "Glossy",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 23,
+      "sizeMm": "600x1200mm",
+      "sizeFt": "2x4ft",
+      "products": [
+        {
+          "name": "NOTARIA WHITE",
+          "finish": "Glossy & Carving",
+          "code": ""
+        },
+        {
+          "name": "NOTARIA GREY",
+          "finish": "Glossy",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 24,
+      "sizeMm": "600x1200mm",
+      "sizeFt": "2x4ft",
+      "products": [
+        {
+          "name": "SIRLY AQUA",
+          "finish": "Glossy & Carving",
+          "code": ""
+        },
+        {
+          "name": "SIRLY GOLD",
+          "finish": "Glossy & Carving",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 25,
+      "sizeMm": "600x1200mm",
+      "sizeFt": "2x4ft",
+      "products": [
+        {
+          "name": "PIZZARO AQUA",
+          "finish": "Glossy",
+          "code": ""
+        },
+        {
+          "name": "PIZZARO AQUA",
+          "finish": "Carving",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 26,
+      "sizeMm": "600x1200mm",
+      "sizeFt": "2x4ft",
+      "products": [
+        {
+          "name": "KINEN WHITE",
+          "finish": "Glossy",
+          "code": ""
+        },
+        {
+          "name": "KINEN WHITE",
+          "finish": "Carving",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 27,
+      "sizeMm": "600x1200mm",
+      "sizeFt": "2x4ft",
+      "products": [
+        {
+          "name": "VALLENCIA CLASSIC",
+          "finish": "Glossy",
+          "code": ""
+        },
+        {
+          "name": "VALLENCIA CLASSIC",
+          "finish": "Carving",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 28,
+      "sizeMm": "600x1200mm",
+      "sizeFt": "2x4ft",
+      "products": [
+        {
+          "name": "NEBULA WHITE",
+          "finish": "Matt",
+          "code": ""
+        },
+        {
+          "name": "NEBULA GREY FLOWER",
+          "finish": "Carving",
+          "code": ""
+        },
+        {
+          "name": "NEBULA GREY",
+          "finish": "Matt",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 29,
+      "sizeMm": "600x1200mm",
+      "sizeFt": "2x4ft",
+      "products": [
+        {
+          "name": "NEBULA IVORY",
+          "finish": "Matt",
+          "code": ""
+        },
+        {
+          "name": "NEBULA BROWN FLOWER",
+          "finish": "Carving",
+          "code": ""
+        },
+        {
+          "name": "NEBULA BROWN",
+          "finish": "Matt",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 30,
+      "sizeMm": "600x1200mm",
+      "sizeFt": "2x4ft",
+      "products": [
+        {
+          "name": "CORTANA BIANCO",
+          "finish": "Carving",
+          "code": ""
+        },
+        {
+          "name": "CORTANA GREY",
+          "finish": "Carving",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 31,
+      "sizeMm": "600x1200mm",
+      "sizeFt": "2x4ft",
+      "products": [
+        {
+          "name": "ADEN TERRA",
+          "finish": "Carving",
+          "code": ""
+        },
+        {
+          "name": "MARS TERRA",
+          "finish": "Carving",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 32,
+      "sizeMm": "600x1200mm",
+      "sizeFt": "2x4ft",
+      "products": [
+        {
+          "name": "COLLO AQUA",
+          "finish": "Carving",
+          "code": ""
+        },
+        {
+          "name": "COLLONIAL WHITE",
+          "finish": "Carving",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 33,
+      "sizeMm": "600x1200mm",
+      "sizeFt": "2x4ft",
+      "products": [
+        {
+          "name": "CREMANO BROWN",
+          "finish": "Carving",
+          "code": ""
+        },
+        {
+          "name": "OPACO WHITE",
+          "finish": "Carving",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 34,
+      "sizeMm": "600x1200mm",
+      "sizeFt": "2x4ft",
+      "products": [
+        {
+          "name": "STATUARIO MARS AQUA",
+          "finish": "Carving",
+          "code": ""
+        },
+        {
+          "name": "ROMANIA WHITE",
+          "finish": "Carving",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 35,
+      "sizeMm": "600x1200mm",
+      "sizeFt": "2x4ft",
+      "products": [
+        {
+          "name": "ASPERO BIANCO",
+          "finish": "Matt",
+          "code": ""
+        },
+        {
+          "name": "SUBWAY ASPERO BIANCO",
+          "finish": "Punch Matt",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 36,
+      "sizeMm": "600x1200mm",
+      "sizeFt": "2x4ft",
+      "products": [
+        {
+          "name": "RAPIDO PEARL",
+          "finish": "Matt",
+          "code": ""
+        },
+        {
+          "name": "BRICK RAPIDO PEARL",
+          "finish": "Punch Matt",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 37,
+      "sizeMm": "600x1200mm",
+      "sizeFt": "2x4ft",
+      "products": [
+        {
+          "name": "HARROW BAMBOO BEIGE",
+          "finish": "Punch",
+          "code": ""
+        },
+        {
+          "name": "HARROW BEIGE",
+          "finish": "Matt",
+          "code": ""
+        },
+        {
+          "name": "HARROW BAMBOO BEIGE MULTY",
+          "finish": "Punch",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 38,
+      "sizeMm": "600x1200mm",
+      "sizeFt": "2x4ft",
+      "products": [
+        {
+          "name": "LASA AMBER",
+          "finish": "Matt",
+          "code": ""
+        },
+        {
+          "name": "LASA KITKAT AMBER",
+          "finish": "Punch",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 39,
+      "sizeMm": "600x1200mm",
+      "sizeFt": "2x4ft",
+      "products": [
+        {
+          "name": "ROMAN SHARK",
+          "finish": "Matt",
+          "code": ""
+        },
+        {
+          "name": "RAJWADI ROMAN SHARK",
+          "finish": "Punch",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 40,
+      "sizeMm": "600x1200mm",
+      "sizeFt": "2x4ft",
+      "products": [
+        {
+          "name": "IGNIS SAND",
+          "finish": "Matt",
+          "code": ""
+        },
+        {
+          "name": "LINER IGNIS SAND",
+          "finish": "Matt",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 41,
+      "sizeMm": "600x1200mm",
+      "sizeFt": "2x4ft",
+      "products": [
+        {
+          "name": "ROSSO BLACK",
+          "finish": "High Gloss",
+          "code": ""
+        },
+        {
+          "name": "SMOKE GREEN",
+          "finish": "High Gloss",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 42,
+      "sizeMm": "600x1200mm",
+      "sizeFt": "2x4ft",
+      "products": [
+        {
+          "name": "MOUNTAIN BLUE",
+          "finish": "High Gloss",
+          "code": ""
+        },
+        {
+          "name": "RCHG-02",
+          "finish": "High Gloss",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 43,
+      "sizeMm": "600x1200mm",
+      "sizeFt": "2x4ft",
+      "products": [
+        {
+          "name": "JET BLACK",
+          "finish": "Special Color",
+          "code": ""
+        },
+        {
+          "name": "15001 (PLAIN WHITE)",
+          "finish": "Glossy",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 44,
+      "sizeMm": "800x1600mm",
+      "sizeFt": "2.5x5ft",
+      "products": [
+        {
+          "name": "ASTRUM BEIGE",
+          "finish": "Glossy",
+          "code": ""
+        },
+        {
+          "name": "ENDLESS-011",
+          "finish": "Glossy",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 45,
+      "sizeMm": "800x1600mm",
+      "sizeFt": "2.5x5ft",
+      "products": [
+        {
+          "name": "ENDLESS-020-GREY",
+          "finish": "Glossy",
+          "code": ""
+        },
+        {
+          "name": "ENDLESS FLORAL STATUARIO",
+          "finish": "Glossy",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 46,
+      "sizeMm": "800x1600mm",
+      "sizeFt": "2.5x5ft",
+      "products": [
+        {
+          "name": "ENDLESS LAPIS BIANCO",
+          "finish": "Glossy",
+          "code": ""
+        },
+        {
+          "name": "ENDLESS LAPIS DARK GREY",
+          "finish": "Glossy",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 47,
+      "sizeMm": "800x1600mm",
+      "sizeFt": "2.5x5ft",
+      "products": [
+        {
+          "name": "MOON ONYX",
+          "finish": "Glossy",
+          "code": ""
+        },
+        {
+          "name": "LUMI ONYX",
+          "finish": "Glossy",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 48,
+      "sizeMm": "800x1600mm",
+      "sizeFt": "2.5x5ft",
+      "products": [
+        {
+          "name": "TOKYO IVORY",
+          "finish": "Glossy",
+          "code": ""
+        },
+        {
+          "name": "ENDLESS RENO CLARA",
+          "finish": "Glossy",
+          "code": ""
+        }
+      ]
+    },
+    {
+      "pdfPage": 49,
+      "sizeMm": "600x600mm / 600x1200mm",
+      "sizeFt": "2x2ft / 2x4ft",
+      "products": [
+        {
+          "name": "BEIGE",
+          "finish": "Matt",
+          "code": "EM750670R",
+          "sizeMm": "600x600mm",
+          "sizeFt": "2x2ft"
+        },
+        {
+          "name": "ROCK BEIGE",
+          "finish": "Punch",
+          "code": "EP780700R",
+          "sizeMm": "600x600mm",
+          "sizeFt": "2x2ft"
+        },
+        {
+          "name": "BEIGE",
+          "finish": "Matt",
+          "code": "EM900800R",
+          "sizeMm": "600x1200mm",
+          "sizeFt": "2x4ft"
+        }
+      ]
+    },
+    {
+      "pdfPage": 50,
+      "sizeMm": "600x600mm / 600x1200mm",
+      "sizeFt": "2x2ft / 2x4ft",
+      "products": [
+        {
+          "name": "CHARCOAL BLACK",
+          "finish": "Matt",
+          "code": "CM950870R",
+          "sizeMm": "600x600mm",
+          "sizeFt": "2x2ft"
+        },
+        {
+          "name": "ROCK CHARCOAL BLACK",
+          "finish": "Punch",
+          "code": "RP980900R",
+          "sizeMm": "600x600mm",
+          "sizeFt": "2x2ft"
+        },
+        {
+          "name": "BRICK CHARCOAL BLACK",
+          "finish": "Punch",
+          "code": "BP11001000R",
+          "sizeMm": "600x1200mm",
+          "sizeFt": "2x4ft"
+        },
+        {
+          "name": "CHARCOAL BLACK",
+          "finish": "Matt",
+          "code": "CM11001000R",
+          "sizeMm": "600x1200mm",
+          "sizeFt": "2x4ft"
+        }
+      ]
+    },
+    {
+      "pdfPage": 51,
+      "sizeMm": "600x600mm / 600x1200mm",
+      "sizeFt": "2x2ft / 2x4ft",
+      "products": [
+        {
+          "name": "DARK GREY",
+          "finish": "Matt",
+          "code": "DG750670R",
+          "sizeMm": "600x600mm",
+          "sizeFt": "2x2ft"
+        },
+        {
+          "name": "ROCK DARK GREY",
+          "finish": "Punch",
+          "code": "RG780700R",
+          "sizeMm": "600x600mm",
+          "sizeFt": "2x2ft"
+        },
+        {
+          "name": "CLOUD DARK GREY",
+          "finish": "Punch",
+          "code": "CP950850R",
+          "sizeMm": "600x1200mm",
+          "sizeFt": "2x4ft"
+        },
+        {
+          "name": "DARK GREY",
+          "finish": "Matt",
+          "code": "DM900800R",
+          "sizeMm": "600x1200mm",
+          "sizeFt": "2x4ft"
+        }
+      ]
+    },
+    {
+      "pdfPage": 52,
+      "sizeMm": "600x600mm / 600x1200mm",
+      "sizeFt": "2x2ft / 2x4ft",
+      "products": [
+        {
+          "name": "STEEL GREY",
+          "finish": "Matt",
+          "code": "GS750670R",
+          "sizeMm": "600x600mm",
+          "sizeFt": "2x2ft"
+        },
+        {
+          "name": "ROCK STEEL GREY",
+          "finish": "Punch",
+          "code": "PS780700R",
+          "sizeMm": "600x600mm",
+          "sizeFt": "2x2ft"
+        },
+        {
+          "name": "CLOUD STEEL GREY",
+          "finish": "Punch",
+          "code": "CG950850R",
+          "sizeMm": "600x1200mm",
+          "sizeFt": "2x4ft"
+        },
+        {
+          "name": "STEEL GREY",
+          "finish": "Matt",
+          "code": "CG900800R",
+          "sizeMm": "600x1200mm",
+          "sizeFt": "2x4ft"
+        }
+      ]
+    },
+    {
+      "pdfPage": 53,
+      "sizeMm": "600x600mm / 600x1200mm",
+      "sizeFt": "2x2ft / 2x4ft",
+      "products": [
+        {
+          "name": "SUPER WHITE",
+          "finish": "Matt",
+          "code": "SW950870R",
+          "sizeMm": "600x600mm",
+          "sizeFt": "2x2ft"
+        },
+        {
+          "name": "BRICK SUPER WHITE",
+          "finish": "Punch",
+          "code": "SP11001000R",
+          "sizeMm": "600x1200mm",
+          "sizeFt": "2x4ft"
+        },
+        {
+          "name": "SUPER WHITE",
+          "finish": "Matt",
+          "code": "SW11001000R",
+          "sizeMm": "600x1200mm",
+          "sizeFt": "2x4ft"
+        }
+      ]
+    },
+    {
+      "pdfPage": 54,
+      "sizeMm": "600x600mm / 600x1200mm",
+      "sizeFt": "2x2ft / 2x4ft",
+      "products": [
+        {
+          "name": "DESERT",
+          "finish": "Matt",
+          "code": "RM750670R",
+          "sizeMm": "600x600mm",
+          "sizeFt": "2x2ft"
+        },
+        {
+          "name": "GALAXY BLACK",
+          "finish": "Matt",
+          "code": "GB830750R",
+          "sizeMm": "600x600mm",
+          "sizeFt": "2x2ft"
+        },
+        {
+          "name": "DESERT",
+          "code": "RM900800R",
+          "finish": "Matt",
+          "sizeMm": "600x1200mm",
+          "sizeFt": "2x4ft"
+        },
+        {
+          "name": "GALAXY BLACK",
+          "code": "GB950850R",
+          "finish": "Matt",
+          "sizeMm": "600x1200mm",
+          "sizeFt": "2x4ft"
+        }
+      ]
+    },
+    {
+      "pdfPage": 55,
+      "sizeMm": "600x600mm / 600x1200mm",
+      "sizeFt": "2x2ft / 2x4ft",
+      "products": [
+        {
+          "name": "DUSKY BUTTER",
+          "finish": "Matt",
+          "code": "BM750670R",
+          "sizeMm": "600x600mm",
+          "sizeFt": "2x2ft"
+        },
+        {
+          "name": "DUSKY GREY",
+          "finish": "Matt",
+          "code": "DG750670R",
+          "sizeMm": "600x600mm",
+          "sizeFt": "2x2ft"
+        },
+        {
+          "name": "DUSKY BUTTER",
+          "code": "BD900800R",
+          "finish": "Matt",
+          "sizeMm": "600x1200mm",
+          "sizeFt": "2x4ft"
+        },
+        {
+          "name": "DUSKY GREY",
+          "code": "DM900800R",
+          "finish": "Matt",
+          "sizeMm": "600x1200mm",
+          "sizeFt": "2x4ft"
+        }
+      ]
+    },
+    {
+      "pdfPage": 56,
+      "sizeMm": "600x600mm / 600x1200mm",
+      "sizeFt": "2x2ft / 2x4ft",
+      "products": [
+        {
+          "name": "MOON SNOW WHITE",
+          "finish": "Matt",
+          "code": "MS830750R",
+          "sizeMm": "600x600mm",
+          "sizeFt": "2x2ft"
+        },
+        {
+          "name": "SMOKE",
+          "finish": "Matt",
+          "code": "SM750670R",
+          "sizeMm": "600x600mm",
+          "sizeFt": "2x2ft"
+        },
+        {
+          "name": "MOON SNOW WHITE",
+          "code": "MS950850R",
+          "finish": "Matt",
+          "sizeMm": "600x1200mm",
+          "sizeFt": "2x4ft"
+        },
+        {
+          "name": "SMOKE",
+          "code": "SM900800R",
+          "finish": "Matt",
+          "sizeMm": "600x1200mm",
+          "sizeFt": "2x4ft"
+        }
+      ]
+    },
+    {
+      "pdfPage": 57,
+      "sizeMm": "600x600mm / 600x1200mm",
+      "sizeFt": "2x2ft / 2x4ft",
+      "products": [
+        {
+          "name": "METAL",
+          "finish": "Matt",
+          "code": "MM950850R",
+          "sizeMm": "600x1200mm",
+          "sizeFt": "2x4ft"
+        },
+        {
+          "name": "MUD",
+          "finish": "Matt",
+          "code": "MD750670R",
+          "sizeMm": "600x600mm",
+          "sizeFt": "2x2ft"
+        },
+        {
+          "name": "PULPIS",
+          "code": "PM950850R",
+          "finish": "Matt",
+          "sizeMm": "600x1200mm",
+          "sizeFt": "2x4ft"
+        },
+        {
+          "name": "COCOA",
+          "code": "CM950850R",
+          "finish": "Matt",
+          "sizeMm": "600x1200mm",
+          "sizeFt": "2x4ft"
+        }
+      ]
+    },
+    {
+      "pdfPage": 58,
+      "sizeMm": "600x600mm / 600x1200mm",
+      "sizeFt": "2x2ft / 2x4ft",
+      "products": [
+        {
+          "name": "CARAMEL",
+          "finish": "Matt",
+          "code": "AM950850R",
+          "sizeMm": "600x1200mm",
+          "sizeFt": "2x4ft"
+        },
+        {
+          "name": "DECK ROCK SMOKE",
+          "finish": "Punch",
+          "code": "DR750600R",
+          "sizeMm": "600x600mm",
+          "sizeFt": "2x2ft"
+        },
+        {
+          "name": "FOREST",
+          "code": "FM950850R",
+          "finish": "Matt",
+          "sizeMm": "600x1200mm",
+          "sizeFt": "2x4ft"
+        }
+      ]
+    },
+    {
+      "pdfPage": 59,
+      "sizeMm": "800x2400mm",
+      "sizeFt": "2.5x8ft",
+      "products": [
+        {
+          "name": "CRYSTAL WHITE",
+          "finish": "Glossy",
+          "code": "CS125105D"
+        },
+        {
+          "name": "CRYSTAL BLACK",
+          "finish": "Glossy",
+          "code": "CS130110D"
+        }
+      ]
+    },
+    {
+      "pdfPage": 60,
+      "sizeMm": "800x2400mm",
+      "sizeFt": "2.5x8ft",
+      "products": [
+        {
+          "name": "GOLDEN PORTORO",
+          "finish": "Glossy",
+          "code": "CD130110K"
+        },
+        {
+          "name": "STATUARIO NATURAL",
+          "finish": "Glossy",
+          "code": "CL125105R"
+        },
+        {
+          "name": "VOLGA BLUE",
+          "finish": "Glossy",
+          "code": "CD130110M"
+        }
+      ]
+    },
+    {
+      "pdfPage": 61,
+      "sizeMm": "800x2400mm",
+      "sizeFt": "2.5x8ft",
+      "products": [
+        {
+          "name": "SNP GREY",
+          "finish": "Glossy & Matt",
+          "code": "DS140120R"
+        },
+        {
+          "name": "SNP IVORY",
+          "finish": "Glossy & Matt",
+          "code": "WB140120R"
+        },
+        {
+          "name": "SNP BROWN",
+          "finish": "Glossy & Matt",
+          "code": "DC145125J"
+        }
+      ]
+    },
+    {
+      "pdfPage": 62,
+      "sizeMm": "800x2400mm",
+      "sizeFt": "2.5x8ft",
+      "products": [
+        {
+          "name": "SNP VERDE",
+          "finish": "Glossy",
+          "code": "NA140120G"
+        },
+        {
+          "name": "SNP MASHROOM",
+          "finish": "Glossy & Matt",
+          "code": "CR140120S"
+        }
+      ]
+    },
+    {
+      "pdfPage": 63,
+      "sizeMm": "800x2400mm",
+      "sizeFt": "2.5x8ft",
+      "products": [
+        {
+          "name": "GRAPHITE GREY",
+          "finish": "Glossy & Matt",
+          "code": "ZV140120R"
+        },
+        {
+          "name": "CARMEL",
+          "finish": "Glossy & Matt",
+          "code": "GB140120C"
+        },
+        {
+          "name": "SMOKE AMBER",
+          "finish": "Glossy & Matt",
+          "code": "NY140120G"
+        }
+      ]
+    },
+    {
+      "pdfPage": 64,
+      "sizeMm": "800x2400mm",
+      "sizeFt": "2.5x8ft",
+      "products": [
+        {
+          "name": "WALNUT",
+          "finish": "Glossy & Matt",
+          "code": "RL145125N"
+        },
+        {
+          "name": "STEEL GREY",
+          "finish": "Glossy & Matt",
+          "code": "EC140120M"
+        },
+        {
+          "name": "KOTA",
+          "finish": "Matt",
+          "code": "HA140120M"
+        }
+      ]
+    },
+    {
+      "pdfPage": 65,
+      "sizeMm": "800x2400mm",
+      "sizeFt": "2.5x8ft",
+      "products": [
+        {
+          "name": "PIXEL WHITE",
+          "finish": "Glossy & Matt",
+          "code": "MK150130I"
+        },
+        {
+          "name": "PIXEL BLACK",
+          "finish": "Glossy & Matt",
+          "code": "ES150130K"
+        }
+      ]
+    },
+    {
+      "pdfPage": 66,
+      "sizeMm": "800x2400mm",
+      "sizeFt": "2.5x8ft",
+      "products": [
+        {
+          "name": "NANO WHITE",
+          "finish": "Glossy",
+          "code": "NJ156136R"
+        },
+        {
+          "name": "NANO BLACK",
+          "finish": "Glossy",
+          "code": "NY156136N"
+        }
+      ]
+    },
+    {
+      "pdfPage": 67,
+      "sizeMm": "800x2400mm",
+      "sizeFt": "2.5x8ft",
+      "products": [
+        {
+          "name": "ROYAL QUARTZITE",
+          "finish": "Glossy",
+          "code": "CG162142J"
+        }
+      ]
+    },
+    {
+      "pdfPage": 68,
+      "sizeMm": "800x2400mm",
+      "sizeFt": "2.5x8ft",
+      "products": [
+        {
+          "name": "GLAM BARLY",
+          "finish": "Glossy",
+          "code": "CR154134K"
+        },
+        {
+          "name": "GLAM BARLY",
+          "finish": "Matt",
+          "code": "CR166146K"
+        },
+        {
+          "name": "GLAM CHARCOAL",
+          "finish": "Glossy",
+          "code": "GC154134R"
+        },
+        {
+          "name": "GLAM CHARCOAL",
+          "finish": "Matt",
+          "code": "GC166146R"
+        },
+        {
+          "name": "GLAM CREMA",
+          "finish": "Glossy",
+          "code": "GA154134R"
+        },
+        {
+          "name": "GLAM CREMA",
+          "finish": "Matt",
+          "code": "GA166146R"
+        }
+      ]
+    },
+    {
+      "pdfPage": 69,
+      "sizeMm": "800x2400mm",
+      "sizeFt": "2.5x8ft",
+      "products": [
+        {
+          "name": "GLAM CHOCO",
+          "finish": "Glossy",
+          "code": "CH166146A"
+        },
+        {
+          "name": "GLAM CHOCO",
+          "finish": "Matt",
+          "code": "CH178158A"
+        },
+        {
+          "name": "GLAM NERO",
+          "finish": "Glossy",
+          "code": "NS166146Z"
+        },
+        {
+          "name": "GLAM NERO",
+          "finish": "Matt",
+          "code": "NS178158Z"
+        },
+        {
+          "name": "GLAM WHITE",
+          "finish": "Glossy",
+          "code": "WR166146M"
+        },
+        {
+          "name": "GLAM WHITE",
+          "finish": "Matt",
+          "code": "WR178158M"
+        }
+      ]
+    },
+    {
+      "pdfPage": 70,
+      "sizeMm": "800x3000mm",
+      "sizeFt": "2.5x10ft",
+      "products": [
+        {
+          "name": "NANO WHITE",
+          "finish": "Glossy",
+          "code": "NJ176156R"
+        },
+        {
+          "name": "PIXEL BLACK",
+          "finish": "Glossy",
+          "code": "ES170150K"
+        },
+        {
+          "name": "GLAM CREMA",
+          "finish": "Glossy",
+          "code": "GA174154R"
+        },
+        {
+          "name": "GLAM BARLY",
+          "finish": "Glossy",
+          "code": "RC174154K"
+        },
+        {
+          "name": "ROYAL QUARTZITE",
+          "finish": "Glossy",
+          "code": "CG182162M"
+        }
+      ]
+    }
+  ],
+  "sourceHash": "ddf4eca1303efdb4a28ea96236d5f82a3541fd57365c9fd4cfd865950977e3b8"
+}

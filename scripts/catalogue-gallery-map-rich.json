@@ -1,0 +1,1301 @@
+{
+  "bookId": "rich",
+  "sourceHash": "f2e679917fd67c3df2159c34a3a7e856a02b873a5a548b6bebf72a73c1ec1398",
+  "stories": [
+    {
+      "id": "rich-p006-design",
+      "pageNumber": 6,
+      "productIds": [
+        "rich-p6-d1"
+      ],
+      "title": "Galaxy Bronze",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.3281,
+            0.52497,
+            0.63265,
+            0.44728
+          ],
+          "label": "Complete 600 × 600 mm design"
+        },
+        "room": {
+          "pageNumber": 7,
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Galaxy Bronze room setting"
+        }
+      }
+    },
+    {
+      "id": "rich-p008-design",
+      "pageNumber": 8,
+      "productIds": [
+        "rich-p8-d1"
+      ],
+      "title": "Galaxy White",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.3281,
+            0.52497,
+            0.63265,
+            0.44728
+          ],
+          "label": "Complete 600 × 600 mm design"
+        },
+        "room": {
+          "pageNumber": 9,
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Galaxy White room setting"
+        }
+      }
+    },
+    {
+      "id": "rich-p010-design",
+      "pageNumber": 10,
+      "productIds": [
+        "rich-p10-d1"
+      ],
+      "title": "Galaxy Ice White",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.3281,
+            0.52497,
+            0.63265,
+            0.44728
+          ],
+          "label": "Complete 600 × 600 mm design"
+        },
+        "room": {
+          "pageNumber": 11,
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Galaxy Ice White room setting"
+        }
+      }
+    },
+    {
+      "id": "rich-p012-design",
+      "pageNumber": 12,
+      "productIds": [
+        "rich-p12-d1"
+      ],
+      "title": "Galaxy Lavender",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.3281,
+            0.52497,
+            0.63265,
+            0.44728
+          ],
+          "label": "Complete 600 × 600 mm design"
+        },
+        "room": {
+          "pageNumber": 13,
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Galaxy Lavender room setting"
+        }
+      }
+    },
+    {
+      "id": "rich-p014-design",
+      "pageNumber": 14,
+      "productIds": [
+        "rich-p14-d1"
+      ],
+      "title": "Galaxy Ice Slate",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.3281,
+            0.52497,
+            0.63265,
+            0.44728
+          ],
+          "label": "Complete 600 × 600 mm design"
+        },
+        "room": {
+          "pageNumber": 15,
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Galaxy Ice Slate room setting"
+        }
+      }
+    },
+    {
+      "id": "rich-p016-design",
+      "pageNumber": 16,
+      "productIds": [
+        "rich-p16-d1"
+      ],
+      "title": "Galaxy Graphite",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.3281,
+            0.52497,
+            0.63265,
+            0.44728
+          ],
+          "label": "Complete 600 × 600 mm design"
+        },
+        "room": {
+          "pageNumber": 17,
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Galaxy Graphite room setting"
+        }
+      }
+    },
+    {
+      "id": "rich-p018-design",
+      "pageNumber": 18,
+      "productIds": [
+        "rich-p18-d1"
+      ],
+      "title": "Galaxy Amber",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.3281,
+            0.52497,
+            0.63265,
+            0.44728
+          ],
+          "label": "Complete 600 × 600 mm design"
+        },
+        "room": {
+          "pageNumber": 19,
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Galaxy Amber room setting"
+        }
+      }
+    },
+    {
+      "id": "rich-p020-design",
+      "pageNumber": 20,
+      "productIds": [
+        "rich-p20-d1"
+      ],
+      "title": "Galaxy Ice Fossil",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.3281,
+            0.52497,
+            0.63265,
+            0.44728
+          ],
+          "label": "Complete 600 × 600 mm design"
+        },
+        "room": {
+          "pageNumber": 21,
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Galaxy Ice Fossil room setting"
+        }
+      }
+    },
+    {
+      "id": "rich-p022-design",
+      "pageNumber": 22,
+      "productIds": [
+        "rich-p22-d1"
+      ],
+      "title": "Galaxy Snow",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.3281,
+            0.52497,
+            0.63265,
+            0.44728
+          ],
+          "label": "Complete 600 × 600 mm design"
+        },
+        "room": {
+          "pageNumber": 23,
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Galaxy Snow room setting"
+        }
+      }
+    },
+    {
+      "id": "rich-p024-design",
+      "pageNumber": 24,
+      "productIds": [
+        "rich-p24-d1"
+      ],
+      "title": "Galaxy Melody",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.3281,
+            0.52497,
+            0.63265,
+            0.44728
+          ],
+          "label": "Complete 600 × 600 mm design"
+        },
+        "room": {
+          "pageNumber": 25,
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Galaxy Melody room setting"
+        }
+      }
+    },
+    {
+      "id": "rich-p026-design",
+      "pageNumber": 26,
+      "productIds": [
+        "rich-p26-d1"
+      ],
+      "title": "Galaxy Ice Blue",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.3281,
+            0.52497,
+            0.63265,
+            0.44728
+          ],
+          "label": "Complete 600 × 600 mm design"
+        },
+        "room": {
+          "pageNumber": 27,
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Galaxy Ice Blue room setting"
+        }
+      }
+    },
+    {
+      "id": "rich-p028-design",
+      "pageNumber": 28,
+      "productIds": [
+        "rich-p28-d1"
+      ],
+      "title": "Galaxy Copper",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.3281,
+            0.52497,
+            0.63265,
+            0.44728
+          ],
+          "label": "Complete 600 × 600 mm design"
+        },
+        "room": {
+          "pageNumber": 29,
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Galaxy Copper room setting"
+        }
+      }
+    },
+    {
+      "id": "rich-p030-design",
+      "pageNumber": 30,
+      "productIds": [
+        "rich-p30-d1"
+      ],
+      "title": "Galaxy Gold",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.3281,
+            0.52497,
+            0.63265,
+            0.44728
+          ],
+          "label": "Complete 600 × 600 mm design"
+        },
+        "room": {
+          "pageNumber": 31,
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Galaxy Gold room setting"
+        }
+      }
+    },
+    {
+      "id": "rich-p032-design",
+      "pageNumber": 32,
+      "productIds": [
+        "rich-p32-d1"
+      ],
+      "title": "Galaxy Camel",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.3281,
+            0.52497,
+            0.63265,
+            0.44728
+          ],
+          "label": "Complete 600 × 600 mm design"
+        },
+        "room": {
+          "pageNumber": 33,
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Galaxy Camel room setting"
+        }
+      }
+    },
+    {
+      "id": "rich-p034-design",
+      "pageNumber": 34,
+      "productIds": [
+        "rich-p34-d1"
+      ],
+      "title": "Galaxy Crema",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.3281,
+            0.52497,
+            0.63265,
+            0.44728
+          ],
+          "label": "Complete 600 × 600 mm design"
+        },
+        "room": {
+          "pageNumber": 35,
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Galaxy Crema room setting"
+        }
+      }
+    },
+    {
+      "id": "rich-p036-design",
+      "pageNumber": 36,
+      "productIds": [
+        "rich-p36-d1"
+      ],
+      "title": "Galaxy Pista",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.3281,
+            0.52497,
+            0.63265,
+            0.44728
+          ],
+          "label": "Complete 600 × 600 mm design"
+        },
+        "room": {
+          "pageNumber": 37,
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Galaxy Pista room setting"
+        }
+      }
+    },
+    {
+      "id": "rich-p038-design",
+      "pageNumber": 38,
+      "productIds": [
+        "rich-p38-d1"
+      ],
+      "title": "Galaxy Lemon",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.3281,
+            0.52497,
+            0.63265,
+            0.44728
+          ],
+          "label": "Complete 600 × 600 mm design"
+        },
+        "room": {
+          "pageNumber": 39,
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Galaxy Lemon room setting"
+        }
+      }
+    },
+    {
+      "id": "rich-p040-design",
+      "pageNumber": 40,
+      "productIds": [
+        "rich-p40-d1"
+      ],
+      "title": "Galaxy Forest",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.3281,
+            0.52497,
+            0.63265,
+            0.44728
+          ],
+          "label": "Complete 600 × 600 mm design"
+        },
+        "room": {
+          "pageNumber": 41,
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Galaxy Forest room setting"
+        }
+      }
+    },
+    {
+      "id": "rich-p042-design",
+      "pageNumber": 42,
+      "productIds": [
+        "rich-p42-d1"
+      ],
+      "title": "Galaxy Rock",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.3281,
+            0.52497,
+            0.63265,
+            0.44728
+          ],
+          "label": "Complete 600 × 600 mm design"
+        },
+        "room": {
+          "pageNumber": 43,
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Galaxy Rock room setting"
+        }
+      }
+    },
+    {
+      "id": "rich-p044-design",
+      "pageNumber": 44,
+      "productIds": [
+        "rich-p44-d1"
+      ],
+      "title": "Galaxy Grass",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.3281,
+            0.52497,
+            0.63265,
+            0.44728
+          ],
+          "label": "Complete 600 × 600 mm design"
+        },
+        "room": {
+          "pageNumber": 45,
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Galaxy Grass room setting"
+        }
+      }
+    },
+    {
+      "id": "rich-p046-design",
+      "pageNumber": 46,
+      "productIds": [
+        "rich-p46-d1"
+      ],
+      "title": "Galaxy Lava",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.3281,
+            0.52497,
+            0.63265,
+            0.44728
+          ],
+          "label": "Complete 600 × 600 mm design"
+        },
+        "room": {
+          "pageNumber": 47,
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Galaxy Lava room setting"
+        }
+      }
+    },
+    {
+      "id": "rich-p048-design",
+      "pageNumber": 48,
+      "productIds": [
+        "rich-p48-d1"
+      ],
+      "title": "Galaxy Ruby",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.3281,
+            0.52497,
+            0.63265,
+            0.44728
+          ],
+          "label": "Complete 600 × 600 mm design"
+        },
+        "room": {
+          "pageNumber": 49,
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Galaxy Ruby room setting"
+        }
+      }
+    },
+    {
+      "id": "rich-p050-design",
+      "pageNumber": 50,
+      "productIds": [
+        "rich-p50-d1"
+      ],
+      "title": "Galaxy Rose",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.3281,
+            0.52497,
+            0.63265,
+            0.44728
+          ],
+          "label": "Complete 600 × 600 mm design"
+        },
+        "room": {
+          "pageNumber": 51,
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Galaxy Rose room setting"
+        }
+      }
+    },
+    {
+      "id": "rich-p052-design",
+      "pageNumber": 52,
+      "productIds": [
+        "rich-p52-d1"
+      ],
+      "title": "Galaxy Pink",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.3281,
+            0.52497,
+            0.63265,
+            0.44728
+          ],
+          "label": "Complete 600 × 600 mm design"
+        },
+        "room": {
+          "pageNumber": 53,
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Galaxy Pink room setting"
+        }
+      }
+    },
+    {
+      "id": "rich-p054-design",
+      "pageNumber": 54,
+      "productIds": [
+        "rich-p54-d1"
+      ],
+      "title": "Galaxy Pearl",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.3281,
+            0.52497,
+            0.63265,
+            0.44728
+          ],
+          "label": "Complete 600 × 600 mm design"
+        },
+        "room": {
+          "pageNumber": 55,
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Galaxy Pearl room setting"
+        }
+      }
+    },
+    {
+      "id": "rich-p056-design",
+      "pageNumber": 56,
+      "productIds": [
+        "rich-p56-d1"
+      ],
+      "title": "Galaxy Neon",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.3281,
+            0.52497,
+            0.63265,
+            0.44728
+          ],
+          "label": "Complete 600 × 600 mm design"
+        },
+        "room": {
+          "pageNumber": 57,
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Galaxy Neon room setting"
+        }
+      }
+    },
+    {
+      "id": "rich-p058-design",
+      "pageNumber": 58,
+      "productIds": [
+        "rich-p58-d1"
+      ],
+      "title": "Galaxy Olive",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.3281,
+            0.52497,
+            0.63265,
+            0.44728
+          ],
+          "label": "Complete 600 × 600 mm design"
+        },
+        "room": {
+          "pageNumber": 59,
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Galaxy Olive room setting"
+        }
+      }
+    },
+    {
+      "id": "rich-p060-design",
+      "pageNumber": 60,
+      "productIds": [
+        "rich-p60-d1"
+      ],
+      "title": "Galaxy Oreo",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.3281,
+            0.52497,
+            0.63265,
+            0.44728
+          ],
+          "label": "Complete 600 × 600 mm design"
+        },
+        "room": {
+          "pageNumber": 61,
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Galaxy Oreo room setting"
+        }
+      }
+    },
+    {
+      "id": "rich-p062-design",
+      "pageNumber": 62,
+      "productIds": [
+        "rich-p62-d1"
+      ],
+      "title": "Galaxy Sand",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.3281,
+            0.52497,
+            0.63265,
+            0.44728
+          ],
+          "label": "Complete 600 × 600 mm design"
+        },
+        "room": {
+          "pageNumber": 63,
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Galaxy Sand room setting"
+        }
+      }
+    },
+    {
+      "id": "rich-p064-design",
+      "pageNumber": 64,
+      "productIds": [
+        "rich-p64-d1"
+      ],
+      "title": "Galaxy Stone",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.3281,
+            0.52497,
+            0.63265,
+            0.44728
+          ],
+          "label": "Complete 600 × 600 mm design"
+        },
+        "room": {
+          "pageNumber": 65,
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Galaxy Stone room setting"
+        }
+      }
+    },
+    {
+      "id": "rich-p066-design",
+      "pageNumber": 66,
+      "productIds": [
+        "rich-p66-d1"
+      ],
+      "title": "Galaxy Smoke",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.3281,
+            0.52497,
+            0.63265,
+            0.44728
+          ],
+          "label": "Complete 600 × 600 mm design"
+        },
+        "room": {
+          "pageNumber": 67,
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Galaxy Smoke room setting"
+        }
+      }
+    },
+    {
+      "id": "rich-p068-design",
+      "pageNumber": 68,
+      "productIds": [
+        "rich-p68-d1"
+      ],
+      "title": "Galaxy Carbon",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.3281,
+            0.52497,
+            0.63265,
+            0.44728
+          ],
+          "label": "Complete 600 × 600 mm design"
+        },
+        "room": {
+          "pageNumber": 69,
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Galaxy Carbon room setting"
+        }
+      }
+    },
+    {
+      "id": "rich-p070-design",
+      "pageNumber": 70,
+      "productIds": [
+        "rich-p70-d1"
+      ],
+      "title": "Galaxy Volcano",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.3281,
+            0.52497,
+            0.63265,
+            0.44728
+          ],
+          "label": "Complete 600 × 600 mm design"
+        },
+        "room": {
+          "pageNumber": 71,
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Galaxy Volcano room setting"
+        }
+      }
+    },
+    {
+      "id": "rich-p072-design",
+      "pageNumber": 72,
+      "productIds": [
+        "rich-p72-d1"
+      ],
+      "title": "Galaxy Velvet",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.3281,
+            0.52497,
+            0.63265,
+            0.44728
+          ],
+          "label": "Complete 600 × 600 mm design"
+        },
+        "room": {
+          "pageNumber": 73,
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Galaxy Velvet room setting"
+        }
+      }
+    },
+    {
+      "id": "rich-p074-design",
+      "pageNumber": 74,
+      "productIds": [
+        "rich-p74-d1"
+      ],
+      "title": "Galaxy Ocean",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.3281,
+            0.52497,
+            0.63265,
+            0.44728
+          ],
+          "label": "Complete 600 × 600 mm design"
+        },
+        "room": {
+          "pageNumber": 75,
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Galaxy Ocean room setting"
+        }
+      }
+    },
+    {
+      "id": "rich-p076-design",
+      "pageNumber": 76,
+      "productIds": [
+        "rich-p76-d1"
+      ],
+      "title": "Galaxy Black",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.3281,
+            0.52497,
+            0.63265,
+            0.44728
+          ],
+          "label": "Complete 600 × 600 mm design"
+        },
+        "room": {
+          "pageNumber": 77,
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Galaxy Black room setting"
+        }
+      }
+    },
+    {
+      "id": "rich-p078-design",
+      "pageNumber": 78,
+      "productIds": [
+        "rich-p78-d1"
+      ],
+      "title": "Super White",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.3281,
+            0.52497,
+            0.63265,
+            0.44728
+          ],
+          "label": "Complete 600 × 600 mm design"
+        },
+        "room": {
+          "pageNumber": 79,
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Super White room setting"
+        }
+      }
+    }
+  ]
+}

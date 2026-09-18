@@ -1,0 +1,223 @@
+{
+  "bookId": "goldcoin",
+  "sourceHash": "38acfc400fbe6997dc8ca23e01a08d1a7b88b574ed4326ff0dfb895fcc91d129",
+  "method": "Manual visual reading of every original PDF page (27 pages), with complete tile crops and room associations verified against publisher artwork.",
+  "notes": [
+    "Every product board is followed by its matching full-room photograph. Room views explicitly reference that following PDF page.",
+    "The source specifies 500×500mm. Series names such as PLAIN and AMBER are not invented finish values.",
+    "The gallery displays one complete square face; other random faces and coordinated LT/DK layouts remain in the original page."
+  ],
+  "excludedPages": [
+    {
+      "pdfPage": 1,
+      "reason": "Publisher cover"
+    },
+    {
+      "pdfPage": 3,
+      "reason": "Matching room setting for the preceding named product board; accessible as that design’s room view and original PDF page"
+    },
+    {
+      "pdfPage": 5,
+      "reason": "Matching room setting for the preceding named product board; accessible as that design’s room view and original PDF page"
+    },
+    {
+      "pdfPage": 7,
+      "reason": "Matching room setting for the preceding named product board; accessible as that design’s room view and original PDF page"
+    },
+    {
+      "pdfPage": 9,
+      "reason": "Matching room setting for the preceding named product board; accessible as that design’s room view and original PDF page"
+    },
+    {
+      "pdfPage": 11,
+      "reason": "Matching room setting for the preceding named product board; accessible as that design’s room view and original PDF page"
+    },
+    {
+      "pdfPage": 13,
+      "reason": "Matching room setting for the preceding named product board; accessible as that design’s room view and original PDF page"
+    },
+    {
+      "pdfPage": 15,
+      "reason": "Matching room setting for the preceding named product board; accessible as that design’s room view and original PDF page"
+    },
+    {
+      "pdfPage": 17,
+      "reason": "Matching room setting for the preceding named product board; accessible as that design’s room view and original PDF page"
+    },
+    {
+      "pdfPage": 19,
+      "reason": "Matching room setting for the preceding named product board; accessible as that design’s room view and original PDF page"
+    },
+    {
+      "pdfPage": 21,
+      "reason": "Matching room setting for the preceding named product board; accessible as that design’s room view and original PDF page"
+    },
+    {
+      "pdfPage": 23,
+      "reason": "Matching room setting for the preceding named product board; accessible as that design’s room view and original PDF page"
+    },
+    {
+      "pdfPage": 25,
+      "reason": "Matching room setting for the preceding named product board; accessible as that design’s room view and original PDF page"
+    },
+    {
+      "pdfPage": 27,
+      "reason": "Matching room setting for the preceding named product board; accessible as that design’s room view and original PDF page"
+    }
+  ],
+  "pages": [
+    {
+      "pdfPage": 2,
+      "verified": true,
+      "products": [
+        {
+          "name": "11022-LT",
+          "sizeMm": "500×500mm",
+          "code": "11022-LT"
+        },
+        {
+          "name": "11022-DK",
+          "sizeMm": "500×500mm",
+          "code": "11022-DK"
+        }
+      ]
+    },
+    {
+      "pdfPage": 4,
+      "verified": true,
+      "products": [
+        {
+          "name": "11050-LT",
+          "sizeMm": "500×500mm",
+          "code": "11050-LT"
+        },
+        {
+          "name": "11050-DK",
+          "sizeMm": "500×500mm",
+          "code": "11050-DK"
+        }
+      ]
+    },
+    {
+      "pdfPage": 6,
+      "verified": true,
+      "products": [
+        {
+          "name": "12011",
+          "sizeMm": "500×500mm",
+          "code": "12011"
+        }
+      ]
+    },
+    {
+      "pdfPage": 8,
+      "verified": true,
+      "products": [
+        {
+          "name": "12016",
+          "sizeMm": "500×500mm",
+          "code": "12016"
+        }
+      ]
+    },
+    {
+      "pdfPage": 10,
+      "verified": true,
+      "products": [
+        {
+          "name": "12028",
+          "sizeMm": "500×500mm",
+          "code": "12028"
+        }
+      ]
+    },
+    {
+      "pdfPage": 12,
+      "verified": true,
+      "products": [
+        {
+          "name": "12045",
+          "sizeMm": "500×500mm",
+          "code": "12045"
+        }
+      ]
+    },
+    {
+      "pdfPage": 14,
+      "verified": true,
+      "products": [
+        {
+          "name": "13259",
+          "sizeMm": "500×500mm",
+          "code": "13259"
+        }
+      ]
+    },
+    {
+      "pdfPage": 16,
+      "verified": true,
+      "products": [
+        {
+          "name": "AMBER 03",
+          "sizeMm": "500×500mm",
+          "code": "AMBER 03"
+        }
+      ]
+    },
+    {
+      "pdfPage": 18,
+      "verified": true,
+      "products": [
+        {
+          "name": "AMBER 05",
+          "sizeMm": "500×500mm",
+          "code": "AMBER 05"
+        }
+      ]
+    },
+    {
+      "pdfPage": 20,
+      "verified": true,
+      "products": [
+        {
+          "name": "COTTAGE-02",
+          "sizeMm": "500×500mm",
+          "code": "COTTAGE-02"
+        }
+      ]
+    },
+    {
+      "pdfPage": 22,
+      "verified": true,
+      "products": [
+        {
+          "name": "DIAMOND 05",
+          "sizeMm": "500×500mm",
+          "code": "DIAMOND 05"
+        }
+      ]
+    },
+    {
+      "pdfPage": 24,
+      "verified": true,
+      "products": [
+        {
+          "name": "MATRIX 04",
+          "sizeMm": "500×500mm",
+          "code": "MATRIX 04"
+        }
+      ]
+    },
+    {
+      "pdfPage": 26,
+      "verified": true,
+      "products": [
+        {
+          "name": "ONYX 11",
+          "sizeMm": "500×500mm",
+          "code": "ONYX 11"
+        }
+      ]
+    }
+  ]
+}

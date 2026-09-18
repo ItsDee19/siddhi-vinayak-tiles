@@ -1,0 +1,1647 @@
+{
+  "bookId": "simpolo",
+  "sourceHash": "915afe544035b3bb23ed65436d6b2eda0d756bcd17c6c76f3e87ca46147b8598",
+  "method": "All 60 original PDF pages visually reviewed. Printed sanitaryware names and product codes checked from full-page renders; individual product-card crops retain the complete product and its printed details. Promotional feature pages and coordinated collections are explicitly mapped.",
+  "notes": [
+    "Printed MRP values belong to the supplied 2025 catalogue artwork and are not represented as current prices.",
+    "Three-dimensional sanitaryware measurements remain in the original product artwork; they are not converted into tile-size filters.",
+    "Pedestal names and codes printed with basin assemblies are retained as search aliases.",
+    "Coordinated Bold Collection closet/basin pairs and colour options sharing one label remain grouped."
+  ],
+  "excludedPages": [
+    {
+      "pdfPage": 1,
+      "reason": "Catalogue cover; 2025 printed MRP reference."
+    },
+    {
+      "pdfPage": 2,
+      "reason": "Publisher philosophy and values."
+    },
+    {
+      "pdfPage": 3,
+      "reason": "Publisher manufacturing overview."
+    },
+    {
+      "pdfPage": 4,
+      "reason": "Publisher exhibition centre overview."
+    },
+    {
+      "pdfPage": 5,
+      "reason": "Publisher milestones."
+    },
+    {
+      "pdfPage": 6,
+      "reason": "Catalogue contents."
+    },
+    {
+      "pdfPage": 7,
+      "reason": "Unlabelled installation photograph."
+    },
+    {
+      "pdfPage": 8,
+      "reason": "360-degree silent flushing technology explanation."
+    },
+    {
+      "pdfPage": 9,
+      "reason": "Silent flushing promotional illustration."
+    },
+    {
+      "pdfPage": 10,
+      "reason": "Unlabelled installation photograph; named VIDA products follow."
+    },
+    {
+      "pdfPage": 12,
+      "reason": "Unlabelled installation photograph; named ZEST products follow."
+    },
+    {
+      "pdfPage": 15,
+      "reason": "MARC 2 component and assembly diagram; product is indexed on PDF page 14."
+    },
+    {
+      "pdfPage": 16,
+      "reason": "Unlabelled Bold Collection installation photograph; named black collection follows."
+    },
+    {
+      "pdfPage": 18,
+      "reason": "Unlabelled Bold Collection installation photograph; named white collection follows."
+    },
+    {
+      "pdfPage": 20,
+      "reason": "Siphonic flushing technology explanation."
+    },
+    {
+      "pdfPage": 21,
+      "reason": "Wash down flushing technology explanation."
+    },
+    {
+      "pdfPage": 22,
+      "reason": "Unlabelled one piece closet installation photograph."
+    },
+    {
+      "pdfPage": 26,
+      "reason": "Flushing feature and unlabelled installation photograph; named CRONA product follows."
+    },
+    {
+      "pdfPage": 28,
+      "reason": "Unlabelled wall hung closet installation photograph; named SELGE product follows."
+    },
+    {
+      "pdfPage": 30,
+      "reason": "Tankless closet section divider and unlabelled installation photograph."
+    },
+    {
+      "pdfPage": 53,
+      "reason": "Warranty reference."
+    },
+    {
+      "pdfPage": 54,
+      "reason": "Care and maintenance reference."
+    },
+    {
+      "pdfPage": 55,
+      "reason": "Publisher benefits and brand information."
+    },
+    {
+      "pdfPage": 56,
+      "reason": "Installation instructions."
+    },
+    {
+      "pdfPage": 57,
+      "reason": "Installation guidance and unlabelled photograph."
+    },
+    {
+      "pdfPage": 58,
+      "reason": "Technical specification tables for products already indexed on their product pages."
+    },
+    {
+      "pdfPage": 59,
+      "reason": "Icon guide and discontinued item notice; discontinued items are not presented as available products."
+    },
+    {
+      "pdfPage": 60,
+      "reason": "Publisher contacts and back cover."
+    }
+  ],
+  "pages": [
+    {
+      "pdfPage": 11,
+      "verified": true,
+      "category": "Wall hung closet and table top basin",
+      "products": [
+        {
+          "name": "VIDA"
+        }
+      ]
+    },
+    {
+      "pdfPage": 13,
+      "verified": true,
+      "category": "Wall hung closet and table top basin",
+      "products": [
+        {
+          "name": "ZEST"
+        }
+      ]
+    },
+    {
+      "pdfPage": 14,
+      "verified": true,
+      "category": "Bidet seat cover",
+      "products": [
+        {
+          "name": "MARC 2"
+        }
+      ]
+    },
+    {
+      "pdfPage": 17,
+      "verified": true,
+      "category": "The Bold Collection",
+      "finish": "Matte Black",
+      "products": [
+        {
+          "name": "Avante Wall Hung Closet",
+          "code": "20029"
+        },
+        {
+          "name": "Avante Table Top Basin",
+          "code": "10158"
+        },
+        {
+          "name": "Eden Wall Hung Closet",
+          "code": "20030"
+        },
+        {
+          "name": "Eden Table Top Basin",
+          "code": "10159"
+        },
+        {
+          "name": "Zeus Wall Hung Closet",
+          "code": "20031"
+        },
+        {
+          "name": "Zeus Table Top Basin",
+          "code": "10161"
+        }
+      ]
+    },
+    {
+      "pdfPage": 19,
+      "verified": true,
+      "category": "The Bold Collection",
+      "finish": "Glossy White",
+      "products": [
+        {
+          "name": "Avante Wall Hung Closet",
+          "code": "20026"
+        },
+        {
+          "name": "Avante Table Top Basin",
+          "code": "10160"
+        },
+        {
+          "name": "Eden Wall Hung Closet",
+          "code": "20027"
+        },
+        {
+          "name": "Eden Table Top Basin",
+          "code": "10156"
+        },
+        {
+          "name": "Zeus Wall Hung Closet",
+          "code": "20028"
+        },
+        {
+          "name": "Zeus Table Top Basin",
+          "code": "10157"
+        }
+      ]
+    },
+    {
+      "pdfPage": 23,
+      "verified": true,
+      "category": "One piece closet",
+      "products": [
+        {
+          "name": "Swim",
+          "code": "42019 / 42019SN"
+        }
+      ]
+    },
+    {
+      "pdfPage": 24,
+      "verified": true,
+      "category": "One piece closet · Siphonic flushing",
+      "products": [
+        {
+          "name": "Swim",
+          "code": "42019 SNAS/BS"
+        },
+        {
+          "name": "Blanco",
+          "code": "42030 AS/BS"
+        },
+        {
+          "name": "Bistro",
+          "code": "42031 AS/BS"
+        },
+        {
+          "name": "Smalto",
+          "code": "42108 AS/BS"
+        },
+        {
+          "name": "Catino",
+          "code": "42001 AS/BS"
+        },
+        {
+          "name": "Nicola",
+          "code": "42003 AS/BS"
+        },
+        {
+          "name": "Flavio",
+          "code": "42107 AS/BS"
+        },
+        {
+          "name": "Sulfax",
+          "code": "42102 BS"
+        }
+      ]
+    },
+    {
+      "pdfPage": 25,
+      "verified": true,
+      "category": "One piece closet · Wash down flushing",
+      "products": [
+        {
+          "name": "Segno",
+          "code": "42016 A/B/C/P"
+        },
+        {
+          "name": "Igor",
+          "code": "42101 B/P"
+        },
+        {
+          "name": "Tulip",
+          "code": "42110 A/B/C"
+        },
+        {
+          "name": "Rio",
+          "code": "42111 A/B/P"
+        },
+        {
+          "name": "Sabbia",
+          "code": "42103 A/B/P"
+        },
+        {
+          "name": "Nova",
+          "code": "42010 A/B/C/P"
+        },
+        {
+          "name": "Gesto",
+          "code": "42013BS"
+        },
+        {
+          "name": "Atom",
+          "code": "42109 B/P"
+        }
+      ]
+    },
+    {
+      "pdfPage": 27,
+      "verified": true,
+      "category": "Wall hung closet",
+      "products": [
+        {
+          "name": "CRONA",
+          "code": "20018"
+        }
+      ]
+    },
+    {
+      "pdfPage": 29,
+      "verified": true,
+      "category": "Wall hung closet",
+      "products": [
+        {
+          "name": "SELGE",
+          "code": "20021"
+        }
+      ]
+    },
+    {
+      "pdfPage": 31,
+      "verified": true,
+      "category": "Tankless wall hung closet",
+      "products": [
+        {
+          "name": "AQUAINTEL Round",
+          "code": "20033"
+        },
+        {
+          "name": "AQUAINTEL Square",
+          "code": "20032"
+        }
+      ]
+    },
+    {
+      "pdfPage": 32,
+      "verified": true,
+      "category": "Wall hung closet",
+      "products": [
+        {
+          "name": "Zest",
+          "code": "20034"
+        },
+        {
+          "name": "Vida",
+          "code": "22035"
+        },
+        {
+          "name": "Crona",
+          "code": "20018"
+        },
+        {
+          "name": "Selge - Electric",
+          "code": "20021"
+        },
+        {
+          "name": "Avante",
+          "code": "20026"
+        },
+        {
+          "name": "Eden",
+          "code": "20027"
+        },
+        {
+          "name": "Zeus",
+          "code": "20028"
+        },
+        {
+          "name": "Fusto",
+          "code": "22022"
+        },
+        {
+          "name": "Stratos",
+          "code": "20022"
+        },
+        {
+          "name": "Letina",
+          "code": "22017"
+        },
+        {
+          "name": "Dell",
+          "code": "22012"
+        },
+        {
+          "name": "Susan",
+          "code": "20023"
+        },
+        {
+          "name": "Entasi",
+          "code": "22023"
+        },
+        {
+          "name": "Svida",
+          "code": "20005"
+        },
+        {
+          "name": "Optimus",
+          "code": "20025"
+        }
+      ]
+    },
+    {
+      "pdfPage": 33,
+      "verified": true,
+      "category": "Wall hung closet · Exposed installation",
+      "products": [
+        {
+          "name": "Stanza",
+          "code": "20004"
+        },
+        {
+          "name": "Cube",
+          "code": "22003"
+        },
+        {
+          "name": "Karen",
+          "code": "20006"
+        },
+        {
+          "name": "Crystal",
+          "code": "20007"
+        },
+        {
+          "name": "Hilton",
+          "code": "20020"
+        },
+        {
+          "name": "Simona 2.0",
+          "code": "22016 / 22016J"
+        },
+        {
+          "name": "Nevio",
+          "code": "22014"
+        },
+        {
+          "name": "Leone",
+          "code": "20024"
+        },
+        {
+          "name": "Nettuno 21\"",
+          "code": "20011"
+        },
+        {
+          "name": "Nettuno 21\"",
+          "code": "20011J"
+        },
+        {
+          "name": "Nettuno 21\"",
+          "code": "20011R"
+        },
+        {
+          "name": "Nettuno 19\"",
+          "code": "20012"
+        },
+        {
+          "name": "Snazzy 21\"",
+          "code": "20017"
+        },
+        {
+          "name": "Mini Snazzy 19\"",
+          "code": "20014"
+        },
+        {
+          "name": "Spice 21\"",
+          "code": "20015"
+        },
+        {
+          "name": "Baby",
+          "code": "20019"
+        }
+      ]
+    },
+    {
+      "pdfPage": 34,
+      "verified": true,
+      "category": "Two piece closet",
+      "products": [
+        {
+          "name": "Cupido",
+          "code": "30009"
+        },
+        {
+          "name": "Smalto",
+          "code": "30010"
+        },
+        {
+          "name": "Spice",
+          "code": "30008"
+        },
+        {
+          "name": "Cupido",
+          "code": "30011"
+        },
+        {
+          "name": "Nettuno",
+          "code": "30006"
+        }
+      ]
+    },
+    {
+      "pdfPage": 35,
+      "verified": true,
+      "category": "European water closet",
+      "products": [
+        {
+          "name": "Sept",
+          "code": "60005"
+        },
+        {
+          "name": "Nettuno",
+          "code": "60002"
+        },
+        {
+          "name": "Sandoz",
+          "code": "60004S / P"
+        },
+        {
+          "name": "Selvo",
+          "code": "60003"
+        },
+        {
+          "name": "Spice Ewc",
+          "code": "60001S / 60001P"
+        },
+        {
+          "name": "Combi",
+          "code": "62001S"
+        },
+        {
+          "name": "Stevia",
+          "code": "60007S"
+        },
+        {
+          "name": "Catino",
+          "code": "60006S"
+        }
+      ]
+    },
+    {
+      "pdfPage": 36,
+      "verified": true,
+      "category": "Concealed cistern and actuation buttons",
+      "products": [
+        {
+          "name": "Magnus 2.0",
+          "code": "25004"
+        },
+        {
+          "name": "Concealed Cistern with Half Frame",
+          "code": "25004HF"
+        },
+        {
+          "name": "Concealed Cistern with Full Frame",
+          "code": "25004FF"
+        },
+        {
+          "name": "Gloss Chrome Actuation Button",
+          "code": "25004AB"
+        },
+        {
+          "name": "Gloss Chrome Actuation Button",
+          "code": "25004BB"
+        },
+        {
+          "name": "Gloss Chrome Actuation Button",
+          "code": "25004CB"
+        },
+        {
+          "name": "Matte Chrome Actuation Button",
+          "code": "25004DB"
+        },
+        {
+          "name": "Matte Chrome Actuation Button",
+          "code": "25004EB"
+        },
+        {
+          "name": "Matte Black Actuation Button",
+          "code": "25004FB"
+        }
+      ]
+    },
+    {
+      "pdfPage": 37,
+      "verified": true,
+      "category": "Concealed cistern and frames",
+      "products": [
+        {
+          "name": "Civitas",
+          "code": "25002",
+          "aliases": [
+            "D-25051D",
+            "F-25051F"
+          ]
+        },
+        {
+          "name": "Magnus",
+          "code": "25003",
+          "aliases": [
+            "25003B",
+            "25003I",
+            "25003Q",
+            "25003H"
+          ]
+        },
+        {
+          "name": "Full Frame",
+          "code": "88009"
+        },
+        {
+          "name": "Half Frame",
+          "code": "88008"
+        },
+        {
+          "name": "Chair Bracket",
+          "code": "88004"
+        }
+      ]
+    },
+    {
+      "pdfPage": 38,
+      "verified": true,
+      "category": "Table top basin",
+      "products": [
+        {
+          "name": "Zest",
+          "code": "10164"
+        },
+        {
+          "name": "Vida",
+          "code": "10165"
+        },
+        {
+          "name": "Fusto",
+          "code": "10152"
+        },
+        {
+          "name": "Nason - A",
+          "code": "12069"
+        },
+        {
+          "name": "Nason - B",
+          "code": "12070"
+        },
+        {
+          "name": "Nason - C",
+          "code": "12071"
+        },
+        {
+          "name": "Larice - Hidden Drain",
+          "code": "10117"
+        },
+        {
+          "name": "Canova",
+          "code": "12041"
+        },
+        {
+          "name": "Piera",
+          "code": "10148"
+        },
+        {
+          "name": "Zeus",
+          "code": "10157"
+        },
+        {
+          "name": "Eden",
+          "code": "10156"
+        },
+        {
+          "name": "Avante",
+          "code": "10160"
+        },
+        {
+          "name": "Fiabe - A",
+          "code": "12067"
+        },
+        {
+          "name": "Fiabe - B",
+          "code": "12068"
+        },
+        {
+          "name": "Skyline",
+          "code": "12052"
+        },
+        {
+          "name": "Lampo",
+          "code": "12038"
+        },
+        {
+          "name": "Latra",
+          "code": "12033"
+        },
+        {
+          "name": "Piano",
+          "code": "10130"
+        },
+        {
+          "name": "Bagno",
+          "code": "12040"
+        },
+        {
+          "name": "Stilo",
+          "code": "12036"
+        },
+        {
+          "name": "Sedent",
+          "code": "10103"
+        },
+        {
+          "name": "Durango",
+          "code": "12062"
+        },
+        {
+          "name": "Sleek Big",
+          "code": "10142"
+        },
+        {
+          "name": "Shallow Big",
+          "code": "10129"
+        },
+        {
+          "name": "Shallow",
+          "code": "10011"
+        }
+      ]
+    },
+    {
+      "pdfPage": 39,
+      "verified": true,
+      "category": "Table top basin",
+      "products": [
+        {
+          "name": "Maria - A",
+          "code": "10145"
+        },
+        {
+          "name": "Maria - B",
+          "code": "10146"
+        },
+        {
+          "name": "Maria - C",
+          "code": "10147"
+        },
+        {
+          "name": "Leone",
+          "code": "10123"
+        },
+        {
+          "name": "Demis",
+          "code": "12032"
+        },
+        {
+          "name": "Susan",
+          "code": "10138"
+        },
+        {
+          "name": "Seacor",
+          "code": "12047"
+        },
+        {
+          "name": "Ancap",
+          "code": "12053"
+        },
+        {
+          "name": "Mini Leone",
+          "code": "10124"
+        },
+        {
+          "name": "Coral",
+          "code": "12019"
+        },
+        {
+          "name": "Spinner",
+          "code": "10101"
+        },
+        {
+          "name": "Slapton",
+          "code": "12054"
+        },
+        {
+          "name": "Abol",
+          "code": "10136"
+        },
+        {
+          "name": "Star",
+          "code": "10018"
+        },
+        {
+          "name": "Dario",
+          "code": "10144"
+        },
+        {
+          "name": "Dante",
+          "code": "10143"
+        },
+        {
+          "name": "Berta",
+          "code": "10151"
+        }
+      ]
+    },
+    {
+      "pdfPage": 40,
+      "verified": true,
+      "category": "Wall mounted basin",
+      "products": [
+        {
+          "name": "Avante",
+          "code": "10162"
+        },
+        {
+          "name": "Crema - Hidden Drain",
+          "code": "10116"
+        },
+        {
+          "name": "Left Suffix",
+          "code": "10107L"
+        },
+        {
+          "name": "Right Suffix",
+          "code": "10107R"
+        },
+        {
+          "name": "Nick",
+          "code": "10035"
+        },
+        {
+          "name": "Left Nick",
+          "code": "10040L"
+        },
+        {
+          "name": "Right Nick",
+          "code": "10040R"
+        },
+        {
+          "name": "Soar",
+          "code": "10042"
+        },
+        {
+          "name": "Simon",
+          "code": "10038"
+        },
+        {
+          "name": "Mini Simon",
+          "code": "10041"
+        }
+      ]
+    },
+    {
+      "pdfPage": 41,
+      "verified": true,
+      "category": "Wall mounted basin",
+      "products": [
+        {
+          "name": "Since",
+          "code": "10031"
+        },
+        {
+          "name": "Flaps",
+          "code": "10120"
+        },
+        {
+          "name": "Elite",
+          "code": "10007"
+        },
+        {
+          "name": "Skim",
+          "code": "10034"
+        },
+        {
+          "name": "Nest",
+          "code": "10097"
+        },
+        {
+          "name": "Shunt",
+          "code": "10114"
+        },
+        {
+          "name": "Sinorita",
+          "code": "10050"
+        },
+        {
+          "name": "Spouse",
+          "code": "10047"
+        },
+        {
+          "name": "Carmine",
+          "code": "10149"
+        },
+        {
+          "name": "Ala",
+          "code": "10133"
+        },
+        {
+          "name": "Shipra",
+          "code": "10049"
+        },
+        {
+          "name": "Smile",
+          "code": "10051"
+        },
+        {
+          "name": "Wise",
+          "code": "10134"
+        },
+        {
+          "name": "Shally",
+          "code": "10048"
+        },
+        {
+          "name": "Caro",
+          "code": "10140"
+        }
+      ]
+    },
+    {
+      "pdfPage": 42,
+      "verified": true,
+      "category": "Counter basin and laboratory sink",
+      "products": [
+        {
+          "name": "Ancona",
+          "code": "12049"
+        },
+        {
+          "name": "Nettuno",
+          "code": "10055"
+        },
+        {
+          "name": "Matrix",
+          "code": "12022"
+        },
+        {
+          "name": "Planet",
+          "code": "10057"
+        },
+        {
+          "name": "Solar",
+          "code": "10053"
+        },
+        {
+          "name": "Semi Oval",
+          "code": "10052"
+        },
+        {
+          "name": "Sebille",
+          "code": "10070"
+        },
+        {
+          "name": "Nettuno",
+          "code": "10069"
+        },
+        {
+          "name": "Planet",
+          "code": "10068"
+        },
+        {
+          "name": "Lab Sink",
+          "code": "18001"
+        },
+        {
+          "name": "Lab Sink Big",
+          "code": "18002"
+        }
+      ]
+    },
+    {
+      "pdfPage": 43,
+      "verified": true,
+      "category": "Table top basin · Art basin",
+      "finish": "Moulded Matt",
+      "products": [
+        {
+          "name": "Sun",
+          "code": "405W"
+        },
+        {
+          "name": "Sun",
+          "code": "406W"
+        },
+        {
+          "name": "Sun",
+          "code": "408W"
+        },
+        {
+          "name": "Isola",
+          "code": "901W"
+        },
+        {
+          "name": "Isola",
+          "code": "905W"
+        },
+        {
+          "name": "Sun",
+          "code": "405B"
+        },
+        {
+          "name": "Sun",
+          "code": "406B"
+        },
+        {
+          "name": "Sun",
+          "code": "408B"
+        },
+        {
+          "name": "Isola",
+          "code": "901B"
+        },
+        {
+          "name": "Isola",
+          "code": "905B"
+        },
+        {
+          "name": "Safe",
+          "code": "307W"
+        },
+        {
+          "name": "Spoof",
+          "code": "434W"
+        },
+        {
+          "name": "Safe",
+          "code": "307B"
+        },
+        {
+          "name": "Spoof",
+          "code": "434B"
+        }
+      ]
+    },
+    {
+      "pdfPage": 44,
+      "verified": true,
+      "category": "Table top basin · Colour basin",
+      "finish": "Matt",
+      "products": [
+        {
+          "name": "Stilo",
+          "aliases": [
+            "Teal Green",
+            "Black",
+            "Sandium",
+            "Summer Navy Blue",
+            "Caramel Brown",
+            "Alaska White",
+            "Dark Grey"
+          ]
+        },
+        {
+          "name": "Shallow Big",
+          "aliases": [
+            "Teal Green",
+            "Black",
+            "Sandium",
+            "Summer Navy Blue",
+            "Caramel Brown",
+            "Alaska White",
+            "Dark Grey"
+          ]
+        },
+        {
+          "name": "Lampo",
+          "aliases": [
+            "Teal Green",
+            "Black",
+            "Sandium",
+            "Summer Navy Blue",
+            "Caramel Brown",
+            "Alaska White",
+            "Dark Grey"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 45,
+      "verified": true,
+      "category": "Table top basin · Hand crafted art basin",
+      "products": [
+        {
+          "name": "Safe",
+          "code": "305"
+        },
+        {
+          "name": "Isola",
+          "code": "907"
+        },
+        {
+          "name": "Isola",
+          "code": "904"
+        },
+        {
+          "name": "Isola",
+          "code": "906"
+        },
+        {
+          "name": "Shallow",
+          "code": "173"
+        },
+        {
+          "name": "Shallow",
+          "code": "205"
+        },
+        {
+          "name": "Shallow",
+          "code": "206"
+        },
+        {
+          "name": "Shallow",
+          "code": "106"
+        },
+        {
+          "name": "Spoof",
+          "code": "436"
+        },
+        {
+          "name": "Shallow Big",
+          "code": "209"
+        },
+        {
+          "name": "Spoof",
+          "code": "432"
+        },
+        {
+          "name": "Shallow",
+          "code": "207"
+        }
+      ]
+    },
+    {
+      "pdfPage": 46,
+      "verified": true,
+      "category": "Table top basin · Hand crafted art basin",
+      "products": [
+        {
+          "name": "Spring",
+          "code": "8001B"
+        },
+        {
+          "name": "Artik",
+          "code": "751"
+        },
+        {
+          "name": "Statson",
+          "code": "554"
+        },
+        {
+          "name": "Statson",
+          "code": "162"
+        },
+        {
+          "name": "Statson",
+          "code": "183"
+        },
+        {
+          "name": "Sleek",
+          "code": "628"
+        },
+        {
+          "name": "Statson",
+          "code": "551"
+        },
+        {
+          "name": "Statson",
+          "code": "553"
+        },
+        {
+          "name": "DB",
+          "code": "5001"
+        },
+        {
+          "name": "Sleek",
+          "code": "627"
+        },
+        {
+          "name": "DB",
+          "code": "4002"
+        },
+        {
+          "name": "DB",
+          "code": "4003"
+        },
+        {
+          "name": "DB",
+          "code": "4001"
+        }
+      ]
+    },
+    {
+      "pdfPage": 47,
+      "verified": true,
+      "category": "Integrated basin",
+      "products": [
+        {
+          "name": "Proton",
+          "code": "12058"
+        },
+        {
+          "name": "Sifco",
+          "code": "12059"
+        },
+        {
+          "name": "Shorten",
+          "code": "10108"
+        },
+        {
+          "name": "Neo",
+          "code": "12030"
+        },
+        {
+          "name": "Sabrina",
+          "code": "10141"
+        },
+        {
+          "name": "Stevia",
+          "code": "10155"
+        }
+      ]
+    },
+    {
+      "pdfPage": 48,
+      "verified": true,
+      "category": "Full pedestal basin",
+      "products": [
+        {
+          "name": "Alvona",
+          "code": "10126",
+          "aliases": [
+            "Vita Pedestal",
+            "11085"
+          ]
+        },
+        {
+          "name": "Vita",
+          "code": "10085",
+          "aliases": [
+            "Vita Pedestal",
+            "11085"
+          ]
+        },
+        {
+          "name": "Slaty",
+          "code": "10094",
+          "aliases": [
+            "Vita Pedestal",
+            "11085"
+          ]
+        },
+        {
+          "name": "Elan",
+          "code": "10110",
+          "aliases": [
+            "Vita Pedestal",
+            "11085"
+          ]
+        },
+        {
+          "name": "Seldom",
+          "code": "10099",
+          "aliases": [
+            "Vita Pedestal",
+            "11085"
+          ]
+        },
+        {
+          "name": "Elisa",
+          "code": "10153",
+          "aliases": [
+            "Vita Pedestal",
+            "11085"
+          ]
+        },
+        {
+          "name": "Nero",
+          "code": "10073",
+          "aliases": [
+            "Vita Pedestal",
+            "11085"
+          ]
+        },
+        {
+          "name": "Refin",
+          "code": "10112",
+          "aliases": [
+            "Stephy Pedestal",
+            "11092"
+          ]
+        },
+        {
+          "name": "Samite",
+          "code": "10089",
+          "aliases": [
+            "Stephy Pedestal",
+            "11092"
+          ]
+        },
+        {
+          "name": "Selvo",
+          "code": "10080",
+          "aliases": [
+            "Selvo Pedestal",
+            "11080"
+          ]
+        },
+        {
+          "name": "Vellis",
+          "code": "10072",
+          "aliases": [
+            "Selvo Pedestal",
+            "11080"
+          ]
+        },
+        {
+          "name": "Scooty",
+          "code": "10079",
+          "aliases": [
+            "Scooty Pedestal",
+            "11079"
+          ]
+        },
+        {
+          "name": "Sophia",
+          "code": "10077",
+          "aliases": [
+            "Sophia Pedestal",
+            "11077"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 49,
+      "verified": true,
+      "category": "Half pedestal basin",
+      "products": [
+        {
+          "name": "Refin",
+          "code": "10112",
+          "aliases": [
+            "Scooty Pedestal",
+            "11004"
+          ]
+        },
+        {
+          "name": "Scooty",
+          "code": "10079",
+          "aliases": [
+            "Scooty Pedestal",
+            "11004"
+          ]
+        },
+        {
+          "name": "Alvona",
+          "code": "10126",
+          "aliases": [
+            "Sift Pedestal",
+            "11005"
+          ]
+        },
+        {
+          "name": "Slaty",
+          "code": "10094",
+          "aliases": [
+            "Sift Pedestal",
+            "11005"
+          ]
+        },
+        {
+          "name": "Elan",
+          "code": "10110",
+          "aliases": [
+            "Sift Pedestal",
+            "11005"
+          ]
+        },
+        {
+          "name": "Seldom",
+          "code": "10099",
+          "aliases": [
+            "Sift Pedestal",
+            "11005"
+          ]
+        },
+        {
+          "name": "Sleet",
+          "code": "10071",
+          "aliases": [
+            "Sleet Pedestal",
+            "11002"
+          ]
+        },
+        {
+          "name": "Elisa",
+          "code": "10153",
+          "aliases": [
+            "Sleet Pedestal",
+            "11002"
+          ]
+        },
+        {
+          "name": "Senor",
+          "code": "10128",
+          "aliases": [
+            "Sleet Pedestal",
+            "11002"
+          ]
+        },
+        {
+          "name": "Nero",
+          "code": "10073",
+          "aliases": [
+            "Sleet Pedestal",
+            "11002"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 50,
+      "verified": true,
+      "category": "Half pedestal basin",
+      "products": [
+        {
+          "name": "Vellis",
+          "code": "10072",
+          "aliases": [
+            "Compaq Pedestal",
+            "11001"
+          ]
+        },
+        {
+          "name": "Samite",
+          "code": "10089",
+          "aliases": [
+            "Compaq Pedestal",
+            "11001"
+          ]
+        },
+        {
+          "name": "Selvo",
+          "code": "10080",
+          "aliases": [
+            "Compaq Pedestal",
+            "11001"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 51,
+      "verified": true,
+      "category": "Orissa pan and PVC cistern",
+      "products": [
+        {
+          "name": "Orissa Pan 23\"",
+          "code": "70002 BR / OR"
+        },
+        {
+          "name": "Orissa Pan 21\"",
+          "code": "70001 BR / OR"
+        },
+        {
+          "name": "Orissa Pan 20\"",
+          "code": "70004 OR"
+        },
+        {
+          "name": "CT Pan 20\"",
+          "code": "70003OR"
+        },
+        {
+          "name": "Albero",
+          "code": "65012GR / 65012BR / 65012BL",
+          "aliases": [
+            "W Gray",
+            "W Brown",
+            "W Black"
+          ]
+        },
+        {
+          "name": "Slender",
+          "code": "65005DF",
+          "aliases": [
+            "Dual Flush"
+          ]
+        },
+        {
+          "name": "Slim",
+          "code": "65007SF",
+          "aliases": [
+            "Single Flush"
+          ]
+        },
+        {
+          "name": "Marfil",
+          "code": "65009DF",
+          "aliases": [
+            "Dual Flush"
+          ]
+        },
+        {
+          "name": "Fosvit",
+          "code": "65013SF/DF",
+          "aliases": [
+            "Single Flush",
+            "Dual Flush"
+          ]
+        },
+        {
+          "name": "Bonsai",
+          "code": "65014DF",
+          "aliases": [
+            "Dual Flush",
+            "Top Push"
+          ]
+        },
+        {
+          "name": "Bonsai",
+          "code": "65014SF",
+          "aliases": [
+            "Single Flush",
+            "Side Push"
+          ]
+        },
+        {
+          "name": "Moxy",
+          "code": "65015SF",
+          "aliases": [
+            "Single Flush"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 52,
+      "verified": true,
+      "category": "Urinals and sanitary fittings",
+      "products": [
+        {
+          "name": "Kelos - Sensor",
+          "code": "52005 CF"
+        },
+        {
+          "name": "Sfera - Sensor",
+          "code": "50009 OF / CF"
+        },
+        {
+          "name": "Savvy",
+          "code": "50002 CF"
+        },
+        {
+          "name": "Fluid",
+          "code": "50006 OF"
+        },
+        {
+          "name": "Antea",
+          "code": "50001 CF"
+        },
+        {
+          "name": "Sclupture",
+          "code": "50003 OF",
+          "aliases": [
+            "Sculpture"
+          ]
+        },
+        {
+          "name": "Stamen",
+          "code": "50008 OF"
+        },
+        {
+          "name": "Flat Back",
+          "code": "50004 OF"
+        },
+        {
+          "name": "'S' Type Rag Bolt",
+          "code": "88001 / 88003",
+          "aliases": [
+            "Regular",
+            "Concealed"
+          ]
+        },
+        {
+          "name": "'T' Type Rag Bolt",
+          "code": "88002"
+        },
+        {
+          "name": "Rag Bolt - Screw",
+          "code": "88006"
+        },
+        {
+          "name": "Concealed Kit",
+          "code": "88011"
+        },
+        {
+          "name": "P-trap",
+          "code": "70010"
+        },
+        {
+          "name": "Drain Pipe",
+          "aliases": [
+            "Straight Discharge Pipe",
+            "Bend Discharge Pipe",
+            "Adaptor Sleeve",
+            "Protection Cap Cover"
+          ]
+        },
+        {
+          "name": "Slat",
+          "code": "50005",
+          "aliases": [
+            "Divisional Plate"
+          ]
+        },
+        {
+          "name": "Sensor",
+          "code": "53001",
+          "aliases": [
+            "For Urinals"
+          ]
+        },
+        {
+          "name": "Waste Coupling",
+          "code": "88005",
+          "aliases": [
+            "Popup with Ceramic Cap"
+          ]
+        },
+        {
+          "name": "WC Connector",
+          "aliases": [
+            "Straight Connector",
+            "Inlet Gasket"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import Icon from '../Icons'
 import Logo from '../Logo'
 import { business, navLinks } from '../../data/siteConfig'
@@ -7,6 +7,9 @@ import { business, navLinks } from '../../data/siteConfig'
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const reduceMotion = useReducedMotion()
+  const headerRef = useRef(null)
+  const menuButtonRef = useRef(null)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -15,42 +18,51 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  useEffect(() => {
+    const desktop = window.matchMedia('(min-width: 1024px)')
+    const closeAtDesktop = () => { if (desktop.matches) setOpen(false) }
+    desktop.addEventListener('change', closeAtDesktop)
+    return () => desktop.removeEventListener('change', closeAtDesktop)
+  }, [])
+
+  useEffect(() => {
+    if (!open) return
+    const closeOutside = (event) => {
+      if (!headerRef.current?.contains(event.target)) setOpen(false)
+    }
+    const closeOnEscape = (event) => {
+      if (event.key !== 'Escape') return
+      setOpen(false)
+      menuButtonRef.current?.focus()
+    }
+    document.addEventListener('pointerdown', closeOutside)
+    document.addEventListener('keydown', closeOnEscape)
+    return () => {
+      document.removeEventListener('pointerdown', closeOutside)
+      document.removeEventListener('keydown', closeOnEscape)
+    }
+  }, [open])
+
   return (
     <motion.header
-      initial={{ y: -80, opacity: 0 }}
+      ref={headerRef}
+      initial={reduceMotion ? false : { y: -16, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? 'border-b border-white/5 bg-charcoal/85 backdrop-blur-md py-3 shadow-soft'
-          : 'bg-transparent py-5'
-      }`}
+      transition={{ duration: reduceMotion ? 0 : 0.55, ease: [0.22, 1, 0.36, 1] }}
+      className={`site-navigation${scrolled ? ' is-scrolled' : ''}${open ? ' is-open' : ''}`}
     >
-      <nav className="container-px flex items-center justify-between">
-        {/* Brand — PRD §1 L4: full on desktop, icon-only on mobile, shrinks on scroll */}
-        <a href="#home" className="group flex items-center">
-          <span className="lg:hidden">
-            <Logo
-              compact
-              variant="dark"
-              className={`transition-transform duration-300 ${scrolled ? 'scale-90' : 'scale-100'}`}
-            />
-          </span>
-          <span className="hidden lg:block">
-            <Logo
-              variant="dark"
-              className={`transition-transform duration-300 ${scrolled ? 'scale-90' : 'scale-100'}`}
-            />
-          </span>
+      <nav className="site-navigation__bar" aria-label="Primary navigation">
+        <a href="#home" className="site-navigation__brand" onClick={() => setOpen(false)} aria-label="Sidhhi Binayak Tiles home">
+          <Logo variant="dark" />
         </a>
 
         {/* Desktop links */}
-        <ul className="hidden items-center gap-8 lg:flex">
+        <ul className="site-navigation__links">
           {navLinks.map((l) => (
             <li key={l.href}>
               <a
                 href={l.href}
-                className="link-underline text-sm font-medium text-sand hover:text-cream"
+                className="site-navigation__link"
               >
                 {l.label}
               </a>
@@ -59,18 +71,22 @@ export default function Navbar() {
         </ul>
 
         {/* Call now + mobile toggle */}
-        <div className="flex items-center gap-3">
+        <div className="site-navigation__actions">
           <a
             href={`tel:${business.phoneTel}`}
-            className="btn-gold hidden px-5 py-2.5 sm:inline-flex"
+            className="btn-gold site-navigation__call"
           >
             <Icon name="phone" className="h-4 w-4" />
-            Call Now
+            Call now
           </a>
           <button
+            ref={menuButtonRef}
+            type="button"
             onClick={() => setOpen((v) => !v)}
-            aria-label="Toggle menu"
-            className="grid h-10 w-10 place-items-center rounded-lg text-cream ring-1 ring-white/10 lg:hidden"
+            aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={open}
+            aria-controls="site-mobile-navigation"
+            className="site-navigation__toggle"
           >
             <Icon name={open ? 'close' : 'menu'} className="h-5 w-5" />
           </button>
@@ -80,26 +96,28 @@ export default function Navbar() {
       {/* Mobile menu */}
       <AnimatePresence>
         {open && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
+          <motion.nav
+            id="site-mobile-navigation"
+            aria-label="Mobile navigation"
+            initial={reduceMotion ? false : { opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="overflow-hidden lg:hidden"
+            transition={{ duration: reduceMotion ? 0 : 0.25, ease: [0.22, 1, 0.36, 1] }}
+            className="site-navigation__menu"
           >
-            <ul className="container-px flex flex-col gap-1 py-4">
+            <ul className="site-navigation__mobile-links">
               {navLinks.map((l) => (
                 <li key={l.href}>
                   <a
                     href={l.href}
                     onClick={() => setOpen(false)}
-                    className="block rounded-lg px-3 py-3 text-base font-medium text-sand hover:bg-white/5 hover:text-cream"
+                    className="site-navigation__link"
                   >
                     {l.label}
                   </a>
                 </li>
               ))}
-              <li className="mt-2 flex gap-3 px-3">
+              <li className="site-navigation__mobile-actions">
                 <a href={`tel:${business.phoneTel}`} className="btn-gold flex-1">
                   <Icon name="phone" className="h-4 w-4" /> Call
                 </a>
@@ -113,7 +131,7 @@ export default function Navbar() {
                 </a>
               </li>
             </ul>
-          </motion.div>
+          </motion.nav>
         )}
       </AnimatePresence>
     </motion.header>

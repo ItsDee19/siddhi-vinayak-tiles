@@ -1,0 +1,531 @@
+{
+  "bookId": "goldcoin",
+  "sourceHash": "38acfc400fbe6997dc8ca23e01a08d1a7b88b574ed4326ff0dfb895fcc91d129",
+  "stories": [
+    {
+      "id": "goldcoin-p002-d1",
+      "pageNumber": 2,
+      "productIds": [
+        "goldcoin-p2-d1"
+      ],
+      "title": "11022-LT",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.163,
+            0.172,
+            0.244,
+            0.342
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 3,
+          "rect": [
+            0.043,
+            0,
+            0.914,
+            1
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "goldcoin-p002-d2",
+      "pageNumber": 2,
+      "productIds": [
+        "goldcoin-p2-d2"
+      ],
+      "title": "11022-DK",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.163,
+            0.565,
+            0.244,
+            0.341
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 3,
+          "rect": [
+            0.043,
+            0,
+            0.914,
+            1
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "goldcoin-p004-d1",
+      "pageNumber": 4,
+      "productIds": [
+        "goldcoin-p4-d1"
+      ],
+      "title": "11050-LT",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.163,
+            0.172,
+            0.244,
+            0.342
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 5,
+          "rect": [
+            0.043,
+            0,
+            0.914,
+            1
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "goldcoin-p004-d2",
+      "pageNumber": 4,
+      "productIds": [
+        "goldcoin-p4-d2"
+      ],
+      "title": "11050-DK",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.163,
+            0.565,
+            0.244,
+            0.341
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 5,
+          "rect": [
+            0.043,
+            0,
+            0.914,
+            1
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "goldcoin-p006-d1",
+      "pageNumber": 6,
+      "productIds": [
+        "goldcoin-p6-d1"
+      ],
+      "title": "12011",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.255,
+            0.154,
+            0.242,
+            0.342
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 7,
+          "rect": [
+            0.043,
+            0,
+            0.914,
+            1
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "goldcoin-p008-d1",
+      "pageNumber": 8,
+      "productIds": [
+        "goldcoin-p8-d1"
+      ],
+      "title": "12016",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.255,
+            0.154,
+            0.242,
+            0.342
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 9,
+          "rect": [
+            0.043,
+            0,
+            0.914,
+            1
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "goldcoin-p010-d1",
+      "pageNumber": 10,
+      "productIds": [
+        "goldcoin-p10-d1"
+      ],
+      "title": "12028",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.255,
+            0.154,
+            0.242,
+            0.342
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 11,
+          "rect": [
+            0.043,
+            0,
+            0.914,
+            1
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "goldcoin-p012-d1",
+      "pageNumber": 12,
+      "productIds": [
+        "goldcoin-p12-d1"
+      ],
+      "title": "12045",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.255,
+            0.154,
+            0.242,
+            0.342
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 13,
+          "rect": [
+            0.043,
+            0,
+            0.914,
+            1
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "goldcoin-p014-d1",
+      "pageNumber": 14,
+      "productIds": [
+        "goldcoin-p14-d1"
+      ],
+      "title": "13259",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.255,
+            0.154,
+            0.242,
+            0.342
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 15,
+          "rect": [
+            0.043,
+            0,
+            0.914,
+            1
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "goldcoin-p016-d1",
+      "pageNumber": 16,
+      "productIds": [
+        "goldcoin-p16-d1"
+      ],
+      "title": "AMBER 03",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.255,
+            0.154,
+            0.242,
+            0.342
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 17,
+          "rect": [
+            0.043,
+            0,
+            0.914,
+            1
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "goldcoin-p018-d1",
+      "pageNumber": 18,
+      "productIds": [
+        "goldcoin-p18-d1"
+      ],
+      "title": "AMBER 05",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.255,
+            0.154,
+            0.242,
+            0.342
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 19,
+          "rect": [
+            0.043,
+            0,
+            0.914,
+            1
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "goldcoin-p020-d1",
+      "pageNumber": 20,
+      "productIds": [
+        "goldcoin-p20-d1"
+      ],
+      "title": "COTTAGE-02",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.255,
+            0.154,
+            0.242,
+            0.342
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 21,
+          "rect": [
+            0.043,
+            0,
+            0.914,
+            1
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "goldcoin-p022-d1",
+      "pageNumber": 22,
+      "productIds": [
+        "goldcoin-p22-d1"
+      ],
+      "title": "DIAMOND 05",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.255,
+            0.154,
+            0.242,
+            0.342
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 23,
+          "rect": [
+            0.043,
+            0,
+            0.914,
+            1
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "goldcoin-p024-d1",
+      "pageNumber": 24,
+      "productIds": [
+        "goldcoin-p24-d1"
+      ],
+      "title": "MATRIX 04",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.255,
+            0.154,
+            0.242,
+            0.342
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 25,
+          "rect": [
+            0.043,
+            0,
+            0.914,
+            1
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "goldcoin-p026-d1",
+      "pageNumber": 26,
+      "productIds": [
+        "goldcoin-p26-d1"
+      ],
+      "title": "ONYX 11",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.255,
+            0.154,
+            0.242,
+            0.342
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 27,
+          "rect": [
+            0.043,
+            0,
+            0.914,
+            1
+          ],
+          "label": "Room setting"
+        }
+      }
+    }
+  ]
+}

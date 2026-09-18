@@ -1,0 +1,156 @@
+{
+  "bookId": "seron-glossy",
+  "sourceHash": "5024b96a311c43b55ca0f21886ad9bbe308a68f8f37627f1386dbd85ffb8f123",
+  "stories": [
+    {
+      "id": "seron-glossy-p003-d1",
+      "pageNumber": 3,
+      "productIds": [
+        "seron-glossy-p3-d1"
+      ],
+      "title": "NEOMI",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.025,
+            0.145,
+            0.255,
+            0.712
+          ],
+          "label": "Complete tile design"
+        }
+      }
+    },
+    {
+      "id": "seron-glossy-p004-d1",
+      "pageNumber": 4,
+      "productIds": [
+        "seron-glossy-p4-d1"
+      ],
+      "title": "ROYAL BOTTOCHINO",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.025,
+            0.145,
+            0.255,
+            0.712
+          ],
+          "label": "Complete tile design"
+        }
+      }
+    },
+    {
+      "id": "seron-glossy-p005-d1",
+      "pageNumber": 5,
+      "productIds": [
+        "seron-glossy-p5-d1"
+      ],
+      "title": "ORACLE CREMA",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.025,
+            0.145,
+            0.255,
+            0.712
+          ],
+          "label": "Complete tile design"
+        }
+      }
+    },
+    {
+      "id": "seron-glossy-p006-d1",
+      "pageNumber": 6,
+      "productIds": [
+        "seron-glossy-p6-d1"
+      ],
+      "title": "ITALIAN CREMA",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.542,
+            0.147,
+            0.258,
+            0.711
+          ],
+          "label": "Complete tile design"
+        }
+      }
+    },
+    {
+      "id": "seron-glossy-p007-d1",
+      "pageNumber": 7,
+      "productIds": [
+        "seron-glossy-p7-d1"
+      ],
+      "title": "GALAXY GRAY",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.542,
+            0.147,
+            0.258,
+            0.711
+          ],
+          "label": "Complete tile design"
+        }
+      }
+    },
+    {
+      "id": "seron-glossy-p008-d1",
+      "pageNumber": 8,
+      "productIds": [
+        "seron-glossy-p8-d1"
+      ],
+      "title": "CIENA BIANCO",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.025,
+            0.145,
+            0.255,
+            0.712
+          ],
+          "label": "Complete tile design"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,846 @@
+{
+  "bookId": "coverstone",
+  "sourceHash": "e5db9c5b1913912f7ef012e7d7cf71e6d1d28680ee68a63a212107c4c1a1351e",
+  "stories": [
+    {
+      "id": "coverstone-p003-d1",
+      "pageNumber": 3,
+      "productIds": [
+        "coverstone-p3-d1"
+      ],
+      "title": "Creative Brilliant Clay (Punch)",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.27,
+            0.282,
+            0.214,
+            0.597
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 4,
+          "rect": [
+            0.032,
+            0.046,
+            0.934,
+            0.91
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "coverstone-p003-d2",
+      "pageNumber": 3,
+      "productIds": [
+        "coverstone-p3-d2"
+      ],
+      "title": "Moroccan 1007",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.494,
+            0.282,
+            0.214,
+            0.597
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 4,
+          "rect": [
+            0.032,
+            0.046,
+            0.934,
+            0.91
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "coverstone-p003-d3",
+      "pageNumber": 3,
+      "productIds": [
+        "coverstone-p3-d3"
+      ],
+      "title": "Brilliant Clay",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.717,
+            0.282,
+            0.214,
+            0.597
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 4,
+          "rect": [
+            0.032,
+            0.046,
+            0.934,
+            0.91
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "coverstone-p006-d1",
+      "pageNumber": 6,
+      "productIds": [
+        "coverstone-p6-d1"
+      ],
+      "title": "Creative Brilliant White (Punch)",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.27,
+            0.282,
+            0.214,
+            0.597
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 7,
+          "rect": [
+            0.032,
+            0.046,
+            0.934,
+            0.91
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "coverstone-p006-d2",
+      "pageNumber": 6,
+      "productIds": [
+        "coverstone-p6-d2"
+      ],
+      "title": "Moroccan 1003",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.494,
+            0.282,
+            0.214,
+            0.597
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 7,
+          "rect": [
+            0.032,
+            0.046,
+            0.934,
+            0.91
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "coverstone-p006-d3",
+      "pageNumber": 6,
+      "productIds": [
+        "coverstone-p6-d3"
+      ],
+      "title": "Brilliant White",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.717,
+            0.282,
+            0.214,
+            0.597
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 7,
+          "rect": [
+            0.032,
+            0.046,
+            0.934,
+            0.91
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "coverstone-p009-d1",
+      "pageNumber": 9,
+      "productIds": [
+        "coverstone-p9-d1"
+      ],
+      "title": "Creative Brilliant Steel (Punch)",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.27,
+            0.282,
+            0.214,
+            0.597
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 10,
+          "rect": [
+            0.032,
+            0.046,
+            0.934,
+            0.91
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "coverstone-p009-d2",
+      "pageNumber": 9,
+      "productIds": [
+        "coverstone-p9-d2"
+      ],
+      "title": "Moroccan 1005",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.494,
+            0.282,
+            0.214,
+            0.597
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 10,
+          "rect": [
+            0.032,
+            0.046,
+            0.934,
+            0.91
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "coverstone-p009-d3",
+      "pageNumber": 9,
+      "productIds": [
+        "coverstone-p9-d3"
+      ],
+      "title": "Brilliant Steel",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.717,
+            0.282,
+            0.214,
+            0.597
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 10,
+          "rect": [
+            0.032,
+            0.046,
+            0.934,
+            0.91
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "coverstone-p012-d1",
+      "pageNumber": 12,
+      "productIds": [
+        "coverstone-p12-d1"
+      ],
+      "title": "Creative Brilliant Aqua (Punch)",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.27,
+            0.282,
+            0.214,
+            0.597
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 13,
+          "rect": [
+            0.032,
+            0.046,
+            0.934,
+            0.91
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "coverstone-p012-d2",
+      "pageNumber": 12,
+      "productIds": [
+        "coverstone-p12-d2"
+      ],
+      "title": "Moroccan 1001",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.494,
+            0.282,
+            0.214,
+            0.597
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 13,
+          "rect": [
+            0.032,
+            0.046,
+            0.934,
+            0.91
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "coverstone-p012-d3",
+      "pageNumber": 12,
+      "productIds": [
+        "coverstone-p12-d3"
+      ],
+      "title": "Brilliant Aqua",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.717,
+            0.282,
+            0.214,
+            0.597
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 13,
+          "rect": [
+            0.032,
+            0.046,
+            0.934,
+            0.91
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "coverstone-p016-d1",
+      "pageNumber": 16,
+      "productIds": [
+        "coverstone-p16-d1"
+      ],
+      "title": "Treviso Choco",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.364,
+            0.099,
+            0.277,
+            0.779
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 17,
+          "rect": [
+            0.032,
+            0.046,
+            0.934,
+            0.91
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "coverstone-p016-d2",
+      "pageNumber": 16,
+      "productIds": [
+        "coverstone-p16-d2"
+      ],
+      "title": "Louvers Treviso Choco (Punch)",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.653,
+            0.099,
+            0.277,
+            0.779
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 17,
+          "rect": [
+            0.032,
+            0.046,
+            0.934,
+            0.91
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "coverstone-p019-d1",
+      "pageNumber": 19,
+      "productIds": [
+        "coverstone-p19-d1"
+      ],
+      "title": "Treviso Crema",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.364,
+            0.099,
+            0.277,
+            0.779
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 20,
+          "rect": [
+            0.032,
+            0.046,
+            0.934,
+            0.91
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "coverstone-p019-d2",
+      "pageNumber": 19,
+      "productIds": [
+        "coverstone-p19-d2"
+      ],
+      "title": "Louvers Treviso Crema (Punch)",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.653,
+            0.099,
+            0.277,
+            0.779
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 20,
+          "rect": [
+            0.032,
+            0.046,
+            0.934,
+            0.91
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "coverstone-p023-d1",
+      "pageNumber": 23,
+      "productIds": [
+        "coverstone-p23-d1"
+      ],
+      "title": "Vibes Dark",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.364,
+            0.099,
+            0.277,
+            0.779
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 24,
+          "rect": [
+            0.032,
+            0.046,
+            0.934,
+            0.91
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "coverstone-p023-d2",
+      "pageNumber": 23,
+      "productIds": [
+        "coverstone-p23-d2"
+      ],
+      "title": "Bosta Vibes Dark (Punch)",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.653,
+            0.099,
+            0.277,
+            0.779
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 24,
+          "rect": [
+            0.032,
+            0.046,
+            0.934,
+            0.91
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "coverstone-p026-d1",
+      "pageNumber": 26,
+      "productIds": [
+        "coverstone-p26-d1"
+      ],
+      "title": "Vibes Grey",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.364,
+            0.099,
+            0.277,
+            0.779
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 27,
+          "rect": [
+            0.032,
+            0.046,
+            0.934,
+            0.91
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "coverstone-p026-d2",
+      "pageNumber": 26,
+      "productIds": [
+        "coverstone-p26-d2"
+      ],
+      "title": "Bosta Vibes Grey (Punch)",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.653,
+            0.099,
+            0.277,
+            0.779
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 27,
+          "rect": [
+            0.032,
+            0.046,
+            0.934,
+            0.91
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "coverstone-p029-d1",
+      "pageNumber": 29,
+      "productIds": [
+        "coverstone-p29-d1"
+      ],
+      "title": "Bold Brown",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.364,
+            0.099,
+            0.277,
+            0.779
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 30,
+          "rect": [
+            0.032,
+            0.046,
+            0.934,
+            0.91
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "coverstone-p029-d2",
+      "pageNumber": 29,
+      "productIds": [
+        "coverstone-p29-d2"
+      ],
+      "title": "Bosta Bold Brown (Punch)",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.653,
+            0.099,
+            0.277,
+            0.779
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 30,
+          "rect": [
+            0.032,
+            0.046,
+            0.934,
+            0.91
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "coverstone-p032-d1",
+      "pageNumber": 32,
+      "productIds": [
+        "coverstone-p32-d1"
+      ],
+      "title": "Bold Crema",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.364,
+            0.099,
+            0.277,
+            0.779
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 33,
+          "rect": [
+            0.032,
+            0.046,
+            0.934,
+            0.91
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "coverstone-p032-d2",
+      "pageNumber": 32,
+      "productIds": [
+        "coverstone-p32-d2"
+      ],
+      "title": "Bosta Bold Crema (Punch)",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.653,
+            0.099,
+            0.277,
+            0.779
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 33,
+          "rect": [
+            0.032,
+            0.046,
+            0.934,
+            0.91
+          ],
+          "label": "Room setting"
+        }
+      }
+    }
+  ]
+}

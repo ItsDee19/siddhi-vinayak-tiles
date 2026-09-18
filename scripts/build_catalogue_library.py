@@ -1,4 +1,4 @@
-"""Build faithful, uncropped page previews for the four supplied catalogues.
+"""Build faithful, uncropped page previews for the registered supplier catalogues.
 
 Usage: python scripts/build_catalogue_library.py --source-dir C:/path/to/pdfs
 
@@ -30,24 +30,7 @@ SETTINGS = {"version": 1, "previewEdge": 1800, "detailEdge": 3600,
             "thumbnailEdge": 280, "previewQuality": 84, "detailQuality": 90,
             "thumbnailQuality": 78}
 
-BOOKS = [
-    {"id": "global-floor", "title": "Global Floor Collection",
-     "description": "Large-format floor tiles, room settings and printed product specifications.",
-     "format": "Floor tiles", "sourceName": "GLOBAL TILES FLOOR CATALOGUE.pdf",
-     "featuredPage": 3},
-    {"id": "global-wall", "title": "Global Wall Collection",
-     "description": "Wall tile designs, coordinated room settings and printed product specifications.",
-     "format": "Wall tiles", "sourceName": "GLOBAL TILES 2025 CATALOGUE.pdf",
-     "featuredPage": 3},
-    {"id": "sky", "title": "SKY Wall Collection",
-     "description": "300 × 450 mm wall tiles, with coordinated designs and room settings.",
-     "format": "12 × 18 in · Wall tiles", "sourceName": "(12X18) SKY PDF.pdf",
-     "featuredPage": 37},
-    {"id": "sunflora", "title": "Sunflora Collection",
-     "description": "The supplied Sunflora catalogue: 600 × 1200 mm surfaces and technical details.",
-     "format": "600 × 1200 mm · 2 × 4 ft", "sourceName": "SUNFLORA 2X4 (NEW DES).pdf",
-     "featuredPage": 3},
-]
+BOOKS = json.loads((ROOT / "scripts" / "catalogue-sources.json").read_text(encoding="utf-8"))
 
 
 def digest(path: Path) -> str:
@@ -94,6 +77,8 @@ def build_book(task: tuple[dict, str, dict | None]) -> dict:
     if not original.is_file():
         raise FileNotFoundError(f"Catalogue not found: {book['sourceName']}")
     source_hash = digest(original)
+    if source_hash != book["sourceHash"]:
+        raise ValueError(f"Source PDF changed: {book['id']}; reverify registry and crops")
     copied_pdf = OUTPUT / f"{book['id']}.pdf"
     if original.resolve() != copied_pdf.resolve():
         if not copied_pdf.is_file() or digest(copied_pdf) != source_hash:
@@ -104,6 +89,8 @@ def build_book(task: tuple[dict, str, dict | None]) -> dict:
     page_dir = OUTPUT / book["id"]
     page_dir.mkdir(parents=True, exist_ok=True)
     document = pdfium.PdfDocument(copied_pdf)
+    if len(document) != book["expectedPages"]:
+        raise ValueError(f"Unexpected page count: {copied_pdf}")
     pages = []
     text_pages = 0
     for index in range(len(document)):
@@ -160,7 +147,7 @@ def build_book(task: tuple[dict, str, dict | None]) -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source-dir", type=Path, default=OUTPUT,
-                        help="Directory containing the four user-supplied PDFs")
+                        help="Directory containing the user-supplied PDFs")
     parser.add_argument("--workers", type=int, default=2,
                         help="Separate renderer processes; PDFium is not thread-safe")
     args = parser.parse_args()

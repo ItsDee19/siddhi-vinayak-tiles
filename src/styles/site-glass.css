@@ -1,0 +1,253 @@
+/* Shared material tokens. Glass belongs to the controls, never the tile artwork. */
+:root {
+  --glass-surface: rgba(58, 43, 32, .38);
+  --glass-solid: #493426;
+  --glass-border: rgba(255, 244, 219, .45);
+  --glass-shadow: 0 14px 40px rgba(27, 13, 5, .18), inset 0 1px 0 rgba(255, 248, 227, .52), inset 0 -1px 0 rgba(255, 226, 182, .1);
+  --glass-blur: 22px;
+  --glass-ink: #fff8ec;
+  --glass-muted: #e8ddcb;
+  --glass-accent: #efd095;
+  --glass-raised: rgba(255, 233, 196, .14);
+  --glass-ease: cubic-bezier(.22, 1, .36, 1);
+  --glass-warm-surface: rgba(58, 43, 32, .38);
+  --glass-warm-border: rgba(255, 244, 219, .27);
+}
+
+/* A separate, floating navigation layer leaves the surface below visible. */
+.site-navigation {
+  position: fixed;
+  z-index: 50;
+  inset: 12px 16px auto;
+  max-width: 1480px;
+  margin-inline: auto;
+  pointer-events: none;
+  color: var(--glass-ink);
+  color-scheme: dark;
+}
+
+.site-navigation__bar,
+.site-navigation__menu {
+  pointer-events: auto;
+  border: 1px solid var(--glass-border);
+  border-right-color: rgba(255, 244, 219, .2);
+  border-bottom-color: rgba(255, 244, 219, .16);
+  background-color: var(--glass-solid);
+  background-image: linear-gradient(115deg, rgba(255, 245, 220, .09), transparent 27%, transparent 73%, rgba(255, 218, 157, .045));
+  box-shadow: var(--glass-shadow);
+}
+
+.site-navigation__bar {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 68px;
+  gap: 18px;
+  padding: 9px 10px 9px 18px;
+  border-radius: 999px;
+  transition: background-color 280ms var(--glass-ease), box-shadow 280ms var(--glass-ease);
+}
+
+.site-navigation__bar::before {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  z-index: -1;
+  pointer-events: none;
+  border: 1px solid rgba(255, 245, 222, .055);
+  border-top-color: rgba(255, 245, 222, .14);
+  border-radius: inherit;
+}
+.site-navigation__brand { display: inline-flex; flex-shrink: 0; border-radius: 12px; }
+.site-navigation__brand .text-cream { color: var(--glass-ink); }
+.site-navigation__brand .text-gold { color: #ffedcf; }
+.site-navigation__brand img { box-shadow: 0 2px 10px rgba(25, 12, 4, .2), 0 0 0 1px rgba(255, 241, 210, .22); }
+.site-navigation__links { display: none; align-items: center; gap: 2px; }
+.site-navigation__link {
+  display: flex;
+  align-items: center;
+  min-height: 42px;
+  padding: 9px 12px;
+  border-radius: 999px;
+  color: var(--glass-ink);
+  font-size: 13px;
+  font-weight: 600;
+  text-shadow: 0 1px 3px rgba(24, 12, 5, .25);
+  transition: background-color 200ms var(--glass-ease), box-shadow 200ms var(--glass-ease), transform 200ms var(--glass-ease);
+}
+.site-navigation__link:hover {
+  background: rgba(255, 237, 204, .05);
+  box-shadow: inset 0 1px 0 rgba(255, 244, 220, .3), inset 0 -1px 0 rgba(255, 233, 196, .06), 0 3px 12px rgba(28, 13, 3, .07);
+}
+.site-navigation__link:active { background: rgba(255, 237, 204, .065); transform: scale(.97); }
+.site-navigation__actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.site-navigation .site-navigation__call {
+  display: none;
+  min-height: 46px;
+  padding: 10px 21px;
+  font-size: 12px;
+  letter-spacing: .01em;
+  text-transform: none;
+}
+.site-navigation__toggle {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--glass-warm-border);
+  border-top-color: var(--glass-border);
+  border-radius: 50%;
+  background: rgba(255, 233, 196, .075);
+  color: var(--glass-ink);
+  box-shadow: inset 0 1px 0 rgba(255, 244, 219, .14), 0 3px 10px rgba(28, 13, 3, .08);
+  transition: background-color 180ms var(--glass-ease), transform 180ms var(--glass-ease);
+}
+.site-navigation__toggle:hover { background: var(--glass-raised); }
+.site-navigation__toggle:active { transform: scale(.95); }
+.site-navigation :is(a, button):focus-visible {
+  outline: 2px solid var(--glass-accent);
+  outline-offset: 3px;
+}
+.site-navigation__menu {
+  overflow: hidden;
+  margin-top: 8px;
+  border-radius: 26px;
+}
+.site-navigation__mobile-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+  max-height: calc(100dvh - 116px);
+  overflow-y: auto;
+  padding: 14px;
+  scrollbar-color: #c9b28e transparent;
+  scrollbar-width: thin;
+}
+.site-navigation__mobile-links .site-navigation__link { min-height: 47px; font-size: 14px; border-radius: 15px; }
+.site-navigation__mobile-actions { grid-column: 1 / -1; display: flex; gap: 10px; padding-top: 12px; }
+.site-navigation__mobile-actions .btn-outline { color: var(--glass-ink); border-color: var(--glass-warm-border); }
+.site-navigation__mobile-actions :is(.btn-outline, .btn-gold) { min-width: 0; padding-inline: 12px; font-size: 11px; }
+
+/* Preserve the showroom's gold and warm typography; soften the control material. */
+.btn-gold,
+.btn-outline {
+  border-radius: 999px;
+  transition: transform 220ms var(--glass-ease), background-color 220ms var(--glass-ease), border-color 220ms var(--glass-ease), box-shadow 220ms var(--glass-ease);
+}
+.btn-gold {
+  border: 1px solid rgba(250, 224, 165, .6);
+  background-image: linear-gradient(180deg, rgba(255, 248, 226, .22), rgba(255, 248, 226, 0) 70%);
+  box-shadow: inset 0 1px 0 rgba(255, 248, 226, .46), 0 4px 14px rgba(25, 18, 10, .12);
+}
+.btn-outline {
+  background-color: rgba(58, 43, 32, .28);
+  background-image: linear-gradient(160deg, rgba(255, 245, 218, .08), transparent 65%);
+  border-color: var(--glass-warm-border);
+  border-top-color: var(--glass-border);
+  box-shadow: inset 0 1px 0 rgba(255, 248, 226, .16), 0 5px 16px rgba(28, 13, 3, .07);
+}
+.btn-gold:hover { box-shadow: inset 0 1px 0 rgba(255, 248, 226, .62), 0 8px 22px rgba(25, 18, 10, .17); }
+.btn-outline:hover { background-color: rgba(255, 233, 196, .12); border-color: rgba(255, 236, 199, .48); }
+:is(.btn-gold, .btn-outline):focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 4px; }
+
+/* A quiet luminous rim connects surrounding showroom cards to the viewing room. */
+#products .shadow-card,
+#about .shadow-card,
+#contact .shadow-card,
+#contact a.group,
+#contact .bg-charcoal-700.rounded-2xl {
+  border-color: var(--glass-warm-border);
+  background-color: var(--glass-warm-surface);
+  border-top-color: rgba(255, 244, 219, .36);
+  border-right-color: rgba(255, 244, 219, .12);
+  background-image: linear-gradient(150deg, rgba(255, 249, 235, .09), transparent 50%, rgba(255, 215, 157, .025));
+  box-shadow: inset 0 1px 0 rgba(255, 249, 235, .14), inset 0 -1px 0 rgba(255, 230, 195, .035), 0 18px 45px -28px rgba(28, 13, 3, .3);
+  transition: border-color 260ms var(--glass-ease), box-shadow 260ms var(--glass-ease);
+}
+#products .shadow-card:hover,
+#contact a.group:hover {
+  border-color: rgba(224, 196, 141, .4);
+  box-shadow: inset 0 1px 0 rgba(255, 249, 235, .16), 0 22px 46px -24px rgba(0, 0, 0, .32);
+}
+
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .site-navigation__bar,
+  .site-navigation__menu {
+    background-color: var(--glass-surface);
+    /* Dim the background seen through this control, preserving clear text even
+       when a bright supplier page passes beneath the floating navigation. */
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(130%) brightness(.45);
+    backdrop-filter: blur(var(--glass-blur)) saturate(130%) brightness(.45);
+  }
+  .site-navigation__menu { background-color: rgba(58, 43, 32, .48); }
+  .site-navigation.is-scrolled .site-navigation__bar { background-color: rgba(58, 43, 32, .46); }
+  #home .btn-outline { -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  :is(.btn-gold, .btn-outline):hover { transform: translateY(-2px); }
+  :is(.btn-gold, .btn-outline):active { transform: translateY(0) scale(.98); }
+}
+@media (min-width: 640px) { .site-navigation .site-navigation__call { display: inline-flex; } }
+@media (min-width: 1024px) {
+  .site-navigation__links { display: flex; }
+  .site-navigation__toggle,
+  .site-navigation__menu { display: none; }
+}
+@media (max-width: 1150px) and (min-width: 1024px) {
+  .site-navigation__bar { gap: 10px; }
+  .site-navigation__link { padding-inline: 9px; font-size: 12px; }
+  .site-navigation .site-navigation__call { padding-inline: 16px; }
+}
+@media (max-width: 639px) {
+  .site-navigation { inset: 10px 10px auto; }
+  .site-navigation__bar { min-height: 64px; padding: 8px 9px 8px 15px; gap: 10px; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .site-navigation__bar,
+  .site-navigation__menu,
+  .site-navigation.is-scrolled .site-navigation__bar {
+    background: var(--glass-solid);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  #home .btn-outline { background: var(--bg-secondary); -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+@media (prefers-contrast: more) {
+  .site-navigation__bar,
+  .site-navigation__menu,
+  .site-navigation.is-scrolled .site-navigation__bar {
+    background: var(--glass-solid);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border-color: var(--glass-ink);
+  }
+  .site-navigation__link { text-shadow: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-navigation *,
+  .btn-gold,
+  .btn-outline { transition: none; }
+  :is(.btn-gold, .btn-outline):hover,
+  :is(.btn-gold, .btn-outline):active,
+  .site-navigation__toggle:active,
+  .site-navigation__link:active { transform: none; }
+}
+@media (forced-colors: active) {
+  .site-navigation__bar,
+  .site-navigation__menu,
+  .site-navigation.is-scrolled .site-navigation__bar {
+    border: 1px solid CanvasText;
+    background: Canvas;
+    box-shadow: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  .site-navigation__link,
+  .site-navigation__toggle { color: LinkText; }
+  .site-navigation :is(a, button):focus-visible { outline-color: Highlight; }
+  .btn-gold,
+  .btn-outline { border: 1px solid ButtonText; box-shadow: none; }
+}

@@ -1,0 +1,391 @@
+{
+  "bookId": "skype",
+  "sourceHash": "7d071d617d62dda2395ce43817ef607e87dfdd4140231c9c86637668e45fb966",
+  "source": "public/catalogues/skype/page-NNN.webp",
+  "method": "Manual visual review of all 34 original PDF pages, with direct label and specification inspection.",
+  "notes": [
+    "Codes and page mappings were read directly from all 34 source pages, not inferred from historical crop IDs.",
+    "Early catalogue designs print Glossy; the Endless section prints Polished. These labels remain distinct.",
+    "Room-only pages are paired by the publisher sequence, the visible matching design, and printed room codes when present. Unpaired designs keep their complete tile view without inventing a room photograph."
+  ],
+  "excludedPages": [
+    {
+      "pdfPage": 1,
+      "reason": "Publisher cover"
+    },
+    {
+      "pdfPage": 2,
+      "reason": "Suprema collection introduction"
+    },
+    {
+      "pdfPage": 4,
+      "reason": "Room photograph paired with the design indexed on PDF page 3"
+    },
+    {
+      "pdfPage": 7,
+      "reason": "Room photograph paired with the design indexed on PDF page 8"
+    },
+    {
+      "pdfPage": 11,
+      "reason": "Room photograph paired with the design indexed on PDF page 12"
+    },
+    {
+      "pdfPage": 14,
+      "reason": "Room photograph paired with the design indexed on PDF page 13"
+    },
+    {
+      "pdfPage": 17,
+      "reason": "Room photograph paired with the design indexed on PDF page 16"
+    },
+    {
+      "pdfPage": 20,
+      "reason": "Room photograph paired with the design indexed on PDF page 19"
+    },
+    {
+      "pdfPage": 23,
+      "reason": "Room photograph paired with the design indexed on PDF page 22"
+    },
+    {
+      "pdfPage": 26,
+      "reason": "Room photograph paired with the design indexed on PDF page 25"
+    },
+    {
+      "pdfPage": 28,
+      "reason": "Room photograph paired with the design indexed on PDF page 27"
+    },
+    {
+      "pdfPage": 30,
+      "reason": "Room photograph paired with the design indexed on PDF page 29"
+    },
+    {
+      "pdfPage": 32,
+      "reason": "Room photograph paired with the design indexed on PDF page 31"
+    },
+    {
+      "pdfPage": 34,
+      "reason": "Room photograph paired with the design indexed on PDF page 33"
+    }
+  ],
+  "pages": [
+    {
+      "pdfPage": 3,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "2551",
+          "code": "2551",
+          "aliases": [
+            "Skype 2551",
+            "Extensive"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 5,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "2547",
+          "code": "2547",
+          "aliases": [
+            "Skype 2547",
+            "Extensive"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 6,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "1838",
+          "code": "1838",
+          "aliases": [
+            "Skype 1838",
+            "Suprema"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 8,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "3615",
+          "code": "3615",
+          "aliases": [
+            "Skype 3615",
+            "Porcelux"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 9,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "3633",
+          "code": "3633",
+          "aliases": [
+            "Skype 3633",
+            "Porcelux"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 10,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "2608",
+          "code": "2608",
+          "aliases": [
+            "Skype 2608",
+            "Extensive"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 12,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "2578",
+          "code": "2578",
+          "aliases": [
+            "Skype 2578",
+            "Extensive"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 13,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "1803",
+          "code": "1803",
+          "aliases": [
+            "Skype 1803",
+            "Suprema"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 15,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "1826",
+          "code": "1826",
+          "aliases": [
+            "Skype 1826",
+            "Suprema"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 16,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "1831",
+          "code": "1831",
+          "aliases": [
+            "Skype 1831",
+            "Suprema"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 18,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "2524",
+          "code": "2524",
+          "aliases": [
+            "Skype 2524",
+            "Extensive"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 19,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "2538",
+          "code": "2538",
+          "aliases": [
+            "Skype 2538",
+            "Extensive"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 21,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "3571",
+          "code": "3571",
+          "aliases": [
+            "Skype 3571",
+            "Porcelux"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 22,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "Polished",
+      "products": [
+        {
+          "name": "2590",
+          "code": "2590",
+          "aliases": [
+            "Skype 2590",
+            "Endless"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 24,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "Polished",
+      "products": [
+        {
+          "name": "2638",
+          "code": "2638",
+          "aliases": [
+            "Skype 2638",
+            "Endless"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 25,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "Polished",
+      "products": [
+        {
+          "name": "2650",
+          "code": "2650",
+          "aliases": [
+            "Skype 2650",
+            "Endless"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 27,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "Polished",
+      "products": [
+        {
+          "name": "2659",
+          "code": "2659",
+          "aliases": [
+            "Skype 2659",
+            "Endless"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 29,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "Polished",
+      "products": [
+        {
+          "name": "2666",
+          "code": "2666",
+          "aliases": [
+            "Skype 2666",
+            "Endless"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 31,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "Polished",
+      "products": [
+        {
+          "name": "2681",
+          "code": "2681",
+          "aliases": [
+            "Skype 2681",
+            "Endless"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 33,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "Polished",
+      "products": [
+        {
+          "name": "2682",
+          "code": "2682",
+          "aliases": [
+            "Skype 2682",
+            "Endless"
+          ]
+        }
+      ]
+    }
+  ]
+}

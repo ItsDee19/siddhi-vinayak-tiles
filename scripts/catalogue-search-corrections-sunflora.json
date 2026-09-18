@@ -1,0 +1,471 @@
+{
+  "bookId": "sunflora",
+  "source": "public/catalogues/sunflora/page-NNN.webp",
+  "method": "Manual visual reading of original publisher page label and specification crops, all 36 pages reviewed.",
+  "notes": [
+    "Use explicit pdfPage; historical crop IDs do not identify PDF pages.",
+    "Finish strings preserve printed manufacturer wording. GHR and POS abbreviations are not expanded.",
+    "Printed spelling CARARA and STROM is retained.",
+    "Names absent from previous structured extraction are included, and each product keeps its own finish."
+  ],
+  "excludedPages": [
+    {
+      "pdfPage": 1,
+      "reason": "Publisher cover"
+    },
+    {
+      "pdfPage": 2,
+      "reason": "Carving collection divider"
+    },
+    {
+      "pdfPage": 28,
+      "reason": "Endless Collection / Carving Endless divider; not a named product"
+    }
+  ],
+  "pages": [
+    {
+      "pdfPage": 3,
+      "verified": true,
+      "products": [
+        {
+          "name": "CV BOTO GREY",
+          "finish": "CARVING",
+          "sizeMm": "600×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 4,
+      "verified": true,
+      "products": [
+        {
+          "name": "CV SILESTONE WHITE",
+          "finish": "CARVING",
+          "sizeMm": "600×1200mm"
+        },
+        {
+          "name": "CV SILESTONE NERO",
+          "finish": "CARVING",
+          "sizeMm": "600×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 5,
+      "verified": true,
+      "products": [
+        {
+          "name": "CV TRAVERTINO BEIGE",
+          "finish": "CARVING",
+          "sizeMm": "600×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 6,
+      "verified": true,
+      "products": [
+        {
+          "name": "SP CRYSTAL BLACK",
+          "finish": "SPARKLE WITH GRANULLA",
+          "sizeMm": "600×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 7,
+      "verified": true,
+      "products": [
+        {
+          "name": "SP CRYSTAL SILVER",
+          "finish": "SPARKLE WITH GRANULLA",
+          "sizeMm": "600×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 8,
+      "verified": true,
+      "products": [
+        {
+          "name": "SP DENIM NERO",
+          "finish": "SPARKLE WITH GRANULLA",
+          "sizeMm": "600×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 9,
+      "verified": true,
+      "products": [
+        {
+          "name": "SP DENIM WHITE",
+          "finish": "SPARKLE WITH GRANULLA",
+          "sizeMm": "600×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 10,
+      "verified": true,
+      "products": [
+        {
+          "name": "SP FLICKER BROWN",
+          "finish": "SPARKLE WITH GRANULLA",
+          "sizeMm": "600×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 11,
+      "verified": true,
+      "products": [
+        {
+          "name": "SP ICONIC BEIGE DECOR",
+          "finish": "SPARKLE WITH GRANULLA",
+          "sizeMm": "600×1200mm"
+        },
+        {
+          "name": "SP ICONIC BEIGE FRAME",
+          "finish": "SPARKLE WITH GRANULLA",
+          "sizeMm": "600×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 12,
+      "verified": true,
+      "products": [
+        {
+          "name": "SP OMICRON BEIGE",
+          "finish": "SPARKLE WITH GRANULLA",
+          "sizeMm": "600×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 13,
+      "verified": true,
+      "products": [
+        {
+          "name": "SP SUBWAY BLACK DECOR",
+          "finish": "SPARKLE WITH GRANULLA",
+          "sizeMm": "600×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 14,
+      "verified": true,
+      "products": [
+        {
+          "name": "SP SUBWAY WHITE DECOR",
+          "finish": "SPARKLE WITH GRANULLA",
+          "sizeMm": "600×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 15,
+      "verified": true,
+      "products": [
+        {
+          "name": "SP TERRA BLACK",
+          "finish": "SPARKLE WITH GRANULLA",
+          "sizeMm": "600×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 16,
+      "verified": true,
+      "products": [
+        {
+          "name": "SP TERRA WHITE",
+          "finish": "SPARKLE WITH GRANULLA",
+          "sizeMm": "600×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 17,
+      "verified": true,
+      "products": [
+        {
+          "name": "SP WING PINK",
+          "finish": "SPARKLE WITH GRANULLA",
+          "sizeMm": "600×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 18,
+      "verified": true,
+      "products": [
+        {
+          "name": "SUBWAY CARARA DECOR",
+          "finish": "GHR+PUNCH",
+          "sizeMm": "600×1200mm"
+        },
+        {
+          "name": "SUBWAY CARARA",
+          "finish": "GHR",
+          "sizeMm": "600×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 19,
+      "verified": true,
+      "products": [
+        {
+          "name": "SENSE PEARL DECOR",
+          "finish": "POS + PUNCH",
+          "sizeMm": "600×1200mm"
+        },
+        {
+          "name": "SENSE PEARL",
+          "finish": "POS",
+          "sizeMm": "600×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 20,
+      "verified": true,
+      "products": [
+        {
+          "name": "SENSE FLORA DECOR",
+          "finish": "POS + PUNCH",
+          "sizeMm": "600×1200mm"
+        },
+        {
+          "name": "SENSE FLORA",
+          "finish": "POS",
+          "sizeMm": "600×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 21,
+      "verified": true,
+      "products": [
+        {
+          "name": "PRESTIGE MINT DECOR",
+          "finish": "POS + PUNCH",
+          "sizeMm": "600×1200mm"
+        },
+        {
+          "name": "PRESTIGE MINT",
+          "finish": "POS",
+          "sizeMm": "600×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 22,
+      "verified": true,
+      "products": [
+        {
+          "name": "PRESTIGE CRACKLE DECOR",
+          "finish": "POS + PUNCH",
+          "sizeMm": "600×1200mm"
+        },
+        {
+          "name": "PRESTIGE CRACKLE",
+          "finish": "POS",
+          "sizeMm": "600×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 23,
+      "verified": true,
+      "products": [
+        {
+          "name": "MOZO MIDAS DECOR",
+          "finish": "POS + PUNCH",
+          "sizeMm": "600×1200mm"
+        },
+        {
+          "name": "COTTO MIDAS FUMO",
+          "finish": "POS + PUNCH",
+          "sizeMm": "600×1200mm"
+        },
+        {
+          "name": "COTTO MIDAS NERO",
+          "finish": "POS + PUNCH",
+          "sizeMm": "600×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 24,
+      "verified": true,
+      "products": [
+        {
+          "name": "MONOSTONE CREMA DECOR",
+          "finish": "POS + PUNCH",
+          "sizeMm": "600×1200mm"
+        },
+        {
+          "name": "FORT CREMA",
+          "finish": "POS",
+          "sizeMm": "600×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 25,
+      "verified": true,
+      "products": [
+        {
+          "name": "MONOSTONE BROWN DECOR",
+          "finish": "POS + PUNCH",
+          "sizeMm": "600×1200mm"
+        },
+        {
+          "name": "FORT BROWN",
+          "finish": "POS",
+          "sizeMm": "600×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 26,
+      "verified": true,
+      "products": [
+        {
+          "name": "FORT CREMA DECOR",
+          "finish": "POS + PUNCH",
+          "sizeMm": "600×1200mm"
+        },
+        {
+          "name": "FORT CREMA",
+          "finish": "POS",
+          "sizeMm": "600×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 27,
+      "verified": true,
+      "products": [
+        {
+          "name": "FORT BROWN DECOR",
+          "finish": "POS + PUNCH",
+          "sizeMm": "600×1200mm"
+        },
+        {
+          "name": "FORT BROWN",
+          "finish": "POS",
+          "sizeMm": "600×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 29,
+      "verified": true,
+      "products": [
+        {
+          "name": "END STROM GREY",
+          "finish": "CARVING ENDLESS",
+          "sizeMm": "600×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 30,
+      "verified": true,
+      "products": [
+        {
+          "name": "END FLORA AQUA",
+          "finish": "CARVING ENDLESS",
+          "sizeMm": "600×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 31,
+      "verified": true,
+      "products": [
+        {
+          "name": "END SPARK STATUARIO",
+          "finish": "CARVING ENDLESS",
+          "sizeMm": "600×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 32,
+      "verified": true,
+      "products": [
+        {
+          "name": "END FLORA GOLD",
+          "finish": "CARVING ENDLESS",
+          "sizeMm": "600×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 33,
+      "verified": true,
+      "products": [
+        {
+          "name": "END ANTHENI MINT",
+          "finish": "CARVING ENDLESS",
+          "sizeMm": "600×1200mm"
+        },
+        {
+          "name": "END ANTHENI PINK",
+          "finish": "CARVING ENDLESS",
+          "sizeMm": "600×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 34,
+      "verified": true,
+      "products": [
+        {
+          "name": "END ANTHENI GREY",
+          "finish": "CARVING ENDLESS",
+          "sizeMm": "600×1200mm"
+        },
+        {
+          "name": "END ANTHENI NERO",
+          "finish": "CARVING ENDLESS",
+          "sizeMm": "600×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 35,
+      "verified": true,
+      "products": [
+        {
+          "name": "DIAMOND ONYX DECOR",
+          "finish": "GHR+PUNCH",
+          "sizeMm": "600×1200mm"
+        },
+        {
+          "name": "DIAMOND ONYX",
+          "finish": "GHR",
+          "sizeMm": "600×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 36,
+      "verified": true,
+      "products": [
+        {
+          "name": "3D-1001",
+          "finish": "CARVING",
+          "sizeMm": "600×1200mm"
+        }
+      ]
+    }
+  ],
+  "sourceHash": "731b210443b410598288a861bb7ba6cebeb5958eac926d769cc9b090b034ccf8"
+}

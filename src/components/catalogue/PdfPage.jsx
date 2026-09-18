@@ -1,16 +1,16 @@
 import { useEffect, useId, useRef, useState } from 'react'
-import { getOriginalPageUrl, getPageLayout } from '../../utils/pdfViewport'
+import { useReducedMotion } from '../../hooks/useReducedMotion'
+import { capturePageViewPosition, getAdjacentPreviewUrls, getOriginalPageUrl, getPageLayout, getPageViewportScroll, getSwipeNavigation, loadDecodedPageImage, restorePageViewPosition, retainViewportSize } from '../../utils/pdfViewport'
+import '../../styles/pdf-page.css'
 
 function useViewportSize(ref) {
   const [size, setSize] = useState({ width: 0, height: 0 })
-
   useEffect(() => {
     const element = ref.current
     if (!element) return undefined
     const measure = () => {
-      const width = element.clientWidth
-      const height = element.clientHeight
-      setSize((previous) => previous.width === width && previous.height === height ? previous : { width, height })
+      const { clientWidth: width, clientHeight: height } = element
+      setSize(previous => retainViewportSize(previous, { width, height }))
     }
     measure()
     if (typeof ResizeObserver === 'undefined') {
@@ -21,172 +21,223 @@ function useViewportSize(ref) {
     observer.observe(element)
     return () => observer.disconnect()
   }, [ref])
-
   return size
 }
 
 function retryUrl(url, attempt) {
-  if (!url || !attempt) return url
-  return `${url}${url.includes('?') ? '&' : '?'}retry=${attempt}`
+  return !url || !attempt ? url : `${url}${url.includes('?') ? '&' : '?'}retry=${attempt}`
+}
+
+/** Decode before replacing visible paper; abandoned requests cannot publish a frame. */
+function usePageImage(url, key, enabled = true) {
+  const [resource, setResource] = useState({ key: '', state: 'loading' })
+  useEffect(() => {
+    if (!url || !enabled) return undefined
+    return loadDecodedPageImage({ url, onReady: () => setResource({ key, state: 'ready' }), onError: () => setResource({ key, state: 'error' }) })
+  }, [url, key, enabled])
+  return !enabled || !url ? 'idle' : resource.key === key ? resource.state : 'loading'
 }
 
 /**
- * An uncropped publisher page with native scrolling at larger zoom levels.
- * The supplied PDFs contain scanned pages, so source-resolution page images
- * preserve their printed details without downloading the entire PDF.
- * The parent owns navigation, zoom, fullscreen and adjacent page details.
+ * Faithful publisher pages. The parent owns navigation, zoom and the reader shell.
+ * Optional gestures call the same parent actions as toolbar controls; native
+ * scrolling and keyboard access remain available without dragging or swiping.
  */
-export default function PdfPage({
-  book,
-  pageNumber,
-  zoom = 1,
-  highDetail = false,
-  className = 'h-full',
-  onStatusChange,
-}) {
+export default function PdfPage({ book, pageNumber, zoom = 1, fitMode = 'page', highDetail = false, className = 'h-full', onStatusChange, onNext, onPrevious, onToggleZoom, direction = 1, viewPositionRef }) {
   const viewportRef = useRef(null)
-  const previewImageRef = useRef(null)
-  const detailImageRef = useRef(null)
   const statusCallbackRef = useRef(onStatusChange)
   statusCallbackRef.current = onStatusChange
+  const gestureRef = useRef(null)
+  const geometryRef = useRef(null)
+  const restorationPendingRef = useRef(true)
+  const clickBlockedUntilRef = useRef(0)
   const hintId = useId()
+  const reducedMotion = useReducedMotion()
+  const size = useViewportSize(viewportRef)
+  const [dragging, setDragging] = useState(false)
   const [retry, setRetry] = useState({ key: '', preview: 0, detail: 0 })
-  const [imageState, setImageState] = useState({ key: '', state: 'loading' })
-  const [detailState, setDetailState] = useState({ key: '', state: 'loading' })
-  const page = book?.pages?.find((entry) => entry.number === pageNumber)
+  const [frames, setFrames] = useState({ current: null, outgoing: null })
+  const page = book?.pages?.find(entry => entry.number === pageNumber)
   const pageKey = `${book?.id}:${pageNumber}`
   const previewAttempt = retry.key === pageKey ? retry.preview : 0
   const detailAttempt = retry.key === pageKey ? retry.detail : 0
-  const previewKey = `${pageKey}:${page?.image}:${previewAttempt}`
-  const detailKey = `${pageKey}:${page?.detailImage}:${detailAttempt}`
-  const currentAssetRef = useRef({ previewKey, detailKey })
-  currentAssetRef.current = { previewKey, detailKey }
-  const size = useViewportSize(viewportRef)
-  const layout = getPageLayout({
-    width: page?.width,
-    height: page?.height,
-    containerWidth: size.width,
-    containerHeight: size.height,
-    zoom,
-  })
+  const previewUrl = retryUrl(page?.image, previewAttempt)
+  const detailUrl = retryUrl(page?.detailImage, detailAttempt)
+  const previewKey = `${pageKey}:${previewUrl}`
+  const detailKey = `${pageKey}:${detailUrl}`
   const wantsDetail = highDetail && Boolean(page?.detailImage)
+  const previewState = usePageImage(previewUrl, previewKey, Boolean(page))
+  const detailState = usePageImage(detailUrl, detailKey, wantsDetail)
+  const readyUrl = detailState === 'ready' ? detailUrl : previewState === 'ready' ? previewUrl : null
+  const readyQuality = detailState === 'ready' ? 'detail' : 'preview'
+  const currentRequestRef = useRef(pageKey)
+  currentRequestRef.current = pageKey
 
   useEffect(() => {
-    const image = previewImageRef.current
-    if (!image || currentAssetRef.current.previewKey !== previewKey) return
-    // SSR and memory-cache images may finish before React attaches onLoad.
-    const state = image.complete ? image.naturalWidth > 0 ? 'ready' : 'error' : 'loading'
-    setImageState(previous => previous.key === previewKey && previous.state === state ? previous : { key: previewKey, state })
-  }, [previewKey])
+    if (!page || !readyUrl || currentRequestRef.current !== pageKey) return
+    setFrames(previous => {
+      const samePage = previous.current?.key === pageKey
+      // A decoded detail image remains useful when returning to fit view.
+      if (samePage && (previous.current.src === readyUrl || previous.current.quality === 'detail' && readyQuality === 'preview')) return previous
+      return {
+        current: { key: pageKey, page, title: book.title, src: readyUrl, quality: readyQuality, direction: direction < 0 ? -1 : 1 },
+        outgoing: samePage ? previous.outgoing : previous.current,
+      }
+    })
+  }, [page, pageKey, readyUrl, readyQuality, book?.title, direction])
 
   useEffect(() => {
-    const image = detailImageRef.current
-    if (!wantsDetail || !image || currentAssetRef.current.detailKey !== detailKey) return
-    const state = image.complete ? image.naturalWidth > 0 ? 'ready' : 'error' : 'loading'
-    setDetailState(previous => previous.key === detailKey && previous.state === state ? previous : { key: detailKey, state })
-  }, [detailKey, wantsDetail])
+    if (!frames.outgoing) return undefined
+    const key = frames.current?.key
+    const timer = window.setTimeout(() => {
+      setFrames(previous => previous.current?.key === key ? { ...previous, outgoing: null } : previous)
+    }, reducedMotion ? 0 : 260)
+    return () => window.clearTimeout(timer)
+  }, [frames.current?.key, frames.outgoing, reducedMotion])
 
-  const imageFailed = imageState.key === previewKey && imageState.state === 'error'
-  const imageReady = imageState.key === previewKey && imageState.state === 'ready'
-  const detailReady = wantsDetail && detailState.key === detailKey && detailState.state === 'ready'
-  const detailFailed = wantsDetail && detailState.key === detailKey && detailState.state === 'error'
-  const state = !page || (imageFailed && !detailReady) || detailFailed ? 'error'
-    : detailReady ? 'ready' : wantsDetail || !imageReady ? 'loading' : 'preview'
+  const visiblePage = frames.current?.page || page
+  const mode = fitMode === 'width' ? 'width' : 'page'
+  const layout = getPageLayout({ width: visiblePage?.width, height: visiblePage?.height, containerWidth: size.width, containerHeight: size.height, zoom, fitMode: mode })
+  const stageWidth = Math.max(size.width, layout.width + 32)
+  const stageHeight = Math.max(size.height, layout.height + 32)
+  const displayedCurrent = frames.current?.key === pageKey
+  const canPan = displayedCurrent && size.width > 0 && (stageWidth > size.width + 1 || stageHeight > size.height + 1)
+  const imageFailed = previewState === 'error'
+  const detailFailed = wantsDetail && detailState === 'error'
+  const detailVisible = displayedCurrent && frames.current?.quality === 'detail'
+  const state = !page || (imageFailed && !detailVisible) || detailFailed ? 'error'
+    : !displayedCurrent || wantsDetail && !detailVisible ? 'loading'
+      : detailVisible ? 'ready' : 'preview'
+  const retainedNote = frames.current && !displayedCurrent ? ` Showing page ${frames.current.page.number} until this page is available.` : ''
   const message = !page ? 'This page is unavailable. Open the original catalogue below.'
-    : detailFailed ? imageReady ? 'The enlarged image could not load. The page preview is still available.' : 'This page could not load. Try again or open the original PDF.'
-      : imageFailed && !detailReady ? 'The preview could not load. Try again or open the original PDF.'
-        : detailReady ? 'Full detail is ready.'
-          : wantsDetail ? 'Loading full detail. You can keep viewing the page.'
-            : !imageReady ? 'Loading catalogue page.' : 'Page preview ready.'
+    : detailFailed ? displayedCurrent ? 'Full detail could not load. The page preview is still available.' : `This page could not load.${retainedNote}`
+      : imageFailed && !detailVisible ? `Page ${pageNumber} could not load. Try again or open the original PDF.${retainedNote}`
+        : !displayedCurrent ? `Loading page ${pageNumber}.${retainedNote}`
+          : wantsDetail && !detailVisible ? 'Loading full detail. You can keep viewing the page.'
+            : detailVisible ? 'Full detail is ready.' : 'Page preview ready.'
 
-  useEffect(() => {
-    statusCallbackRef.current?.({ state, message })
-  }, [state, message])
+  useEffect(() => { statusCallbackRef.current?.({ state, message }) }, [state, message])
 
   useEffect(() => {
     const viewport = viewportRef.current
-    if (viewport) viewport.scrollTo({ left: 0, top: 0, behavior: 'instant' })
-  }, [pageKey])
+    // Do not recalculate scroll geometry while a parent panel hides this reader.
+    if (!viewport || viewport.clientWidth <= 0 || viewport.clientHeight <= 0 || size.width <= 0 || size.height <= 0) return
+    const nextGeometry = { pageKey, frameKey: frames.current?.key, fitMode: mode, zoom, width: stageWidth, height: stageHeight }
+    const restored = restorationPendingRef.current ? restorePageViewPosition(viewPositionRef?.current, { ...nextGeometry, containerWidth: size.width, containerHeight: size.height }) : null
+    const nextScroll = restored || getPageViewportScroll({ previous: geometryRef.current, next: nextGeometry, scrollLeft: viewport.scrollLeft, scrollTop: viewport.scrollTop, containerWidth: size.width, containerHeight: size.height })
+    viewport.scrollLeft = nextScroll.left
+    viewport.scrollTop = nextScroll.top
+    geometryRef.current = nextGeometry
+    // Loading/hidden mounts cannot erase the bookmark before a full-size page exists.
+    if (displayedCurrent) restorationPendingRef.current = false
+    saveViewPosition()
+    gestureRef.current = null
+    setDragging(false)
+  }, [pageKey, frames.current?.key, mode, zoom, stageWidth, stageHeight, size.width, size.height, viewPositionRef])
 
-  const originalUrl = book?.pdfUrl ? getOriginalPageUrl(book.pdfUrl, pageNumber) : null
+  useEffect(() => {
+    if (!displayedCurrent || previewState !== 'ready') return undefined
+    const connection = navigator.connection
+    if (connection?.saveData || ['slow-2g', '2g'].includes(connection?.effectiveType)) return undefined
+    const images = getAdjacentPreviewUrls(book?.pages, pageNumber).map(url => {
+      const image = new Image()
+      image.decoding = 'async'
+      image.fetchPriority = 'low'
+      image.src = url
+      return image
+    })
+    return () => { images.forEach(image => { if (!image.complete) image.removeAttribute('src') }) }
+  }, [book?.pages, pageNumber, previewState, displayedCurrent])
 
-  function retryFailedImage() {
-    // Retain a working preview while retrying a failed detail image, and vice versa.
-    setRetry({ key: pageKey, preview: previewAttempt + Number(imageFailed), detail: detailAttempt + Number(detailFailed) })
+  function saveViewPosition() {
+    const viewport = viewportRef.current
+    const geometry = geometryRef.current
+    if (!viewPositionRef || restorationPendingRef.current || !displayedCurrent || !viewport
+      || geometry?.pageKey !== pageKey || geometry.fitMode !== mode || geometry.zoom !== zoom) return
+    const saved = capturePageViewPosition({ ...geometry, containerWidth: viewport.clientWidth, containerHeight: viewport.clientHeight, scrollLeft: viewport.scrollLeft, scrollTop: viewport.scrollTop })
+    if (saved) viewPositionRef.current = saved
   }
 
-  return (
-    <div className={`relative min-h-0 min-w-0 ${className}`}>
-      <div
-        ref={viewportRef}
-        role="region"
-        aria-label={`${book?.title || 'Catalogue'}, page ${pageNumber}`}
-        aria-describedby={hintId}
-        tabIndex={0}
-        className="h-full w-full overflow-auto bg-ink/40 outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gold"
-        style={{ overscrollBehavior: 'contain', scrollbarGutter: 'stable' }}
-      >
-        <div
-          className="grid place-items-center p-4"
-          style={{ width: Math.max(size.width, layout.width + 32), height: Math.max(size.height, layout.height + 32) }}
-        >
-          {page ? (
-            <div
-              className="relative shrink-0 overflow-hidden bg-white shadow-2xl"
-              style={{ width: layout.width, height: layout.height }}
-            >
-              <img
-                ref={previewImageRef}
-                key={previewKey}
-                src={retryUrl(page.image, previewAttempt)}
-                width={page.width}
-                height={page.height}
-                alt={`${book.title}, page ${pageNumber}. Complete original catalogue page with its printed tile details.`}
-                decoding="async"
-                draggable="false"
-                onLoad={() => {
-                  if (currentAssetRef.current.previewKey === previewKey) setImageState({ key: previewKey, state: 'ready' })
-                }}
-                onError={() => {
-                  if (currentAssetRef.current.previewKey === previewKey) setImageState({ key: previewKey, state: 'error' })
-                }}
-                className="block h-full w-full object-contain"
-                style={{ opacity: imageFailed ? 0 : 1 }}
-              />
-              {wantsDetail && (
-                <img
-                  ref={detailImageRef}
-                  key={detailKey}
-                  src={retryUrl(page.detailImage, detailAttempt)}
-                  width={page.width}
-                  height={page.height}
-                  alt=""
-                  aria-hidden="true"
-                  decoding="async"
-                  draggable="false"
-                  onLoad={() => {
-                    if (currentAssetRef.current.detailKey === detailKey) setDetailState({ key: detailKey, state: 'ready' })
-                  }}
-                  onError={() => {
-                    if (currentAssetRef.current.detailKey === detailKey) setDetailState({ key: detailKey, state: 'error' })
-                  }}
-                  className="pointer-events-none absolute inset-0 block h-full w-full object-contain"
-                  style={{ opacity: detailReady ? 1 : 0 }}
-                />
-              )}
-            </div>
-          ) : null}
+  function handlePointerDown(event) {
+    if (!event.isPrimary) { gestureRef.current = null; return }
+    if (!displayedCurrent || event.button !== 0) return
+    const viewport = viewportRef.current
+    const bounds = viewport.getBoundingClientRect()
+    // Native scrollbar thumbs remain draggable instead of becoming paper pans.
+    if (event.clientX - bounds.left >= viewport.clientWidth || event.clientY - bounds.top >= viewport.clientHeight) return
+    if (canPan && event.pointerType !== 'touch') {
+      event.preventDefault()
+      viewport.focus({ preventScroll: true })
+      viewport.setPointerCapture?.(event.pointerId)
+      gestureRef.current = { mode: 'pan', pointerId: event.pointerId, x: event.clientX, y: event.clientY, left: viewport.scrollLeft, top: viewport.scrollTop, moved: false }
+      setDragging(true)
+    } else if (zoom === 1 && event.pointerType === 'touch' && (onNext || onPrevious)) {
+      gestureRef.current = { mode: 'swipe', pointerId: event.pointerId, x: event.clientX, y: event.clientY, time: event.timeStamp, key: pageKey }
+    }
+  }
+
+  function handlePointerMove(event) {
+    const gesture = gestureRef.current
+    if (!gesture || gesture.pointerId !== event.pointerId || gesture.mode !== 'pan') return
+    const dx = event.clientX - gesture.x
+    const dy = event.clientY - gesture.y
+    gesture.moved ||= Math.abs(dx) + Math.abs(dy) > 5
+    viewportRef.current.scrollLeft = gesture.left - dx
+    viewportRef.current.scrollTop = gesture.top - dy
+  }
+
+  function handlePointerEnd(event) {
+    const gesture = gestureRef.current
+    gestureRef.current = null
+    setDragging(false)
+    if (!gesture || gesture.pointerId !== event.pointerId) return
+    if (event.currentTarget.hasPointerCapture?.(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId)
+    if (gesture.mode === 'pan' && gesture.moved) clickBlockedUntilRef.current = event.timeStamp + 300
+    if (event.type !== 'pointerup' || gesture.mode !== 'swipe' || zoom !== 1 || gesture.key !== pageKey) return
+    const turn = getSwipeNavigation({ startX: gesture.x, startY: gesture.y, endX: event.clientX, endY: event.clientY, elapsed: event.timeStamp - gesture.time, viewportWidth: size.width })
+    if (turn === 1 && pageNumber < book.pageCount) onNext?.()
+    else if (turn === -1 && pageNumber > 1) onPrevious?.()
+  }
+
+  function renderFrame(frame, outgoing = false) {
+    if (!frame) return null
+    const paper = getPageLayout({ width: frame.page.width, height: frame.page.height, containerWidth: size.width, containerHeight: size.height, zoom, fitMode: mode })
+    return (
+      <div key={frame.key} className={`pdf-layer ${mode === 'width' ? 'pdf-layer--top' : ''} ${outgoing ? 'pdf-layer--outgoing' : 'pdf-layer--current'}`} style={{ width: paper.width, height: paper.height }} aria-hidden={outgoing || !displayedCurrent ? true : undefined}>
+        <div className={`pdf-sheet ${frames.outgoing ? outgoing ? 'pdf-sheet--departing' : 'pdf-sheet--arriving' : ''}`} style={{ '--pdf-travel': `${(frames.current?.direction || 1) * 14}px` }}>
+          <img src={frame.src} width={frame.page.width} height={frame.page.height} alt={outgoing ? '' : `${frame.title}, page ${frame.page.number}. Complete original catalogue page with its printed tile details.`} draggable="false" className="pdf-page-image" />
         </div>
       </div>
-      <span id={hintId} className="sr-only">At larger zoom levels, scroll or use the arrow keys to read every part of this page.</span>
-      <div aria-live="polite" aria-atomic="true" className={state === 'error' ? 'absolute inset-x-3 bottom-3 rounded-card border border-sand/30 bg-charcoal p-3 text-sm text-cream shadow-card' : 'sr-only'}>
+    )
+  }
+
+  const originalUrl = book?.pdfUrl ? getOriginalPageUrl(book.pdfUrl, pageNumber) : null
+  const canSwipe = zoom === 1 && Boolean(onNext || onPrevious)
+  return (
+    <div className={`pdf-page ${className}`}>
+      <div ref={viewportRef} role="region" aria-label={`${book?.title || 'Catalogue'}, page ${pageNumber}`} aria-describedby={hintId} aria-busy={state === 'loading'} tabIndex={0}
+        className={`pdf-viewport ${zoom > 1 ? 'pdf-viewport--zoomed' : 'pdf-viewport--fit'} ${canPan ? 'pdf-viewport--pannable' : ''} ${dragging ? 'pdf-viewport--dragging' : ''}`}
+        style={{ touchAction: canSwipe ? 'pan-y pinch-zoom' : 'auto' }}
+        onScroll={saveViewPosition}
+        onPointerDown={handlePointerDown} onPointerMove={handlePointerMove} onPointerUp={handlePointerEnd} onPointerCancel={handlePointerEnd} onLostPointerCapture={handlePointerEnd}
+        onDoubleClick={event => {
+          if (!displayedCurrent || !onToggleZoom || event.timeStamp < clickBlockedUntilRef.current) return
+          event.preventDefault()
+          onToggleZoom()
+        }}>
+        <div className="pdf-stage" style={{ width: stageWidth, height: stageHeight }}>
+          {renderFrame(frames.outgoing, true)}
+          {renderFrame(frames.current)}
+        </div>
+      </div>
+      <span id={hintId} className="sr-only">Use the page and zoom controls to explore. {mode === 'width' ? 'Scroll vertically to read this full-width page. You can also drag with a mouse or use the arrow keys.' : 'At larger zoom levels, scroll, drag with a mouse, or use the arrow keys to read the entire page.'}{canSwipe ? ' Swipe horizontally to change pages.' : ''}</span>
+      <div role="status" aria-live="polite" aria-atomic="true" className={state === 'error' ? 'pdf-feedback pdf-feedback--error' : state === 'loading' ? 'pdf-feedback pdf-feedback--loading' : 'sr-only'}>
+        {state === 'loading' && <span className="pdf-progress-mark" aria-hidden="true" />}
         <p>{message}</p>
-        {state === 'error' && (
-          <div className="mt-2 flex flex-wrap gap-x-5 gap-y-2">
-            {originalUrl && <a href={originalUrl} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center font-semibold text-sand-light underline underline-offset-4 hover:text-cream focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold">Open original PDF</a>}
-            {page && <button type="button" onClick={retryFailedImage} className="min-h-11 cursor-pointer font-semibold text-sand-light underline underline-offset-4 hover:text-cream focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold">Try again</button>}
-          </div>
-        )}
+        {state === 'error' && <div className="pdf-feedback-actions">
+          {originalUrl && <a href={originalUrl} target="_blank" rel="noreferrer">Open original PDF</a>}
+          {page && <button type="button" onClick={() => setRetry({ key: pageKey, preview: previewAttempt + Number(imageFailed), detail: detailAttempt + Number(detailFailed) })}>Try again</button>}
+        </div>}
       </div>
     </div>
   )

@@ -1,0 +1,1408 @@
+{
+  "catalogueId": "sky",
+  "sourcePdf": "/catalogues/sky.pdf",
+  "coverPage": 1,
+  "verification": "Visual transcription of all 72 product pages from uncropped source-faithful catalogue page renders. Product labels and upper page size/category headers were individually read from contact sheets.",
+  "notes": [
+    "PDF page numbers are one-based and include the cover; products occupy pages 2 through 73.",
+    "Printed spelling and punctuation are preserved, including repeated labels, underscores, hyphens, RANDOM markers and the printed 150-STRWBERRY label on page 5.",
+    "codes deduplicates each page's printedLabels without altering punctuation. A search normalizer may ignore punctuation and spaces.",
+    "All product pages print 450X300. sizeMm expresses those dimensions as millimetres, consistent with the 12x18-inch catalogue.",
+    "Pages 65–68 and 73 print SPECIAL COLOUR as their header category; no surface finish is stated there, so finish and printedFinish are null.",
+    "No prices, availability, additional finishes or inferred material claims are added."
+  ],
+  "pages": [
+    {
+      "pdfPage": 2,
+      "printedLabels": [
+        "123-L",
+        "123-HL_1",
+        "123-L"
+      ],
+      "codes": [
+        "123-L",
+        "123-HL_1"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 3,
+      "printedLabels": [
+        "150-L",
+        "150-HL_3",
+        "150-CLASSIC BLUE"
+      ],
+      "codes": [
+        "150-L",
+        "150-HL_3",
+        "150-CLASSIC BLUE"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 4,
+      "printedLabels": [
+        "150-AQUA",
+        "150-HL_4",
+        "150-AQUA"
+      ],
+      "codes": [
+        "150-AQUA",
+        "150-HL_4"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 5,
+      "printedLabels": [
+        "150-L",
+        "150-HL_10",
+        "150-STRWBERRY"
+      ],
+      "codes": [
+        "150-L",
+        "150-HL_10",
+        "150-STRWBERRY"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 6,
+      "printedLabels": [
+        "150-L",
+        "150-HL_11",
+        "150-VIOLET"
+      ],
+      "codes": [
+        "150-L",
+        "150-HL_11",
+        "150-VIOLET"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 7,
+      "printedLabels": [
+        "151-LT",
+        "151-HL_2",
+        "151-LT"
+      ],
+      "codes": [
+        "151-LT",
+        "151-HL_2"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 8,
+      "printedLabels": [
+        "230-LT",
+        "230-HL_1",
+        "230-DK"
+      ],
+      "codes": [
+        "230-LT",
+        "230-HL_1",
+        "230-DK"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 9,
+      "printedLabels": [
+        "236-LT",
+        "236-HL_1",
+        "236-DK"
+      ],
+      "codes": [
+        "236-LT",
+        "236-HL_1",
+        "236-DK"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 10,
+      "printedLabels": [
+        "242-LT",
+        "242-HL_2",
+        "242-DK"
+      ],
+      "codes": [
+        "242-LT",
+        "242-HL_2",
+        "242-DK"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 11,
+      "printedLabels": [
+        "252-LT",
+        "252-HL_1",
+        "252-DK"
+      ],
+      "codes": [
+        "252-LT",
+        "252-HL_1",
+        "252-DK"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 12,
+      "printedLabels": [
+        "255-LT",
+        "255-HL_1",
+        "255-DK"
+      ],
+      "codes": [
+        "255-LT",
+        "255-HL_1",
+        "255-DK"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 13,
+      "printedLabels": [
+        "293-LT",
+        "293-HL_9",
+        "293-GREY"
+      ],
+      "codes": [
+        "293-LT",
+        "293-HL_9",
+        "293-GREY"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 14,
+      "printedLabels": [
+        "293-LT",
+        "293-HL_10",
+        "293-GREY"
+      ],
+      "codes": [
+        "293-LT",
+        "293-HL_10",
+        "293-GREY"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 15,
+      "printedLabels": [
+        "310-LT",
+        "310-HL_1",
+        "310-DK"
+      ],
+      "codes": [
+        "310-LT",
+        "310-HL_1",
+        "310-DK"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 16,
+      "printedLabels": [
+        "310-LT",
+        "310-HL_4",
+        "310-DK"
+      ],
+      "codes": [
+        "310-LT",
+        "310-HL_4",
+        "310-DK"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 17,
+      "printedLabels": [
+        "318-LT",
+        "318-HL_3",
+        "318-LT"
+      ],
+      "codes": [
+        "318-LT",
+        "318-HL_3"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 18,
+      "printedLabels": [
+        "335-LT",
+        "335-HL_1",
+        "335-DK"
+      ],
+      "codes": [
+        "335-LT",
+        "335-HL_1",
+        "335-DK"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 19,
+      "printedLabels": [
+        "362-LT-(RANDOM)",
+        "362-HL_1",
+        "362-DK-(RANDOM)"
+      ],
+      "codes": [
+        "362-LT-(RANDOM)",
+        "362-HL_1",
+        "362-DK-(RANDOM)"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 20,
+      "printedLabels": [
+        "367-LT",
+        "367-HL_1",
+        "367-DK"
+      ],
+      "codes": [
+        "367-LT",
+        "367-HL_1",
+        "367-DK"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 21,
+      "printedLabels": [
+        "423-LT",
+        "423-HL-1",
+        "423-DK"
+      ],
+      "codes": [
+        "423-LT",
+        "423-HL-1",
+        "423-DK"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 22,
+      "printedLabels": [
+        "429-LT",
+        "429-HL-1",
+        "429-DK"
+      ],
+      "codes": [
+        "429-LT",
+        "429-HL-1",
+        "429-DK"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 23,
+      "printedLabels": [
+        "456-LT-(RANDOM)",
+        "456-HL-1",
+        "456-DK-(RANDOM)"
+      ],
+      "codes": [
+        "456-LT-(RANDOM)",
+        "456-HL-1",
+        "456-DK-(RANDOM)"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 24,
+      "printedLabels": [
+        "919-LT",
+        "919-HL_1",
+        "919-DK"
+      ],
+      "codes": [
+        "919-LT",
+        "919-HL_1",
+        "919-DK"
+      ],
+      "finish": "Matt",
+      "printedFinish": "MATT",
+      "printedHeader": "MATT",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 25,
+      "printedLabels": [
+        "1049-LT",
+        "1049-HL-1",
+        "1049-DK"
+      ],
+      "codes": [
+        "1049-LT",
+        "1049-HL-1",
+        "1049-DK"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 26,
+      "printedLabels": [
+        "1052-LT",
+        "1052-HL-2",
+        "1052-DK"
+      ],
+      "codes": [
+        "1052-LT",
+        "1052-HL-2",
+        "1052-DK"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 27,
+      "printedLabels": [
+        "1054-LT",
+        "1054-HL-3",
+        "1054-LT"
+      ],
+      "codes": [
+        "1054-LT",
+        "1054-HL-3"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 28,
+      "printedLabels": [
+        "1233-LT",
+        "1233-HL-1",
+        "1233-DK"
+      ],
+      "codes": [
+        "1233-LT",
+        "1233-HL-1",
+        "1233-DK"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 29,
+      "printedLabels": [
+        "1234-LT",
+        "1234-HL-1",
+        "1234-HL-2",
+        "1234-DK"
+      ],
+      "codes": [
+        "1234-LT",
+        "1234-HL-1",
+        "1234-HL-2",
+        "1234-DK"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 30,
+      "printedLabels": [
+        "1309-LT",
+        "1309-HL-1",
+        "1309-LT"
+      ],
+      "codes": [
+        "1309-LT",
+        "1309-HL-1"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 31,
+      "printedLabels": [
+        "1309-LT",
+        "1309-HL-2",
+        "1309-LT"
+      ],
+      "codes": [
+        "1309-LT",
+        "1309-HL-2"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 32,
+      "printedLabels": [
+        "1519"
+      ],
+      "codes": [
+        "1519"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 33,
+      "printedLabels": [
+        "1601-LT",
+        "1601-HL-1",
+        "1601-DK"
+      ],
+      "codes": [
+        "1601-LT",
+        "1601-HL-1",
+        "1601-DK"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 34,
+      "printedLabels": [
+        "1606-LT",
+        "1606-HL-2",
+        "1606-DK"
+      ],
+      "codes": [
+        "1606-LT",
+        "1606-HL-2",
+        "1606-DK"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 35,
+      "printedLabels": [
+        "1650-LT",
+        "1650-HL-1",
+        "1650-DK"
+      ],
+      "codes": [
+        "1650-LT",
+        "1650-HL-1",
+        "1650-DK"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 36,
+      "printedLabels": [
+        "1655-LT",
+        "1655-HL-1",
+        "1655-DK"
+      ],
+      "codes": [
+        "1655-LT",
+        "1655-HL-1",
+        "1655-DK"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 37,
+      "printedLabels": [
+        "1671-LT",
+        "1671-HL-1",
+        "1671-LT"
+      ],
+      "codes": [
+        "1671-LT",
+        "1671-HL-1"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 38,
+      "printedLabels": [
+        "1680-LT",
+        "1680-HL-2",
+        "1680-DK"
+      ],
+      "codes": [
+        "1680-LT",
+        "1680-HL-2",
+        "1680-DK"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 39,
+      "printedLabels": [
+        "1690-LT",
+        "1690-HL-1",
+        "1690-DK"
+      ],
+      "codes": [
+        "1690-LT",
+        "1690-HL-1",
+        "1690-DK"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 40,
+      "printedLabels": [
+        "1691-LT",
+        "1691-HL-1",
+        "1691-DK"
+      ],
+      "codes": [
+        "1691-LT",
+        "1691-HL-1",
+        "1691-DK"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 41,
+      "printedLabels": [
+        "1691-LT",
+        "1691-HL-3",
+        "1691-DK"
+      ],
+      "codes": [
+        "1691-LT",
+        "1691-HL-3",
+        "1691-DK"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 42,
+      "printedLabels": [
+        "1755-LT-(RANDOM)",
+        "1755-HL-1",
+        "1755-DK-(RANDOM)"
+      ],
+      "codes": [
+        "1755-LT-(RANDOM)",
+        "1755-HL-1",
+        "1755-DK-(RANDOM)"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 43,
+      "printedLabels": [
+        "1756-LT-(RANDOM)",
+        "1756-HL-4",
+        "1756-DK-(RANDOM)"
+      ],
+      "codes": [
+        "1756-LT-(RANDOM)",
+        "1756-HL-4",
+        "1756-DK-(RANDOM)"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 44,
+      "printedLabels": [
+        "1765-LT-(RANDOM)",
+        "1765-HL-2",
+        "1765-DK-(RANDOM)"
+      ],
+      "codes": [
+        "1765-LT-(RANDOM)",
+        "1765-HL-2",
+        "1765-DK-(RANDOM)"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 45,
+      "printedLabels": [
+        "1814-LT",
+        "1814-HL_1",
+        "1814-DK"
+      ],
+      "codes": [
+        "1814-LT",
+        "1814-HL_1",
+        "1814-DK"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 46,
+      "printedLabels": [
+        "2016-LT",
+        "2016-HL-2",
+        "2016-LT"
+      ],
+      "codes": [
+        "2016-LT",
+        "2016-HL-2"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 47,
+      "printedLabels": [
+        "2026-LT",
+        "2026-HL-1",
+        "2026-LT"
+      ],
+      "codes": [
+        "2026-LT",
+        "2026-HL-1"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 48,
+      "printedLabels": [
+        "2033-LT",
+        "2033-DK"
+      ],
+      "codes": [
+        "2033-LT",
+        "2033-DK"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 49,
+      "printedLabels": [
+        "2044-LT",
+        "2044-HL_3",
+        "2044-LT"
+      ],
+      "codes": [
+        "2044-LT",
+        "2044-HL_3"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 50,
+      "printedLabels": [
+        "2062-LT",
+        "2062-HL_1",
+        "2062-LT"
+      ],
+      "codes": [
+        "2062-LT",
+        "2062-HL_1"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 51,
+      "printedLabels": [
+        "3097"
+      ],
+      "codes": [
+        "3097"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 52,
+      "printedLabels": [
+        "3101"
+      ],
+      "codes": [
+        "3101"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 53,
+      "printedLabels": [
+        "4002-LT",
+        "4002-HL_1",
+        "4002-DK"
+      ],
+      "codes": [
+        "4002-LT",
+        "4002-HL_1",
+        "4002-DK"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 54,
+      "printedLabels": [
+        "4006-LT",
+        "4006-HL_2",
+        "4006-DK"
+      ],
+      "codes": [
+        "4006-LT",
+        "4006-HL_2",
+        "4006-DK"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 55,
+      "printedLabels": [
+        "4007-LT",
+        "4007-HL_1",
+        "4007-DK"
+      ],
+      "codes": [
+        "4007-LT",
+        "4007-HL_1",
+        "4007-DK"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 56,
+      "printedLabels": [
+        "4016-LT",
+        "4016-HL_1",
+        "4016-DK"
+      ],
+      "codes": [
+        "4016-LT",
+        "4016-HL_1",
+        "4016-DK"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 57,
+      "printedLabels": [
+        "4035-LT",
+        "4035-HL_2",
+        "4035-DK"
+      ],
+      "codes": [
+        "4035-LT",
+        "4035-HL_2",
+        "4035-DK"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 58,
+      "printedLabels": [
+        "4039-LT",
+        "4039-HL_1",
+        "4039-LT"
+      ],
+      "codes": [
+        "4039-LT",
+        "4039-HL_1"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 59,
+      "printedLabels": [
+        "5101"
+      ],
+      "codes": [
+        "5101"
+      ],
+      "finish": "Matt",
+      "printedFinish": "MATT",
+      "printedHeader": "MATT",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 60,
+      "printedLabels": [
+        "6057-LT",
+        "6057-HL_1",
+        "6057-DK"
+      ],
+      "codes": [
+        "6057-LT",
+        "6057-HL_1",
+        "6057-DK"
+      ],
+      "finish": "Matt",
+      "printedFinish": "MATT",
+      "printedHeader": "MATT",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 61,
+      "printedLabels": [
+        "ARCH-WHITE",
+        "ARCH-K-3",
+        "ARCH-AQUA"
+      ],
+      "codes": [
+        "ARCH-WHITE",
+        "ARCH-K-3",
+        "ARCH-AQUA"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 62,
+      "printedLabels": [
+        "ARCH-WHITE",
+        "ARCH-K-4",
+        "ARCH-AQUA"
+      ],
+      "codes": [
+        "ARCH-WHITE",
+        "ARCH-K-4",
+        "ARCH-AQUA"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 63,
+      "printedLabels": [
+        "ARCH-WHITE",
+        "ARCH-K",
+        "ARCH-AQUA"
+      ],
+      "codes": [
+        "ARCH-WHITE",
+        "ARCH-K",
+        "ARCH-AQUA"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 64,
+      "printedLabels": [
+        "ARCH-WHITE",
+        "ARCH-BLACK-HL_1",
+        "ARCH-BLACK"
+      ],
+      "codes": [
+        "ARCH-WHITE",
+        "ARCH-BLACK-HL_1",
+        "ARCH-BLACK"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 65,
+      "printedLabels": [
+        "BLOOD RED"
+      ],
+      "codes": [
+        "BLOOD RED"
+      ],
+      "finish": null,
+      "printedFinish": null,
+      "printedHeader": "SPECIAL COLOUR",
+      "category": "Special colour",
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 66,
+      "printedLabels": [
+        "COBALT BLUE"
+      ],
+      "codes": [
+        "COBALT BLUE"
+      ],
+      "finish": null,
+      "printedFinish": null,
+      "printedHeader": "SPECIAL COLOUR",
+      "category": "Special colour",
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 67,
+      "printedLabels": [
+        "FANTA ORANGE"
+      ],
+      "codes": [
+        "FANTA ORANGE"
+      ],
+      "finish": null,
+      "printedFinish": null,
+      "printedHeader": "SPECIAL COLOUR",
+      "category": "Special colour",
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 68,
+      "printedLabels": [
+        "WHITE"
+      ],
+      "codes": [
+        "WHITE"
+      ],
+      "finish": null,
+      "printedFinish": null,
+      "printedHeader": "SPECIAL COLOUR",
+      "category": "Special colour",
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 69,
+      "printedLabels": [
+        "WOOD-1-LT",
+        "WOOD-1-HL_1",
+        "WOOD-1-DK"
+      ],
+      "codes": [
+        "WOOD-1-LT",
+        "WOOD-1-HL_1",
+        "WOOD-1-DK"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 70,
+      "printedLabels": [
+        "WOOD-8-LT",
+        "WOOD-8-HL_1",
+        "WOOD-8-DK"
+      ],
+      "codes": [
+        "WOOD-8-LT",
+        "WOOD-8-HL_1",
+        "WOOD-8-DK"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 71,
+      "printedLabels": [
+        "WOOD-10-LT",
+        "WOOD-10-HL_1",
+        "WOOD-10-DK"
+      ],
+      "codes": [
+        "WOOD-10-LT",
+        "WOOD-10-HL_1",
+        "WOOD-10-DK"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 72,
+      "printedLabels": [
+        "WOOD-11-LT",
+        "WOOD-11-HL_1",
+        "WOOD-11-DK"
+      ],
+      "codes": [
+        "WOOD-11-LT",
+        "WOOD-11-HL_1",
+        "WOOD-11-DK"
+      ],
+      "finish": "Glossy",
+      "printedFinish": "GLOSSY",
+      "printedHeader": "GLOSSY",
+      "category": null,
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    },
+    {
+      "pdfPage": 73,
+      "printedLabels": [
+        "ZADE BLACK"
+      ],
+      "codes": [
+        "ZADE BLACK"
+      ],
+      "finish": null,
+      "printedFinish": null,
+      "printedHeader": "SPECIAL COLOUR",
+      "category": "Special colour",
+      "sizeMm": "450 × 300 mm",
+      "printedSize": "450X300",
+      "verification": "visual"
+    }
+  ],
+  "sourceHash": "5babb9322ad8a8da6c2dd4d42fa6db2a0899adfefcd321d260e6d8610f6a40a8"
+}

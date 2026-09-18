@@ -8,6 +8,7 @@ import { business } from '../../data/siteConfig'
 // Pulse ring is suppressed under prefers-reduced-motion (NF5).
 export default function FloatingButtons() {
   const [show, setShow] = useState(false)
+  const [viewingCatalogue, setViewingCatalogue] = useState(false)
   const reduce = useReducedMotion()
 
   useEffect(() => {
@@ -17,13 +18,32 @@ export default function FloatingButtons() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // The viewing room has its own page-specific enquiry action. Keep the
+  // floating contact buttons from covering catalogue artwork and controls.
+  useEffect(() => {
+    if (typeof IntersectionObserver === 'undefined') return undefined
+    const observer = new IntersectionObserver(([entry]) => setViewingCatalogue(entry.isIntersecting), {
+      rootMargin: '-20% 0px -15% 0px',
+    })
+    // The catalogue is lazy-loaded and may mount after these global controls.
+    const connect = () => {
+      const catalogue = document.getElementById('visualizer')
+      if (!catalogue) return false
+      observer.observe(catalogue)
+      return true
+    }
+    const pending = new MutationObserver(() => { if (connect()) pending.disconnect() })
+    if (!connect()) pending.observe(document.getElementById('root') || document.body, { childList: true, subtree: true })
+    return () => { observer.disconnect(); pending.disconnect() }
+  }, [])
+
   const waHref = `${business.whatsapp}?text=${encodeURIComponent(
     business.whatsappMessage,
   )}`
 
   return (
     <AnimatePresence>
-      {show && (
+      {show && !viewingCatalogue && (
         <motion.div
           initial={{ opacity: 0, scale: 0.8, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}

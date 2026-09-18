@@ -1,0 +1,2721 @@
+{
+  "bookId": "global-wall",
+  "source": "public/catalogues/global-wall/page-NNN.webp",
+  "method": "Manual visual reading of publisher page previews.",
+  "status": "complete",
+  "notes": [
+    "Explicit pdfPage is the viewer destination. Printed spreads have different page numbers.",
+    "Only observed code suffixes are present. Manufacturer code inconsistencies retained exactly.",
+    "No default Glossy or75mm dimensions; Italian Design is not a finish.",
+    "Square F floor-match variants omit size/finish where those specifications are not printed separately.",
+    "Step/riser/base dimensions follow the three explicitly printed metric sizes in the corresponding spread header; body and series words are not substituted for finish.",
+    "Manual visual reading of all original 1800×1273 publisher previews for PDF pages 40–53.",
+    "Original uncropped pages64-75 visually inspected. Sanitaryware three-dimensional sizes remain on the original page rather than being misrepresented as two-dimensional tile sizes. Page65 QI codes verified from high-detail original text crop.",
+    "Pages75-76 are CERA tile grout/adhesives, excluded from design search. Sanitaryware dimensions remain on original pages, not two-dimensional tile size filters.",
+    "All design pages3-74 manually read; printed label inconsistencies and secondary variants retained. No raw OCR labels are used."
+  ],
+  "pages": [
+    {
+      "pdfPage": 3,
+      "verified": true,
+      "products": [
+        {
+          "name": "BRIKO-CARROT",
+          "sizeMm": "73×300mm"
+        },
+        {
+          "name": "BRIKO-KHAKHI",
+          "sizeMm": "73×300mm"
+        },
+        {
+          "name": "STONY-11",
+          "sizeMm": "73×300mm"
+        },
+        {
+          "name": "STONY-22",
+          "sizeMm": "73×300mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 4,
+      "verified": true,
+      "products": [
+        {
+          "name": "STONY-51"
+        },
+        {
+          "name": "STONY-57"
+        },
+        {
+          "name": "CROSSY-CARROT (RANDOM)",
+          "sizeMm": "300×300mm"
+        },
+        {
+          "name": "CROSSY-KHAKHI (RANDOM)",
+          "sizeMm": "300×300mm"
+        }
+      ],
+      "note": "STONY sizes omitted because left header says300×300mm/12×12in but footer says6×12in."
+    },
+    {
+      "pdfPage": 5,
+      "verified": true,
+      "products": [
+        {
+          "name": "CROSSY-LAVA CHOCO (RANDOM)",
+          "sizeMm": "300×300mm"
+        },
+        {
+          "name": "SS-13",
+          "sizeMm": "300×300mm"
+        },
+        {
+          "name": "POOL-06",
+          "sizeMm": "300×300mm"
+        },
+        {
+          "name": "POOL-13",
+          "sizeMm": "300×300mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 6,
+      "verified": true,
+      "products": [
+        {
+          "name": "POOL-SKY-18",
+          "sizeMm": "300×300mm"
+        },
+        {
+          "name": "MD-58",
+          "sizeMm": "300×300mm"
+        },
+        {
+          "name": "VM-09",
+          "sizeMm": "300×300mm"
+        },
+        {
+          "name": "VM-11",
+          "sizeMm": "300×300mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 7,
+      "verified": true,
+      "products": [
+        {
+          "name": "CTB-17",
+          "sizeMm": "300×300mm"
+        },
+        {
+          "name": "CTB-08",
+          "sizeMm": "300×300mm"
+        },
+        {
+          "name": "CTB-29",
+          "sizeMm": "300×300mm"
+        },
+        {
+          "name": "LUR-61",
+          "sizeMm": "300×300mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 8,
+      "verified": true,
+      "products": [
+        {
+          "name": "LUR-71",
+          "sizeMm": "300×300mm"
+        },
+        {
+          "name": "LX-76 (RANDOM)",
+          "sizeMm": "300×300mm"
+        },
+        {
+          "name": "LX-72",
+          "sizeMm": "300×300mm"
+        },
+        {
+          "name": "LX-66",
+          "sizeMm": "300×300mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 9,
+      "verified": true,
+      "products": [
+        {
+          "name": "LX-01 (RANDOM)",
+          "sizeMm": "300×300mm"
+        },
+        {
+          "name": "LX-10",
+          "sizeMm": "300×300mm"
+        },
+        {
+          "name": "LX-65",
+          "sizeMm": "300×300mm"
+        },
+        {
+          "name": "PLC-60",
+          "sizeMm": "300×300mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 10,
+      "verified": true,
+      "products": [
+        {
+          "name": "PLC-18 (RANDOM)",
+          "sizeMm": "300×300mm"
+        },
+        {
+          "name": "PLC-63",
+          "sizeMm": "300×300mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 11,
+      "verified": true,
+      "products": [
+        {
+          "name": "88128-L",
+          "sizeMm": "300×450mm",
+          "finish": "Sugar"
+        },
+        {
+          "name": "88128-HL-1",
+          "sizeMm": "300×450mm",
+          "finish": "Sugar"
+        },
+        {
+          "name": "88128-F"
+        },
+        {
+          "name": "88095-L",
+          "sizeMm": "300×450mm",
+          "finish": "Sugar"
+        },
+        {
+          "name": "88095-HL-1",
+          "sizeMm": "300×450mm",
+          "finish": "Sugar"
+        },
+        {
+          "name": "88095-D",
+          "sizeMm": "300×450mm",
+          "finish": "Sugar"
+        },
+        {
+          "name": "88095-F"
+        },
+        {
+          "name": "56177-L",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "56177-HL-1",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "56177-HL-2",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "56177-D",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "56234-L",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "56234-HL-1",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "56234-F"
+        }
+      ]
+    },
+    {
+      "pdfPage": 12,
+      "verified": true,
+      "products": [
+        {
+          "name": "56180-L",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "56180-HL-1",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "56180-D",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "56180-F"
+        },
+        {
+          "name": "56181-L",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "56181-HL-1",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "56181-D",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "56181-F"
+        },
+        {
+          "name": "56210-L",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "56210-HL-1",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "56210-D",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "56210-F"
+        },
+        {
+          "name": "9209-L",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "9209-HL-1",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "9209-D",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "9209-F"
+        }
+      ]
+    },
+    {
+      "pdfPage": 13,
+      "verified": true,
+      "products": [
+        {
+          "name": "44142-L",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "44142-HL-1",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "44142-F"
+        },
+        {
+          "name": "44051-L",
+          "sizeMm": "300×450mm",
+          "finish": "Sugar"
+        },
+        {
+          "name": "44055-HL-1",
+          "sizeMm": "300×450mm"
+        },
+        {
+          "name": "44055-D",
+          "sizeMm": "300×450mm"
+        },
+        {
+          "name": "55006-L",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55006-HL-1",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55006-D",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55006-F"
+        },
+        {
+          "name": "55127-L",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55127-HL-1",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55127-D",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55127-F"
+        }
+      ],
+      "note": "Sugar printed beside44051-L despite Glossy spread header; finish omitted for adjacent44055variants to avoid ambiguity."
+    },
+    {
+      "pdfPage": 14,
+      "verified": true,
+      "products": [
+        {
+          "name": "55165-L",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55165-HL-1-A",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55165-HL-1-B",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55165-D",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55185-L",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55186-HL-1",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55186-D",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55186-F"
+        },
+        {
+          "name": "1000 (PLAIN WHITE)",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55208-HL-1",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55209-L",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55209-HL-3-A",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55209-HL-3-B",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55209-D",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        }
+      ]
+    },
+    {
+      "pdfPage": 15,
+      "verified": true,
+      "products": [
+        {
+          "name": "55224-L",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55224-HL-1",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55224-D",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55224-F"
+        },
+        {
+          "name": "55232-L",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55232-HL-2",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55232-D",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55232-F"
+        },
+        {
+          "name": "55262-L",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55262-HL-2",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55262-D",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55262-F"
+        },
+        {
+          "name": "55331-L",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55332-HL-1",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55332-D",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55332-F"
+        }
+      ]
+    },
+    {
+      "pdfPage": 16,
+      "verified": true,
+      "products": [
+        {
+          "name": "55394-L",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55394-HL-1",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55394-D",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55394-F"
+        },
+        {
+          "name": "55444-L",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55444-HL-1",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55444-D",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55444-F"
+        },
+        {
+          "name": "55455-L",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55455-HL-2",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55455-D",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55455-F"
+        },
+        {
+          "name": "55462-L",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55462-HL-1",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55462-D",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55462-F"
+        }
+      ]
+    },
+    {
+      "pdfPage": 17,
+      "verified": true,
+      "products": [
+        {
+          "name": "55568-L",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55568-HL-1",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55568-D",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55568-F"
+        },
+        {
+          "name": "55644-L",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55644-HL-1",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55644-D",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55644-F"
+        },
+        {
+          "name": "55656-L",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55656-HL-1",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55656-D",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55656-F"
+        },
+        {
+          "name": "55754-L",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55754-HL-1",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55754-D",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55754-F"
+        }
+      ]
+    },
+    {
+      "pdfPage": 18,
+      "verified": true,
+      "products": [
+        {
+          "name": "55787-L",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55787-HL-1",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55787-D",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55787-F"
+        },
+        {
+          "name": "55806-L",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55806-HL-3",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55806-D",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55806-F"
+        },
+        {
+          "name": "56050-L",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "56050-HL-1",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "56050-D",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "56050-F"
+        },
+        {
+          "name": "9056-L",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "9056-HL-1",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "9056-D",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "9056-F"
+        }
+      ]
+    },
+    {
+      "pdfPage": 19,
+      "verified": true,
+      "products": [
+        {
+          "name": "SPW-131-L",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "SPW-131-HL-2",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "GREY-131-D",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "GREY-131-F"
+        },
+        {
+          "name": "SPW-40-L",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "SPW-40-HL-1",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "CEDAR-40-D",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "CEDAR-40-F"
+        },
+        {
+          "name": "55228-L",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55228-HL-1",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55228-HL-4",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55790-L",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55790-HL-1",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55790-HL-2",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        }
+      ]
+    },
+    {
+      "pdfPage": 20,
+      "verified": true,
+      "products": [
+        {
+          "name": "56806-L",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "56806-HL-2",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "56806-D",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "56013-L",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "56013-HL-3-RANDOM",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "56013-D",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "56019-L",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "56019-HL-4",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        }
+      ],
+      "note": "56013-HL-3-RANDOM appears on two displayed variants; stored once."
+    },
+    {
+      "pdfPage": 21,
+      "verified": true,
+      "products": [
+        {
+          "name": "56197-L",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "56197-HL-1",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "56197-HL-2",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55179-L",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55179-HL-1",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "55179-HL-3",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "56199-L",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "56199-HL-1",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "56199-HL-2",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        }
+      ]
+    },
+    {
+      "pdfPage": 22,
+      "products": [
+        {
+          "name": "EL-77073",
+          "code": "EL-77073",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "EL-77112",
+          "code": "EL-77112",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "EL-77264",
+          "code": "EL-77264",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "EL-77263",
+          "code": "EL-77263",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        }
+      ]
+    },
+    {
+      "pdfPage": 23,
+      "products": [
+        {
+          "name": "EL-77280",
+          "code": "EL-77280",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "EL-77283",
+          "code": "EL-77283",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "EL-FD-202",
+          "code": "EL-FD-202",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "EL-77540",
+          "code": "EL-77540",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "EL-77304",
+          "code": "EL-77304",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        }
+      ]
+    },
+    {
+      "pdfPage": 24,
+      "products": [
+        {
+          "name": "EL-1015",
+          "code": "EL-1015",
+          "sizeMm": "300×450mm",
+          "finish": "Sugar"
+        },
+        {
+          "name": "EL-1069",
+          "code": "EL-1069",
+          "sizeMm": "300×450mm",
+          "finish": "Sugar"
+        },
+        {
+          "name": "EL-2403",
+          "code": "EL-2403",
+          "sizeMm": "300×450mm",
+          "finish": "Sugar"
+        },
+        {
+          "name": "EL-1953",
+          "code": "EL-1953",
+          "sizeMm": "300×450mm",
+          "finish": "Sugar"
+        },
+        {
+          "name": "EL-2309",
+          "code": "EL-2309",
+          "sizeMm": "300×450mm",
+          "finish": "Sugar"
+        }
+      ]
+    },
+    {
+      "pdfPage": 25,
+      "products": [
+        {
+          "name": "EL-A-16",
+          "code": "EL-A-16",
+          "sizeMm": "300×450mm",
+          "finish": "Varnish"
+        },
+        {
+          "name": "EL-D-21",
+          "code": "EL-D-21",
+          "sizeMm": "300×450mm",
+          "finish": "Varnish"
+        },
+        {
+          "name": "EL-H-15",
+          "code": "EL-H-15",
+          "sizeMm": "300×450mm",
+          "finish": "Varnish"
+        },
+        {
+          "name": "EL-K-02",
+          "code": "EL-K-02",
+          "sizeMm": "300×450mm",
+          "finish": "Varnish"
+        },
+        {
+          "name": "EL-Q-02",
+          "code": "EL-Q-02",
+          "sizeMm": "300×450mm",
+          "finish": "Varnish"
+        },
+        {
+          "name": "EL-3005",
+          "code": "EL-3005",
+          "sizeMm": "300×450mm",
+          "finish": "Varnish"
+        }
+      ]
+    },
+    {
+      "pdfPage": 26,
+      "products": [
+        {
+          "name": "EL-3011",
+          "code": "EL-3011",
+          "sizeMm": "300×450mm",
+          "finish": "Sugar"
+        },
+        {
+          "name": "EL-3040",
+          "code": "EL-3040",
+          "sizeMm": "300×450mm",
+          "finish": "Sugar"
+        },
+        {
+          "name": "EL-3110",
+          "code": "EL-3110",
+          "sizeMm": "300×450mm",
+          "finish": "Sugar"
+        },
+        {
+          "name": "PLAIN BLACK",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "PLAIN ORANGE",
+          "sizeMm": "300×450mm",
+          "finish": "Glossy"
+        }
+      ]
+    },
+    {
+      "pdfPage": 27,
+      "products": [
+        {
+          "name": "5913-HL-1",
+          "code": "5913-HL-1",
+          "sizeMm": "400×400mm",
+          "finish": "Plain"
+        },
+        {
+          "name": "5913-HL-2",
+          "code": "5913-HL-2",
+          "sizeMm": "400×400mm",
+          "finish": "Plain"
+        },
+        {
+          "name": "5913-HL-3",
+          "code": "5913-HL-3",
+          "sizeMm": "400×400mm",
+          "finish": "Plain"
+        }
+      ]
+    },
+    {
+      "pdfPage": 28,
+      "products": [
+        {
+          "name": "5923",
+          "code": "5923",
+          "sizeMm": "400×400mm",
+          "finish": "Plain"
+        },
+        {
+          "name": "6113",
+          "code": "6113",
+          "sizeMm": "400×400mm",
+          "finish": "Plain"
+        },
+        {
+          "name": "6120-D",
+          "code": "6120-D",
+          "sizeMm": "400×400mm",
+          "finish": "Plain"
+        },
+        {
+          "name": "6120-L",
+          "code": "6120-L",
+          "sizeMm": "400×400mm",
+          "finish": "Plain"
+        }
+      ]
+    },
+    {
+      "pdfPage": 29,
+      "products": [
+        {
+          "name": "6181-L",
+          "code": "6181-L",
+          "sizeMm": "400×400mm",
+          "finish": "Plain"
+        },
+        {
+          "name": "6181-D",
+          "code": "6181-D",
+          "sizeMm": "400×400mm",
+          "finish": "Plain"
+        },
+        {
+          "name": "6413",
+          "code": "6413",
+          "sizeMm": "400×400mm",
+          "finish": "Punch"
+        },
+        {
+          "name": "7004",
+          "code": "7004",
+          "sizeMm": "400×400mm",
+          "finish": "Punch"
+        }
+      ]
+    },
+    {
+      "pdfPage": 30,
+      "products": [
+        {
+          "name": "6701-D",
+          "code": "6701-D",
+          "sizeMm": "400×400mm",
+          "finish": "Punch"
+        },
+        {
+          "name": "6701-HL",
+          "code": "6701-HL",
+          "sizeMm": "400×400mm",
+          "finish": "Punch"
+        },
+        {
+          "name": "6701-L",
+          "code": "6701-L",
+          "sizeMm": "400×400mm",
+          "finish": "Punch"
+        },
+        {
+          "name": "6701-HL-1",
+          "code": "6701-HL-1",
+          "sizeMm": "400×400mm",
+          "finish": "Punch"
+        }
+      ]
+    },
+    {
+      "pdfPage": 31,
+      "products": [
+        {
+          "name": "7103",
+          "code": "7103",
+          "sizeMm": "400×400mm",
+          "finish": "Punch"
+        },
+        {
+          "name": "8801",
+          "code": "8801",
+          "sizeMm": "400×400mm",
+          "finish": "Punch"
+        },
+        {
+          "name": "7206-CREMA",
+          "code": "7206-CREMA",
+          "sizeMm": "400×400mm",
+          "finish": "Punch"
+        },
+        {
+          "name": "7203-GREY",
+          "code": "7203-GREY",
+          "sizeMm": "400×400mm",
+          "finish": "Punch"
+        }
+      ]
+    },
+    {
+      "pdfPage": 32,
+      "products": [
+        {
+          "name": "7607",
+          "code": "7607",
+          "sizeMm": "400×400mm",
+          "finish": "Punch"
+        },
+        {
+          "name": "7609",
+          "code": "7609",
+          "sizeMm": "400×400mm",
+          "finish": "Punch"
+        },
+        {
+          "name": "8015",
+          "code": "8015",
+          "sizeMm": "400×400mm",
+          "finish": "Plain"
+        },
+        {
+          "name": "8031",
+          "code": "8031",
+          "sizeMm": "400×400mm",
+          "finish": "Plain"
+        }
+      ]
+    },
+    {
+      "pdfPage": 33,
+      "products": [
+        {
+          "name": "8113",
+          "code": "8113",
+          "sizeMm": "400×400mm",
+          "finish": "Punch"
+        },
+        {
+          "name": "8502",
+          "code": "8502",
+          "sizeMm": "400×400mm",
+          "finish": "Punch"
+        },
+        {
+          "name": "8601",
+          "code": "8601",
+          "sizeMm": "400×400mm",
+          "finish": "Punch"
+        },
+        {
+          "name": "8701",
+          "code": "8701",
+          "sizeMm": "400×400mm",
+          "finish": "Punch"
+        }
+      ]
+    },
+    {
+      "pdfPage": 34,
+      "products": [
+        {
+          "name": "5063",
+          "code": "5063",
+          "sizeMm": "400×400mm",
+          "finish": "Plain"
+        },
+        {
+          "name": "5065",
+          "code": "5065",
+          "sizeMm": "400×400mm",
+          "finish": "Plain"
+        },
+        {
+          "name": "5071",
+          "code": "5071",
+          "sizeMm": "400×400mm",
+          "finish": "Plain"
+        },
+        {
+          "name": "6042",
+          "code": "6042",
+          "sizeMm": "400×400mm",
+          "finish": "Plain"
+        }
+      ]
+    },
+    {
+      "pdfPage": 35,
+      "products": [
+        {
+          "name": "6085",
+          "code": "6085",
+          "sizeMm": "400×400mm",
+          "finish": "Plain"
+        },
+        {
+          "name": "6514",
+          "code": "6514",
+          "sizeMm": "400×400mm",
+          "finish": "Punch"
+        },
+        {
+          "name": "6183",
+          "code": "6183",
+          "sizeMm": "400×400mm",
+          "finish": "Plain"
+        },
+        {
+          "name": "6210",
+          "code": "6210",
+          "sizeMm": "400×400mm",
+          "finish": "Punch"
+        }
+      ]
+    },
+    {
+      "pdfPage": 36,
+      "products": [
+        {
+          "name": "6197",
+          "code": "6197",
+          "sizeMm": "400×400mm",
+          "finish": "Plain"
+        },
+        {
+          "name": "7612",
+          "code": "7612",
+          "sizeMm": "400×400mm",
+          "finish": "Punch"
+        },
+        {
+          "name": "6820-HL-3",
+          "code": "6820-HL-3",
+          "sizeMm": "400×400mm",
+          "finish": "Punch"
+        },
+        {
+          "name": "6820-L",
+          "code": "6820-L",
+          "sizeMm": "400×400mm",
+          "finish": "Punch"
+        }
+      ]
+    },
+    {
+      "pdfPage": 37,
+      "products": [
+        {
+          "name": "8032",
+          "code": "8032",
+          "sizeMm": "400×400mm",
+          "finish": "Plain"
+        },
+        {
+          "name": "8508",
+          "code": "8508",
+          "sizeMm": "400×400mm",
+          "finish": "Punch"
+        },
+        {
+          "name": "8403",
+          "code": "8403",
+          "sizeMm": "400×400mm",
+          "finish": "Punch"
+        },
+        {
+          "name": "8402",
+          "code": "8402",
+          "sizeMm": "400×400mm",
+          "finish": "Punch"
+        }
+      ]
+    },
+    {
+      "pdfPage": 38,
+      "products": [
+        {
+          "name": "23016",
+          "code": "23016",
+          "sizeMm": "300×300mm",
+          "finish": "Punch"
+        },
+        {
+          "name": "24003",
+          "code": "24003",
+          "sizeMm": "300×300mm",
+          "finish": "Punch"
+        },
+        {
+          "name": "32001",
+          "code": "32001",
+          "sizeMm": "300×300mm",
+          "finish": "Punch"
+        },
+        {
+          "name": "39002",
+          "code": "39002",
+          "sizeMm": "300×300mm",
+          "finish": "Punch"
+        }
+      ]
+    },
+    {
+      "pdfPage": 39,
+      "products": [
+        {
+          "name": "3009",
+          "code": "3009",
+          "sizeMm": "300×300mm",
+          "finish": "Punch"
+        },
+        {
+          "name": "38003",
+          "code": "38003",
+          "sizeMm": "300×300mm",
+          "finish": "Punch"
+        },
+        {
+          "name": "S-09",
+          "code": "S-09",
+          "sizeMm": "300×300mm",
+          "finish": "Punch"
+        },
+        {
+          "name": "R-09",
+          "code": "R-09",
+          "sizeMm": "300×300mm",
+          "finish": "Plain"
+        }
+      ]
+    },
+    {
+      "pdfPage": 40,
+      "verified": true,
+      "products": [
+        {
+          "name": "IV.BUTTON",
+          "sizeMm": "300×300mm"
+        },
+        {
+          "name": "IV.CAPSUL",
+          "sizeMm": "300×300mm"
+        },
+        {
+          "name": "IV.CHECKERS",
+          "sizeMm": "300×300mm"
+        },
+        {
+          "name": "TC.BUTTON",
+          "sizeMm": "300×300mm"
+        },
+        {
+          "name": "TC.CAPSUL",
+          "sizeMm": "300×300mm"
+        },
+        {
+          "name": "IVORY",
+          "sizeMm": "600×600mm"
+        }
+      ],
+      "note": "The bottom-right parking tile is printed IV.CHECKERS again; retain the printed name once rather than inventing TC.CHECKERS. Parking and Nano are tile types, not stated finishes."
+    },
+    {
+      "pdfPage": 41,
+      "verified": true,
+      "products": [
+        {
+          "name": "LEMO WHITE",
+          "sizeMm": "600×600mm"
+        },
+        {
+          "name": "LEMO CREMA",
+          "sizeMm": "600×600mm"
+        },
+        {
+          "name": "LEMO PEACH",
+          "sizeMm": "600×600mm"
+        },
+        {
+          "name": "LEMO CANDY",
+          "sizeMm": "600×600mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 42,
+      "verified": true,
+      "products": [
+        {
+          "name": "LEMO ORCHID",
+          "sizeMm": "600×600mm"
+        },
+        {
+          "name": "LEMO PISTA",
+          "sizeMm": "600×600mm"
+        },
+        {
+          "name": "LEMO BRONZE",
+          "sizeMm": "600×600mm"
+        },
+        {
+          "name": "LEMO JAZZ",
+          "sizeMm": "600×600mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 43,
+      "verified": true,
+      "products": [
+        {
+          "name": "LEMO ORNATE",
+          "sizeMm": "600×600mm"
+        },
+        {
+          "name": "LEMO BLACK (DARK)",
+          "sizeMm": "600×600mm"
+        },
+        {
+          "name": "LEMO CHOCO (DARK)",
+          "sizeMm": "600×600mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 44,
+      "verified": true,
+      "products": [
+        {
+          "name": "OLIVE DIAMOND",
+          "sizeMm": "600×600mm"
+        },
+        {
+          "name": "HONEY DIAMOND",
+          "sizeMm": "600×600mm"
+        },
+        {
+          "name": "LEMO GREEN",
+          "sizeMm": "600×600mm"
+        },
+        {
+          "name": "LEMO BLUE",
+          "sizeMm": "600×600mm"
+        }
+      ],
+      "note": "EXCLUSIVE and SPECIAL COLOR are promotional descriptors, not finishes."
+    },
+    {
+      "pdfPage": 45,
+      "verified": true,
+      "products": [
+        {
+          "name": "1020",
+          "sizeMm": "600×600mm",
+          "finish": "Matt"
+        },
+        {
+          "name": "1036",
+          "sizeMm": "600×600mm",
+          "finish": "Matt"
+        },
+        {
+          "name": "1037",
+          "sizeMm": "600×600mm",
+          "finish": "Matt"
+        },
+        {
+          "name": "1038",
+          "sizeMm": "600×600mm",
+          "finish": "Matt"
+        }
+      ]
+    },
+    {
+      "pdfPage": 46,
+      "verified": true,
+      "products": [
+        {
+          "name": "1049",
+          "sizeMm": "600×600mm",
+          "finish": "Matt"
+        },
+        {
+          "name": "1084",
+          "sizeMm": "600×600mm",
+          "finish": "Matt"
+        },
+        {
+          "name": "1106",
+          "sizeMm": "600×600mm",
+          "finish": "Matt"
+        },
+        {
+          "name": "1119",
+          "sizeMm": "600×600mm",
+          "finish": "Matt"
+        }
+      ]
+    },
+    {
+      "pdfPage": 47,
+      "verified": true,
+      "products": [
+        {
+          "name": "1122",
+          "sizeMm": "600×600mm",
+          "finish": "Matt"
+        },
+        {
+          "name": "1137",
+          "sizeMm": "600×600mm",
+          "finish": "Matt"
+        },
+        {
+          "name": "1145",
+          "sizeMm": "600×600mm",
+          "finish": "Matt"
+        },
+        {
+          "name": "1174",
+          "sizeMm": "600×600mm",
+          "finish": "Matt"
+        }
+      ]
+    },
+    {
+      "pdfPage": 48,
+      "verified": true,
+      "products": [
+        {
+          "name": "1201",
+          "sizeMm": "600×600mm",
+          "finish": "Matt"
+        },
+        {
+          "name": "2007",
+          "sizeMm": "600×600mm",
+          "finish": "Matt"
+        },
+        {
+          "name": "9021",
+          "sizeMm": "600×600mm",
+          "finish": "Matt"
+        },
+        {
+          "name": "ORANGE WOOD",
+          "sizeMm": "600×600mm",
+          "finish": "Matt"
+        }
+      ]
+    },
+    {
+      "pdfPage": 49,
+      "verified": true,
+      "products": [
+        {
+          "name": "14027",
+          "sizeMm": "600×600mm",
+          "finish": "Matt + Punch"
+        },
+        {
+          "name": "14105",
+          "sizeMm": "600×600mm",
+          "finish": "Matt + Punch"
+        },
+        {
+          "name": "14051",
+          "sizeMm": "600×600mm",
+          "finish": "Matt + Punch"
+        }
+      ],
+      "note": "MATT is explicitly stated in both page headers; PUNCH is printed beside each individual product."
+    },
+    {
+      "pdfPage": 50,
+      "verified": true,
+      "products": [
+        {
+          "name": "1253",
+          "sizeMm": "600×600mm",
+          "finish": "Matt"
+        },
+        {
+          "name": "1260",
+          "sizeMm": "600×600mm",
+          "finish": "Matt"
+        },
+        {
+          "name": "15005",
+          "sizeMm": "600×600mm",
+          "finish": "Matt"
+        },
+        {
+          "name": "1275",
+          "sizeMm": "600×600mm",
+          "finish": "Matt"
+        }
+      ]
+    },
+    {
+      "pdfPage": 51,
+      "verified": true,
+      "products": [
+        {
+          "name": "11021",
+          "sizeMm": "600×600mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "11023",
+          "sizeMm": "600×600mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "11046",
+          "sizeMm": "600×600mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "11047",
+          "sizeMm": "600×600mm",
+          "finish": "Glossy"
+        }
+      ]
+    },
+    {
+      "pdfPage": 52,
+      "verified": true,
+      "products": [
+        {
+          "name": "GL-1239",
+          "sizeMm": "600×600mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "15024",
+          "sizeMm": "600×600mm",
+          "finish": "Glossy"
+        },
+        {
+          "name": "13007",
+          "sizeMm": "600×600mm",
+          "finish": "Carving"
+        },
+        {
+          "name": "13029",
+          "sizeMm": "600×600mm",
+          "finish": "Carving"
+        }
+      ],
+      "note": "Left half is Glossy and right half is Carving, both stated in headers and individual labels."
+    },
+    {
+      "pdfPage": 53,
+      "verified": true,
+      "products": [
+        {
+          "name": "916-STEP",
+          "sizeMm": "300×900mm"
+        },
+        {
+          "name": "916-RISER",
+          "sizeMm": "200×900mm"
+        },
+        {
+          "name": "916",
+          "sizeMm": "600×900mm"
+        },
+        {
+          "name": "918-STEP",
+          "sizeMm": "300×900mm"
+        },
+        {
+          "name": "918-RISER",
+          "sizeMm": "200×900mm"
+        },
+        {
+          "name": "918",
+          "sizeMm": "600×900mm"
+        }
+      ],
+      "note": "Dimensions follow the three printed metric sizes in each spread header. STEP, RISER and GVT are not substituted for a finish."
+    },
+    {
+      "pdfPage": 54,
+      "verified": true,
+      "products": [
+        {
+          "name": "NEXUS BLACK-STEP",
+          "sizeMm": "300×900mm"
+        },
+        {
+          "name": "NEXUS BLACK-RISER",
+          "sizeMm": "200×900mm"
+        },
+        {
+          "name": "NEXUS BLACK",
+          "sizeMm": "600×900mm"
+        },
+        {
+          "name": "NEXUS GREY-STEP",
+          "sizeMm": "300×900mm"
+        },
+        {
+          "name": "NEXUS GREY-RISER",
+          "sizeMm": "200×900mm"
+        },
+        {
+          "name": "NEXUS GREY",
+          "sizeMm": "600×900mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 55,
+      "verified": true,
+      "products": [
+        {
+          "name": "LAPATO BLACK-STEP",
+          "sizeMm": "300×1200mm"
+        },
+        {
+          "name": "LAPATO BLACK-RISER",
+          "sizeMm": "200×1200mm"
+        },
+        {
+          "name": "LAPATO BLACK",
+          "sizeMm": "600×1200mm"
+        },
+        {
+          "name": "LAPATO NERO-STEP",
+          "sizeMm": "300×1200mm"
+        },
+        {
+          "name": "LAPATO NERO-RISER",
+          "sizeMm": "200×1200mm"
+        },
+        {
+          "name": "LAPATO NERO",
+          "sizeMm": "600×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 56,
+      "verified": true,
+      "products": [
+        {
+          "name": "LAPATO COFFEE-STEP",
+          "sizeMm": "300×1200mm"
+        },
+        {
+          "name": "LAPATO COFFEE-RISER",
+          "sizeMm": "200×1200mm"
+        },
+        {
+          "name": "LAPATO COFFEE",
+          "sizeMm": "600×1200mm"
+        },
+        {
+          "name": "DESERT BLACK-STEP",
+          "sizeMm": "300×1200mm"
+        },
+        {
+          "name": "DESERT BLACK-RISER",
+          "sizeMm": "200×1200mm"
+        },
+        {
+          "name": "DESERT BLACK",
+          "sizeMm": "600×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 57,
+      "verified": true,
+      "products": [
+        {
+          "name": "DESERT COFFEE-STEP",
+          "sizeMm": "300×1200mm"
+        },
+        {
+          "name": "DESERT COFFEE-RISER",
+          "sizeMm": "200×1200mm"
+        },
+        {
+          "name": "DESERT COFFEE",
+          "sizeMm": "600×1200mm"
+        },
+        {
+          "name": "DESERT GREY-STEP",
+          "sizeMm": "300×1200mm"
+        },
+        {
+          "name": "DESERT GREY-RISER",
+          "sizeMm": "200×1200mm"
+        },
+        {
+          "name": "DESERT GREY",
+          "sizeMm": "600×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 58,
+      "verified": true,
+      "products": [
+        {
+          "name": "DESERT NERO-STEP",
+          "sizeMm": "300×1200mm"
+        },
+        {
+          "name": "DESERT NERO-RISER",
+          "sizeMm": "200×1200mm"
+        },
+        {
+          "name": "DESERT NERO",
+          "sizeMm": "600×1200mm"
+        },
+        {
+          "name": "NERO-STEP (THICKNESS 15MM)",
+          "sizeMm": "300×1200mm",
+          "thicknessMm": 15
+        },
+        {
+          "name": "NERO-RISER (THICKNESS 15MM)",
+          "sizeMm": "200×1200mm",
+          "thicknessMm": 15
+        },
+        {
+          "name": "NERO (THICKNESS 15MM)",
+          "sizeMm": "600×1200mm",
+          "thicknessMm": 15
+        }
+      ]
+    },
+    {
+      "pdfPage": 59,
+      "verified": true,
+      "products": [
+        {
+          "name": "GREY-STEP (THICKNESS 15MM)",
+          "sizeMm": "300×1200mm",
+          "thicknessMm": 15
+        },
+        {
+          "name": "GREY-RISER (THICKNESS 15MM)",
+          "sizeMm": "200×1200mm",
+          "thicknessMm": 15
+        },
+        {
+          "name": "GREY (THICKNESS 15MM)",
+          "sizeMm": "600×1200mm",
+          "thicknessMm": 15
+        },
+        {
+          "name": "MELTON MARBLE-STEP",
+          "sizeMm": "300×1200mm"
+        },
+        {
+          "name": "MELTON MARBLE-RISER",
+          "sizeMm": "200×1200mm"
+        },
+        {
+          "name": "MELTON MARBLE",
+          "sizeMm": "600×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 60,
+      "verified": true,
+      "products": [
+        {
+          "name": "WHITE GRANITE-STEP",
+          "sizeMm": "300×1200mm"
+        },
+        {
+          "name": "WHITE GRANITE-RISER",
+          "sizeMm": "200×1200mm"
+        },
+        {
+          "name": "WHITE GRANITE",
+          "sizeMm": "600×1200mm"
+        },
+        {
+          "name": "CLARA WOOD BEIGE-STEP",
+          "sizeMm": "300×1200mm"
+        },
+        {
+          "name": "CLARA WOOD BEIGE-RISER",
+          "sizeMm": "200×1200mm"
+        },
+        {
+          "name": "CLARA WOOD BEIGE",
+          "sizeMm": "600×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 61,
+      "verified": true,
+      "products": [
+        {
+          "name": "SEMOI BROWN-STEP",
+          "sizeMm": "300×1200mm"
+        },
+        {
+          "name": "SEMOI BROWN-RISER",
+          "sizeMm": "200×1200mm"
+        },
+        {
+          "name": "SEMOI BROWN",
+          "sizeMm": "600×1200mm"
+        },
+        {
+          "name": "ARGAN MID",
+          "sizeMm": "200×1200mm"
+        },
+        {
+          "name": "ARGAN NERO",
+          "sizeMm": "200×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 62,
+      "verified": true,
+      "products": [
+        {
+          "name": "COFFEE WOOD-R-1",
+          "sizeMm": "200×1200mm"
+        },
+        {
+          "name": "COFFEE WOOD-R-2",
+          "sizeMm": "200×1200mm"
+        },
+        {
+          "name": "COFFEE WOOD-R-3",
+          "sizeMm": "200×1200mm"
+        },
+        {
+          "name": "NATURAL WOOD-R-1",
+          "sizeMm": "200×1200mm"
+        },
+        {
+          "name": "NATURAL WOOD-R-2",
+          "sizeMm": "200×1200mm"
+        },
+        {
+          "name": "NATURAL WOOD-R-3",
+          "sizeMm": "200×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 63,
+      "verified": true,
+      "products": [
+        {
+          "name": "2807",
+          "sizeMm": "100×600mm"
+        },
+        {
+          "name": "2824",
+          "sizeMm": "100×600mm"
+        },
+        {
+          "name": "2855",
+          "sizeMm": "100×600mm"
+        },
+        {
+          "name": "2832",
+          "sizeMm": "100×600mm"
+        },
+        {
+          "name": "2859",
+          "sizeMm": "100×600mm"
+        },
+        {
+          "name": "2840",
+          "sizeMm": "100×600mm"
+        },
+        {
+          "name": "2892",
+          "sizeMm": "100×600mm"
+        },
+        {
+          "name": "3023",
+          "sizeMm": "100×600mm"
+        },
+        {
+          "name": "3511",
+          "sizeMm": "100×600mm"
+        },
+        {
+          "name": "BLACK",
+          "sizeMm": "100×600mm"
+        },
+        {
+          "name": "007",
+          "sizeMm": "100×600mm"
+        },
+        {
+          "name": "2837",
+          "sizeMm": "100×600mm"
+        },
+        {
+          "name": "2857",
+          "sizeMm": "100×600mm"
+        },
+        {
+          "name": "3508",
+          "sizeMm": "100×600mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 64,
+      "verified": true,
+      "products": [
+        {
+          "name": "S.S. KITCHEN SINK 16x18x8",
+          "category": "Kitchen Sink"
+        },
+        {
+          "name": "S.S. KITCHEN SINK 24x18x8",
+          "category": "Kitchen Sink"
+        },
+        {
+          "name": "HANDMADE KITCHEN SINK 24x18x10 NORMAL",
+          "category": "Kitchen Sink"
+        },
+        {
+          "name": "HANDMADE KITCHEN SINK 24x18x10 MIRROR",
+          "category": "Kitchen Sink"
+        },
+        {
+          "name": "HANDMADE KITCHEN SINK 24x18x10 GOLD",
+          "category": "Kitchen Sink"
+        }
+      ]
+    },
+    {
+      "pdfPage": 65,
+      "verified": true,
+      "products": [
+        {
+          "name": "QUARTZ KITCHEN SINK 16x18x8.5 BLACK",
+          "code": "QI-01",
+          "finish": "Granite",
+          "category": "Kitchen Sink"
+        },
+        {
+          "name": "QUARTZ KITCHEN SINK 16x18x8.5 GREY",
+          "code": "QI-02",
+          "finish": "Granite",
+          "category": "Kitchen Sink"
+        },
+        {
+          "name": "QUARTZ KITCHEN SINK 16x18x8.5 BROWN",
+          "code": "QI-03",
+          "finish": "Granite",
+          "category": "Kitchen Sink"
+        },
+        {
+          "name": "QUARTZ KITCHEN SINK 16x18x8.5 WHITE",
+          "code": "QI-04",
+          "finish": "Granite",
+          "category": "Kitchen Sink"
+        },
+        {
+          "name": "QUARTZ KITCHEN SINK 24x18x8 BLACK",
+          "code": "QI-01",
+          "finish": "Granite",
+          "category": "Kitchen Sink"
+        },
+        {
+          "name": "QUARTZ KITCHEN SINK 24x18x8 GREY",
+          "code": "QI-02",
+          "finish": "Granite",
+          "category": "Kitchen Sink"
+        },
+        {
+          "name": "QUARTZ KITCHEN SINK 24x18x8 CORNFLAKES",
+          "code": "QI-07",
+          "finish": "Granite",
+          "category": "Kitchen Sink"
+        },
+        {
+          "name": "QUARTZ KITCHEN SINK 24x18x8 WHITE",
+          "code": "QI-04",
+          "finish": "Granite",
+          "category": "Kitchen Sink"
+        }
+      ]
+    },
+    {
+      "pdfPage": 66,
+      "verified": true,
+      "products": [
+        {
+          "name": "HANDMADE KITCHEN SINK 30x18x10",
+          "category": "Kitchen Sink",
+          "aliases": [
+            "Integrated Waterfalls",
+            "Digital Display",
+            "Pull-out & RO Faucet"
+          ]
+        },
+        {
+          "name": "QUARTZ KITCHEN SINK 30x20x10",
+          "category": "Kitchen Sink",
+          "aliases": [
+            "Integrated Waterfalls",
+            "Digital Display",
+            "Pull-out & RO Faucet"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 67,
+      "verified": true,
+      "products": [
+        {
+          "name": "MODENA - BEIGE",
+          "finish": "Matt",
+          "category": "Wall Hung Closet",
+          "aliases": [
+            "TITA"
+          ]
+        },
+        {
+          "name": "NOVELLA - BEIGE",
+          "finish": "Matt",
+          "category": "Wall Hung Closet",
+          "aliases": [
+            "TITA"
+          ]
+        },
+        {
+          "name": "ARMANI - BEIGE",
+          "finish": "Matt",
+          "category": "Table Top Basin",
+          "aliases": [
+            "TITA"
+          ]
+        },
+        {
+          "name": "LAVISH - BEIGE",
+          "finish": "Matt",
+          "category": "Table Top Basin",
+          "aliases": [
+            "TITA"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 68,
+      "verified": true,
+      "products": [
+        {
+          "name": "MODENA - GREY",
+          "finish": "Matt",
+          "category": "Wall Hung Closet",
+          "aliases": [
+            "TITA"
+          ]
+        },
+        {
+          "name": "NOVELLA - GREY",
+          "finish": "Matt",
+          "category": "Wall Hung Closet",
+          "aliases": [
+            "TITA"
+          ]
+        },
+        {
+          "name": "ARMANI - GREY",
+          "finish": "Matt",
+          "category": "Table Top Basin",
+          "aliases": [
+            "TITA"
+          ]
+        },
+        {
+          "name": "LAVISH - GREY",
+          "finish": "Matt",
+          "category": "Table Top Basin",
+          "aliases": [
+            "TITA"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 69,
+      "verified": true,
+      "products": [
+        {
+          "name": "7026",
+          "code": "7026",
+          "category": "One Piece Closet",
+          "aliases": [
+            "Liquid Sanitaryware"
+          ]
+        },
+        {
+          "name": "7015",
+          "code": "7015",
+          "category": "One Piece Closet",
+          "aliases": [
+            "Liquid Sanitaryware"
+          ]
+        },
+        {
+          "name": "7028",
+          "code": "7028",
+          "category": "One Piece Closet",
+          "aliases": [
+            "Liquid Sanitaryware"
+          ]
+        },
+        {
+          "name": "7027",
+          "code": "7027",
+          "category": "One Piece Closet",
+          "aliases": [
+            "Liquid Sanitaryware"
+          ]
+        },
+        {
+          "name": "7030",
+          "code": "7030",
+          "category": "One Piece Closet",
+          "aliases": [
+            "Liquid Sanitaryware"
+          ]
+        },
+        {
+          "name": "7031",
+          "code": "7031",
+          "category": "One Piece Closet",
+          "aliases": [
+            "Liquid Sanitaryware"
+          ]
+        },
+        {
+          "name": "7035",
+          "code": "7035",
+          "category": "One Piece Closet",
+          "aliases": [
+            "Liquid Sanitaryware"
+          ]
+        },
+        {
+          "name": "7018",
+          "code": "7018",
+          "category": "One Piece Closet",
+          "aliases": [
+            "Liquid Sanitaryware"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 70,
+      "verified": true,
+      "products": [
+        {
+          "name": "4025 Rimless",
+          "code": "4025",
+          "category": "Wall Hung Closet",
+          "aliases": [
+            "Liquid Sanitaryware"
+          ]
+        },
+        {
+          "name": "4007 Rimless",
+          "code": "4007",
+          "category": "Wall Hung Closet",
+          "aliases": [
+            "Liquid Sanitaryware"
+          ]
+        },
+        {
+          "name": "4003",
+          "code": "4003",
+          "category": "Wall Hung Closet",
+          "aliases": [
+            "Liquid Sanitaryware"
+          ]
+        },
+        {
+          "name": "4014",
+          "code": "4014",
+          "category": "Wall Hung Closet",
+          "aliases": [
+            "Liquid Sanitaryware"
+          ]
+        },
+        {
+          "name": "4024 Rimless",
+          "code": "4024",
+          "category": "Wall Hung Closet",
+          "aliases": [
+            "Liquid Sanitaryware"
+          ]
+        },
+        {
+          "name": "4023 Rimless",
+          "code": "4023",
+          "category": "Wall Hung Closet",
+          "aliases": [
+            "Liquid Sanitaryware"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 71,
+      "verified": true,
+      "products": [
+        {
+          "name": "6006",
+          "code": "6006",
+          "category": "Water Closet"
+        },
+        {
+          "name": "6005",
+          "code": "6005",
+          "category": "Water Closet"
+        },
+        {
+          "name": "504",
+          "code": "504",
+          "category": "Flushing Cistern"
+        },
+        {
+          "name": "500",
+          "code": "500",
+          "category": "Seat Cover"
+        },
+        {
+          "name": "1004 with 2002",
+          "category": "Small Wash Basin"
+        },
+        {
+          "name": "1007 with 2002",
+          "category": "Small Wash Basin"
+        },
+        {
+          "name": "1019 with 2005",
+          "category": "Small Wash Basin"
+        },
+        {
+          "name": "C.T. PAN 20 inch",
+          "category": "Pans & Urinal"
+        },
+        {
+          "name": "ORISSA PAN 21 inch",
+          "category": "Pans & Urinal"
+        },
+        {
+          "name": "ORISSA PAN 23 inch",
+          "category": "Pans & Urinal"
+        },
+        {
+          "name": "9003",
+          "category": "Pans & Urinal"
+        },
+        {
+          "name": "9007",
+          "category": "Pans & Urinal"
+        },
+        {
+          "name": "P-TRAP",
+          "category": "Pans & Urinal"
+        }
+      ]
+    },
+    {
+      "pdfPage": 72,
+      "verified": true,
+      "products": [
+        {
+          "name": "3016",
+          "code": "3016",
+          "category": "Small Wash Basin",
+          "aliases": [
+            "Liquid Sanitaryware"
+          ]
+        },
+        {
+          "name": "3006",
+          "code": "3006",
+          "category": "Small Wash Basin",
+          "aliases": [
+            "Liquid Sanitaryware"
+          ]
+        },
+        {
+          "name": "3024",
+          "code": "3024",
+          "category": "Small Wash Basin",
+          "aliases": [
+            "Liquid Sanitaryware"
+          ]
+        },
+        {
+          "name": "3023",
+          "code": "3023",
+          "category": "Small Wash Basin",
+          "aliases": [
+            "Liquid Sanitaryware"
+          ]
+        },
+        {
+          "name": "3014",
+          "code": "3014",
+          "category": "Small Wash Basin",
+          "aliases": [
+            "Liquid Sanitaryware"
+          ]
+        },
+        {
+          "name": "3003-CORNER",
+          "code": "3003-CORNER",
+          "category": "Small Wash Basin",
+          "aliases": [
+            "Liquid Sanitaryware"
+          ]
+        },
+        {
+          "name": "M-01",
+          "code": "M-01",
+          "category": "Small Wash Basin",
+          "aliases": [
+            "Liquid Sanitaryware"
+          ]
+        },
+        {
+          "name": "R-22",
+          "code": "R-22",
+          "category": "Small Wash Basin",
+          "aliases": [
+            "Liquid Sanitaryware"
+          ]
+        },
+        {
+          "name": "L-1020",
+          "code": "L-1020",
+          "category": "Small Wash Basin",
+          "aliases": [
+            "Liquid Sanitaryware"
+          ]
+        },
+        {
+          "name": "5012",
+          "code": "5012",
+          "category": "Small Wash Basin",
+          "aliases": [
+            "Liquid Sanitaryware"
+          ]
+        },
+        {
+          "name": "A-06",
+          "code": "A-06",
+          "category": "Small Wash Basin",
+          "aliases": [
+            "Liquid Sanitaryware"
+          ]
+        },
+        {
+          "name": "S-09",
+          "code": "S-09",
+          "category": "Small Wash Basin",
+          "aliases": [
+            "Liquid Sanitaryware"
+          ]
+        },
+        {
+          "name": "G-13",
+          "code": "G-13",
+          "category": "Small Wash Basin",
+          "aliases": [
+            "Liquid Sanitaryware"
+          ]
+        },
+        {
+          "name": "C-02",
+          "code": "C-02",
+          "category": "Small Wash Basin",
+          "aliases": [
+            "Liquid Sanitaryware"
+          ]
+        },
+        {
+          "name": "R-11",
+          "code": "R-11",
+          "category": "Small Wash Basin",
+          "aliases": [
+            "Liquid Sanitaryware"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 73,
+      "verified": true,
+      "products": [
+        {
+          "name": "F-861-BM",
+          "code": "F-861-BM",
+          "category": "Cabinet Vanity"
+        },
+        {
+          "name": "F-663-SM",
+          "code": "F-663-SM",
+          "category": "Cabinet Vanity"
+        }
+      ]
+    },
+    {
+      "pdfPage": 74,
+      "verified": true,
+      "products": [
+        {
+          "name": "F-602-SM",
+          "code": "F-602-SM",
+          "category": "Cabinet Vanity"
+        },
+        {
+          "name": "F-D-683-SM",
+          "code": "F-D-683-SM",
+          "category": "Cabinet Vanity"
+        }
+      ]
+    }
+  ],
+  "scope": "PDF pages3–21 and54–63 only",
+  "sourceHash": "887f8cec180a1ab5a464b6319d38d890ba5ec501c235b496320d1a9d47ccf3ad",
+  "excludedPages": [
+    1,
+    2,
+    75,
+    76
+  ]
+}

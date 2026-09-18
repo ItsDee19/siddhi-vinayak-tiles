@@ -1,0 +1,32 @@
+/* PdfPage owns only the paper viewport, its load feedback and direct gestures. */
+.pdf-page { position: relative; min-width: 0; min-height: 0; isolation: isolate; }
+.pdf-viewport { width: 100%; height: 100%; overflow: auto; outline: none; scrollbar-gutter: stable; scroll-behavior: auto; background: transparent; }
+.pdf-viewport:focus-visible { box-shadow: inset 0 0 0 2px var(--reader-accent); }
+.pdf-viewport--fit { overscroll-behavior-x: contain; overscroll-behavior-y: auto; }
+.pdf-viewport--zoomed { overscroll-behavior: contain; }
+.pdf-viewport--pannable { cursor: grab; }
+.pdf-viewport--dragging { cursor: grabbing; user-select: none; }
+.pdf-stage { position: relative; min-width: 100%; min-height: 100%; }
+.pdf-layer { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+.pdf-layer--top { top: 16px; transform: translateX(-50%); }
+.pdf-layer--current { transition: width 180ms var(--reader-ease), height 180ms var(--reader-ease); }
+.pdf-layer--outgoing { pointer-events: none; }
+.pdf-sheet { width: 100%; height: 100%; background: #fff; box-shadow: 0 14px 44px rgb(0 0 0 / 22%); }
+.pdf-page-image { display: block; width: 100%; height: 100%; max-width: none; object-fit: contain; user-select: none; -webkit-user-drag: none; }
+.pdf-sheet--arriving { animation: pdf-page-arrive 240ms var(--reader-ease) both; }
+.pdf-sheet--departing { animation: pdf-page-depart 220ms ease-out both; }
+.pdf-feedback { position: absolute; z-index: 2; right: 16px; bottom: 16px; left: 16px; margin: 0 auto; color: var(--reader-text); background: var(--reader-panel); border: 1px solid var(--reader-line); box-shadow: 0 4px 18px rgb(0 0 0 / 20%); font-size: 13px; line-height: 1.5; }
+.pdf-feedback p { margin: 0; }
+.pdf-feedback--loading { display: flex; align-items: center; gap: 10px; width: fit-content; max-width: calc(100% - 32px); padding: 9px 14px; border-radius: 6px; pointer-events: none; }
+.pdf-feedback--error { max-width: 520px; padding: 14px 16px; border-radius: 8px; border-color: var(--reader-error); }
+.pdf-progress-mark { flex: 0 0 auto; display: block; width: 14px; height: 14px; border: 1.5px solid var(--reader-line); border-top-color: var(--reader-accent); border-radius: 50%; animation: pdf-progress 800ms linear infinite; }
+.pdf-feedback-actions { display: flex; flex-wrap: wrap; gap: 2px 20px; margin-top: 5px; }
+.pdf-feedback-actions a, .pdf-feedback-actions button { display: inline-flex; align-items: center; min-height: 44px; color: var(--reader-text); cursor: pointer; font-weight: 600; text-decoration: underline; text-underline-offset: 4px; }
+.pdf-feedback-actions a:hover, .pdf-feedback-actions button:hover { color: var(--reader-accent); }
+.pdf-feedback-actions a:focus-visible, .pdf-feedback-actions button:focus-visible { outline: 2px solid var(--reader-accent); outline-offset: 3px; }
+.pdf-feedback-actions a:active, .pdf-feedback-actions button:active { opacity: .8; }
+@keyframes pdf-page-arrive { from { opacity: 0; transform: translateX(var(--pdf-travel, 14px)); } to { opacity: 1; transform: translateX(0); } }
+@keyframes pdf-page-depart { from { opacity: 1; transform: translateX(0); } to { opacity: 0; transform: translateX(calc(var(--pdf-travel, 14px) * -1)); } }
+@keyframes pdf-progress { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .pdf-layer--current { transition: none; } .pdf-sheet--arriving, .pdf-sheet--departing, .pdf-progress-mark { animation: none; } .pdf-sheet--departing { visibility: hidden; } }
+@media (forced-colors: active) { .pdf-feedback { border: 1px solid CanvasText; } .pdf-viewport:focus-visible { outline: 2px solid Highlight; outline-offset: -2px; } }

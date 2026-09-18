@@ -22,6 +22,12 @@
     --duration-reveal: 500ms;
     --ease-ui: cubic-bezier(0.4, 0, 0.2, 1);
     --ease-reveal: ease-out;
+    --scrollbar-thumb: #6B4A2E;
+    --scrollbar-track: #3D2512;
+    --scrollbar-hover: #C49A3C;
+    --scrollbar-active: #E0C99B;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+    scrollbar-width: thin;
   }
 
   html {
@@ -43,15 +49,22 @@
   /* Custom scrollbar — subtle, warm */
   ::-webkit-scrollbar {
     width: 11px;
+    height: 11px;
   }
   ::-webkit-scrollbar-track {
-    @apply bg-charcoal-800;
+    background: var(--scrollbar-track);
   }
   ::-webkit-scrollbar-thumb {
-    @apply bg-graphite rounded-full border-2 border-charcoal-800;
+    background: var(--scrollbar-thumb);
+    border: 2px solid var(--scrollbar-track);
+    border-radius: 99px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-gold;
+    background: var(--scrollbar-hover);
+  }
+  ::-webkit-scrollbar-thumb:active { background: var(--scrollbar-active); }
+  @media (forced-colors: active) {
+    * { scrollbar-color: auto; }
   }
 
   /* PRD §2.5 / NF5 — Respect prefers-reduced-motion globally. */

@@ -1,0 +1,991 @@
+{
+  "bookId": "sunflora",
+  "sourceHash": "731b210443b410598288a861bb7ba6cebeb5958eac926d769cc9b090b034ccf8",
+  "stories": [
+    {
+      "id": "sunflora-p003-story",
+      "pageNumber": 3,
+      "productIds": [
+        "sunflora-p3-d1"
+      ],
+      "title": "CV BOTO GREY",
+      "views": {
+        "tile": {
+          "rect": [
+            0.12,
+            0.438,
+            0.78,
+            0.495
+          ],
+          "label": "Complete tile board and details"
+        },
+        "room": {
+          "rect": [
+            0.105,
+            0,
+            0.79,
+            0.427
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sunflora-p004-story",
+      "pageNumber": 4,
+      "productIds": [
+        "sunflora-p4-d1",
+        "sunflora-p4-d2"
+      ],
+      "title": "CV SILESTONE WHITE / CV SILESTONE NERO",
+      "views": {
+        "tile": {
+          "rect": [
+            0.12,
+            0.438,
+            0.78,
+            0.335
+          ],
+          "label": "Complete tile board and details"
+        },
+        "room": {
+          "rect": [
+            0.105,
+            0,
+            0.79,
+            0.427
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sunflora-p005-story",
+      "pageNumber": 5,
+      "productIds": [
+        "sunflora-p5-d1"
+      ],
+      "title": "CV TRAVERTINO BEIGE",
+      "views": {
+        "tile": {
+          "rect": [
+            0.12,
+            0.438,
+            0.78,
+            0.495
+          ],
+          "label": "Complete tile board and details"
+        },
+        "room": {
+          "rect": [
+            0.105,
+            0,
+            0.79,
+            0.427
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sunflora-p006-story",
+      "pageNumber": 6,
+      "productIds": [
+        "sunflora-p6-d1"
+      ],
+      "title": "SP CRYSTAL BLACK",
+      "views": {
+        "tile": {
+          "rect": [
+            0.12,
+            0.438,
+            0.78,
+            0.495
+          ],
+          "label": "Complete tile board and details"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sunflora-p007-story",
+      "pageNumber": 7,
+      "productIds": [
+        "sunflora-p7-d1"
+      ],
+      "title": "SP CRYSTAL SILVER",
+      "views": {
+        "tile": {
+          "rect": [
+            0.12,
+            0.438,
+            0.78,
+            0.495
+          ],
+          "label": "Complete tile board and details"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sunflora-p008-story",
+      "pageNumber": 8,
+      "productIds": [
+        "sunflora-p8-d1"
+      ],
+      "title": "SP DENIM NERO",
+      "views": {
+        "tile": {
+          "rect": [
+            0.12,
+            0.438,
+            0.78,
+            0.495
+          ],
+          "label": "Complete tile board and details"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sunflora-p009-story",
+      "pageNumber": 9,
+      "productIds": [
+        "sunflora-p9-d1"
+      ],
+      "title": "SP DENIM WHITE",
+      "views": {
+        "tile": {
+          "rect": [
+            0.12,
+            0.438,
+            0.78,
+            0.495
+          ],
+          "label": "Complete tile board and details"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sunflora-p010-story",
+      "pageNumber": 10,
+      "productIds": [
+        "sunflora-p10-d1"
+      ],
+      "title": "SP FLICKER BROWN",
+      "views": {
+        "tile": {
+          "rect": [
+            0.12,
+            0.438,
+            0.78,
+            0.495
+          ],
+          "label": "Complete tile board and details"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sunflora-p011-story",
+      "pageNumber": 11,
+      "productIds": [
+        "sunflora-p11-d1",
+        "sunflora-p11-d2"
+      ],
+      "title": "SP ICONIC BEIGE DECOR / SP ICONIC BEIGE FRAME",
+      "views": {
+        "tile": {
+          "rect": [
+            0.12,
+            0.438,
+            0.78,
+            0.335
+          ],
+          "label": "Complete tile board and details"
+        },
+        "room": {
+          "rect": [
+            0.105,
+            0,
+            0.79,
+            0.427
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sunflora-p012-story",
+      "pageNumber": 12,
+      "productIds": [
+        "sunflora-p12-d1"
+      ],
+      "title": "SP OMICRON BEIGE",
+      "views": {
+        "tile": {
+          "rect": [
+            0.12,
+            0.438,
+            0.78,
+            0.495
+          ],
+          "label": "Complete tile board and details"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sunflora-p013-story",
+      "pageNumber": 13,
+      "productIds": [
+        "sunflora-p13-d1"
+      ],
+      "title": "SP SUBWAY BLACK DECOR",
+      "views": {
+        "tile": {
+          "rect": [
+            0.12,
+            0.438,
+            0.78,
+            0.495
+          ],
+          "label": "Complete tile board and details"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sunflora-p014-story",
+      "pageNumber": 14,
+      "productIds": [
+        "sunflora-p14-d1"
+      ],
+      "title": "SP SUBWAY WHITE DECOR",
+      "views": {
+        "tile": {
+          "rect": [
+            0.12,
+            0.438,
+            0.78,
+            0.495
+          ],
+          "label": "Complete tile board and details"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sunflora-p015-story",
+      "pageNumber": 15,
+      "productIds": [
+        "sunflora-p15-d1"
+      ],
+      "title": "SP TERRA BLACK",
+      "views": {
+        "tile": {
+          "rect": [
+            0.12,
+            0.438,
+            0.78,
+            0.495
+          ],
+          "label": "Complete tile board and details"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sunflora-p016-story",
+      "pageNumber": 16,
+      "productIds": [
+        "sunflora-p16-d1"
+      ],
+      "title": "SP TERRA WHITE",
+      "views": {
+        "tile": {
+          "rect": [
+            0.12,
+            0.438,
+            0.78,
+            0.495
+          ],
+          "label": "Complete tile board and details"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sunflora-p017-story",
+      "pageNumber": 17,
+      "productIds": [
+        "sunflora-p17-d1"
+      ],
+      "title": "SP WING PINK",
+      "views": {
+        "tile": {
+          "rect": [
+            0.12,
+            0.438,
+            0.78,
+            0.495
+          ],
+          "label": "Complete tile board and details"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sunflora-p018-story",
+      "pageNumber": 18,
+      "productIds": [
+        "sunflora-p18-d1",
+        "sunflora-p18-d2"
+      ],
+      "title": "SUBWAY CARARA DECOR / SUBWAY CARARA",
+      "views": {
+        "tile": {
+          "rect": [
+            0.12,
+            0.438,
+            0.78,
+            0.335
+          ],
+          "label": "Complete tile board and details"
+        },
+        "room": {
+          "rect": [
+            0.105,
+            0,
+            0.79,
+            0.427
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sunflora-p019-story",
+      "pageNumber": 19,
+      "productIds": [
+        "sunflora-p19-d1",
+        "sunflora-p19-d2"
+      ],
+      "title": "SENSE PEARL DECOR / SENSE PEARL",
+      "views": {
+        "tile": {
+          "rect": [
+            0.12,
+            0.438,
+            0.78,
+            0.335
+          ],
+          "label": "Complete tile board and details"
+        },
+        "room": {
+          "rect": [
+            0.105,
+            0,
+            0.79,
+            0.427
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sunflora-p020-story",
+      "pageNumber": 20,
+      "productIds": [
+        "sunflora-p20-d1",
+        "sunflora-p20-d2"
+      ],
+      "title": "SENSE FLORA DECOR / SENSE FLORA",
+      "views": {
+        "tile": {
+          "rect": [
+            0.12,
+            0.438,
+            0.78,
+            0.335
+          ],
+          "label": "Complete tile board and details"
+        },
+        "room": {
+          "rect": [
+            0.105,
+            0,
+            0.79,
+            0.427
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sunflora-p021-story",
+      "pageNumber": 21,
+      "productIds": [
+        "sunflora-p21-d1",
+        "sunflora-p21-d2"
+      ],
+      "title": "PRESTIGE MINT DECOR / PRESTIGE MINT",
+      "views": {
+        "tile": {
+          "rect": [
+            0.12,
+            0.438,
+            0.78,
+            0.335
+          ],
+          "label": "Complete tile board and details"
+        },
+        "room": {
+          "rect": [
+            0.105,
+            0,
+            0.79,
+            0.427
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sunflora-p022-story",
+      "pageNumber": 22,
+      "productIds": [
+        "sunflora-p22-d1",
+        "sunflora-p22-d2"
+      ],
+      "title": "PRESTIGE CRACKLE DECOR / PRESTIGE CRACKLE",
+      "views": {
+        "tile": {
+          "rect": [
+            0.12,
+            0.438,
+            0.78,
+            0.335
+          ],
+          "label": "Complete tile board and details"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sunflora-p023-story",
+      "pageNumber": 23,
+      "productIds": [
+        "sunflora-p23-d1",
+        "sunflora-p23-d2",
+        "sunflora-p23-d3"
+      ],
+      "title": "MOZO MIDAS DECOR / COTTO MIDAS FUMO / COTTO MIDAS NERO",
+      "views": {
+        "tile": {
+          "rect": [
+            0.12,
+            0.438,
+            0.78,
+            0.495
+          ],
+          "label": "Complete tile board and details"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sunflora-p024-story",
+      "pageNumber": 24,
+      "productIds": [
+        "sunflora-p24-d1",
+        "sunflora-p24-d2"
+      ],
+      "title": "MONOSTONE CREMA DECOR / FORT CREMA",
+      "views": {
+        "tile": {
+          "rect": [
+            0.12,
+            0.438,
+            0.78,
+            0.335
+          ],
+          "label": "Complete tile board and details"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sunflora-p025-story",
+      "pageNumber": 25,
+      "productIds": [
+        "sunflora-p25-d1",
+        "sunflora-p25-d2"
+      ],
+      "title": "MONOSTONE BROWN DECOR / FORT BROWN",
+      "views": {
+        "tile": {
+          "rect": [
+            0.12,
+            0.438,
+            0.78,
+            0.335
+          ],
+          "label": "Complete tile board and details"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sunflora-p026-story",
+      "pageNumber": 26,
+      "productIds": [
+        "sunflora-p26-d1",
+        "sunflora-p26-d2"
+      ],
+      "title": "FORT CREMA DECOR / FORT CREMA",
+      "views": {
+        "tile": {
+          "rect": [
+            0.12,
+            0.438,
+            0.78,
+            0.335
+          ],
+          "label": "Complete tile board and details"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sunflora-p027-story",
+      "pageNumber": 27,
+      "productIds": [
+        "sunflora-p27-d1",
+        "sunflora-p27-d2"
+      ],
+      "title": "FORT BROWN DECOR / FORT BROWN",
+      "views": {
+        "tile": {
+          "rect": [
+            0.12,
+            0.438,
+            0.78,
+            0.335
+          ],
+          "label": "Complete tile board and details"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sunflora-p029-story",
+      "pageNumber": 29,
+      "productIds": [
+        "sunflora-p29-d1"
+      ],
+      "title": "END STROM GREY",
+      "views": {
+        "tile": {
+          "rect": [
+            0.12,
+            0.438,
+            0.78,
+            0.495
+          ],
+          "label": "Complete tile board and details"
+        },
+        "room": {
+          "rect": [
+            0.105,
+            0,
+            0.79,
+            0.427
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sunflora-p030-story",
+      "pageNumber": 30,
+      "productIds": [
+        "sunflora-p30-d1"
+      ],
+      "title": "END FLORA AQUA",
+      "views": {
+        "tile": {
+          "rect": [
+            0.12,
+            0.438,
+            0.78,
+            0.495
+          ],
+          "label": "Complete tile board and details"
+        },
+        "room": {
+          "rect": [
+            0.105,
+            0,
+            0.79,
+            0.427
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sunflora-p031-story",
+      "pageNumber": 31,
+      "productIds": [
+        "sunflora-p31-d1"
+      ],
+      "title": "END SPARK STATUARIO",
+      "views": {
+        "tile": {
+          "rect": [
+            0.12,
+            0.438,
+            0.78,
+            0.495
+          ],
+          "label": "Complete tile board and details"
+        },
+        "room": {
+          "rect": [
+            0.105,
+            0,
+            0.79,
+            0.427
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sunflora-p032-story",
+      "pageNumber": 32,
+      "productIds": [
+        "sunflora-p32-d1"
+      ],
+      "title": "END FLORA GOLD",
+      "views": {
+        "tile": {
+          "rect": [
+            0.12,
+            0.438,
+            0.78,
+            0.495
+          ],
+          "label": "Complete tile board and details"
+        },
+        "room": {
+          "rect": [
+            0.105,
+            0,
+            0.79,
+            0.427
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sunflora-p033-story",
+      "pageNumber": 33,
+      "productIds": [
+        "sunflora-p33-d1",
+        "sunflora-p33-d2"
+      ],
+      "title": "END ANTHENI MINT / END ANTHENI PINK",
+      "views": {
+        "tile": {
+          "rect": [
+            0.12,
+            0.438,
+            0.78,
+            0.335
+          ],
+          "label": "Complete tile board and details"
+        },
+        "room": {
+          "rect": [
+            0.105,
+            0,
+            0.79,
+            0.427
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sunflora-p034-story",
+      "pageNumber": 34,
+      "productIds": [
+        "sunflora-p34-d1",
+        "sunflora-p34-d2"
+      ],
+      "title": "END ANTHENI GREY / END ANTHENI NERO",
+      "views": {
+        "tile": {
+          "rect": [
+            0.12,
+            0.438,
+            0.78,
+            0.335
+          ],
+          "label": "Complete tile board and details"
+        },
+        "room": {
+          "rect": [
+            0.105,
+            0,
+            0.79,
+            0.427
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sunflora-p035-story",
+      "pageNumber": 35,
+      "productIds": [
+        "sunflora-p35-d1",
+        "sunflora-p35-d2"
+      ],
+      "title": "DIAMOND ONYX DECOR / DIAMOND ONYX",
+      "views": {
+        "tile": {
+          "rect": [
+            0.12,
+            0.438,
+            0.78,
+            0.335
+          ],
+          "label": "Complete tile board and details"
+        },
+        "room": {
+          "rect": [
+            0.105,
+            0,
+            0.79,
+            0.427
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "sunflora-p036-story",
+      "pageNumber": 36,
+      "productIds": [
+        "sunflora-p36-d1"
+      ],
+      "title": "3D-1001",
+      "views": {
+        "tile": {
+          "rect": [
+            0.12,
+            0.438,
+            0.78,
+            0.495
+          ],
+          "label": "Complete tile board and details"
+        },
+        "room": {
+          "rect": [
+            0.105,
+            0,
+            0.79,
+            0.427
+          ],
+          "label": "Room setting"
+        }
+      },
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    }
+  ]
+}

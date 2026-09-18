@@ -1,0 +1,162 @@
+[
+  {
+    "id": "global-floor",
+    "title": "Global Floor Collection",
+    "description": "Large-format floor tiles, room settings and printed product specifications.",
+    "format": "Floor tiles",
+    "sourceName": "GLOBAL TILES FLOOR CATALOGUE.pdf",
+    "featuredPage": 3,
+    "expectedPages": 72,
+    "sourceHash": "ddf4eca1303efdb4a28ea96236d5f82a3541fd57365c9fd4cfd865950977e3b8"
+  },
+  {
+    "id": "global-wall",
+    "title": "Global Wall Collection",
+    "description": "Wall tile designs, coordinated room settings and printed product specifications.",
+    "format": "Wall tiles",
+    "sourceName": "GLOBAL TILES 2025 CATALOGUE.pdf",
+    "featuredPage": 3,
+    "expectedPages": 76,
+    "sourceHash": "887f8cec180a1ab5a464b6319d38d890ba5ec501c235b496320d1a9d47ccf3ad"
+  },
+  {
+    "id": "sky",
+    "title": "SKY Wall Collection",
+    "description": "300 × 450 mm wall tiles, with coordinated designs and room settings.",
+    "format": "12 × 18 in · Wall tiles",
+    "sourceName": "(12X18) SKY PDF.pdf",
+    "featuredPage": 37,
+    "expectedPages": 73,
+    "sourceHash": "5babb9322ad8a8da6c2dd4d42fa6db2a0899adfefcd321d260e6d8610f6a40a8"
+  },
+  {
+    "id": "sunflora",
+    "title": "Sunflora Collection",
+    "description": "The supplied Sunflora catalogue: 600 × 1200 mm surfaces and technical details.",
+    "format": "600 × 1200 mm · 2 × 4 ft",
+    "sourceName": "SUNFLORA 2X4 (NEW DES).pdf",
+    "featuredPage": 3,
+    "expectedPages": 36,
+    "sourceHash": "731b210443b410598288a861bb7ba6cebeb5958eac926d769cc9b090b034ccf8"
+  },
+  {
+    "id": "rich",
+    "title": "Rich Catalogue 2024",
+    "shortTitle": "Rich Vitrified",
+    "description": "Rich vitrified 600 × 600 mm glossy tiles, complete samples, matching room settings and original technical specifications.",
+    "format": "600 × 600 mm · Glossy",
+    "sourceName": "ℝ𝕚𝕔𝕙 ℕ𝕖𝕨 ℂ𝕒𝕥𝕒𝕝𝕠𝕘𝕦𝕖 『𝟚𝟘𝟚𝟜』.pdf",
+    "featuredPage": 6,
+    "expectedPages": 81,
+    "sourceHash": "f2e679917fd67c3df2159c34a3a7e856a02b873a5a548b6bebf72a73c1ec1398",
+    "cardImage": "/catalogues/rich/page-007.webp"
+  },
+  {
+    "id": "planks-8x48",
+    "title": "8 × 48 Planks Collection",
+    "shortTitle": "Wood Planks",
+    "description": "Wood strip tiles with full plank designs, printed codes and coordinated random faces.",
+    "format": "200 × 1200 mm · Wood strips",
+    "sourceName": "8X48 PLNKAS PDF.pdf",
+    "featuredPage": 1,
+    "expectedPages": 20,
+    "sourceHash": "53a980d82773b3b0632f903f624f95c025ac6245c080dcfaa119fa97c78f1ff9",
+    "cardImage": "/catalogues/planks-8x48/page-001.webp"
+  },
+  {
+    "id": "goldcoin",
+    "title": "Goldcoin Collection",
+    "shortTitle": "Goldcoin",
+    "description": "Goldcoin outdoor tile designs with matching room settings and original printed specifications.",
+    "format": "500 × 500 mm · Outdoor tiles",
+    "sourceName": "GOLDCOIN 20X20.pdf",
+    "featuredPage": 2,
+    "expectedPages": 27,
+    "sourceHash": "38acfc400fbe6997dc8ca23e01a08d1a7b88b574ed4326ff0dfb895fcc91d129",
+    "cardImage": "/catalogues/goldcoin/page-003.webp"
+  },
+  {
+    "id": "coverstone",
+    "title": "Coverstone Collection",
+    "shortTitle": "Coverstone",
+    "description": "Coverstone punch series tiles with coordinated shades, complete patterns and matching room settings.",
+    "format": "600 × 1200 mm · Punch series",
+    "sourceName": "COVERSTONE(2x4).pdf",
+    "featuredPage": 3,
+    "expectedPages": 33,
+    "sourceHash": "e5db9c5b1913912f7ef012e7d7cf71e6d1d28680ee68a63a212107c4c1a1351e",
+    "cardImage": "/catalogues/coverstone/page-004.webp"
+  },
+  {
+    "id": "lactose",
+    "title": "Lactose Collection",
+    "shortTitle": "Lactose",
+    "description": "Lactose glossy and polished designs, including complete tile samples and printed specifications.",
+    "format": "600 × 1200 mm · Glossy & polished",
+    "sourceName": "LACTOSE (2X4).pdf",
+    "featuredPage": 9,
+    "expectedPages": 18,
+    "sourceHash": "5f529bff1c4a3828dc5e9895e3e0e5c2f7bff74eada81aecd16a223cb2cbe174",
+    "cardImage": "/catalogues/lactose/page-009.webp"
+  },
+  {
+    "id": "cyan",
+    "title": "Cyan Granito Collection",
+    "shortTitle": "Cyan Granito",
+    "description": "Cyan Granito polish, carving and endless collections with named designs and matching interiors.",
+    "format": "600 × 1200 mm",
+    "sourceName": "CYAN GRANITO_1234.pdf",
+    "featuredPage": 21,
+    "expectedPages": 43,
+    "sourceHash": "4c87c04ff170c8db6906414ec8fac58ff33a9ec6c525a4c9887c0f63f89b48db",
+    "cardImage": "/catalogues/cyan/page-022.webp"
+  },
+  {
+    "id": "skype",
+    "title": "Skype Collection",
+    "shortTitle": "Skype",
+    "description": "Skype numbered tile designs with complete samples and original product details.",
+    "format": "600 × 1200 mm",
+    "sourceName": "SKYPE  (2X4).pdf",
+    "featuredPage": 9,
+    "expectedPages": 34,
+    "sourceHash": "7d071d617d62dda2395ce43817ef607e87dfdd4140231c9c86637668e45fb966",
+    "cardImage": "/catalogues/skype/page-009.webp"
+  },
+  {
+    "id": "seron-iconic",
+    "title": "Seron Iconic Pro Collection",
+    "shortTitle": "Seron Iconic Pro",
+    "description": "Seron Iconic Pro coordinated tile groups, individual named designs and original catalogue details.",
+    "format": "600 × 1200 mm · Iconic Pro",
+    "sourceName": "SERON ICONIC 2X4 PRO COLLECTION.pdf",
+    "featuredPage": 13,
+    "expectedPages": 20,
+    "sourceHash": "18f94e7b572b17fea426ee5d109bd7b50df90c19cf0548b78e1cd9a419a58712",
+    "cardImage": "/catalogues/seron-iconic/page-013.webp"
+  },
+  {
+    "id": "simpolo",
+    "title": "Simpolo Sanitaryware 2025",
+    "shortTitle": "Simpolo Sanitaryware",
+    "description": "Simpolo sanitaryware, tabletop basins, suites and fittings with original product details from the supplied 2025 catalogue.",
+    "format": "Sanitaryware · 2025 catalogue",
+    "sourceName": "Simpolo SW MRP 2025_36MB-1.pdf",
+    "featuredPage": 38,
+    "expectedPages": 60,
+    "sourceHash": "915afe544035b3bb23ed65436d6b2eda0d756bcd17c6c76f3e87ca46147b8598",
+    "cardImage": "/catalogues/simpolo/page-038.webp"
+  },
+  {
+    "id": "seron-glossy",
+    "title": "Seron Glossy Collection",
+    "shortTitle": "Seron Glossy",
+    "description": "Seron glossy tile designs, complete patterns and their original printed specifications.",
+    "format": "600 × 1200 mm · Glossy",
+    "sourceName": "SERON GLOOSY PDF 2X4.pdf",
+    "featuredPage": 3,
+    "expectedPages": 8,
+    "sourceHash": "5024b96a311c43b55ca0f21886ad9bbe308a68f8f37627f1386dbd85ffb8f123",
+    "cardImage": "/catalogues/seron-glossy/page-003.webp"
+  }
+]

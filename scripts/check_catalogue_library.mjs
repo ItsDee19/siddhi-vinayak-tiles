@@ -7,7 +7,8 @@ import sharp from 'sharp'
 const root = path.resolve(import.meta.dirname, '..')
 const publicRoot = path.join(root, 'public')
 const books = JSON.parse(await fs.readFile(path.join(root, 'src/data/catalogueBooks.generated.json'), 'utf8'))
-const expectedPages = { 'global-floor': 72, 'global-wall': 76, sky: 73, sunflora: 36 }
+const sources = JSON.parse(await fs.readFile(path.join(root, 'scripts/catalogue-sources.json'), 'utf8'))
+const expectedPages = Object.fromEntries(sources.map(source => [source.id, source.expectedPages]))
 const ids = new Set()
 let checkedImages = 0
 let derivedBytes = 0
@@ -24,10 +25,12 @@ for (const book of books) {
   assert.ok(!ids.has(book.id), `Duplicate catalogue: ${book.id}`)
   ids.add(book.id)
   assert.equal(book.pageCount, expectedPages[book.id], `Source page count changed: ${book.id}`)
+  assert.equal(book.sourceHash, sources.find(source => source.id === book.id)?.sourceHash)
   assert.equal(book.pages.length, book.pageCount)
   assert.equal(book.textPageCount, book.pages.filter((page) => page.text.trim()).length)
   assert.ok(book.pages.some((page) => page.number === book.featuredPage))
   assert.equal(book.cover, book.pages[0].image)
+  if (book.cardImage) assert(book.pages.some(page => page.image === book.cardImage), `${book.id}: cover artwork must belong to this catalogue`)
   const original = await fs.readFile(assetPath(book.pdfUrl))
   assert.equal(original.subarray(0, 5).toString(), '%PDF-')
   assert.equal(original.length, book.fileSize)

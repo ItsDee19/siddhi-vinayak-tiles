@@ -1,0 +1,213 @@
+{
+  "bookId": "planks-8x48",
+  "sourceHash": "53a980d82773b3b0632f903f624f95c025ac6245c080dcfaa119fa97c78f1ff9",
+  "method": "Manual visual reading of every original PDF page (20 pages), with complete tile crops and room associations verified against publisher artwork.",
+  "notes": [
+    "Names retain the printed R-number and CV suffix; neither is interpreted as a finish or safety rating.",
+    "PDF pages 11 and 12 repeat OXFORD WHITE-R10 (CV); both original destinations are retained.",
+    "Printed spelling Traventine is retained. Random faces remain visible in the original page; the gallery shows the first complete horizontal face without altering its source proportions."
+  ],
+  "excludedPages": [],
+  "pages": [
+    {
+      "pdfPage": 1,
+      "verified": true,
+      "products": [
+        {
+          "name": "ANTIQUE WOOD BROWN - R9",
+          "sizeMm": "200×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 2,
+      "verified": true,
+      "products": [
+        {
+          "name": "AQUA WOOD-R5 (CV)",
+          "sizeMm": "200×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 3,
+      "verified": true,
+      "products": [
+        {
+          "name": "ARJUN WOOD BROWN - R5",
+          "sizeMm": "200×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 4,
+      "verified": true,
+      "products": [
+        {
+          "name": "BOSCO ALMOND - R9",
+          "sizeMm": "200×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 5,
+      "verified": true,
+      "products": [
+        {
+          "name": "BOSCO BEIGE - R9",
+          "sizeMm": "200×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 6,
+      "verified": true,
+      "products": [
+        {
+          "name": "BOSCO BROWN - R9",
+          "sizeMm": "200×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 7,
+      "verified": true,
+      "products": [
+        {
+          "name": "BOSCO NATURAL - R9",
+          "sizeMm": "200×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 8,
+      "verified": true,
+      "products": [
+        {
+          "name": "CANDY WOOD-R6 (CV)",
+          "sizeMm": "200×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 9,
+      "verified": true,
+      "products": [
+        {
+          "name": "CEMENTO GREY-R11 (CV)",
+          "sizeMm": "200×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 10,
+      "verified": true,
+      "products": [
+        {
+          "name": "CORSON WOOD - R6",
+          "sizeMm": "200×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 11,
+      "verified": true,
+      "products": [
+        {
+          "name": "OXFORD WHITE-R10 (CV)",
+          "sizeMm": "200×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 12,
+      "verified": true,
+      "products": [
+        {
+          "name": "OXFORD WHITE-R10 (CV)",
+          "sizeMm": "200×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 13,
+      "verified": true,
+      "products": [
+        {
+          "name": "PESTAL BLACK",
+          "sizeMm": "200×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 14,
+      "verified": true,
+      "products": [
+        {
+          "name": "PESTAL WHITE",
+          "sizeMm": "200×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 15,
+      "verified": true,
+      "products": [
+        {
+          "name": "ROYAL BROWN - R10",
+          "sizeMm": "200×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 16,
+      "verified": true,
+      "products": [
+        {
+          "name": "SISAM WENGE - R8",
+          "sizeMm": "200×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 17,
+      "verified": true,
+      "products": [
+        {
+          "name": "SWISS WALNUT - R4",
+          "sizeMm": "200×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 18,
+      "verified": true,
+      "products": [
+        {
+          "name": "TERRAZZO BROWN-R9 (CV)",
+          "sizeMm": "200×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 19,
+      "verified": true,
+      "products": [
+        {
+          "name": "TORINO GREY (104) - R8",
+          "sizeMm": "200×1200mm"
+        }
+      ]
+    },
+    {
+      "pdfPage": 20,
+      "verified": true,
+      "products": [
+        {
+          "name": "Traventine White - R1",
+          "sizeMm": "200×1200mm"
+        }
+      ]
+    }
+  ]
+}

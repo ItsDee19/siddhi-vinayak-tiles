@@ -26,8 +26,9 @@ npm run preview  # preview the production build
 
 - **Hero 3D tile wall** — a floating grid of material tiles that tilts with the
   pointer and drifts apart on scroll.
-- **Interactive Visualizer** — a 3D room whose floor re-textures live as you
-  pick a Tiles / Marble / Granite / Quartz swatch. Drag to orbit, scroll to zoom.
+- **Immersive catalogue reader** — browse complete tile designs and matching
+  room settings, search printed product details, and inspect the original PDF
+  pages. See [catalogue maintenance](docs/CATALOGUES.md).
 - **Tilt category cards**, filterable **gallery + lightbox**, animated **stat
   counters**, a rotating **marble slab** in About, and floating **Call /
   WhatsApp** buttons.

@@ -1,0 +1,635 @@
+{
+  "bookId": "skype",
+  "sourceHash": "7d071d617d62dda2395ce43817ef607e87dfdd4140231c9c86637668e45fb966",
+  "stories": [
+    {
+      "id": "skype-p003-d1",
+      "pageNumber": 3,
+      "productIds": [
+        "skype-p3-d1"
+      ],
+      "title": "2551",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.063,
+            0.139,
+            0.294,
+            0.815
+          ],
+          "label": "Complete tile design"
+        },
+        "room": {
+          "rect": [
+            0.033,
+            0.049,
+            0.933,
+            0.86
+          ],
+          "label": "Room setting",
+          "pageNumber": 4
+        }
+      }
+    },
+    {
+      "id": "skype-p005-d1",
+      "pageNumber": 5,
+      "productIds": [
+        "skype-p5-d1"
+      ],
+      "title": "2547",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.063,
+            0.139,
+            0.294,
+            0.815
+          ],
+          "label": "Complete tile design"
+        }
+      }
+    },
+    {
+      "id": "skype-p006-d1",
+      "pageNumber": 6,
+      "productIds": [
+        "skype-p6-d1"
+      ],
+      "title": "1838",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.696,
+            0.074,
+            0.304,
+            0.855
+          ],
+          "label": "Complete tile design"
+        }
+      }
+    },
+    {
+      "id": "skype-p008-d1",
+      "pageNumber": 8,
+      "productIds": [
+        "skype-p8-d1"
+      ],
+      "title": "3615",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.37,
+            0.213,
+            0.192,
+            0.535
+          ],
+          "label": "Complete tile design"
+        },
+        "room": {
+          "rect": [
+            0.033,
+            0.049,
+            0.933,
+            0.86
+          ],
+          "label": "Room setting",
+          "pageNumber": 7
+        }
+      }
+    },
+    {
+      "id": "skype-p009-d1",
+      "pageNumber": 9,
+      "productIds": [
+        "skype-p9-d1"
+      ],
+      "title": "3633",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.534,
+            0.213,
+            0.191,
+            0.535
+          ],
+          "label": "Complete tile design"
+        },
+        "room": {
+          "rect": [
+            0.033,
+            0.05,
+            0.469,
+            0.902
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "skype-p010-d1",
+      "pageNumber": 10,
+      "productIds": [
+        "skype-p10-d1"
+      ],
+      "title": "2608",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.063,
+            0.139,
+            0.294,
+            0.815
+          ],
+          "label": "Complete tile design"
+        }
+      }
+    },
+    {
+      "id": "skype-p012-d1",
+      "pageNumber": 12,
+      "productIds": [
+        "skype-p12-d1"
+      ],
+      "title": "2578",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.063,
+            0.139,
+            0.294,
+            0.815
+          ],
+          "label": "Complete tile design"
+        },
+        "room": {
+          "rect": [
+            0.033,
+            0.049,
+            0.933,
+            0.86
+          ],
+          "label": "Room setting",
+          "pageNumber": 11
+        }
+      }
+    },
+    {
+      "id": "skype-p013-d1",
+      "pageNumber": 13,
+      "productIds": [
+        "skype-p13-d1"
+      ],
+      "title": "1803",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.692,
+            0.084,
+            0.296,
+            0.837
+          ],
+          "label": "Complete tile design"
+        },
+        "room": {
+          "rect": [
+            0.046,
+            0.12,
+            0.91,
+            0.813
+          ],
+          "label": "Room setting",
+          "pageNumber": 14
+        }
+      }
+    },
+    {
+      "id": "skype-p015-d1",
+      "pageNumber": 15,
+      "productIds": [
+        "skype-p15-d1"
+      ],
+      "title": "1826",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.692,
+            0.084,
+            0.296,
+            0.837
+          ],
+          "label": "Complete tile design"
+        }
+      }
+    },
+    {
+      "id": "skype-p016-d1",
+      "pageNumber": 16,
+      "productIds": [
+        "skype-p16-d1"
+      ],
+      "title": "1831",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.692,
+            0.084,
+            0.296,
+            0.837
+          ],
+          "label": "Complete tile design"
+        },
+        "room": {
+          "rect": [
+            0.046,
+            0.12,
+            0.91,
+            0.813
+          ],
+          "label": "Room setting",
+          "pageNumber": 17
+        }
+      }
+    },
+    {
+      "id": "skype-p018-d1",
+      "pageNumber": 18,
+      "productIds": [
+        "skype-p18-d1"
+      ],
+      "title": "2524",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.063,
+            0.139,
+            0.294,
+            0.815
+          ],
+          "label": "Complete tile design"
+        }
+      }
+    },
+    {
+      "id": "skype-p019-d1",
+      "pageNumber": 19,
+      "productIds": [
+        "skype-p19-d1"
+      ],
+      "title": "2538",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.063,
+            0.139,
+            0.294,
+            0.815
+          ],
+          "label": "Complete tile design"
+        },
+        "room": {
+          "rect": [
+            0.032,
+            0,
+            0.64,
+            0.54
+          ],
+          "label": "Room setting",
+          "pageNumber": 20
+        }
+      }
+    },
+    {
+      "id": "skype-p021-d1",
+      "pageNumber": 21,
+      "productIds": [
+        "skype-p21-d1"
+      ],
+      "title": "3571",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.37,
+            0.213,
+            0.185,
+            0.535
+          ],
+          "label": "Complete tile design"
+        }
+      }
+    },
+    {
+      "id": "skype-p022-d1",
+      "pageNumber": 22,
+      "productIds": [
+        "skype-p22-d1"
+      ],
+      "title": "2590",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.047,
+            0.16,
+            0.264,
+            0.75
+          ],
+          "label": "Complete tile design"
+        },
+        "room": {
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Room setting",
+          "pageNumber": 23
+        }
+      }
+    },
+    {
+      "id": "skype-p024-d1",
+      "pageNumber": 24,
+      "productIds": [
+        "skype-p24-d1"
+      ],
+      "title": "2638",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.047,
+            0.16,
+            0.264,
+            0.75
+          ],
+          "label": "Complete tile design"
+        }
+      }
+    },
+    {
+      "id": "skype-p025-d1",
+      "pageNumber": 25,
+      "productIds": [
+        "skype-p25-d1"
+      ],
+      "title": "2650",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.047,
+            0.16,
+            0.264,
+            0.75
+          ],
+          "label": "Complete tile design"
+        },
+        "room": {
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Room setting",
+          "pageNumber": 26
+        }
+      }
+    },
+    {
+      "id": "skype-p027-d1",
+      "pageNumber": 27,
+      "productIds": [
+        "skype-p27-d1"
+      ],
+      "title": "2659",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.047,
+            0.16,
+            0.264,
+            0.75
+          ],
+          "label": "Complete tile design"
+        },
+        "room": {
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Room setting",
+          "pageNumber": 28
+        }
+      }
+    },
+    {
+      "id": "skype-p029-d1",
+      "pageNumber": 29,
+      "productIds": [
+        "skype-p29-d1"
+      ],
+      "title": "2666",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.047,
+            0.16,
+            0.264,
+            0.75
+          ],
+          "label": "Complete tile design"
+        },
+        "room": {
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Room setting",
+          "pageNumber": 30
+        }
+      }
+    },
+    {
+      "id": "skype-p031-d1",
+      "pageNumber": 31,
+      "productIds": [
+        "skype-p31-d1"
+      ],
+      "title": "2681",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.047,
+            0.16,
+            0.264,
+            0.75
+          ],
+          "label": "Complete tile design"
+        },
+        "room": {
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Room setting",
+          "pageNumber": 32
+        }
+      }
+    },
+    {
+      "id": "skype-p033-d1",
+      "pageNumber": 33,
+      "productIds": [
+        "skype-p33-d1"
+      ],
+      "title": "2682",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.047,
+            0.16,
+            0.264,
+            0.75
+          ],
+          "label": "Complete tile design"
+        },
+        "room": {
+          "rect": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "label": "Room setting",
+          "pageNumber": 34
+        }
+      }
+    }
+  ]
+}

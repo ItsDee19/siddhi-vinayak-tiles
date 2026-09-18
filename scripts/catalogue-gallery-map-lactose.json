@@ -1,0 +1,431 @@
+{
+  "bookId": "lactose",
+  "sourceHash": "5f529bff1c4a3828dc5e9895e3e0e5c2f7bff74eada81aecd16a223cb2cbe174",
+  "stories": [
+    {
+      "id": "lactose-p001-d1",
+      "pageNumber": 1,
+      "productIds": [
+        "lactose-p1-d1"
+      ],
+      "title": "DESERT BEIGE",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.046,
+            0.187,
+            0.224,
+            0.628
+          ],
+          "label": "Complete tile face"
+        }
+      }
+    },
+    {
+      "id": "lactose-p002-d1",
+      "pageNumber": 2,
+      "productIds": [
+        "lactose-p2-d1"
+      ],
+      "title": "DESERT BIANCO",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.046,
+            0.187,
+            0.224,
+            0.628
+          ],
+          "label": "Complete tile face"
+        }
+      }
+    },
+    {
+      "id": "lactose-p003-d1",
+      "pageNumber": 3,
+      "productIds": [
+        "lactose-p3-d1"
+      ],
+      "title": "JADE GOLD",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.046,
+            0.187,
+            0.224,
+            0.628
+          ],
+          "label": "Complete tile face"
+        }
+      }
+    },
+    {
+      "id": "lactose-p004-d1",
+      "pageNumber": 4,
+      "productIds": [
+        "lactose-p4-d1"
+      ],
+      "title": "GOLD ROYAL",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.046,
+            0.187,
+            0.224,
+            0.628
+          ],
+          "label": "Complete tile face"
+        }
+      }
+    },
+    {
+      "id": "lactose-p005-d1",
+      "pageNumber": 5,
+      "productIds": [
+        "lactose-p5-d1"
+      ],
+      "title": "STATUARIO ALMERO",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.046,
+            0.187,
+            0.224,
+            0.628
+          ],
+          "label": "Complete tile face"
+        }
+      }
+    },
+    {
+      "id": "lactose-p006-d1",
+      "pageNumber": 6,
+      "productIds": [
+        "lactose-p6-d1"
+      ],
+      "title": "SOLENZA NOBLE",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.046,
+            0.187,
+            0.224,
+            0.628
+          ],
+          "label": "Complete tile face"
+        }
+      }
+    },
+    {
+      "id": "lactose-p007-d1",
+      "pageNumber": 7,
+      "productIds": [
+        "lactose-p7-d1"
+      ],
+      "title": "Himaliya Blush",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.554,
+            0.076,
+            0.097,
+            0.271
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 8,
+          "rect": [
+            0.007,
+            0.012,
+            0.986,
+            0.978
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "lactose-p009-d1",
+      "pageNumber": 9,
+      "productIds": [
+        "lactose-p9-d1"
+      ],
+      "title": "Fliker Crema",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0,
+            0.136,
+            0.502,
+            0.36
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 10,
+          "rect": [
+            0.007,
+            0.012,
+            0.986,
+            0.978
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "lactose-p011-d1",
+      "pageNumber": 11,
+      "productIds": [
+        "lactose-p11-d1"
+      ],
+      "title": "Larix Cloud",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.546,
+            0.136,
+            0.226,
+            0.164
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 12,
+          "rect": [
+            0.007,
+            0.012,
+            0.986,
+            0.978
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "lactose-p011-d2",
+      "pageNumber": 11,
+      "productIds": [
+        "lactose-p11-d2"
+      ],
+      "title": "Larix Bianco",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.546,
+            0.32,
+            0.226,
+            0.162
+          ],
+          "label": "Complete tile face"
+        }
+      }
+    },
+    {
+      "id": "lactose-p014-d1",
+      "pageNumber": 14,
+      "productIds": [
+        "lactose-p14-d1"
+      ],
+      "title": "Juliet Roso",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.216,
+            0.06,
+            0.226,
+            0.162
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 15,
+          "rect": [
+            0.007,
+            0.012,
+            0.986,
+            0.978
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "lactose-p014-d2",
+      "pageNumber": 14,
+      "productIds": [
+        "lactose-p14-d2"
+      ],
+      "title": "Juliet Natural",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.216,
+            0.243,
+            0.226,
+            0.162
+          ],
+          "label": "Complete tile face"
+        }
+      }
+    },
+    {
+      "id": "lactose-p017-d1",
+      "pageNumber": 17,
+      "productIds": [
+        "lactose-p17-d1"
+      ],
+      "title": "Covelano Bronze",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.216,
+            0.06,
+            0.226,
+            0.162
+          ],
+          "label": "Complete tile face"
+        },
+        "room": {
+          "pageNumber": 18,
+          "rect": [
+            0.007,
+            0.012,
+            0.986,
+            0.978
+          ],
+          "label": "Room setting"
+        }
+      }
+    },
+    {
+      "id": "lactose-p017-d2",
+      "pageNumber": 17,
+      "productIds": [
+        "lactose-p17-d2"
+      ],
+      "title": "Covelano Olive",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.216,
+            0.243,
+            0.226,
+            0.162
+          ],
+          "label": "Complete tile face"
+        }
+      }
+    },
+    {
+      "id": "lactose-p017-d3",
+      "pageNumber": 17,
+      "productIds": [
+        "lactose-p17-d3"
+      ],
+      "title": "Covelano Smoky",
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "views": {
+        "tile": {
+          "rect": [
+            0.216,
+            0.428,
+            0.226,
+            0.162
+          ],
+          "label": "Complete tile face"
+        }
+      }
+    }
+  ]
+}

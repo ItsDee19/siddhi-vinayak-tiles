@@ -1,0 +1,106 @@
+{
+  "bookId": "seron-glossy",
+  "sourceHash": "5024b96a311c43b55ca0f21886ad9bbe308a68f8f37627f1386dbd85ffb8f123",
+  "source": "public/catalogues/seron-glossy/page-NNN.webp",
+  "method": "Manual visual review of all 8 original PDF pages, with direct label and specification inspection.",
+  "notes": [
+    "Every named design is transcribed from its printed label. BOTTOCHINO and GRAY retain publisher spelling.",
+    "The supplied PDF contains tile samples and random-face boards but no room photograph; no unrelated room image is assigned."
+  ],
+  "excludedPages": [
+    {
+      "pdfPage": 1,
+      "reason": "Publisher cover"
+    },
+    {
+      "pdfPage": 2,
+      "reason": "Endless Random collection introduction"
+    }
+  ],
+  "pages": [
+    {
+      "pdfPage": 3,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "NEOMI",
+          "aliases": [
+            "Endless"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 4,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "ROYAL BOTTOCHINO",
+          "aliases": [
+            "Endless"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 5,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "ORACLE CREMA",
+          "aliases": [
+            "Endless"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 6,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "ITALIAN CREMA",
+          "aliases": [
+            "Endless"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 7,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "GALAXY GRAY",
+          "aliases": [
+            "Endless"
+          ]
+        }
+      ]
+    },
+    {
+      "pdfPage": 8,
+      "verified": true,
+      "sizeMm": "600×1200mm",
+      "finish": "Glossy",
+      "products": [
+        {
+          "name": "CIENA BIANCO",
+          "aliases": [
+            "Endless"
+          ]
+        }
+      ]
+    }
+  ]
+}
