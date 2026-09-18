@@ -89,20 +89,11 @@ export const whyChooseUs = [
   },
 ]
 
-// Editable placeholder testimonials (shop has no Google reviews yet).
+// Customer feedback supplied by the showroom. Only include ratings or locations
+// when they were supplied with the review.
 export const testimonials = [
   {
-    name: 'A Happy Customer',
-    place: 'Nuapada',
-    text: 'Replace this with a real review. Lovely range of tiles and the family made us feel completely at home while choosing.',
-    rating: 5,
-    placeholder: true,
-  },
-  {
-    name: 'Your Review Here',
-    place: 'Odisha',
-    text: 'Be one of the first to share your experience with Sidhhi Binayak Tiles. Your words help other families choose with confidence.',
-    rating: 5,
-    placeholder: true,
+    name: 'Deepak Sahu',
+    text: "Superb collection of tiles for each corner of the house. The owner even gives pretty good recommendations, and I'm satisfied with the purchase. You can try have a visit.",
   },
 ]

@@ -69,9 +69,12 @@ export default function Footer() {
 
             {/* Social links are on hold at the client's request — this sits in
                 their place rather than leaving the column short. */}
-            <p className="mt-6 text-sm font-semibold tracking-wide text-gold">
+            <a
+              href="https://avlysai.com/"
+              className="mt-6 inline-block rounded-sm text-sm font-semibold tracking-wide text-gold underline-offset-4 transition-colors hover:text-gold-light hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
+            >
               Made by Avlys AI
-            </p>
+            </a>
           </div>
         </div>
 
