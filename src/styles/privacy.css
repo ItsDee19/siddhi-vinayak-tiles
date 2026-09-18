@@ -1,0 +1,70 @@
+/* Privacy controls reuse the site's warm glass material and equal-choice actions. */
+.cookie-preferences {
+  position: fixed;
+  z-index: 70;
+  left: max(16px, env(safe-area-inset-left));
+  bottom: max(16px, env(safe-area-inset-bottom));
+  width: min(620px, calc(100vw - 32px));
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
+  padding: 22px;
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  color: var(--glass-ink);
+  background: var(--glass-solid);
+  box-shadow: var(--glass-shadow);
+  font-size: 14px;
+  line-height: 1.6;
+}
+.cookie-preferences__heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.cookie-preferences h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 23px; line-height: 1.3; margin: 0 0 8px; }
+.cookie-preferences__details { color: var(--glass-muted); font-size: 12px; margin-top: 8px; }
+.cookie-preferences a,
+.contact-field-help a { color: var(--glass-accent); text-decoration: underline; text-underline-offset: 3px; }
+.cookie-preferences__actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+.cookie-preferences__actions button {
+  min-height: 46px;
+  padding: 10px 14px;
+  border: 1px solid var(--glass-border);
+  border-radius: 99px;
+  background: var(--glass-raised);
+  color: var(--glass-ink);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 180ms var(--glass-ease), border-color 180ms var(--glass-ease);
+}
+.cookie-preferences__actions button:hover { background: var(--glass-warm-surface); border-color: var(--glass-accent); }
+.cookie-preferences__actions button:active { background: var(--glass-solid); }
+.cookie-preferences__close { display: grid; place-items: center; flex: 0 0 44px; min-height: 44px; margin: -10px -10px 0 0; border-radius: 99px; color: var(--glass-ink); font-size: 26px; cursor: pointer; }
+.cookie-preferences__close:hover { background: var(--glass-raised); }
+.cookie-preferences :is(a, button):focus-visible,
+#contact :is(a, button, input, select, textarea):focus-visible { outline: 2px solid var(--glass-accent); outline-offset: 3px; }
+.privacy-error { color: var(--reader-error, #ffbab0); font-size: 13px; line-height: 1.55; margin-top: 7px; }
+#contact [aria-invalid='true'] { border-color: var(--reader-error, #ffbab0); }
+.contact-field-help { margin-top: 6px; color: var(--glass-muted); font-size: 12px; line-height: 1.6; }
+.contact-map-placeholder { min-height: 300px; height: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 12px; padding: 24px 24px 60px; color: var(--glass-ink); background: var(--glass-warm-surface); }
+.contact-map-placeholder p:not(.font-display) { max-width: 48ch; color: var(--glass-muted); font-size: 13px; line-height: 1.6; }
+.contact-map-placeholder .btn-outline { padding: 10px 18px; font-size: 12px; min-height: 44px; }
+.contact-draft-preview { text-align: left; white-space: pre-wrap; overflow-wrap: anywhere; max-height: 240px; overflow-y: auto; padding: 16px; margin-top: 16px; border-radius: 12px; background: var(--glass-warm-surface); color: var(--glass-ink); font-size: 13px; line-height: 1.6; }
+.contact-previous-draft { display: block; margin-inline: auto; min-height: 44px; color: var(--glass-accent); font-size: 13px; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+.contact-previous-draft:hover { color: var(--glass-ink); }
+.enquiry-honeypot { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .cookie-preferences { background: var(--glass-surface); -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(130%) brightness(.4); backdrop-filter: blur(var(--glass-blur)) saturate(130%) brightness(.4); }
+}
+@media (max-width: 420px) {
+  .cookie-preferences { padding: 18px; border-radius: 20px; font-size: 13px; }
+  .cookie-preferences__actions { grid-template-columns: 1fr; gap: 8px; }
+}
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  .cookie-preferences { background: var(--glass-solid); -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cookie-preferences button { transition: none; }
+}
+@media (forced-colors: active) {
+  .cookie-preferences { border-color: CanvasText; background: Canvas; color: CanvasText; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .cookie-preferences button { color: ButtonText; border-color: ButtonText; background: ButtonFace; }
+  .cookie-preferences__details, .contact-field-help, .privacy-error { color: CanvasText; }
+  #contact [aria-invalid='true'] { border: 2px solid Mark; }
+}

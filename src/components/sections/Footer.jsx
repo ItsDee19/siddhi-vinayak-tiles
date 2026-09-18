@@ -1,6 +1,7 @@
 import Icon from '../Icons'
 import Logo from '../Logo'
 import { business, navLinks } from '../../data/siteConfig'
+import { openCookiePreferences } from '../privacy/ConsentProvider'
 
 export default function Footer() {
   return (
@@ -74,10 +75,14 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-white/5 pt-7 text-xs text-sand/50 sm:flex-row">
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-7 text-xs text-sand/80 sm:flex-row sm:flex-wrap">
           <p>
             © {new Date().getFullYear()} {business.name}. All rights reserved.
           </p>
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3">
+            <a href="/privacy-policy" className="underline underline-offset-4 hover:text-gold-light">Privacy policy</a>
+            <button type="button" onClick={openCookiePreferences} className="underline underline-offset-4 hover:text-gold-light">Cookie preferences</button>
+          </div>
           <p>
             {business.address.city}, {business.address.state} · Made with care
             for our customers.

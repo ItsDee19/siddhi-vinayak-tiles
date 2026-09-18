@@ -1,0 +1,50 @@
+[
+  {
+    "family": "Manrope",
+    "style": "normal",
+    "subset": "latin-ext",
+    "url": "https://fonts.gstatic.com/s/manrope/v20/xn7gYHE41ni1AdIRggmxSuXd.woff2",
+    "file": "manrope-normal-latin-ext-3911b66d9f2e.woff2",
+    "bytes": 15120
+  },
+  {
+    "family": "Manrope",
+    "style": "normal",
+    "subset": "latin",
+    "url": "https://fonts.gstatic.com/s/manrope/v20/xn7gYHE41ni1AdIRggexSg.woff2",
+    "file": "manrope-normal-latin-a30ddcd34970.woff2",
+    "bytes": 24836
+  },
+  {
+    "family": "Playfair Display",
+    "style": "italic",
+    "subset": "latin-ext",
+    "url": "https://fonts.gstatic.com/s/playfairdisplay/v40/nuFkD-vYSZviVYUb_rj3ij__anPXDTnojEk72xU.woff2",
+    "file": "playfair-display-italic-latin-ext-b9dff4aec6d8.woff2",
+    "bytes": 23380
+  },
+  {
+    "family": "Playfair Display",
+    "style": "italic",
+    "subset": "latin",
+    "url": "https://fonts.gstatic.com/s/playfairdisplay/v40/nuFkD-vYSZviVYUb_rj3ij__anPXDTnogkk7.woff2",
+    "file": "playfair-display-italic-latin-54af24bd0f91.woff2",
+    "bytes": 38804
+  },
+  {
+    "family": "Playfair Display",
+    "style": "normal",
+    "subset": "latin-ext",
+    "url": "https://fonts.gstatic.com/s/playfairdisplay/v40/nuFiD-vYSZviVYUb_rj3ij__anPXDTLYgFE_.woff2",
+    "file": "playfair-display-normal-latin-ext-42898ad49a6b.woff2",
+    "bytes": 21140
+  },
+  {
+    "family": "Playfair Display",
+    "style": "normal",
+    "subset": "latin",
+    "url": "https://fonts.gstatic.com/s/playfairdisplay/v40/nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgA.woff2",
+    "file": "playfair-display-normal-latin-e0c764a8e9e1.woff2",
+    "bytes": 38404
+  }
+]

@@ -3,10 +3,12 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Premium 3D-interactive website for Siddhi Vinayak Tiles, Nuapada, Odisha",
+  "description": "Tile showroom and immersive supplier catalogue for Sidhhi Binayak Tiles, Nuapada, Odisha",
   "scripts": {
     "dev": "vite",
+    "prebuild": "node scripts/build_size_calculator.mjs && node scripts/build_catalogue_covers.mjs && node scripts/build_site_pages.mjs --prepare",
     "build": "vite build",
+    "postbuild": "node scripts/check_build_performance.mjs && node scripts/check_site_output.mjs",
     "preview": "vite preview",
     "build:tiles": "node scripts/build_visualizer_tiles.mjs",
     "build:2d-webp": "node scripts/build_2d_room_webp.mjs",
@@ -16,7 +18,8 @@
     "test:reader": "node --test scripts/test_catalogue_reader.mjs src/utils/pdfViewport.test.js src/utils/catalogueSearch.test.js src/utils/catalogueGallery.test.js",
     "build:catalogue-search": "node scripts/build_catalogue_search.mjs",
     "build:catalogue-gallery": "node scripts/build_catalogue_gallery.mjs",
-    "build:catalogue-focus": "node scripts/build_catalogue_focus.mjs"
+    "build:catalogue-focus": "node scripts/build_catalogue_focus.mjs",
+    "test:site": "node --test src/utils/consent.test.js src/utils/enquiry.test.js src/utils/tileCalculation.test.js scripts/build-public-assets.test.mjs"
   },
   "dependencies": {
     "@react-three/fiber": "^8.17.10",

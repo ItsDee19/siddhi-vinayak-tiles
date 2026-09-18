@@ -116,6 +116,10 @@ the gold primary action retains its established dark text.
 
 ## Typography
 
+Fonts are self-hosted WOFF2 subsets with `font-display: swap`; keep the supplied
+OFL licenses with the assets. No third-party font connection is needed. Privacy
+and 404 documents use the same fonts and derive their palette from runtime CSS.
+
 Playfair Display carries the section invitation, design name and optional detail
 panel. The compact design title tops out at 24px; Manrope carries specifications,
 collection names and controls. Page numbers use tabular figures and a monospace
@@ -266,6 +270,39 @@ generate substitute tiles or infer specifications. The original full page remain
 available for reference. Source resolution limits zoom.
 
 ## Do's and Don'ts
+
+### Privacy, enquiries and utility pages
+
+The consent banner is a nonmodal warm-glass region with equal-size, equal-style
+Essential only and Allow Google Maps controls. Do not steal focus on first visit.
+Reopening preferences from the footer moves focus into the banner and returns it
+after a choice. The 180-day browser preference controls the Maps iframe; rejected,
+expired, unreadable or unsavable consent keeps it off. No analytics are installed.
+The banner uses existing `--glass-*` roles, a steady 22px blur and a darker local
+backdrop for readable text; it introduces no competing theme.
+
+Enquiry labels identify required fields and associate errors with their fields.
+Focus the first invalid field. A valid enquiry creates a local, editable draft;
+only the explicit Review in WhatsApp link shares it with WhatsApp. Never claim
+that preparing or opening a draft sent a message. The category select is native.
+Honeypot, timing and session cooldown provide basic client-side friction; there
+is no server submission endpoint. Never render sample testimonials as reviews.
+
+Privacy and missing-page documents use the established warm glass, readable
+measure, keyboard skip links and clear return paths. They load without the
+catalogue application. A missing route must retain its actual HTTP 404 status.
+
+### Loading and performance
+
+Only the catalogue and calculator defer their code until near the viewport or
+requested through a section link. Keep stable observation wrappers so contact
+bubbles remain suppressed over the viewer. Small business/contact sections
+remain available immediately for direct anchor links. A failed section import
+offers an explicit reload action. Shelf covers use 640px WebP derivatives;
+gallery detail images and original PDFs remain unchanged and load on demand.
+Retired assets are excluded from build output only, never deleted from sources.
+Save Data, slow connections, weak devices and reduced motion use static hero art;
+known off-screen decorative canvases remain paused.
 
 - Do give artwork the largest uninterrupted area.
 - Do keep keyboard, touch, mouse and visible controls equivalent.

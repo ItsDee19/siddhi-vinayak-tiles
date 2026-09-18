@@ -11,16 +11,12 @@ import { catalogues, cataloguePageCount } from '../../data/catalogueBooks'
 import { business } from '../../data/siteConfig'
 import { PRODUCTION_ORIGIN } from '../../data/seo'
 import { ZOOM_LEVELS } from '../../utils/catalogueReader'
+import collectionCovers from '../../data/catalogueCovers.generated.json'
+import '../../styles/catalogue.css'
+import '../../styles/catalogue-gallery.css'
 
-// Room photographs from these exact publisher catalogues, used only as collection covers.
-const collectionArt = {
-  'global-floor': '/assets/catalogue/gt-floor-p2-install.webp',
-  'global-wall': '/assets/catalogue/gt-2025-p3-install.webp',
-  sky: '/assets/catalogue/sky12x18-c001.webp',
-  sunflora: '/assets/catalogue/sunflora-c001.webp',
-}
 const collectionName = book => book.shortTitle || book.title
-const collectionImage = book => book.cardImage || collectionArt[book.id] || book.thumbnail || book.cover
+const collectionImage = book => collectionCovers[book.id] || book.thumbnail || book.cover
 
 export default function CatalogueLibrary() {
   const [selection, setSelection] = useState(() => gallerySelection(typeof window === 'undefined' ? '' : window.location.search, catalogues, galleryStories))
@@ -352,7 +348,7 @@ export default function CatalogueLibrary() {
           </div>
           <div ref={shelfRef} id="catalogue-collection-shelf" className="catalogue-books" role="region" aria-labelledby="catalogue-shelf-heading">
             {catalogues.map(item => <button type="button" key={item.id} data-book-id={item.id} className={`catalogue-book ${book.id === item.id ? 'is-selected' : ''}`} aria-pressed={book.id === item.id} aria-label={`View ${item.title}`} onClick={() => openCollection(item)}>
-              <span className={`catalogue-book-art ${!item.cardImage && !collectionArt[item.id] ? 'is-page-cover' : ''}`}><img src={collectionImage(item)} alt="" width="440" height="220" loading="lazy" decoding="async" /><span className="catalogue-book-count">{item.pageCount} pages</span><span className="catalogue-book-selected"><ReaderIcon name={book.id === item.id ? 'check' : 'arrow'} /></span></span>
+              <span className={`catalogue-book-art ${!item.cardImage && !collectionCovers[item.id] ? 'is-page-cover' : ''}`}><img src={collectionImage(item)} alt="" width="440" height="220" loading="lazy" decoding="async" /><span className="catalogue-book-count">{item.pageCount} pages</span><span className="catalogue-book-selected"><ReaderIcon name={book.id === item.id ? 'check' : 'arrow'} /></span></span>
               <span className="catalogue-book-copy"><strong>{collectionName(item)}</strong><span>{item.format}</span></span>
             </button>)}
           </div>

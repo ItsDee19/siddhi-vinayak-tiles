@@ -27,7 +27,7 @@ export default function FloatingButtons() {
     })
     // The catalogue is lazy-loaded and may mount after these global controls.
     const connect = () => {
-      const catalogue = document.getElementById('visualizer')
+      const catalogue = document.querySelector('[data-deferred-section="visualizer"]') || document.getElementById('visualizer')
       if (!catalogue) return false
       observer.observe(catalogue)
       return true

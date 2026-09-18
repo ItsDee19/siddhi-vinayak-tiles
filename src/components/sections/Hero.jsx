@@ -65,6 +65,7 @@ export default function Hero() {
   // stand in until the animated version is genuinely free to load.
   const [wallReady, setWallReady] = useState(false)
   useEffect(() => {
+    if (!webgl || !heroVisible || wallReady) return undefined
     let idleId
     let timerId
     const start = () => setWallReady(true)
@@ -79,7 +80,7 @@ export default function Hero() {
       }
       if (timerId != null) clearTimeout(timerId)
     }
-  }, [])
+  }, [webgl, heroVisible, wallReady])
 
   useEffect(() => {
     const onScroll = () => {
@@ -119,6 +120,7 @@ export default function Hero() {
 
       {/* ─── Hero Content: 3D Animated Logo ────────────────────────── */}
       <div className="container-px relative z-10 flex min-h-[100svh] flex-col items-center justify-center pt-20 pb-28">
+        <h1 className="sr-only">Sidhhi Binayak Tiles — tiles, stone and sanitaryware in Nuapada</h1>
 
         {/* 3D Logo — CSS 3D transforms + framer-motion animation */}
         <Reveal>

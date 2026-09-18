@@ -4,17 +4,18 @@ import SectionHeading from '../ui/SectionHeading'
 import { testimonials, business } from '../../data/siteConfig'
 
 export default function Testimonials() {
+  const publishedReviews = testimonials.filter(review => !review.placeholder)
   return (
     <section className="section-pad relative bg-charcoal">
       <div className="container-px">
         <SectionHeading
-          eyebrow="Kind Words"
-          title="What Our Families Say"
+          eyebrow={publishedReviews.length ? 'Kind Words' : 'Your experience'}
+          title={publishedReviews.length ? 'What Our Families Say' : 'Visited our showroom?'}
           subtitle="We’re just getting started online. Be one of the first to share your experience and help other families choose with confidence."
         />
 
-        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {testimonials.map((t, i) => (
+        <div className={publishedReviews.length ? 'mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3' : 'mx-auto mt-10 max-w-xl'}>
+          {publishedReviews.map((t, i) => (
             <Reveal key={i} delay={i * 0.045}>
               <figure className="flex h-full flex-col rounded-2xl border border-white/5 bg-charcoal-800 p-7 shadow-card">
                 <div className="mb-4 flex gap-1 text-gold">
@@ -42,7 +43,7 @@ export default function Testimonials() {
           ))}
 
           {/* Be the first to review CTA */}
-          <Reveal delay={testimonials.length * 0.08}>
+          <Reveal delay={publishedReviews.length * 0.08}>
             <a
               href={business.googleReviewLink}
               target="_blank"
@@ -58,10 +59,10 @@ export default function Testimonials() {
                 Be the first to review us
               </h3>
               <p className="mt-2 text-sm text-sand/75">
-                Visited the showroom? Leave us a review on Google.
+                Visited the showroom? Find our Google listing to share your experience.
               </p>
               <span className="btn-outline mt-5 px-5 py-2.5 text-xs">
-                Write a Review
+                Find us on Google
                 <Icon name="arrowRight" className="h-4 w-4" />
               </span>
             </a>

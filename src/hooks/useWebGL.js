@@ -9,7 +9,10 @@ export function useWebGL() {
   const reduce = useReducedMotion()
 
   useEffect(() => {
-    if (reduce) {
+    const connection = navigator.connection
+    const lowCores = typeof navigator.hardwareConcurrency === 'number' && navigator.hardwareConcurrency <= 2
+    const lowMem = typeof navigator.deviceMemory === 'number' && navigator.deviceMemory <= 2
+    if (reduce || lowCores || lowMem || connection?.saveData || /(^|-)2g$/.test(connection?.effectiveType || '')) {
       setSupported(false)
       return
     }
@@ -25,15 +28,8 @@ export function useWebGL() {
         return
       }
 
-      // Very weak devices: bail to keep things smooth. Either weak signal is
-      // enough on its own — requiring both let most budget phones through.
-      const lowCores =
-        typeof navigator.hardwareConcurrency === 'number' &&
-        navigator.hardwareConcurrency <= 2
-      const lowMem =
-        typeof navigator.deviceMemory === 'number' && navigator.deviceMemory <= 2
-
-      setSupported(!(lowCores || lowMem))
+      gl.getExtension('WEBGL_lose_context')?.loseContext()
+      setSupported(true)
     } catch {
       setSupported(false)
     }
