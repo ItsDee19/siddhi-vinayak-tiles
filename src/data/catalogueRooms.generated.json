@@ -593,6 +593,54 @@
       "label": "AI room preview",
       "provenance": "ai-generated"
     },
+    "global-wall-p64-d1": {
+      "image": "/catalogue-rooms/global-wall-p64-d1.e1d3a6ffa2a2-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p64-d1.e1d3a6ffa2a2-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p64-d2": {
+      "image": "/catalogue-rooms/global-wall-p64-d2.cae43750db65-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p64-d2.cae43750db65-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p64-d4": {
+      "image": "/catalogue-rooms/global-wall-p64-d4.c538e7583b39-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p64-d4.c538e7583b39-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p64-d5": {
+      "image": "/catalogue-rooms/global-wall-p64-d5.e82ca82411cd-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p64-d5.e82ca82411cd-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p65-d2": {
+      "image": "/catalogue-rooms/global-wall-p65-d2.66093a9e17af-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p65-d2.66093a9e17af-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p65-d3": {
+      "image": "/catalogue-rooms/global-wall-p65-d3.591cffda4874-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p65-d3.591cffda4874-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
     "lactose-p1-d1": {
       "image": "/catalogue-rooms/lactose-p1-d1.7de92ef48ea6-preview.webp",
       "detailImage": "/catalogue-rooms/lactose-p1-d1.7de92ef48ea6-detail.webp",
@@ -972,6 +1020,222 @@
     "seron-iconic-p7-d3": {
       "image": "/catalogue-rooms/seron-iconic-p7-d3.84369357abb4-preview.webp",
       "detailImage": "/catalogue-rooms/seron-iconic-p7-d3.84369357abb4-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "simpolo-p38-d11": {
+      "image": "/catalogue-rooms/simpolo-p38-d11.c9cc9b9c289a-preview.webp",
+      "detailImage": "/catalogue-rooms/simpolo-p38-d11.c9cc9b9c289a-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "simpolo-p38-d12": {
+      "image": "/catalogue-rooms/simpolo-p38-d12.6b555200d824-preview.webp",
+      "detailImage": "/catalogue-rooms/simpolo-p38-d12.6b555200d824-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "simpolo-p38-d13": {
+      "image": "/catalogue-rooms/simpolo-p38-d13.d4b243f0d521-preview.webp",
+      "detailImage": "/catalogue-rooms/simpolo-p38-d13.d4b243f0d521-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "simpolo-p38-d14": {
+      "image": "/catalogue-rooms/simpolo-p38-d14.fa6b235f4456-preview.webp",
+      "detailImage": "/catalogue-rooms/simpolo-p38-d14.fa6b235f4456-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "simpolo-p38-d15": {
+      "image": "/catalogue-rooms/simpolo-p38-d15.9d564c7d47b2-preview.webp",
+      "detailImage": "/catalogue-rooms/simpolo-p38-d15.9d564c7d47b2-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "simpolo-p38-d3": {
+      "image": "/catalogue-rooms/simpolo-p38-d3.24cf61c58191-preview.webp",
+      "detailImage": "/catalogue-rooms/simpolo-p38-d3.24cf61c58191-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "simpolo-p38-d4": {
+      "image": "/catalogue-rooms/simpolo-p38-d4.ba0ad133e803-preview.webp",
+      "detailImage": "/catalogue-rooms/simpolo-p38-d4.ba0ad133e803-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "simpolo-p38-d5": {
+      "image": "/catalogue-rooms/simpolo-p38-d5.cf903da76da3-preview.webp",
+      "detailImage": "/catalogue-rooms/simpolo-p38-d5.cf903da76da3-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "simpolo-p38-d6": {
+      "image": "/catalogue-rooms/simpolo-p38-d6.a1c0c710bf67-preview.webp",
+      "detailImage": "/catalogue-rooms/simpolo-p38-d6.a1c0c710bf67-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "simpolo-p38-d7": {
+      "image": "/catalogue-rooms/simpolo-p38-d7.ca67f1f2771e-preview.webp",
+      "detailImage": "/catalogue-rooms/simpolo-p38-d7.ca67f1f2771e-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "simpolo-p38-d8": {
+      "image": "/catalogue-rooms/simpolo-p38-d8.ba70eaab0f37-preview.webp",
+      "detailImage": "/catalogue-rooms/simpolo-p38-d8.ba70eaab0f37-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "simpolo-p38-d9": {
+      "image": "/catalogue-rooms/simpolo-p38-d9.9a0c30050367-preview.webp",
+      "detailImage": "/catalogue-rooms/simpolo-p38-d9.9a0c30050367-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "simpolo-p46-d10": {
+      "image": "/catalogue-rooms/simpolo-p46-d10.1a030bafa652-preview.webp",
+      "detailImage": "/catalogue-rooms/simpolo-p46-d10.1a030bafa652-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "simpolo-p46-d11": {
+      "image": "/catalogue-rooms/simpolo-p46-d11.271077b9ff57-preview.webp",
+      "detailImage": "/catalogue-rooms/simpolo-p46-d11.271077b9ff57-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "simpolo-p46-d12": {
+      "image": "/catalogue-rooms/simpolo-p46-d12.5a07824677cf-preview.webp",
+      "detailImage": "/catalogue-rooms/simpolo-p46-d12.5a07824677cf-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "simpolo-p46-d13": {
+      "image": "/catalogue-rooms/simpolo-p46-d13.09fe0f74584b-preview.webp",
+      "detailImage": "/catalogue-rooms/simpolo-p46-d13.09fe0f74584b-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "simpolo-p46-d2": {
+      "image": "/catalogue-rooms/simpolo-p46-d2.68926012b795-preview.webp",
+      "detailImage": "/catalogue-rooms/simpolo-p46-d2.68926012b795-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "simpolo-p46-d3": {
+      "image": "/catalogue-rooms/simpolo-p46-d3.e13c59467012-preview.webp",
+      "detailImage": "/catalogue-rooms/simpolo-p46-d3.e13c59467012-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "simpolo-p46-d4": {
+      "image": "/catalogue-rooms/simpolo-p46-d4.96dc615f0f94-preview.webp",
+      "detailImage": "/catalogue-rooms/simpolo-p46-d4.96dc615f0f94-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "simpolo-p46-d5": {
+      "image": "/catalogue-rooms/simpolo-p46-d5.ebc0f882fc1b-preview.webp",
+      "detailImage": "/catalogue-rooms/simpolo-p46-d5.ebc0f882fc1b-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "simpolo-p46-d6": {
+      "image": "/catalogue-rooms/simpolo-p46-d6.ed40888c77f8-preview.webp",
+      "detailImage": "/catalogue-rooms/simpolo-p46-d6.ed40888c77f8-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "simpolo-p46-d7": {
+      "image": "/catalogue-rooms/simpolo-p46-d7.647e6da15b6d-preview.webp",
+      "detailImage": "/catalogue-rooms/simpolo-p46-d7.647e6da15b6d-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "simpolo-p46-d8": {
+      "image": "/catalogue-rooms/simpolo-p46-d8.eee4f07d2a68-preview.webp",
+      "detailImage": "/catalogue-rooms/simpolo-p46-d8.eee4f07d2a68-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "simpolo-p46-d9": {
+      "image": "/catalogue-rooms/simpolo-p46-d9.83905fb7f8fb-preview.webp",
+      "detailImage": "/catalogue-rooms/simpolo-p46-d9.83905fb7f8fb-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "simpolo-p47-d2": {
+      "image": "/catalogue-rooms/simpolo-p47-d2.3ab2b00dcfdf-preview.webp",
+      "detailImage": "/catalogue-rooms/simpolo-p47-d2.3ab2b00dcfdf-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "simpolo-p47-d3": {
+      "image": "/catalogue-rooms/simpolo-p47-d3.4768479fb3a6-preview.webp",
+      "detailImage": "/catalogue-rooms/simpolo-p47-d3.4768479fb3a6-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "simpolo-p47-d4": {
+      "image": "/catalogue-rooms/simpolo-p47-d4.e6f12c039121-preview.webp",
+      "detailImage": "/catalogue-rooms/simpolo-p47-d4.e6f12c039121-detail.webp",
       "width": 1536,
       "height": 1024,
       "label": "AI room preview",

@@ -1,6 +1,8 @@
 # Catalogue room previews
 
-The tile-first release fills the 153 missing tile-product room views across 145 catalogue stories. Sanitaryware is outside this pass. Existing supplier room photos and the original PDF artwork remain authoritative and unchanged.
+The tile-first release fills the 153 missing tile-product room views across 145 catalogue stories. Existing supplier room photos and the original PDF artwork remain authoritative and unchanged.
+
+The sanitaryware pass is in progress. Its first reviewed batch adds 33 product-specific room previews (27 Simpolo and 6 Global Wall). The full audit covers 331 entries; 30 have matching supplier room photographs to recover. Further previews will be published after visual review. Products with the same name but different finishes or pedestal assemblies retain separate product references.
 
 | Collection | Added product previews |
 | --- | ---: |
