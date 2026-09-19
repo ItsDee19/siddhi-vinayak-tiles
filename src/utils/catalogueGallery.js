@@ -6,6 +6,48 @@ export function galleryViewPage(story, kind) {
   return view.pageNumber === undefined ? story.page : story.book.pages[view.pageNumber - 1] || null
 }
 
+/** A board never borrows a room from a neighbouring product or collection. */
+export function galleryProductId(story, selectedProductId, samples = []) {
+  if (!story) return null
+  if (story.productIds.includes(selectedProductId)) return selectedProductId
+  const focused = samples.find(sample => story.productIds.includes(sample.productId))
+  return focused?.productId || (story.productIds.length === 1 ? story.productIds[0] : null)
+}
+
+const roomAssetUrl = value => typeof value === 'string'
+  && /^\/catalogue-rooms\/[a-z0-9][a-z0-9._/-]*\.(?:webp|avif|jpg|jpeg|png)$/i.test(value)
+  && !value.split('/').includes('..')
+
+export function isValidGeneratedRoom(room) {
+  return Boolean(room && room.provenance === 'ai-generated' && room.label === 'AI room preview'
+    && roomAssetUrl(room.image) && (!room.detailImage || roomAssetUrl(room.detailImage))
+    && Number.isInteger(room.width) && room.width > 0 && room.width <= 16384
+    && Number.isInteger(room.height) && room.height > 0 && room.height <= 16384)
+}
+
+/** Generated scenes have their own image geometry, never a fictitious PDF page. */
+export function galleryRoomView(story, productId, rooms) {
+  if (!story) return null
+  if (story.views.room) {
+    const page = galleryViewPage(story, 'room')
+    return page ? { page, view: story.views.room, provenance: 'publisher' } : null
+  }
+  if (!story.productIds.includes(productId) || rooms?.version !== 1) return null
+  const room = Object.hasOwn(rooms.byProduct || {}, productId) ? rooms.byProduct[productId] : null
+  if (!isValidGeneratedRoom(room)) return null
+  return { page: { image: room.image, ...(room.detailImage ? { detailImage: room.detailImage } : {}), width: room.width, height: room.height },
+    view: { rect: [0, 0, 1, 1], label: room.label }, provenance: room.provenance, productId }
+}
+
+/** Reuse only images for the exact requested view; variants can share a PDF page. */
+export function matchingGallerySources(previous = {}, pages = {}) {
+  return Object.fromEntries(Object.entries(pages).flatMap(([kind, page]) => {
+    const source = Object.values(previous).find(item => item.page.image === page?.image
+      && [page.image, page.detailImage].includes(item.src))
+    return source ? [[kind, { page, src: source.src }]] : []
+  }))
+}
+
 export function gallerySelection(search, books, stories) {
   const original = readerSelection(search, books)
   const params = new URLSearchParams(search)

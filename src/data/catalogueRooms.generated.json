@@ -1,0 +1,1229 @@
+{
+  "version": 1,
+  "byProduct": {
+    "global-floor-p58-d1": {
+      "image": "/catalogue-rooms/global-floor-p58-d1.1f9f0998b810-preview.webp",
+      "detailImage": "/catalogue-rooms/global-floor-p58-d1.1f9f0998b810-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-floor-p70-d1": {
+      "image": "/catalogue-rooms/global-floor-p70-d1.6d00f508d6bd-preview.webp",
+      "detailImage": "/catalogue-rooms/global-floor-p70-d1.6d00f508d6bd-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-floor-p70-d2": {
+      "image": "/catalogue-rooms/global-floor-p70-d2.a3d22d6ba76b-preview.webp",
+      "detailImage": "/catalogue-rooms/global-floor-p70-d2.a3d22d6ba76b-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-floor-p70-d3": {
+      "image": "/catalogue-rooms/global-floor-p70-d3.319204c3aa7b-preview.webp",
+      "detailImage": "/catalogue-rooms/global-floor-p70-d3.319204c3aa7b-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-floor-p70-d4": {
+      "image": "/catalogue-rooms/global-floor-p70-d4.91bc81b3f7db-preview.webp",
+      "detailImage": "/catalogue-rooms/global-floor-p70-d4.91bc81b3f7db-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-floor-p70-d5": {
+      "image": "/catalogue-rooms/global-floor-p70-d5.432eebf76816-preview.webp",
+      "detailImage": "/catalogue-rooms/global-floor-p70-d5.432eebf76816-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p22-d2": {
+      "image": "/catalogue-rooms/global-wall-p22-d2.2e8a0ea0fe20-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p22-d2.2e8a0ea0fe20-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p23-d3": {
+      "image": "/catalogue-rooms/global-wall-p23-d3.a1bb26037a15-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p23-d3.a1bb26037a15-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p23-d5": {
+      "image": "/catalogue-rooms/global-wall-p23-d5.37f3282f95d8-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p23-d5.37f3282f95d8-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p24-d1": {
+      "image": "/catalogue-rooms/global-wall-p24-d1.b8412ba62155-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p24-d1.b8412ba62155-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p24-d2": {
+      "image": "/catalogue-rooms/global-wall-p24-d2.a07c3509ff89-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p24-d2.a07c3509ff89-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p24-d5": {
+      "image": "/catalogue-rooms/global-wall-p24-d5.933e5b43a865-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p24-d5.933e5b43a865-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p25-d1": {
+      "image": "/catalogue-rooms/global-wall-p25-d1.091456598512-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p25-d1.091456598512-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p25-d3": {
+      "image": "/catalogue-rooms/global-wall-p25-d3.62afcc39bc2d-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p25-d3.62afcc39bc2d-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p25-d4": {
+      "image": "/catalogue-rooms/global-wall-p25-d4.615116920860-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p25-d4.615116920860-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p25-d6": {
+      "image": "/catalogue-rooms/global-wall-p25-d6.1a9ed32179fd-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p25-d6.1a9ed32179fd-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p26-d1": {
+      "image": "/catalogue-rooms/global-wall-p26-d1.9ea045a23c32-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p26-d1.9ea045a23c32-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p26-d2": {
+      "image": "/catalogue-rooms/global-wall-p26-d2.90794403dfd8-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p26-d2.90794403dfd8-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p26-d5": {
+      "image": "/catalogue-rooms/global-wall-p26-d5.05d150bc45b4-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p26-d5.05d150bc45b4-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p28-d1": {
+      "image": "/catalogue-rooms/global-wall-p28-d1.9323f439ac5c-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p28-d1.9323f439ac5c-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p29-d3": {
+      "image": "/catalogue-rooms/global-wall-p29-d3.7d1b19a3f304-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p29-d3.7d1b19a3f304-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p31-d2": {
+      "image": "/catalogue-rooms/global-wall-p31-d2.73844f389fc8-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p31-d2.73844f389fc8-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p31-d3": {
+      "image": "/catalogue-rooms/global-wall-p31-d3.bb26d98bb6a9-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p31-d3.bb26d98bb6a9-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p32-d3": {
+      "image": "/catalogue-rooms/global-wall-p32-d3.9decd66b9aee-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p32-d3.9decd66b9aee-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p33-d2": {
+      "image": "/catalogue-rooms/global-wall-p33-d2.31d75bf96ffb-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p33-d2.31d75bf96ffb-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p33-d3": {
+      "image": "/catalogue-rooms/global-wall-p33-d3.c3ccbc68e7d3-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p33-d3.c3ccbc68e7d3-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p34-d2": {
+      "image": "/catalogue-rooms/global-wall-p34-d2.e004151eee08-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p34-d2.e004151eee08-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p34-d4": {
+      "image": "/catalogue-rooms/global-wall-p34-d4.3df94504158d-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p34-d4.3df94504158d-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p35-d2": {
+      "image": "/catalogue-rooms/global-wall-p35-d2.9bb371a67a8b-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p35-d2.9bb371a67a8b-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p35-d4": {
+      "image": "/catalogue-rooms/global-wall-p35-d4.842ad787ed1f-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p35-d4.842ad787ed1f-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p36-d2": {
+      "image": "/catalogue-rooms/global-wall-p36-d2.2094dbcbfa6d-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p36-d2.2094dbcbfa6d-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p37-d2": {
+      "image": "/catalogue-rooms/global-wall-p37-d2.7f9a261e8c1c-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p37-d2.7f9a261e8c1c-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p38-d1": {
+      "image": "/catalogue-rooms/global-wall-p38-d1.3a556c05717d-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p38-d1.3a556c05717d-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p38-d3": {
+      "image": "/catalogue-rooms/global-wall-p38-d3.7725444c67c8-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p38-d3.7725444c67c8-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p39-d2": {
+      "image": "/catalogue-rooms/global-wall-p39-d2.b9f70d000f0e-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p39-d2.b9f70d000f0e-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p40-d1": {
+      "image": "/catalogue-rooms/global-wall-p40-d1.6353c1aca509-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p40-d1.6353c1aca509-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p40-d3": {
+      "image": "/catalogue-rooms/global-wall-p40-d3.732f055be9b6-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p40-d3.732f055be9b6-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p40-d4": {
+      "image": "/catalogue-rooms/global-wall-p40-d4.ffc0ae26ea32-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p40-d4.ffc0ae26ea32-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p41-d1": {
+      "image": "/catalogue-rooms/global-wall-p41-d1.8ad7b4b174ef-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p41-d1.8ad7b4b174ef-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p41-d2": {
+      "image": "/catalogue-rooms/global-wall-p41-d2.d2c98caac009-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p41-d2.d2c98caac009-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p41-d4": {
+      "image": "/catalogue-rooms/global-wall-p41-d4.de01a725bedd-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p41-d4.de01a725bedd-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p42-d1": {
+      "image": "/catalogue-rooms/global-wall-p42-d1.53c8fcca751d-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p42-d1.53c8fcca751d-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p42-d3": {
+      "image": "/catalogue-rooms/global-wall-p42-d3.caeaf8ee73be-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p42-d3.caeaf8ee73be-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p42-d4": {
+      "image": "/catalogue-rooms/global-wall-p42-d4.88f46157e75c-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p42-d4.88f46157e75c-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p43-d3": {
+      "image": "/catalogue-rooms/global-wall-p43-d3.544483d14041-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p43-d3.544483d14041-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p44-d2": {
+      "image": "/catalogue-rooms/global-wall-p44-d2.de39de4b8896-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p44-d2.de39de4b8896-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p44-d3": {
+      "image": "/catalogue-rooms/global-wall-p44-d3.18c63e4b738c-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p44-d3.18c63e4b738c-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p45-d2": {
+      "image": "/catalogue-rooms/global-wall-p45-d2.f9741a39b360-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p45-d2.f9741a39b360-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p45-d4": {
+      "image": "/catalogue-rooms/global-wall-p45-d4.92f62a5b1f2f-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p45-d4.92f62a5b1f2f-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p46-d2": {
+      "image": "/catalogue-rooms/global-wall-p46-d2.d8e2bb3a7785-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p46-d2.d8e2bb3a7785-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p46-d3": {
+      "image": "/catalogue-rooms/global-wall-p46-d3.a14a45bceb31-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p46-d3.a14a45bceb31-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p47-d1": {
+      "image": "/catalogue-rooms/global-wall-p47-d1.75eb268b68c3-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p47-d1.75eb268b68c3-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p47-d3": {
+      "image": "/catalogue-rooms/global-wall-p47-d3.11f24a777f83-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p47-d3.11f24a777f83-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p48-d2": {
+      "image": "/catalogue-rooms/global-wall-p48-d2.81bf7845cfba-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p48-d2.81bf7845cfba-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p48-d4": {
+      "image": "/catalogue-rooms/global-wall-p48-d4.28875f4d128c-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p48-d4.28875f4d128c-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p49-d2": {
+      "image": "/catalogue-rooms/global-wall-p49-d2.932e31070cde-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p49-d2.932e31070cde-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p50-d1": {
+      "image": "/catalogue-rooms/global-wall-p50-d1.7a6a32d3ed51-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p50-d1.7a6a32d3ed51-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p50-d4": {
+      "image": "/catalogue-rooms/global-wall-p50-d4.d4584988099d-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p50-d4.d4584988099d-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p51-d2": {
+      "image": "/catalogue-rooms/global-wall-p51-d2.4d2ba1dd3223-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p51-d2.4d2ba1dd3223-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p51-d3": {
+      "image": "/catalogue-rooms/global-wall-p51-d3.308acbf69fe8-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p51-d3.308acbf69fe8-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p52-d1": {
+      "image": "/catalogue-rooms/global-wall-p52-d1.84ff8afe50f6-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p52-d1.84ff8afe50f6-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p52-d3": {
+      "image": "/catalogue-rooms/global-wall-p52-d3.1b201870ef01-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p52-d3.1b201870ef01-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p63-d1": {
+      "image": "/catalogue-rooms/global-wall-p63-d1.a74e4a0c12c0-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p63-d1.a74e4a0c12c0-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p63-d10": {
+      "image": "/catalogue-rooms/global-wall-p63-d10.323d9f415aa0-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p63-d10.323d9f415aa0-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p63-d11": {
+      "image": "/catalogue-rooms/global-wall-p63-d11.ec218189272f-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p63-d11.ec218189272f-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p63-d12": {
+      "image": "/catalogue-rooms/global-wall-p63-d12.d03d00ef80c5-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p63-d12.d03d00ef80c5-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p63-d13": {
+      "image": "/catalogue-rooms/global-wall-p63-d13.8a10352c225e-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p63-d13.8a10352c225e-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p63-d14": {
+      "image": "/catalogue-rooms/global-wall-p63-d14.2b65f24a114d-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p63-d14.2b65f24a114d-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p63-d3": {
+      "image": "/catalogue-rooms/global-wall-p63-d3.f023d067c3ee-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p63-d3.f023d067c3ee-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p63-d4": {
+      "image": "/catalogue-rooms/global-wall-p63-d4.2884fa5f993c-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p63-d4.2884fa5f993c-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p63-d5": {
+      "image": "/catalogue-rooms/global-wall-p63-d5.080db6e7782b-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p63-d5.080db6e7782b-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p63-d6": {
+      "image": "/catalogue-rooms/global-wall-p63-d6.b03ee040d17e-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p63-d6.b03ee040d17e-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p63-d7": {
+      "image": "/catalogue-rooms/global-wall-p63-d7.6485ff3389db-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p63-d7.6485ff3389db-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "global-wall-p63-d8": {
+      "image": "/catalogue-rooms/global-wall-p63-d8.c9bfc557a938-preview.webp",
+      "detailImage": "/catalogue-rooms/global-wall-p63-d8.c9bfc557a938-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "lactose-p1-d1": {
+      "image": "/catalogue-rooms/lactose-p1-d1.7de92ef48ea6-preview.webp",
+      "detailImage": "/catalogue-rooms/lactose-p1-d1.7de92ef48ea6-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "lactose-p11-d2": {
+      "image": "/catalogue-rooms/lactose-p11-d2.bd03e7cd80c2-preview.webp",
+      "detailImage": "/catalogue-rooms/lactose-p11-d2.bd03e7cd80c2-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "lactose-p14-d2": {
+      "image": "/catalogue-rooms/lactose-p14-d2.a4db6934eec3-preview.webp",
+      "detailImage": "/catalogue-rooms/lactose-p14-d2.a4db6934eec3-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "lactose-p17-d2": {
+      "image": "/catalogue-rooms/lactose-p17-d2.c270337d5021-preview.webp",
+      "detailImage": "/catalogue-rooms/lactose-p17-d2.c270337d5021-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "lactose-p17-d3": {
+      "image": "/catalogue-rooms/lactose-p17-d3.bca0380ba93b-preview.webp",
+      "detailImage": "/catalogue-rooms/lactose-p17-d3.bca0380ba93b-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "lactose-p2-d1": {
+      "image": "/catalogue-rooms/lactose-p2-d1.9c93e669de29-preview.webp",
+      "detailImage": "/catalogue-rooms/lactose-p2-d1.9c93e669de29-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "lactose-p3-d1": {
+      "image": "/catalogue-rooms/lactose-p3-d1.7a2ef85a4eb3-preview.webp",
+      "detailImage": "/catalogue-rooms/lactose-p3-d1.7a2ef85a4eb3-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "lactose-p4-d1": {
+      "image": "/catalogue-rooms/lactose-p4-d1.362f40832aac-preview.webp",
+      "detailImage": "/catalogue-rooms/lactose-p4-d1.362f40832aac-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "lactose-p5-d1": {
+      "image": "/catalogue-rooms/lactose-p5-d1.9f64feee6d5c-preview.webp",
+      "detailImage": "/catalogue-rooms/lactose-p5-d1.9f64feee6d5c-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "lactose-p6-d1": {
+      "image": "/catalogue-rooms/lactose-p6-d1.b34bb1944587-preview.webp",
+      "detailImage": "/catalogue-rooms/lactose-p6-d1.b34bb1944587-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "planks-8x48-p1-d1": {
+      "image": "/catalogue-rooms/planks-8x48-p1-d1.c49e28bf142c-preview.webp",
+      "detailImage": "/catalogue-rooms/planks-8x48-p1-d1.c49e28bf142c-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "planks-8x48-p10-d1": {
+      "image": "/catalogue-rooms/planks-8x48-p10-d1.ed3e42990eee-preview.webp",
+      "detailImage": "/catalogue-rooms/planks-8x48-p10-d1.ed3e42990eee-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "planks-8x48-p11-d1": {
+      "image": "/catalogue-rooms/planks-8x48-p11-d1.6313712b7a17-preview.webp",
+      "detailImage": "/catalogue-rooms/planks-8x48-p11-d1.6313712b7a17-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "planks-8x48-p12-d1": {
+      "image": "/catalogue-rooms/planks-8x48-p12-d1.ac17c52e5833-preview.webp",
+      "detailImage": "/catalogue-rooms/planks-8x48-p12-d1.ac17c52e5833-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "planks-8x48-p13-d1": {
+      "image": "/catalogue-rooms/planks-8x48-p13-d1.61d3bdd3b1d2-preview.webp",
+      "detailImage": "/catalogue-rooms/planks-8x48-p13-d1.61d3bdd3b1d2-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "planks-8x48-p14-d1": {
+      "image": "/catalogue-rooms/planks-8x48-p14-d1.75999f3fe148-preview.webp",
+      "detailImage": "/catalogue-rooms/planks-8x48-p14-d1.75999f3fe148-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "planks-8x48-p15-d1": {
+      "image": "/catalogue-rooms/planks-8x48-p15-d1.72688b91233d-preview.webp",
+      "detailImage": "/catalogue-rooms/planks-8x48-p15-d1.72688b91233d-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "planks-8x48-p16-d1": {
+      "image": "/catalogue-rooms/planks-8x48-p16-d1.248d982b1783-preview.webp",
+      "detailImage": "/catalogue-rooms/planks-8x48-p16-d1.248d982b1783-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "planks-8x48-p17-d1": {
+      "image": "/catalogue-rooms/planks-8x48-p17-d1.3e605232149f-preview.webp",
+      "detailImage": "/catalogue-rooms/planks-8x48-p17-d1.3e605232149f-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "planks-8x48-p18-d1": {
+      "image": "/catalogue-rooms/planks-8x48-p18-d1.479dce874a30-preview.webp",
+      "detailImage": "/catalogue-rooms/planks-8x48-p18-d1.479dce874a30-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "planks-8x48-p19-d1": {
+      "image": "/catalogue-rooms/planks-8x48-p19-d1.5644ba5b6562-preview.webp",
+      "detailImage": "/catalogue-rooms/planks-8x48-p19-d1.5644ba5b6562-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "planks-8x48-p2-d1": {
+      "image": "/catalogue-rooms/planks-8x48-p2-d1.61ad7f4f7a1c-preview.webp",
+      "detailImage": "/catalogue-rooms/planks-8x48-p2-d1.61ad7f4f7a1c-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "planks-8x48-p20-d1": {
+      "image": "/catalogue-rooms/planks-8x48-p20-d1.3ad0d063bce7-preview.webp",
+      "detailImage": "/catalogue-rooms/planks-8x48-p20-d1.3ad0d063bce7-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "planks-8x48-p3-d1": {
+      "image": "/catalogue-rooms/planks-8x48-p3-d1.d75edb824629-preview.webp",
+      "detailImage": "/catalogue-rooms/planks-8x48-p3-d1.d75edb824629-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "planks-8x48-p4-d1": {
+      "image": "/catalogue-rooms/planks-8x48-p4-d1.bfa3c80138ba-preview.webp",
+      "detailImage": "/catalogue-rooms/planks-8x48-p4-d1.bfa3c80138ba-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "planks-8x48-p5-d1": {
+      "image": "/catalogue-rooms/planks-8x48-p5-d1.5487f745bc7d-preview.webp",
+      "detailImage": "/catalogue-rooms/planks-8x48-p5-d1.5487f745bc7d-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "planks-8x48-p6-d1": {
+      "image": "/catalogue-rooms/planks-8x48-p6-d1.8be08837cfa0-preview.webp",
+      "detailImage": "/catalogue-rooms/planks-8x48-p6-d1.8be08837cfa0-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "planks-8x48-p7-d1": {
+      "image": "/catalogue-rooms/planks-8x48-p7-d1.2c2e990aeb5d-preview.webp",
+      "detailImage": "/catalogue-rooms/planks-8x48-p7-d1.2c2e990aeb5d-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "planks-8x48-p8-d1": {
+      "image": "/catalogue-rooms/planks-8x48-p8-d1.c6b01551da05-preview.webp",
+      "detailImage": "/catalogue-rooms/planks-8x48-p8-d1.c6b01551da05-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "planks-8x48-p9-d1": {
+      "image": "/catalogue-rooms/planks-8x48-p9-d1.6a41c0922ea4-preview.webp",
+      "detailImage": "/catalogue-rooms/planks-8x48-p9-d1.6a41c0922ea4-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "seron-glossy-p3-d1": {
+      "image": "/catalogue-rooms/seron-glossy-p3-d1.005cbf7581b6-preview.webp",
+      "detailImage": "/catalogue-rooms/seron-glossy-p3-d1.005cbf7581b6-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "seron-glossy-p4-d1": {
+      "image": "/catalogue-rooms/seron-glossy-p4-d1.929fc0a6d823-preview.webp",
+      "detailImage": "/catalogue-rooms/seron-glossy-p4-d1.929fc0a6d823-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "seron-glossy-p5-d1": {
+      "image": "/catalogue-rooms/seron-glossy-p5-d1.bf2338484ba4-preview.webp",
+      "detailImage": "/catalogue-rooms/seron-glossy-p5-d1.bf2338484ba4-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "seron-glossy-p6-d1": {
+      "image": "/catalogue-rooms/seron-glossy-p6-d1.5f4ab82fe472-preview.webp",
+      "detailImage": "/catalogue-rooms/seron-glossy-p6-d1.5f4ab82fe472-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "seron-glossy-p7-d1": {
+      "image": "/catalogue-rooms/seron-glossy-p7-d1.c1217ff0bcc1-preview.webp",
+      "detailImage": "/catalogue-rooms/seron-glossy-p7-d1.c1217ff0bcc1-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "seron-glossy-p8-d1": {
+      "image": "/catalogue-rooms/seron-glossy-p8-d1.be7533b31987-preview.webp",
+      "detailImage": "/catalogue-rooms/seron-glossy-p8-d1.be7533b31987-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "seron-iconic-p10-d2": {
+      "image": "/catalogue-rooms/seron-iconic-p10-d2.cc54e36fcabf-preview.webp",
+      "detailImage": "/catalogue-rooms/seron-iconic-p10-d2.cc54e36fcabf-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "seron-iconic-p10-d3": {
+      "image": "/catalogue-rooms/seron-iconic-p10-d3.14cfef422648-preview.webp",
+      "detailImage": "/catalogue-rooms/seron-iconic-p10-d3.14cfef422648-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "seron-iconic-p13-d2": {
+      "image": "/catalogue-rooms/seron-iconic-p13-d2.ae8532f7560e-preview.webp",
+      "detailImage": "/catalogue-rooms/seron-iconic-p13-d2.ae8532f7560e-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "seron-iconic-p13-d3": {
+      "image": "/catalogue-rooms/seron-iconic-p13-d3.bcb44005b1b1-preview.webp",
+      "detailImage": "/catalogue-rooms/seron-iconic-p13-d3.bcb44005b1b1-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "seron-iconic-p16-d2": {
+      "image": "/catalogue-rooms/seron-iconic-p16-d2.371ef76282c4-preview.webp",
+      "detailImage": "/catalogue-rooms/seron-iconic-p16-d2.371ef76282c4-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "seron-iconic-p16-d3": {
+      "image": "/catalogue-rooms/seron-iconic-p16-d3.deea114b9e38-preview.webp",
+      "detailImage": "/catalogue-rooms/seron-iconic-p16-d3.deea114b9e38-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "seron-iconic-p18-d2": {
+      "image": "/catalogue-rooms/seron-iconic-p18-d2.ebe670901563-preview.webp",
+      "detailImage": "/catalogue-rooms/seron-iconic-p18-d2.ebe670901563-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "seron-iconic-p18-d3": {
+      "image": "/catalogue-rooms/seron-iconic-p18-d3.50b144912e5e-preview.webp",
+      "detailImage": "/catalogue-rooms/seron-iconic-p18-d3.50b144912e5e-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "seron-iconic-p19-d2": {
+      "image": "/catalogue-rooms/seron-iconic-p19-d2.d699fc54abd6-preview.webp",
+      "detailImage": "/catalogue-rooms/seron-iconic-p19-d2.d699fc54abd6-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "seron-iconic-p19-d3": {
+      "image": "/catalogue-rooms/seron-iconic-p19-d3.ac407ed27f09-preview.webp",
+      "detailImage": "/catalogue-rooms/seron-iconic-p19-d3.ac407ed27f09-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "seron-iconic-p7-d2": {
+      "image": "/catalogue-rooms/seron-iconic-p7-d2.f3d4844aa1fa-preview.webp",
+      "detailImage": "/catalogue-rooms/seron-iconic-p7-d2.f3d4844aa1fa-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "seron-iconic-p7-d3": {
+      "image": "/catalogue-rooms/seron-iconic-p7-d3.84369357abb4-preview.webp",
+      "detailImage": "/catalogue-rooms/seron-iconic-p7-d3.84369357abb4-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "skype-p10-d1": {
+      "image": "/catalogue-rooms/skype-p10-d1.a7834baf48da-preview.webp",
+      "detailImage": "/catalogue-rooms/skype-p10-d1.a7834baf48da-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "skype-p15-d1": {
+      "image": "/catalogue-rooms/skype-p15-d1.3ca83cd75fb0-preview.webp",
+      "detailImage": "/catalogue-rooms/skype-p15-d1.3ca83cd75fb0-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "skype-p18-d1": {
+      "image": "/catalogue-rooms/skype-p18-d1.2b13793ab3af-preview.webp",
+      "detailImage": "/catalogue-rooms/skype-p18-d1.2b13793ab3af-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "skype-p21-d1": {
+      "image": "/catalogue-rooms/skype-p21-d1.06554e5ec8bf-preview.webp",
+      "detailImage": "/catalogue-rooms/skype-p21-d1.06554e5ec8bf-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "skype-p24-d1": {
+      "image": "/catalogue-rooms/skype-p24-d1.206050705550-preview.webp",
+      "detailImage": "/catalogue-rooms/skype-p24-d1.206050705550-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "skype-p5-d1": {
+      "image": "/catalogue-rooms/skype-p5-d1.66d573716be6-preview.webp",
+      "detailImage": "/catalogue-rooms/skype-p5-d1.66d573716be6-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "skype-p6-d1": {
+      "image": "/catalogue-rooms/skype-p6-d1.54c7cc628861-preview.webp",
+      "detailImage": "/catalogue-rooms/skype-p6-d1.54c7cc628861-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "sunflora-p10-d1": {
+      "image": "/catalogue-rooms/sunflora-p10-d1.f9e289debbe0-preview.webp",
+      "detailImage": "/catalogue-rooms/sunflora-p10-d1.f9e289debbe0-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "sunflora-p12-d1": {
+      "image": "/catalogue-rooms/sunflora-p12-d1.9e8819e49129-preview.webp",
+      "detailImage": "/catalogue-rooms/sunflora-p12-d1.9e8819e49129-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "sunflora-p13-d1": {
+      "image": "/catalogue-rooms/sunflora-p13-d1.a349b71d7a2d-preview.webp",
+      "detailImage": "/catalogue-rooms/sunflora-p13-d1.a349b71d7a2d-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "sunflora-p14-d1": {
+      "image": "/catalogue-rooms/sunflora-p14-d1.5c58683dc8de-preview.webp",
+      "detailImage": "/catalogue-rooms/sunflora-p14-d1.5c58683dc8de-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "sunflora-p15-d1": {
+      "image": "/catalogue-rooms/sunflora-p15-d1.f31ae513faf0-preview.webp",
+      "detailImage": "/catalogue-rooms/sunflora-p15-d1.f31ae513faf0-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "sunflora-p16-d1": {
+      "image": "/catalogue-rooms/sunflora-p16-d1.d23053b18ee5-preview.webp",
+      "detailImage": "/catalogue-rooms/sunflora-p16-d1.d23053b18ee5-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "sunflora-p17-d1": {
+      "image": "/catalogue-rooms/sunflora-p17-d1.929dc43ae053-preview.webp",
+      "detailImage": "/catalogue-rooms/sunflora-p17-d1.929dc43ae053-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "sunflora-p22-d1": {
+      "image": "/catalogue-rooms/sunflora-p22-d1.a0c2d3ad59bd-preview.webp",
+      "detailImage": "/catalogue-rooms/sunflora-p22-d1.a0c2d3ad59bd-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "sunflora-p22-d2": {
+      "image": "/catalogue-rooms/sunflora-p22-d2.01e245161c8a-preview.webp",
+      "detailImage": "/catalogue-rooms/sunflora-p22-d2.01e245161c8a-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "sunflora-p23-d1": {
+      "image": "/catalogue-rooms/sunflora-p23-d1.771199865ff1-preview.webp",
+      "detailImage": "/catalogue-rooms/sunflora-p23-d1.771199865ff1-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "sunflora-p23-d2": {
+      "image": "/catalogue-rooms/sunflora-p23-d2.52923866b691-preview.webp",
+      "detailImage": "/catalogue-rooms/sunflora-p23-d2.52923866b691-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "sunflora-p23-d3": {
+      "image": "/catalogue-rooms/sunflora-p23-d3.f00527d9ba18-preview.webp",
+      "detailImage": "/catalogue-rooms/sunflora-p23-d3.f00527d9ba18-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "sunflora-p24-d1": {
+      "image": "/catalogue-rooms/sunflora-p24-d1.6913b93d12e2-preview.webp",
+      "detailImage": "/catalogue-rooms/sunflora-p24-d1.6913b93d12e2-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "sunflora-p24-d2": {
+      "image": "/catalogue-rooms/sunflora-p24-d2.75b051bc5800-preview.webp",
+      "detailImage": "/catalogue-rooms/sunflora-p24-d2.75b051bc5800-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "sunflora-p25-d1": {
+      "image": "/catalogue-rooms/sunflora-p25-d1.f9769fce12c6-preview.webp",
+      "detailImage": "/catalogue-rooms/sunflora-p25-d1.f9769fce12c6-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "sunflora-p25-d2": {
+      "image": "/catalogue-rooms/sunflora-p25-d2.755a4457a777-preview.webp",
+      "detailImage": "/catalogue-rooms/sunflora-p25-d2.755a4457a777-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "sunflora-p26-d1": {
+      "image": "/catalogue-rooms/sunflora-p26-d1.ed5722f9136c-preview.webp",
+      "detailImage": "/catalogue-rooms/sunflora-p26-d1.ed5722f9136c-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "sunflora-p26-d2": {
+      "image": "/catalogue-rooms/sunflora-p26-d2.97fc0aa2720a-preview.webp",
+      "detailImage": "/catalogue-rooms/sunflora-p26-d2.97fc0aa2720a-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "sunflora-p27-d1": {
+      "image": "/catalogue-rooms/sunflora-p27-d1.e4dfe99a4d16-preview.webp",
+      "detailImage": "/catalogue-rooms/sunflora-p27-d1.e4dfe99a4d16-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "sunflora-p27-d2": {
+      "image": "/catalogue-rooms/sunflora-p27-d2.4d5b33c64821-preview.webp",
+      "detailImage": "/catalogue-rooms/sunflora-p27-d2.4d5b33c64821-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "sunflora-p6-d1": {
+      "image": "/catalogue-rooms/sunflora-p6-d1.c835b32cb4a6-preview.webp",
+      "detailImage": "/catalogue-rooms/sunflora-p6-d1.c835b32cb4a6-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "sunflora-p7-d1": {
+      "image": "/catalogue-rooms/sunflora-p7-d1.3db59dac6302-preview.webp",
+      "detailImage": "/catalogue-rooms/sunflora-p7-d1.3db59dac6302-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "sunflora-p8-d1": {
+      "image": "/catalogue-rooms/sunflora-p8-d1.3f6f4779ac18-preview.webp",
+      "detailImage": "/catalogue-rooms/sunflora-p8-d1.3f6f4779ac18-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    },
+    "sunflora-p9-d1": {
+      "image": "/catalogue-rooms/sunflora-p9-d1.b407a0eefc51-preview.webp",
+      "detailImage": "/catalogue-rooms/sunflora-p9-d1.b407a0eefc51-detail.webp",
+      "width": 1536,
+      "height": 1024,
+      "label": "AI room preview",
+      "provenance": "ai-generated"
+    }
+  }
+}

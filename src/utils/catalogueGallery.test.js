@@ -1,7 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
-import { gallerySelection, galleryPath, galleryViewPage, cropViewBox, isValidCrop } from './catalogueGallery.js'
+import { gallerySelection, galleryPath, galleryViewPage, galleryProductId, galleryRoomView, isValidGeneratedRoom, matchingGallerySources, cropViewBox, isValidCrop } from './catalogueGallery.js'
 
 const books = [
   { id: 'floor', pageCount: 12, featuredPage: 3 },
@@ -198,4 +198,80 @@ test('malformed, empty, non-finite and out-of-page crops are rejected before ren
     [0.9, 0, 0.2, 1], [0, 0.9, 1, 0.2]]) {
     assert.equal(isValidCrop(rect), false, JSON.stringify(rect))
   }
+})
+
+const aiRoom = { image: '/catalogue-rooms/light.a123.preview.webp', detailImage: '/catalogue-rooms/light.a123.detail.webp',
+  width: 2400, height: 1600, label: 'AI room preview', provenance: 'ai-generated' }
+const aiRooms = { version: 1, byProduct: { light: aiRoom,
+  dark: { ...aiRoom, image: '/catalogue-rooms/dark.b456.preview.webp', detailImage: '/catalogue-rooms/dark.b456.detail.webp' } } }
+const roomlessStory = { id: 'board', productIds: ['light', 'dark'], pageNumber: 7,
+  page: { number: 7, width: 600, height: 900, image: '/catalogues/tile-page.webp' },
+  views: { tile: { rect: [.1, .1, .8, .8], label: 'Tile board' } } }
+
+test('default room selection uses a verified focus or an unambiguous product, never an arbitrary sibling', () => {
+  assert.equal(galleryProductId(roomlessStory, 'dark', [{ productId: 'light' }]), 'dark')
+  assert.equal(galleryProductId(roomlessStory, null, [{ productId: 'other-book' }, { productId: 'light' }]), 'light')
+  assert.equal(galleryProductId(roomlessStory, 'other-book'), null)
+  assert.equal(galleryProductId({ ...roomlessStory, productIds: ['light'] }), 'light')
+  assert.equal(galleryProductId(undefined), null)
+})
+
+test('generated rooms match the exact selected product and retain independent geometry without PDF metadata', () => {
+  const scene = galleryRoomView(roomlessStory, 'dark', aiRooms)
+  assert.equal(scene.page.image, aiRooms.byProduct.dark.image)
+  assert.equal(scene.productId, 'dark')
+  assert.equal(scene.provenance, 'ai-generated')
+  assert.equal(scene.view.label, 'AI room preview')
+  assert.deepEqual(cropViewBox(scene.page, scene.view.rect), [0, 0, 2400, 1600])
+  assert.equal(Object.hasOwn(scene.page, 'number'), false)
+  assert.equal(Object.hasOwn(scene.view, 'pageNumber'), false)
+  assert.equal(galleryViewPage(roomlessStory, 'tile').number, 7)
+  assert.equal(galleryViewPage(roomlessStory, 'room'), null)
+  for (const id of [null, undefined, 'not-in-board', 'toString']) assert.equal(galleryRoomView(roomlessStory, id, aiRooms), null)
+  assert.equal(galleryRoomView(roomlessStory, 'dark', { version: 1, byProduct: { light: aiRoom } }), null)
+  assert.equal(galleryRoomView(roomlessStory, 'light', { ...aiRooms, version: 2 }), null)
+})
+
+test('publisher rooms take priority without changing their PDF page, crop, or labels', () => {
+  const printedRoom = { rect: [.2, .3, .6, .5], label: 'Installed design' }
+  const story = { ...roomlessStory, views: { ...roomlessStory.views, room: printedRoom } }
+  const result = galleryRoomView(story, 'light', aiRooms)
+  assert.equal(result.provenance, 'publisher')
+  assert.equal(result.view, printedRoom)
+  assert.equal(result.page, roomlessStory.page)
+  assert.equal(result.page.number, 7)
+})
+
+test('generated metadata rejects remote paths, traversal, invalid dimensions, and missing provenance', () => {
+  assert.equal(isValidGeneratedRoom(aiRoom), true)
+  assert.equal(isValidGeneratedRoom({ ...aiRoom, detailImage: undefined }), true)
+  for (const room of [null, {}, { ...aiRoom, image: 'https://example.test/a.webp' },
+    { ...aiRoom, image: '/catalogue-rooms/../private.webp' }, { ...aiRoom, image: '/catalogue-rooms/a.svg' },
+    { ...aiRoom, detailImage: '//example.test/a.webp' }, { ...aiRoom, width: 0 },
+    { ...aiRoom, height: Infinity }, { ...aiRoom, width: 100.5 }, { ...aiRoom, height: 20000 },
+    { ...aiRoom, label: 'Publisher photo' }, { ...aiRoom, provenance: 'publisher' }]) {
+    assert.equal(isValidGeneratedRoom(room), false, JSON.stringify(room))
+    assert.equal(galleryRoomView(roomlessStory, 'light', { version: 1, byProduct: { light: room } }), null)
+  }
+})
+
+test('variant transitions reuse the original tile but cannot borrow a previously decoded sibling room', () => {
+  const lightRoom = galleryRoomView(roomlessStory, 'light', aiRooms).page
+  const darkRoom = galleryRoomView(roomlessStory, 'dark', aiRooms).page
+  const previous = { tile: { page: roomlessStory.page, src: roomlessStory.page.image },
+    room: { page: lightRoom, src: lightRoom.detailImage } }
+  const next = matchingGallerySources(previous, { tile: roomlessStory.page, room: darkRoom })
+  assert.deepEqual(Object.keys(next), ['tile'])
+  assert.equal(next.tile.src, roomlessStory.page.image)
+  assert.equal(previous.room.src, lightRoom.detailImage)
+  assert.deepEqual(matchingGallerySources(previous, { room: lightRoom }).room, previous.room)
+  assert.deepEqual(matchingGallerySources(previous, { room: { ...lightRoom, detailImage: '/catalogue-rooms/light.new.detail.webp' } }), {})
+})
+
+test('a shared publisher page can supply both views while retaining the requested source geometry', () => {
+  const previous = { tile: { page: roomlessStory.page, src: roomlessStory.page.image } }
+  const result = matchingGallerySources(previous, { tile: roomlessStory.page, room: roomlessStory.page })
+  assert.equal(result.tile.page, roomlessStory.page)
+  assert.equal(result.room.page, roomlessStory.page)
+  assert.deepEqual(matchingGallerySources(undefined, { tile: roomlessStory.page }), {})
 })

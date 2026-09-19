@@ -142,8 +142,19 @@ Where individually verified samples are available, a variant selector displays
 one complete tile from its coordinated set at a time. Original page retains the
 full publisher board. Narrow slabs and wide borders naturally leave free space
 on the opposite axis: never stretch or clip a design simply to fill the stage.
-When no room image can be verified for a product, the complete design stands
-alone and the room control is unavailable. Original page opens a separate
+Where the supplier has no room photograph, a reviewed AI room preview may be
+matched to the exact product. It must use the catalogue tile as its reference,
+neutral illumination, believable tile proportions and unobstructed material.
+The room carries a visible "AI room preview · Illustrative setting" caption;
+details clarify that colour, finish and scale should be confirmed with a sample.
+Publisher photography takes priority. An ambiguous multi-product board requires
+an explicit product choice; never borrow a sibling's generated room. Image,
+product, caption and provenance switch together only after decoding completes.
+Generated rooms load only on request, as versioned WebP previews and native-size
+detail images. Their source crop, prompt and visual review are kept in
+`scripts/catalogue-room-sources.json`, separate from the small runtime manifest.
+When neither a matched publisher photo nor a reviewed generated room exists,
+the complete design stands alone and the room control is unavailable. Original page opens a separate
 reference mode with whole-page and Fit width sizing; only that reference canvas
 owns page scrolling. Page overview, search and details replace the canvas without
 extending the reader's height.

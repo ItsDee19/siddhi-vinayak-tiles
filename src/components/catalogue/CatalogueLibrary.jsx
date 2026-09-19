@@ -6,12 +6,14 @@ import ReaderIcon from './ReaderIcon'
 import CatalogueSearch from './CatalogueSearch'
 import CatalogueGallery from './CatalogueGallery'
 import { galleryStories, storiesByBook, storyById, storyByProduct } from '../../data/catalogueGallery'
-import { gallerySelection, galleryPath } from '../../utils/catalogueGallery'
+import { gallerySelection, galleryPath, galleryProductId, galleryRoomView } from '../../utils/catalogueGallery'
 import { catalogues, cataloguePageCount } from '../../data/catalogueBooks'
 import { business } from '../../data/siteConfig'
 import { PRODUCTION_ORIGIN } from '../../data/seo'
 import { ZOOM_LEVELS } from '../../utils/catalogueReader'
 import collectionCovers from '../../data/catalogueCovers.generated.json'
+import focusMap from '../../data/catalogueFocus.generated.json'
+import generatedRooms from '../../data/catalogueRooms.generated.json'
 import '../../styles/catalogue.css'
 import '../../styles/catalogue-gallery.css'
 
@@ -54,6 +56,7 @@ export default function CatalogueLibrary() {
   const isGallery = selection.mode === 'gallery' && Boolean(story)
   const shareUrl = `${PRODUCTION_ORIGIN}${galleryPath(selection)}`
   const selectedProduct = story?.products.find(product => product.id === selection.productId)
+  const room = galleryRoomView(story, galleryProductId(story, selection.productId, focusMap.byStory[story?.id]), generatedRooms)
   const enquiryUrl = `${business.whatsapp}?text=${encodeURIComponent(`Hello! I’m interested in ${selectedProduct?.name || story?.title || `a design on page ${pageNumber}`} from ${book.title}, PDF page ${pageNumber}. Please confirm its size, finish, price and availability.\n${shareUrl}`)}`
 
   useEffect(() => {
@@ -297,6 +300,7 @@ export default function CatalogueLibrary() {
                 <h4>{story?.title || 'Every detail, as printed.'}</h4>
                 {story && <dl className="gallery-product-details">{story.products.map(product => <div key={product.id}><dt>{product.name}</dt><dd>{[product.code && product.code !== product.name && product.code, product.size, product.finish].filter(Boolean).join(' · ') || 'See original page for specifications'}</dd></div>)}</dl>}
                 <p>View the original page for the complete printed specifications and coordinated designs.</p>
+                {room?.provenance === 'ai-generated' && <p className="reader-fine-print">AI room preview: an illustrative setting for this design. Confirm colour, finish and scale with a physical sample.</p>}
                 <button type="button" className="reader-text-action" onClick={() => choose(book.id, pageNumber, true, story?.id, 'page', selection.productId)}><ReaderIcon name="layers" />View original page</button>
                 <dl className="reader-detail-meta"><div><dt>Collection</dt><dd>{collectionName(book)}</dd></div><div><dt>Format</dt><dd>{book.format}</dd></div><div><dt>Original PDF</dt><dd>{book.pageCount} pages · {(book.fileSize / 1000000).toFixed(1)} MB</dd></div></dl>
                 <a className="reader-primary-action" href={enquiryUrl} target="_blank" rel="noreferrer"><Icon name="whatsapp" className="h-5 w-5" />Ask about this design<ReaderIcon name="arrow" /></a>
@@ -354,7 +358,7 @@ export default function CatalogueLibrary() {
           </div>
         </div>
         {expanded ? <div className="reader-expanded-placeholder"><ReaderIcon name="expand" /><p>Your viewing room is open.</p><button type="button" className="reader-primary-action" onClick={() => setExpanded(false)}>Return to the library</button></div> : renderReader()}
-        <div className="catalogue-footnote"><span><ReaderIcon name="layers" />Original artwork. Every printed detail.</span><p>Colours are shown without filters. Confirm your final shade with a physical sample.</p></div>
+        <div className="catalogue-footnote"><span><ReaderIcon name="layers" />Original tile artwork. Room inspiration.</span><p>Tile artwork is shown without filters. AI room previews are labelled; confirm your final shade with a physical sample.</p></div>
       </div>
       {expanded && <ReaderDialog titleId="reader-fullscreen-title" onClose={() => setExpanded(false)}>{renderReader(true)}</ReaderDialog>}
     </section>
