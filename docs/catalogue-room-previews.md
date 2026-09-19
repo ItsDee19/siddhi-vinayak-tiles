@@ -2,7 +2,7 @@
 
 The tile-first release fills the 153 missing tile-product room views across 145 catalogue stories. Existing supplier room photos and the original PDF artwork remain authoritative and unchanged.
 
-The sanitaryware pass is in progress. Its first reviewed batch adds 33 product-specific room previews (27 Simpolo and 6 Global Wall). The full audit covers 331 entries; 30 have matching supplier room photographs to recover. Further previews will be published after visual review. Products with the same name but different finishes or pedestal assemblies retain separate product references.
+The sanitaryware pass is in progress. Its reviewed batches add 43 product-specific room previews (37 Simpolo and 6 Global Wall). The full audit covers 331 entries; 30 have matching supplier room photographs to recover. Further previews will be published after visual review. Products with the same name but different finishes or pedestal assemblies retain separate product references.
 
 | Collection | Added product previews |
 | --- | ---: |
@@ -21,7 +21,7 @@ Each scene was generated with built-in image generation using the individual pro
 ## Source record and delivery
 
 - `scripts/catalogue-room-sources.json` retains the final prompts, review notes, product IDs, original PDF hashes, page numbers and reference crop rectangles.
-- `public/catalogue-rooms/` contains content-versioned WebP assets: a 1200 × 800 preview and a native 1536 × 1024 detail image per product. The 306 files total 63.87 MiB; they load on demand when a room view is requested, not on the home page.
+- `public/catalogue-rooms/` contains content-versioned WebP assets: a 1200 × 800 preview and a native 1536 × 1024 detail image per product. The 392 files total 77.53 MiB; they load on demand when a room view is requested, not on the home page.
 - `src/data/catalogueRooms.generated.json` contains only the small runtime lookup. Run `npm run check:catalogue-rooms` to validate source associations, assets, dimensions, size limits and generated metadata.
 - The production prebuild regenerates the lookup from the reviewed source record. `scripts/prepare_catalogue_room.mjs` imports a reviewed generation into a working ledger; promotion into the source record requires visual review and the exact product reference.
 
@@ -31,4 +31,4 @@ Supplier room photos take priority. Generated images match an exact product ID a
 
 ## Release verification
 
-The audit inventory and approved source record match exactly: 153 unique products, no missing or extra entries. Reader and site checks pass (64 tests), and all 14 original PDF hashes and catalogue page proportions remain valid. Desktop/mobile checks covered complete-image fitting, side-by-side comparison, product-code search, exact variant switching and original-page access.
+The completed tile audit and approved source record match exactly: 153 unique tile products, no missing or extra entries. Sanitaryware coverage is partial and tracked separately above. Reader and site checks pass (64 tests), and all 14 original PDF hashes and catalogue page proportions remain valid. Desktop/mobile checks covered complete-image fitting, side-by-side comparison, product-code search, exact variant switching and original-page access.
