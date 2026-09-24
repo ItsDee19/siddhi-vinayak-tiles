@@ -6,6 +6,13 @@ export function galleryViewPage(story, kind) {
   return view.pageNumber === undefined ? story.page : story.book.pages[view.pageNumber - 1] || null
 }
 
+/** An image failure links to its real supplier page; generated rooms keep the product listing. */
+export function galleryFallbackPdfPage(story, kind, room) {
+  if (kind === 'room' && room?.provenance === 'publisher'
+    && Number.isInteger(room.page?.number) && room.page.number > 0) return room.page.number
+  return galleryViewPage(story, kind === 'room' ? 'room' : 'tile')?.number || story.pageNumber
+}
+
 /** A board never borrows a room from a neighbouring product or collection. */
 export function galleryProductId(story, selectedProductId, samples = []) {
   if (!story) return null
@@ -25,6 +32,18 @@ export function isValidGeneratedRoom(room) {
     && Number.isInteger(room.height) && room.height > 0 && room.height <= 16384)
 }
 
+/** Supplier recoveries must point to a real page in this exact catalogue. */
+export function isValidPublisherRoom(room, book) {
+  if (!room || room.provenance !== 'publisher' || room.label !== 'Supplier room photograph'
+    || !book || room.bookId !== book.id || !Number.isInteger(room.pageNumber)
+    || room.pageNumber < 1 || !isValidCrop(room.rect)) return false
+  const page = book.pages?.[room.pageNumber - 1]
+  const prefix = `/catalogues/${book.id}/page-${String(room.pageNumber).padStart(3, '0')}`
+  return Boolean(page && page.number === room.pageNumber && page.image === `${prefix}.webp`
+    && (!page.detailImage || page.detailImage === `${prefix}-detail.webp`)
+    && Number.isFinite(page.width) && page.width > 0 && Number.isFinite(page.height) && page.height > 0)
+}
+
 /** Generated scenes have their own image geometry, never a fictitious PDF page. */
 export function galleryRoomView(story, productId, rooms) {
   if (!story) return null
@@ -33,6 +52,12 @@ export function galleryRoomView(story, productId, rooms) {
     return page ? { page, view: story.views.room, provenance: 'publisher' } : null
   }
   if (!story.productIds.includes(productId) || rooms?.version !== 1) return null
+  const publisher = Object.hasOwn(rooms.publisherByProduct || {}, productId) ? rooms.publisherByProduct[productId] : null
+  if (story.bookId === story.book?.id && isValidPublisherRoom(publisher, story.book)) {
+    return { page: story.book.pages[publisher.pageNumber - 1],
+      view: { pageNumber: publisher.pageNumber, rect: publisher.rect, label: publisher.label },
+      provenance: 'publisher', productId }
+  }
   const room = Object.hasOwn(rooms.byProduct || {}, productId) ? rooms.byProduct[productId] : null
   if (!isValidGeneratedRoom(room)) return null
   return { page: { image: room.image, ...(room.detailImage ? { detailImage: room.detailImage } : {}), width: room.width, height: room.height },

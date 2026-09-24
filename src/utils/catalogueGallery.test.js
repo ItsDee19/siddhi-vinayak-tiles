@@ -1,7 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
-import { gallerySelection, galleryPath, galleryViewPage, galleryProductId, galleryRoomView, isValidGeneratedRoom, matchingGallerySources, cropViewBox, isValidCrop } from './catalogueGallery.js'
+import { gallerySelection, galleryPath, galleryViewPage, galleryFallbackPdfPage, galleryProductId, galleryRoomView, isValidGeneratedRoom, isValidPublisherRoom, matchingGallerySources, cropViewBox, isValidCrop } from './catalogueGallery.js'
 
 const books = [
   { id: 'floor', pageCount: 12, featuredPage: 3 },
@@ -274,4 +274,109 @@ test('a shared publisher page can supply both views while retaining the requeste
   assert.equal(result.tile.page, roomlessStory.page)
   assert.equal(result.room.page, roomlessStory.page)
   assert.deepEqual(matchingGallerySources(undefined, { tile: roomlessStory.page }), {})
+})
+
+const supplierPage = { number: 1, width: 1200, height: 800, image: '/catalogues/supplier/page-001.webp',
+  detailImage: '/catalogues/supplier/page-001-detail.webp' }
+const supplierBook = { id: 'supplier', pages: [supplierPage] }
+const recoveredStory = { ...roomlessStory, bookId: 'supplier', book: supplierBook }
+const recoveredRoom = { bookId: 'supplier', pageNumber: 1, rect: [.1, .2, .7, .6],
+  label: 'Supplier room photograph', provenance: 'publisher' }
+const recoveredRooms = { ...aiRooms, publisherByProduct: { light: recoveredRoom } }
+
+test('an exact-product supplier recovery takes priority over AI and uses its original page geometry', () => {
+  const result = galleryRoomView(recoveredStory, 'light', recoveredRooms)
+  assert.equal(result.page, supplierPage)
+  assert.equal(result.page.number, 1)
+  assert.equal(result.productId, 'light')
+  assert.equal(result.provenance, 'publisher')
+  assert.deepEqual(result.view, { pageNumber: 1, rect: recoveredRoom.rect, label: 'Supplier room photograph' })
+  assert.deepEqual(cropViewBox(result.page, result.view.rect), [120, 160, 840, 480])
+  assert.equal(galleryViewPage(recoveredStory, 'tile'), roomlessStory.page)
+  assert.equal(recoveredStory.pageNumber, 7)
+  assert.equal(galleryRoomView(recoveredStory, 'dark', recoveredRooms).provenance, 'ai-generated')
+  assert.equal(galleryRoomView(recoveredStory, 'dark', { ...recoveredRooms, byProduct: {} }), null)
+  for (const id of [undefined, null, 'unknown', 'toString']) assert.equal(galleryRoomView(recoveredStory, id, recoveredRooms), null)
+})
+
+test('original story rooms stay authoritative when a per-product supplier recovery is also present', () => {
+  const original = { rect: [.2, .3, .5, .5], label: 'Original room setting' }
+  const story = { ...recoveredStory, views: { ...recoveredStory.views, room: original } }
+  const result = galleryRoomView(story, 'light', recoveredRooms)
+  assert.equal(result.page, roomlessStory.page)
+  assert.equal(result.view, original)
+  assert.equal(result.provenance, 'publisher')
+})
+
+test('supplier recoveries reject another catalogue, malformed crop, unknown page and unverified provenance', () => {
+  assert.equal(isValidPublisherRoom(recoveredRoom, supplierBook), true)
+  for (const room of [null, {}, { ...recoveredRoom, bookId: 'other' }, { ...recoveredRoom, pageNumber: 0 },
+    { ...recoveredRoom, pageNumber: 2 }, { ...recoveredRoom, pageNumber: 1.1 }, { ...recoveredRoom, pageNumber: '1' },
+    { ...recoveredRoom, rect: [.5, .5, 1, 1] }, { ...recoveredRoom, rect: [0, 0, NaN, 1] },
+    { ...recoveredRoom, label: 'AI room preview' }, { ...recoveredRoom, provenance: 'ai-generated' }]) {
+    assert.equal(isValidPublisherRoom(room, supplierBook), false, JSON.stringify(room))
+    assert.equal(galleryRoomView(recoveredStory, 'light', { version: 1, publisherByProduct: { light: room } }), null)
+  }
+  for (const page of [{ ...supplierPage, number: 2 }, { ...supplierPage, width: 0 }, { ...supplierPage, height: Infinity },
+    { ...supplierPage, image: 'https://example.test/photo.webp' },
+    { ...supplierPage, image: '/catalogues/other/page-001.webp' },
+    { ...supplierPage, detailImage: '/catalogues/other/page-001-detail.webp' }]) {
+    assert.equal(isValidPublisherRoom(recoveredRoom, { ...supplierBook, pages: [page] }), false)
+  }
+  assert.equal(galleryRoomView({ ...recoveredStory, bookId: 'other' }, 'light', { version: 1, publisherByProduct: { light: recoveredRoom } }), null)
+  assert.equal(galleryRoomView(recoveredStory, 'light', { ...recoveredRooms, version: 2 }), null)
+})
+
+test('all audited supplier recoveries resolve only their listed products and preserve catalogue provenance', () => {
+  const json = path => JSON.parse(readFileSync(new URL(path, import.meta.url), 'utf8'))
+  const source = json('../../scripts/catalogue-publisher-room-sources.json')
+  const rooms = json('../data/catalogueRooms.generated.json')
+  const realBooks = json('../data/catalogueBooks.generated.json')
+  const realStories = json('../data/catalogueGallery.generated.json').stories
+  assert.equal(source.version, 1)
+  assert.equal(source.entries.length, 30)
+  assert.deepEqual(Object.keys(rooms.publisherByProduct).sort(), source.entries.map(entry => entry.productId).sort())
+  for (const entry of source.entries) {
+    const story = realStories.find(story => story.productIds.includes(entry.productId))
+    const book = realBooks.find(book => book.id === story.bookId)
+    const resolved = { ...story, book, page: book.pages[story.pageNumber - 1] }
+    const result = galleryRoomView(resolved, entry.productId, rooms)
+    assert.equal(result.provenance, 'publisher', entry.productId)
+    assert.equal(result.productId, entry.productId)
+    assert.equal(result.page, book.pages[entry.sourcePage - 1])
+    assert.deepEqual(result.view.rect, entry.sourceRect)
+    assert.equal(result.view.label, entry.label)
+    assert.equal(entry.bookId, story.bookId)
+    assert.equal(entry.sourceHash, book.sourceHash)
+    assert.equal(entry.sourcePdf, book.sourceName)
+    assert.ok(entry.evidence && entry.confidence)
+    assert.equal(Object.hasOwn(rooms.byProduct, entry.productId), false)
+  }
+})
+
+test('the black Zeus basin room never substitutes for its neighboring toilet, nor SWIM for a different size', () => {
+  const json = path => JSON.parse(readFileSync(new URL(path, import.meta.url), 'utf8'))
+  const rooms = json('../data/catalogueRooms.generated.json')
+  const supplierOnly = { ...rooms, byProduct: {} }
+  const book = json('../data/catalogueBooks.generated.json').find(book => book.id === 'simpolo')
+  const realStories = json('../data/catalogueGallery.generated.json').stories
+  const resolve = productId => {
+    const story = realStories.find(story => story.productIds.includes(productId))
+    return galleryRoomView({ ...story, book, page: book.pages[story.pageNumber - 1] }, productId, supplierOnly)
+  }
+  assert.equal(resolve('simpolo-p17-d6').page.number, 16)
+  assert.equal(resolve('simpolo-p17-d5'), null)
+  assert.equal(resolve('simpolo-p23-d1').page.number, 22)
+  assert.equal(resolve('simpolo-p24-d1'), null)
+})
+
+test('failed room images link to the recovered supplier page without changing product or AI PDF links', () => {
+  const recovered = galleryRoomView(recoveredStory, 'light', recoveredRooms)
+  assert.equal(galleryFallbackPdfPage(recoveredStory, 'room', recovered), 1)
+  for (const kind of ['tile', 'pair']) assert.equal(galleryFallbackPdfPage(recoveredStory, kind, recovered), 7)
+  const generated = galleryRoomView(recoveredStory, 'dark', recoveredRooms)
+  assert.equal(galleryFallbackPdfPage(recoveredStory, 'room', generated), 7)
+  assert.equal(galleryFallbackPdfPage(recoveredStory, 'room', null), 7)
+  const original = { ...recoveredStory, views: { ...recoveredStory.views, room: { pageNumber: 1, rect: [0, 0, 1, 1] } } }
+  assert.equal(galleryFallbackPdfPage(original, 'room', galleryRoomView(original, 'light', recoveredRooms)), 1)
 })

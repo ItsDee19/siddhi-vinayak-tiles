@@ -4,7 +4,7 @@ import ReaderIcon from './ReaderIcon'
 import focusMap from '../../data/catalogueFocus.generated.json'
 import generatedRooms from '../../data/catalogueRooms.generated.json'
 import { getSwipeNavigation, loadDecodedPageImage } from '../../utils/pdfViewport'
-import { galleryProductId, galleryRoomView, galleryViewPage as viewPage, matchingGallerySources } from '../../utils/catalogueGallery'
+import { galleryProductId, galleryRoomView, galleryViewPage as viewPage, matchingGallerySources, galleryFallbackPdfPage } from '../../utils/catalogueGallery'
 
 export default function CatalogueGallery({ story, adjacent = [], direction, view, onViewChange, onNext, onPrevious, onStatusChange, onDetails, selectedProductId, onSelectProduct }) {
   const [frames, setFrames] = useState({ current: null, previous: null })
@@ -27,7 +27,7 @@ export default function CatalogueGallery({ story, adjacent = [], direction, view
   const specs = shownProduct ? [shownProduct.size, shownProduct.finish].filter(Boolean).join(' · ') : frame?.story.specs
   const frameReady = frame?.key === frameKey && loadState === 'ready'
   const variantChoices = focusedSamples.length ? focusedSamples : frame?.story.products.length > 1
-    && frame.story.products.some(product => galleryRoomView(frame.story, product.id, generatedRooms)?.provenance === 'ai-generated')
+    && !frame.story.views.room && frame.story.products.some(product => galleryRoomView(frame.story, product.id, generatedRooms))
       ? frame.story.products.map(product => ({ productId: product.id, label: product.name })) : []
 
   useEffect(() => {
@@ -163,7 +163,7 @@ export default function CatalogueGallery({ story, adjacent = [], direction, view
       {frame && artwork(frame)}
       {!frame && loadState === 'loading' && <div className="gallery-first-load">Preparing your viewing room…</div>}
       {loadState === 'loading' && frame && <p className="gallery-load-note">{frame.story.id === story.id ? 'Loading selected view' : 'Loading next design'} · Showing {title}</p>}
-      {loadState === 'error' && <div className="gallery-error" role="alert"><p>This view could not load.{frame ? ` Still showing ${title}.` : ''}</p><button type="button" className="reader-control" onClick={() => setRetry(value => value + 1)}>Try again</button><a className="reader-text-action" href={`${story.book.pdfUrl}#page=${viewPage(story, requestedView === 'room' ? 'room' : 'tile')?.number || story.pageNumber}`} target="_blank" rel="noreferrer">Open original PDF</a></div>}
+      {loadState === 'error' && <div className="gallery-error" role="alert"><p>This view could not load.{frame ? ` Still showing ${title}.` : ''}</p><button type="button" className="reader-control" onClick={() => setRetry(value => value + 1)}>Try again</button><a className="reader-text-action" href={`${story.book.pdfUrl}#page=${galleryFallbackPdfPage(story, requestedView, room)}`} target="_blank" rel="noreferrer">Open original PDF</a></div>}
     </div>
     <p className="sr-only" role="status">{loadState === 'loading' ? `Loading ${story.title}.` : ''}</p>
     {variantChoices.length > 1 && <div className="gallery-samples" role="group" aria-label="Choose a product from this design">

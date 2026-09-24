@@ -1,0 +1,515 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "productId": "global-wall-p72-d10",
+      "bookId": "global-wall",
+      "sourcePdf": "GLOBAL TILES 2025 CATALOGUE.pdf",
+      "sourceHash": "887f8cec180a1ab5a464b6319d38d890ba5ec501c235b496320d1a9d47ccf3ad",
+      "sourcePage": 72,
+      "sourceRect": [
+        0.531667,
+        0.38806,
+        0.135556,
+        0.235664
+      ],
+      "label": "Supplier room photograph",
+      "provenance": "publisher",
+      "confidence": "verified same product card",
+      "evidence": "The original gallery crop already includes this product installed with floor/wall/mirror or surrounding bathroom context. Reuse original photograph rather than fabricate a replacement."
+    },
+    {
+      "productId": "global-wall-p72-d11",
+      "bookId": "global-wall",
+      "sourcePdf": "GLOBAL TILES 2025 CATALOGUE.pdf",
+      "sourceHash": "887f8cec180a1ab5a464b6319d38d890ba5ec501c235b496320d1a9d47ccf3ad",
+      "sourcePage": 72,
+      "sourceRect": [
+        0.682778,
+        0.38806,
+        0.135556,
+        0.235664
+      ],
+      "label": "Supplier room photograph",
+      "provenance": "publisher",
+      "confidence": "verified same product card",
+      "evidence": "The original gallery crop already includes this product installed with floor/wall/mirror or surrounding bathroom context. Reuse original photograph rather than fabricate a replacement."
+    },
+    {
+      "productId": "global-wall-p72-d12",
+      "bookId": "global-wall",
+      "sourcePdf": "GLOBAL TILES 2025 CATALOGUE.pdf",
+      "sourceHash": "887f8cec180a1ab5a464b6319d38d890ba5ec501c235b496320d1a9d47ccf3ad",
+      "sourcePage": 72,
+      "sourceRect": [
+        0.833889,
+        0.38806,
+        0.135556,
+        0.235664
+      ],
+      "label": "Supplier room photograph",
+      "provenance": "publisher",
+      "confidence": "verified same product card",
+      "evidence": "The original gallery crop already includes this product installed with floor/wall/mirror or surrounding bathroom context. Reuse original photograph rather than fabricate a replacement."
+    },
+    {
+      "productId": "global-wall-p72-d13",
+      "bookId": "global-wall",
+      "sourcePdf": "GLOBAL TILES 2025 CATALOGUE.pdf",
+      "sourceHash": "887f8cec180a1ab5a464b6319d38d890ba5ec501c235b496320d1a9d47ccf3ad",
+      "sourcePage": 72,
+      "sourceRect": [
+        0.531667,
+        0.667714,
+        0.135556,
+        0.235664
+      ],
+      "label": "Supplier room photograph",
+      "provenance": "publisher",
+      "confidence": "verified same product card",
+      "evidence": "The original gallery crop already includes this product installed with floor/wall/mirror or surrounding bathroom context. Reuse original photograph rather than fabricate a replacement."
+    },
+    {
+      "productId": "global-wall-p72-d14",
+      "bookId": "global-wall",
+      "sourcePdf": "GLOBAL TILES 2025 CATALOGUE.pdf",
+      "sourceHash": "887f8cec180a1ab5a464b6319d38d890ba5ec501c235b496320d1a9d47ccf3ad",
+      "sourcePage": 72,
+      "sourceRect": [
+        0.682778,
+        0.667714,
+        0.135556,
+        0.235664
+      ],
+      "label": "Supplier room photograph",
+      "provenance": "publisher",
+      "confidence": "verified same product card",
+      "evidence": "The original gallery crop already includes this product installed with floor/wall/mirror or surrounding bathroom context. Reuse original photograph rather than fabricate a replacement."
+    },
+    {
+      "productId": "global-wall-p72-d15",
+      "bookId": "global-wall",
+      "sourcePdf": "GLOBAL TILES 2025 CATALOGUE.pdf",
+      "sourceHash": "887f8cec180a1ab5a464b6319d38d890ba5ec501c235b496320d1a9d47ccf3ad",
+      "sourcePage": 72,
+      "sourceRect": [
+        0.833889,
+        0.667714,
+        0.135556,
+        0.235664
+      ],
+      "label": "Supplier room photograph",
+      "provenance": "publisher",
+      "confidence": "verified same product card",
+      "evidence": "The original gallery crop already includes this product installed with floor/wall/mirror or surrounding bathroom context. Reuse original photograph rather than fabricate a replacement."
+    },
+    {
+      "productId": "global-wall-p72-d7",
+      "bookId": "global-wall",
+      "sourcePdf": "GLOBAL TILES 2025 CATALOGUE.pdf",
+      "sourceHash": "887f8cec180a1ab5a464b6319d38d890ba5ec501c235b496320d1a9d47ccf3ad",
+      "sourcePage": 72,
+      "sourceRect": [
+        0.531667,
+        0.108405,
+        0.135556,
+        0.235664
+      ],
+      "label": "Supplier room photograph",
+      "provenance": "publisher",
+      "confidence": "verified same product card",
+      "evidence": "The original gallery crop already includes this product installed with floor/wall/mirror or surrounding bathroom context. Reuse original photograph rather than fabricate a replacement."
+    },
+    {
+      "productId": "global-wall-p72-d8",
+      "bookId": "global-wall",
+      "sourcePdf": "GLOBAL TILES 2025 CATALOGUE.pdf",
+      "sourceHash": "887f8cec180a1ab5a464b6319d38d890ba5ec501c235b496320d1a9d47ccf3ad",
+      "sourcePage": 72,
+      "sourceRect": [
+        0.682778,
+        0.108405,
+        0.135556,
+        0.235664
+      ],
+      "label": "Supplier room photograph",
+      "provenance": "publisher",
+      "confidence": "verified same product card",
+      "evidence": "The original gallery crop already includes this product installed with floor/wall/mirror or surrounding bathroom context. Reuse original photograph rather than fabricate a replacement."
+    },
+    {
+      "productId": "global-wall-p72-d9",
+      "bookId": "global-wall",
+      "sourcePdf": "GLOBAL TILES 2025 CATALOGUE.pdf",
+      "sourceHash": "887f8cec180a1ab5a464b6319d38d890ba5ec501c235b496320d1a9d47ccf3ad",
+      "sourcePage": 72,
+      "sourceRect": [
+        0.833889,
+        0.108405,
+        0.135556,
+        0.235664
+      ],
+      "label": "Supplier room photograph",
+      "provenance": "publisher",
+      "confidence": "verified same product card",
+      "evidence": "The original gallery crop already includes this product installed with floor/wall/mirror or surrounding bathroom context. Reuse original photograph rather than fabricate a replacement."
+    },
+    {
+      "productId": "global-wall-p73-d1",
+      "bookId": "global-wall",
+      "sourcePdf": "GLOBAL TILES 2025 CATALOGUE.pdf",
+      "sourceHash": "887f8cec180a1ab5a464b6319d38d890ba5ec501c235b496320d1a9d47ccf3ad",
+      "sourcePage": 73,
+      "sourceRect": [
+        0,
+        0.122545,
+        0.5,
+        0.641791
+      ],
+      "label": "Supplier room photograph",
+      "provenance": "publisher",
+      "confidence": "verified same product card",
+      "evidence": "The original gallery crop already includes this product installed with floor/wall/mirror or surrounding bathroom context. Reuse original photograph rather than fabricate a replacement."
+    },
+    {
+      "productId": "global-wall-p73-d2",
+      "bookId": "global-wall",
+      "sourcePdf": "GLOBAL TILES 2025 CATALOGUE.pdf",
+      "sourceHash": "887f8cec180a1ab5a464b6319d38d890ba5ec501c235b496320d1a9d47ccf3ad",
+      "sourcePage": 73,
+      "sourceRect": [
+        0.5,
+        0.122545,
+        0.5,
+        0.641791
+      ],
+      "label": "Supplier room photograph",
+      "provenance": "publisher",
+      "confidence": "verified same product card",
+      "evidence": "The original gallery crop already includes this product installed with floor/wall/mirror or surrounding bathroom context. Reuse original photograph rather than fabricate a replacement."
+    },
+    {
+      "productId": "global-wall-p74-d1",
+      "bookId": "global-wall",
+      "sourcePdf": "GLOBAL TILES 2025 CATALOGUE.pdf",
+      "sourceHash": "887f8cec180a1ab5a464b6319d38d890ba5ec501c235b496320d1a9d47ccf3ad",
+      "sourcePage": 74,
+      "sourceRect": [
+        0,
+        0.122545,
+        0.5,
+        0.641791
+      ],
+      "label": "Supplier room photograph",
+      "provenance": "publisher",
+      "confidence": "verified same product card",
+      "evidence": "The original gallery crop already includes this product installed with floor/wall/mirror or surrounding bathroom context. Reuse original photograph rather than fabricate a replacement."
+    },
+    {
+      "productId": "global-wall-p74-d2",
+      "bookId": "global-wall",
+      "sourcePdf": "GLOBAL TILES 2025 CATALOGUE.pdf",
+      "sourceHash": "887f8cec180a1ab5a464b6319d38d890ba5ec501c235b496320d1a9d47ccf3ad",
+      "sourcePage": 74,
+      "sourceRect": [
+        0.5,
+        0.122545,
+        0.5,
+        0.641791
+      ],
+      "label": "Supplier room photograph",
+      "provenance": "publisher",
+      "confidence": "verified same product card",
+      "evidence": "The original gallery crop already includes this product installed with floor/wall/mirror or surrounding bathroom context. Reuse original photograph rather than fabricate a replacement."
+    },
+    {
+      "productId": "simpolo-p11-d1",
+      "bookId": "simpolo",
+      "sourcePdf": "Simpolo SW MRP 2025_36MB-1.pdf",
+      "sourceHash": "915afe544035b3bb23ed65436d6b2eda0d756bcd17c6c76f3e87ca46147b8598",
+      "sourcePage": 10,
+      "sourceRect": [
+        0,
+        0,
+        1,
+        0.94
+      ],
+      "label": "Supplier room photograph",
+      "provenance": "publisher",
+      "confidence": "verified visual match",
+      "evidence": "Facing VIDA spread: matching D-shaped skirted wall toilet and round tilted basin. Individual listing names Vida, codes22035 and10165, match suite."
+    },
+    {
+      "productId": "simpolo-p13-d1",
+      "bookId": "simpolo",
+      "sourcePdf": "Simpolo SW MRP 2025_36MB-1.pdf",
+      "sourceHash": "915afe544035b3bb23ed65436d6b2eda0d756bcd17c6c76f3e87ca46147b8598",
+      "sourcePage": 12,
+      "sourceRect": [
+        0,
+        0,
+        1,
+        0.93
+      ],
+      "label": "Supplier room photograph",
+      "provenance": "publisher",
+      "confidence": "verified visual match",
+      "evidence": "Facing ZEST spread: angular compact closet and rectangular tilted basin match suite and Zest individual listings20034/10164."
+    },
+    {
+      "productId": "simpolo-p17-d6",
+      "bookId": "simpolo",
+      "sourcePdf": "Simpolo SW MRP 2025_36MB-1.pdf",
+      "sourceHash": "915afe544035b3bb23ed65436d6b2eda0d756bcd17c6c76f3e87ca46147b8598",
+      "sourcePage": 16,
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "label": "Supplier room photograph",
+      "provenance": "publisher",
+      "confidence": "verified visual match",
+      "evidence": "Matte black suite scene contains long oval/capsule basins matching Zeus10161; unlike square Avante10158 and compact rounded-rectangle Eden10159. Toilet lies across gutter on next page; not asserted for that record."
+    },
+    {
+      "productId": "simpolo-p19-d5",
+      "bookId": "simpolo",
+      "sourcePdf": "Simpolo SW MRP 2025_36MB-1.pdf",
+      "sourceHash": "915afe544035b3bb23ed65436d6b2eda0d756bcd17c6c76f3e87ca46147b8598",
+      "sourcePage": 18,
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "label": "Supplier room photograph",
+      "provenance": "publisher",
+      "confidence": "verified visual match",
+      "evidence": "Glossy white suite scene: rounded Zeus toilet and long oval/capsule basin with vertical side match Zeus20028/10157 (not square Avante or compact rounded-rectangle Eden)."
+    },
+    {
+      "productId": "simpolo-p19-d6",
+      "bookId": "simpolo",
+      "sourcePdf": "Simpolo SW MRP 2025_36MB-1.pdf",
+      "sourceHash": "915afe544035b3bb23ed65436d6b2eda0d756bcd17c6c76f3e87ca46147b8598",
+      "sourcePage": 18,
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "label": "Supplier room photograph",
+      "provenance": "publisher",
+      "confidence": "verified visual match",
+      "evidence": "Glossy white suite scene: rounded Zeus toilet and long oval/capsule basin with vertical side match Zeus20028/10157 (not square Avante or compact rounded-rectangle Eden)."
+    },
+    {
+      "productId": "simpolo-p23-d1",
+      "bookId": "simpolo",
+      "sourcePdf": "Simpolo SW MRP 2025_36MB-1.pdf",
+      "sourceHash": "915afe544035b3bb23ed65436d6b2eda0d756bcd17c6c76f3e87ca46147b8598",
+      "sourcePage": 22,
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "label": "Supplier room photograph",
+      "provenance": "publisher",
+      "confidence": "verified visual match",
+      "evidence": "Facing SWIM spread; same tall curved tank and bowl body, exact same photograph repeated in p23 detail. Do not extend to p24 variant automatically."
+    },
+    {
+      "productId": "simpolo-p27-d1",
+      "bookId": "simpolo",
+      "sourcePdf": "Simpolo SW MRP 2025_36MB-1.pdf",
+      "sourceHash": "915afe544035b3bb23ed65436d6b2eda0d756bcd17c6c76f3e87ca46147b8598",
+      "sourcePage": 26,
+      "sourceRect": [
+        0,
+        0.5,
+        1,
+        0.49
+      ],
+      "label": "Supplier room photograph",
+      "provenance": "publisher",
+      "confidence": "verified visual match",
+      "evidence": "Facing CRONA spread: same square upper body with lower taper and stepped seat; code20018 repeats on p32. Crop excludes printed slogan above product."
+    },
+    {
+      "productId": "simpolo-p29-d1",
+      "bookId": "simpolo",
+      "sourcePdf": "Simpolo SW MRP 2025_36MB-1.pdf",
+      "sourceHash": "915afe544035b3bb23ed65436d6b2eda0d756bcd17c6c76f3e87ca46147b8598",
+      "sourcePage": 28,
+      "sourceRect": [
+        0,
+        0.37,
+        1,
+        0.62
+      ],
+      "label": "Supplier room photograph",
+      "provenance": "publisher",
+      "confidence": "verified visual match",
+      "evidence": "Facing SELGE spread: same rounded suspended bowl and projecting bidet control arm; code20021 repeats on p32. Crop excludes paragraph above product."
+    },
+    {
+      "productId": "simpolo-p31-d2",
+      "bookId": "simpolo",
+      "sourcePdf": "Simpolo SW MRP 2025_36MB-1.pdf",
+      "sourceHash": "915afe544035b3bb23ed65436d6b2eda0d756bcd17c6c76f3e87ca46147b8598",
+      "sourcePage": 30,
+      "sourceRect": [
+        0,
+        0.25,
+        1,
+        0.75
+      ],
+      "label": "Supplier room photograph",
+      "provenance": "publisher",
+      "confidence": "verified visual match",
+      "evidence": "Facing AQUAINTEL spread shows square rear body, side circular control and lid outline matching Square20032, distinct from Round20033. Crop excludes banner."
+    },
+    {
+      "productId": "simpolo-p32-d1",
+      "bookId": "simpolo",
+      "sourcePdf": "Simpolo SW MRP 2025_36MB-1.pdf",
+      "sourceHash": "915afe544035b3bb23ed65436d6b2eda0d756bcd17c6c76f3e87ca46147b8598",
+      "sourcePage": 12,
+      "sourceRect": [
+        0,
+        0,
+        1,
+        0.93
+      ],
+      "label": "Supplier room photograph",
+      "provenance": "publisher",
+      "confidence": "verified visual match",
+      "evidence": "Facing ZEST spread: angular compact closet and rectangular tilted basin match suite and Zest individual listings20034/10164."
+    },
+    {
+      "productId": "simpolo-p32-d2",
+      "bookId": "simpolo",
+      "sourcePdf": "Simpolo SW MRP 2025_36MB-1.pdf",
+      "sourceHash": "915afe544035b3bb23ed65436d6b2eda0d756bcd17c6c76f3e87ca46147b8598",
+      "sourcePage": 10,
+      "sourceRect": [
+        0,
+        0,
+        1,
+        0.94
+      ],
+      "label": "Supplier room photograph",
+      "provenance": "publisher",
+      "confidence": "verified visual match",
+      "evidence": "Facing VIDA spread: matching D-shaped skirted wall toilet and round tilted basin. Individual listing names Vida, codes22035 and10165, match suite."
+    },
+    {
+      "productId": "simpolo-p32-d3",
+      "bookId": "simpolo",
+      "sourcePdf": "Simpolo SW MRP 2025_36MB-1.pdf",
+      "sourceHash": "915afe544035b3bb23ed65436d6b2eda0d756bcd17c6c76f3e87ca46147b8598",
+      "sourcePage": 26,
+      "sourceRect": [
+        0,
+        0.5,
+        1,
+        0.49
+      ],
+      "label": "Supplier room photograph",
+      "provenance": "publisher",
+      "confidence": "verified visual match",
+      "evidence": "Facing CRONA spread: same square upper body with lower taper and stepped seat; code20018 repeats on p32. Crop excludes printed slogan above product."
+    },
+    {
+      "productId": "simpolo-p32-d4",
+      "bookId": "simpolo",
+      "sourcePdf": "Simpolo SW MRP 2025_36MB-1.pdf",
+      "sourceHash": "915afe544035b3bb23ed65436d6b2eda0d756bcd17c6c76f3e87ca46147b8598",
+      "sourcePage": 28,
+      "sourceRect": [
+        0,
+        0.37,
+        1,
+        0.62
+      ],
+      "label": "Supplier room photograph",
+      "provenance": "publisher",
+      "confidence": "verified visual match",
+      "evidence": "Facing SELGE spread: same rounded suspended bowl and projecting bidet control arm; code20021 repeats on p32. Crop excludes paragraph above product."
+    },
+    {
+      "productId": "simpolo-p32-d7",
+      "bookId": "simpolo",
+      "sourcePdf": "Simpolo SW MRP 2025_36MB-1.pdf",
+      "sourceHash": "915afe544035b3bb23ed65436d6b2eda0d756bcd17c6c76f3e87ca46147b8598",
+      "sourcePage": 18,
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "label": "Supplier room photograph",
+      "provenance": "publisher",
+      "confidence": "verified visual match",
+      "evidence": "Glossy white suite scene: rounded Zeus toilet and long oval/capsule basin with vertical side match Zeus20028/10157 (not square Avante or compact rounded-rectangle Eden)."
+    },
+    {
+      "productId": "simpolo-p38-d1",
+      "bookId": "simpolo",
+      "sourcePdf": "Simpolo SW MRP 2025_36MB-1.pdf",
+      "sourceHash": "915afe544035b3bb23ed65436d6b2eda0d756bcd17c6c76f3e87ca46147b8598",
+      "sourcePage": 12,
+      "sourceRect": [
+        0,
+        0,
+        1,
+        0.93
+      ],
+      "label": "Supplier room photograph",
+      "provenance": "publisher",
+      "confidence": "verified visual match",
+      "evidence": "Facing ZEST spread: angular compact closet and rectangular tilted basin match suite and Zest individual listings20034/10164."
+    },
+    {
+      "productId": "simpolo-p38-d10",
+      "bookId": "simpolo",
+      "sourcePdf": "Simpolo SW MRP 2025_36MB-1.pdf",
+      "sourceHash": "915afe544035b3bb23ed65436d6b2eda0d756bcd17c6c76f3e87ca46147b8598",
+      "sourcePage": 18,
+      "sourceRect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "label": "Supplier room photograph",
+      "provenance": "publisher",
+      "confidence": "verified visual match",
+      "evidence": "Glossy white suite scene: rounded Zeus toilet and long oval/capsule basin with vertical side match Zeus20028/10157 (not square Avante or compact rounded-rectangle Eden)."
+    },
+    {
+      "productId": "simpolo-p38-d2",
+      "bookId": "simpolo",
+      "sourcePdf": "Simpolo SW MRP 2025_36MB-1.pdf",
+      "sourceHash": "915afe544035b3bb23ed65436d6b2eda0d756bcd17c6c76f3e87ca46147b8598",
+      "sourcePage": 10,
+      "sourceRect": [
+        0,
+        0,
+        1,
+        0.94
+      ],
+      "label": "Supplier room photograph",
+      "provenance": "publisher",
+      "confidence": "verified visual match",
+      "evidence": "Facing VIDA spread: matching D-shaped skirted wall toilet and round tilted basin. Individual listing names Vida, codes22035 and10165, match suite."
+    }
+  ]
+}
